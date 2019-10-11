@@ -1,0 +1,32 @@
+name: deploy-check
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install
+        run: |
+          yarn install --non-interactive --no-lockfile
+      - name: build-lib-util
+        run: |
+          yarn ng build util
+      - name: build-app-aiao-site
+        run: |
+          yarn ng run aiao-site:build:production

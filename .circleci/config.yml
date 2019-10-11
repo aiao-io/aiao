@@ -1,0 +1,161 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+
+# defaults
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:12-browsers
+
+# env
+set_env: &set_env
+  name: Setup Environment Variables
+  command: |
+    if [[ $CIRCLE_PULL_REQUEST ]]
+    then
+      echo 'Fetching Base Commit from GitHub'
+      echo 'export CIRCLE_PR_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}"' >> $BASH_ENV
+      source $BASH_ENV
+      echo "export CIRCLE_PR_BASE_SHA=`curl -s -H "Authorization: token ${github_api_token}" https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pulls/${CIRCLE_PR_NUMBER} | jq -r '.base.sha'`" >> $BASH_ENV
+      echo 'export AFFECTED_ARGS="--base ${CIRCLE_PR_BASE_SHA}"' >> $BASH_ENV
+    else
+      echo 'Fetching Base Commit from Deploy Cache'
+      if [[ ! -f dist/last-deploy.txt ]]
+      then
+        mkdir dist && git rev-parse HEAD~1 > dist/last-deploy.txt
+      fi
+      echo 'export AFFECTED_ARGS="--base $(cat dist/last-deploy.txt)"' >> $BASH_ENV
+    fi
+    source $BASH_ENV
+    echo $AFFECTED_ARGS
+
+# cache
+restore_yarn_cache: &restore_yarn_cache
+  keys:
+    - node-deps-node12-{{ checksum "yarn.lock" }}
+
+save_yarn_cache: &save_yarn_cache
+  key: node-deps-node12-{{ checksum "yarn.lock" }}
+  paths:
+    - ~/.cache/Cypress
+    - dist/tools
+    - node_modules
+
+# install
+yarn_install: &yarn_install
+  name: Install Dependencies
+  command: yarn install --non-interactive --no-lockfile
+
+# format
+format: &format
+  name: format
+  command: yarn format:check --all
+
+format-affected: &format-affected
+  name: format-affected
+  command: yarn format:check ${AFFECTED_ARGS}
+
+# lint
+lint-affected: &lint-affected
+  name: lint-affected
+  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS} --parallel
+
+lint: &lint
+  name: lint
+  command: ./node_modules/.bin/nx workspace-lint && yarn lint
+
+# checks
+check-lodash: &check-lodash
+  name: check-lodash
+  command: node ./dist/tools/checks/command lodash --all
+
+check-lodash-affected: &check-lodash-affected
+  name: check-lodash
+  command: node ./dist/tools/checks/command lodash ${AFFECTED_ARGS}
+
+# test
+test-affected: &test-affected
+  name: test-affected
+  command: yarn affected:test -- ${AFFECTED_ARGS} --parallel -- --ci --code-coverage
+
+test: &test
+  name: test
+  command: yarn test -- --ci --code-coverage
+
+# e2e
+e2e-affected: &e2e-affected
+  name: e2e-affected
+  command: yarn affected:e2e -- ${AFFECTED_ARGS} -- --configuration production --headless
+
+e2e: &e2e
+  name: e2e
+  command: yarn e2e --configuration production --headless
+
+# coverage
+coverage: &coverage
+  name: coverage
+  command: bash <(curl -s https://codecov.io/bash)
+
+# artifacts
+store_artifacts_coverage: &store_artifacts_coverage
+  prefix: coverage
+  path: coverage
+
+store_artifacts_cypress: &store_artifacts_cypress
+  prefix: cypress
+  path: dist/cypress
+
+# jobs
+jobs:
+  check_all:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: *set_env
+      - restore_cache: *restore_yarn_cache
+      - run: *yarn_install
+      - save_cache: *save_yarn_cache
+      - run: *format
+      - run: *lint
+      - run: *test
+      - run: *coverage
+      - run: *e2e
+      - store_artifacts: *store_artifacts_coverage
+      - store_artifacts: *store_artifacts_cypress
+
+  check_affected:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: *set_env
+      - restore_cache: *restore_yarn_cache
+      - run: *yarn_install
+      - save_cache: *save_yarn_cache
+      - run: *check-lodash-affected
+      - run: *format-affected
+      - run: *lint-affected
+      - run: *test-affected
+      - run: *coverage
+      - run: *e2e-affected
+      - store_artifacts: *store_artifacts_coverage
+      - store_artifacts: *store_artifacts_cypress
+# workflows
+workflows:
+  version: 2
+  check:
+    jobs:
+      - check_all:
+          filters:
+            branches:
+              only:
+                - master
+                - develop
+      - check_affected:
+          filters:
+            branches:
+              ignore:
+                - master
+                - develop

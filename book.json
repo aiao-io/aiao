@@ -1,0 +1,14 @@
+{
+  "gitbook": "3.x.x",
+  "title": "AIAO",
+  "root": "/docs",
+  "plugins": ["highlight", "github", "include-codeblock", "versions", "anchors", "youtube"],
+  "pluginsConfig": {
+    "github": {
+      "url": "https://github.com/Jimmysh/aiao"
+    },
+    "versions": {
+      "type": "branches"
+    }
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "version": 1,
+  "projects": {
+    "aiao-site": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/aiao-site",
+      "sourceRoot": "apps/aiao-site/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/aiao-site",
+            "index": "apps/aiao-site/src/index.html",
+            "main": "apps/aiao-site/src/main.ts",
+            "polyfills": "apps/aiao-site/src/polyfills.ts",
+            "tsConfig": "apps/aiao-site/tsconfig.app.json",
+            "aot": false,
+            "assets": ["apps/aiao-site/src/favicon.ico", "apps/aiao-site/src/assets"],
+            "styles": ["apps/aiao-site/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/aiao-site/src/environments/environment.ts",
+                  "with": "apps/aiao-site/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "aiao-site:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "aiao-site:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "aiao-site:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/aiao-site/tsconfig.app.json", "apps/aiao-site/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/aiao-site/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/aiao-site/jest.config.js",
+            "tsConfig": "apps/aiao-site/tsconfig.spec.json",
+            "setupFile": "apps/aiao-site/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "aiao-site-e2e": {
+      "root": "apps/aiao-site-e2e",
+      "sourceRoot": "apps/aiao-site-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/aiao-site-e2e/cypress.json",
+            "tsConfig": "apps/aiao-site-e2e/tsconfig.e2e.json",
+            "devServerTarget": "aiao-site:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "aiao-site:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/aiao-site-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/aiao-site-e2e/**"]
+          }
+        }
+      }
+    },
+    "util": {
+      "projectType": "library",
+      "root": "libs/util",
+      "sourceRoot": "libs/util/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/util/tsconfig.lib.json",
+            "project": "libs/util/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/util/tsconfig.lib.json", "libs/util/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/util/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/util/jest.config.js",
+            "tsConfig": "libs/util/tsconfig.spec.json",
+            "setupFile": "libs/util/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "packageManager": "yarn"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "aiao-site"
+}

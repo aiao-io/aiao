@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "angular.ng-template",
+    "eamodio.gitlens",
+    "esbenp.prettier-vscode",
+    "gruntfuggly.todo-tree",
+    "janisdd.vscode-edit-csv",
+    "kumar-harsh.graphql-for-vscode",
+    "mechatroner.rainbow-csv",
+    "mike-co.import-sorter",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "nrwl.angular-console"
+  ]
+}
