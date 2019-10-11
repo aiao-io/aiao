@@ -1,5 +1,7 @@
 {
   "name": "@aiao/util",
   "version": "0.0.1",
-  "peerDependencies": {}
+  "peerDependencies": {
+    "lodash": "^4.17.15"
+  }
 }
