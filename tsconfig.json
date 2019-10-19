@@ -20,7 +20,8 @@
     "paths": {
       "@aiao/util": ["libs/util/src/index.ts"],
       "@aiao/lazy-component": ["libs/lazy-component/src/index.ts"],
-      "@aiao/lazy-module": ["libs/lazy-module/src/index.ts"]
+      "@aiao/lazy-module": ["libs/lazy-module/src/index.ts"],
+      "@aiao/lazy-element": ["libs/lazy-element/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp", "**/*.stories.ts"]

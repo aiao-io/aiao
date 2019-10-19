@@ -1,4 +1,4 @@
-import { InjectionToken, Type } from '@angular/core';
+import { InjectionToken } from '@angular/core';
 import { LoadChildrenCallback } from '@angular/router';
 
 export interface LazyRoute {
@@ -6,7 +6,5 @@ export interface LazyRoute {
   loadChildren: LoadChildrenCallback;
 }
 export type LazyRoutes = LazyRoute[];
-
-export type LoadComponentCallback = () => Promise<Type<any>>;
 
 export const LAZY_ROUTES_TOKEN = new InjectionToken<LazyRoutes>('LAZY_ROUTES_TOKEN');

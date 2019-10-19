@@ -22,6 +22,9 @@
     },
     "lazy-module": {
       "tags": []
+    },
+    "lazy-element": {
+      "tags": []
     }
   }
 }

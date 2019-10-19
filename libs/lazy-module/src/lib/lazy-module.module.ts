@@ -4,9 +4,7 @@ import { LazyModuleLoader } from './lazy-module-loader';
 import { LAZY_ROUTES_TOKEN, LazyRoutes } from './lazy-module-registry';
 import { createLazyModuleProviders } from './lazy-module.util';
 
-@NgModule({
-  imports: []
-})
+@NgModule()
 export class LazyModule {
   constructor(lazyModuleLoader: LazyModuleLoader, @Optional() @Inject(LAZY_ROUTES_TOKEN) lazyRoutes: LazyRoutes[]) {
     if (lazyRoutes) {

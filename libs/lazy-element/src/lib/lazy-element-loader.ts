@@ -4,7 +4,7 @@ import { ComponentFactory, Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class LazyComponentLoader {
+export class LazyElementLoader {
   private loading = new Map<string, Promise<any>>();
 
   constructor(private lazyModuleLoader: LazyModuleLoader) {}
