@@ -187,6 +187,37 @@
           "styleext": "scss"
         }
       }
+    },
+    "lazy-module": {
+      "projectType": "library",
+      "root": "libs/lazy-module",
+      "sourceRoot": "libs/lazy-module/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/lazy-module/tsconfig.lib.json",
+            "project": "libs/lazy-module/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/lazy-module/tsconfig.lib.json", "libs/lazy-module/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/lazy-module/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/lazy-module/jest.config.js",
+            "tsConfig": "libs/lazy-module/tsconfig.spec.json",
+            "setupFile": "libs/lazy-module/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

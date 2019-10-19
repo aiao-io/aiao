@@ -19,6 +19,9 @@
     },
     "lazy-component": {
       "tags": []
+    },
+    "lazy-module": {
+      "tags": []
     }
   }
 }
