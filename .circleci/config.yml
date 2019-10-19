@@ -79,16 +79,16 @@ check-lodash-affected: &check-lodash-affected
 # test
 test-affected: &test-affected
   name: test-affected
-  command: yarn affected:test -- ${AFFECTED_ARGS} --parallel -- --ci --code-coverage
+  command: yarn affected:test ${AFFECTED_ARGS} --parallel -- --ci --code-coverage
 
 test: &test
   name: test
-  command: yarn test -- --ci --code-coverage
+  command: yarn test --ci --code-coverage
 
 # e2e
 e2e-affected: &e2e-affected
   name: e2e-affected
-  command: yarn affected:e2e -- ${AFFECTED_ARGS} -- --configuration production --headless
+  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production --headless
 
 e2e: &e2e
   name: e2e

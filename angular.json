@@ -68,6 +68,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "aiao-site:build",
+            "progress": false,
             "port": 4201
           },
           "configurations": {
@@ -317,6 +318,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "angular-lazy-demo:build",
+            "progress": false,
             "port": 4202
           },
           "configurations": {
