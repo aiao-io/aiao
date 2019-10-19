@@ -49,7 +49,7 @@ export class LazyElementsComponent implements OnInit, OnDestroy {
       tap(() => {
         this.elementRef.nativeElement.innerHTML = html;
       }),
-      switchMap(() => this.elementsLoader.loadContainedCustomElements(this.elementRef.nativeElement)),
+      switchMap(() => this.elementsLoader.loadFromHtmlElement(this.elementRef.nativeElement)),
       tap(() => this.docReady.emit())
     );
   }

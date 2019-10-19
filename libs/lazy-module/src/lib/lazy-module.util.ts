@@ -3,8 +3,9 @@ import { ROUTES } from '@angular/router';
 
 import { LAZY_ROUTES_TOKEN, LazyRoutes } from './lazy-module-registry';
 
-const matcher = () => null;
-
+export function matcher() {
+  return null;
+}
 export function createLazyModuleProviders(lazyRoutes: LazyRoutes): Provider[] {
   const routes = lazyRoutes.map(({ loadChildren }) => ({ matcher, loadChildren }));
   return [

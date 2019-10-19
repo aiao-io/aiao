@@ -2,27 +2,34 @@ import { Inject, ModuleWithProviders, NgModule, Optional } from '@angular/core';
 
 import { LazyModuleLoader } from './lazy-module-loader';
 import { LAZY_ROUTES_TOKEN, LazyRoutes } from './lazy-module-registry';
-import { createLazyModuleProviders } from './lazy-module.util';
+import { ROUTES } from '@angular/router';
 
 @NgModule({})
 export class LazyModule {
-  constructor(lazyModuleLoader: LazyModuleLoader, @Optional() @Inject(LAZY_ROUTES_TOKEN) lazyRoutes: LazyRoutes[]) {
-    if (lazyRoutes) {
-      lazyModuleLoader.addLazyRoutes(lazyRoutes);
+  constructor(
+    lazyModuleLoader: LazyModuleLoader,
+    @Optional() @Inject(LAZY_ROUTES_TOKEN) lazyModuleRoutes: LazyRoutes[]
+  ) {
+    if (lazyModuleRoutes) {
+      lazyModuleLoader._add(lazyModuleRoutes);
     }
   }
 
-  public static forChild(routes: LazyRoutes): ModuleWithProviders {
+  public static register(routes: LazyRoutes): ModuleWithProviders {
     return {
       ngModule: LazyModule,
-      providers: createLazyModuleProviders(routes)
-    };
-  }
-
-  public static forRoot(routes: LazyRoutes): ModuleWithProviders {
-    return {
-      ngModule: LazyModule,
-      providers: createLazyModuleProviders(routes)
+      providers: [
+        {
+          provide: LAZY_ROUTES_TOKEN,
+          useValue: routes,
+          multi: true
+        },
+        {
+          provide: ROUTES,
+          useValue: routes,
+          multi: true
+        }
+      ]
     };
   }
 }

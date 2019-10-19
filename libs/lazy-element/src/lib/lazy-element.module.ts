@@ -1,10 +1,10 @@
-import { LazyModule } from '@aiao/lazy-module';
+import { LAZY_ROUTES_TOKEN, LazyModule, LazyRoutes } from '@aiao/lazy-module';
 import { CUSTOM_ELEMENTS_SCHEMA, Inject, ModuleWithProviders, NgModule, Optional } from '@angular/core';
+import { ROUTES } from '@angular/router';
 
 import { LazyElementLoader } from './lazy-element-loader';
-import { LAZY_ELEMENT_ROUTES_TOKEN, LazyElementRoutes } from './lazy-element-registry';
+import { LAZY_ELEMENT_ROUTES_TOKEN } from './lazy-element-registry';
 import { LazyElementComponent } from './lazy-element.component';
-import { createLazyElementModuleProviders } from './lazy-element.util';
 import { LazyElementsComponent } from './lazy-elements.component';
 
 @NgModule({
@@ -16,24 +16,33 @@ import { LazyElementsComponent } from './lazy-elements.component';
 export class LazyElementModule {
   constructor(
     lazyElementLoader: LazyElementLoader,
-    @Optional() @Inject(LAZY_ELEMENT_ROUTES_TOKEN) lazyElementRoutes: LazyElementRoutes[]
+    @Optional() @Inject(LAZY_ELEMENT_ROUTES_TOKEN) lazyElementRoutes: LazyRoutes[]
   ) {
     if (lazyElementRoutes) {
-      lazyElementLoader.add(lazyElementRoutes);
+      lazyElementLoader._add(lazyElementRoutes);
     }
   }
 
-  public static forChild(routes: LazyElementRoutes): ModuleWithProviders {
+  public static register(routes: LazyRoutes): ModuleWithProviders {
     return {
       ngModule: LazyElementModule,
-      providers: createLazyElementModuleProviders(routes)
-    };
-  }
-
-  public static forRoot(routes: LazyElementRoutes): ModuleWithProviders {
-    return {
-      ngModule: LazyElementModule,
-      providers: createLazyElementModuleProviders(routes)
+      providers: [
+        {
+          provide: LAZY_ROUTES_TOKEN,
+          useValue: routes,
+          multi: true
+        },
+        {
+          provide: ROUTES,
+          useValue: routes,
+          multi: true
+        },
+        {
+          provide: LAZY_ELEMENT_ROUTES_TOKEN,
+          useValue: routes,
+          multi: true
+        }
+      ]
     };
   }
 }

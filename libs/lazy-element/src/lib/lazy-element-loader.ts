@@ -1,9 +1,7 @@
-import { findComponentFromModuleRef, LazyModuleLoader } from '@aiao/lazy-module';
+import { findComponentFromModuleRef, LazyModuleLoader, LazyRoutes } from '@aiao/lazy-module';
 import { Injectable } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { LoadChildrenCallback } from '@angular/router';
-
-import { LazyElementRoutes } from './lazy-element-registry';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +12,11 @@ export class LazyElementLoader {
 
   constructor(private lazyModuleLoader: LazyModuleLoader) {}
 
-  add(lazyRoutes: LazyElementRoutes[]) {
+  _add(lazyRoutes: LazyRoutes[]) {
     lazyRoutes.forEach(routes =>
-      routes.forEach(({ selector, loadChildren }) => {
-        if (!this.loading.has(selector)) {
-          this.toLoad.set(selector, loadChildren);
+      routes.forEach(({ name, loadChildren }) => {
+        if (!this.loading.has(name)) {
+          this.toLoad.set(name, loadChildren);
         }
       })
     );
@@ -32,7 +30,7 @@ export class LazyElementLoader {
     return Promise.all(unregisteredSelectors.map(s => this.load(s))).then(d => undefined);
   }
 
-  async loadContainedCustomElements(element: HTMLElement): Promise<void> {
+  async loadFromHtmlElement(element: HTMLElement): Promise<void> {
     const unregisteredSelectors = Array.from(this.toLoad.keys()).filter(s => element.querySelector(s));
     if (!unregisteredSelectors.length) {
       return;

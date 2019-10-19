@@ -2,8 +2,9 @@ import { InjectionToken } from '@angular/core';
 import { LoadChildrenCallback } from '@angular/router';
 
 export interface LazyRoute {
-  path: string;
+  name: string;
   loadChildren: LoadChildrenCallback;
+  matcher: any;
 }
 export type LazyRoutes = LazyRoute[];
 
