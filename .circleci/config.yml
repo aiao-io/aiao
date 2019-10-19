@@ -79,7 +79,7 @@ check-lodash-affected: &check-lodash-affected
 # test
 test-affected: &test-affected
   name: test-affected
-  command: yarn affected:test ${AFFECTED_ARGS} --parallel -- --ci --code-coverage
+  command: yarn affected:test ${AFFECTED_ARGS} --parallel --ci --code-coverage
 
 test: &test
   name: test
