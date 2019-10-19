@@ -1,5 +1,5 @@
 import { LazyModuleLoader } from '@aiao/lazy-module';
-import { ComponentFactory, Injectable } from '@angular/core';
+import { ComponentFactory, Injectable, Type } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class LazyComponentLoader {
 
   constructor(private lazyModuleLoader: LazyModuleLoader) {}
 
-  async load(modulePath: string, selector: string) {
+  async load(modulePath: string, selector: string): Promise<Type<any>> {
     const pathSelectorKey = `${modulePath}${selector}`;
     if (this.loading.has(pathSelectorKey)) {
       return this.loading.get(pathSelectorKey);

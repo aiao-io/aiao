@@ -1,6 +1,11 @@
 <div>
-  <button (click)="preloadLazyModule()">preload lazy-module</button>
-  <button routerLink="lazy-module">go lazy-module</button>
+  <a routerLink="/">/root</a>
 </div>
-
+<div>
+  <a routerLink="lazy-module">/lazy-module</a>
+  <button (click)="preloadLazyModule()">preload lazy-module</button>
+</div>
+<div>
+  <button (click)="openDialog()">openDialog lazy component</button>
+</div>
 <router-outlet></router-outlet>

@@ -21,8 +21,14 @@
             "polyfills": "apps/aiao-site/src/polyfills.ts",
             "tsConfig": "apps/aiao-site/tsconfig.app.json",
             "aot": false,
-            "assets": ["apps/aiao-site/src/favicon.ico", "apps/aiao-site/src/assets"],
-            "styles": ["apps/aiao-site/src/styles.scss"],
+            "assets": [
+              "apps/aiao-site/src/favicon.ico",
+              "apps/aiao-site/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/aiao-site/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -77,8 +83,14 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/aiao-site/tsconfig.app.json", "apps/aiao-site/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!apps/aiao-site/**"]
+            "tsConfig": [
+              "apps/aiao-site/tsconfig.app.json",
+              "apps/aiao-site/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/aiao-site/**"
+            ]
           }
         },
         "test": {
@@ -112,8 +124,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/aiao-site-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/aiao-site-e2e/**"]
+            "tsConfig": [
+              "apps/aiao-site-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/aiao-site-e2e/**"
+            ]
           }
         }
       }
@@ -133,8 +150,14 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/util/tsconfig.lib.json", "libs/util/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/util/**"]
+            "tsConfig": [
+              "libs/util/tsconfig.lib.json",
+              "libs/util/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/util/**"
+            ]
           }
         },
         "test": {
@@ -156,7 +179,7 @@
       "projectType": "library",
       "root": "libs/lazy-component",
       "sourceRoot": "libs/lazy-component/src",
-      "prefix": "app",
+      "prefix": "aiao",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -168,8 +191,14 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/lazy-component/tsconfig.lib.json", "libs/lazy-component/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/lazy-component/**"]
+            "tsConfig": [
+              "libs/lazy-component/tsconfig.lib.json",
+              "libs/lazy-component/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/lazy-component/**"
+            ]
           }
         },
         "test": {
@@ -203,8 +232,14 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/lazy-module/tsconfig.lib.json", "libs/lazy-module/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/lazy-module/**"]
+            "tsConfig": [
+              "libs/lazy-module/tsconfig.lib.json",
+              "libs/lazy-module/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/lazy-module/**"
+            ]
           }
         },
         "test": {
@@ -234,8 +269,14 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/lazy-element/tsconfig.lib.json", "libs/lazy-element/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/lazy-element/**"]
+            "tsConfig": [
+              "libs/lazy-element/tsconfig.lib.json",
+              "libs/lazy-element/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/lazy-element/**"
+            ]
           }
         },
         "test": {
@@ -258,7 +299,7 @@
       },
       "root": "apps/angular-lazy-demo",
       "sourceRoot": "apps/angular-lazy-demo/src",
-      "prefix": "aiao",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -269,8 +310,13 @@
             "polyfills": "apps/angular-lazy-demo/src/polyfills.ts",
             "tsConfig": "apps/angular-lazy-demo/tsconfig.app.json",
             "aot": false,
-            "assets": ["apps/angular-lazy-demo/src/favicon.ico", "apps/angular-lazy-demo/src/assets"],
-            "styles": ["apps/angular-lazy-demo/src/styles.scss"],
+            "assets": [
+              "apps/angular-lazy-demo/src/favicon.ico",
+              "apps/angular-lazy-demo/src/assets"
+            ],
+            "styles": [
+              "apps/angular-lazy-demo/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -325,8 +371,14 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/angular-lazy-demo/tsconfig.app.json", "apps/angular-lazy-demo/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!apps/angular-lazy-demo/**"]
+            "tsConfig": [
+              "apps/angular-lazy-demo/tsconfig.app.json",
+              "apps/angular-lazy-demo/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/angular-lazy-demo/**"
+            ]
           }
         },
         "test": {
@@ -360,8 +412,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/angular-lazy-demo-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/angular-lazy-demo-e2e/**"]
+            "tsConfig": [
+              "apps/angular-lazy-demo-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/angular-lazy-demo-e2e/**"
+            ]
           }
         }
       }
