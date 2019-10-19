@@ -67,7 +67,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "aiao-site:build"
+            "browserTarget": "aiao-site:build",
+            "port": 4201
           },
           "configurations": {
             "production": {
@@ -263,29 +264,29 @@
           "style": "scss"
         }
       },
-      "root": "apps/angular-lazy-demo",
-      "sourceRoot": "apps/angular-lazy-demo/src",
+      "root": "demos/angular-lazy-demo",
+      "sourceRoot": "demos/angular-lazy-demo/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/angular-lazy-demo",
-            "index": "apps/angular-lazy-demo/src/index.html",
-            "main": "apps/angular-lazy-demo/src/main.ts",
-            "polyfills": "apps/angular-lazy-demo/src/polyfills.ts",
-            "tsConfig": "apps/angular-lazy-demo/tsconfig.app.json",
+            "outputPath": "dist/demos/angular-lazy-demo",
+            "index": "demos/angular-lazy-demo/src/index.html",
+            "main": "demos/angular-lazy-demo/src/main.ts",
+            "polyfills": "demos/angular-lazy-demo/src/polyfills.ts",
+            "tsConfig": "demos/angular-lazy-demo/tsconfig.app.json",
             "aot": false,
-            "assets": ["apps/angular-lazy-demo/src/favicon.ico", "apps/angular-lazy-demo/src/assets"],
-            "styles": ["apps/angular-lazy-demo/src/styles.scss"],
+            "assets": ["demos/angular-lazy-demo/src/favicon.ico", "demos/angular-lazy-demo/src/assets"],
+            "styles": ["demos/angular-lazy-demo/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/angular-lazy-demo/src/environments/environment.ts",
-                  "with": "apps/angular-lazy-demo/src/environments/environment.prod.ts"
+                  "replace": "demos/angular-lazy-demo/src/environments/environment.ts",
+                  "with": "demos/angular-lazy-demo/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -315,7 +316,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-lazy-demo:build"
+            "browserTarget": "angular-lazy-demo:build",
+            "port": 4202
           },
           "configurations": {
             "production": {
@@ -332,30 +334,30 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/angular-lazy-demo/tsconfig.app.json", "apps/angular-lazy-demo/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!apps/angular-lazy-demo/**"]
+            "tsConfig": ["demos/angular-lazy-demo/tsconfig.app.json", "demos/angular-lazy-demo/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!demos/angular-lazy-demo/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/angular-lazy-demo/jest.config.js",
-            "tsConfig": "apps/angular-lazy-demo/tsconfig.spec.json",
-            "setupFile": "apps/angular-lazy-demo/src/test-setup.ts"
+            "jestConfig": "demos/angular-lazy-demo/jest.config.js",
+            "tsConfig": "demos/angular-lazy-demo/tsconfig.spec.json",
+            "setupFile": "demos/angular-lazy-demo/src/test-setup.ts"
           }
         }
       }
     },
     "angular-lazy-demo-e2e": {
-      "root": "apps/angular-lazy-demo-e2e",
-      "sourceRoot": "apps/angular-lazy-demo-e2e/src",
+      "root": "demos/angular-lazy-demo-e2e",
+      "sourceRoot": "demos/angular-lazy-demo-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/angular-lazy-demo-e2e/cypress.json",
-            "tsConfig": "apps/angular-lazy-demo-e2e/tsconfig.e2e.json",
+            "cypressConfig": "demos/angular-lazy-demo-e2e/cypress.json",
+            "tsConfig": "demos/angular-lazy-demo-e2e/tsconfig.e2e.json",
             "devServerTarget": "angular-lazy-demo:serve"
           },
           "configurations": {
@@ -367,8 +369,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/angular-lazy-demo-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/angular-lazy-demo-e2e/**"]
+            "tsConfig": ["demos/angular-lazy-demo-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!demos/angular-lazy-demo-e2e/**"]
           }
         }
       }

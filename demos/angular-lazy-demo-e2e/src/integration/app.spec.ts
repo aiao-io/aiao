@@ -4,6 +4,6 @@ describe('angular-lazy-demo', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
-    getGreeting().contains('root');
+    getGreeting().contains('angular-lazy-demo');
   });
 });
