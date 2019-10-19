@@ -4,7 +4,7 @@ import { LazyModuleLoader } from './lazy-module-loader';
 import { LAZY_ROUTES_TOKEN, LazyRoutes } from './lazy-module-registry';
 import { createLazyModuleProviders } from './lazy-module.util';
 
-@NgModule()
+@NgModule({})
 export class LazyModule {
   constructor(lazyModuleLoader: LazyModuleLoader, @Optional() @Inject(LAZY_ROUTES_TOKEN) lazyRoutes: LazyRoutes[]) {
     if (lazyRoutes) {
@@ -20,6 +20,9 @@ export class LazyModule {
   }
 
   public static forRoot(routes: LazyRoutes): ModuleWithProviders {
-    return this.forChild(routes);
+    return {
+      ngModule: LazyModule,
+      providers: createLazyModuleProviders(routes)
+    };
   }
 }

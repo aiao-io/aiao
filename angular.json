@@ -10,7 +10,7 @@
       },
       "root": "apps/aiao-site",
       "sourceRoot": "apps/aiao-site/src",
-      "prefix": "aiao",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -122,7 +122,6 @@
       "projectType": "library",
       "root": "libs/util",
       "sourceRoot": "libs/util/src",
-      "prefix": "aiao",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -157,7 +156,7 @@
       "projectType": "library",
       "root": "libs/lazy-component",
       "sourceRoot": "libs/lazy-component/src",
-      "prefix": "aiao",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -249,6 +248,123 @@
         }
       },
       "schematics": {}
+    },
+    "angular-lazy-demo": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/angular-lazy-demo",
+      "sourceRoot": "apps/angular-lazy-demo/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/angular-lazy-demo",
+            "index": "apps/angular-lazy-demo/src/index.html",
+            "main": "apps/angular-lazy-demo/src/main.ts",
+            "polyfills": "apps/angular-lazy-demo/src/polyfills.ts",
+            "tsConfig": "apps/angular-lazy-demo/tsconfig.app.json",
+            "aot": false,
+            "assets": ["apps/angular-lazy-demo/src/favicon.ico", "apps/angular-lazy-demo/src/assets"],
+            "styles": ["apps/angular-lazy-demo/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/angular-lazy-demo/src/environments/environment.ts",
+                  "with": "apps/angular-lazy-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "angular-lazy-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-lazy-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "angular-lazy-demo:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/angular-lazy-demo/tsconfig.app.json", "apps/angular-lazy-demo/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/angular-lazy-demo/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/angular-lazy-demo/jest.config.js",
+            "tsConfig": "apps/angular-lazy-demo/tsconfig.spec.json",
+            "setupFile": "apps/angular-lazy-demo/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "angular-lazy-demo-e2e": {
+      "root": "apps/angular-lazy-demo-e2e",
+      "sourceRoot": "apps/angular-lazy-demo-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/angular-lazy-demo-e2e/cypress.json",
+            "tsConfig": "apps/angular-lazy-demo-e2e/tsconfig.e2e.json",
+            "devServerTarget": "angular-lazy-demo:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-lazy-demo:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/angular-lazy-demo-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/angular-lazy-demo-e2e/**"]
+          }
+        }
+      }
     }
   },
   "cli": {
