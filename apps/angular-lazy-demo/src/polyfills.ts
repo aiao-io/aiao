@@ -60,3 +60,24 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+// Custom Elements polyfill. Required for browsers that do not natively support Custom Elements.
+
+const priorCustomElements = window['customElements'];
+
+if (
+  !priorCustomElements ||
+  priorCustomElements['forcePolyfill'] ||
+  typeof priorCustomElements['define'] !== 'function' ||
+  typeof priorCustomElements['get'] !== 'function'
+) {
+  import('@webcomponents/custom-elements');
+  import('@webcomponents/custom-elements/src/native-shim');
+}
+
+// Custom Element ES5 shim. Required for browsers that natively support Custom Elements, but do not
+// support ES2015 modules.
+// NOTE: Chrome, Firefox and Safari should not need this, because they added support for ES2015
+//       modules before Custom Elements. It is still required for some other (less common) browsers:
+//       - UC browser for android 11.8 (~3.5% global usage)
+//       - Samsung browser 5.0-8.1 (~0.43% global usage)
+//       - Opera 41-47 (~0.02% global usage)

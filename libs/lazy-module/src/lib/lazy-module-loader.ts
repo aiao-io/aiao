@@ -7,28 +7,28 @@ import { LazyRoutes } from './lazy-module-registry';
   providedIn: 'root'
 })
 export class LazyModuleLoader {
-  private modulesToLoad: Map<string, LoadChildrenCallback> = new Map();
-  private modulesLoading = new Map<string, Promise<any>>();
+  private toLoad: Map<string, LoadChildrenCallback> = new Map();
+  private loading = new Map<string, Promise<any>>();
 
   constructor(private moduleRef: NgModuleRef<any>, private compiler: Compiler) {}
 
   addLazyRoutes(lazyRoutes: LazyRoutes[]) {
     lazyRoutes.forEach(routes =>
       routes.forEach(({ path, loadChildren }) => {
-        if (!this.modulesLoading.has(path)) {
-          this.modulesToLoad.set(path, loadChildren);
+        if (!this.loading.has(path)) {
+          this.toLoad.set(path, loadChildren);
         }
       })
     );
   }
 
   async load(path: string): Promise<NgModuleRef<any>> {
-    if (this.modulesLoading.has(path)) {
-      return this.modulesLoading.get(path);
+    if (this.loading.has(path)) {
+      return this.loading.get(path);
     }
 
-    if (this.modulesToLoad.has(path)) {
-      const modulePathLoader = this.modulesToLoad.get(path);
+    if (this.toLoad.has(path)) {
+      const modulePathLoader = this.toLoad.get(path);
       const loadedAndRegistered = (modulePathLoader() as Promise<Type<any>>)
         .then(moduleOrFactory => {
           if (moduleOrFactory instanceof NgModuleFactory) {
@@ -38,14 +38,14 @@ export class LazyModuleLoader {
           }
         })
         .then(moduleFactory => {
-          this.modulesToLoad.delete(path);
+          this.toLoad.delete(path);
           return moduleFactory.create(this.moduleRef.injector);
         })
         .catch(err => {
-          this.modulesLoading.delete(path);
+          this.loading.delete(path);
           return Promise.reject(err);
         });
-      this.modulesLoading.set(path, loadedAndRegistered);
+      this.loading.set(path, loadedAndRegistered);
       return loadedAndRegistered;
     }
     throw new Error(`module not found path:${path}`);

@@ -1,5 +1,5 @@
-import { LazyModuleLoader } from '@aiao/lazy-module';
-import { ComponentFactory, Injectable, Type } from '@angular/core';
+import { findComponentFromModuleRef, LazyModuleLoader } from '@aiao/lazy-module';
+import { Injectable, Type } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,8 @@ export class LazyComponentLoader {
     if (this.loading.has(pathSelectorKey)) {
       return this.loading.get(pathSelectorKey);
     }
-    const componentType = this.lazyModuleLoader.load(modulePath).then(ref => {
-      const factories: Map<any, ComponentFactory<any>> = (ref.componentFactoryResolver as any)._factories;
-      const find = Array.from(factories.keys()).find(type => factories.get(type).selector === selector);
+    const componentType = this.lazyModuleLoader.load(modulePath).then(moduleRef => {
+      const find = findComponentFromModuleRef(moduleRef, selector);
       if (!find) {
         throw new Error(`not found selector:${selector}`);
       }

@@ -1,13 +1,14 @@
+import { LazyComponentModule } from '@aiao/lazy-component';
+import { LazyElementModule } from '@aiao/lazy-element';
 import { LazyModule } from '@aiao/lazy-module';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LazyComponentModule } from '@aiao/lazy-component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,8 +28,16 @@ import { LazyComponentModule } from '@aiao/lazy-component';
         loadChildren: () => import('./lazy-dialog/lazy-dialog.module').then(d => d.LazyDialogModule)
       }
     ]),
-    LazyComponentModule.forRoot()
+    LazyComponentModule.forRoot(),
+    LazyElementModule.forRoot([
+      {
+        selector: 'app-lazy-angular-element',
+        loadChildren: () =>
+          import('./lazy-angular-element/lazy-angular-element.module').then(d => d.LazyAngularElementModule)
+      }
+    ])
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}

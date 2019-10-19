@@ -10,11 +10,19 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  name = 'jimmy';
+  html = `123`;
+
   constructor(
     private lazyModuleLoader: LazyModuleLoader,
     private lazyComponentLoader: LazyComponentLoader,
     private dialog: MatDialog
-  ) {}
+  ) {
+    setInterval(() => {
+      this.name = `${Math.random()}`;
+      this.html = `<app-lazy-angular-element name="${Math.random()}"></app-lazy-angular-element>`;
+    }, 100);
+  }
   async preloadLazyModule() {
     // tslint:disable-next-line: no-console
     console.time('preload lazy-module');
@@ -31,5 +39,10 @@ export class AppComponent {
     dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');
     });
+  }
+
+  nameChange() {
+    this.name += '+';
+    console.log('nameChange', this.name);
   }
 }

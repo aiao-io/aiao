@@ -224,6 +224,13 @@
   dependencies:
     tslib "^1.9.0"
 
+"@angular/elements@^8.2.11":
+  version "8.2.11"
+  resolved "https://registry.npm.taobao.org/@angular/elements/download/@angular/elements-8.2.11.tgz#6875da5d5b92a2d91dfce034b27d6ab660cc4951"
+  integrity sha1-aHXaXVuSotkd/OA0sn1qtmDMSVE=
+  dependencies:
+    tslib "^1.9.0"
+
 "@angular/forms@^8.2.11":
   version "8.2.11"
   resolved "https://registry.npm.taobao.org/@angular/forms/download/@angular/forms-8.2.11.tgz?cache=0&sync_timestamp=1571430907673&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40angular%2Fforms%2Fdownload%2F%40angular%2Fforms-8.2.11.tgz#7d81e38cb1b53d3abd7f039575e2e5c60d50f18e"
@@ -1647,6 +1654,11 @@
     "@webassemblyjs/ast" "1.8.5"
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
+
+"@webcomponents/custom-elements@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.npm.taobao.org/@webcomponents/custom-elements/download/@webcomponents/custom-elements-1.3.0.tgz#d0c2fb908b5f03dc1d902f780f81503b815425cb"
+  integrity sha1-0ML7kItfA9wdkC94D4FQO4FUJcs=
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
@@ -3698,6 +3710,13 @@ doctrine@^3.0.0:
   integrity sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==
   dependencies:
     esutils "^2.0.2"
+
+document-register-element@^1.7.2:
+  version "1.14.3"
+  resolved "https://registry.npm.taobao.org/document-register-element/download/document-register-element-1.14.3.tgz#3335d4578df6a1536a34595b91cca36dd5db61d7"
+  integrity sha1-MzXUV432oVNqNFlbkcyjbdXbYdc=
+  dependencies:
+    lightercollective "^0.3.0"
 
 domain-browser@^1.1.1:
   version "1.2.0"
@@ -6480,6 +6499,11 @@ license-webpack-plugin@2.1.2:
   dependencies:
     "@types/webpack-sources" "^0.1.5"
     webpack-sources "^1.2.0"
+
+lightercollective@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.npm.taobao.org/lightercollective/download/lightercollective-0.3.0.tgz#1f07638642ec645d70bdb69ab2777676f35a28f0"
+  integrity sha1-HwdjhkLsZF1wvbaasnd2dvNaKPA=
 
 lines-and-columns@^1.1.6:
   version "1.1.6"
