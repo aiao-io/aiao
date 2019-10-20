@@ -1,3 +1,5 @@
+import { LazyComponentModule } from '@aiao/lazy-component';
+import { LazyElementModule } from '@aiao/lazy-element';
 import { LazyModule, matcher } from '@aiao/lazy-module';
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
@@ -7,8 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LazyComponentModule } from '@aiao/lazy-component';
-import { LazyElementModule } from '@aiao/lazy-element';
 
 @NgModule({
   declarations: [AppComponent],

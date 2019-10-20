@@ -1,25 +1,7 @@
-import { ComponentFactory, NgModuleRef, Provider } from '@angular/core';
-import { ROUTES } from '@angular/router';
-
-import { LAZY_ROUTES_TOKEN, LazyRoutes } from './lazy-module-registry';
+import { ComponentFactory, NgModuleRef } from '@angular/core';
 
 export function matcher() {
   return null;
-}
-export function createLazyModuleProviders(lazyRoutes: LazyRoutes): Provider[] {
-  const routes = lazyRoutes.map(({ loadChildren }) => ({ matcher, loadChildren }));
-  return [
-    {
-      provide: LAZY_ROUTES_TOKEN,
-      useValue: lazyRoutes,
-      multi: true
-    },
-    {
-      provide: ROUTES,
-      useValue: routes,
-      multi: true
-    }
-  ];
 }
 
 export const findComponentFromModuleRef = (moduleRef: NgModuleRef<any>, selector: string) => {
