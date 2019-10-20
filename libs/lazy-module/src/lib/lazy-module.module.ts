@@ -1,8 +1,8 @@
 import { Inject, ModuleWithProviders, NgModule, Optional } from '@angular/core';
+import { ROUTES } from '@angular/router';
 
 import { LazyModuleLoader } from './lazy-module-loader';
 import { LAZY_ROUTES_TOKEN, LazyRoutes } from './lazy-module-registry';
-import { ROUTES } from '@angular/router';
 
 @NgModule({})
 export class LazyModule {
@@ -11,7 +11,7 @@ export class LazyModule {
     @Optional() @Inject(LAZY_ROUTES_TOKEN) lazyModuleRoutes: LazyRoutes[]
   ) {
     if (lazyModuleRoutes) {
-      lazyModuleLoader._add(lazyModuleRoutes);
+      lazyModuleLoader.add(lazyModuleRoutes);
     }
   }
 

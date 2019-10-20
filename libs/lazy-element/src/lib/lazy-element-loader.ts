@@ -12,7 +12,7 @@ export class LazyElementLoader {
 
   constructor(private lazyModuleLoader: LazyModuleLoader) {}
 
-  _add(lazyRoutes: LazyRoutes[]) {
+  add(lazyRoutes: LazyRoutes[]) {
     lazyRoutes.forEach(routes =>
       routes.forEach(({ name, loadChildren }) => {
         if (!this.loading.has(name)) {

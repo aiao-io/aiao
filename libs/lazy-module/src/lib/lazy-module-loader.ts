@@ -12,7 +12,7 @@ export class LazyModuleLoader {
 
   constructor(private moduleRef: NgModuleRef<any>, private compiler: Compiler) {}
 
-  _add(lazyRoutes: LazyRoutes[]) {
+  add(lazyRoutes: LazyRoutes[]) {
     lazyRoutes.forEach(routes =>
       routes.forEach(({ name, loadChildren }) => {
         if (!this.loading.has(name)) {

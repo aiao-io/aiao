@@ -68,12 +68,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "aiao-site:build",
-            "progress": false,
             "port": 4201
           },
           "configurations": {
             "production": {
-              "browserTarget": "aiao-site:build:production"
+              "browserTarget": "aiao-site:build:production",
+              "progress": false
             }
           }
         },
@@ -318,12 +318,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "angular-lazy-demo:build",
-            "progress": false,
             "port": 4202
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-lazy-demo:build:production"
+              "browserTarget": "angular-lazy-demo:build:production",
+              "progress": false
             }
           }
         },

@@ -19,7 +19,7 @@ export class LazyElementModule {
     @Optional() @Inject(LAZY_ELEMENT_ROUTES_TOKEN) lazyElementRoutes: LazyRoutes[]
   ) {
     if (lazyElementRoutes) {
-      lazyElementLoader._add(lazyElementRoutes);
+      lazyElementLoader.add(lazyElementRoutes);
     }
   }
 
