@@ -19,6 +19,18 @@
     },
     "lazy-component": {
       "tags": []
+    },
+    "lazy-module": {
+      "tags": []
+    },
+    "lazy-element": {
+      "tags": []
+    },
+    "angular-lazy-demo-e2e": {
+      "tags": []
+    },
+    "angular-lazy-demo": {
+      "tags": []
     }
   }
 }

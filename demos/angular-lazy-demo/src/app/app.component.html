@@ -1,0 +1,15 @@
+<h1>angular-lazy-demo</h1>
+<div>
+  <a routerLink="/">/root</a>
+</div>
+<div>
+  <a routerLink="lazy-module">/lazy-module</a>
+  <button (click)="preloadLazyModule()">preload lazy-module</button>
+</div>
+<div>
+  <button (click)="openDialog()">openDialog lazy component</button>
+</div>
+
+<aiao-lazy-element selector="app-lazy-angular-element" name="jimmy"></aiao-lazy-element>
+<aiao-lazy-elements [html]="html"></aiao-lazy-elements>
+<router-outlet></router-outlet>
