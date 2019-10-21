@@ -5,7 +5,7 @@
   "pluginsFile": "./src/plugins/index",
   "supportFile": false,
   "video": true,
-  "videosFolder": "../../dist/cypress/demos/angular-lazy-demo-e2e/videos",
-  "screenshotsFolder": "../../dist/cypress/demos/angular-lazy-demo-e2e/screenshots",
+  "videosFolder": "../../dist/cypress/samples/sample-lazy-module-e2e/videos",
+  "screenshotsFolder": "../../dist/cypress/samples/sample-lazy-module-e2e/screenshots",
   "chromeWebSecurity": false
 }

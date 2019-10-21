@@ -26,10 +26,10 @@
     "lazy-element": {
       "tags": []
     },
-    "angular-lazy-demo-e2e": {
+    "sample-lazy-module-e2e": {
       "tags": []
     },
-    "angular-lazy-demo": {
+    "sample-lazy-module": {
       "tags": []
     }
   }

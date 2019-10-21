@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'angular-lazy-demo',
+  name: 'sample-lazy-module',
   preset: '../../jest.config.js',
-  coverageDirectory: '../../coverage/demos/angular-lazy-demo',
+  coverageDirectory: '../../coverage/samples/sample-lazy-module',
   snapshotSerializers: [
     'jest-preset-angular/AngularSnapshotSerializer.js',
     'jest-preset-angular/HTMLCommentSerializer.js'

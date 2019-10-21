@@ -1,9 +1,9 @@
 import { getGreeting } from '../support/app.po';
 
-describe('angular-lazy-demo', () => {
+describe('sample-lazy-module', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
-    getGreeting().contains('angular-lazy-demo');
+    getGreeting().contains('sample-lazy-module');
   });
 });
