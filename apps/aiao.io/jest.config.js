@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'aiao-site',
+  name: 'aiao.io',
   preset: '../../jest.config.js',
-  coverageDirectory: '../../coverage/apps/aiao-site',
+  coverageDirectory: '../../coverage/apps/aiao.io',
   collectCoverageFrom: [
     './src/**/*.ts',
     '!./src/{polyfills,main}.ts',

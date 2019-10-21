@@ -1,6 +1,6 @@
 import { getGreeting } from '../support/app.po';
 
-describe('aiao-site', () => {
+describe('aiao.io', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display helloworld', () => {

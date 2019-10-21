@@ -8,10 +8,10 @@
     "nx.json": "*"
   },
   "projects": {
-    "aiao-site-e2e": {
+    "aiao.io-e2e": {
       "tags": []
     },
-    "aiao-site": {
+    "aiao.io": {
       "tags": []
     },
     "util": {
