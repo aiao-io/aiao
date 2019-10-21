@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'aiao-root',
+  selector: 'app-stage',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

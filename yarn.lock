@@ -1057,6 +1057,37 @@
     is-absolute "^1.0.0"
     is-negated-glob "^1.0.0"
 
+"@ionic/angular-server@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.npm.taobao.org/@ionic/angular-server/download/@ionic/angular-server-0.0.2.tgz#b8664c1bbce6d077e96db28167255a3cdf145b6a"
+  integrity sha1-uGZMG7zm0HfpbbKBZyVaPN8UW2o=
+
+"@ionic/angular-toolkit@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.npm.taobao.org/@ionic/angular-toolkit/download/@ionic/angular-toolkit-2.0.0.tgz#2095f3b0ed731600fe590aa024682fdd532a4833"
+  integrity sha1-IJXzsO1zFgD+WQqgJGgv3VMqSDM=
+  dependencies:
+    "@schematics/angular" "^8.0.0"
+    tslib "^1.9.0"
+    typescript "3.4.3"
+    ws "^6.1.4"
+
+"@ionic/angular@^4.11.1":
+  version "4.11.1"
+  resolved "https://registry.npm.taobao.org/@ionic/angular/download/@ionic/angular-4.11.1.tgz#0a775679b9fb63261d8c0e6fd5763bfe261f8bca"
+  integrity sha1-CndWebn7YyYdjA5v1XY7/iYfi8o=
+  dependencies:
+    "@ionic/core" "4.11.1"
+    tslib "^1.9.3"
+
+"@ionic/core@4.11.1", "@ionic/core@^4.11.1":
+  version "4.11.1"
+  resolved "https://registry.npm.taobao.org/@ionic/core/download/@ionic/core-4.11.1.tgz#0274be8facb4ca0d73e35bf8a9d43cedabd08f41"
+  integrity sha1-AnS+j6y0yg1z41v4qdQ87avQj0E=
+  dependencies:
+    ionicons "^4.6.3"
+    tslib "^1.10.0"
+
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-24.9.0.tgz#79b1bc06fb74a8cfb01cbdedf945584b1b9707f0"
@@ -1315,7 +1346,7 @@
     yargs "^11.0.0"
     yargs-parser "10.0.0"
 
-"@schematics/angular@8.3.12":
+"@schematics/angular@8.3.12", "@schematics/angular@^8.0.0":
   version "8.3.12"
   resolved "https://registry.npm.taobao.org/@schematics/angular/download/@schematics/angular-8.3.12.tgz#3f31d668bc694773c8fd9a1b5efde0c81d86ae28"
   integrity sha1-PzHWaLxpR3PI/ZobXv3gyB2Grig=
@@ -5338,6 +5369,11 @@ invert-kv@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-2.0.0.tgz#7393f5afa59ec9ff5f67a27620d11c226e3eec02"
   integrity sha512-wPVv/y/QQ/Uiirj/vh3oP+1Ww+AWehmi1g5fFWGPF6IpCBCDVrhgHRMvrLfdYcwDh3QJbGXDW4JAuzxElLSqKA==
+
+ionicons@^4.6.3:
+  version "4.6.3"
+  resolved "https://registry.npm.taobao.org/ionicons/download/ionicons-4.6.3.tgz#e4f3a3e9b66761eb8c0db27798cc1a8ce97777d2"
+  integrity sha1-5POj6bZnYeuMDbJ3mMwajOl3d9I=
 
 ip-regex@^2.1.0:
   version "2.1.0"
@@ -10062,7 +10098,7 @@ tsickle@^0.37.0:
     mkdirp "^0.5.1"
     source-map "^0.7.3"
 
-tslib@1.10.0, tslib@^1.10.0, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
+tslib@1.10.0, tslib@^1.10.0, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
   integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
@@ -10144,6 +10180,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+typescript@3.4.3:
+  version "3.4.3"
+  resolved "https://registry.npm.taobao.org/typescript/download/typescript-3.4.3.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftypescript%2Fdownload%2Ftypescript-3.4.3.tgz#0eb320e4ace9b10eadf5bc6103286b0f8b7c224f"
+  integrity sha1-DrMg5KzpsQ6t9bxhAyhrD4t8Ik8=
 
 typescript@3.5.3, typescript@~3.5.0:
   version "3.5.3"
@@ -10736,7 +10777,7 @@ ws@^5.2.0:
   dependencies:
     async-limiter "~1.0.0"
 
-ws@^6.1.2, ws@^6.2.1:
+ws@^6.1.2, ws@^6.1.4, ws@^6.2.1:
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/ws/-/ws-6.2.1.tgz#442fdf0a47ed64f59b6a5d8ff130f4748ed524fb"
   integrity sha512-GIyAXC2cB7LjvpgMt9EKS2ldqr0MTrORaleiOno6TweZ6r3TKtoFQWay/2PceJ3RuBasOHzXNn5Lrw1X0bEjqA==

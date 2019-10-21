@@ -1,0 +1,28 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+// 修复 loading 没有被正确加载
+// https://github.com/ionic-team/ionic/blob/master/core/src/css/structure.scss#L25-L27
+
+html:not(.hydrated) body {
+  display: initial;
+}
+
+html.platform-ready:not(.hydrated) body {
+  display: none;
+}
+
+.grid-fixed {
+  margin: auto;
+  @include make-grid-widths();
+}
