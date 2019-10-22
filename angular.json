@@ -80,7 +80,7 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ],
+              ]
             }
           }
         },
