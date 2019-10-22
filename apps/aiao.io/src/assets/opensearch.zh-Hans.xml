@@ -1,0 +1,8 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+<ShortName>AIAO</ShortName>
+<Description>Search</Description>
+<InputEncoding>UTF-8</InputEncoding>
+<Image width="16" height="16" type="image/x-icon">https://aiao.io/favicon.ico</Image>
+<Url type="text/html" method="get" template="https://aiao.io/search?q={searchTerms}&ref=opensearch"/>
+<moz:SearchForm>https://aiao.io/search</moz:SearchForm>
+</OpenSearchDescription>

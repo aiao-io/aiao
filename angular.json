@@ -15,13 +15,25 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/aiao.io",
-            "index": "apps/aiao.io/src/index.html",
+            "index": "apps/aiao.io/src/index.zh-Hans.html",
+            "outputPath": "dist/apps/aiao.io/public/zh-Hans",
             "main": "apps/aiao.io/src/main.ts",
             "polyfills": "apps/aiao.io/src/polyfills.ts",
             "tsConfig": "apps/aiao.io/tsconfig.app.json",
+            "extractCss": true,
             "aot": false,
-            "assets": ["apps/aiao.io/src/favicon.ico", "apps/aiao.io/src/assets"],
+            "baseHref": "/zh-Hans/",
+            "assets": [
+              "apps/aiao.io/src/favicon.ico",
+              "apps/aiao.io/src/assets",
+              "apps/aiao.io/src/manifest.zh-Hans.webmanifest",
+              "apps/aiao.io/src/manifest.en.webmanifest",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
+            ],
             "styles": [
               {
                 "input": "apps/aiao.io/src/themes/theme.core.scss"
@@ -40,7 +52,57 @@
             "scripts": ["apps/aiao.io/src/modernizr.js"]
           },
           "configurations": {
+            "en": {
+              "index": "apps/aiao.io/src/index.en.html",
+              "outputPath": "dist/apps/aiao.io/public/en",
+              "baseHref": "/en/",
+              "i18nLocale": "en",
+              "i18nFile": "apps/aiao.io/src/locales/en.xlf",
+              "fileReplacements": [
+                {
+                  "replace": "apps/aiao.io/src/environments/environment.ts",
+                  "with": "apps/aiao.io/src/environments/environment.en.ts"
+                }
+              ]
+            },
+            "en.production": {
+              "index": "apps/aiao.io/src/index.en.html",
+              "outputPath": "dist/apps/aiao.io/public/en",
+              "baseHref": "/en/",
+              "i18nLocale": "en",
+              "i18nFile": "apps/aiao.io/src/locales/en.xlf",
+              "ngswConfigPath": "apps/aiao.io/ngsw-config.en.json",
+              "fileReplacements": [
+                {
+                  "replace": "apps/aiao.io/src/environments/environment.ts",
+                  "with": "apps/aiao.io/src/environments/environment.en.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "serviceWorker": true
+            },
             "production": {
+              "ngswConfigPath": "apps/aiao.io/ngsw-config.zh-Hans.json",
               "fileReplacements": [
                 {
                   "replace": "apps/aiao.io/src/environments/environment.ts",
@@ -67,7 +129,8 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "serviceWorker": true
             }
           }
         },
@@ -75,9 +138,18 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "aiao.io:build",
+            "host": "0.0.0.0",
+            "disableHostCheck": true,
             "port": 4201
           },
           "configurations": {
+            "en": {
+              "browserTarget": "aiao.io:build:en"
+            },
+            "en.prod": {
+              "browserTarget": "aiao.io:build:en.prod",
+              "progress": false
+            },
             "production": {
               "browserTarget": "aiao.io:build:production",
               "progress": false
@@ -264,128 +336,6 @@
         }
       },
       "schematics": {}
-    },
-    "sample-lazy-module": {
-      "projectType": "application",
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "samples/sample-lazy-module",
-      "sourceRoot": "samples/sample-lazy-module/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/samples/sample-lazy-module",
-            "index": "samples/sample-lazy-module/src/index.html",
-            "main": "samples/sample-lazy-module/src/main.ts",
-            "polyfills": "samples/sample-lazy-module/src/polyfills.ts",
-            "tsConfig": "samples/sample-lazy-module/tsconfig.app.json",
-            "aot": false,
-            "assets": ["samples/sample-lazy-module/src/favicon.ico", "samples/sample-lazy-module/src/assets"],
-            "styles": ["samples/sample-lazy-module/src/styles.scss"],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "samples/sample-lazy-module/src/environments/environment.ts",
-                  "with": "samples/sample-lazy-module/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "sample-lazy-module:build",
-            "port": 4202
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "sample-lazy-module:build:production",
-              "progress": false
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "sample-lazy-module:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "samples/sample-lazy-module/tsconfig.app.json",
-              "samples/sample-lazy-module/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!samples/sample-lazy-module/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "samples/sample-lazy-module/jest.config.js",
-            "tsConfig": "samples/sample-lazy-module/tsconfig.spec.json",
-            "setupFile": "samples/sample-lazy-module/src/test-setup.ts"
-          }
-        }
-      }
-    },
-    "sample-lazy-module-e2e": {
-      "root": "samples/sample-lazy-module-e2e",
-      "sourceRoot": "samples/sample-lazy-module-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "samples/sample-lazy-module-e2e/cypress.json",
-            "tsConfig": "samples/sample-lazy-module-e2e/tsconfig.e2e.json",
-            "devServerTarget": "sample-lazy-module:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "sample-lazy-module:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["samples/sample-lazy-module-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!samples/sample-lazy-module-e2e/**"]
-          }
-        }
-      }
     },
     "color": {
       "root": "libs/color",
