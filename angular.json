@@ -23,14 +23,21 @@
             "aot": false,
             "assets": ["apps/aiao.io/src/favicon.ico", "apps/aiao.io/src/assets"],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "apps/aiao.io/src/styles.scss"
-            ],
-            "scripts": [
               {
-                "input": "node_modules/document-register-element/build/document-register-element.js"
+                "input": "apps/aiao.io/src/themes/theme.core.scss"
+              },
+              {
+                "input": "apps/aiao.io/src/themes/theme.dark.scss",
+                "bundleName": "assets/themes/dark",
+                "lazy": true
+              },
+              {
+                "input": "apps/aiao.io/src/themes/theme.light.scss",
+                "bundleName": "assets/themes/light",
+                "lazy": true
               }
-            ]
+            ],
+            "scripts": ["apps/aiao.io/src/modernizr.js"]
           },
           "configurations": {
             "production": {
@@ -336,7 +343,10 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["samples/sample-lazy-module/tsconfig.app.json", "samples/sample-lazy-module/tsconfig.spec.json"],
+            "tsConfig": [
+              "samples/sample-lazy-module/tsconfig.app.json",
+              "samples/sample-lazy-module/tsconfig.spec.json"
+            ],
             "exclude": ["**/node_modules/**", "!samples/sample-lazy-module/**"]
           }
         },
