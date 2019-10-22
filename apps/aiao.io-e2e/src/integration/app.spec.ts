@@ -3,7 +3,7 @@ import { getGreeting } from '../support/app.po';
 describe('aiao.io', () => {
   beforeEach(() => cy.visit('/'));
 
-  it('should display helloworld', () => {
-    getGreeting().contains('helloworld');
+  it('should display aiao', () => {
+    getGreeting().contains('aiao');
   });
 });
