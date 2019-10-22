@@ -1,4 +1,14 @@
 # Add files here to ignore them from prettier formatting
 
+tmp
+build
+node_modules
 /dist
 /coverage
+*.d.ts
+libs/**/proxies.ts
+libs/**/proxies-utils.ts
+libs/**/*.js
+apps/**/*.js
+*.log
+!*.config.js

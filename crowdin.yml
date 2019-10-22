@@ -1,0 +1,5 @@
+files:
+  - source: apps/aiao.io/content/zh/**/*.md
+    translation: apps/aiao.io/content/%two_letters_code%/**/%original_file_name%
+  - source: apps/aiao.io/src/locales/**/*.xlf
+    translation: apps/aiao.io/src/locales/%two_letters_code%/%original_file_name%
