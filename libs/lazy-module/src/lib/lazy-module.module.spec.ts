@@ -1,4 +1,5 @@
 import { async, TestBed } from '@angular/core/testing';
+
 import { LazyModule } from './lazy-module.module';
 
 describe('LazyModule', () => {

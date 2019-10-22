@@ -1,4 +1,4 @@
-import { numberStrip, numberStep, numberStepScreenSize, canBeNumber, tryToNumber } from './number';
+import { canBeNumber, numberStep, numberStepScreenSize, numberStrip, tryToNumber } from './number';
 
 describe('number', () => {
   it('numberStrip', () => {

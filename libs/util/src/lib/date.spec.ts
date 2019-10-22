@@ -1,14 +1,14 @@
 import {
+  canBeDate,
+  dateStringToDate,
+  dateStringWithTimezone,
+  dayUTCFormat,
   formatCountdown,
   formatPassTime,
-  unixTimestamp,
   isISODateString,
-  dayUTCFormat,
-  dateStringWithTimezone,
-  dateStringToDate,
   safeAddDate,
-  canBeDate,
-  toDate
+  toDate,
+  unixTimestamp
 } from './date';
 
 describe('formatPassTime', () => {

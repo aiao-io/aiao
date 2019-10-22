@@ -1,8 +1,8 @@
 import {
-  objDeepSort,
-  toPlainObjectDeep,
   flattenPathObjectTOplainObject,
-  plainObjectToFlattenPathObject
+  objDeepSort,
+  plainObjectToFlattenPathObject,
+  toPlainObjectDeep
 } from './object';
 
 describe('object', () => {

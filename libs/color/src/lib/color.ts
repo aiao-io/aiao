@@ -1,8 +1,9 @@
+import isString from 'lodash/isString';
+
 import { ColorHSB, ColorRGB, ColorRGBA, ColorType } from './interface';
 import { colorStringToOptions } from './matchers';
 import { HSBToRGB, RGBToHSB } from './rgb-hsb';
 import { formatDecimal } from './util';
-import isString from 'lodash/isString';
 
 export class Color {
   // rgb
