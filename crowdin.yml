@@ -3,3 +3,5 @@ files:
     translation: apps/aiao.io/content/%two_letters_code%/**/%original_file_name%
   - source: apps/aiao.io/src/locales/**/*.xlf
     translation: apps/aiao.io/src/locales/%two_letters_code%/%original_file_name%
+  - source: /*.md
+    translation: /%file_name%-%two_letters_code%.%file_extension%
