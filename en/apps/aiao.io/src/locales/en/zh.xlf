@@ -7,7 +7,7 @@
         <note category="meaning">标题</note>
         <note category="location">src/app/home/home.page.html:3</note>
       </notes>
-      <segment state="final">
+      <segment state="initial">
         <source>aiao</source>
         <target>aiao</target>
       </segment>
