@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <title>AiaoSite</title>
+    <base href="/zh-Hans/" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="aiao" />
+    <meta name="keywords" content="aiao" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="assets/icons/icon-144x144.png" sizes="144x144" />
+    <link rel="apple-touch-icon-precomposed" href="assets/icons/icon-144x144.png" sizes="144x144" />
+    <link rel="search" type="application/opensearchdescription+xml" href="opensearch.xml" title="aiao" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#1976d2" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="translucent" />
+    <script>
+      tag = document.createElement('meta');
+      tag.name = 'robots';
+      tag.content = 'noindex';
+      document.head.appendChild(tag);
+    </script>
+    <script>
+      (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        (i[r] =
+          i[r] ||
+          function() {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        ~i.name.indexOf('NG_DEFER_BOOTSTRAP') || m.parentNode.insertBefore(a, m);
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    </script>
+    <script>
+      window.onerror = function() {
+        ga('send', 'exception', { exDescription: formatError.apply(null, arguments), exFatal: true });
+        function formatError(msg, url, line, col, e) {
+          var stack;
+          msg = msg.replace(/^Error: /, '');
+          if (e && e.stack) {
+            stack = e.stack
+              .replace(/^Error: /, '')
+              .replace(msg + '\n', '')
+              .replace(/^ +/gm, '')
+              .replace(/^at /gm, '')
+              .replace(/(?: \(|@)http.+\/([^/)]+)\)?(?:\n|$)/gm, '@$1\n')
+              .replace(/ *\(eval code(:\d+:\d+)\)(?:\n|$)/gm, '@???$1\n');
+          } else {
+            line = line || '?';
+            col = col || '?';
+            stack = url + ':' + line + ':' + col;
+          }
+          return (msg + '\n' + stack).substr(0, 150);
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <app-stage>
+      <style>
+        html,
+        body {
+          height: 100%;
+          overflow: hidden;
+        }
+        .browserupgrade {
+          margin: 0;
+          color: #2d2d2d;
+          padding: 3.2em 0;
+          text-align: center;
+          font-size: 18px;
+        }
+        .browserupgrade a {
+          color: blue;
+          font-weight: 700;
+        }
+        .loading {
+          position: relative;
+          height: 100%;
+        }
+        .loading img {
+          position: absolute;
+          margin: auto;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+        }
+      </style>
+      <!--[if lte IE 11]>
+        <div class="browserupgrade">
+          <p>你的浏览器 <strong>太老了</strong>. 请 <a href="https://browsehappy.com/">升级您的浏览器</a> 改善安全以及用户体验.</p>
+        </div>
+      <![endif]-->
+      <!--[if (!IE)|(gt IE 11)]><!-->
+      <div class="loading">
+        <img src="assets/icons/icon-144x144.png" width="200px" />
+      </div>
+      <!--<![endif]-->
+    </app-stage>
+    <noscript>Please enable JavaScript to continue using this application.</noscript>
+  </body>
+</html>

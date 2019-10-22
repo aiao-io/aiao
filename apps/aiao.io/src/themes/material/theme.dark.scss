@@ -1,0 +1,8 @@
+@import './globals';
+
+$primary: mat-palette($mat-pink);
+$accent: mat-palette($mat-blue-grey, A200, A100, A400);
+$warn: mat-palette($mat-red);
+$theme: mat-dark-theme($primary, $accent, $warn);
+
+@include material-theme($theme);

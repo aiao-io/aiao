@@ -1,0 +1,129 @@
+@import './grid.vars';
+@import './grid.mixins';
+@import './mixins';
+
+@import './functions.color';
+@import './functions.string';
+
+/// @prop - Width of the grid for different screen sizes when fixed is enabled
+$grid-widths: (
+  xs: var(--ion-grid-width-xs, var(--ion-grid-width, 100%)),
+  sm: var(--ion-grid-width-sm, var(--ion-grid-width, 540px)),
+  md: var(--ion-grid-width-md, var(--ion-grid-width, 720px)),
+  lg: var(--ion-grid-width-lg, var(--ion-grid-width, 960px)),
+  xl: var(--ion-grid-width-xl, var(--ion-grid-width, 1140px))
+) !default;
+
+// Default General
+// --------------------------------------------------
+$font-family-base: var(--ion-font-family, inherit) !default;
+
+// Global app direction
+$app-direction: null !default;
+
+// Global font path
+$font-path: '/dist/fonts' !default;
+
+// Hairlines width
+$hairlines-width: 0.55px !default;
+
+// The minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries
+$screen-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+
+// Z-Index
+// --------------------------------------------------
+// Grouped by elements which would be siblings
+
+$z-index-menu-overlay: 80;
+$z-index-overlay: 1000;
+$z-index-click-block: 99999;
+
+$z-index-fixed-content: 999;
+$z-index-scroll-content: 1;
+$z-index-refresher: -1;
+
+$z-index-page-container: 0;
+$z-index-toolbar: 10;
+$z-index-toolbar-background: -1;
+$z-index-toolbar-buttons: 99;
+
+$z-index-backdrop: 2;
+$z-index-overlay-wrapper: 10;
+
+$z-index-item-options: 1;
+$z-index-item-input: 2;
+$z-index-item-divider: 100;
+
+$z-index-reorder-selected: 100;
+
+// Default Foreground and Background Colors
+// -------------------------------------------------------------------------------------------
+// Used internally to calculate the default steps
+
+$background-color-value: #fff !default;
+$background-color-rgb-value: 255, 255, 255 !default;
+
+$text-color-value: #000 !default;
+$text-color-rgb: 0, 0, 0 !default;
+
+$background-color: var(--ion-background-color, $background-color-value) !default;
+$background-color-rgb: var(--ion-background-color-rgb, $background-color-rgb-value) !default;
+$text-color: var(--ion-text-color, $text-color-value) !default;
+
+// Default Foreground and Background Step Colors
+// -------------------------------------------------------------------------------------------
+// Color Steps are used to provide variations in text and background colors of elements.
+// Steps move towards their contrasting color.
+// For example, $text-color-step-XXX will be $text-color stepping towards $background-color,
+// but a $background-color-step-XXX will be $background-color stepping towards $text-color.
+
+$background-color-step-50: var(--ion-color-step-50, mix($text-color-value, $background-color-value, 5%)) !default;
+$background-color-step-100: var(--ion-color-step-100, mix($text-color-value, $background-color-value, 10%)) !default;
+$background-color-step-150: var(--ion-color-step-150, mix($text-color-value, $background-color-value, 15%)) !default;
+$background-color-step-200: var(--ion-color-step-200, mix($text-color-value, $background-color-value, 20%)) !default;
+$background-color-step-250: var(--ion-color-step-250, mix($text-color-value, $background-color-value, 25%)) !default;
+$background-color-step-300: var(--ion-color-step-300, mix($text-color-value, $background-color-value, 30%)) !default;
+$background-color-step-350: var(--ion-color-step-350, mix($text-color-value, $background-color-value, 35%)) !default;
+$background-color-step-400: var(--ion-color-step-400, mix($text-color-value, $background-color-value, 40%)) !default;
+$background-color-step-450: var(--ion-color-step-450, mix($text-color-value, $background-color-value, 45%)) !default;
+$background-color-step-500: var(--ion-color-step-500, mix($text-color-value, $background-color-value, 50%)) !default;
+$background-color-step-550: var(--ion-color-step-550, mix($text-color-value, $background-color-value, 55%)) !default;
+$background-color-step-600: var(--ion-color-step-600, mix($text-color-value, $background-color-value, 60%)) !default;
+$background-color-step-650: var(--ion-color-step-650, mix($text-color-value, $background-color-value, 65%)) !default;
+$background-color-step-700: var(--ion-color-step-700, mix($text-color-value, $background-color-value, 70%)) !default;
+$background-color-step-750: var(--ion-color-step-750, mix($text-color-value, $background-color-value, 75%)) !default;
+$background-color-step-800: var(--ion-color-step-800, mix($text-color-value, $background-color-value, 80%)) !default;
+$background-color-step-850: var(--ion-color-step-850, mix($text-color-value, $background-color-value, 85%)) !default;
+$background-color-step-900: var(--ion-color-step-900, mix($text-color-value, $background-color-value, 90%)) !default;
+$background-color-step-950: var(--ion-color-step-950, mix($text-color-value, $background-color-value, 95%)) !default;
+$text-color-step-50: var(--ion-color-step-950, mix($background-color-value, $text-color-value, 5%)) !default;
+$text-color-step-100: var(--ion-color-step-900, mix($background-color-value, $text-color-value, 10%)) !default;
+$text-color-step-150: var(--ion-color-step-850, mix($background-color-value, $text-color-value, 15%)) !default;
+$text-color-step-200: var(--ion-color-step-800, mix($background-color-value, $text-color-value, 20%)) !default;
+$text-color-step-250: var(--ion-color-step-750, mix($background-color-value, $text-color-value, 25%)) !default;
+$text-color-step-300: var(--ion-color-step-700, mix($background-color-value, $text-color-value, 30%)) !default;
+$text-color-step-350: var(--ion-color-step-650, mix($background-color-value, $text-color-value, 35%)) !default;
+$text-color-step-400: var(--ion-color-step-600, mix($background-color-value, $text-color-value, 40%)) !default;
+$text-color-step-450: var(--ion-color-step-550, mix($background-color-value, $text-color-value, 45%)) !default;
+$text-color-step-500: var(--ion-color-step-500, mix($background-color-value, $text-color-value, 50%)) !default;
+$text-color-step-550: var(--ion-color-step-450, mix($background-color-value, $text-color-value, 55%)) !default;
+$text-color-step-600: var(--ion-color-step-400, mix($background-color-value, $text-color-value, 60%)) !default;
+$text-color-step-650: var(--ion-color-step-350, mix($background-color-value, $text-color-value, 65%)) !default;
+$text-color-step-700: var(--ion-color-step-300, mix($background-color-value, $text-color-value, 70%)) !default;
+$text-color-step-750: var(--ion-color-step-250, mix($background-color-value, $text-color-value, 75%)) !default;
+$text-color-step-800: var(--ion-color-step-200, mix($background-color-value, $text-color-value, 80%)) !default;
+$text-color-step-850: var(--ion-color-step-150, mix($background-color-value, $text-color-value, 85%)) !default;
+$text-color-step-900: var(--ion-color-step-100, mix($background-color-value, $text-color-value, 90%)) !default;
+$text-color-step-950: var(--ion-color-step-50, mix($background-color-value, $text-color-value, 95%)) !default;
+
+// Default General Colors
+// --------------------------------------------------
+$overlay-background-color: var(--ion-overlay-background-color, #fafafa) !default;
+$placeholder-text-color: var(--ion-placeholder-color, $text-color-step-600) !default;
