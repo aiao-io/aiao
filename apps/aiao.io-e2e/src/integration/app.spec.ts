@@ -1,9 +1,5 @@
-import { getGreeting } from '../support/app.po';
-
 describe('aiao.io', () => {
-  beforeEach(() => cy.visit('/'));
+  beforeEach(() => cy.visit('/home'));
 
-  it('should display aiao', () => {
-    getGreeting();
-  });
+  it('should display aiao', () => {});
 });
