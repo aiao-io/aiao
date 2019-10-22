@@ -26,4 +26,4 @@ jobs:
           yarn install --non-interactive --no-lockfile
       - name: build aiao.io
         run: |
-          yarn ng run aiao.op:build:production
+          yarn ng run aiao.io:build:production
