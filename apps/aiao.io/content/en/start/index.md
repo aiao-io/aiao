@@ -1,3 +1,3 @@
-# Getting Started  with Aiao
+# Getting Started with Aiao
 
 Welcome to Aiao
