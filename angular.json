@@ -15,19 +15,17 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "index": "apps/aiao.io/src/index.zh-Hans.html",
             "outputPath": "dist/apps/aiao.io/public/zh-Hans",
+            "index": "apps/aiao.io/src/index.html",
             "main": "apps/aiao.io/src/main.ts",
             "polyfills": "apps/aiao.io/src/polyfills.ts",
             "tsConfig": "apps/aiao.io/tsconfig.app.json",
-            "extractCss": true,
             "aot": false,
-            "baseHref": "/zh-Hans/",
             "assets": [
               "apps/aiao.io/src/favicon.ico",
               "apps/aiao.io/src/assets",
-              "apps/aiao.io/src/manifest.zh-Hans.webmanifest",
-              "apps/aiao.io/src/manifest.en.webmanifest",
+              "apps/aiao.io/src/manifest.webmanifest",
+              "apps/aiao.io/src/opensearch.xml",
               {
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
@@ -52,57 +50,7 @@
             "scripts": ["apps/aiao.io/src/modernizr.js"]
           },
           "configurations": {
-            "en": {
-              "index": "apps/aiao.io/src/index.en.html",
-              "outputPath": "dist/apps/aiao.io/public/en",
-              "baseHref": "/en/",
-              "i18nLocale": "en",
-              "i18nFile": "apps/aiao.io/src/locales/en.xlf",
-              "fileReplacements": [
-                {
-                  "replace": "apps/aiao.io/src/environments/environment.ts",
-                  "with": "apps/aiao.io/src/environments/environment.en.ts"
-                }
-              ]
-            },
-            "en.production": {
-              "index": "apps/aiao.io/src/index.en.html",
-              "outputPath": "dist/apps/aiao.io/public/en",
-              "baseHref": "/en/",
-              "i18nLocale": "en",
-              "i18nFile": "apps/aiao.io/src/locales/en.xlf",
-              "ngswConfigPath": "apps/aiao.io/ngsw-config.en.json",
-              "fileReplacements": [
-                {
-                  "replace": "apps/aiao.io/src/environments/environment.ts",
-                  "with": "apps/aiao.io/src/environments/environment.en.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ],
-              "serviceWorker": true
-            },
             "production": {
-              "ngswConfigPath": "apps/aiao.io/ngsw-config.zh-Hans.json",
               "fileReplacements": [
                 {
                   "replace": "apps/aiao.io/src/environments/environment.ts",
@@ -114,10 +62,13 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
+              "statsJson": true,
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
+              "serviceWorker": true,
+              "ngswConfigPath": "apps/aiao.io/ngsw-config.json",
               "budgets": [
                 {
                   "type": "initial",
@@ -130,7 +81,6 @@
                   "maximumError": "10kb"
                 }
               ],
-              "serviceWorker": true
             }
           }
         },
@@ -143,13 +93,6 @@
             "port": 4201
           },
           "configurations": {
-            "en": {
-              "browserTarget": "aiao.io:build:en"
-            },
-            "en.prod": {
-              "browserTarget": "aiao.io:build:en.prod",
-              "progress": false
-            },
             "production": {
               "browserTarget": "aiao.io:build:production",
               "progress": false
