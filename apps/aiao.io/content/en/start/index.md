@@ -1,3 +1,3 @@
-# Getting Started  with Aiao
+# Getting Started with Angular: Your First App
 
-Welcome to Aiao
+Welcome to Angular!
