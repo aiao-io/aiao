@@ -1148,11 +1148,6 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@ionic/angular-server@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.npm.taobao.org/@ionic/angular-server/download/@ionic/angular-server-0.0.2.tgz#b8664c1bbce6d077e96db28167255a3cdf145b6a"
-  integrity sha1-uGZMG7zm0HfpbbKBZyVaPN8UW2o=
-
 "@ionic/angular-toolkit@^2.0.0":
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/@ionic/angular-toolkit/download/@ionic/angular-toolkit-2.0.0.tgz#2095f3b0ed731600fe590aa024682fdd532a4833"
