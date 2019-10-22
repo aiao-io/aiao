@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "modernizr": "npx modernizr -c modernizr.config.json -d src",
-    "i18n": "ng xi18n --i18n-format=xlf2 --project aiao.io --output-path src/locales --out-file zh-Hans.xlf --i18n-locale zh-Hans",
+    "i18n": "ng xi18n --i18n-format=xlf2 --project aiao.io --output-path src/locales --out-file zh.xlf --i18n-locale zh-Hans",
     "start": "ng run aiao.io:serve"
   },
   "devDependencies": {}
