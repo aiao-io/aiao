@@ -31,6 +31,9 @@
     },
     "sample-lazy-module": {
       "tags": []
+    },
+    "color": {
+      "tags": []
     }
   }
 }
