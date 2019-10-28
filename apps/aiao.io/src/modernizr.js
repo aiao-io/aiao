@@ -1,5 +1,5 @@
 /*!
- * modernizr v3.7.1
+ * modernizr v3.8.0
  * Build https://modernizr.com/download?-adownload-canvas-cookies-emoji-flash-geolocation-getusermedia-inputtypes-localstorage-notification-serviceworker-sharedworkers-webaudio-webgl-webp-websockets-webworkers-setclasses-dontmin
  *
  * Copyright (c)
@@ -36,7 +36,7 @@
    */
   var ModernizrProto = {
     // The current version, dummy
-    _version: '3.7.1',
+    _version: '3.8.0',
 
     // Any settings that don't work as separate modules
     // can go in here as configuration.
@@ -157,8 +157,8 @@
           if (featureNameSplit.length === 1) {
             Modernizr[featureNameSplit[0]] = result;
           } else {
-            // cast to a Boolean, if not one already
-            if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
+            // cast to a Boolean, if not one already or if it doesnt exist yet (like inputtypes)
+            if (!Modernizr[featureNameSplit[0]] || Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
               Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
             }
 
@@ -324,8 +324,8 @@ Detects whether cookie support is enabled.
 Detects support for the text APIs for `<canvas>` elements.
 */
 
-  Modernizr.addTest('canvastext',  function() {
-    if (Modernizr.canvas  === false) {
+  Modernizr.addTest('canvastext', function() {
+    if (Modernizr.canvas === false) {
       return false;
     }
     return typeof createElement('canvas').getContext('2d').fillText === 'function';
@@ -345,10 +345,16 @@ Detects support for emoji character sets.
     if (!Modernizr.canvastext) {
       return false;
     }
-    var pixelRatio = window.devicePixelRatio || 1;
-    var offset = 12 * pixelRatio;
     var node = createElement('canvas');
     var ctx = node.getContext('2d');
+    var backingStoreRatio =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    var offset = 12 * backingStoreRatio;
     ctx.fillStyle = '#f00';
     ctx.textBaseline = 'top';
     ctx.font = '32px Arial';
@@ -835,18 +841,14 @@ Modernizr.inputtypes.week
   //   containing each input type with its corresponding true/false value
 
   // Big thanks to @miketaylr for the html5 forms expertise. miketaylr.com/
-  var inputtypes = 'search tel url email datetime date month week time datetime-local number range color'.split(' ');
-  var inputs = {};
-
-  Modernizr.inputtypes = (function(props) {
-    var len = props.length;
+  (function() {
+    var props = ['search', 'tel', 'url', 'email', 'datetime', 'date', 'month', 'week','time', 'datetime-local', 'number', 'range', 'color'];
     var smile = '1)';
     var inputElemType;
     var defaultView;
     var bool;
 
-    for (var i = 0; i < len; i++) {
-
+    for (var i = 0; i < props.length; i++) {
       inputElem.setAttribute('type', inputElemType = props[i]);
       bool = inputElem.type !== 'text' && 'style' in inputElem;
 
@@ -855,7 +857,7 @@ Modernizr.inputtypes.week
       // If the value doesn't stick, we know there's input sanitization which infers a custom UI
       if (bool) {
 
-        inputElem.value         = smile;
+        inputElem.value = smile;
         inputElem.style.cssText = 'position:absolute;visibility:hidden;';
 
         if (/^range$/.test(inputElemType) && inputElem.style.WebkitAppearance !== undefined) {
@@ -864,7 +866,7 @@ Modernizr.inputtypes.week
           defaultView = document.defaultView;
 
           // Safari 2-4 allows the smiley as a value, despite making a slider
-          bool =  defaultView.getComputedStyle &&
+          bool = defaultView.getComputedStyle &&
             defaultView.getComputedStyle(inputElem, null).WebkitAppearance !== 'textfield' &&
             // Mobile android web browser has false positive, so must
             // check the height to see if the widget is actually there.
@@ -889,10 +891,9 @@ Modernizr.inputtypes.week
         }
       }
 
-      inputs[ props[i] ] = !!bool;
+      Modernizr.addTest('inputtypes.' + inputElemType, !!bool);
     }
-    return inputs;
-  })(inputtypes);
+  })();
 
 /*!
 {
