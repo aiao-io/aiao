@@ -5,7 +5,6 @@
     "test/canvas",
     "test/cookies",
     "test/emoji",
-    "test/flash",
     "test/geolocation",
     "test/inputtypes",
     "test/notification",

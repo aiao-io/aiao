@@ -1,6 +1,6 @@
 /*!
  * modernizr v3.8.0
- * Build https://modernizr.com/download?-adownload-canvas-cookies-emoji-flash-geolocation-getusermedia-inputtypes-localstorage-notification-serviceworker-sharedworkers-webaudio-webgl-webp-websockets-webworkers-setclasses-dontmin
+ * Build https://modernizr.com/download?-adownload-canvas-cookies-emoji-geolocation-getusermedia-inputtypes-localstorage-notification-serviceworker-sharedworkers-webaudio-webgl-webp-websockets-webworkers-setclasses-dontmin
  *
  * Copyright (c)
  *  Faruk Ates
@@ -362,391 +362,6 @@ Detects support for emoji character sets.
     return ctx.getImageData(offset, offset, 1, 1).data[0] !== 0;
   });
 
-
-  /**
-   * hasOwnProp is a shim for hasOwnProperty that is needed for Safari 2.0 support
-   *
-   * @author kangax
-   * @access private
-   * @function hasOwnProp
-   * @param {object} object - The object to check for a property
-   * @param {string} property - The property to check for
-   * @returns {boolean}
-   */
-
-  // hasOwnProperty shim by kangax needed for Safari 2.0 support
-  var hasOwnProp;
-
-  (function() {
-    var _hasOwnProperty = ({}).hasOwnProperty;
-    /* istanbul ignore else */
-    /* we have no way of testing IE 5.5 or safari 2,
-     * so just assume the else gets hit */
-    if (!is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined')) {
-      hasOwnProp = function(object, property) {
-        return _hasOwnProperty.call(object, property);
-      };
-    }
-    else {
-      hasOwnProp = function(object, property) { /* yes, this can give false positives/negatives, but most of the time we don't care about those */
-        return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
-      };
-    }
-  })();
-
-  
-
-
-  // _l tracks listeners for async tests, as well as tests that execute after the initial run
-  ModernizrProto._l = {};
-
-  /**
-   * Modernizr.on is a way to listen for the completion of async tests. Being
-   * asynchronous, they may not finish before your scripts run. As a result you
-   * will get a possibly false negative `undefined` value.
-   *
-   * @memberOf Modernizr
-   * @name Modernizr.on
-   * @access public
-   * @function on
-   * @param {string} feature - String name of the feature detect
-   * @param {Function} cb - Callback function returning a Boolean - true if feature is supported, false if not
-   * @returns {void}
-   * @example
-   *
-   * ```js
-   * Modernizr.on('flash', function( result ) {
-   *   if (result) {
-   *    // the browser has flash
-   *   } else {
-   *     // the browser does not have flash
-   *   }
-   * });
-   * ```
-   */
-  ModernizrProto.on = function(feature, cb) {
-    // Create the list of listeners if it doesn't exist
-    if (!this._l[feature]) {
-      this._l[feature] = [];
-    }
-
-    // Push this test on to the listener list
-    this._l[feature].push(cb);
-
-    // If it's already been resolved, trigger it on next tick
-    if (Modernizr.hasOwnProperty(feature)) {
-      // Next Tick
-      setTimeout(function() {
-        Modernizr._trigger(feature, Modernizr[feature]);
-      }, 0);
-    }
-  };
-
-  /**
-   * _trigger is the private function used to signal test completion and run any
-   * callbacks registered through [Modernizr.on](#modernizr-on)
-   *
-   * @memberOf Modernizr
-   * @name Modernizr._trigger
-   * @access private
-   * @function _trigger
-   * @param {string} feature - string name of the feature detect
-   * @param {Function|boolean} [res] - A feature detection function, or the boolean =
-   * result of a feature detection function
-   * @returns {void}
-   */
-  ModernizrProto._trigger = function(feature, res) {
-    if (!this._l[feature]) {
-      return;
-    }
-
-    var cbs = this._l[feature];
-
-    // Force async
-    setTimeout(function() {
-      var i, cb;
-      for (i = 0; i < cbs.length; i++) {
-        cb = cbs[i];
-        cb(res);
-      }
-    }, 0);
-
-    // Don't trigger these again
-    delete this._l[feature];
-  };
-
-  /**
-   * addTest allows you to define your own feature detects that are not currently
-   * included in Modernizr (under the covers it's the exact same code Modernizr
-   * uses for its own [feature detections](https://github.com/Modernizr/Modernizr/tree/master/feature-detects)).
-   * Just like the official detects, the result
-   * will be added onto the Modernizr object, as well as an appropriate className set on
-   * the html element when configured to do so
-   *
-   * @memberOf Modernizr
-   * @name Modernizr.addTest
-   * @optionName Modernizr.addTest()
-   * @optionProp addTest
-   * @access public
-   * @function addTest
-   * @param {string|Object} feature - The string name of the feature detect, or an
-   * object of feature detect names and test
-   * @param {Function|boolean} test - Function returning true if feature is supported,
-   * false if not. Otherwise a boolean representing the results of a feature detection
-   * @returns {Object} the Modernizr object to allow chaining
-   * @example
-   *
-   * The most common way of creating your own feature detects is by calling
-   * `Modernizr.addTest` with a string (preferably just lowercase, without any
-   * punctuation), and a function you want executed that will return a boolean result
-   *
-   * ```js
-   * Modernizr.addTest('itsTuesday', function() {
-   *  var d = new Date();
-   *  return d.getDay() === 2;
-   * });
-   * ```
-   *
-   * When the above is run, it will set Modernizr.itstuesday to `true` when it is tuesday,
-   * and to `false` every other day of the week. One thing to notice is that the names of
-   * feature detect functions are always lowercased when added to the Modernizr object. That
-   * means that `Modernizr.itsTuesday` will not exist, but `Modernizr.itstuesday` will.
-   *
-   *
-   *  Since we only look at the returned value from any feature detection function,
-   *  you do not need to actually use a function. For simple detections, just passing
-   *  in a statement that will return a boolean value works just fine.
-   *
-   * ```js
-   * Modernizr.addTest('hasjquery', 'jQuery' in window);
-   * ```
-   *
-   * Just like before, when the above runs `Modernizr.hasjquery` will be true if
-   * jQuery has been included on the page. Not using a function saves a small amount
-   * of overhead for the browser, as well as making your code much more readable.
-   *
-   * Finally, you also have the ability to pass in an object of feature names and
-   * their tests. This is handy if you want to add multiple detections in one go.
-   * The keys should always be a string, and the value can be either a boolean or
-   * function that returns a boolean.
-   *
-   * ```js
-   * var detects = {
-   *  'hasjquery': 'jQuery' in window,
-   *  'itstuesday': function() {
-   *    var d = new Date();
-   *    return d.getDay() === 2;
-   *  }
-   * }
-   *
-   * Modernizr.addTest(detects);
-   * ```
-   *
-   * There is really no difference between the first methods and this one, it is
-   * just a convenience to let you write more readable code.
-   */
-  function addTest(feature, test) {
-
-    if (typeof feature === 'object') {
-      for (var key in feature) {
-        if (hasOwnProp(feature, key)) {
-          addTest(key, feature[ key ]);
-        }
-      }
-    } else {
-
-      feature = feature.toLowerCase();
-      var featureNameSplit = feature.split('.');
-      var last = Modernizr[featureNameSplit[0]];
-
-      // Again, we don't check for parent test existence. Get that right, though.
-      if (featureNameSplit.length === 2) {
-        last = last[featureNameSplit[1]];
-      }
-
-      if (typeof last !== 'undefined') {
-        // we're going to quit if you're trying to overwrite an existing test
-        // if we were to allow it, we'd do this:
-        //   var re = new RegExp("\\b(no-)?" + feature + "\\b");
-        //   docElement.className = docElement.className.replace( re, '' );
-        // but, no rly, stuff 'em.
-        return Modernizr;
-      }
-
-      test = typeof test === 'function' ? test() : test;
-
-      // Set the value (this is the magic, right here).
-      if (featureNameSplit.length === 1) {
-        Modernizr[featureNameSplit[0]] = test;
-      } else {
-        // cast to a Boolean, if not one already
-        if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
-          Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
-        }
-
-        Modernizr[featureNameSplit[0]][featureNameSplit[1]] = test;
-      }
-
-      // Set a single class (either `feature` or `no-feature`)
-      setClasses([(!!test && test !== false ? '' : 'no-') + featureNameSplit.join('-')]);
-
-      // Trigger the event
-      Modernizr._trigger(feature, test);
-    }
-
-    return Modernizr; // allow chaining.
-  }
-
-  // After all the tests are run, add self to the Modernizr prototype
-  Modernizr._q.push(function() {
-    ModernizrProto.addTest = addTest;
-  });
-
-  
-
-
-  /**
-   * getBody returns the body of a document, or an element that can stand in for
-   * the body if a real body does not exist
-   *
-   * @access private
-   * @function getBody
-   * @returns {HTMLElement|SVGElement} Returns the real body of a document, or an
-   * artificially created element that stands in for the body
-   */
-  function getBody() {
-    // After page load injecting a fake body doesn't work so check if body exists
-    var body = document.body;
-
-    if (!body) {
-      // Can't use the real body create a fake one.
-      body = createElement(isSVG ? 'svg' : 'body');
-      body.fake = true;
-    }
-
-    return body;
-  }
-
-  ;
-/*!
-  {
-  "name": "Flash",
-  "property": "flash",
-  "tags": ["flash"],
-  "polyfills": ["shumway"]
-  }
-  !*/
-/* DOC
-Detects Flash support as well as Flash-blocking plugins
-*/
-
-  Modernizr.addAsyncTest(function() {
-
-    var attachBody = function(body) {
-      if (!docElement.contains(body)) {
-        docElement.appendChild(body);
-      }
-    };
-    var removeFakeBody = function(body) {
-      // If we’re rockin’ an attached fake body, clean it up
-      if (body.fake && body.parentNode) {
-        body.parentNode.removeChild(body);
-      }
-    };
-    var runTest = function(result, embed) {
-      var bool = !!result;
-      if (bool) {
-        bool = new Boolean(bool);
-        bool.blocked = (result === 'blocked');
-      }
-      addTest('flash', function() { return bool; });
-
-      if (embed && body.contains(embed)) {
-
-        // in case embed has been wrapped, as with ClickToPlugin
-        while (embed.parentNode !== body) {
-          embed = embed.parentNode;
-        }
-
-        body.removeChild(embed);
-      }
-
-    };
-    var easy_detect;
-    var activex;
-    // we wrap activex in a try/catch because when Flash is disabled through
-    // ActiveX controls, it throws an error.
-    try {
-      // Pan is an API that exists for Flash objects.
-      activex = 'ActiveXObject' in window && 'Pan' in new window.ActiveXObject('ShockwaveFlash.ShockwaveFlash');
-    } catch (e) {}
-
-    easy_detect = !(('plugins' in navigator && 'Shockwave Flash' in navigator.plugins) || activex);
-
-    if (easy_detect || isSVG) {
-      runTest(false);
-    }
-    else {
-      // Flash seems to be installed, but it might be blocked. We have to
-      // actually create an element to see what happens to it.
-      var embed = createElement('embed');
-      var body = getBody();
-      var blockedDetect;
-      var inline_style;
-
-      embed.type = 'application/x-shockwave-flash';
-
-      // Need to do this in the body (fake or otherwise) otherwise IE8 complains
-      body.appendChild(embed);
-
-      // Pan doesn't exist in the embed if its IE (its on the ActiveXObject)
-      // so this check is for all other browsers.
-      if (!('Pan' in embed) && !activex) {
-        attachBody(body);
-        runTest('blocked', embed);
-        removeFakeBody(body);
-        return;
-      }
-
-      blockedDetect = function() {
-        // if we used a fake body originally, we need to restart this test, since
-        // we haven't been attached to the DOM, and therefore none of the blockers
-        // have had time to work.
-        attachBody(body);
-        if (!docElement.contains(body)) {
-          body = document.body || body;
-          embed = createElement('embed');
-          embed.type = 'application/x-shockwave-flash';
-          body.appendChild(embed);
-          return setTimeout(blockedDetect, 1000);
-        }
-        if (!docElement.contains(embed)) {
-          runTest('blocked');
-        }
-        else {
-          inline_style = embed.style.cssText;
-          if (inline_style !== '') {
-            // the style of the element has changed automatically. This is a
-            // really poor heuristic, but for lower end Flash blocks, it the
-            // only change they can make.
-            runTest('blocked', embed);
-          }
-          else {
-            runTest(true, embed);
-          }
-        }
-        removeFakeBody(body);
-      };
-
-      // If we have got this far, there is still a chance a userland plugin
-      // is blocking us (either changing the styles, or automatically removing
-      // the element). Both of these require us to take a step back for a moment
-      // to allow for them to get time of the thread, hence a setTimeout.
-      //
-      setTimeout(blockedDetect, 10);
-    }
-  });
-
 /*!
 {
   "name": "Geolocation API",
@@ -1049,6 +664,248 @@ Detects the older non standard webaudio API, (as opposed to the standards based 
     }
     return unprefixed;
   });
+
+
+  /**
+   * hasOwnProp is a shim for hasOwnProperty that is needed for Safari 2.0 support
+   *
+   * @author kangax
+   * @access private
+   * @function hasOwnProp
+   * @param {object} object - The object to check for a property
+   * @param {string} property - The property to check for
+   * @returns {boolean}
+   */
+
+  // hasOwnProperty shim by kangax needed for Safari 2.0 support
+  var hasOwnProp;
+
+  (function() {
+    var _hasOwnProperty = ({}).hasOwnProperty;
+    /* istanbul ignore else */
+    /* we have no way of testing IE 5.5 or safari 2,
+     * so just assume the else gets hit */
+    if (!is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined')) {
+      hasOwnProp = function(object, property) {
+        return _hasOwnProperty.call(object, property);
+      };
+    }
+    else {
+      hasOwnProp = function(object, property) { /* yes, this can give false positives/negatives, but most of the time we don't care about those */
+        return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
+      };
+    }
+  })();
+
+  
+
+
+  // _l tracks listeners for async tests, as well as tests that execute after the initial run
+  ModernizrProto._l = {};
+
+  /**
+   * Modernizr.on is a way to listen for the completion of async tests. Being
+   * asynchronous, they may not finish before your scripts run. As a result you
+   * will get a possibly false negative `undefined` value.
+   *
+   * @memberOf Modernizr
+   * @name Modernizr.on
+   * @access public
+   * @function on
+   * @param {string} feature - String name of the feature detect
+   * @param {Function} cb - Callback function returning a Boolean - true if feature is supported, false if not
+   * @returns {void}
+   * @example
+   *
+   * ```js
+   * Modernizr.on('flash', function( result ) {
+   *   if (result) {
+   *    // the browser has flash
+   *   } else {
+   *     // the browser does not have flash
+   *   }
+   * });
+   * ```
+   */
+  ModernizrProto.on = function(feature, cb) {
+    // Create the list of listeners if it doesn't exist
+    if (!this._l[feature]) {
+      this._l[feature] = [];
+    }
+
+    // Push this test on to the listener list
+    this._l[feature].push(cb);
+
+    // If it's already been resolved, trigger it on next tick
+    if (Modernizr.hasOwnProperty(feature)) {
+      // Next Tick
+      setTimeout(function() {
+        Modernizr._trigger(feature, Modernizr[feature]);
+      }, 0);
+    }
+  };
+
+  /**
+   * _trigger is the private function used to signal test completion and run any
+   * callbacks registered through [Modernizr.on](#modernizr-on)
+   *
+   * @memberOf Modernizr
+   * @name Modernizr._trigger
+   * @access private
+   * @function _trigger
+   * @param {string} feature - string name of the feature detect
+   * @param {Function|boolean} [res] - A feature detection function, or the boolean =
+   * result of a feature detection function
+   * @returns {void}
+   */
+  ModernizrProto._trigger = function(feature, res) {
+    if (!this._l[feature]) {
+      return;
+    }
+
+    var cbs = this._l[feature];
+
+    // Force async
+    setTimeout(function() {
+      var i, cb;
+      for (i = 0; i < cbs.length; i++) {
+        cb = cbs[i];
+        cb(res);
+      }
+    }, 0);
+
+    // Don't trigger these again
+    delete this._l[feature];
+  };
+
+  /**
+   * addTest allows you to define your own feature detects that are not currently
+   * included in Modernizr (under the covers it's the exact same code Modernizr
+   * uses for its own [feature detections](https://github.com/Modernizr/Modernizr/tree/master/feature-detects)).
+   * Just like the official detects, the result
+   * will be added onto the Modernizr object, as well as an appropriate className set on
+   * the html element when configured to do so
+   *
+   * @memberOf Modernizr
+   * @name Modernizr.addTest
+   * @optionName Modernizr.addTest()
+   * @optionProp addTest
+   * @access public
+   * @function addTest
+   * @param {string|Object} feature - The string name of the feature detect, or an
+   * object of feature detect names and test
+   * @param {Function|boolean} test - Function returning true if feature is supported,
+   * false if not. Otherwise a boolean representing the results of a feature detection
+   * @returns {Object} the Modernizr object to allow chaining
+   * @example
+   *
+   * The most common way of creating your own feature detects is by calling
+   * `Modernizr.addTest` with a string (preferably just lowercase, without any
+   * punctuation), and a function you want executed that will return a boolean result
+   *
+   * ```js
+   * Modernizr.addTest('itsTuesday', function() {
+   *  var d = new Date();
+   *  return d.getDay() === 2;
+   * });
+   * ```
+   *
+   * When the above is run, it will set Modernizr.itstuesday to `true` when it is tuesday,
+   * and to `false` every other day of the week. One thing to notice is that the names of
+   * feature detect functions are always lowercased when added to the Modernizr object. That
+   * means that `Modernizr.itsTuesday` will not exist, but `Modernizr.itstuesday` will.
+   *
+   *
+   *  Since we only look at the returned value from any feature detection function,
+   *  you do not need to actually use a function. For simple detections, just passing
+   *  in a statement that will return a boolean value works just fine.
+   *
+   * ```js
+   * Modernizr.addTest('hasjquery', 'jQuery' in window);
+   * ```
+   *
+   * Just like before, when the above runs `Modernizr.hasjquery` will be true if
+   * jQuery has been included on the page. Not using a function saves a small amount
+   * of overhead for the browser, as well as making your code much more readable.
+   *
+   * Finally, you also have the ability to pass in an object of feature names and
+   * their tests. This is handy if you want to add multiple detections in one go.
+   * The keys should always be a string, and the value can be either a boolean or
+   * function that returns a boolean.
+   *
+   * ```js
+   * var detects = {
+   *  'hasjquery': 'jQuery' in window,
+   *  'itstuesday': function() {
+   *    var d = new Date();
+   *    return d.getDay() === 2;
+   *  }
+   * }
+   *
+   * Modernizr.addTest(detects);
+   * ```
+   *
+   * There is really no difference between the first methods and this one, it is
+   * just a convenience to let you write more readable code.
+   */
+  function addTest(feature, test) {
+
+    if (typeof feature === 'object') {
+      for (var key in feature) {
+        if (hasOwnProp(feature, key)) {
+          addTest(key, feature[ key ]);
+        }
+      }
+    } else {
+
+      feature = feature.toLowerCase();
+      var featureNameSplit = feature.split('.');
+      var last = Modernizr[featureNameSplit[0]];
+
+      // Again, we don't check for parent test existence. Get that right, though.
+      if (featureNameSplit.length === 2) {
+        last = last[featureNameSplit[1]];
+      }
+
+      if (typeof last !== 'undefined') {
+        // we're going to quit if you're trying to overwrite an existing test
+        // if we were to allow it, we'd do this:
+        //   var re = new RegExp("\\b(no-)?" + feature + "\\b");
+        //   docElement.className = docElement.className.replace( re, '' );
+        // but, no rly, stuff 'em.
+        return Modernizr;
+      }
+
+      test = typeof test === 'function' ? test() : test;
+
+      // Set the value (this is the magic, right here).
+      if (featureNameSplit.length === 1) {
+        Modernizr[featureNameSplit[0]] = test;
+      } else {
+        // cast to a Boolean, if not one already
+        if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
+          Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
+        }
+
+        Modernizr[featureNameSplit[0]][featureNameSplit[1]] = test;
+      }
+
+      // Set a single class (either `feature` or `no-feature`)
+      setClasses([(!!test && test !== false ? '' : 'no-') + featureNameSplit.join('-')]);
+
+      // Trigger the event
+      Modernizr._trigger(feature, test);
+    }
+
+    return Modernizr; // allow chaining.
+  }
+
+  // After all the tests are run, add self to the Modernizr prototype
+  Modernizr._q.push(function() {
+    ModernizrProto.addTest = addTest;
+  });
+
+  
 
 /*!
 {
