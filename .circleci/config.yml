@@ -47,7 +47,7 @@ save_yarn_cache: &save_yarn_cache
 # install
 yarn_install: &yarn_install
   name: Install Dependencies
-  command: yarn install --non-interactive --no-lockfile
+  command: yarn install --frozen-lockfile --non-interactive
 
 # format
 format: &format
