@@ -41,7 +41,6 @@ save_yarn_cache: &save_yarn_cache
   key: node-deps-node12-{{ checksum "yarn.lock" }}
   paths:
     - ~/.cache/Cypress
-    - dist/tools
     - node_modules
 
 # install
