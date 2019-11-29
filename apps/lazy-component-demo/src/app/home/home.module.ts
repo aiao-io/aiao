@@ -10,6 +10,4 @@ import { HomeComponent } from './home.component';
   entryComponents: [DialogComponent],
   imports: [HomeRouterModule, LazyComponentModule]
 })
-export class HomeModule {
-
-}
+export class HomeModule {}
