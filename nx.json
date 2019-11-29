@@ -34,6 +34,12 @@
     },
     "lazy-module-demo": {
       "tags": []
+    },
+    "lazy-component-demo-e2e": {
+      "tags": []
+    },
+    "lazy-component-demo": {
+      "tags": []
     }
   }
 }

@@ -16,7 +16,7 @@ const lazyRoutes: LazyRoutes = [
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot([]), LazyModule.forRoot(lazyRoutes)],
+  imports: [BrowserModule, AppRoutingModule, LazyModule.forRoot(lazyRoutes)],
   providers: [],
   bootstrap: [AppComponent]
 })
