@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { appendFileSync, copySync, readJSONSync, removeSync } from 'fs-extra';
+import { readJSONSync } from 'fs-extra';
 import { join } from 'path';
 import { cwd } from 'process';
 import { run } from '../util/runner';
