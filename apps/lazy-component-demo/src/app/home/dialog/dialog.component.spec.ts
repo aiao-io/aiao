@@ -1,7 +1,5 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
 import { DialogComponent } from './dialog.component';
 
@@ -11,9 +9,8 @@ describe('DialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DialogComponent ]
-    })
-    .compileComponents();
+      declarations: [DialogComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

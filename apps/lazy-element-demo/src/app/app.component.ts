@@ -1,6 +1,6 @@
+import { LazyElementLoader } from '@aiao/lazy-element';
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { LazyElementLoader } from '@aiao/lazy-element';
 
 @Component({
   selector: 'aiao-root',

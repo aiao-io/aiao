@@ -1,10 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
 import { LazyElementModule } from '@aiao/lazy-element';
 import { LazyRoutes } from '@aiao/lazy-module';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+
+import { AppComponent } from './app.component';
 
 const lazyRoutes: LazyRoutes = [
   {
