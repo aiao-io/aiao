@@ -1,5 +1,3 @@
-import { LazyComponentFactoryResolver } from 'libs/lazy-component/src/lib/lazy-component-factory-resolver';
-
 import { LazyModule, LazyRoutes } from '@aiao/lazy-module';
 import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -20,11 +18,7 @@ const lazyRoutes: LazyRoutes = [
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, BrowserAnimationsModule, MatDialogModule, AppRoutingModule, LazyModule.register(lazyRoutes)],
-  providers: [LazyComponentFactoryResolver],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor(lazyComponentFactoryResolver: LazyComponentFactoryResolver) {
-    lazyComponentFactoryResolver.init();
-  }
-}
+export class AppModule {}

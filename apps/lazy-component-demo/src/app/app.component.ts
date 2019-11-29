@@ -15,7 +15,7 @@ export class AppComponent {
   constructor(public lazyComponentLoader: LazyComponentLoader, public dialog: MatDialog) {}
 
   async openDialog() {
-    this.dialog.open(await this.lazyComponentLoader.load('homeModule', 'app-dialog'));
+    this.dialog.open(await this.lazyComponentLoader.load('homeModule', 'aiao-dialog'));
   }
 
   openDialogDirectly() {

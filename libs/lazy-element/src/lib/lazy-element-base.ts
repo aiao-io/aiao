@@ -1,11 +1,11 @@
 import { Observable, of } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
 
-import { ElementRef, EventEmitter, Output } from '@angular/core';
+import { ElementRef, EventEmitter, OnDestroy, Output } from '@angular/core';
 
 import { LazyElementLoader } from './lazy-element-loader';
 
-export class LazyElementBase {
+export class LazyElementBase implements OnDestroy {
   @Output() docReady = new EventEmitter<void>();
 
   private void$ = of<void>(undefined);
