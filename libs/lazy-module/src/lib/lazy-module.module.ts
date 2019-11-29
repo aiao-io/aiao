@@ -15,7 +15,7 @@ export class LazyModule {
     }
   }
 
-  public static forRoot(routes: LazyRoutes): ModuleWithProviders {
+  public static register(routes: LazyRoutes): ModuleWithProviders {
     return {
       ngModule: LazyModule,
       providers: [

@@ -1,7 +1,11 @@
 # lazy-element
 
-This library was generated with [Nx](https://nx.dev).
+按需加载 angular custom element 模块
 
-## Running unit tests
+## 场景
 
-Run `nx test lazy-element` to execute the unit tests.
+渲染后台渲染的动态内容, 并可以使用 angular 定义的自定义元素 (web components)
+
+## demo
+
+apps/lazy-element-demo

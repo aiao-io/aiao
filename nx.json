@@ -40,6 +40,12 @@
     },
     "lazy-component-demo": {
       "tags": []
+    },
+    "lazy-element-demo-e2e": {
+      "tags": []
+    },
+    "lazy-element-demo": {
+      "tags": []
     }
   }
 }

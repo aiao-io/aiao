@@ -2,6 +2,8 @@ import { LazyComponentLoader } from '@aiao/lazy-component';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
+import { DialogComponent } from './home/dialog/dialog.component';
+
 @Component({
   selector: 'aiao-root',
   templateUrl: './app.component.html',
@@ -14,5 +16,9 @@ export class AppComponent {
 
   async openDialog() {
     this.dialog.open(await this.lazyComponentLoader.load('homeModule', 'app-dialog'));
+  }
+
+  openDialogDirectly() {
+    this.dialog.open(DialogComponent);
   }
 }

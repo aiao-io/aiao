@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-route-module';
 import { AppComponent } from './app.component';
-import { MainComponent } from './main/main.component';
 
 const lazyRoutes: LazyRoutes = [
   {
@@ -19,23 +18,10 @@ const lazyRoutes: LazyRoutes = [
 ];
 
 @NgModule({
-   declarations: [
-      AppComponent,
-      MainComponent
-   ],
-   imports: [
-      BrowserModule,
-      BrowserAnimationsModule,
-      MatDialogModule,
-      AppRoutingModule,
-      LazyModule.forRoot(lazyRoutes)
-   ],
-   providers: [
-      LazyComponentFactoryResolver
-   ],
-   bootstrap: [
-      AppComponent
-   ]
+  declarations: [AppComponent],
+  imports: [BrowserModule, BrowserAnimationsModule, MatDialogModule, AppRoutingModule, LazyModule.register(lazyRoutes)],
+  providers: [LazyComponentFactoryResolver],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(lazyComponentFactoryResolver: LazyComponentFactoryResolver) {
