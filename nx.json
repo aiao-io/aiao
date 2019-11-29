@@ -28,6 +28,12 @@
     },
     "color": {
       "tags": []
+    },
+    "lazy-module-demo-e2e": {
+      "tags": []
+    },
+    "lazy-module-demo": {
+      "tags": []
     }
   }
 }

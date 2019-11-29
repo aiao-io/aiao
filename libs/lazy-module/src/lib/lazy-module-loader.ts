@@ -22,14 +22,14 @@ export class LazyModuleLoader {
     );
   }
 
-  async load(path: string): Promise<NgModuleRef<any>> {
-    if (this.loading.has(path)) {
-      return this.loading.get(path);
+  async load(name: string): Promise<NgModuleRef<any>> {
+    if (this.loading.has(name)) {
+      return this.loading.get(name);
     }
 
-    if (this.toLoad.has(path)) {
-      const modulePathLoader = this.toLoad.get(path);
-      const loadedAndRegistered = (modulePathLoader() as Promise<Type<any>>)
+    if (this.toLoad.has(name)) {
+      const moduleLoader = this.toLoad.get(name);
+      const loadedAndRegistered = (moduleLoader() as Promise<Type<any>>)
         .then(moduleOrFactory => {
           if (moduleOrFactory instanceof NgModuleFactory) {
             return moduleOrFactory;
@@ -38,16 +38,16 @@ export class LazyModuleLoader {
           }
         })
         .then(moduleFactory => {
-          this.toLoad.delete(path);
+          this.toLoad.delete(name);
           return moduleFactory.create(this.moduleRef.injector);
         })
         .catch(err => {
-          this.loading.delete(path);
+          this.loading.delete(name);
           return Promise.reject(err);
         });
-      this.loading.set(path, loadedAndRegistered);
+      this.loading.set(name, loadedAndRegistered);
       return loadedAndRegistered;
     }
-    throw new Error(`module not found path:${path}`);
+    throw new Error(`module not found name:${name}`);
   }
 }
