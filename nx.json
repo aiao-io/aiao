@@ -8,12 +8,12 @@
     "nx.json": "*"
   },
   "projects": {
-    "aiao.io-e2e": {
-      "tags": []
-    },
-    "aiao.io": {
-      "tags": []
-    },
+    // "aiao.io-e2e": {
+    //   "tags": []
+    // },
+    // "aiao.io": {
+    //   "tags": []
+    // },
     "util": {
       "tags": []
     },
