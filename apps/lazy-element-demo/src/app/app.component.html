@@ -1,0 +1,14 @@
+<div>
+  <button (click)="load1()">load use component</button>
+  <aiao-lazy-elements [html]="html1" (docReady)="ready()"></aiao-lazy-elements>
+</div>
+<div>
+  <button (click)="load2()">load use directive</button>
+  <div [aiaoLazyElement]="html2"></div>
+</div>
+
+<div>
+  <button (click)="load3()">load use LazyElementLoader</button>
+  <div [innerHtml]="html3"></div>
+</div>
+<router-outlet></router-outlet>
