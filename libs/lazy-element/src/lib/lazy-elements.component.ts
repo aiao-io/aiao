@@ -5,7 +5,7 @@ import { LazyElementLoader } from './lazy-element-loader';
 
 @Component({
   selector: 'aiao-lazy-elements',
-  templateUrl: 'lazy-elements.component.html',
+  template: '',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
