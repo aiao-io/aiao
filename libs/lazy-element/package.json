@@ -1,9 +1,9 @@
 {
   "name": "@aiao/lazy-element",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "peerDependencies": {
-    "@angular/common": "^8.2.11",
-    "@angular/core": "^8.2.11",
-    "@aiao/lazy-module": "0.0.1"
+    "@angular/common": "^8.0.0",
+    "@angular/core": "^8.0.0",
+    "@aiao/lazy-module": "^1.0.0"
   }
 }

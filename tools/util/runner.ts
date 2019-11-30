@@ -2,7 +2,6 @@ import chalk from 'chalk';
 import { ChildProcess, spawn, SpawnOptions } from 'child_process';
 
 export function run(command: string, args: string[], collect: boolean = false) {
-  console.log('command', command, args);
   const options: SpawnOptions = {
     cwd: process.cwd(),
     stdio: 'inherit',
