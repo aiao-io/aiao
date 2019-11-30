@@ -4,13 +4,13 @@ import { ROUTES } from '@angular/router';
 
 import { LazyElementLoader } from './lazy-element-loader';
 import { LAZY_ELEMENT_ROUTES_TOKEN } from './lazy-element-registry';
-import { LazyElementComponent } from './lazy-element.component';
+import { LazyElementDirective } from './lazy-element.directive';
 import { LazyElementsComponent } from './lazy-elements.component';
 
 @NgModule({
   imports: [LazyModule],
-  declarations: [LazyElementComponent, LazyElementsComponent],
-  exports: [LazyElementComponent, LazyElementsComponent],
+  declarations: [LazyElementsComponent, LazyElementDirective],
+  exports: [LazyElementsComponent, LazyElementDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LazyElementModule {

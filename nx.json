@@ -8,12 +8,6 @@
     "nx.json": "*"
   },
   "projects": {
-    "aiao.io-e2e": {
-      "tags": []
-    },
-    "aiao.io": {
-      "tags": []
-    },
     "util": {
       "tags": []
     },
@@ -27,6 +21,24 @@
       "tags": []
     },
     "color": {
+      "tags": []
+    },
+    "lazy-module-demo-e2e": {
+      "tags": []
+    },
+    "lazy-module-demo": {
+      "tags": []
+    },
+    "lazy-component-demo-e2e": {
+      "tags": []
+    },
+    "lazy-component-demo": {
+      "tags": []
+    },
+    "lazy-element-demo-e2e": {
+      "tags": []
+    },
+    "lazy-element-demo": {
       "tags": []
     }
   }

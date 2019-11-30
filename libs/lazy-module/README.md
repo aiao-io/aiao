@@ -1,7 +1,11 @@
 # lazy-module
 
-This library was generated with [Nx](https://nx.dev).
+按需加载 angular 模块
 
-## Running unit tests
+## 使用场景
 
-Run `nx test lazy-module` to execute the unit tests.
+主动预加载模块
+
+## demo
+
+apps/lazy-module-demo
