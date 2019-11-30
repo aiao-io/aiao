@@ -1,4 +1,4 @@
-import { LazyModule, LazyRoutes } from '@aiao/lazy-module';
+import { LazyModule, LazyRoutes, matcher } from '@aiao/lazy-module';
 import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,7 +11,7 @@ const lazyRoutes: LazyRoutes = [
   {
     name: 'homeModule',
     loadChildren: () => import('./home/home.module').then(_ => _.HomeModule),
-    matcher: () => null
+    matcher
   }
 ];
 
