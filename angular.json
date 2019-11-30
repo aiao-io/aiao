@@ -213,7 +213,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "lazy-module-demo:build"
+            "browserTarget": "lazy-module-demo:build",
+            "port": 4201
           },
           "configurations": {
             "production": {
@@ -330,7 +331,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "lazy-component-demo:build"
+            "browserTarget": "lazy-component-demo:build",
+            "port": 4202
           },
           "configurations": {
             "production": {
@@ -447,7 +449,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "lazy-element-demo:build"
+            "browserTarget": "lazy-element-demo:build",
+            "port": 4203
           },
           "configurations": {
             "production": {
