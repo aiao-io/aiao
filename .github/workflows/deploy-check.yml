@@ -31,9 +31,6 @@ jobs:
       - name: install
         run: |
           yarn install --non-interactive --no-lockfile
-      - name: build
-        run: |
-          yarn ng run aiao.io:build:production
       - name: build lazy-component-demo
         run: |
           yarn ng run lazy-component-demo:build:production
