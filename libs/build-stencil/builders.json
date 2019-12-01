@@ -1,0 +1,9 @@
+{
+  "builders": {
+    "cli": {
+      "implementation": "./esm5/lib/build-stencil",
+      "schema": "./build-stencil.schema.json",
+      "description": "stencil"
+    }
+  }
+}

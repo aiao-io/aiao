@@ -13,6 +13,12 @@
             "project": "libs/util/ng-package.json"
           }
         },
+        "aaa": {
+          "builder": "@aiao/build-stencil:cli",
+          "options": {
+            "config": "adfasdf"
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -138,6 +144,13 @@
       "projectType": "library",
       "schematics": {},
       "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/color/tsconfig.lib.json",
+            "project": "libs/color/ng-package.json"
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -505,6 +518,41 @@
             "tsConfig": ["apps/lazy-element-demo-e2e/tsconfig.e2e.json"],
             "exclude": ["**/node_modules/**", "!apps/lazy-element-demo-e2e/**"]
           }
+        }
+      }
+    },
+    "build-stencil": {
+      "projectType": "library",
+      "root": "libs/build-stencil",
+      "sourceRoot": "libs/build-stencil/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/build-stencil/tsconfig.lib.json",
+            "project": "libs/build-stencil/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/build-stencil/tsconfig.lib.json", "libs/build-stencil/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/build-stencil/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/build-stencil/jest.config.js",
+            "tsConfig": "libs/build-stencil/tsconfig.spec.json",
+            "setupFile": "libs/build-stencil/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
         }
       }
     }

@@ -1,0 +1,7 @@
+{
+  "name": "@aiao/color",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "lodash": "^4.17.15"
+  }
+}
