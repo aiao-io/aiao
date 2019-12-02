@@ -1,5 +1,5 @@
 {
-  "name": "@aiao/build-stencil",
+  "name": "@aiao/stencil-toolkit",
   "version": "0.0.1",
   "builders": "builders.json",
   "schematics": "./collection.json",
