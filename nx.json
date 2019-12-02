@@ -40,6 +40,9 @@
     },
     "lazy-element-demo": {
       "tags": []
+    },
+    "stencil-toolkit": {
+      "tags": []
     }
   }
 }

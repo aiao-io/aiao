@@ -9,6 +9,7 @@
     "mechatroner.rainbow-csv",
     "mike-co.import-sorter",
     "ms-vscode.vscode-typescript-tslint-plugin",
-    "nrwl.angular-console"
+    "nrwl.angular-console",
+    "foxundermoon.shell-format"
   ]
 }

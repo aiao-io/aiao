@@ -1,0 +1,14 @@
+{
+  "builders": {
+    "build": {
+      "implementation": "./lib/builders/build/build.impl",
+      "schema": "./lib/builders/build/schema.json",
+      "description": "stencil build"
+    },
+    "serve": {
+      "implementation": "./lib/builders/serve/serve.impl",
+      "schema": "./lib/builders/serve/schema.json",
+      "description": "stencil serve"
+    }
+  }
+}

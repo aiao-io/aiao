@@ -1,6 +1,9 @@
 {
   "name": "@aiao/lazy-module",
   "version": "1.0.0",
+  "scripts": {
+    "build": "ng build lazy-module"
+  },
   "peerDependencies": {
     "@angular/common": "^8.0.0",
     "@angular/core": "^8.0.0"
