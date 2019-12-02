@@ -18,6 +18,5 @@ function stencilServe(options: StencilServeOptions, context: BuilderContext): Ob
   const { workspaceRoot } = context;
   const args = ['build', `--config ${join(workspaceRoot, config_path)}`, '--dev', '--watch', '--serve'];
   const scri = run('node_modules/.bin/stencil', args);
-  console.log('123');
   return from(scri).pipe(map(() => ({ success: true })));
 }

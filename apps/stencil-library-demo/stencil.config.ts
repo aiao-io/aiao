@@ -5,7 +5,7 @@ import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 
 export const config: Config = {
-  namespace: '<%= name %>',
+  namespace: 'stencil-library-demo',
   plugins: [sass()],
   outputTargets: [
     {
@@ -23,6 +23,5 @@ export const config: Config = {
     }
   ],
   tsconfig: 'tsconfig.json',
-  preamble: '(C) <%= name %>',
   globalScript: 'src/lib/global/global.ts'
 };
