@@ -27,7 +27,6 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "build:tools": "rimraf dist/tools && tsc -p ./tools/tsconfig.tools.json",
-    "build:libs": "lerna exec node ../../dist/tools/tasks/build-libs",
     "postinstall": "yarn build:tools",
     "commit": "npx git-cz",
     "run:tools": "ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register",

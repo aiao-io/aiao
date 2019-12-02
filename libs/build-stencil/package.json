@@ -2,6 +2,9 @@
   "name": "@aiao/build-stencil",
   "version": "0.0.1",
   "builders": "builders.json",
+  "scripts": {
+    "build": "./scripts/build.sh"
+  },
   "peerDependencies": {
     "@angular/common": "^8.0.0"
   }
