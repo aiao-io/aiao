@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
 import { LazyModuleLoader } from '@aiao/lazy-module';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'aiao-root',

@@ -1,5 +1,5 @@
 import { join } from 'path';
-import { Observable, from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { BuilderContext, BuilderOutput, createBuilder } from '@angular-devkit/architect';

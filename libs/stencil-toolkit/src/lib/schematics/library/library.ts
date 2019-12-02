@@ -1,9 +1,8 @@
-import { join, normalize, Path } from '@angular-devkit/core';
+import { join, normalize } from '@angular-devkit/core';
 import {
   apply,
   chain,
   externalSchematic,
-  MergeStrategy,
   mergeWith,
   move,
   noop,
@@ -14,12 +13,12 @@ import {
   url
 } from '@angular-devkit/schematics';
 import {
+  formatFiles,
+  generateProjectLint,
   getNpmScope,
   Linter,
   updateJsonInTree,
-  updateWorkspaceInTree,
-  generateProjectLint,
-  formatFiles
+  updateWorkspaceInTree
 } from '@nrwl/workspace';
 
 import init from '../init/init';
@@ -27,6 +26,7 @@ import { Schema } from './schema';
 
 interface NormalizedSchema extends Schema {
   name: string;
+  scope: string;
   fileName: string;
   projectRoot: string;
   projectDirectory: string;
@@ -42,6 +42,7 @@ function toFileName(s: string): string {
 
 function normalizeOptions(host: Tree, options: Schema): NormalizedSchema {
   const name = toFileName(options.name);
+  const scope = getNpmScope(host);
   const projectDirectory = options.directory ? `${toFileName(options.directory)}/${name}` : name;
 
   const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
@@ -52,6 +53,7 @@ function normalizeOptions(host: Tree, options: Schema): NormalizedSchema {
 
   return {
     ...options,
+    scope,
     name: projectName,
     projectRoot,
     projectDirectory,
@@ -82,7 +84,7 @@ function updateLibPackageNpmScope(options: NormalizedSchema): Rule {
   };
 }
 
-function getBuildConfig(project: any, options: NormalizedSchema) {
+function getBuildConfig(options: NormalizedSchema) {
   return {
     builder: '@aiao/stencil:build',
     options: {
@@ -111,7 +113,7 @@ function updateWorkspaceJson(options: NormalizedSchema): Rule {
       architect: <any>{}
     };
 
-    project.architect.build = getBuildConfig(project, options);
+    project.architect.build = getBuildConfig(options);
     project.architect.serve = getServeConfig(options);
     project.architect.lint = generateProjectLint(
       normalize(project.root),
