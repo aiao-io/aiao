@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "SchematicsStencilLibrary",
+  "title": "Create a library",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Library name",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use for the library?"
+    },
+    "namespace": {
+      "type": "string",
+      "description": "Library namespace",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": "What namespace would you like to use for the library?"
+    },
+    "directory": {
+      "type": "string",
+      "description": "A directory where the app is placed"
+    },
+    "style": {
+      "description": "The file extension to be used for style files.",
+      "type": "string",
+      "default": "css",
+      "x-prompt": {
+        "message": "Which stylesheet format would you like to use?",
+        "type": "list",
+        "items": [
+          {
+            "value": "css",
+            "label": "CSS"
+          },
+          {
+            "value": "scss",
+            "label": "SASS(.scss) [ http://sass-lang.com ]"
+          }
+        ]
+      }
+    },
+    "tags": {
+      "type": "string",
+      "description": "Add tags to the library (used for linting)"
+    },
+    "unitTestRunner": {
+      "type": "string",
+      "enum": ["karma", "jest", "none"],
+      "description": "Test runner to use for unit tests",
+      "default": "jest"
+    }
+  },
+  "required": []
+}

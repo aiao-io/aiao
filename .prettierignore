@@ -6,7 +6,6 @@ apps/*/build
 node_modules
 /dist
 /coverage
-*.d.ts
 *.log
 libs/**/*.js
 apps/**/*.js
