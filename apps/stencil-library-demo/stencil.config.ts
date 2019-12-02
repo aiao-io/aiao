@@ -1,3 +1,6 @@
+import { resolve } from 'path';
+import { cwd } from 'process';
+
 import { Config } from '@stencil/core';
 
 export const config: Config = {
@@ -12,6 +15,12 @@ export const config: Config = {
     },
     {
       type: 'dist-hydrate-script'
+    }
+  ],
+  copy: [
+    {
+      src: resolve(cwd(), 'node_modules/@ionic/core'),
+      dest: resolve(cwd(), 'apps/stencil-library-demo/vendors/ionic')
     }
   ],
   tsconfig: 'tsconfig.json'
