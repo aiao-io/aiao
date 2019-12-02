@@ -72,6 +72,7 @@
     "@nrwl/jest": "8.8.3",
     "@nrwl/workspace": "8.8.3",
     "@stencil/core": "^1.8.1",
+    "@stencil/sass": "^1.1.1",
     "@types/fs-extra": "^8.0.1",
     "@types/jest": "24.0.23",
     "@types/lodash": "^4.14.149",
@@ -94,8 +95,7 @@
     "tsickle": "^0.37.1",
     "tslint": "~5.20.1",
     "typescript": "~3.5.0",
-    "yargs": "^15.0.2",
-    "@stencil/sass": "^1.1.1"
+    "yargs": "^15.0.2"
   },
   "config": {
     "commitizen": {

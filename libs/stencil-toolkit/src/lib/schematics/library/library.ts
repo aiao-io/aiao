@@ -17,17 +17,19 @@ import {
   generateProjectLint,
   getNpmScope,
   Linter,
+  readJsonInTree,
   updateJsonInTree,
   updateWorkspaceInTree
 } from '@nrwl/workspace';
 
+import { isNxWorkspace } from '../../util/is-nx';
 import init from '../init/init';
 import { Schema } from './schema';
 
 interface NormalizedSchema extends Schema {
   name: string;
   scope: string;
-  fileName: string;
+  isNx: boolean;
   projectRoot: string;
   projectDirectory: string;
   parsedTags: string[];
@@ -41,24 +43,25 @@ function toFileName(s: string): string {
 }
 
 function normalizeOptions(host: Tree, options: Schema): NormalizedSchema {
+  const isNx = isNxWorkspace(host);
   const name = toFileName(options.name);
-  const scope = getNpmScope(host);
+  const scope = isNx ? getNpmScope(host) : '';
+  const angularConfig = readJsonInTree(host, '/angular.json');
+  const libs = isNx ? 'libs' : angularConfig.newProjectRoot;
   const projectDirectory = options.directory ? `${toFileName(options.directory)}/${name}` : name;
-
   const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
-  const fileName = options.simpleModuleName ? name : projectName;
-  const projectRoot = `libs/${projectDirectory}`;
+  const projectRoot = `${libs}/${projectDirectory}`;
 
   const parsedTags = options.tags ? options.tags.split(',').map(s => s.trim()) : [];
 
   return {
     ...options,
     scope,
+    isNx,
     name: projectName,
     projectRoot,
     projectDirectory,
-    parsedTags,
-    fileName
+    parsedTags
   };
 }
 
@@ -76,9 +79,10 @@ function addFiles(options: NormalizedSchema): Rule {
 }
 
 function updateLibPackageNpmScope(options: NormalizedSchema): Rule {
-  return (host: Tree) => {
-    return updateJsonInTree(`${options.projectRoot}/package.json`, json => {
-      json.name = `@${getNpmScope(host)}/${options.name}`;
+  const { projectRoot, name, scope } = options;
+  return () => {
+    return updateJsonInTree(`${projectRoot}/package.json`, json => {
+      json.name = options.scope ? `@${scope}/${name}` : name;
       return json;
     });
   };
@@ -86,7 +90,7 @@ function updateLibPackageNpmScope(options: NormalizedSchema): Rule {
 
 function getBuildConfig(options: NormalizedSchema) {
   return {
-    builder: '@aiao/stencil:build',
+    builder: '@aiao/stencil-toolkit:build',
     options: {
       outputPath: join(normalize('dist'), options.projectRoot),
       config: `${options.projectRoot}/stencil.config.ts`
@@ -96,7 +100,7 @@ function getBuildConfig(options: NormalizedSchema) {
 
 function getServeConfig(options: NormalizedSchema) {
   return {
-    builder: '@aiao/stencil:serve',
+    builder: '@aiao/stencil-toolkit:serve',
     options: {
       config: `${options.projectRoot}/stencil.config.ts`
     }
@@ -122,9 +126,7 @@ function updateWorkspaceJson(options: NormalizedSchema): Rule {
     );
 
     workspaceJson.projects[options.name] = project;
-
     workspaceJson.defaultProject = workspaceJson.defaultProject || options.name;
-
     return workspaceJson;
   });
 }
@@ -156,6 +158,7 @@ function addTest(options: NormalizedSchema): Rule {
 export default function(schema: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
     const options = normalizeOptions(host, schema);
+    const { isNx } = options;
     return chain([
       init({
         vendors: options.vendors,
@@ -164,7 +167,7 @@ export default function(schema: Schema): Rule {
       addFiles(options),
       updateLibPackageNpmScope(options),
       updateWorkspaceJson(options),
-      updateNxJson(options),
+      isNx ? updateNxJson(options) : noop(),
       addTest(options),
       formatFiles({ skipFormat: false })
     ])(host, context);

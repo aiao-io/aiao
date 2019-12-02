@@ -27,6 +27,9 @@ cp -rf ./src/lib/schematics/library/files $OUT_DIR/lib/schematics/library/files
 cp ./src/lib/schematics/init/schema.json $OUT_DIR/lib/schematics/init/schema.json
 cp ./src/lib/schematics/init/schema.d.ts $OUT_DIR/lib/schematics/init/schema.d.ts
 
+cp ../../LICENSE $OUT_DIR/LICENSE
+cp ./README.md $OUT_DIR/README.md
+
 cp package.json $OUT_DIR
 cp builders.json $OUT_DIR
 cp collection.json $OUT_DIR
