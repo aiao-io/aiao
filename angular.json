@@ -10,7 +10,8 @@
           "builder": "@aiao/stencil:build",
           "options": {
             "config": "apps/stencil-library-demo/stencil.config.ts",
-            "outputPath": "dist/libs/stencil-library-demo"
+            "outputPath": "dist/libs/stencil-library-demo",
+            "stats": true
           }
         },
         "serve": {

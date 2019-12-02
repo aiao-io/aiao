@@ -14,13 +14,14 @@ import { run } from '../../util/runner';
 export interface StencilBuilderOptions extends JsonObject {
   config: string;
   outputPath: string;
+  stats?: boolean;
   docs?: boolean;
 }
 
 export default createBuilder<StencilBuilderOptions>(stencilBuild);
 
 function stencilBuild(options: StencilBuilderOptions, context: BuilderContext): Observable<BuilderOutput> {
-  const { config: config_path, docs, outputPath } = options;
+  const { config: config_path, docs, outputPath, stats } = options;
   const {
     workspaceRoot,
     target: { project }
@@ -32,9 +33,15 @@ function stencilBuild(options: StencilBuilderOptions, context: BuilderContext): 
       const args = ['build'];
       const configPath = join(workspaceRoot, config_path);
       args.push(`--config ${configPath}`);
+
+      // args
       if (docs) {
         args.push('--docs');
       }
+      if (stats) {
+        args.push('--stats');
+      }
+
       const config = requireConfigFile(configPath);
 
       const distOutputTarget: OutputTargetDist = config.outputTargets.find(d => d.type === 'dist') as OutputTargetDist;

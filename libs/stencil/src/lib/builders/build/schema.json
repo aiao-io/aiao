@@ -10,6 +10,9 @@
     },
     "docs": {
       "type": "boolean"
+    },
+    "stats": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false,
