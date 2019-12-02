@@ -1,6 +1,6 @@
 {
   "npmClient": "yarn",
-  "packages": ["libs/*", "apps/*"],
+  "packages": ["libs/*", "apps/*", "integration/*"],
   "version": "0.0.0",
   "npmClientArgs": ["--no-package-lock"]
 }

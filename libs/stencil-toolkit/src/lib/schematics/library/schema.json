@@ -13,6 +13,21 @@
       },
       "x-prompt": "What name would you like to use for the library?"
     },
+    "directory": {
+      "description": "The directory of the new application.",
+      "type": "string",
+      "x-prompt": "In which directory should the node application be generated?"
+    },
+    "unitTestRunner": {
+      "type": "string",
+      "enum": ["jest", "none"],
+      "description": "Test runner to use for unit tests",
+      "default": "jest"
+    },
+    "tags": {
+      "type": "string",
+      "description": "Add tags to the library (used for linting)"
+    },
     "vendors": {
       "type": "object",
       "description": "custom vendors",
@@ -23,16 +38,6 @@
           "x-prompt": "add vendor @ionic/core?"
         }
       }
-    },
-    "tags": {
-      "type": "string",
-      "description": "Add tags to the library (used for linting)"
-    },
-    "unitTestRunner": {
-      "type": "string",
-      "enum": ["jest", "none"],
-      "description": "Test runner to use for unit tests",
-      "default": "jest"
     }
   },
   "required": []
