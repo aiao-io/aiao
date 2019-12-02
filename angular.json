@@ -1,34 +1,6 @@
 {
   "version": 1,
   "projects": {
-    "stencil-library-demo": {
-      "projectType": "library",
-      "root": "apps/stencil-library-demo",
-      "sourceRoot": "apps/stencil-library-demo/src",
-      "architect": {
-        "build": {
-          "builder": "@aiao/stencil-toolkit:build",
-          "options": {
-            "config": "apps/stencil-library-demo/stencil.config.ts",
-            "outputPath": "dist/libs/stencil-library-demo",
-            "stats": true
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["libs/ui-stencil/tsconfig.lib.json", "libs/ui-stencil/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/ui-stencil/**"]
-          }
-        },
-        "serve": {
-          "builder": "@aiao/stencil-toolkit:serve",
-          "options": {
-            "config": "apps/stencil-library-demo/stencil.config.ts"
-          }
-        }
-      }
-    },
     "util": {
       "projectType": "library",
       "root": "libs/util",

@@ -11,9 +11,7 @@
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/<%= name %>/<%= name %>.js",
   "files": [
-    "../../LICENSE",
-    "dist/",
-    "hydrate",
+    "dist",
     "loader",
     "package.json",
     "readme.md"
