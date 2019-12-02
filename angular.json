@@ -536,32 +536,25 @@
         }
       }
     },
-    "stencil": {
+    "build-stencil": {
       "projectType": "library",
-      "root": "libs/stencil",
-      "sourceRoot": "libs/stencil/src",
+      "root": "libs/build-stencil",
+      "sourceRoot": "libs/build-stencil/src",
       "prefix": "aiao",
       "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "libs/stencil/tsconfig.lib.json",
-            "project": "libs/stencil/ng-package.json"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/stencil/tsconfig.lib.json", "libs/stencil/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/stencil/**"]
+            "tsConfig": ["libs/build-stencil/tsconfig.lib.json", "libs/build-stencil/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/build-stencil/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/stencil/jest.config.js",
-            "tsConfig": "libs/stencil/tsconfig.spec.json",
-            "setupFile": "libs/stencil/src/test-setup.ts"
+            "jestConfig": "libs/build-stencil/jest.config.js",
+            "tsConfig": "libs/build-stencil/tsconfig.spec.json",
+            "setupFile": "libs/build-stencil/src/test-setup.ts"
           }
         }
       },
@@ -584,5 +577,6 @@
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
     }
-  }
+  },
+  "defaultProject": "lazy-component"
 }

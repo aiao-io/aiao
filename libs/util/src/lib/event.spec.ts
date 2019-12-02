@@ -7,29 +7,29 @@ describe('event', () => {
     const listener = () => {
       done();
     };
-    be.addEventListener('aaa', listener);
-    expect(be.hasEventListener('aaa', listener)).toBeTruthy();
-    be.dispatchEvent('aaa');
+    be.addEventListener('customEvent1', listener);
+    expect(be.hasEventListener('customEvent1', listener)).toBeTruthy();
+    be.dispatchEvent('customEvent1');
   });
   it('removeEventListener', () => {
     class BaseEvent extends EventDispatcher<any> {}
     const be = new BaseEvent();
     const listener = () => {};
-    be.addEventListener('aaa', listener);
-    expect(be.hasEventListener('aaa', listener)).toBeTruthy();
-    be.removeEventListener('aaa', listener);
-    expect(be.hasEventListener('aaa', listener)).toBeFalsy();
+    be.addEventListener('customEvent1', listener);
+    expect(be.hasEventListener('customEvent1', listener)).toBeTruthy();
+    be.removeEventListener('customEvent1', listener);
+    expect(be.hasEventListener('customEvent1', listener)).toBeFalsy();
   });
   it('removeAllEventListener', () => {
     class BaseEvent extends EventDispatcher<any> {}
     const be = new BaseEvent();
     const listener = () => {};
-    be.addEventListener('aaa', listener);
-    be.addEventListener('bbb', listener);
-    expect(be.hasEventListener('aaa', listener)).toBeTruthy();
-    expect(be.hasEventListener('bbb', listener)).toBeTruthy();
+    be.addEventListener('customEvent1', listener);
+    be.addEventListener('customEvent2', listener);
+    expect(be.hasEventListener('customEvent1', listener)).toBeTruthy();
+    expect(be.hasEventListener('customEvent2', listener)).toBeTruthy();
     be.removeAllEventListener();
-    expect(be.hasEventListener('aaa', listener)).toBeFalsy();
-    expect(be.hasEventListener('bbb', listener)).toBeFalsy();
+    expect(be.hasEventListener('customEvent1', listener)).toBeFalsy();
+    expect(be.hasEventListener('customEvent2', listener)).toBeFalsy();
   });
 });

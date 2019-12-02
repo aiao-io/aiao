@@ -41,7 +41,7 @@
     "lazy-element-demo": {
       "tags": []
     },
-    "stencil": {
+    "build-stencil": {
       "tags": []
     },
     "stencil-library-demo": {

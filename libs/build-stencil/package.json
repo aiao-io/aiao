@@ -1,12 +1,16 @@
 {
-  "name": "@aiao/stencil",
+  "name": "@aiao/build-stencil",
   "version": "0.0.1",
   "builders": "builders.json",
   "schematics": "./collection.json",
   "scripts": {
     "build": "./scripts/build.sh"
   },
+  "dependencies": {
+    "@nrwl/jest": "*"
+  },
   "peerDependencies": {
-    "@angular/common": "^8.0.0"
+    "@nrwl/workspace": "*",
+    "@angular-devkit/schematics": "^8.0.0"
   }
 }

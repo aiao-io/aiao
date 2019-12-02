@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-echo "stencil"
+echo "build-stencil"
 
-OUT_DIR=../../dist/libs/stencil
+OUT_DIR=../../dist/libs/build-stencil
 AIAO_DIR=../../node_modules/@aiao
-NODE_MODULE_DIR=$AIAO_DIR/stencil
+NODE_MODULE_DIR=$AIAO_DIR/build-stencil
 
 rm -rf $OUT_DIR
 tsc -p ./tsconfig.lib.json
