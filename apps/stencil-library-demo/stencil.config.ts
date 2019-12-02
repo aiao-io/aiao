@@ -12,9 +12,6 @@ export const config: Config = {
     },
     {
       type: 'docs-readme'
-    },
-    {
-      type: 'dist-hydrate-script'
     }
   ],
   copy: [
@@ -23,5 +20,7 @@ export const config: Config = {
       dest: resolve(cwd(), 'apps/stencil-library-demo/vendors/ionic')
     }
   ],
-  tsconfig: 'tsconfig.json'
+  tsconfig: 'tsconfig.json',
+  preamble: '(C) Aiao',
+  globalScript: 'src/lib/global/global.ts'
 };

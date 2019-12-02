@@ -17,8 +17,7 @@
         "serve": {
           "builder": "@aiao/stencil:serve",
           "options": {
-            "config": "apps/stencil-library-demo/stencil.config.ts",
-            "outputPath": "dist/libs/stencil-library-demo"
+            "config": "apps/stencil-library-demo/stencil.config.ts"
           }
         }
       }

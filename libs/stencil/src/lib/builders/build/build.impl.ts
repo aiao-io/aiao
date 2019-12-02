@@ -9,16 +9,16 @@ import { JsonObject } from '@angular-devkit/core';
 import { copyAssets } from '../../util/copy-assets';
 import { run } from '../../util/runner';
 
-export interface StencilBuilderOptions extends JsonObject {
+export interface StencilBuildOptions extends JsonObject {
   config: string;
   outputPath: string;
   stats?: boolean;
   docs?: boolean;
 }
 
-export default createBuilder<StencilBuilderOptions>(stencilBuild);
+export default createBuilder<StencilBuildOptions>(stencilBuild);
 
-function stencilBuild(options: StencilBuilderOptions, context: BuilderContext): Observable<BuilderOutput> {
+function stencilBuild(options: StencilBuildOptions, context: BuilderContext): Observable<BuilderOutput> {
   const { config: config_path, docs, outputPath, stats } = options;
   const {
     workspaceRoot,
