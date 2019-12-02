@@ -70,6 +70,7 @@
     "@nrwl/cypress": "8.8.3",
     "@nrwl/jest": "8.8.3",
     "@nrwl/workspace": "8.8.3",
+    "@stencil/core": "^1.8.1",
     "@types/fs-extra": "^8.0.1",
     "@types/jest": "24.0.23",
     "@types/lodash": "^4.14.149",

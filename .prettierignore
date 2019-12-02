@@ -1,14 +1,13 @@
 # Add files here to ignore them from prettier formatting
 
 tmp
-build
+libs/*/build
+apps/*/build
 node_modules
 /dist
 /coverage
 *.d.ts
-libs/**/proxies.ts
-libs/**/proxies-utils.ts
+*.log
 libs/**/*.js
 apps/**/*.js
-*.log
 !*.config.js

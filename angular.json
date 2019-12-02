@@ -1,6 +1,27 @@
 {
   "version": 1,
   "projects": {
+    "stencil-library-demo": {
+      "projectType": "library",
+      "root": "apps/stencil-library-demo",
+      "sourceRoot": "apps/stencil-library-demo/src",
+      "architect": {
+        "build": {
+          "builder": "@aiao/stencil:build",
+          "options": {
+            "config": "apps/stencil-library-demo/stencil.config.ts",
+            "outputPath": "dist/libs/stencil-library-demo"
+          }
+        },
+        "serve": {
+          "builder": "@aiao/stencil:serve",
+          "options": {
+            "config": "apps/stencil-library-demo/stencil.config.ts",
+            "outputPath": "dist/libs/stencil-library-demo"
+          }
+        }
+      }
+    },
     "util": {
       "projectType": "library",
       "root": "libs/util",
@@ -11,12 +32,6 @@
           "options": {
             "tsConfig": "libs/util/tsconfig.lib.json",
             "project": "libs/util/ng-package.json"
-          }
-        },
-        "aaa": {
-          "builder": "@aiao/stencil:build",
-          "options": {
-            "config": "adfasdf"
           }
         },
         "lint": {

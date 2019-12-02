@@ -43,6 +43,9 @@
     },
     "stencil": {
       "tags": []
+    },
+    "stencil-library-demo": {
+      "tags": []
     }
   }
 }
