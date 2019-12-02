@@ -115,7 +115,7 @@ function updateWorkspaceJson(options: NormalizedSchema): Rule {
     project.architect.serve = getServeConfig(options);
     project.architect.lint = generateProjectLint(
       normalize(project.root),
-      join(normalize(project.root), 'tsconfig.app.json'),
+      join(normalize(project.root), 'tsconfig.lib.json'),
       Linter.TsLint
     );
 
@@ -143,8 +143,9 @@ function addTest(options: NormalizedSchema): Rule {
   if (options.unitTestRunner === 'jest') {
     return externalSchematic('@nrwl/jest', 'jest-project', {
       project: options.name,
-      setupFile: 'none',
-      skipSerializers: true
+      supportTsx: true,
+      skipSerializers: true,
+      setupFile: 'none'
     });
   }
   return noop();

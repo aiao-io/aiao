@@ -23,6 +23,5 @@ export const config: Config = {
     }
   ],<% } %>
   tsconfig: 'tsconfig.json',
-  preamble: '(C) <%= name %>',
   globalScript: 'src/lib/global/global.ts'
 };
