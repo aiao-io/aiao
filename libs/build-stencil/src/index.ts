@@ -1,1 +1,1 @@
-export * from './lib/build-stencil';
+export * from './lib/builders/build/build.impl';

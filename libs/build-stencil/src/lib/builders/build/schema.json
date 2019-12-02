@@ -1,5 +1,5 @@
 {
-  "title": "stencil",
+  "title": "stencil build",
   "type": "object",
   "properties": {
     "config": {

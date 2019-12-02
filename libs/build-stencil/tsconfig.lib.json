@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/libs/build-stencil",
+    "outDir": "../../dist/libs/stencil",
     "rootDir": "./src",
     "target": "es2015",
     "module": "commonjs",

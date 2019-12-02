@@ -14,7 +14,7 @@
           }
         },
         "aaa": {
-          "builder": "@aiao/build-stencil:cli",
+          "builder": "@aiao/stencil:build",
           "options": {
             "config": "adfasdf"
           }
@@ -521,32 +521,32 @@
         }
       }
     },
-    "build-stencil": {
+    "stencil": {
       "projectType": "library",
-      "root": "libs/build-stencil",
-      "sourceRoot": "libs/build-stencil/src",
+      "root": "libs/stencil",
+      "sourceRoot": "libs/stencil/src",
       "prefix": "aiao",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "libs/build-stencil/tsconfig.lib.json",
-            "project": "libs/build-stencil/ng-package.json"
+            "tsConfig": "libs/stencil/tsconfig.lib.json",
+            "project": "libs/stencil/ng-package.json"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/build-stencil/tsconfig.lib.json", "libs/build-stencil/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/build-stencil/**"]
+            "tsConfig": ["libs/stencil/tsconfig.lib.json", "libs/stencil/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/stencil/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/build-stencil/jest.config.js",
-            "tsConfig": "libs/build-stencil/tsconfig.spec.json",
-            "setupFile": "libs/build-stencil/src/test-setup.ts"
+            "jestConfig": "libs/stencil/jest.config.js",
+            "tsConfig": "libs/stencil/tsconfig.spec.json",
+            "setupFile": "libs/stencil/src/test-setup.ts"
           }
         }
       },

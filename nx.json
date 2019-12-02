@@ -41,7 +41,7 @@
     "lazy-element-demo": {
       "tags": []
     },
-    "build-stencil": {
+    "stencil": {
       "tags": []
     }
   }

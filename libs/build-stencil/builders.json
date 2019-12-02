@@ -1,9 +1,10 @@
 {
+  "$schema": "@angular-devkit/architect/src/builders-schema.json",
   "builders": {
-    "cli": {
-      "implementation": "./lib/build-stencil",
-      "schema": "./build-stencil.schema.json",
-      "description": "stencil"
+    "build": {
+      "implementation": "./lib/builders/build/build.impl",
+      "schema": "./lib/builders/build/schema.json",
+      "description": "build stencil lib"
     }
   }
 }
