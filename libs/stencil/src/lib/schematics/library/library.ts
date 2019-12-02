@@ -14,7 +14,6 @@ import {
   url
 } from '@angular-devkit/schematics';
 import {
-  addLintFiles,
   getNpmScope,
   Linter,
   updateJsonInTree,
@@ -140,6 +139,17 @@ function updateNxJson(options: NormalizedSchema): Rule {
   });
 }
 
+function addTest(options: NormalizedSchema): Rule {
+  if (options.unitTestRunner === 'jest') {
+    return externalSchematic('@nrwl/jest', 'jest-project', {
+      project: options.name,
+      setupFile: 'none',
+      skipSerializers: true
+    });
+  }
+  return noop();
+}
+
 export default function(schema: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
     const options = normalizeOptions(host, schema);
@@ -152,6 +162,7 @@ export default function(schema: Schema): Rule {
       updateLibPackageNpmScope(options),
       updateWorkspaceJson(options),
       updateNxJson(options),
+      addTest(options),
       formatFiles({ skipFormat: false })
     ])(host, context);
   };

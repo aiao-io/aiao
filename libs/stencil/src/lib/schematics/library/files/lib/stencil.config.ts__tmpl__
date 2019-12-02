@@ -19,7 +19,7 @@ export const config: Config = {
   copy: [
     {
       src: resolve(cwd(), 'node_modules/@ionic/core'),
-      dest: resolve(cwd(), 'apps/stencil-library-demo/vendors/ionic')
+      dest: resolve(cwd(), 'libs/<%= name %>/vendors/ionic')
     }
   ],<% } %>
   tsconfig: 'tsconfig.json',
