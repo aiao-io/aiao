@@ -11,7 +11,12 @@
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/stencil-library-demo/stencil-library-demo.js",
   "files": [
-    "dist/"
+    "../../LICENSE",
+    "dist/",
+    "hydrate",
+    "loader",
+    "package.json",
+    "readme.md"
   ],
   "scripts": {
     "build": "stencil build --docs",

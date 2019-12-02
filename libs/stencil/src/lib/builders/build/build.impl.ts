@@ -1,4 +1,4 @@
-import { readJson, removeSync } from 'fs-extra';
+import { readJson, readJSONSync, removeSync, statSync } from 'fs-extra';
 import { join, resolve } from 'path';
 import { from, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -7,9 +7,9 @@ import { BuilderContext, BuilderOutput, createBuilder } from '@angular-devkit/ar
 import { JsonObject } from '@angular-devkit/core';
 import { OutputTargetDist } from '@stencil/core/dist/declarations';
 
-import { copyAssets } from './copy-assets';
-import { requireConfigFile } from './load-ts-config-file';
-import { run } from './runner';
+import { copyAssets } from '../../util/copy-assets';
+import { requireConfigFile } from '../../util/load-ts-config-file';
+import { run } from '../../util/runner';
 
 export interface StencilBuilderOptions extends JsonObject {
   config: string;
@@ -39,35 +39,34 @@ function stencilBuild(options: StencilBuilderOptions, context: BuilderContext): 
 
       const distOutputTarget: OutputTargetDist = config.outputTargets.find(d => d.type === 'dist') as OutputTargetDist;
 
-      const distOutputTargetDir = distOutputTarget.dir || 'dist';
       const esmLoaderPath = distOutputTarget.esmLoaderPath;
       const projectRoot = resolve(workspaceRoot, projectConfig.root);
-      const distPath = resolve(projectRoot, distOutputTargetDir);
       const output = resolve(workspaceRoot, outputPath);
-      const distOutputPath = resolve(workspaceRoot, outputPath, distOutputTargetDir);
 
-      const loaderPath = resolve(distPath, esmLoaderPath);
-      const loaderOutPath = resolve(workspaceRoot, outputPath, distOutputTargetDir, esmLoaderPath);
+      const projectPkg = readJSONSync(resolve(projectRoot, 'package.json'));
+      const files = projectPkg.files || [];
+      const assets = [];
 
-      const assets = [
-        {
-          glob: '**/*',
-          input: distPath,
-          output: distOutputPath
-        },
-        {
-          glob: 'package.json',
-          input: projectRoot,
-          output
-        },
-        {
-          glob: '**/*',
-          input: loaderPath,
-          output: loaderOutPath
+      files.forEach((file: string) => {
+        const fp = resolve(projectRoot, file);
+        const stat = statSync(fp);
+        const fileIsInProject = fp.includes(projectRoot);
+        const input = fileIsInProject ? projectRoot : workspaceRoot;
+        const filePath = fp.replace(input + '/', '');
+        if (stat.isDirectory()) {
+          assets.push({
+            glob: join(filePath, '**/*'),
+            input,
+            output
+          });
+        } else {
+          assets.push({
+            glob: filePath,
+            input,
+            output
+          });
         }
-      ];
-
-      console.log('assets', assets);
+      });
       if (esmLoaderPath.startsWith('../')) {
       }
       return run('node_modules/.bin/stencil', args)
