@@ -2,7 +2,7 @@
   "name": "@aiao/stencil",
   "version": "0.0.1",
   "builders": "builders.json",
-  "schematics": "collection.json",
+  "schematics": "./collection.json",
   "scripts": {
     "build": "./scripts/build.sh"
   },

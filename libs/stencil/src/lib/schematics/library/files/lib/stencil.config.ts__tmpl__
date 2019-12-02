@@ -15,13 +15,13 @@ export const config: Config = {
     {
       type: 'docs-readme'
     }
-  ],
+  ],<% if(vendors.ionic){  %>
   copy: [
     {
       src: resolve(cwd(), 'node_modules/@ionic/core'),
       dest: resolve(cwd(), 'apps/stencil-library-demo/vendors/ionic')
     }
-  ],
+  ],<% } %>
   tsconfig: 'tsconfig.json',
   preamble: '(C) <%= name %>',
   globalScript: 'src/lib/global/global.ts'

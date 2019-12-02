@@ -13,37 +13,19 @@
       },
       "x-prompt": "What name would you like to use for the library?"
     },
-    "namespace": {
-      "type": "string",
-      "description": "Library namespace",
-      "$default": {
-        "$source": "argv",
-        "index": 1
-      },
-      "x-prompt": "What namespace would you like to use for the library?"
+    "vendors": {
+      "type": "object",
+      "description": "vendors",
+      "properties": {
+        "ionic": {
+          "type": "boolean",
+          "x-prompt": "add vendor @ionic/core?"
+        }
+      }
     },
     "directory": {
       "type": "string",
       "description": "A directory where the app is placed"
-    },
-    "style": {
-      "description": "The file extension to be used for style files.",
-      "type": "string",
-      "default": "css",
-      "x-prompt": {
-        "message": "Which stylesheet format would you like to use?",
-        "type": "list",
-        "items": [
-          {
-            "value": "css",
-            "label": "CSS"
-          },
-          {
-            "value": "scss",
-            "label": "SASS(.scss) [ http://sass-lang.com ]"
-          }
-        ]
-      }
     },
     "tags": {
       "type": "string",
