@@ -1,5 +1,5 @@
 {
-  "name": "@aiao/stencil-library-demo",
+  "name": "stencil-library-demo",
   "version": "0.0.1",
   "description": "Stencil Component Starter",
   "main": "dist/index.js",
@@ -19,11 +19,7 @@
     "readme.md"
   ],
   "scripts": {
-    "build": "stencil build --docs",
-    "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "build": "ng build stencil-library-demo"
   },
   "devDependencies": {
     "@stencil/core": "^1.3.3"
