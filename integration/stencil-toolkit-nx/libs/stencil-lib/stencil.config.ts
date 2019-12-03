@@ -1,5 +1,4 @@
 import { resolve } from 'path';
-import { cwd } from 'process';
 
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';

@@ -8,8 +8,5 @@
       "conventionalCommits": true,
       "allowBranch": ["master", "develop"]
     }
-  },
-  "bootstrap": {
-    "npmClientArgs": ["--no-lockfile"]
   }
 }

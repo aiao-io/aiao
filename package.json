@@ -26,7 +26,6 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "bootstrap": "lerna bootstrap --scope @integration/*",
     "build:libs": "lerna run build --scope @aiao/*",
     "build:tools": "rimraf dist/tools && tsc -p ./tools/tsconfig.tools.json",
     "clean": "git clean -dxf",
