@@ -7,8 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'lazy-module-demo';
-
   constructor(private lazyModuleLoader: LazyModuleLoader) {}
 
   async preload() {

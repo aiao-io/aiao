@@ -10,8 +10,6 @@ import { DialogComponent } from './home/dialog/dialog.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'lazy-component-demo';
-
   constructor(public lazyComponentLoader: LazyComponentLoader, public dialog: MatDialog) {}
 
   async openDialog() {

@@ -5,7 +5,3 @@
 ## 使用场景
 
 主动预加载模块
-
-## demo
-
-apps/lazy-module-demo

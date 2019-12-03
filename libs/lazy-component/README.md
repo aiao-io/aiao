@@ -10,7 +10,3 @@ angular 9 有新的方式. 此方法适用 angular 8 及以前版本
 ## 场景
 
 弹框弹出任意组件, 在后台页面操作数据时使用非常频繁
-
-## demo
-
-apps/lazy-component-demo
