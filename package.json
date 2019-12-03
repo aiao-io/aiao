@@ -26,10 +26,11 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "build:tools": "rimraf dist/tools && tsc -p ./tools/tsconfig.tools.json",
     "build:libs": "lerna run build --scope @aiao/*",
-    "postinstall": "yarn build:tools",
+    "build:tools": "rimraf dist/tools && tsc -p ./tools/tsconfig.tools.json",
+    "clean": "git clean -dxf",
     "commit": "npx git-cz",
+    "postinstall": "yarn build:tools",
     "run:tools": "ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register",
     "task:lodash-optimize": "yarn run:tools ./tools/tasks/lodash-optimize"
   },
