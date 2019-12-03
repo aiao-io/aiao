@@ -138,7 +138,7 @@ jobs:
       - run: *lint-affected
       - run: *test-affected
       - run: *coverage
-      - run: *e2e-affected
+      # - run: *e2e-affected
       - store_artifacts: *store_artifacts_coverage
       - store_artifacts: *store_artifacts_cypress
 # workflows
