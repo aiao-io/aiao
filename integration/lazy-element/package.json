@@ -1,5 +1,5 @@
 {
-  "name": "lazy-element",
+  "name": "@integration/lazy-element",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

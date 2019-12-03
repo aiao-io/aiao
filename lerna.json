@@ -1,6 +1,15 @@
 {
   "npmClient": "yarn",
   "packages": ["libs/*", "apps/*", "integration/*"],
-  "version": "0.0.0",
-  "npmClientArgs": ["--no-package-lock"]
+  "version": "independent",
+  "ignoreChanges": ["apps/**", "integration/**", "**/*.md"],
+  "command": {
+    "publish": {
+      "conventionalCommits": true,
+      "allowBranch": ["master", "develop"]
+    }
+  },
+  "bootstrap": {
+    "npmClientArgs": ["--no-lockfile"]
+  }
 }

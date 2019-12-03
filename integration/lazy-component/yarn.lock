@@ -2,17 +2,13 @@
 # yarn lockfile v1
 
 
-"@aiao/lazy-component@*":
+"@aiao/lazy-component@file:../../dist/libs/lazy-component":
   version "1.0.0"
-  resolved "https://registry.npm.taobao.org/@aiao/lazy-component/download/@aiao/lazy-component-1.0.0.tgz#23ba3ec74e401122f9be86e534706dac2587e7f1"
-  integrity sha1-I7o+x05AESL5voblNHBtrCWH5/E=
   dependencies:
     tslib "^1.9.0"
 
-"@aiao/lazy-module@*":
+"@aiao/lazy-module@file:../../dist/libs/lazy-module":
   version "1.0.0"
-  resolved "https://registry.npm.taobao.org/@aiao/lazy-module/download/@aiao/lazy-module-1.0.0.tgz#ad204e7fea1320a9cb396c61e006cfdb70872215"
-  integrity sha1-rSBOf+oTIKnLOWxh4AbP23CHIhU=
   dependencies:
     tslib "^1.9.0"
 

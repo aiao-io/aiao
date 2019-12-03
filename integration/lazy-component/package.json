@@ -1,5 +1,5 @@
 {
-  "name": "lazy-component",
+  "name": "@integration/lazy-component",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -11,8 +11,8 @@
   },
   "private": true,
   "dependencies": {
-    "@aiao/lazy-component": "*",
-    "@aiao/lazy-module": "*",
+    "@aiao/lazy-component": "file:../../dist/libs/lazy-component",
+    "@aiao/lazy-module": "file:../../dist/libs/lazy-module",
     "@angular/animations": "~8.2.14",
     "@angular/cdk": "^8.2.3",
     "@angular/common": "~8.2.14",

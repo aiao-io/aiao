@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
+    "bootstrap": "lerna bootstrap --scope @integration/*",
     "ng": "ng",
     "nx": "nx",
     "start": "ng serve",
