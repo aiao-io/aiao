@@ -1,0 +1,21 @@
+{
+  "npmScope": "stencil-toolkit-nx",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "angular-e2e": {
+      "tags": []
+    },
+    "angular": {
+      "tags": []
+    },
+    "stencil-lib": {
+      "tags": []
+    }
+  }
+}

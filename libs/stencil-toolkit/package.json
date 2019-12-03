@@ -13,9 +13,11 @@
     "url": "https://github.com/aiao-io/aiao/issues"
   },
   "keywords": [
-    "angular",
-    "ionc",
+    "nx",
     "stencil",
+    "angular",
+    "react",
+    "ionc",
     "toolkit"
   ],
   "main": "index.js",
