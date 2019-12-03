@@ -7,6 +7,7 @@ import { sass } from '@stencil/sass';
 export const config: Config = {
   namespace: 'stencil-lib',
   plugins: [sass()],
+  bundles: [{ components: ['my-component'] }],
   outputTargets: [
     {
       type: 'dist',
@@ -14,6 +15,14 @@ export const config: Config = {
     },
     {
       type: 'docs-readme'
+    },
+    {
+      type: 'angular',
+      componentCorePackage: '@stencil-toolkit-nx/stencil-lib',
+      directivesProxyFile: '../angular-lib/src/lib/directives/proxies.ts',
+      directivesUtilsFile: '../angular-lib/src/lib/directives/proxies-utils.ts',
+      directivesArrayFile: '../angular-lib/src/lib/directives/proxies-list.txt',
+      excludeComponents: []
     }
   ],
   copy: [

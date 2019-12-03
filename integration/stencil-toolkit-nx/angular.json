@@ -161,6 +161,44 @@
           }
         }
       }
+    },
+    "angular-lib": {
+      "projectType": "library",
+      "root": "libs/angular-lib",
+      "sourceRoot": "libs/angular-lib/src",
+      "prefix": "stencil-toolkit-nx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/angular-lib/tsconfig.lib.json",
+            "project": "libs/angular-lib/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/angular-lib/tsconfig.lib.json",
+              "libs/angular-lib/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/angular-lib/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/angular-lib/jest.config.js",
+            "tsConfig": "libs/angular-lib/tsconfig.spec.json",
+            "setupFile": "libs/angular-lib/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

@@ -16,6 +16,9 @@
     },
     "stencil-lib": {
       "tags": []
+    },
+    "angular-lib": {
+      "tags": []
     }
   }
 }

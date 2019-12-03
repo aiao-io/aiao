@@ -15,7 +15,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@stencil-toolkit-nx/angular-lib": ["libs/angular-lib/src/index.ts"],
+      "@stencil-toolkit-nx/stencil-lib": ["libs/stencil-lib"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
