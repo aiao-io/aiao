@@ -19,6 +19,15 @@
     },
     "angular-lib": {
       "tags": []
+    },
+    "react": {
+      "tags": []
+    },
+    "react-e2e": {
+      "tags": []
+    },
+    "react-lib": {
+      "tags": []
     }
   }
 }

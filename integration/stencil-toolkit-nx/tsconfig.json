@@ -10,14 +10,16 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
+    "typeRoots": ["node_modules/@types", "libs/stencil-lib"],
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "@stencil-toolkit-nx/angular-lib": ["libs/angular-lib/src/index.ts"],
-      "@stencil-toolkit-nx/stencil-lib": ["libs/stencil-lib"]
+      "@stencil-toolkit-nx/stencil-lib/loader": ["dist/libs/stencil-lib/loader"],
+      "@stencil-toolkit-nx/stencil-lib": ["dist/libs/stencil-lib"],
+      "@stencil-toolkit-nx/react-lib": ["libs/react-lib/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

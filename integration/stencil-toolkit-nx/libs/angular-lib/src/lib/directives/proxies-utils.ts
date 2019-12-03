@@ -5,10 +5,12 @@ export const proxyInputs = (Cmp: any, inputs: string[]) => {
   const Prototype = Cmp.prototype;
   inputs.forEach(item => {
     Object.defineProperty(Prototype, item, {
-      get() { return this.el[item]; },
-      set(val: any) {
-        this.z.runOutsideAngular(() => this.el[item] = val);
+      get() {
+        return this.el[item];
       },
+      set(val: any) {
+        this.z.runOutsideAngular(() => (this.el[item] = val));
+      }
     });
   });
 };
@@ -24,5 +26,5 @@ export const proxyMethods = (Cmp: any, methods: string[]) => {
 };
 
 export const proxyOutputs = (instance: any, el: any, events: string[]) => {
-  events.forEach(eventName => instance[eventName] = fromEvent(el, eventName));
+  events.forEach(eventName => (instance[eventName] = fromEvent(el, eventName)));
 };
