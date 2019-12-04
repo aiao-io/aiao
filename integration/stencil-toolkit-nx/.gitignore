@@ -38,6 +38,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-**/directives/proxies-list.txt
-**/directives/proxies-utils.ts
-**/directives/proxies.ts
+libs/**/directives/proxies-list.txt
+libs/**/directives/proxies-utils.ts
+libs/**/directives/proxies.ts
