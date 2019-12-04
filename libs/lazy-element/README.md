@@ -1,7 +1,22 @@
-# lazy-element
+# @aiao/lazy-element
 
-This library was generated with [Nx](https://nx.dev).
+[![npm][shields-lazy-module]][npm-lazy-module]
 
-## Running unit tests
+按需加载 `angular element`
 
-Run `nx test lazy-element` to execute the unit tests.
+## 场景
+
+显示动态内容
+
+## 安装
+
+```console
+yarn add @aiao/lazy-element
+```
+
+## 使用
+
+集成方法 [integration/lazy-element](/integration/lazy-element)
+
+[shields-lazy-module]: https://img.shields.io/npm/v/@aiao/lazy-module?style=flat-square
+[npm-lazy-module]: https://www.npmjs.com/@aiao/lazy-module

@@ -27,7 +27,7 @@ export class LazyElementLoader {
     if (!unregisteredSelectors.length) {
       return;
     }
-    return Promise.all(unregisteredSelectors.map(s => this.load(s))).then(d => undefined);
+    return this.loadUnRegisteredSelectors(unregisteredSelectors);
   }
 
   async loadFromHtmlElement(element: HTMLElement): Promise<void> {
@@ -35,7 +35,7 @@ export class LazyElementLoader {
     if (!unregisteredSelectors.length) {
       return;
     }
-    return Promise.all(unregisteredSelectors.map(s => this.load(s))).then(d => undefined);
+    return this.loadUnRegisteredSelectors(unregisteredSelectors);
   }
 
   async load(selector: string): Promise<void> {
@@ -66,5 +66,9 @@ export class LazyElementLoader {
 
     this.loading.set(selector, loadedAndRegistered);
     return loadedAndRegistered;
+  }
+
+  private async loadUnRegisteredSelectors(unregisteredSelectors: string[]) {
+    return Promise.all(unregisteredSelectors.map(s => this.load(s))).then(d => undefined);
   }
 }

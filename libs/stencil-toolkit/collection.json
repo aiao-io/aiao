@@ -1,0 +1,18 @@
+{
+  "name": "aiao stencil",
+  "version": "0.1",
+  "schematics": {
+    "library": {
+      "factory": "./lib/schematics/library/library",
+      "schema": "./lib/schematics/library/schema.json",
+      "aliases": ["lib"],
+      "description": "Create an stencil library"
+    },
+    "init": {
+      "factory": "./lib/schematics/init/init",
+      "schema": "./lib/schematics/init/schema.json",
+      "description": "Create an stencil init",
+      "hidden": true
+    }
+  }
+}

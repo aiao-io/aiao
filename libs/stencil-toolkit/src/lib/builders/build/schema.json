@@ -1,0 +1,20 @@
+{
+  "title": "stencil build",
+  "type": "object",
+  "properties": {
+    "outputPath": {
+      "type": "string"
+    },
+    "config": {
+      "type": "string"
+    },
+    "docs": {
+      "type": "boolean"
+    },
+    "stats": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["config"]
+}

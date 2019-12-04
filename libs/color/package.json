@@ -1,0 +1,24 @@
+{
+  "name": "@aiao/color",
+  "version": "1.0.1",
+  "description": "color tool",
+  "homepage": "https://github.com/aiao-io/aiao",
+  "author": "Jimmy<hero63418@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aiao-io/aiao.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aiao-io/aiao/issues"
+  },
+  "keywords": [
+    "color"
+  ],
+  "scripts": {
+    "build": "ng build color"
+  },
+  "peerDependencies": {
+    "lodash": "^4.17.15"
+  }
+}

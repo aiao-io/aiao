@@ -1,7 +1,5 @@
 files:
-  - source: /apps/aiao.io/content/zh-Hans/**/*.md
-    translation: /apps/aiao.io/content/%two_letters_code%/**/%original_file_name%
-  - source: /apps/aiao.io/src/locales/zh-Hans.xlf
-    translation: /apps/aiao.io/src/locales/%two_letters_code%.%file_extension%
   - source: /README.md
-    translation: /%file_name%-%two_letters_code%.%file_extension%
+    translation: /%file_name%.%two_letters_code%.%file_extension%
+  - source: /libs/*/*.md
+    translation: '%file_name%.%two_letters_code%.%file_extension%'

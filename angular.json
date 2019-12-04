@@ -1,154 +1,6 @@
 {
   "version": 1,
   "projects": {
-    "aiao.io": {
-      "projectType": "application",
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "apps/aiao.io",
-      "sourceRoot": "apps/aiao.io/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/apps/aiao.io/public/zh-Hans",
-            "index": "apps/aiao.io/src/index.html",
-            "main": "apps/aiao.io/src/main.ts",
-            "polyfills": "apps/aiao.io/src/polyfills.ts",
-            "tsConfig": "apps/aiao.io/tsconfig.app.json",
-            "aot": false,
-            "assets": [
-              "apps/aiao.io/src/favicon.ico",
-              "apps/aiao.io/src/assets",
-              "apps/aiao.io/src/manifest.webmanifest",
-              "apps/aiao.io/src/opensearch.xml",
-              {
-                "glob": "**/*.svg",
-                "input": "node_modules/ionicons/dist/ionicons/svg",
-                "output": "./svg"
-              }
-            ],
-            "styles": [
-              {
-                "input": "apps/aiao.io/src/themes/theme.core.scss"
-              },
-              {
-                "input": "apps/aiao.io/src/themes/theme.dark.scss",
-                "bundleName": "assets/themes/dark",
-                "lazy": true
-              },
-              {
-                "input": "apps/aiao.io/src/themes/theme.light.scss",
-                "bundleName": "assets/themes/light",
-                "lazy": true
-              }
-            ],
-            "scripts": ["apps/aiao.io/src/modernizr.js"]
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/aiao.io/src/environments/environment.ts",
-                  "with": "apps/aiao.io/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "statsJson": true,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "serviceWorker": true,
-              "ngswConfigPath": "apps/aiao.io/ngsw-config.json",
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "aiao.io:build",
-            "host": "0.0.0.0",
-            "disableHostCheck": true,
-            "port": 4201
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "aiao.io:build:production",
-              "progress": false
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "aiao.io:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/aiao.io/tsconfig.app.json", "apps/aiao.io/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!apps/aiao.io/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/aiao.io/jest.config.js",
-            "tsConfig": "apps/aiao.io/tsconfig.spec.json",
-            "setupFile": "apps/aiao.io/src/test-setup.ts"
-          }
-        }
-      }
-    },
-    "aiao.io-e2e": {
-      "root": "apps/aiao.io-e2e",
-      "sourceRoot": "apps/aiao.io-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/aiao.io-e2e/cypress.json",
-            "tsConfig": "apps/aiao.io-e2e/tsconfig.e2e.json",
-            "devServerTarget": "aiao.io:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "aiao.io:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/aiao.io-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/aiao.io-e2e/**"]
-          }
-        }
-      }
-    },
     "util": {
       "projectType": "library",
       "root": "libs/util",
@@ -286,6 +138,13 @@
       "projectType": "library",
       "schematics": {},
       "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/color/tsconfig.lib.json",
+            "project": "libs/color/ng-package.json"
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -299,6 +158,34 @@
             "jestConfig": "libs/color/jest.config.js",
             "tsConfig": "libs/color/tsconfig.spec.json"
           }
+        }
+      }
+    },
+    "stencil-toolkit": {
+      "projectType": "library",
+      "root": "libs/stencil-toolkit",
+      "sourceRoot": "libs/stencil-toolkit/src",
+      "prefix": "aiao",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/stencil-toolkit/tsconfig.lib.json", "libs/stencil-toolkit/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/stencil-toolkit/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stencil-toolkit/jest.config.js",
+            "tsConfig": "libs/stencil-toolkit/tsconfig.spec.json",
+            "setupFile": "libs/stencil-toolkit/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
         }
       }
     }
@@ -316,5 +203,5 @@
       "unitTestRunner": "jest"
     }
   },
-  "defaultProject": "aiao.io"
+  "defaultProject": "lazy-component"
 }

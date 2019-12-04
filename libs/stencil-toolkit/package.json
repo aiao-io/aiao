@@ -1,0 +1,37 @@
+{
+  "name": "@aiao/stencil-toolkit",
+  "version": "0.0.6",
+  "description": "Schematics and builders for stencil",
+  "homepage": "https://github.com/aiao-io/aiao",
+  "author": "Jimmy<hero63418@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aiao-io/aiao.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aiao-io/aiao/issues"
+  },
+  "keywords": [
+    "nx",
+    "stencil",
+    "angular",
+    "react",
+    "ionc",
+    "toolkit"
+  ],
+  "main": "index.js",
+  "types": "index.d.ts",
+  "builders": "builders.json",
+  "schematics": "./collection.json",
+  "scripts": {
+    "build": "./scripts/build.sh"
+  },
+  "dependencies": {
+    "@nrwl/jest": "*",
+    "@nrwl/workspace": "^8.0.0"
+  },
+  "peerDependencies": {
+    "@angular-devkit/schematics": "^8.0.0"
+  }
+}

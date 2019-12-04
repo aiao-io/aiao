@@ -5,7 +5,7 @@ const fixLodash = (...path: string[]) => {
   const ora = Ora();
   ora.succeed('自动修复 lodash 引用:' + path);
   const project = new Project();
-  project.addExistingSourceFiles(path);
+  project.addSourceFilesAtPaths(path);
   const sourceFiles = project.getSourceFiles(path);
   sourceFiles.forEach(file => {
     const imports = file.getImportDeclarations().filter(d => {

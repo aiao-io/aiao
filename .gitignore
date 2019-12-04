@@ -16,6 +16,7 @@ node_modules
 *.launch
 .settings/
 *.sublime-workspace
+*.log
 
 # IDE - VSCode
 .vscode/*
@@ -37,3 +38,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+libs/**/directives/proxies-list.txt
+libs/**/directives/proxies-utils.ts
+libs/**/directives/proxies.ts

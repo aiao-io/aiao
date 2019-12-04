@@ -41,13 +41,12 @@ save_yarn_cache: &save_yarn_cache
   key: node-deps-node12-{{ checksum "yarn.lock" }}
   paths:
     - ~/.cache/Cypress
-    - dist/tools
     - node_modules
 
 # install
 yarn_install: &yarn_install
   name: Install Dependencies
-  command: yarn install --non-interactive --no-lockfile
+  command: yarn install --frozen-lockfile --non-interactive
 
 # format
 format: &format
@@ -122,7 +121,7 @@ jobs:
       - run: *lint
       - run: *test
       - run: *coverage
-      - run: *e2e
+      # - run: *e2e
       - store_artifacts: *store_artifacts_coverage
       - store_artifacts: *store_artifacts_cypress
 
@@ -139,7 +138,7 @@ jobs:
       - run: *lint-affected
       - run: *test-affected
       - run: *coverage
-      - run: *e2e-affected
+      # - run: *e2e-affected
       - store_artifacts: *store_artifacts_coverage
       - store_artifacts: *store_artifacts_cypress
 # workflows

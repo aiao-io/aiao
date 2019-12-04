@@ -1,0 +1,23 @@
+# StencilToolkitNx
+
+这个项目使用 [nx](https://nx.dev) 管理
+
+## 安装
+
+```
+cd integration/stencil-toolkit-nx
+yarn install
+yarn ng build stencil-lib
+```
+
+## angular 演示
+
+```console
+yarn ng serve angular
+```
+
+## react 演示
+
+```console
+yarn ng serve react
+```

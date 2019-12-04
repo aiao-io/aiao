@@ -21,9 +21,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: install
         run: |
           yarn install --non-interactive --no-lockfile
-      - name: build aiao.io
+      - name: build libs
         run: |
-          yarn ng run aiao.io:build:production
+          yarn run build:libs

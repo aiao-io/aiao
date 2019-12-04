@@ -8,12 +8,6 @@
     "nx.json": "*"
   },
   "projects": {
-    "aiao.io-e2e": {
-      "tags": []
-    },
-    "aiao.io": {
-      "tags": []
-    },
     "util": {
       "tags": []
     },
@@ -27,6 +21,9 @@
       "tags": []
     },
     "color": {
+      "tags": []
+    },
+    "stencil-toolkit": {
       "tags": []
     }
   }

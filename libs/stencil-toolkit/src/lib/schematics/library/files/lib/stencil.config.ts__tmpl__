@@ -1,0 +1,26 @@
+import { resolve } from 'path';
+
+import { Config } from '@stencil/core';
+import { sass } from '@stencil/sass';
+
+export const config: Config = {
+  namespace: '<%= name %>',
+  plugins: [sass()],
+  outputTargets: [
+    {
+      type: 'dist',
+      esmLoaderPath: '../loader'
+    },
+    {
+      type: 'docs-readme'
+    }
+  ],<% if(vendors.ionic){  %>
+  copy: [
+    {
+      src: resolve('node_modules/@ionic/core'),
+      dest: resolve('<%= projectRoot %>/vendors/ionic')
+    }
+  ],<% } %>
+  tsconfig: 'tsconfig.json',
+  globalScript: 'src/lib/global/global.ts'
+};

@@ -1,12 +1,9 @@
-import { LazyModule } from '@aiao/lazy-module';
 import { APP_INITIALIZER, ComponentFactoryResolver, ModuleWithProviders, NgModule } from '@angular/core';
 
 import { LazyComponentFactoryResolver } from './lazy-component-factory-resolver';
 import { lazyRootInit } from './lazy-component.util';
 
-@NgModule({
-  imports: [LazyModule]
-})
+@NgModule()
 export class LazyComponentModule {
   constructor(
     lazyComponentFactoryResolver: LazyComponentFactoryResolver,

@@ -1,0 +1,11 @@
+{
+  "title": "stencil serve",
+  "type": "object",
+  "properties": {
+    "config": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["config"]
+}
