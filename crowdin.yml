@@ -1,4 +1,4 @@
-commit_message: 'docs(i10n):[%language%] %original_file_name% [ci skip]'
+commit_message: 'docs(i10n):[%language%] %original_file_name%'
 append_commit_message: false
 
 files:
