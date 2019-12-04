@@ -17,5 +17,5 @@ import { Color } from '@aiao/color';
 const color = new Color();
 ```
 
-[shields-color]: https://img.shields.io/npm/v/@aiao/color?label=&style=flat-square
+[shields-color]: https://img.shields.io/npm/v/@aiao/color?style=flat-square
 [npm-color]: https://www.npmjs.com/@aiao/color
