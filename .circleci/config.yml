@@ -158,3 +158,4 @@ workflows:
               ignore:
                 - master
                 - develop
+                - develop_translation
