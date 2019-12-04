@@ -4,7 +4,7 @@
 
 ## 基本用法
 
-```
+```console
 cd integration/lazy-component
 yarn
 yarn start

@@ -12,12 +12,12 @@ yarn ng build stencil-lib
 
 ## angular 演示
 
-```
+```console
 yarn ng serve angular
 ```
 
 ## react 演示
 
-```
+```console
 yarn ng serve react
 ```

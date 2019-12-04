@@ -38,3 +38,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+**/directives/proxies-list.txt
+**/directives/proxies-utils.ts
+**/directives/proxies.ts
