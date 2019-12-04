@@ -5,6 +5,8 @@
 ## 基本用法
 
 ```console
+yarn install
+yarn run build:libs
 cd integration/lazy-component
 yarn install
 yarn start
