@@ -5,10 +5,6 @@ All notable changes to this project will be documented in this file. See [Conven
 # 1.1.0 (2019-12-04)
 
 
-
-## 0.0.1 (2019-11-30)
-
-
 ### Bug Fixes
 
 * fix ts-mprph error ([0874d3a](https://github.com/aiao-io/aiao/commit/0874d3a3aa234c1b39e915628dcc27a7c56853d5))
