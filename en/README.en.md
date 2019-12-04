@@ -1,8 +1,8 @@
-# @aiao/lazy-module
+# @aiao/stencil-toolkit
 
-[![npm](https://img.shields.io/npm/v/@aiao/lazy-module?style=flat-square)](https://www.npmjs.com/@aiao/lazy-module)
+[![npm](https://img.shields.io/npm/v/@aiao/stencil-toolkit?style=flat-square)](https://www.npmjs.com/@aiao/stencil-toolkit)
 
-按需加载 `angular module`
+`stencil` 的工具集 , 支持 `nx`
 
 ## 场景
 
@@ -11,9 +11,13 @@
 ## 安装
 
 ```console
-yarn add @aiao/lazy-module
+yarn add @aiao/stencil-toolkit --dev
 ```
 
 ## 使用
 
-集成方法 [integration/lazy-module](/integration/lazy-module)
+```
+ng generate @aiao/stencil-toolkit:library you-library-name
+```
+
+nx 项目请参考 [integration/stencil-toolkit-nx](/integration/stencil-toolkit-nx)
