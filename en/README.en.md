@@ -1,17 +1,18 @@
-# @aiao/util
+# @aiao/color
 
-[![npm](https://img.shields.io/npm/v/@aiao/util?style=flat-square)](https://www.npmjs.com/@aiao/util)
+[![npm](https://img.shields.io/npm/v/@aiao/color?style=flat-square)](https://www.npmjs.com/@aiao/color)
 
-一些小工具
+处理颜色
 
-## 场景
-
-动态显示内容
-
-## 安装
+## Install
 
 ```console
-yarn add @aiao/util
+npm install @aiao/color
 ```
 
-## 使用
+## Usage
+
+```typescript
+import { Color } from '@aiao/color';
+const color = new Color();
+```
