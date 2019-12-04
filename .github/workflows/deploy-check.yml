@@ -11,8 +11,6 @@ on:
       - develop_translation
     branches-ignore:
       - develop_translation
-  branches-ignore:
-    - develop_translation
 
 jobs:
   check:
