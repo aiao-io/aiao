@@ -1,10 +1,10 @@
 {
   "name": "@aiao/color",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "build": "ng build color"
   },
-  "peerDependencies": {
-    "lodash": "^4.17.15"
+  "dependencies": {
+    "lodash": "*"
   }
 }
