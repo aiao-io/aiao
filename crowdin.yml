@@ -1,5 +1,9 @@
 files:
   - source: /*.md
+    ignore:
+      - /*.*.md
     translation: /%original_path%/%file_name%.%two_letters_code%.%file_extension%
   - source: /libs/*/*.md
+    ignore:
+      - /libs/*/*.*.md
     translation: /%original_path%/%file_name%.%two_letters_code%.%file_extension%
