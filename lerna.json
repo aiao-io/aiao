@@ -1,13 +1,14 @@
 {
   "npmClient": "yarn",
-  "packages": ["libs/*", "apps/*", "integration/*"],
+  "packages": ["libs/*"],
   "version": "independent",
   "ignoreChanges": ["apps/**", "integration/**", "**/*.md"],
   "command": {
-    "publish": {
+    "version": {
       "conventionalCommits": true,
       "allowBranch": ["master", "develop"],
-      "ignoreChanges": ["ignored-file", "*.md"]
+      "no-push": true,
+      "no-push-tags": true
     }
   }
 }
