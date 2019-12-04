@@ -1,6 +1,6 @@
 # 集成测试
 
-本目录包含一些库的集成用例, 每一个目录都是单独的项目.
+This directory contains some sample code, Each directory is a self-contained application.
 
 ## 基本用法
 
