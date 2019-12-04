@@ -6,7 +6,6 @@ on:
       - master
       - develop
   pull_request:
-    branches:
     paths-ignore:
       - develop_translation
     branches-ignore:
