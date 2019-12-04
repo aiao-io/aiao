@@ -10,3 +10,5 @@ node_modules
 libs/**/*.js
 apps/**/*.js
 !*.config.js
+
+**/*.en.md

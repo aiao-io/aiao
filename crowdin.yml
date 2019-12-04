@@ -7,3 +7,11 @@ files:
     ignore:
       - /*.*.md
     translation: /%original_path%/%file_name%.%two_letters_code%.%file_extension%
+  - source: integration/*.md
+    ignore:
+      - integration/*.*.md
+    translation: /%original_path%/%file_name%.%two_letters_code%.%file_extension%
+  - source: /integration/*/*.md
+    ignore:
+      - /integration/*/*.*.md
+    translation: /%original_path%/%file_name%.%two_letters_code%.%file_extension%

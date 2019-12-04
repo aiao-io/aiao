@@ -6,8 +6,8 @@ on:
       - master
       - develop
   pull_request:
-    branches:
-      - develop
+    branches-ignore:
+      - develop_translation
 
 jobs:
   check:
