@@ -1,4 +1,4 @@
-import { Color } from './color';
+import { Color } from '@aiao/color';
 
 describe('color', () => {
   it('#ffffff', () => {

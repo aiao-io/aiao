@@ -60,7 +60,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular:build"
+            "browserTarget": "angular:build",
+            "port": 5001,
+            "open": true
           },
           "configurations": {
             "production": {
@@ -235,7 +237,9 @@
         "serve": {
           "builder": "@nrwl/web:dev-server",
           "options": {
-            "buildTarget": "react:build"
+            "buildTarget": "react:build",
+            "port": 5002,
+            "open": true
           },
           "configurations": {
             "production": {

@@ -1,7 +1,22 @@
-# lazy-element
+# @aiao/lazy-element
 
-按需加载 angular custom element 模块
+[![npm][shields-lazy-module]][npm-lazy-module]
+
+按需加载 `angular element`
 
 ## 场景
 
-渲染后台渲染的动态内容, 并可以使用 angular 定义的自定义元素 (web components)
+显示动态内容
+
+## 安装
+
+```console
+yarn add @aiao/lazy-element
+```
+
+## 使用
+
+集成方法 [integration/lazy-element](/integration/lazy-element)
+
+[shields-lazy-module]: https://img.shields.io/npm/v/@aiao/lazy-module?style=flat-square
+[npm-lazy-module]: https://www.npmjs.com/@aiao/lazy-module

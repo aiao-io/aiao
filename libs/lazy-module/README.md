@@ -1,7 +1,22 @@
-# lazy-module
+# @aiao/lazy-module
 
-按需加载 angular 模块
+[![npm][shields-lazy-module]][npm-lazy-module]
 
-## 使用场景
+按需加载 `angular module`
 
-主动预加载模块
+## 场景
+
+动态显示内容
+
+## 安装
+
+```console
+yarn add @aiao/lazy-module
+```
+
+## 使用
+
+集成方法 [integration/lazy-module](/integration/lazy-module)
+
+[shields-lazy-module]: https://img.shields.io/npm/v/@aiao/lazy-module?style=flat-square
+[npm-lazy-module]: https://www.npmjs.com/@aiao/lazy-module
