@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/@aiao/util?style=flat-square)](https://www.npmjs.com/@aiao/util)
 
-一些小工具
+utils
 
 ## 场景
 

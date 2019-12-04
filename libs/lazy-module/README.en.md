@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/@aiao/lazy-module?style=flat-square)](https://www.npmjs.com/@aiao/lazy-module)
 
-按需加载 `angular module`
+lazy load `angular module`
 
 ## 场景
 
