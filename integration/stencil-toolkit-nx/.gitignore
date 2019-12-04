@@ -41,3 +41,4 @@ Thumbs.db
 libs/**/directives/proxies-list.txt
 libs/**/directives/proxies-utils.ts
 libs/**/directives/proxies.ts
+libs/stencil-lib/src/lib/components/*/readme.md
