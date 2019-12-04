@@ -1,19 +1,19 @@
-# @aiao/lazy-element
+# @aiao/lazy-module
 
 [![npm](https://img.shields.io/npm/v/@aiao/lazy-module?style=flat-square)](https://www.npmjs.com/@aiao/lazy-module)
 
-按需加载 `angular element`
+按需加载 `angular module`
 
 ## 场景
 
-显示动态内容
+动态显示内容
 
 ## 安装
 
 ```console
-yarn add @aiao/lazy-element
+yarn add @aiao/lazy-module
 ```
 
 ## 使用
 
-集成方法 [integration/lazy-element](/integration/lazy-element)
+集成方法 [integration/lazy-module](/integration/lazy-module)
