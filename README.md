@@ -12,7 +12,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/13aea8bc656dd6bfb093/maintainability)](https://codeclimate.com/github/aiao-io/aiao/maintainability)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/aiao-io/aiao.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/aiao-io/aiao/context:javascript)
 
-用 `monorepo` 风格代码统一管理发布一些 `npm` 库.
+用 `monorepo` 风格统一管理发布 `npm` 库.
 
 ## Libs
 
