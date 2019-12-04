@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/@aiao/color?style=flat-square)](https://www.npmjs.com/@aiao/color)
 
-处理颜色
+A light, small and simple typescript library for color conversion and manipulation.
 
 ## Install
 
