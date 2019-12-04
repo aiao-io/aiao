@@ -12,7 +12,7 @@ yarn install
 yarn start
 ```
 
-| Package              | 简介                                                |                                |
+| Package              | Description                                       |                                |
 | -------------------- | ------------------------------------------------- | ------------------------------ |
 | `lazy-component`     | 集成 `@aiao/lazy-component`                         | [Detail](./lazy-component)     |
 | `lazy-element`       | 集成 `@aiao/lazy-element`                           | [Detail](./lazy-element)       |
