@@ -4,17 +4,17 @@
 
 `stencil` 的工具集 , 支持 `nx`
 
-## 场景
+## Use Case
 
 动态显示内容
 
-## 安装
+## Install
 
 ```console
 yarn add @aiao/stencil-toolkit --dev
 ```
 
-## 使用
+## Usage
 
 ```
 ng generate @aiao/stencil-toolkit:library you-library-name

@@ -1,6 +1,6 @@
 # 集成测试
 
-本目录包含一些库的集成用例, 每一个目录都是单独的项目.
+This directory contains some sample code, Each directory is a self-contained application.
 
 ## 基本用法
 
@@ -12,7 +12,7 @@ yarn install
 yarn start
 ```
 
-| Package              | 简介                                                |                                |
+| Package              | Description                                       |                                |
 | -------------------- | ------------------------------------------------- | ------------------------------ |
 | `lazy-component`     | 集成 `@aiao/lazy-component`                         | [Detail](./lazy-component)     |
 | `lazy-element`       | 集成 `@aiao/lazy-element`                           | [Detail](./lazy-element)       |

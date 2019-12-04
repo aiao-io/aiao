@@ -4,16 +4,16 @@
 
 lazy load `angular element`
 
-## 场景
+## Use Case
 
 显示动态内容
 
-## 安装
+## Install
 
 ```console
 yarn add @aiao/lazy-element
 ```
 
-## 使用
+## Usage
 
 集成方法 [integration/lazy-element](/integration/lazy-element)
