@@ -1,3 +1,5 @@
 files:
   - source: /README.md
     translation: /%file_name%.%two_letters_code%.%file_extension%
+  - source: /libs/*/*.md
+    translation: '%file_name%.%two_letters_code%.%file_extension%'
