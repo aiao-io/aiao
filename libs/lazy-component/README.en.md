@@ -2,11 +2,11 @@
 
 [![npm](https://img.shields.io/npm/v/@aiao/lazy-component?label=&style=flat-square)](https://www.npmjs.com/@aiao/lazy-component)
 
-lazy load any `module`'s `component`. https://github.com/angular/angular/issues/14324 的解决方案
+lazy load any `module`'s `component`. https://github.com/angular/angular/issues/14324 issue's solution
 
-> angular 9 有新的方式还没研究. 此方法暂时适用 angular 8
+> angular 9 has a new way to do this(not delve into yet). This applies to angular 8 for now.
 
-## 场景
+## Use Case
 
 弹框弹出任意组件, 在后台页面操作数据时使用非常频繁
 
