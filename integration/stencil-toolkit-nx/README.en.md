@@ -2,7 +2,7 @@
 
 这个项目使用 [nx](https://nx.dev) 管理
 
-## 安装
+## Install
 
 ```
 cd integration/stencil-toolkit-nx
