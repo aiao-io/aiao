@@ -7,7 +7,7 @@ on:
       - develop
   pull_request:
     branches-ignore:
-      - '*_translation'
+      - 'develop_translation'
 
 jobs:
   check:
