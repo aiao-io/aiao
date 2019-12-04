@@ -8,14 +8,14 @@ lazy load any `module`'s `component`. https://github.com/angular/angular/issues/
 
 ## Use Case
 
-弹框弹出任意组件, 在后台页面操作数据时使用非常频繁
+Present any module's component by modal, most used in the backend to manipulate data frequently.
 
-## 安装
+## Install
 
 ```console
 yarn add @aiao/lazy-component
 ```
 
-## 使用
+## Usage
 
-集成方法 [integration/lazy-component](/integration/lazy-component)
+Integration: [integration/lazy-component](/integration/lazy-component)
