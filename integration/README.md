@@ -6,7 +6,7 @@
 
 ```console
 cd integration/lazy-component
-yarn
+yarn install
 yarn start
 ```
 
