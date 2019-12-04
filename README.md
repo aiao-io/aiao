@@ -22,12 +22,12 @@
 
 ## Angular
 
-| Package                 | 介绍                                  | 版本                                                   |
-| ----------------------- | ------------------------------------- | ------------------------------------------------------ |
-| `@aiao/lazy-module`     | 按需加载 `angular module`             | [![npm][shields-lazy-module]][npm-lazy-module]         |
-| `@aiao/lazy-element`    | 按需加载 `angular element`            | [![npm][shields-lazy-element]][npm-lazy-element]       |
-| `@aiao/lazy-component`  | 按需加载 任意 `module` 的 `component` | [![npm][shields-lazy-component]][npm-lazy-component]   |
-| `@aiao/stencil-toolkit` | `stencil` 工具集 , 支持 `nx`          | [![npm][shields-stencil-toolkit]][npm-stencil-toolkit] |
+| Package                 | 介绍                                  | 版本                                                   |                                     |
+| ----------------------- | ------------------------------------- | ------------------------------------------------------ | ----------------------------------- |
+| `@aiao/lazy-module`     | 按需加载 `angular module`             | [![npm][shields-lazy-module]][npm-lazy-module]         | [详情](./libs/lazy-module)          |
+| `@aiao/lazy-element`    | 按需加载 `angular element`            | [![npm][shields-lazy-element]][npm-lazy-element]       | [详情](./libs/lazy-element)         |
+| `@aiao/lazy-component`  | 按需加载 任意 `module` 的 `component` | [![npm][shields-lazy-component]][npm-lazy-component]   | [详情](./libs/lazy-component)       |
+| `@aiao/stencil-toolkit` | `stencil` 工具集 , 支持 `nx`          | [![npm][shields-stencil-toolkit]][npm-stencil-toolkit] | [详情](./libs/lazy-stencil-toolkit) |
 
 ## License MIT
 
