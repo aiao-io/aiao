@@ -16,4 +16,4 @@ yarn add @aiao/lazy-component
 
 ## 使用
 
- 请查看 Demo [integration/lazy-component](/integration/lazy-component)
+集成方法 [integration/lazy-component](/integration/lazy-component)
