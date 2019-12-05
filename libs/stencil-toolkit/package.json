@@ -1,6 +1,6 @@
 {
   "name": "@aiao/stencil-toolkit",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Schematics and builders for stencil",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
