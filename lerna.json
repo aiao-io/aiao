@@ -6,9 +6,9 @@
   "command": {
     "version": {
       "conventionalCommits": true,
-      "allowBranch": ["master", "develop"],
-      "no-push": true,
-      "no-push-tags": true
+      "allowBranch": ["master"],
+      "push": false,
+      "gitTagVersion": false
     }
   }
 }
