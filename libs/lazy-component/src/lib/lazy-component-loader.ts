@@ -14,6 +14,7 @@ export class LazyComponentLoader {
     if (this.loading.has(pathSelectorKey)) {
       return this.loading.get(pathSelectorKey);
     }
+
     const componentType = this.lazyModuleLoader.load(modulePath).then(moduleRef => {
       const find = findComponentFromModuleRef(moduleRef, selector);
       if (!find) {

@@ -4,9 +4,9 @@ import { TestBed } from '@angular/core/testing';
 
 describe('LazyModuleLoader', () => {
   let lazyModuleLoader: LazyModuleLoader;
+  let compiler: Compiler;
   let lazymodules: LazyRoutes[];
   let aModuleFactory: FakeModuleFactory;
-  let compiler: Compiler;
 
   beforeEach(() => {
     aModuleFactory = new FakeModuleFactory('a-module');
