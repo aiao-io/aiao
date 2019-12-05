@@ -1,6 +1,6 @@
 module.exports = {
   name: 'stencil-lib',
-  preset: '../../jest.config.js',
+  preset: '@stencil/core/testing',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
