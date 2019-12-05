@@ -1,20 +1,20 @@
 import { LazyModuleLoader, LazyRoutes, matcher } from '@aiao/lazy-module';
-import { ComponentFactoryResolver, Injector, NgModuleFactory, NgModuleRef, Type, Compiler } from '@angular/core';
+import { Compiler, ComponentFactoryResolver, Injector, NgModuleFactory, NgModuleRef, Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 describe('LazyModuleLoader', () => {
   let lazyModuleLoader: LazyModuleLoader;
   let lazymodules: LazyRoutes[];
-  let aModule: FakeModuleFactory;
+  let aModuleFactory: FakeModuleFactory;
   let compiler: Compiler;
 
   beforeEach(() => {
-    aModule = new FakeModuleFactory('a-module');
+    aModuleFactory = new FakeModuleFactory('a-module');
     lazymodules = [
       [
         {
           name: 'AModule',
-          loadChildren: () => Promise.resolve(aModule),
+          loadChildren: () => Promise.resolve(aModuleFactory),
           matcher
         },
         {
@@ -29,23 +29,24 @@ describe('LazyModuleLoader', () => {
         }
       ]
     ];
-    const injector = TestBed.configureTestingModule({
-      providers: [LazyModuleLoader]
-    });
+    const injector = TestBed.configureTestingModule({ providers: [LazyModuleLoader] });
     lazyModuleLoader = injector.get(LazyModuleLoader);
     compiler = injector.get(Compiler);
-
     lazyModuleLoader.add(lazymodules);
   });
 
-  it('load NgModuleFactory', async () => {
+  it('载入 NgModuleFactory', async () => {
     const module_a = await lazyModuleLoader.load('AModule');
     expect(module_a.instance).toEqual('a-module');
-    const module_a_again = await lazyModuleLoader.load('AModule');
-    expect(module_a_again.instance).toEqual('a-module');
   });
 
-  it('load moduleRef', async () => {
+  it('载入 NgModuleFactory 2 次 只执行创建 1 次', async () => {
+    const aModuleFactoryCreate = spyOn(aModuleFactory, 'create').and.returnValue(new FakeModuleRef(''));
+    await Promise.all([lazyModuleLoader.load('AModule'), lazyModuleLoader.load('AModule')]);
+    expect(aModuleFactoryCreate).toHaveBeenCalledTimes(1);
+  });
+
+  it('load module', async () => {
     const compilerSpy = spyOn(compiler, 'compileModuleAsync').and.returnValue(
       Promise.resolve(new FakeModuleFactory('b-module'))
     );
@@ -54,7 +55,7 @@ describe('LazyModuleLoader', () => {
     expect(module_b.instance).toEqual('b-module');
   });
 
-  it('不重复运行初始化相同名称的module', async () => {
+  it('加载模块后添加相同命名模块将会添加无效', async () => {
     lazyModuleLoader.load('AModule').then(() => {
       expect(lazyModuleLoader['toLoad'].get('AModule')).not.toEqual(1);
     });
@@ -69,23 +70,23 @@ describe('LazyModuleLoader', () => {
     ]);
   });
 
-  it('不重复运行初始化相同名称的module', async () => {
+  it('加载模块前添加相同命名模块将会替换原有模块', async () => {
     lazyModuleLoader.add([
       [
         {
           name: 'AModule',
-          loadChildren: () => Promise.resolve(1),
+          loadChildren: () => Promise.resolve(new FakeModuleFactory('c-module')),
           matcher
         }
       ]
     ]);
 
-    lazyModuleLoader.load('AModule').then(() => {
-      expect(lazyModuleLoader['toLoad'].get('AModule')).toEqual(1);
+    lazyModuleLoader.load('AModule').then(aModule => {
+      expect(aModule.instance).toEqual('c-module');
     });
   });
 
-  it('不重复运行 promise', async () => {
+  it('不会重复运行 compileModuleAsync', async () => {
     const compilerSpy = spyOn(compiler, 'compileModuleAsync').and.returnValue(
       Promise.resolve(new FakeModuleFactory('b-module'))
     );
@@ -93,18 +94,17 @@ describe('LazyModuleLoader', () => {
     expect(compilerSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('load error', async () => {
+  it('加载模块时发生网络错误', async () => {
     const compilerSpy = spyOn(compiler, 'compileModuleAsync').and.returnValue(Promise.reject('promise error'));
     try {
       await lazyModuleLoader.load('BModule');
     } catch (error) {
-      console.log('error', error);
       expect(error).toEqual('promise error');
     }
     expect(compilerSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('not found name', async () => {
+  it('加载没有的模块名', async () => {
     try {
       await lazyModuleLoader.load('myName');
     } catch (error) {
@@ -128,7 +128,6 @@ class FakeModuleRef extends NgModuleRef<any> {
   destroy() {}
   onDestroy(_callback: () => void) {}
 }
-
 class FakeModuleFactory extends NgModuleFactory<any> {
   moduleType: Type<any>;
   moduleRefToCreate = new FakeModuleRef(this.modulePath);
