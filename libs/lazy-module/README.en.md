@@ -16,4 +16,4 @@ yarn add @aiao/lazy-module
 
 ## Usage
 
-集成方法 [integration/lazy-module](/integration/lazy-module)
+Integration: [integration/lazy-module](/integration/lazy-module)
