@@ -1,4 +1,4 @@
-import { join } from 'path';
+import { join, resolve } from 'path';
 import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -17,6 +17,6 @@ function stencilServe(options: StencilServeOptions, context: BuilderContext): Ob
   const { config: config_path } = options;
   const { workspaceRoot } = context;
   const args = ['build', `--config ${join(workspaceRoot, config_path)}`, '--dev', '--watch', '--serve'];
-  const scri = run('node_modules/.bin/stencil', args);
-  return from(scri).pipe(map(() => ({ success: true })));
+  const cmd = resolve(workspaceRoot, 'node_modules/.bin/stencil');
+  return from(run(cmd, args)).pipe(map(() => ({ success: true })));
 }
