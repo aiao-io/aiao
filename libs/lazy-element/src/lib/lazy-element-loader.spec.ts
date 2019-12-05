@@ -17,7 +17,6 @@ import { from } from 'rxjs';
 
 describe('LazyElementModule', () => {
   let lazyElementLoader: LazyElementLoader;
-  let compiler: Compiler;
   beforeEach(async(() => {
     const injector = TestBed.configureTestingModule({
       imports: [
@@ -41,7 +40,6 @@ describe('LazyElementModule', () => {
       ]
     });
     lazyElementLoader = injector.get(LazyElementLoader);
-    compiler = injector.get(Compiler);
   }));
 
   describe('loadFromHtmlElement()', () => {
