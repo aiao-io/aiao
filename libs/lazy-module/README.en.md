@@ -6,7 +6,7 @@ lazy load `angular module`
 
 ## Use Case
 
-动态显示内容
+render content dynamically
 
 ## Install
 
