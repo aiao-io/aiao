@@ -1,6 +1,5 @@
 import { matcher } from '@aiao/lazy-module';
 import {
-  Compiler,
   ComponentFactory,
   ComponentFactoryResolver,
   ComponentRef,
@@ -15,7 +14,7 @@ import { LazyElementLoader } from './lazy-element-loader';
 import { LazyElementModule } from './lazy-element.module';
 import { from } from 'rxjs';
 
-describe('LazyElementModule', () => {
+describe('LazyElementLoader', () => {
   let lazyElementLoader: LazyElementLoader;
   beforeEach(async(() => {
     const injector = TestBed.configureTestingModule({
