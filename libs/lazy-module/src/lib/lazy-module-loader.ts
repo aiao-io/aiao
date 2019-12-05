@@ -48,6 +48,6 @@ export class LazyModuleLoader {
       this.loading.set(name, loadedAndRegistered);
       return loadedAndRegistered;
     }
-    throw new Error(`module not found name:${name}`);
+    throw new Error(`module not found:${name}`);
   }
 }

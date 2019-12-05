@@ -4,7 +4,7 @@ import { ROUTES } from '@angular/router';
 import { LazyModuleLoader } from './lazy-module-loader';
 import { LAZY_ROUTES_TOKEN, LazyRoutes } from './lazy-module-registry';
 
-@NgModule({})
+@NgModule()
 export class LazyModule {
   constructor(
     lazyModuleLoader: LazyModuleLoader,
