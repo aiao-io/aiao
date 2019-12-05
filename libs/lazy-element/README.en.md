@@ -16,4 +16,4 @@ yarn add @aiao/lazy-element
 
 ## Usage
 
-集成方法 [integration/lazy-element](/integration/lazy-element)
+Integration: [integration/lazy-element](/integration/lazy-element)
