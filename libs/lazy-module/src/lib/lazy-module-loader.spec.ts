@@ -1,6 +1,6 @@
+import { LazyModuleLoader, LazyRoutes, matcher } from '@aiao/lazy-module';
+import { ComponentFactoryResolver, Injector, NgModuleFactory, NgModuleRef, Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { LazyRoutes, LazyModuleLoader, matcher } from '@aiao/lazy-module';
-import { NgModuleFactory, Type, Injector, NgModuleRef, ComponentFactoryResolver } from '@angular/core';
 
 describe('LazyModuleLoader', () => {
   let lazyModuleLoader: LazyModuleLoader;
@@ -26,8 +26,10 @@ describe('LazyModuleLoader', () => {
 
   it('loadContainedCustomElements()', async () => {
     lazyModuleLoader.add(lazymodules);
-    const m = await lazyModuleLoader.load('AModule');
-    expect(m.instance).toEqual('a-module');
+    const module_a = await lazyModuleLoader.load('AModule');
+    expect(module_a.instance).toEqual('a-module');
+    const module_a_again = await lazyModuleLoader.load('AModule');
+    expect(module_a_again.instance).toEqual('a-module');
   });
 });
 
