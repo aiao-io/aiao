@@ -235,9 +235,7 @@ export class Img implements ComponentInterface {
         )}
         {this.loading && (
           <div class="loading">
-            <slot name="loading">
-              <ion-spinner />
-            </slot>
+            <slot name="loading"></slot>
           </div>
         )}
         <img

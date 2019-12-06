@@ -17,10 +17,12 @@
 
 ### 通用
 
-| Package       | 介绍       | 版本                               |                      |
-| ------------- | ---------- | ---------------------------------- | -------------------- |
-| `@aiao/color` | 处理颜色   | [![npm][shields-color]][npm-color] | [详情](./libs/color) |
-| `@aiao/util`  | 一些小工具 | [![npm][shields-util]][npm-util]   | [详情](./libs/util)  |
+| Package               | 介绍               | 版本                               |                              |
+| --------------------- | ------------------ | ---------------------------------- | ---------------------------- |
+| `@aiao/color`         | 处理颜色           | [![npm][shields-color]][npm-color] | [详情](./libs/color)         |
+| `@aiao/util`          | 一些小工具         | [![npm][shields-util]][npm-util]   | [详情](./libs/util)          |
+| `@aiao/image-storage` | 线上图片地址生成器 | 开发中                             | [详情](./libs/image-storage) |
+| `@aiao/elements`      | web component      | 开发中                             | [详情](./libs/elements)      |
 
 ### Angular
 
@@ -42,6 +44,7 @@
 [shields-lazy-component]: https://img.shields.io/npm/v/@aiao/lazy-component?label=&style=flat-square
 [shields-stencil-toolkit]: https://img.shields.io/npm/v/@aiao/stencil-toolkit?label=&style=flat-square
 [npm-color]: https://www.npmjs.com/@aiao/color
+[npm-util]: https://www.npmjs.com/@aiao/util
 [npm-util]: https://www.npmjs.com/@aiao/util
 [npm-lazy-module]: https://www.npmjs.com/@aiao/lazy-module
 [npm-lazy-element]: https://www.npmjs.com/@aiao/lazy-element
