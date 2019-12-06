@@ -36,6 +36,7 @@
   },
   "private": true,
   "dependencies": {
+    "@aiao/util": "^0.2.0",
     "@angular/animations": "^8.2.14",
     "@angular/cdk": "^8.2.3",
     "@angular/common": "^8.2.14",
@@ -64,6 +65,7 @@
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
+    "@aiao/stencil-toolkit": "^0.0.9",
     "@angular-devkit/build-angular": "^0.803.20",
     "@angular-devkit/build-ng-packagr": "~0.803.20",
     "@angular/cli": "8.3.20",
@@ -95,6 +97,8 @@
     "ts-node": "~8.5.4",
     "tsickle": "^0.37.1",
     "tslint": "~5.20.1",
+    "tslint-ionic-rules": "^0.0.21",
+    "tslint-react": "^4.0.0",
     "typescript": "~3.5.0",
     "yargs": "^15.0.2"
   },

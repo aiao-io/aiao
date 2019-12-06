@@ -1,0 +1,26 @@
+{
+  "name": "@aiao/elements",
+  "version": "0.0.1",
+  "description": "Stencil Component Starter",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/types/interface.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/elements/elements.js",
+  "files": [
+    "dist",
+    "loader",
+    "package.json",
+    "readme.md"
+  ],
+  "scripts": {
+    "build": "ng build elements"
+  },
+  "devDependencies": {
+    "@stencil/core": "^1.8.1"
+  },
+  "license": "MIT"
+}

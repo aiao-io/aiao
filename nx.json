@@ -25,6 +25,9 @@
     },
     "stencil-toolkit": {
       "tags": []
+    },
+    "elements": {
+      "tags": []
     }
   }
 }
