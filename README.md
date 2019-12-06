@@ -45,7 +45,6 @@
 [shields-stencil-toolkit]: https://img.shields.io/npm/v/@aiao/stencil-toolkit?label=&style=flat-square
 [npm-color]: https://www.npmjs.com/@aiao/color
 [npm-util]: https://www.npmjs.com/@aiao/util
-[npm-util]: https://www.npmjs.com/@aiao/util
 [npm-lazy-module]: https://www.npmjs.com/@aiao/lazy-module
 [npm-lazy-element]: https://www.npmjs.com/@aiao/lazy-element
 [npm-lazy-component]: https://www.npmjs.com/@aiao/lazy-component
