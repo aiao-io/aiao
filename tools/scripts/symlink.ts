@@ -1,5 +1,6 @@
 import { ensureSymlinkSync, rmdirSync } from 'fs-extra';
-
 console.log('ensureSymlink aiao');
-rmdirSync('node_modules/@aiao', { recursive: true });
+try {
+  rmdirSync('node_modules/@aiao', { recursive: true });
+} catch {}
 ensureSymlinkSync('dist/libs', 'node_modules/@aiao');
