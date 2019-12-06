@@ -188,6 +188,76 @@
           "styleext": "scss"
         }
       }
+    },
+    "elements": {
+      "root": "libs/elements",
+      "sourceRoot": "libs/elements/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@aiao/stencil-toolkit:build",
+          "options": {
+            "outputPath": "dist/libs/elements",
+            "config": "libs/elements/stencil.config.ts"
+          }
+        },
+        "serve": {
+          "builder": "@aiao/stencil-toolkit:serve",
+          "options": {
+            "config": "libs/elements/stencil.config.ts"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/elements/tsconfig.lib.json", "libs/elements/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/elements/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/elements/jest.config.js",
+            "tsConfig": "libs/elements/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "image-storage": {
+      "projectType": "library",
+      "root": "libs/image-storage",
+      "sourceRoot": "libs/image-storage/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/image-storage/tsconfig.lib.json",
+            "project": "libs/image-storage/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/image-storage/tsconfig.lib.json", "libs/image-storage/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/image-storage/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/image-storage/jest.config.js",
+            "tsConfig": "libs/image-storage/tsconfig.spec.json",
+            "setupFile": "libs/image-storage/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
