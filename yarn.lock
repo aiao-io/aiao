@@ -2,21 +2,6 @@
 # yarn lockfile v1
 
 
-"@aiao/stencil-toolkit@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@aiao/stencil-toolkit/-/stencil-toolkit-0.0.9.tgz#56576d76bf9536cb5934bf1c68944efd8061024b"
-  integrity sha512-uN0hOhNP4xmfrE3F2LjXcsHHRld1+KlPPMC7o9Ju26z1GUPpOiu4PXsYSCU1rI9SwrrL/lWWGwdyqH1WOyrYnA==
-  dependencies:
-    "@nrwl/jest" "*"
-    "@nrwl/workspace" "^8.0.0"
-
-"@aiao/util@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@aiao/util/-/util-0.2.0.tgz#eff9a4125588b6aa21c3579a10222eb1d8254ad1"
-  integrity sha512-SI/tlp7UKAraJHYPIGxR4Ut5q0HcwprP9KaSQ/KgyQXrJI9QUpawGgah57EKR8CddP/q97sbo0tyGUWvwRLpIg==
-  dependencies:
-    tslib "^1.9.0"
-
 "@angular-devkit/architect@0.803.14":
   version "0.803.14"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.803.14.tgz#548d0a2e4e0052162c53ab75c50171e6496d4c0c"
@@ -2100,7 +2085,7 @@
     tsconfig-paths-webpack-plugin "3.2.0"
     webpack-node-externals "1.7.2"
 
-"@nrwl/jest@*", "@nrwl/jest@8.9.0":
+"@nrwl/jest@8.9.0":
   version "8.9.0"
   resolved "https://registry.yarnpkg.com/@nrwl/jest/-/jest-8.9.0.tgz#be8d07c0c3b10d918e119eaa8b51a14013c3cb97"
   integrity sha512-Vi10aiIAsNb5xqedyPT173nQLhblfFZG/GleO+SkM9qXjRLm6n1KgFdiLuOI5V+mtU0UcCSd+SbI2uJsk19i2w==
@@ -2122,7 +2107,7 @@
     minimist "^1.2.0"
     strip-json-comments "2.0.1"
 
-"@nrwl/workspace@8.9.0", "@nrwl/workspace@^8.0.0":
+"@nrwl/workspace@8.9.0":
   version "8.9.0"
   resolved "https://registry.yarnpkg.com/@nrwl/workspace/-/workspace-8.9.0.tgz#4dc3d1ff9b34ce983158a5aa4bf3a0ef28c0df69"
   integrity sha512-mwimmwx1V5kO9DXVygw++PoRhyIrut+LSQ3VGWu+ui9qwNQlcCLPwQQdHHp447qGdcb8Qne9ZPMHXUt8sWo5EQ==

@@ -5,52 +5,48 @@
  * It contains typing information for all components that exist in this project.
  */
 
-
+import { ImageMethodType } from '@aiao/image-storage';
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-import {
-  ImageMethodType,
-  ImgArea,
-} from './lib/interfaces/img.interface';
+
+import { ImgArea } from './lib/interfaces/img.interface';
 
 export namespace Components {
   interface AiaoImg {
     /**
-    * alt
-    */
-    'alt': string;
+     * alt
+     */
+    alt: string;
     /**
-    * 自定义动画
-    */
-    'animation': 'fade' | string;
-    'height': string;
+     * 自定义动画
+     */
+    animation: 'fade' | string;
+    height: string;
     /**
-    * 锚点
-    */
-    'map': ImgArea[];
-    'maxHeight': string;
-    'maxWidth': string;
+     * 锚点
+     */
+    map: ImgArea[];
+    maxHeight: string;
+    maxWidth: string;
     /**
-    * 图片方法 lfit：等比缩放，限制在设定在指定w与h的矩形内的最大图片 mfit：等比缩放，延伸出指定w与h的矩形框外的最小图片 fill：固定宽高，将延伸出指定w与h的矩形框外的最小图片进行居中裁剪 pad：固定宽高，缩略填充 fixed：固定宽高，强制缩略
-    */
-    'method': ImageMethodType;
-    'minHeight': string;
-    'minWidth': string;
+     * 图片方法 lfit：等比缩放，限制在设定在指定w与h的矩形内的最大图片 mfit：等比缩放，延伸出指定w与h的矩形框外的最小图片 fill：固定宽高，将延伸出指定w与h的矩形框外的最小图片进行居中裁剪 pad：固定宽高，缩略填充 fixed：固定宽高，强制缩略
+     */
+    method: ImageMethodType;
+    minHeight: string;
+    minWidth: string;
     /**
-    * 平台
-    */
-    'platform'?: string;
-    'reload': () => Promise<void>;
+     * 平台
+     */
+    platform?: string;
+    reload: () => Promise<void>;
     /**
-    * 图片地址
-    */
-    'src'?: string;
-    'width': string;
+     * 图片地址
+     */
+    src?: string;
+    width: string;
   }
 }
 
 declare global {
-
-
   interface HTMLAiaoImgElement extends Components.AiaoImg, HTMLStencilElement {}
   var HTMLAiaoImgElement: {
     prototype: HTMLAiaoImgElement;
@@ -64,40 +60,40 @@ declare global {
 declare namespace LocalJSX {
   interface AiaoImg {
     /**
-    * alt
-    */
-    'alt'?: string;
+     * alt
+     */
+    alt?: string;
     /**
-    * 自定义动画
-    */
-    'animation'?: 'fade' | string;
-    'height'?: string;
+     * 自定义动画
+     */
+    animation?: 'fade' | string;
+    height?: string;
     /**
-    * 锚点
-    */
-    'map'?: ImgArea[];
-    'maxHeight'?: string;
-    'maxWidth'?: string;
+     * 锚点
+     */
+    map?: ImgArea[];
+    maxHeight?: string;
+    maxWidth?: string;
     /**
-    * 图片方法 lfit：等比缩放，限制在设定在指定w与h的矩形内的最大图片 mfit：等比缩放，延伸出指定w与h的矩形框外的最小图片 fill：固定宽高，将延伸出指定w与h的矩形框外的最小图片进行居中裁剪 pad：固定宽高，缩略填充 fixed：固定宽高，强制缩略
-    */
-    'method'?: ImageMethodType;
-    'minHeight'?: string;
-    'minWidth'?: string;
-    'onIonError'?: (event: CustomEvent<void>) => void;
+     * 图片方法 lfit：等比缩放，限制在设定在指定w与h的矩形内的最大图片 mfit：等比缩放，延伸出指定w与h的矩形框外的最小图片 fill：固定宽高，将延伸出指定w与h的矩形框外的最小图片进行居中裁剪 pad：固定宽高，缩略填充 fixed：固定宽高，强制缩略
+     */
+    method?: ImageMethodType;
+    minHeight?: string;
+    minWidth?: string;
     /**
-    * 图片被加载
-    */
-    'onMlabImgDidLoad'?: (event: CustomEvent<void>) => void;
+     * 图片被加载
+     */
+    onAiaoImgDidLoad?: (event: CustomEvent<void>) => void;
+    onIonError?: (event: CustomEvent<void>) => void;
     /**
-    * 平台
-    */
-    'platform'?: string;
+     * 平台
+     */
+    platform?: string;
     /**
-    * 图片地址
-    */
-    'src'?: string;
-    'width'?: string;
+     * 图片地址
+     */
+    src?: string;
+    width?: string;
   }
 
   interface IntrinsicElements {
@@ -107,13 +103,10 @@ declare namespace LocalJSX {
 
 export { LocalJSX as JSX };
 
-
-declare module "@stencil/core" {
+declare module '@stencil/core' {
   export namespace JSX {
     interface IntrinsicElements {
       'aiao-img': LocalJSX.AiaoImg & JSXBase.HTMLAttributes<HTMLAiaoImgElement>;
     }
   }
 }
-
-

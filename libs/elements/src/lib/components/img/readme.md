@@ -4,28 +4,27 @@
 
 ## Properties
 
-| Property    | Attribute    | Description | Type                                             | Default     |
-| ----------- | ------------ | ----------- | ------------------------------------------------ | ----------- |
-| `alt`       | `alt`        | alt         | `string`                                         | `''`        |
-| `animation` | `animation`  | 自定义动画  | `string`                                         | `'fade'`    |
-| `autoRatio` | `auto-ratio` | 自动比例    | `boolean`                                        | `true`      |
-| `height`    | `height`     | 预计高度    | `number`                                         | `100`       |
-| `map`       | --           | 锚点        | `ImgArea[]`                                      | `undefined` |
-| `maxHeight` | `max-height` | 最大高度    | `string`                                         | `undefined` |
-| `maxWidth`  | `max-width`  | 最大宽度    | `string`                                         | `undefined` |
-| `method`    | `method`     | 图片方法    | `"fill" \| "fixed" \| "lfit" \| "mfit" \| "pad"` | `'lfit'`    |
-| `minHeight` | `min-height` | 最小高度    | `string`                                         | `undefined` |
-| `minWidth`  | `min-width`  | 最小宽度    | `string`                                         | `undefined` |
-| `platform`  | `platform`   | 平台        | `string`                                         | `undefined` |
-| `src`       | `src`        | 图片地址    | `string`                                         | `undefined` |
-| `width`     | `width`      | 预计宽度    | `number`                                         | `100`       |
+| Property    | Attribute    | Description                                                                                                                                                                                                                                       | Type                                             | Default     |
+| ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ----------- |
+| `alt`       | `alt`        | alt                                                                                                                                                                                                                                               | `string`                                         | `undefined` |
+| `animation` | `animation`  | 自定义动画                                                                                                                                                                                                                                        | `string`                                         | `'fade'`    |
+| `height`    | `height`     |                                                                                                                                                                                                                                                   | `string`                                         | `undefined` |
+| `map`       | --           | 锚点                                                                                                                                                                                                                                              | `ImgArea[]`                                      | `undefined` |
+| `maxHeight` | `max-height` |                                                                                                                                                                                                                                                   | `string`                                         | `undefined` |
+| `maxWidth`  | `max-width`  |                                                                                                                                                                                                                                                   | `string`                                         | `undefined` |
+| `method`    | `method`     | 图片方法 lfit：等比缩放，限制在设定在指定 w 与 h 的矩形内的最大图片 mfit：等比缩放，延伸出指定 w 与 h 的矩形框外的最小图片 fill：固定宽高，将延伸出指定 w 与 h 的矩形框外的最小图片进行居中裁剪 pad：固定宽高，缩略填充 fixed：固定宽高，强制缩略 | `"fill" \| "fixed" \| "lfit" \| "mfit" \| "pad"` | `'mfit'`    |
+| `minHeight` | `min-height` |                                                                                                                                                                                                                                                   | `string`                                         | `undefined` |
+| `minWidth`  | `min-width`  |                                                                                                                                                                                                                                                   | `string`                                         | `undefined` |
+| `platform`  | `platform`   | 平台                                                                                                                                                                                                                                              | `string`                                         | `undefined` |
+| `src`       | `src`        | 图片地址                                                                                                                                                                                                                                          | `string`                                         | `undefined` |
+| `width`     | `width`      |                                                                                                                                                                                                                                                   | `string`                                         | `undefined` |
 
 ## Events
 
 | Event            | Description | Type                |
 | ---------------- | ----------- | ------------------- |
+| `aiaoImgDidLoad` | 图片被加载  | `CustomEvent<void>` |
 | `ionError`       |             | `CustomEvent<void>` |
-| `mlabImgDidLoad` | 图片被加载  | `CustomEvent<void>` |
 
 ## Methods
 

@@ -1,3 +1,5 @@
+import { from } from 'rxjs';
+
 import { matcher } from '@aiao/lazy-module';
 import {
   ComponentFactory,
@@ -8,11 +10,10 @@ import {
   NgModuleRef,
   Type
 } from '@angular/core';
-import { async, TestBed, flushMicrotasks, fakeAsync } from '@angular/core/testing';
+import { async, fakeAsync, flushMicrotasks, TestBed } from '@angular/core/testing';
 
 import { LazyElementLoader } from './lazy-element-loader';
 import { LazyElementModule } from './lazy-element.module';
-import { from } from 'rxjs';
 
 describe('LazyElementLoader', () => {
   let lazyElementLoader: LazyElementLoader;

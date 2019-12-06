@@ -1,3 +1,4 @@
+import { IImageRequestOptions, ImageMethodType } from '@aiao/image-storage';
 import { IMAGE_MIN_BASE64_TRANSPARENT } from '@aiao/util';
 import {
   Component,
@@ -7,6 +8,7 @@ import {
   EventEmitter,
   h,
   Host,
+  Listen,
   Method,
   Prop,
   State,
@@ -14,7 +16,7 @@ import {
 } from '@stencil/core';
 
 import { config } from '../../global/config';
-import { IImageRequestOptions, IImageStoragePlugin, ImageMethodType, ImgArea } from '../../interfaces/img.interface';
+import { IImageStoragePlugin, ImgArea } from '../../interfaces/img.interface';
 import { imgGetAreas } from './util';
 
 let imageId = 0;
@@ -46,7 +48,7 @@ export class Img implements ComponentInterface {
   /**
    * 图片被加载
    */
-  @Event() mlabImgDidLoad!: EventEmitter<void>;
+  @Event() aiaoImgDidLoad!: EventEmitter<void>;
 
   // 图片加载错误
   @Event() ionError!: EventEmitter<void>;
@@ -98,12 +100,12 @@ export class Img implements ComponentInterface {
   }
 
   // --------------------------------------------------------------[ Listen ]
-  // @Listen('resize', { target: 'window' })
-  // resize() {
-  //   if (!this.loaded) {
-  //     this.el.forceUpdate();
-  //   }
-  // }
+  @Listen('resize', { target: 'window' })
+  resize() {
+    if (!this.loaded) {
+      this.el.forceUpdate();
+    }
+  }
 
   // --------------------------------------------------------------[ public function ]
 
@@ -119,7 +121,7 @@ export class Img implements ComponentInterface {
   // --------------------------------------------------------------[ event hander ]
   private imgOnLoad = () => {
     if (this.loadSrc) {
-      this.mlabImgDidLoad.emit();
+      this.aiaoImgDidLoad.emit();
     }
   };
 

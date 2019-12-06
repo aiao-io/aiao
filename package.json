@@ -30,13 +30,12 @@
     "build:tools": "rimraf dist/tools && tsc -p ./tools/tsconfig.tools.json",
     "clean": "git clean -dxf",
     "commit": "npx git-cz",
-    "postinstall": "yarn build:tools",
+    "postinstall": "yarn build:tools && node dist/tools/scripts/symlink",
     "run:tools": "ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register",
     "task:lodash-optimize": "yarn run:tools ./tools/tasks/lodash-optimize"
   },
   "private": true,
   "dependencies": {
-    "@aiao/util": "^0.2.0",
     "@angular/animations": "^8.2.14",
     "@angular/cdk": "^8.2.3",
     "@angular/common": "^8.2.14",
@@ -65,7 +64,6 @@
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
-    "@aiao/stencil-toolkit": "^0.0.9",
     "@angular-devkit/build-angular": "^0.803.20",
     "@angular-devkit/build-ng-packagr": "~0.803.20",
     "@angular/cli": "8.3.20",

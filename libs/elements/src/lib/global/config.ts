@@ -37,7 +37,7 @@ export const config = new Config();
 
 export const configFromSession = (win: Window): any => {
   try {
-    const configStr = win.sessionStorage.getItem(MLAB_SESSION_KEY);
+    const configStr = win.sessionStorage.getItem(AIAO_SESSION_KEY);
     return configStr !== null ? JSON.parse(configStr) : {};
   } catch (e) {
     return {};
@@ -46,7 +46,7 @@ export const configFromSession = (win: Window): any => {
 
 export const saveConfig = (win: Window, c: any) => {
   try {
-    win.sessionStorage.setItem(MLAB_SESSION_KEY, JSON.stringify(c));
+    win.sessionStorage.setItem(AIAO_SESSION_KEY, JSON.stringify(c));
   } catch (e) {
     return;
   }
@@ -59,8 +59,8 @@ export const configFromURL = (win: Window) => {
     .split('&')
     .map(entry => entry.split('='))
     .map(([key, value]) => [decodeURIComponent(key), decodeURIComponent(value)])
-    .filter(([key]) => startsWith(key, MLAB_PREFIX))
-    .map(([key, value]) => [key.slice(MLAB_PREFIX.length), value])
+    .filter(([key]) => startsWith(key, AIAO_PREFIX))
+    .map(([key, value]) => [key.slice(AIAO_PREFIX.length), value])
     .forEach(([key, value]) => {
       configObj[key] = value;
     });
@@ -72,5 +72,5 @@ const startsWith = (input: string, search: string): boolean => {
   return input.substr(0, search.length) === search;
 };
 
-const MLAB_PREFIX = 'mlab:';
-const MLAB_SESSION_KEY = 'mlab-persist-config';
+const AIAO_PREFIX = 'aiao:';
+const AIAO_SESSION_KEY = 'aiao-persist-config';

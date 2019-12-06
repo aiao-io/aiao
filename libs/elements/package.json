@@ -19,8 +19,13 @@
   "scripts": {
     "build": "ng build elements"
   },
+  "peerDependencies": {
+    "@aiao/image-storage": "*"
+  },
   "devDependencies": {
-    "@stencil/core": "^1.8.1"
+    "@stencil/core": "^1.8.1",
+    "@aiao/stencil-toolkit": "*",
+    "@aiao/image-storage": "*"
   },
   "license": "MIT"
 }
