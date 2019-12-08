@@ -1,3 +1,8 @@
+// Type definitions for ua-parser-js v0.7.10
+// Project: https://github.com/faisalman/ua-parser-js
+// Definitions by: Viktor Miroshnikov <https://github.com/superduper>, Lucas Woo <https://github.com/legendecas>, Pablo Rodríguez <https://github.com/MeLlamoPablo>
+// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
+
 export interface IBrowser {
   /**
    * Possible values :
@@ -7,7 +12,7 @@ export interface IBrowser {
    * Iceweasel, IE [Mobile], Iron, Jasmine, K-Meleon, Konqueror, Kindle, Links,
    * Lunascape, Lynx, Maemo, Maxthon, Midori, Minimo, MIUI Browser, [Mobile] Safari,
    * Mosaic, Mozilla, Netfront, Netscape, NetSurf, Nokia, OmniWeb, Opera [Mini/Mobi/Tablet],
-   * Phoenix, Polaris, QQBrowser, WeChat, RockMelt, Silk, Skyfire, SeaMonkey, SlimBrowser, Swiftfox,
+   * Phoenix, Polaris, QQBrowser, RockMelt, Silk, Skyfire, SeaMonkey, SlimBrowser, Swiftfox,
    * Tizen, UCBrowser, Vivaldi, w3m, Yandex
    *
    */

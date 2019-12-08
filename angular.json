@@ -258,6 +258,41 @@
           "styleext": "scss"
         }
       }
+    },
+    "elements-cdk": {
+      "projectType": "library",
+      "root": "libs/elements-cdk",
+      "sourceRoot": "libs/elements-cdk/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/elements-cdk/tsconfig.lib.json",
+            "project": "libs/elements-cdk/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/elements-cdk/tsconfig.lib.json", "libs/elements-cdk/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/elements-cdk/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/elements-cdk/jest.config.js",
+            "tsConfig": "libs/elements-cdk/tsconfig.spec.json",
+            "setupFile": "libs/elements-cdk/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

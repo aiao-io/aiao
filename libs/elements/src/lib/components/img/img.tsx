@@ -1,3 +1,4 @@
+import { IImg, IImgArea } from '@aiao/elements-cdk/components';
 import { IImageRequestOptions, IImageStorage, ImageMethodType } from '@aiao/image-storage';
 import { IMAGE_MIN_BASE64_TRANSPARENT } from '@aiao/util';
 import {
@@ -16,7 +17,6 @@ import {
 } from '@stencil/core';
 
 import { config } from '../../global/config';
-import { ImgArea } from '../../interfaces/img.interface';
 import { imgGetAreas } from './util';
 
 let imageId = 0;
@@ -26,7 +26,7 @@ let imageId = 0;
   styleUrl: 'img.scss',
   shadow: true
 })
-export class Img implements ComponentInterface {
+export class Img implements ComponentInterface, IImg {
   private io?: IntersectionObserver | any;
   private cacheImageRequest: IImageRequestOptions;
   private usemap = `img-usemap-${imageId++}`;
@@ -43,58 +43,42 @@ export class Img implements ComponentInterface {
   @State() loadSrc: string;
   // 加载状态
   @State() loading: boolean;
-
   // --------------------------------------------------------------[ Event ]
   /**
    * 图片被加载
    */
   @Event() aiaoImgDidLoad!: EventEmitter<void>;
-
   // 图片加载错误
   @Event() ionError!: EventEmitter<void>;
-
   // --------------------------------------------------------------[ Prop ]
-
   /**
    * 锚点
    */
-  @Prop({ mutable: true }) map: ImgArea[];
-
+  @Prop({ mutable: true }) map: IImgArea[];
   /**
    * 平台
    */
   @Prop() platform?: string;
-
   /**
    * 图片方法
    */
   @Prop() method: ImageMethodType = 'mfit';
-
   /**
    * 自定义动画
    */
   @Prop() animation: 'fade' | string = 'fade';
-
   /**
    * alt
    */
   @Prop() alt: string;
-  @Prop() height: string;
-  @Prop() width: string;
-  @Prop() maxHeight: string;
-  @Prop() minHeight: string;
-  @Prop() maxWidth: string;
-  @Prop() minWidth: string;
-
   /**
    * 图片地址
    */
-  @Prop({ mutable: true }) src?: string;
+  @Prop({ mutable: true }) src: string;
   @Watch('src')
   srcChanged() {
     this.beginLazyLoad();
   }
-
   // --------------------------------------------------------------[ Listen ]
   @Listen('resize', { target: 'window' })
   resize() {
@@ -102,9 +86,7 @@ export class Img implements ComponentInterface {
       this.el.forceUpdate();
     }
   }
-
   // --------------------------------------------------------------[ public function ]
-
   // TODO: 网络状态改变, 如果加载是因为网络问题, 重载
   @Method()
   async reload() {
@@ -113,16 +95,13 @@ export class Img implements ComponentInterface {
       this.beginLazyLoad();
     }
   }
-
   // --------------------------------------------------------------[ event hander ]
   private imgOnLoad = () => {
     if (this.loadSrc) {
       this.aiaoImgDidLoad.emit();
     }
   };
-
   // --------------------------------------------------------------[ private function ]
-
   private beginLazyLoad() {
     if (this.src === undefined || (this.loadSrc === this.src && this.loaded)) {
       return;
@@ -146,14 +125,12 @@ export class Img implements ComponentInterface {
       setTimeout(() => this.beginLoading(), 200);
     }
   }
-
   private removeIO() {
     if (this.io) {
       this.io.disconnect();
       this.io = undefined;
     }
   }
-
   private getImageRequest() {
     if (this.imageStorage && this.imageStorage.requestOptions) {
       const width = this.el.clientWidth;
@@ -169,7 +146,6 @@ export class Img implements ComponentInterface {
       url: this.src
     } as any;
   }
-
   private beginLoading() {
     if (this.loading) {
       return;
@@ -190,44 +166,29 @@ export class Img implements ComponentInterface {
       this.loadSrc = request.url;
       this.img = null;
     };
-
     img.onabort = img.onerror = () => {
       this.loading = false;
       this.error = true;
       this.ionError.emit();
       this.img = null;
     };
-
     img.src = request.url;
   }
-
   // --------------------------------------------------------------[ lifecycle ]
-
   componentDidLoad() {
     // 图片加载优先级降低
     setTimeout(() => this.beginLazyLoad(), 0);
   }
-
   render() {
     const cls = {
       loaded: this.loaded,
       [this.animation]: !!this.animation
     };
-
     const areas =
       this.loadSrc && imgGetAreas(this.map, this.el.clientWidth, this.el.clientHeight || this.el.clientWidth);
-
     const attrs = { usemap: areas && `#${this.usemap}` };
-    const style = {
-      width: this.width,
-      height: this.height,
-      maxHeight: this.maxHeight,
-      minHeight: this.minHeight,
-      maxWidth: this.maxWidth,
-      minWidth: this.minWidth
-    };
     return (
-      <Host class={cls} style={style}>
+      <Host class={cls}>
         {this.error && (
           <div class="error" onClick={this.reload.bind(this)}>
             <slot name="error">404</slot>

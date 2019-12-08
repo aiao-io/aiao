@@ -31,6 +31,9 @@
     },
     "image-storage": {
       "tags": []
+    },
+    "elements-cdk": {
+      "tags": []
     }
   }
 }
