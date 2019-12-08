@@ -15,6 +15,6 @@ export interface IElementOptions {
   };
 }
 
-export interface IElementData {
-  children: IElementData[];
+export interface IElementData extends IElementOptions {
+  children?: IElementData[];
 }

@@ -7,6 +7,7 @@ export interface IElementConfigSlot {
 export interface IElementConfig {
   // 元素的标签
   tag: string;
+
   // 显示名
   name?: string;
   // 图标
@@ -17,18 +18,18 @@ export interface IElementConfig {
   // 查看器的标签
   inspectorTag?: string;
   // 是否有子元素
-  hasChildren?: boolean;
+  hasChildren: boolean;
 
   // 是否支持内联 html
-  innerHTML?: boolean;
+  innerHTML: boolean;
   // 是否支持内联普通问呗
-  innerText?: boolean;
+  innerText: boolean;
 
   // 是按钮么
-  isButton?: boolean;
+  isButton: boolean;
 
   // 是输入类型
-  isInput?: boolean;
+  isInput: boolean;
   // 输入的事件名
   inputEvent?: string;
   // 输入值的路径
@@ -38,8 +39,8 @@ export interface IElementConfig {
   defaultOptions?: IElementOptions;
 
   // 插槽配置
-  slots: IElementConfigSlot[];
+  slots?: IElementConfigSlot[];
 
   // 属性验证的 schema 准备支持 ajv
-  schema: object;
+  schema?: object;
 }

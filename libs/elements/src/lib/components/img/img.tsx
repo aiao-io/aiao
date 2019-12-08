@@ -1,4 +1,4 @@
-import { IImg, IImgArea } from '@aiao/elements-cdk/components';
+import { IImg, IImgArea, imgGetAreas } from '@aiao/elements-cdk/components';
 import { IImageRequestOptions, IImageStorage, ImageMethodType } from '@aiao/image-storage';
 import { IMAGE_MIN_BASE64_TRANSPARENT } from '@aiao/util';
 import {
@@ -17,7 +17,6 @@ import {
 } from '@stencil/core';
 
 import { config } from '../../global/config';
-import { imgGetAreas } from './util';
 
 let imageId = 0;
 
