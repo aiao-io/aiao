@@ -1,5 +1,6 @@
-import { IElementData } from '@aiao/elements-cdk';
 import kebabCase from 'lodash/kebabCase';
+
+import { IElementData } from '@aiao/elements-cdk';
 
 export const elementDataStringify = (data: IElementData) => {
   const { tag, children, innerHTML, innerText, class: cls, attributes, slot, style } = data;

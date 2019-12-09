@@ -1,6 +1,6 @@
 import { IElementConfig, IElementData } from '@aiao/elements-cdk';
 
-import { ElementsEditOptions, ELEMENTS_EDIT_ITEM } from './render.interface';
+import { ELEMENTS_EDIT_ITEM, ElementsEditOptions } from './render.interface';
 
 const elementEditDataOptions = (configs: IElementConfig[], data: IElementData, options: ElementsEditOptions) => {
   const { tag, class: cls, attributes: attrs } = data;

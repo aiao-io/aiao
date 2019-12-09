@@ -1,9 +1,9 @@
 import get from 'lodash/get';
 
-import { IElementData, IElementOptions, IElementConfig } from '@aiao/elements-cdk';
+import { IElementConfig, IElementData, IElementOptions } from '@aiao/elements-cdk';
 
 const getDefaultValue = (optionName: string, defaultOptions: IElementOptions, currentValue?: any) => {
-  // 字符串空值是允许的
+  // 字符串空值是允许的, input 删除后就是空值
   if (currentValue === '') {
     return currentValue;
   }
@@ -43,7 +43,6 @@ export const elementsDefaultOption = (configs: IElementConfig[], data: IElementD
     newChildren = elementsViewDefaultOptions(configs, children);
   }
 
-  console.log('tag', tag, 'style', getDefaultOptions('style', defaultOptions, style));
   return {
     ...data,
     attributes: getDefaultOptions('attributes', defaultOptions, attributes),
