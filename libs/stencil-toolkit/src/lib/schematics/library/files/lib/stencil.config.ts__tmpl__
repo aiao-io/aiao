@@ -1,3 +1,5 @@
+import { resolve } from 'path';
+
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 
@@ -15,8 +17,8 @@ export const config: Config = {
   ],<% if(vendors.ionic){  %>
   copy: [
     {
-      src: resolve('node_modules/@ionic/core'),
-      dest: resolve('<%= projectRoot %>/vendors/ionic')
+      src: resolve(__dirname, '../../', 'node_modules/@ionic/core'),
+      dest: resolve(__dirname, '../../', '<%= projectRoot %>/vendors/ionic')
     }
   ],<% } %>
   tsconfig: 'tsconfig.json',
