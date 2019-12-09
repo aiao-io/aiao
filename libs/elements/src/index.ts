@@ -1,1 +1,1 @@
-export { config, Config } from './lib/global/config';
+export { config } from './lib/global/config';
