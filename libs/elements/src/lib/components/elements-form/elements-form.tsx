@@ -14,7 +14,6 @@ export class ElementsFrom implements ComponentInterface {
   private _formInputElements: HTMLInputElement[];
   private _formElements: Element[];
 
-  private disableEmit = false;
   viewRef: HTMLAiaoElementsViewElement;
 
   @Element() el!: HTMLElement;
@@ -88,7 +87,7 @@ export class ElementsFrom implements ComponentInterface {
     const pathElement: any = this.getInputElementByPath(path);
     pathElement.value = value;
     if (emit) {
-      this.valuesChanged();
+      this.valueChanged();
     }
   }
 
@@ -101,7 +100,7 @@ export class ElementsFrom implements ComponentInterface {
     const all = Object.keys(vals).map(path => this.setValue(path, vals[path], false));
     await Promise.all(all);
     if (emit) {
-      this.valuesChanged();
+      this.valueChanged();
     }
   }
 
@@ -151,23 +150,19 @@ export class ElementsFrom implements ComponentInterface {
     return this._formElements;
   }
 
-  onValueChanged = (value = this.getValues()) => {
-    if (!this.disableEmit) {
-      this.aiaoChange.emit({ value });
+  valueChanged = (type: 'input' | 'change' | 'all' = 'all', value = this.getValues()) => {
+    switch (type) {
+      case 'input':
+        this.aiaoInput.emit({ value });
+        break;
+      case 'change':
+        this.aiaoChange.emit({ value });
+        break;
+      default:
+        this.aiaoInput.emit({ value });
+        this.aiaoChange.emit({ value });
+        break;
     }
-  };
-
-  onValueInputChanged = (value = this.getValues()) => {
-    if (!this.disableEmit) {
-      this.aiaoInput.emit({ value });
-    }
-  };
-
-  valuesChanged = () => {
-    const val = this.getValues();
-    this.value = val;
-    this.onValueChanged(val);
-    this.onValueInputChanged(val);
   };
 
   // --------------------------------------------------------------[ lys ]
@@ -182,8 +177,8 @@ export class ElementsFrom implements ComponentInterface {
     }
     const formInputElements = this.formInputElements;
     formInputElements.forEach((d: HTMLInputElement) => {
-      d.onchange = () => this.onValueChanged();
-      d.oninput = () => this.onValueInputChanged();
+      d.onchange = () => this.valueChanged('change');
+      d.oninput = () => this.valueChanged('input');
     });
   }
 
