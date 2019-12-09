@@ -1,4 +1,5 @@
 import Ora from 'ora';
+import { exit } from 'process';
 import { Project } from 'ts-morph';
 
 const fixLodash = (...path: string[]) => {
@@ -33,6 +34,7 @@ const fixLodash = (...path: string[]) => {
     }
   });
   ora.stop();
+  exit();
 };
 
 fixLodash('{libs,apps}/*/src/**/*.ts');
