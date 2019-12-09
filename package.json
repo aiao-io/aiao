@@ -99,7 +99,8 @@
     "tslint-ionic-rules": "^0.0.21",
     "tslint-react": "^4.0.0",
     "typescript": "~3.5.0",
-    "yargs": "^15.0.2"
+    "yargs": "^15.0.2",
+    "@ionic/angular-toolkit": "latest"
   },
   "config": {
     "commitizen": {

@@ -34,6 +34,12 @@
     },
     "elements-cdk": {
       "tags": []
+    },
+    "docs-e2e": {
+      "tags": []
+    },
+    "docs": {
+      "tags": []
     }
   }
 }
