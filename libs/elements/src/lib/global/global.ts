@@ -4,9 +4,9 @@ declare const Context: any;
 
 export default () => {
   const win: any = window;
-  const Aiao = (win.Aiao = win.Aiao || {});
-  Aiao.Context = Context;
-
-  config.reset(Aiao.config);
-  Aiao.config = config;
+  const aiao = (win.aiao = win.aiao || {});
+  const elements: any = (aiao['elements'] = aiao['elements'] || {});
+  elements.Context = Context;
+  config.reset(elements.config || {});
+  elements.config = config;
 };

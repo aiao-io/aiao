@@ -17,10 +17,6 @@ export const config: Config = {
   ],
   copy: [
     {
-      src: resolve(__dirname, '../../', 'node_modules/@ionic/core'),
-      dest: resolve(__dirname, 'vendors/ionic')
-    },
-    {
       src: resolve(__dirname, '../../', 'node_modules/monaco-editor/min'),
       dest: resolve(__dirname, 'src/lib/components/code-editor/assets/monaco')
     }

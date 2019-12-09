@@ -18,6 +18,10 @@ export const config: Config = {
       dest: resolve(__dirname, 'vendors/ionic')
     },
     {
+      src: resolve(__dirname, '../../', 'dist/libs/image-storage'),
+      dest: resolve(__dirname, 'vendors/image-storage')
+    },
+    {
       src: resolve(__dirname, '../../', 'node_modules/monaco-editor/dev'),
       dest: resolve(__dirname, 'src/lib/components/code-editor/assets/monaco')
     }
