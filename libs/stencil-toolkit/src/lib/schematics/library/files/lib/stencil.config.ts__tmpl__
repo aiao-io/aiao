@@ -18,7 +18,7 @@ export const config: Config = {
   copy: [
     {
       src: resolve(__dirname, '../../', 'node_modules/@ionic/core'),
-      dest: resolve(__dirname, '../../', '<%= projectRoot %>/vendors/ionic')
+      dest: resolve(__dirname, '/vendors/ionic')
     }
   ],<% } %>
   tsconfig: 'tsconfig.json',
