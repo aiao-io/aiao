@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
-
     <!-- ionic -->
     <link href="/vendors/ionic/css/ionic.bundle.css" rel="stylesheet" />
     <script type="module" src="/vendors/ionic/dist/ionic/ionic.esm.js"></script>
@@ -17,46 +16,13 @@
     <!-- aiao-elements -->
     <script type="module" src="/dist/aiao-elements/aiao-elements.esm.js"></script>
     <script nomodule src="/dist/aiao-elements/aiao-elements.js"></script>
-
     <!-- test -->
     <link href="/scripts/testing/styles.css" rel="stylesheet" />
     <script src="/scripts/testing/scripts.js"></script>
   </head>
   <body>
-    <ion-button type="button" onclick="css()">css</ion-button>
-    <ion-button type="button" onclick="ts()">typescript</ion-button>
-    <ion-button type="button" onclick="format()">format</ion-button>
-
-    <aiao-code-editor id="editor" language="typescript" value="const a=123;"></aiao-code-editor>
+    <aiao-code-editor base-url="https://cdn.bootcss.com/monaco-editor/0.18.0/min/" id="editor" language="typescript" value="const a=123;"></aiao-code-editor>
   </body>
 
-  <script>
-    const editor = document.querySelector('#editor');
-
-    editor.addEventListener('aiaoInput', e => {
-      console.log('input', e.detail.value);
-    });
-
-    editor.addEventListener('aiaoChange', e => {
-      console.log('change:', e.detail.value);
-    });
-    console.log({ editor });
-    function css() {
-      editor.language = 'css';
-      editor.value = ` body{  width:200px;}
-      `;
-    }
-
-    function ts() {
-      editor.language = 'typescript';
-      editor.value = `const a=1;console.log(a);`;
-    }
-
-    function format() {
-      editor.format().then();
-    }
-    function onInput() {
-      console.log('onInput');
-    }
-  </script>
+  <script></script>
 </html>

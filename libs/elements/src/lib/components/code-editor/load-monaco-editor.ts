@@ -1,6 +1,6 @@
 export class LoadMonacoEditor {
   protected _load: Promise<void>;
-  constructor(private baseUrl = '/assets/monaco') {}
+  constructor(private baseUrl: string) {}
 
   load() {
     if (!this._load) {

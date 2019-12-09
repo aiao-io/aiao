@@ -1,11 +1,11 @@
 import { urlJoin } from '@aiao/util';
-import { Component, ComponentInterface, Element, h, Host, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
 
 import { config } from '../../global/config';
 import { renderHiddenInput } from '../../utils/input';
 import { LoadMonacoEditor } from './load-monaco-editor';
 
-const defaultOptions = {
+const defaultOptions: monaco.editor.IEditorConstructionOptions = {
   theme: 'vs-dark',
   minimap: {
     enabled: false
@@ -39,16 +39,25 @@ export class CodeEditor implements ComponentInterface {
   @Prop() language: string;
   @Prop() uri: monaco.Uri;
 
+  // 'https://cdn.bootcss.com/monaco-editor/0.18.0/min/';
+  @Prop() baseUrl: string;
+
   // --------------------------------------------------------------[ Watch ]
   // --------------------------------------------------------------[ Listen ]
   // --------------------------------------------------------------[ event hander ]
   // --------------------------------------------------------------[ public function ]
+
+  @Method()
+  async format() {
+    return this.editor.getAction('editor.action.formatDocument').run();
+  }
 
   // --------------------------------------------------------------[ private function ]
   private createMonaco(options: monaco.editor.IEditorConstructionOptions = defaultOptions) {
     if (this.editor) {
       this.editor.dispose();
     }
+
     const hasModel = this.uri || this.value || this.language;
     if (hasModel) {
       const model = monaco.editor.getModel(this.uri || ('' as any));
@@ -76,7 +85,8 @@ export class CodeEditor implements ComponentInterface {
   // --------------------------------------------------------------[ lifecycle ]
 
   async componentDidLoad() {
-    const loader = new LoadMonacoEditor(urlJoin(this.resourcesUrl, 'assets/monaco'));
+    const baseUrl = this.baseUrl || config.get('codeEditorBaseUrl') || urlJoin(this.resourcesUrl, 'assets/monaco');
+    const loader = new LoadMonacoEditor(baseUrl);
     await loader.load();
     this.createMonaco(this.options);
   }
@@ -89,7 +99,7 @@ export class CodeEditor implements ComponentInterface {
 
   render() {
     renderHiddenInput(true, this.el, this.name, this.value, this.disabled);
-    if (this.editorRef) {
+    if (this.editorRef && monaco) {
       this.createMonaco();
     }
     return (
