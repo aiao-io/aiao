@@ -30,10 +30,6 @@ export interface IElementConfig {
 
   // 是输入类型
   isInput: boolean;
-  // 输入的事件名
-  inputEvent?: string;
-  // 输入值的路径
-  inputValuePath?: string;
 
   // 元素的默认配置
   defaultOptions?: IElementOptions;

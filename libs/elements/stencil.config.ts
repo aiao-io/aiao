@@ -10,16 +10,22 @@ export const config: Config = {
     {
       type: 'dist',
       esmLoaderPath: '../loader'
-    },
-    {
-      type: 'docs-readme'
     }
+    // {
+    //   type: 'docs-readme'
+    // }
   ],
   copy: [
     {
       src: resolve(__dirname, '../../', 'node_modules/@ionic/core'),
       dest: resolve(__dirname, '../../', 'libs/elements/vendors/ionic')
     }
+  ],
+  bundles: [
+    { components: ['aiao-elements-view'] },
+    { components: ['aiao-elements-form'] },
+    { components: ['aiao-elements-editor'] },
+    { components: ['aiao-img'] }
   ],
   tsconfig: 'tsconfig.json',
   globalScript: 'src/lib/global/global.ts'
