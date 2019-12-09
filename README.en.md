@@ -2,7 +2,7 @@
 
 # AIAO
 
-[![CircleCI](https://circleci.com/gh/aiao-io/aiao/tree/develop.svg?style=svg)](https://circleci.com/gh/aiao-io/aiao/tree/develop) [![codecov](https://codecov.io/gh/aiao-io/aiao/branch/develop/graph/badge.svg)](https://codecov.io/gh/aiao-io/aiao) [![Crowdin](https://badges.crowdin.net/aiao-io/localized.svg)](https://crowdin.com/project/aiao-io) [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Faiao-io%2Faiao.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Faiao-io%2Faiao?ref=badge_shield) [![CodeFactor](https://www.codefactor.io/repository/github/aiao-io/aiao/badge)](https://www.codefactor.io/repository/github/aiao-io/aiao) [![Maintainability](https://api.codeclimate.com/v1/badges/a4096c9731142de97d99/maintainability)](https://codeclimate.com/github/aiao-io/aiao/maintainability) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/aiao-io/aiao.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/aiao-io/aiao/context:javascript)
+[![CircleCI](https://circleci.com/gh/aiao-io/aiao/tree/master.svg?style=svg)](https://circleci.com/gh/aiao-io/aiao/tree/master) [![codecov](https://codecov.io/gh/aiao-io/aiao/branch/master/graph/badge.svg)](https://codecov.io/gh/aiao-io/aiao) [![Crowdin](https://badges.crowdin.net/aiao-io/localized.svg)](https://crowdin.com/project/aiao-io) [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Faiao-io%2Faiao.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Faiao-io%2Faiao?ref=badge_shield) [![CodeFactor](https://www.codefactor.io/repository/github/aiao-io/aiao/badge)](https://www.codefactor.io/repository/github/aiao-io/aiao) [![Maintainability](https://api.codeclimate.com/v1/badges/a4096c9731142de97d99/maintainability)](https://codeclimate.com/github/aiao-io/aiao/maintainability) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/aiao-io/aiao.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/aiao-io/aiao/context:javascript)
 
 Use `monorepo` style for management some `npm` package.
 
@@ -10,10 +10,12 @@ Use `monorepo` style for management some `npm` package.
 
 ### normal
 
-| Package       | Description | Version                                                                                                        |                        |
-| ------------- | ----------- | -------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| `@aiao/color` | color tool  | [![npm](https://img.shields.io/npm/v/@aiao/color?label=&style=flat-square)](https://www.npmjs.com/@aiao/color) | [Detail](./libs/color) |
-| `@aiao/util`  | utils       | [![npm](https://img.shields.io/npm/v/@aiao/util?label=&style=flat-square)](https://www.npmjs.com/@aiao/util)   | [Detail](./libs/util)  |
+| Package               | Description   | Version                                                                                                        |                                |
+| --------------------- | ------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| `@aiao/color`         | color tool    | [![npm](https://img.shields.io/npm/v/@aiao/color?label=&style=flat-square)](https://www.npmjs.com/@aiao/color) | [Detail](./libs/color)         |
+| `@aiao/util`          | utils         | [![npm](https://img.shields.io/npm/v/@aiao/util?label=&style=flat-square)](https://www.npmjs.com/@aiao/util)   | [Detail](./libs/util)          |
+| `@aiao/image-storage` | 线上图片地址生成器     | 开发中                                                                                                            | [Detail](./libs/image-storage) |
+| `@aiao/elements`      | web component | 开发中                                                                                                            | [Detail](./libs/elements)      |
 
 ### Angular
 
