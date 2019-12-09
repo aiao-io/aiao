@@ -2,7 +2,9 @@ import { resolve } from 'path';
 
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
+import { env } from 'process';
 
+console.log('env', env);
 export const config: Config = {
   namespace: 'aiao-elements',
   plugins: [sass()],
@@ -19,6 +21,10 @@ export const config: Config = {
     {
       src: resolve(__dirname, '../../', 'node_modules/@ionic/core'),
       dest: resolve(__dirname, '../../', 'libs/elements/vendors/ionic')
+    },
+    {
+      src: resolve(__dirname, '../../', 'node_modules/monaco-editor/min'),
+      dest: resolve(__dirname, '../../', 'libs/elements/src/lib/components/code-editor/assets/monaco')
     }
   ],
   bundles: [

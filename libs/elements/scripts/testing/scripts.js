@@ -1,4 +1,10 @@
 (function() {
+    // test config
+    var Aiao = (window.Aiao = window.Aiao || {});
+    Aiao.config = Aiao.config || {
+      resourcesUrl:'/dist/aiao-elements/'
+    };
+
   if (window.location.search.indexOf('rtl=true') > -1) {
     document.documentElement.setAttribute('dir', 'rtl');
   }

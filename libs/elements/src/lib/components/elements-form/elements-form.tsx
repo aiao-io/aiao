@@ -165,7 +165,7 @@ export class ElementsFrom implements ComponentInterface {
     }
   };
 
-  // --------------------------------------------------------------[ lys ]
+  // --------------------------------------------------------------[ lifecycle ]
 
   componentWillRender() {
     this._formElements = this._formInputElements = undefined;
