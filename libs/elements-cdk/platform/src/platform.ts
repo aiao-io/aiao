@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { FeatureDetects } from './modernizr.interface';
 import { IBrowser, ICPU, IDevice, IEngine, IOS } from './ua.interface';
 
-export interface IPlatformService {
+export interface IPlatform {
   ua: string;
   feature: FeatureDetects;
   browser: IBrowser;

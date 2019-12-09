@@ -1,3 +1,7 @@
+// Type definitions for Modernizr 3.5
+// copy from
+// github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/modernizr/index.d.ts
+
 interface AudioBoolean {
   ogg: string;
   mp3: string;

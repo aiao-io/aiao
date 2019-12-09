@@ -1,0 +1,7 @@
+{
+  "name": "@aiao/elements-cdk",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "ng build elements-cdk"
+  }
+}

@@ -2,8 +2,8 @@
 
 # AIAO
 
-[![CircleCI](https://circleci.com/gh/aiao-io/aiao/tree/develop.svg?style=svg)](https://circleci.com/gh/aiao-io/aiao/tree/develop)
-[![codecov](https://codecov.io/gh/aiao-io/aiao/branch/develop/graph/badge.svg)](https://codecov.io/gh/aiao-io/aiao)
+[![CircleCI](https://circleci.com/gh/aiao-io/aiao/tree/master.svg?style=svg)](https://circleci.com/gh/aiao-io/aiao/tree/master)
+[![codecov](https://codecov.io/gh/aiao-io/aiao/branch/master/graph/badge.svg)](https://codecov.io/gh/aiao-io/aiao)
 [![Crowdin](https://badges.crowdin.net/aiao-io/localized.svg)](https://crowdin.com/project/aiao-io)
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Faiao-io%2Faiao.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Faiao-io%2Faiao?ref=badge_shield)

@@ -1,6 +1,6 @@
-import { ImgArea } from '../../interfaces/img.interface';
+import { IImgArea } from './img.interface';
 
-export const imgGetAreas = (areas: ImgArea[], width: number, height: number) => {
+export const imgGetAreas = (areas: IImgArea[], width: number, height: number) => {
   if (!areas || areas.length <= 0) {
     return null;
   }
