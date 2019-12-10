@@ -7,9 +7,9 @@ import {
   EventEmitter,
   h,
   Host,
+  Listen,
   Method,
-  Prop,
-  Listen
+  Prop
 } from '@stencil/core';
 
 import { config } from '../../global/config';

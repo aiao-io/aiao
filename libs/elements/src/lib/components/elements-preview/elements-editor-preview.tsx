@@ -1,9 +1,9 @@
 import { IElementConfig } from '@aiao/elements-cdk';
 import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core';
 
+import { IElementEditorData } from '../../interfaces/elements-editor.interface';
 import { elementsPreviewRender } from '../../utils/render/render';
 import { EditMode } from '../../utils/render/render.interface';
-import { IElementEditorData } from '../../interfaces/elements-editor.interface';
 
 @Component({
   tag: 'aiao-elements-editor-preview',
@@ -43,7 +43,7 @@ export class ElementsEditorPreview implements ComponentInterface {
       children = this.nodes.filter(n => n._parentId === _id);
     }
     return (
-      <TagName slot={slot} {...attributes} style={style} class={cls} innerHTML={innerHTML}>
+      <TagName id={_id} slot={slot} {...attributes} style={style} class={cls} innerHTML={innerHTML}>
         {innerText}
         {children.map(c => this.renderElement(c))}
       </TagName>
