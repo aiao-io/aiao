@@ -21,37 +21,61 @@
     <!-- test -->
     <link href="/scripts/testing/styles.css" rel="stylesheet" />
     <script src="/scripts/testing/scripts.js"></script>
+    <style>
+      body {
+        display: flex;
+      }
+      .editor {
+        width: 50%;
+        height: 100%;
+      }
+      .item {
+        width: 100%;
+        height: 50%;
+      }
+      #preview {
+        flex: 1;
+      }
+    </style>
   </head>
   <body>
-    <aiao-elements-editor id="editor"></aiao-elements-editor>
+    <div class="editor">
+      <aiao-code-editor class="item" language="json" id="editor1"></aiao-code-editor>
+      <aiao-code-editor class="item" language="json" id="editor2"></aiao-code-editor>
+    </div>
+    <aiao-elements-editor-preview id="preview"></aiao-elements-editor-preview>
   </body>
 
   <script>
-    const editor = document.querySelector('#editor');
-    editor.config = [
+    const editor1 = document.querySelector('#editor1');
+    const editor2 = document.querySelector('#editor2');
+    const preview = document.querySelector('#preview');
+    const config = [
       {
         tag: 'h1',
         innerText: true,
         defaultOptions: {
           innerText: 'h1h1h1h1'
         }
-      }
-    ];
-    editor.value = [
+      },
       {
         tag: 'ion-button',
-        innerText: 'button',
-        class: {
-          a: true
-        },
-        attributes: {
-          mode: 'ios'
-        },
-        style: {
-          minWidth: '200px'
+        innerText: true,
+        defaultOptions: {
+          attributes: {
+            buttonType: 'button'
+          }
         }
+      }
+    ];
+    const value = [
+      {
+        tag: 'ion-button',
+        innerText: 'button'
       },
-      { tag: 'h1' },
+      {
+        tag: 'h1'
+      },
       {
         tag: 'aiao-img',
         attributes: {
@@ -59,5 +83,19 @@
         }
       }
     ];
+    editor1.value = JSON.stringify(config, null, 2);
+    editor2.value = JSON.stringify(value, null, 2);
+    preview.config = config;
+    preview.value = value;
+    editor1.addEventListener('aiaoInput', e => {
+      try {
+        preview.config = JSON.parse(e.detail.value);
+      } catch {}
+    });
+    editor2.addEventListener('aiaoInput', e => {
+      try {
+        preview.value = JSON.parse(e.detail.value);
+      } catch {}
+    });
   </script>
 </html>

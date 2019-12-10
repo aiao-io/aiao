@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
-
     <!-- ionic -->
     <link href="/vendors/ionic/css/ionic.bundle.css" rel="stylesheet" />
     <script type="module" src="/vendors/ionic/dist/ionic/ionic.esm.js"></script>
@@ -18,11 +17,19 @@
     <script type="module" src="/dist/aiao-elements/aiao-elements.esm.js"></script>
     <script nomodule src="/dist/aiao-elements/aiao-elements.js"></script>
 
+    <script>
+      const win = window;
+      const aiao = (win.aiao = win.aiao || {});
+      const elements = (aiao['elements'] = aiao['elements'] || {});
+      elements.codeEditorBaseUrl = 'https://cdn.bootcss.com/monaco-editor/0.18.0/min/';
+    </script>
     <!-- test -->
     <link href="/scripts/testing/styles.css" rel="stylesheet" />
     <script src="/scripts/testing/scripts.js"></script>
   </head>
   <body>
-    <aiao-img src="https://www.baidu.com/img/bd_logo1.png?where=super"></aiao-img>
+    <aiao-code-editor id="editor" language="typescript" value="const a=123;"></aiao-code-editor>
   </body>
+
+  <script></script>
 </html>

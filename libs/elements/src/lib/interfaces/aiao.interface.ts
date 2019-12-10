@@ -8,9 +8,9 @@ export interface IAiaoContexts {
 }
 
 export interface IAiaoConfig extends IAiaoContexts {
+  codeEditorBaseUrl?: string;
   animated?: boolean;
   resourcesUrl?: string;
-  persistConfig?: boolean;
   _testing?: boolean;
   _zoneGate?: (h: () => any) => any;
 }

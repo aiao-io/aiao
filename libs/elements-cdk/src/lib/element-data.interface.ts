@@ -1,4 +1,4 @@
-// 一个元素的数据
+// 单个元素的数据
 export interface IElementOptions {
   tag?: string;
   slot?: string;
@@ -15,6 +15,9 @@ export interface IElementOptions {
   };
 }
 
+/**
+ * 单个元素的结构数据
+ */
 export interface IElementData extends IElementOptions {
   children?: IElementData[];
 }
