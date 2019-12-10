@@ -1,5 +1,16 @@
 import { urlJoin } from '@aiao/util';
-import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
+import {
+  Component,
+  ComponentInterface,
+  Element,
+  Event,
+  EventEmitter,
+  h,
+  Host,
+  Method,
+  Prop,
+  Listen
+} from '@stencil/core';
 
 import { config } from '../../global/config';
 import { renderHiddenInput } from '../../utils/input';
@@ -47,6 +58,14 @@ export class CodeEditor implements ComponentInterface {
 
   // --------------------------------------------------------------[ Watch ]
   // --------------------------------------------------------------[ Listen ]
+  @Listen('resize', {
+    target: 'window'
+  })
+  resize() {
+    if (this.editor) {
+      this.editor.layout();
+    }
+  }
   // --------------------------------------------------------------[ event hander ]
   // --------------------------------------------------------------[ public function ]
 

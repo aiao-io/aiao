@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+
+    <!-- ionic -->
+    <link href="/vendors/ionic/css/ionic.bundle.css" rel="stylesheet" />
+    <script type="module" src="/vendors/ionic/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="/vendors/ionic/dist/ionic/ionic.js"></script>
+
+    <!-- image-storage -->
+    <script src="/vendors/image-storage/bundles/aiao-image-storage.umd.js"></script>
+    <script src="/vendors/image-storage/bundles/aiao-image-storage-adapters-aliyun.umd.js"></script>
+
+    <!-- aiao-elements -->
+    <script type="module" src="/dist/aiao-elements/aiao-elements.esm.js"></script>
+    <script nomodule src="/dist/aiao-elements/aiao-elements.js"></script>
+
+    <!-- test -->
+    <link href="/scripts/testing/styles.css" rel="stylesheet" />
+    <script src="/scripts/testing/scripts.js"></script>
+    <style>
+      body {
+        display: flex;
+      }
+      #editor,
+      #view {
+        width: 50%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <aiao-code-editor id="editor" language="html"></aiao-code-editor>
+    <aiao-elements-view id="view"></aiao-elements-view>
+  </body>
+
+  <script>
+    const editor = document.querySelector('#editor');
+    const view = document.querySelector('#view');
+
+    const html = `<ion-list>
+  <ion-list-header>Single Selection</ion-list-header>
+
+  <ion-item>
+    <ion-label>Gender</ion-label>
+    <ion-select placeholder="Select One">
+      <ion-select-option value="f">Female</ion-select-option>
+      <ion-select-option value="m">Male</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Hair Color</ion-label>
+    <ion-select value="brown" okText="Okay" cancelText="Dismiss">
+      <ion-select-option value="brown">Brown</ion-select-option>
+      <ion-select-option value="blonde">Blonde</ion-select-option>
+      <ion-select-option value="black">Black</ion-select-option>
+      <ion-select-option value="red">Red</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+</ion-list>`;
+
+    editor.value = html;
+    view.html = html;
+
+    editor.addEventListener('aiaoInput', e => {
+      view.html = e.detail.value;
+    });
+    editor.config = [
+      {
+        tag: 'h1',
+        innerText: true,
+        defaultOptions: {
+          innerText: 'h1h1h1h1'
+        }
+      }
+    ];
+  </script>
+</html>
