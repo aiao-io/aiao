@@ -22,9 +22,10 @@ export const config: Config = {
     }
   ],
   bundles: [
-    { components: ['aiao-elements-view'] },
+    { components: ['aiao-code-editor'] },
+    { components: ['aiao-elements-editor', 'aiao-elements-editor-preview'] },
     { components: ['aiao-elements-form'] },
-    { components: ['aiao-elements-editor'] },
+    { components: ['aiao-elements-view'] },
     { components: ['aiao-img'] }
   ],
   tsconfig: 'tsconfig.json',
