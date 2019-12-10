@@ -108,6 +108,33 @@
           }
         }
       }
+    },
+    "cypress-e2e": {
+      "root": "cypress-e2e",
+      "sourceRoot": "cypress-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "cypress-e2e/cypress.json",
+            "tsConfig": "cypress-e2e/tsconfig.e2e.json",
+            "devServerTarget": "lazy-component:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "lazy-component:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["cypress-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!cypress-e2e/**"]
+          }
+        }
+      }
     }
   },
   "defaultProject": "lazy-component"
