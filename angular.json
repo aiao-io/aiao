@@ -316,7 +316,8 @@
             "aot": false,
             "assets": [
               "apps/docs/src/favicon.ico",
-              "apps/docs/src/assets",
+              "apps/docs/src/_redirects",
+              "apps/docs/src/robots.txt",
               "apps/docs/src/manifest.webmanifest",
               {
                 "glob": "**/*.svg",
