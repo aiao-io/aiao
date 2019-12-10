@@ -42,6 +42,9 @@ export class CodeEditor implements ComponentInterface {
   // 'https://cdn.bootcss.com/monaco-editor/0.18.0/min/';
   @Prop() baseUrl: string;
 
+  // 'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'ru' | 'zh-cn' | 'zh-tw'
+  @Prop() localizeCode: string;
+
   // --------------------------------------------------------------[ Watch ]
   // --------------------------------------------------------------[ Listen ]
   // --------------------------------------------------------------[ event hander ]
@@ -86,7 +89,7 @@ export class CodeEditor implements ComponentInterface {
 
   async componentDidLoad() {
     const baseUrl = this.baseUrl || config.get('codeEditorBaseUrl') || urlJoin(this.resourcesUrl, 'assets/monaco');
-    const loader = new LoadMonacoEditor(baseUrl);
+    const loader = new LoadMonacoEditor(baseUrl, this.localizeCode);
     await loader.load();
     this.createMonaco(this.options);
   }

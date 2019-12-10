@@ -1,6 +1,14 @@
 export class LoadMonacoEditor {
   protected _load: Promise<void>;
-  constructor(private baseUrl: string) {}
+  protected supportLanguages = ['de', 'es', 'fr', 'it', 'ja', 'ko', 'ru', 'zh-cn', 'zh-tw'];
+
+  constructor(private baseUrl: string, private localizeCode?: string) {}
+
+  protected getLanguage() {
+    const lang = navigator.language.toLocaleLowerCase();
+    const findLang = this.supportLanguages.find(l => lang === l);
+    return findLang || '';
+  }
 
   load() {
     if (!this._load) {
@@ -12,10 +20,16 @@ export class LoadMonacoEditor {
         }
 
         const onGotAmdLoader: any = () => {
-          win.require.config({ paths: { vs: `${this.baseUrl}/vs` } });
+          win.require.config({
+            paths: { vs: `${this.baseUrl}/vs` },
+            'vs/nls': {
+              availableLanguages: {
+                '*': this.localizeCode || this.getLanguage()
+              }
+            }
+          });
           win.require(['vs/editor/editor.main'], () => resolve());
         };
-
         if (!win.require) {
           const loaderScript: HTMLScriptElement = document.createElement('script');
           loaderScript.type = 'text/javascript';
