@@ -23,6 +23,9 @@ const defaultOptions: monaco.editor.IEditorConstructionOptions = {
   }
 };
 
+// 只加载一次
+let loader: any;
+
 @Component({
   tag: 'aiao-code-editor',
   styleUrl: './code-editor.scss',
@@ -108,7 +111,9 @@ export class CodeEditor implements ComponentInterface {
 
   async componentDidLoad() {
     const baseUrl = this.baseUrl || config.get('codeEditorBaseUrl') || urlJoin(this.resourcesUrl, 'assets/monaco');
-    const loader = new LoadMonacoEditor(baseUrl, this.localizeCode);
+    if (!loader) {
+      loader = new LoadMonacoEditor(baseUrl, this.localizeCode);
+    }
     await loader.load();
     this.createMonaco(this.options);
   }

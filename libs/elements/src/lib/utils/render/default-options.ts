@@ -1,3 +1,4 @@
+import defaults from 'lodash/defaults';
 import get from 'lodash/get';
 
 import { IElementConfig, IElementData, IElementOptions } from '@aiao/elements-cdk';
@@ -22,12 +23,9 @@ const getDefaultValue = (optionName: string, defaultOptions: IElementOptions, cu
 const getDefaultOptions = (
   optionName: 'class' | 'style' | 'attributes',
   defaultOptions: IElementOptions,
-  defaults: any = {}
+  current: any = {}
 ) => {
-  return {
-    ...get(defaultOptions, optionName),
-    ...defaults
-  };
+  return defaults(current, get(defaultOptions, optionName));
 };
 
 /**
@@ -38,7 +36,7 @@ const elementsDefaultOption = (configs: IElementConfig[], data: IElementData): I
   let { innerText, innerHTML } = data;
   const config: IElementConfig = configs.find(conf => conf.tag === tag);
   if (!config) {
-    return { ...data, attributes: { ...attributes }, style: { ...style }, class: { ...cls } };
+    return { ...data };
   }
   const { innerText: allowInnerText, innerHTML: allowInnerHTML, defaultOptions, hasChildren } = config;
   // 嵌入内容处理
@@ -49,7 +47,6 @@ const elementsDefaultOption = (configs: IElementConfig[], data: IElementData): I
     innerText = getDefaultValue('innerText', defaultOptions, innerText);
     innerHTML = undefined;
   }
-
   let newChildren: IElementData[];
   if (hasChildren && children && children.length > 0) {
     newChildren = elementsViewDefaultOptions(configs, children);

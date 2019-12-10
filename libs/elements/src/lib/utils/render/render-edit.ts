@@ -28,7 +28,7 @@ const elementEditDataOptions = (configs: IElementConfig[], data: IElementData, o
   return { ...data, tag: newTag, class: newCls, attributes: newAttrs };
 };
 
-export const elementsEditDataOptions = (
+export const elementsPreviewHtmlData = (
   configs: IElementConfig[],
   data: IElementData[],
   options: ElementsEditOptions

@@ -1,5 +1,9 @@
 import { IImageOptions, IImageRequestOptions, IImageStorageAdapter } from '@aiao/image-storage';
-import { numberStepScreenSize } from '@aiao/util';
+
+const numberStepScreenSize = (value: number, step: number = 80, devicePixelRatio: number = 1) =>
+  numberStep(value * devicePixelRatio, step);
+
+const numberStep = (value: number, step: number) => Math.ceil(value / step) * step;
 
 export class ImageStorageAdapterAliyun implements IImageStorageAdapter {
   name = 'aliyun';

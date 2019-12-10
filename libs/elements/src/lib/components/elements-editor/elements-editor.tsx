@@ -1,7 +1,7 @@
 import { IElementConfig, IElementData } from '@aiao/elements-cdk';
 import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core';
 
-import { elementsEditRender } from '../../utils/render/render';
+import { elementsPreviewHtmlRender } from '../../utils/render/render';
 import { EditMode } from '../../utils/render/render.interface';
 
 @Component({
@@ -35,7 +35,7 @@ export class ElementsEditor implements ComponentInterface {
   @Prop() view: HTMLElement;
 
   render() {
-    const html = elementsEditRender(this.config, this.value, { editMode: this.editMode });
+    const html = elementsPreviewHtmlRender(this.config, this.value, { editMode: this.editMode });
     if (this.view) {
       this.view.innerHTML = html;
     }

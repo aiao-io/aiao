@@ -18,7 +18,6 @@ export class LoadMonacoEditor {
           resolve();
           return;
         }
-
         const onGotAmdLoader: any = () => {
           win.require.config({
             paths: { vs: `${this.baseUrl}/vs` },
