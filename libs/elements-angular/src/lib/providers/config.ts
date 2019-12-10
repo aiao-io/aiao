@@ -37,7 +37,7 @@ const getConfig = () => {
     const win: any = window;
     const aiao = (win.aiao = win.aiao || {});
     const elements: any = (aiao['elements'] = aiao['elements'] || {});
-    if (elements && elements.config) {
+    if (elements.config) {
       return elements.config;
     }
   }

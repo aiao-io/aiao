@@ -1,25 +1,13 @@
-import { findComponentFromModuleRef, LazyModuleLoader, LazyRoutes } from '@aiao/lazy-module';
+import { findComponentFromModuleRef, LazyModuleLoader, LazyModuleLoaderBase } from '@aiao/lazy-module';
 import { Injectable } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
-import { LoadChildrenCallback } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LazyElementLoader {
-  private toLoad: Map<string, LoadChildrenCallback> = new Map();
-  private loading = new Map<string, Promise<void>>();
-
-  constructor(private lazyModuleLoader: LazyModuleLoader) {}
-
-  add(lazyRoutes: LazyRoutes[]) {
-    lazyRoutes.forEach(routes =>
-      routes.forEach(({ name, loadChildren }) => {
-        if (!this.loading.has(name)) {
-          this.toLoad.set(name, loadChildren);
-        }
-      })
-    );
+export class LazyElementLoader extends LazyModuleLoaderBase {
+  constructor(private lazyModuleLoader: LazyModuleLoader) {
+    super();
   }
 
   async loadFromHtmlString(htmlString: string): Promise<void> {

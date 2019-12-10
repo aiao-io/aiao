@@ -1,25 +1,13 @@
 import { Compiler, Injectable, NgModuleFactory, NgModuleRef, Type } from '@angular/core';
-import { LoadChildrenCallback } from '@angular/router';
 
-import { LazyRoutes } from './lazy-module-registry';
+import { LazyModuleLoaderBase } from './LazyModuleLoaderBase';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LazyModuleLoader {
-  private toLoad: Map<string, LoadChildrenCallback> = new Map();
-  private loading = new Map<string, Promise<any>>();
-
-  constructor(private moduleRef: NgModuleRef<any>, private compiler: Compiler) {}
-
-  add(lazyRoutes: LazyRoutes[]) {
-    lazyRoutes.forEach(routes =>
-      routes.forEach(({ name, loadChildren }) => {
-        if (!this.loading.has(name)) {
-          this.toLoad.set(name, loadChildren);
-        }
-      })
-    );
+export class LazyModuleLoader extends LazyModuleLoaderBase {
+  constructor(private moduleRef: NgModuleRef<any>, private compiler: Compiler) {
+    super();
   }
 
   async load(name: string): Promise<NgModuleRef<any>> {
