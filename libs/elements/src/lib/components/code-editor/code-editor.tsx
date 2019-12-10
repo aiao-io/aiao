@@ -1,3 +1,4 @@
+import { renderHiddenInput } from '@aiao/elements-cdk';
 import { urlJoin } from '@aiao/util';
 import {
   Component,
@@ -13,7 +14,6 @@ import {
 } from '@stencil/core';
 
 import { config } from '../../global/config';
-import { renderHiddenInput } from '../../utils/input';
 import { LoadMonacoEditor } from './load-monaco-editor';
 
 const defaultOptions: monaco.editor.IEditorConstructionOptions = {

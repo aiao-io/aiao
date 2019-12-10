@@ -10,6 +10,14 @@ export const config: Config = {
     {
       type: 'dist',
       esmLoaderPath: '../loader'
+    },
+    {
+      type: 'angular',
+      componentCorePackage: '@aiao/elements',
+      directivesProxyFile: resolve(__dirname, '../elements-angular/src/lib/directives/proxies.ts'),
+      directivesUtilsFile: resolve(__dirname, '../elements-angular/src/lib/directives/proxies-utils.ts'),
+      directivesArrayFile: resolve(__dirname, '../elements-angular/src/lib/directives/proxies-list.txt'),
+      excludeComponents: []
     }
     // {
     //   type: 'docs-readme'
