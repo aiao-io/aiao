@@ -11,9 +11,11 @@ export const elementDataStringify = (data: IElementData) => {
   };
 
   // class
-  props.class = Object.keys(cls)
-    .filter(name => cls[name] === true)
-    .join(' ');
+  if (cls) {
+    props.class = Object.keys(cls)
+      .filter(name => cls[name] === true)
+      .join(' ');
+  }
 
   // attributes
   if (attributes) {
@@ -21,9 +23,11 @@ export const elementDataStringify = (data: IElementData) => {
   }
 
   // style
-  props.style = Object.keys(style)
-    .map(name => `${kebabCase(name)}:${style[name]}`)
-    .join(';');
+  if (style) {
+    props.style = Object.keys(style)
+      .map(name => `${kebabCase(name)}:${style[name]}`)
+      .join(';');
+  }
 
   // propStr
   let propStr = Object.keys(props)

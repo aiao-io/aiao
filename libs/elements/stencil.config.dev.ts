@@ -11,21 +11,20 @@ export const config: Config = {
       type: 'dist',
       esmLoaderPath: '../loader'
     }
-    // {
-    //   type: 'docs-readme'
-    // }
   ],
   copy: [
     {
       src: resolve(__dirname, '../../', 'node_modules/@ionic/core'),
-      dest: resolve(__dirname, '../../', 'libs/elements/vendors/ionic')
+      dest: resolve(__dirname, 'vendors/ionic')
+    },
+    {
+      src: resolve(__dirname, '../../', 'dist/libs/image-storage'),
+      dest: resolve(__dirname, 'vendors/image-storage')
+    },
+    {
+      src: resolve(__dirname, '../../', 'node_modules/monaco-editor/dev'),
+      dest: resolve(__dirname, 'src/lib/components/code-editor/assets/monaco')
     }
-  ],
-  bundles: [
-    { components: ['aiao-elements-view'] },
-    { components: ['aiao-elements-form'] },
-    { components: ['aiao-elements-editor'] },
-    { components: ['aiao-img'] }
   ],
   tsconfig: 'tsconfig.json',
   globalScript: 'src/lib/global/global.ts'
