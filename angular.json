@@ -1,4 +1,5 @@
 {
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "projects": {
     "util": {
@@ -323,6 +324,18 @@
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
+              },
+              {
+                "glob": "**/*.md",
+                "ignore": [
+                  "libs/elements/vendors/**",
+                  ".*/**",
+                  "**/node_modules/**",
+                  "**/dist/**",
+                  "integration/*/*/**"
+                ],
+                "input": "",
+                "output": "docs"
               }
             ],
             "styles": ["apps/docs/src/theme/variables.scss", "apps/docs/src/global.scss"],
