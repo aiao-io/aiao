@@ -10,8 +10,6 @@ import { EditMode } from '../../utils/render/render.interface';
   shadow: true
 })
 export class ElementsEditor implements ComponentInterface {
-  viewRef: HTMLAiaoElementsViewElement;
-
   @Element() el!: HTMLElement;
 
   /**
@@ -35,13 +33,14 @@ export class ElementsEditor implements ComponentInterface {
   @Prop() view: HTMLElement;
 
   render() {
-    const html = elementsPreviewHtmlRender(this.config, this.value, { editMode: this.editMode });
     if (this.view) {
-      this.view.innerHTML = html;
+      this.view.innerHTML = elementsPreviewHtmlRender(this.config, this.value, { editMode: this.editMode });
     }
     return (
       <Host>
-        {!this.view && <aiao-elements-view ref={ref => (this.viewRef = ref)} html={html}></aiao-elements-view>}
+        {!this.view && (
+          <aiao-elements-editor-preview config={this.config} value={this.value}></aiao-elements-editor-preview>
+        )}
       </Host>
     );
   }
