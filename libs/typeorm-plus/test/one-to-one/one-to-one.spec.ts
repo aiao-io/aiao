@@ -21,8 +21,9 @@ const options: ConnectionOptions = {
   type: (TYPEORM_PLUS_TEST_DB_TYPE as any) || 'postgres',
   username: TYPEORM_PLUS_TEST_USERNAME,
   password: TYPEORM_PLUS_TEST_PASSWORD,
-  database: TYPEORM_PLUS_TEST_DATABASE,
+  database: TYPEORM_PLUS_TEST_DATABASE || 'test',
   synchronize: true,
+  dropSchema: true,
   entities: [User, Profile]
 };
 
@@ -36,7 +37,6 @@ describe('one-to-one', () => {
   beforeAll(async () => {
     connection = await createConnection(options);
     userRepository = connection.getRepository(User);
-
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
     userSequelizeRepository = typeormPlus.sequelize.model('User') as any;
