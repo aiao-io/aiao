@@ -31,14 +31,12 @@ describe('one-to-one', () => {
   let typeormPlus: TypeormPlus;
 
   let userRepository: Repository<User>;
-  let profileRepository: Repository<Profile>;
   let userSequelizeRepository: SequelizeRepository<User>;
   let profileSequelizeRepository: SequelizeRepository<Profile>;
 
   beforeAll(async () => {
     connection = await createConnection(options);
     userRepository = connection.getRepository(User);
-    profileRepository = connection.getRepository(Profile);
 
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();

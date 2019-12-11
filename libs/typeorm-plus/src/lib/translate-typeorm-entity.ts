@@ -108,7 +108,7 @@ export function translateTypeOrmEntity(metadata: any): SeqModel {
         type,
         name,
         unique: isUnique,
-        fields: givenColumnNames as any
+        fields
       };
     });
   }

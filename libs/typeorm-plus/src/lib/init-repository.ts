@@ -1,5 +1,5 @@
 import get from 'lodash/get';
-import { Repository, TreeRepository, EntityMetadata } from 'typeorm';
+import { EntityMetadata } from 'typeorm';
 import sequelize, { Sequelize } from 'sequelize';
 
 // import { initTreeRepository } from './init-tree-reposiory';

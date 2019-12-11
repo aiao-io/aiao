@@ -14,7 +14,6 @@ export function translateTypeormOptions(options: ConnectionOptions): Options {
     case 'sqlite':
     case 'mariadb':
     case 'mssql':
-    case 'mariadb':
       dialect = type;
       break;
     default:
