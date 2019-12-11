@@ -1,6 +1,7 @@
 import { existsSync, mkdirSync } from 'fs';
 import { ensureSymlinkSync, rmdirSync } from 'fs-extra';
 import ora from 'ora';
+import { exit } from 'process';
 
 import { run } from '../util/runner';
 
@@ -41,4 +42,4 @@ const checkWorkspace = async () => {
   await checkLibBuild();
 };
 
-checkWorkspace().then();
+checkWorkspace().then(() => exit());
