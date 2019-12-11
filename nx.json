@@ -34,6 +34,9 @@
     },
     "elements-cdk": {
       "tags": []
+    },
+    "elements-angular": {
+      "tags": []
     }
   }
 }

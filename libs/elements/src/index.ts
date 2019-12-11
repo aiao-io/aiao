@@ -1,1 +1,1 @@
-export { config } from './lib/global/config';
+export * from './lib/interfaces/elements.interface';
