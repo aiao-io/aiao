@@ -139,7 +139,7 @@ jobs:
         - checkout
         - restore_cache: *restore_deploy_cache
         - run: *set_env
-        - restore_cache: *yarn_cache
+        - restore_cache: *restore_yarn_cache
         - restore_cache: *restore_build_cache
         - run: yarn affected -- --target deploy ${AFFECTED_ARGS}
         - run: git rev-parse HEAD > dist/last-deploy.txt
