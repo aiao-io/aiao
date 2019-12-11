@@ -36,62 +36,63 @@ set_env: &set_env
 restore_yarn_cache: &restore_yarn_cache
   keys:
     - node-deps-node12-{{ checksum "yarn.lock" }}
+    - node-deps-node12-
 
 save_yarn_cache: &save_yarn_cache
   key: node-deps-node12-{{ checksum "yarn.lock" }}
   paths:
-    - ~/.cache/Cypress
+    - ~/.cache
     - node_modules
+
+save_build_cache: &save_build_cache
+  key: build-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+  paths:
+    - dist
+
+restore_build_cache: &restore_build_cache
+  key: build-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+
+save_deploy_cache: &save_deploy_cache
+  key: last-deploy-sha
+  paths:
+    - dist/last-deploy.txt
+
+restore_deploy_cache: &restore_deploy_cache
+  key: last-deploy-sha
 
 # install
 yarn_install: &yarn_install
   name: Install Dependencies
-  command: yarn install --frozen-lockfile --non-interactive
+  command: yarn install --frozen-lockfile --non-interactive --ignore-scripts
+
+# build
+build: &build
+  name: Build
+  command: yarn affected:build -- ${AFFECTED_ARGS} --parallel -- --configuration production
 
 # format
 format: &format
   name: format
-  command: yarn format:check --all
-
-format-affected: &format-affected
-  name: format-affected
   command: yarn format:check ${AFFECTED_ARGS}
 
 # lint
-lint-affected: &lint-affected
-  name: lint-affected
-  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS} --parallel
-
 lint: &lint
   name: lint
-  command: ./node_modules/.bin/nx workspace-lint && yarn lint
+  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS} --parallel
 
-# checks
-check-lodash: &check-lodash
-  name: check-lodash
-  command: node ./dist/tools/checks/command lodash --all
-
-check-lodash-affected: &check-lodash-affected
-  name: check-lodash
+# check_lodash
+check_lodash: &check_lodash
+  name: Check Lodash Import
   command: node ./dist/tools/checks/command lodash ${AFFECTED_ARGS}
-
-# test
-test-affected: &test-affected
-  name: test-affected
-  command: yarn affected:test ${AFFECTED_ARGS} --parallel --ci --code-coverage
 
 test: &test
   name: test
-  command: yarn test --ci --code-coverage
+  command: yarn affected:test ${AFFECTED_ARGS} --parallel --ci --code-coverage
 
 # e2e
-e2e-affected: &e2e-affected
-  name: e2e-affected
-  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production --headless
-
 e2e: &e2e
   name: e2e
-  command: yarn e2e --configuration production --headless
+  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production --headless
 
 # coverage
 coverage: &coverage
@@ -107,9 +108,13 @@ store_artifacts_cypress: &store_artifacts_cypress
   prefix: cypress
   path: dist/cypress
 
+store_artifacts_dist: &store_artifacts_dist
+  prefix: dist
+  path: dist
+
 # jobs
 jobs:
-  check_all:
+  check:
     <<: *defaults
     steps:
       - checkout
@@ -117,43 +122,42 @@ jobs:
       - restore_cache: *restore_yarn_cache
       - run: *yarn_install
       - save_cache: *save_yarn_cache
+      - restore_cache: *restore_deploy_cache
       - run: *format
       - run: *lint
       - run: *test
+      - run: *build
+      - save_cache: *save_build_cache
+      - store_artifacts: *store_artifacts_dist
       - run: *coverage
       # - run: *e2e
       - store_artifacts: *store_artifacts_coverage
       - store_artifacts: *store_artifacts_cypress
+  deploy:
+      <<: *defaults
+      steps:
+        - checkout
+        - restore_cache: *deploy_cache
+        - run: *set_env
+        - restore_cache: *yarn_cache
+        - restore_cache: *restore_build_cache
+        - run: yarn affected -- --target deploy ${AFFECTED_ARGS}
+        - run: git rev-parse HEAD > dist/last-deploy.txt
+        - save_cache: *save_deploy_cache
 
-  check_affected:
-    <<: *defaults
-    steps:
-      - checkout
-      - run: *set_env
-      - restore_cache: *restore_yarn_cache
-      - run: *yarn_install
-      - save_cache: *save_yarn_cache
-      - run: *check-lodash-affected
-      - run: *format-affected
-      - run: *lint-affected
-      - run: *test-affected
-      - run: *coverage
-      # - run: *e2e-affected
-      - store_artifacts: *store_artifacts_coverage
-      - store_artifacts: *store_artifacts_cypress
-# workflows
 workflows:
   version: 2
   check:
     jobs:
-      - check_all:
-          filters:
-            branches:
-              only:
-                - master
-      - check_affected:
+      - check:
           filters:
             branches:
               ignore:
-                - master
                 - i10n
+      # - deploy:
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
+      #     requires:
+      #       - check
