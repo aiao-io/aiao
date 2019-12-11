@@ -124,9 +124,9 @@ jobs:
       - save_cache: *save_yarn_cache
       - restore_cache: *restore_deploy_cache
       - run: *format
+      - run: *build
       - run: *lint
       - run: *test
-      - run: *build
       - save_cache: *save_build_cache
       - store_artifacts: *store_artifacts_dist
       - run: *coverage
@@ -137,7 +137,7 @@ jobs:
       <<: *defaults
       steps:
         - checkout
-        - restore_cache: *deploy_cache
+        - restore_cache: *restore_deploy_cache
         - run: *set_env
         - restore_cache: *yarn_cache
         - restore_cache: *restore_build_cache
