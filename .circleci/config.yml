@@ -132,17 +132,18 @@ jobs:
       # - run: *e2e
       - store_artifacts: *store_artifacts_coverage
       - store_artifacts: *store_artifacts_cypress
+      - run: ls dist
   deploy:
-      <<: *defaults
-      steps:
-        - checkout
-        - restore_cache: *restore_deploy_cache
-        - run: *set_env
-        - restore_cache: *restore_yarn_cache
-        - restore_cache: *restore_build_cache
-        - run: yarn affected -- --target deploy ${AFFECTED_ARGS}
-        - run: git rev-parse HEAD > dist/last-deploy.txt
-        - save_cache: *save_deploy_cache
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache: *restore_deploy_cache
+      - run: *set_env
+      - restore_cache: *restore_yarn_cache
+      - restore_cache: *restore_build_cache
+      - run: yarn affected -- --target deploy ${AFFECTED_ARGS}
+      - run: git rev-parse HEAD > dist/last-deploy.txt
+      - save_cache: *save_deploy_cache
 
 workflows:
   version: 2
