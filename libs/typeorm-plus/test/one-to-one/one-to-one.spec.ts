@@ -32,7 +32,6 @@ describe('one-to-one', () => {
 
   let userRepository: Repository<User>;
   let userSequelizeRepository: SequelizeRepository<User>;
-  let profileSequelizeRepository: SequelizeRepository<Profile>;
 
   beforeAll(async () => {
     connection = await createConnection(options);
@@ -41,7 +40,6 @@ describe('one-to-one', () => {
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
     userSequelizeRepository = typeormPlus.sequelize.model('User') as any;
-    profileSequelizeRepository = typeormPlus.sequelize.model('User') as any;
   });
 
   describe('get', () => {
