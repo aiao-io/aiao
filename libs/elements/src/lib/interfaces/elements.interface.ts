@@ -7,7 +7,7 @@ export interface IAiaoContexts {
   imageStorage?: IImageStorage;
 }
 
-export interface IAiaoConfig extends IAiaoContexts {
+export interface IAiaoElementsConfig extends IAiaoContexts {
   codeEditorBaseUrl?: string;
   animated?: boolean;
   resourcesUrl?: string;
