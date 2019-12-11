@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+
+    <!-- ionic -->
+    <link href="/vendors/ionic/css/ionic.bundle.css" rel="stylesheet" />
+    <script type="module" src="/vendors/ionic/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="/vendors/ionic/dist/ionic/ionic.js"></script>
+
+    <!-- image-storage -->
+    <script src="/vendors/image-storage/bundles/aiao-image-storage.umd.js"></script>
+    <script src="/vendors/image-storage/bundles/aiao-image-storage-adapters-aliyun.umd.js"></script>
+
+    <!-- aiao-elements -->
+    <script type="module" src="/dist/aiao-elements/aiao-elements.esm.js"></script>
+    <script nomodule src="/dist/aiao-elements/aiao-elements.js"></script>
+
+    <!-- test -->
+    <link href="/scripts/testing/styles.css" rel="stylesheet" />
+    <script src="/scripts/testing/scripts.js"></script>
+  </head>
+  <body>
+    <button type="button" onclick="flattenPathValues()">flattenPathValues</button>
+    <button type="button" onclick="values()">values</button>
+    <button type="button" onclick="setValue()">setValue</button>
+    <button type="button" onclick="setValues()">setValues</button>
+    <aiao-elements-form id="form"></aiao-elements-form>
+    <h6>input event</h6>
+    <pre id="input"></pre>
+    <h6>change event</h6>
+    <pre id="change"></pre>
+  </body>
+
+  <script>
+    const form = document.querySelector('#form');
+    const input = document.querySelector('#input');
+    const change = document.querySelector('#change');
+    form.html = `
+    <ion-input class='elements-form_item' name="name" value="name"></ion-input>
+    <div>
+      <ion-input class='elements-form_item' name="car[0]" value="BMW"></ion-input>
+      <ion-input class='elements-form_item' name="car[1]" value="Honda"></ion-input>
+    </div>
+    `;
+
+    form.value = {
+      name: 'jim',
+      car: ['bmw', 'honda']
+    };
+    form.addEventListener('aiaoChange', e => {
+      console.log('change', e);
+      change.textContent = JSON.stringify(e.detail.value, { spece: 2 });
+    });
+
+    form.addEventListener('aiaoInput', e => {
+      console.log('input', e);
+      input.textContent = JSON.stringify(e.detail.value, { spece: 2 });
+    });
+
+    function flattenPathValues() {
+      form.flattenPathValues().then(d => {
+        console.log(d);
+      });
+    }
+
+    function values() {
+      form.values().then(d => {
+        console.log(d);
+      });
+    }
+    function setValue() {
+      form.setValue('name', 'setValue').then();
+    }
+    function setValues() {
+      form.setValues({ name: 'setValues', car: ['1', '2'] }).then();
+    }
+  </script>
+</html>

@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - master
-      - develop
+      - next
   pull_request:
     branches:
-      - '!*_translation'
+      - '!i10n'
 
 jobs:
   check:

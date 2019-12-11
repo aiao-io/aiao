@@ -1,0 +1,13 @@
+{
+  "name": "@aiao/image-storage",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "ng build image-storage"
+  },
+  "peerDependencies": {
+    "@aiao/util": "*"
+  },
+  "devDependencies": {
+    "@aiao/util": "*"
+  }
+}

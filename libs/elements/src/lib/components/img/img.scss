@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  position: relative;
+  object-fit: contain;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: inherit;
+  object-position: inherit;
+}
+
+.error,
+.loading {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.error {
+  cursor: pointer;
+}
+
+:host(.loaded.fade) {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+  animation-duration: 300ms;
+  animation-name: fadeIn;
+}

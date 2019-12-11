@@ -1,0 +1,4 @@
+loader/
+src/lib/components/code-editor/assets
+src/components.d.ts
+vendors/

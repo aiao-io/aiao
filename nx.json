@@ -25,6 +25,18 @@
     },
     "stencil-toolkit": {
       "tags": []
+    },
+    "elements": {
+      "tags": []
+    },
+    "image-storage": {
+      "tags": []
+    },
+    "elements-cdk": {
+      "tags": []
+    },
+    "elements-angular": {
+      "tags": []
     }
   }
 }

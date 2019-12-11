@@ -151,11 +151,9 @@ workflows:
             branches:
               only:
                 - master
-                - develop
       - check_affected:
           filters:
             branches:
               ignore:
                 - master
-                - develop
-                - develop_translation
+                - i10n

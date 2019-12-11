@@ -188,6 +188,146 @@
           "styleext": "scss"
         }
       }
+    },
+    "elements": {
+      "root": "libs/elements",
+      "sourceRoot": "libs/elements/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@aiao/stencil-toolkit:build",
+          "options": {
+            "outputPath": "dist/libs/elements",
+            "config": "libs/elements/stencil.config.prod.ts"
+          }
+        },
+        "serve": {
+          "builder": "@aiao/stencil-toolkit:serve",
+          "options": {
+            "config": "libs/elements/stencil.config.dev.ts"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/elements/tsconfig.lib.json", "libs/elements/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/elements/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/elements/jest.config.js",
+            "tsConfig": "libs/elements/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "image-storage": {
+      "projectType": "library",
+      "root": "libs/image-storage",
+      "sourceRoot": "libs/image-storage/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/image-storage/tsconfig.lib.json",
+            "project": "libs/image-storage/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/image-storage/tsconfig.lib.json", "libs/image-storage/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/image-storage/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/image-storage/jest.config.js",
+            "tsConfig": "libs/image-storage/tsconfig.spec.json",
+            "setupFile": "libs/image-storage/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "elements-cdk": {
+      "projectType": "library",
+      "root": "libs/elements-cdk",
+      "sourceRoot": "libs/elements-cdk/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/elements-cdk/tsconfig.lib.json",
+            "project": "libs/elements-cdk/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/elements-cdk/tsconfig.lib.json", "libs/elements-cdk/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/elements-cdk/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/elements-cdk/jest.config.js",
+            "tsConfig": "libs/elements-cdk/tsconfig.spec.json",
+            "setupFile": "libs/elements-cdk/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "elements-angular": {
+      "projectType": "library",
+      "root": "libs/elements-angular",
+      "sourceRoot": "libs/elements-angular/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/elements-angular/tsconfig.lib.json",
+            "project": "libs/elements-angular/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/elements-angular/tsconfig.lib.json", "libs/elements-angular/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/elements-angular/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/elements-angular/jest.config.js",
+            "tsConfig": "libs/elements-angular/tsconfig.spec.json",
+            "setupFile": "libs/elements-angular/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

@@ -1,0 +1,15 @@
+{
+  "name": "@aiao/elements-angular",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "ng build lazy-element"
+  },
+  "peerDependencies": {
+    "@aiao/elements": "^0.0.1",
+    "@angular/common": "^8.2.14",
+    "@angular/core": "^8.2.14"
+  },
+  "devDependencies": {
+    "@aiao/elements": "^0.0.1"
+  }
+}

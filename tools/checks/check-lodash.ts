@@ -6,7 +6,7 @@ import { CommandBaseConfig } from './interface';
 
 const findLodash = (...path: string[]) => {
   const project = new Project();
-  project.addExistingSourceFiles(path);
+  project.addSourceFilesAtPaths(path);
   const sourceFiles = project.getSourceFiles(path);
   const findFiles = [];
   sourceFiles.forEach(file => {

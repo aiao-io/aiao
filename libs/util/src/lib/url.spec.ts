@@ -96,7 +96,6 @@ describe('urlJoin', () => {
   it('should fail with segments that are not string or number', done => {
     try {
       const url = urlJoin('http://blabla.com/', undefined, 'test');
-      console.log('url', url);
       done(url);
     } catch (error) {
       done();
