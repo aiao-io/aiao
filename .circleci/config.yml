@@ -36,7 +36,6 @@ set_env: &set_env
 restore_yarn_cache: &restore_yarn_cache
   keys:
     - node-deps-node12-{{ checksum "yarn.lock" }}
-    - node-deps-node12-
 
 save_yarn_cache: &save_yarn_cache
   key: node-deps-node12-{{ checksum "yarn.lock" }}
