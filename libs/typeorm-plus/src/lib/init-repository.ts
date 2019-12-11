@@ -1,19 +1,18 @@
 import get from 'lodash/get';
-import Sequelize from 'sequelize';
-import { Repository, TreeRepository } from 'typeorm';
+import { Repository, TreeRepository, EntityMetadata } from 'typeorm';
+import sequelize, { Sequelize } from 'sequelize';
 
 // import { initTreeRepository } from './init-tree-reposiory';
-import { TypeOrmSequelize } from './TypeOrmSequelize';
 
-export function initRepository(repository: Repository<any>, ormSequelize: TypeOrmSequelize) {
-  const isTreeRepository = repository instanceof TreeRepository;
+export function initRepository(metadata: EntityMetadata, ormSequelize: Sequelize) {
+  // const isTreeRepository = repository instanceof TreeRepository;
+  // repository.metadata;
+  // if (isTreeRepository) {
+  // initTreeRepository(repository, ormSequelize);
+  // console.log('');
+  // }
 
-  if (isTreeRepository) {
-    // initTreeRepository(repository, ormSequelize);
-    console.log('');
-  }
-
-  const { name: modelName, relations, schema } = repository.metadata;
+  const { name: modelName, relations, schema } = metadata;
   const model: any = ormSequelize.modelManager.getModel(modelName);
   relations
     .filter(({ isTreeChildren, isTreeParent }) => isTreeChildren === false && isTreeParent === false)
@@ -37,7 +36,7 @@ export function initRepository(repository: Repository<any>, ormSequelize: TypeOr
           model.belongsTo(inverseModel, { as: propertyName, foreignKey: { name: fkName } });
           break;
         case 'one-to-one':
-          const inverseJoinColumns = (relation.inverseJoinColumns && relation.inverseRelation.joinColumns) || [];
+          const inverseJoinColumns = (relation.inverseRelation && relation.inverseRelation.joinColumns) || [];
           if (relation.joinColumns.length > 0 && inverseJoinColumns.length > 0) {
             throw new Error(`modelName: ${modelName}, 一对一关系不能两边 使用 joinColumns`);
           }
@@ -58,8 +57,8 @@ export function initRepository(repository: Repository<any>, ormSequelize: TypeOr
             ormSequelize.define(
               joinTableName,
               {
-                [modelFK]: Sequelize.INTEGER,
-                [inverseModelFK]: Sequelize.INTEGER
+                [modelFK]: sequelize.INTEGER,
+                [inverseModelFK]: sequelize.INTEGER
               },
               { tableName: joinTableName, schema, createdAt: false, updatedAt: false }
             );
