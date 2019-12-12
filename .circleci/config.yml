@@ -95,20 +95,16 @@ jobs:
       - run: *format
       - run: *lint
       - run: *test
-      - store_artifacts: *store_artifacts_dist
       - run: *coverage
       # - run: *e2e
-      - store_artifacts: *store_artifacts_coverage
-  integration_tests:
-    <<: *defaults
-    steps:
       - run:
           name: Install Docker Compose
           command: |
             curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
             chmod +x ~/docker-compose
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
-
+      - store_artifacts: *store_artifacts_dist
+      - store_artifacts: *store_artifacts_coverage
 workflows:
   version: 2
   check:
