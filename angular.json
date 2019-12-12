@@ -228,6 +228,9 @@
           "options": {
             "outputPath": "dist/libs/elements",
             "config": "libs/elements/stencil.config.prod.ts"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "serve": {
@@ -263,6 +266,9 @@
           "options": {
             "tsConfig": "libs/image-storage/tsconfig.lib.json",
             "project": "libs/image-storage/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
@@ -298,6 +304,9 @@
           "options": {
             "tsConfig": "libs/elements-cdk/tsconfig.lib.json",
             "project": "libs/elements-cdk/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
@@ -333,6 +342,9 @@
           "options": {
             "tsConfig": "libs/elements-angular/tsconfig.lib.json",
             "project": "libs/elements-angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
