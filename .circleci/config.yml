@@ -119,7 +119,10 @@ jobs:
       - checkout
       - run: *set_env
       - restore_cache: *restore_yarn_cache
-      - run: *yarn_install
+      - run: rm -rf node_modules/@aiao		
+      - run: yarn install --frozen-lockfile --non-interactive --ignore-scripts		
+      - run: yarn build:tools
+      - run: node dist/tools/scripts/check-workspace		
       - save_cache: *save_yarn_cache
       - restore_cache: *restore_deploy_cache
       - run: *format
