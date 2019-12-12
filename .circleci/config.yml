@@ -99,8 +99,6 @@ jobs:
       - run: *coverage
       # - run: *e2e
       - store_artifacts: *store_artifacts_coverage
-      - run: ls dist
-      - run: ls ~/.cache
 
 workflows:
   version: 2
