@@ -59,16 +59,6 @@ save_deploy_cache: &save_deploy_cache
 restore_deploy_cache: &restore_deploy_cache
   key: last-deploy-sha
 
-# install
-yarn_install: &yarn_install
-  name: Install Dependencies
-  command: yarn install --frozen-lockfile --non-interactive
-
-# build
-build: &build
-  name: Build
-  command: yarn affected:build -- ${AFFECTED_ARGS} --parallel -- --configuration production
-
 # format
 format: &format
   name: format
@@ -119,14 +109,11 @@ jobs:
       - checkout
       - run: *set_env
       - restore_cache: *restore_yarn_cache
-      - run: rm -rf node_modules/@aiao		
-      - run: yarn install --frozen-lockfile --non-interactive --ignore-scripts		
+      - run: yarn install --frozen-lockfile --non-interactive --ignore-scripts
       - run: yarn build:tools
-      - run: node dist/tools/scripts/check-workspace		
       - save_cache: *save_yarn_cache
       - restore_cache: *restore_deploy_cache
       - run: *format
-      - run: *build
       - run: *lint
       - run: *test
       - save_cache: *save_build_cache
