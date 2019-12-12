@@ -62,7 +62,7 @@ restore_deploy_cache: &restore_deploy_cache
 # install
 yarn_install: &yarn_install
   name: Install Dependencies
-  command: yarn install --frozen-lockfile --non-interactive --ignore-scripts
+  command: yarn install --frozen-lockfile --non-interactive
 
 # build
 build: &build
