@@ -32,7 +32,19 @@ set_env: &set_env
     source $BASH_ENV
     echo $AFFECTED_ARGS
 
-# doc
+# install
+install_yarn: &install_yarn
+  name: yarn install
+  command: yarn install --frozen-lockfile --non-interactive --ignore-scripts
+
+build_tools: &build_tools
+  name: Build Tools
+  command: yarn build:tools
+
+check_workspace: &check_workspace
+  name: Check Workspace
+  command: node dist/tools/scripts/check-workspace
+
 install_docker: &install_docker
   name: Install Docker Compose
   command: |
@@ -40,16 +52,32 @@ install_docker: &install_docker
     chmod +x ~/docker-compose
     sudo mv ~/docker-compose /usr/local/bin/docker-compose
 
+# build
+build_libs: &build_libs
+  name: Build Libs
+  command: yarn run build:libs
+
 # cache
 restore_yarn_cache: &restore_yarn_cache
+  name: restore_yarn_cache
   keys:
     - node-deps-node12-{{ checksum "yarn.lock" }}
 
 save_yarn_cache: &save_yarn_cache
+  name: Save Yarn Cache
   key: node-deps-node12-{{ checksum "yarn.lock" }}
   paths:
     - ~/.cache
-    - node_modules
+
+restore_build_cache: &restore_build_cache
+  name: Restore Build Cache
+  key: build-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+
+save_build_cache: &save_build_cache
+  name: Save Build Cache
+  key: build-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+  paths:
+    - dist
 
 # format
 format: &format
@@ -82,14 +110,14 @@ coverage: &coverage
 
 # artifacts
 store_artifacts_coverage: &store_artifacts_coverage
-  name: coverage
+  name: Artifacts coverage
   prefix: coverage
   path: coverage
 
 store_artifacts_dist: &store_artifacts_dist
-  name: dist
+  name: Artifacts dist
   prefix: dist
-  path: dist
+  path: dist/last-deploy.txt
 
 # jobs
 jobs:
@@ -99,10 +127,12 @@ jobs:
       - checkout
       - run: *set_env
       - restore_cache: *restore_yarn_cache
-      - run: yarn install --frozen-lockfile --non-interactive --ignore-scripts
-      - run: yarn build:tools
-      - save_cache: *save_yarn_cache
+      - restore_cache: *restore_build_cache
       - run: *install_docker
+      - run: *install_yarn
+      - run: *build_tools
+      - run: *check_workspace
+      - run: *build_libs
       - run: *format
       - run: *lint
       - run: *test
@@ -110,6 +140,8 @@ jobs:
       # - run: *e2e
       - store_artifacts: *store_artifacts_dist
       - store_artifacts: *store_artifacts_coverage
+      - save_cache: *save_yarn_cache
+      - save_cache: *save_build_cache
 workflows:
   version: 2
   check:
