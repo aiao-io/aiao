@@ -34,7 +34,7 @@ set_env: &set_env
 
 # install
 install_yarn: &install_yarn
-  name: Install Docker Compose
+  name: yarn install
   command: yarn install --frozen-lockfile --non-interactive --ignore-scripts
 
 build_tools: &build_tools
@@ -63,7 +63,6 @@ save_yarn_cache: &save_yarn_cache
   key: node-deps-node12-{{ checksum "yarn.lock" }}
   paths:
     - ~/.cache
-    - node_modules
 
 restore_build_cache: &restore_build_cache
   name: restore_build_cache
