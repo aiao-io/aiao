@@ -135,6 +135,7 @@ jobs:
       - run: *build_libs
       - run: *format
       - run: *lint
+      - run: bash ./scripts/prepare.sh
       - run: *test
       - run: *coverage
       # - run: *e2e
