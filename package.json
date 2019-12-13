@@ -28,11 +28,12 @@
     "help": "nx help",
     "build:libs": "lerna run build --scope @aiao/* && yarn format",
     "build:tools": "rimraf dist/tools && tsc -p ./tools/tsconfig.tools.json",
+    "check-workspace": "yarn run:tools tools/scripts/check-workspace",
     "clean": "git clean -dxf",
     "commit": "npx git-cz",
     "lodash-optimize": "yarn node dist/tools/scripts/lodash-optimize",
+    "postinstall": "yarn build:tools && node dist/tools/scripts/check-workspace --lib",
     "preinstall": "rm -rf node_modules/@aiao",
-    "postinstall": "yarn build:tools && node dist/tools/scripts/check-workspace",
     "run:tools": "ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register"
   },
   "private": true,

@@ -2,11 +2,14 @@ import { existsSync, mkdirSync } from 'fs';
 import { ensureSymlinkSync, rmdirSync } from 'fs-extra';
 import ora from 'ora';
 import { exit } from 'process';
+import yargs from 'yargs';
 
 import { run } from '../util/runner';
 
 const aiaoNpmPath = 'node_modules/@aiao';
 const libDistPath = 'dist/libs';
+
+const config = yargs.option('lib', { type: 'boolean' }).argv;
 
 const checkSylink = async () => {
   const check = ora('symlink').start();
@@ -39,7 +42,9 @@ const checkLibBuild = async () => {
 
 const checkWorkspace = async () => {
   await checkSylink();
-  await checkLibBuild();
+  if (config.lib) {
+    await checkLibBuild();
+  }
 };
 
 checkWorkspace().then(() => exit());
