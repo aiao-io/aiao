@@ -129,13 +129,14 @@ jobs:
       - restore_cache: *restore_yarn_cache
       - restore_cache: *restore_build_cache
       - run: *install_docker
+      - run: docker-compose up -d
       - run: *install_yarn
       - run: *build_tools
       - run: *check_workspace
       - run: *build_libs
       - run: *format
       - run: *lint
-      - run: bash ./tools/scripts/prepare.sh
+      - run: bash ./tools/scripts/intergration-test.sh
       - run: *test
       - run: *coverage
       # - run: *e2e
