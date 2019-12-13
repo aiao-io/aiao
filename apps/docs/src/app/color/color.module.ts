@@ -2,25 +2,23 @@ import { MarkdownModule } from 'ngx-markdown';
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
-import { HomePage } from './home.page';
+import { ColorComponent } from './color.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     IonicModule,
-    MarkdownModule.forChild(),
+    MarkdownModule,
     RouterModule.forChild([
       {
         path: '',
-        component: HomePage
+        component: ColorComponent
       }
     ])
   ],
-  declarations: [HomePage]
+  declarations: [ColorComponent]
 })
-export class HomePageModule {}
+export class ColorModule {}

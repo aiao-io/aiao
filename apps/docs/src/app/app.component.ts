@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'aiao-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'docs';
+  constructor(private menuController: MenuController) {}
+
+  toggleNavMenu() {
+    this.menuController.toggle('docs-menu');
+  }
 }

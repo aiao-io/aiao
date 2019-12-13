@@ -1,0 +1,17 @@
+#menu-content {
+  margin-top: 56px;
+}
+
+ion-menu {
+  --width: 240px;
+}
+
+.split-pane-md.split-pane-visible > .split-pane-side {
+  max-width: 240px;
+  min-width: 240px;
+}
+
+.split-pane-ios.split-pane-visible > .split-pane-side {
+  max-width: 240px;
+  min-width: 240px;
+}
