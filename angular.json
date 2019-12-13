@@ -11,6 +11,9 @@
           "options": {
             "tsConfig": "libs/util/tsconfig.lib.json",
             "project": "libs/util/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
@@ -46,6 +49,9 @@
           "options": {
             "tsConfig": "libs/lazy-component/tsconfig.lib.json",
             "project": "libs/lazy-component/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
@@ -81,6 +87,9 @@
           "options": {
             "tsConfig": "libs/lazy-module/tsconfig.lib.json",
             "project": "libs/lazy-module/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
@@ -112,6 +121,9 @@
           "options": {
             "tsConfig": "libs/lazy-element/tsconfig.lib.json",
             "project": "libs/lazy-element/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
@@ -143,6 +155,9 @@
           "options": {
             "tsConfig": "libs/color/tsconfig.lib.json",
             "project": "libs/color/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
@@ -167,6 +182,19 @@
       "sourceRoot": "libs/stencil-toolkit/src",
       "prefix": "aiao",
       "architect": {
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd libs/stencil-toolkit && yarn run build"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -200,6 +228,9 @@
           "options": {
             "outputPath": "dist/libs/elements",
             "config": "libs/elements/stencil.config.prod.ts"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "serve": {
@@ -235,6 +266,9 @@
           "options": {
             "tsConfig": "libs/image-storage/tsconfig.lib.json",
             "project": "libs/image-storage/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
@@ -270,6 +304,9 @@
           "options": {
             "tsConfig": "libs/elements-cdk/tsconfig.lib.json",
             "project": "libs/elements-cdk/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
@@ -305,6 +342,9 @@
           "options": {
             "tsConfig": "libs/elements-angular/tsconfig.lib.json",
             "project": "libs/elements-angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
