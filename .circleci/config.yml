@@ -59,7 +59,7 @@ build_libs: &build_libs
 
 # cache
 restore_yarn_cache: &restore_yarn_cache
-  name: restore_yarn_cache
+  name: Restore Yarn Cache
   keys:
     - node-deps-node12-{{ checksum "yarn.lock" }}
 
@@ -110,8 +110,8 @@ coverage: &coverage
 
 # integration_test
 integration_test: &integration_test
-    name: integration_test
-    command: base ./tools/scripts/intergration-test.sh
+  name: integration_test
+  command: bash ./tools/scripts/intergration-test.sh
 
 # artifacts
 store_artifacts_coverage: &store_artifacts_coverage
