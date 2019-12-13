@@ -53,7 +53,7 @@ install_docker: &install_docker
     sudo mv ~/docker-compose /usr/local/bin/docker-compose
 
 # build
-build_libs: *build_libs
+build_libs: &build_libs
   name: Build Libs
   command: yarn run build:libs
 
