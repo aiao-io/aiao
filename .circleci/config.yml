@@ -32,7 +32,20 @@ set_env: &set_env
     source $BASH_ENV
     echo $AFFECTED_ARGS
 
-# doc
+# install
+
+install_yarn: &install_yarn
+  name: Install Docker Compose
+  command: yarn install --frozen-lockfile --non-interactive --ignore-scripts
+
+build_tools: &build_tools
+  name: Build Tools
+  command: yarn build:tools
+
+check_workspace: &check_workspace
+  name: Check Workspace
+  command: node dist/tools/scripts/check-workspace --lib
+
 install_docker: &install_docker
   name: Install Docker Compose
   command: |
@@ -50,6 +63,14 @@ save_yarn_cache: &save_yarn_cache
   paths:
     - ~/.cache
     - node_modules
+
+restore_build_cache: &restore_build_cache
+  key: build-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+
+save_build_cache: &save_build_cache
+  key: build-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+  paths:
+    - dist
 
 # format
 format: &format
@@ -82,12 +103,12 @@ coverage: &coverage
 
 # artifacts
 store_artifacts_coverage: &store_artifacts_coverage
-  name: coverage
+  name: Artifacts coverage
   prefix: coverage
   path: coverage
 
 store_artifacts_dist: &store_artifacts_dist
-  name: dist
+  name: Artifacts dist
   prefix: dist
   path: dist
 
@@ -99,10 +120,13 @@ jobs:
       - checkout
       - run: *set_env
       - restore_cache: *restore_yarn_cache
-      - run: yarn install --frozen-lockfile --non-interactive --ignore-scripts
-      - run: yarn build:tools
-      - save_cache: *save_yarn_cache
+      _ restore_cache : *restore_build_cache
       - run: *install_docker
+      - run: *install_yarn
+      - run: *build_tools
+      - run: *check_workspace
+      - save_cache: *save_yarn_cache
+      - save_cache: *save_build_cache
       - run: *format
       - run: *lint
       - run: *test
