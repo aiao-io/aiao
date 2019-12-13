@@ -33,7 +33,6 @@ set_env: &set_env
     echo $AFFECTED_ARGS
 
 # install
-
 install_yarn: &install_yarn
   name: Install Docker Compose
   command: yarn install --frozen-lockfile --non-interactive --ignore-scripts
@@ -55,19 +54,23 @@ install_docker: &install_docker
 
 # cache
 restore_yarn_cache: &restore_yarn_cache
+  name: restore_yarn_cache
   keys:
     - node-deps-node12-{{ checksum "yarn.lock" }}
 
 save_yarn_cache: &save_yarn_cache
+  name: save_yarn_cache
   key: node-deps-node12-{{ checksum "yarn.lock" }}
   paths:
     - ~/.cache
     - node_modules
 
 restore_build_cache: &restore_build_cache
+  name: restore_build_cache
   key: build-{{ .Environment.CIRCLE_WORKFLOW_ID }}
 
 save_build_cache: &save_build_cache
+  name: save_build_cache
   key: build-{{ .Environment.CIRCLE_WORKFLOW_ID }}
   paths:
     - dist
@@ -120,7 +123,7 @@ jobs:
       - checkout
       - run: *set_env
       - restore_cache: *restore_yarn_cache
-      - restore_cache : *restore_build_cache
+      - restore_cache: *restore_build_cache
       - run: *install_docker
       - run: *install_yarn
       - run: *build_tools
