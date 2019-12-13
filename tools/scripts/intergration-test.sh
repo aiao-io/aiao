@@ -1,6 +1,6 @@
 #!/bin/sh
-echo "integration install"
+echo "integration test"
 
-for D in integration/*/; do sh -c "cd ${D} && yarn install --frozen-lockfile --non-interactive"; done
-
-docker-compose up -d
+for D in integration/*/; do
+  sh -c "cd ${D} && yarn install --frozen-lockfile --non-interactive"
+done

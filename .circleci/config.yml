@@ -108,6 +108,11 @@ coverage: &coverage
   name: coverage
   command: bash <(curl -s https://codecov.io/bash)
 
+# integration_test
+integration_test: &integration_test
+    name: integration_test
+    command: base ./tools/scripts/intergration-test.sh
+
 # artifacts
 store_artifacts_coverage: &store_artifacts_coverage
   name: Artifacts coverage
@@ -135,6 +140,7 @@ jobs:
       - run: *format
       - run: *lint
       - run: *test
+      - run: *integration_test
       - run: *coverage
       # - run: *e2e
       - store_artifacts: *store_artifacts_dist
