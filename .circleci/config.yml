@@ -9,7 +9,7 @@ defaults: &defaults
   working_directory: ~/repo
   docker:
     - image: circleci/node:12-browsers
-    - image: circleci/postgres:11-alpine
+    - image: circleci/postgres:12-alpine
       environment:
         POSTGRES_USER: test
         POSTGRES_DB: test
