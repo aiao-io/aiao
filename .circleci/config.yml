@@ -32,6 +32,14 @@ set_env: &set_env
     source $BASH_ENV
     echo $AFFECTED_ARGS
 
+# doc
+install_docker: &install_docker
+  name: Install Docker Compose
+  command: |
+    curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+    chmod +x ~/docker-compose
+    sudo mv ~/docker-compose /usr/local/bin/docker-compose
+
 # cache
 restore_yarn_cache: &restore_yarn_cache
   keys:
@@ -74,10 +82,12 @@ coverage: &coverage
 
 # artifacts
 store_artifacts_coverage: &store_artifacts_coverage
+  name: coverage
   prefix: coverage
   path: coverage
 
 store_artifacts_dist: &store_artifacts_dist
+  name: dist
   prefix: dist
   path: dist
 
@@ -92,17 +102,12 @@ jobs:
       - run: yarn install --frozen-lockfile --non-interactive --ignore-scripts
       - run: yarn build:tools
       - save_cache: *save_yarn_cache
+      - run: *install_docker
       - run: *format
       - run: *lint
       - run: *test
       - run: *coverage
       # - run: *e2e
-      - run:
-          name: Install Docker Compose
-          command: |
-            curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
-            chmod +x ~/docker-compose
-            sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - store_artifacts: *store_artifacts_dist
       - store_artifacts: *store_artifacts_coverage
 workflows:
