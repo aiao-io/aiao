@@ -82,10 +82,12 @@ coverage: &coverage
 
 # artifacts
 store_artifacts_coverage: &store_artifacts_coverage
+  name: coverage
   prefix: coverage
   path: coverage
 
 store_artifacts_dist: &store_artifacts_dist
+  name: dist
   prefix: dist
   path: dist
 
