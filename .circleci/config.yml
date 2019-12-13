@@ -9,6 +9,13 @@ defaults: &defaults
   working_directory: ~/repo
   docker:
     - image: circleci/node:12-browsers
+    - image: circleci/postgres:11-alpine
+      environment:
+        POSTGRES_USER: test
+        POSTGRES_DB: test
+  environment:
+    TYPEORM_PLUS_TEST_USERNAME: test
+    TYPEORM_PLUS_TEST_DATABASE: test
 
 # env
 set_env: &set_env
@@ -44,13 +51,6 @@ build_tools: &build_tools
 check_workspace: &check_workspace
   name: Check Workspace
   command: node dist/tools/scripts/check-workspace
-
-install_docker: &install_docker
-  name: Install Docker Compose
-  command: |
-    curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
-    chmod +x ~/docker-compose
-    sudo mv ~/docker-compose /usr/local/bin/docker-compose
 
 # build
 build_libs: &build_libs
@@ -128,14 +128,12 @@ jobs:
       - run: *set_env
       - restore_cache: *restore_yarn_cache
       - restore_cache: *restore_build_cache
-      - run: *install_docker
       - run: *install_yarn
       - run: *build_tools
       - run: *check_workspace
       - run: *build_libs
       - run: *format
       - run: *lint
-      - run: bash ./tools/scripts/intergration-test.sh
       - run: *test
       - run: *coverage
       # - run: *e2e
