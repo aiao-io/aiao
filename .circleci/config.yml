@@ -40,58 +40,32 @@ restore_yarn_cache: &restore_yarn_cache
 save_yarn_cache: &save_yarn_cache
   key: node-deps-node12-{{ checksum "yarn.lock" }}
   paths:
-    - ~/.cache/Cypress
+    - ~/.cache
     - node_modules
-
-# install
-yarn_install: &yarn_install
-  name: Install Dependencies
-  command: yarn install --frozen-lockfile --non-interactive
 
 # format
 format: &format
   name: format
-  command: yarn format:check --all
-
-format-affected: &format-affected
-  name: format-affected
   command: yarn format:check ${AFFECTED_ARGS}
 
 # lint
-lint-affected: &lint-affected
-  name: lint-affected
-  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS} --parallel
-
 lint: &lint
   name: lint
-  command: ./node_modules/.bin/nx workspace-lint && yarn lint
+  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS} --parallel
 
-# checks
-check-lodash: &check-lodash
-  name: check-lodash
-  command: node ./dist/tools/checks/command lodash --all
-
-check-lodash-affected: &check-lodash-affected
-  name: check-lodash
+# check_lodash
+check_lodash: &check_lodash
+  name: Check Lodash Import
   command: node ./dist/tools/checks/command lodash ${AFFECTED_ARGS}
-
-# test
-test-affected: &test-affected
-  name: test-affected
-  command: yarn affected:test ${AFFECTED_ARGS} --parallel --ci --code-coverage
 
 test: &test
   name: test
-  command: yarn test --ci --code-coverage
+  command: yarn affected:test ${AFFECTED_ARGS} --parallel --ci --code-coverage
 
 # e2e
-e2e-affected: &e2e-affected
-  name: e2e-affected
-  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production --headless
-
 e2e: &e2e
   name: e2e
-  command: yarn e2e --configuration production --headless
+  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production --headless
 
 # coverage
 coverage: &coverage
@@ -103,57 +77,40 @@ store_artifacts_coverage: &store_artifacts_coverage
   prefix: coverage
   path: coverage
 
-store_artifacts_cypress: &store_artifacts_cypress
-  prefix: cypress
-  path: dist/cypress
+store_artifacts_dist: &store_artifacts_dist
+  prefix: dist
+  path: dist
 
 # jobs
 jobs:
-  check_all:
+  check:
     <<: *defaults
     steps:
       - checkout
       - run: *set_env
       - restore_cache: *restore_yarn_cache
-      - run: *yarn_install
+      - run: yarn install --frozen-lockfile --non-interactive --ignore-scripts
+      - run: yarn build:tools
       - save_cache: *save_yarn_cache
       - run: *format
       - run: *lint
       - run: *test
       - run: *coverage
       # - run: *e2e
+      - run:
+          name: Install Docker Compose
+          command: |
+            curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+            chmod +x ~/docker-compose
+            sudo mv ~/docker-compose /usr/local/bin/docker-compose
+      - store_artifacts: *store_artifacts_dist
       - store_artifacts: *store_artifacts_coverage
-      - store_artifacts: *store_artifacts_cypress
-
-  check_affected:
-    <<: *defaults
-    steps:
-      - checkout
-      - run: *set_env
-      - restore_cache: *restore_yarn_cache
-      - run: *yarn_install
-      - save_cache: *save_yarn_cache
-      - run: *check-lodash-affected
-      - run: *format-affected
-      - run: *lint-affected
-      - run: *test-affected
-      - run: *coverage
-      # - run: *e2e-affected
-      - store_artifacts: *store_artifacts_coverage
-      - store_artifacts: *store_artifacts_cypress
-# workflows
 workflows:
   version: 2
   check:
     jobs:
-      - check_all:
-          filters:
-            branches:
-              only:
-                - master
-      - check_affected:
+      - check:
           filters:
             branches:
               ignore:
-                - master
                 - i10n
