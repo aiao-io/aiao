@@ -109,7 +109,7 @@ coverage: &coverage
 
 # integration_test
 integration_test: &integration_test
-  name: integration_test
+  name: Integration Test
   command: bash ./tools/scripts/intergration-test.sh
 
 # artifacts

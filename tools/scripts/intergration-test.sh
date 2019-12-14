@@ -9,7 +9,7 @@ SKIP_TEST=(
 )
 
 for D in integration/*/; do
-  port=$(($port + 1))
+  port=$((port + 1))
   if [[ "${SKIP_TEST[*]}" =~ "${D}" ]]; then
     echo "skip ${D}"
   else
