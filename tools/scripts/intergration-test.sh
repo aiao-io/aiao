@@ -9,8 +9,8 @@ SKIP_TEST=(
 )
 
 for D in integration/*/; do
-  port=$(expr $port + 1)
-  if [[ "${SKIP_TEST[@]}" =~ "${D%%/}" ]]; then
+  port=$(($port + 1))
+  if [[ "${SKIP_TEST[*]}" =~ "${D}" ]]; then
     echo "skip ${D}"
   else
     sh -c "cd ${D} && yarn install --frozen-lockfile --non-interactive && yarn run e2e"
