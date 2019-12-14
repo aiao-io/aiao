@@ -34,7 +34,7 @@
     "@angular/language-service": "~8.2.14",
     "@nrwl/cypress": "^8.9.0",
     "codelyzer": "^5.0.0",
-    "cypress": "^3.7.0",
+    "cypress": "^3.8.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
