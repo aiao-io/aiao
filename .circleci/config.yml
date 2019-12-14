@@ -9,6 +9,13 @@ defaults: &defaults
   working_directory: ~/repo
   docker:
     - image: circleci/node:12-browsers
+    - image: circleci/postgres:12-alpine
+      environment:
+        POSTGRES_USER: test
+        POSTGRES_DB: test
+  environment:
+    TYPEORM_PLUS_TEST_USERNAME: test
+    TYPEORM_PLUS_TEST_DATABASE: test
 
 # env
 set_env: &set_env
@@ -45,21 +52,13 @@ check_workspace: &check_workspace
   name: Check Workspace
   command: node dist/tools/scripts/check-workspace
 
-install_docker: &install_docker
-  name: Install Docker Compose
-  command: |
-    curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
-    chmod +x ~/docker-compose
-    sudo mv ~/docker-compose /usr/local/bin/docker-compose
-
 # build
 build_libs: &build_libs
   name: Build Libs
-  command: yarn run build:libs
-
+  command: node --max_old_space_size=4096 ./node_modules/.bin/lerna run build --scope @aiao/*
 # cache
 restore_yarn_cache: &restore_yarn_cache
-  name: restore_yarn_cache
+  name: Restore Yarn Cache
   keys:
     - node-deps-node12-{{ checksum "yarn.lock" }}
 
@@ -108,6 +107,11 @@ coverage: &coverage
   name: coverage
   command: bash <(curl -s https://codecov.io/bash)
 
+# integration_test
+integration_test: &integration_test
+  name: Integration Test
+  command: bash ./tools/scripts/intergration-test.sh
+
 # artifacts
 store_artifacts_coverage: &store_artifacts_coverage
   name: Artifacts coverage
@@ -128,7 +132,6 @@ jobs:
       - run: *set_env
       - restore_cache: *restore_yarn_cache
       - restore_cache: *restore_build_cache
-      - run: *install_docker
       - run: *install_yarn
       - run: *build_tools
       - run: *check_workspace
@@ -136,12 +139,14 @@ jobs:
       - run: *format
       - run: *lint
       - run: *test
+      - run: *integration_test
       - run: *coverage
       # - run: *e2e
       - store_artifacts: *store_artifacts_dist
       - store_artifacts: *store_artifacts_coverage
       - save_cache: *save_yarn_cache
       - save_cache: *save_build_cache
+
 workflows:
   version: 2
   check:

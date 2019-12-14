@@ -368,6 +368,41 @@
           "styleext": "scss"
         }
       }
+    },
+    "typeorm-plus": {
+      "projectType": "library",
+      "root": "libs/typeorm-plus",
+      "sourceRoot": "libs/typeorm-plus/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/typeorm-plus/tsconfig.lib.json",
+            "project": "libs/typeorm-plus/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/typeorm-plus/tsconfig.lib.json", "libs/typeorm-plus/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/typeorm-plus/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/typeorm-plus/jest.config.js",
+            "tsConfig": "libs/typeorm-plus/tsconfig.spec.json",
+            "setupFile": "libs/typeorm-plus/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

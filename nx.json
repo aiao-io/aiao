@@ -37,6 +37,9 @@
     },
     "elements-angular": {
       "tags": []
+    },
+    "typeorm-plus": {
+      "tags": []
     }
   }
 }
