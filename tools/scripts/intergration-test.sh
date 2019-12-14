@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo "integration test"
 
 port=6200
