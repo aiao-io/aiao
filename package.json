@@ -67,7 +67,7 @@
     "sequelize": "^5.21.3",
     "tslib": "^1.10.0",
     "typeorm": "^0.2.21",
-    "zone.js": "^0.10.2"
+    "zone.js": "^0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.803.20",
