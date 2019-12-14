@@ -62,7 +62,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "lazy-component:build"
+            "browserTarget": "lazy-component:build",
+            "port": 9501
           },
           "configurations": {
             "production": {
