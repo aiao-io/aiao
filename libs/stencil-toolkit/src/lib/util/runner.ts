@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { ChildProcess, spawn, SpawnOptions } from 'child_process';
+import { ChildProcess, exec, spawn, SpawnOptions } from 'child_process';
 
 export function run(command: string, args: string[], collect: boolean = false) {
   const options: SpawnOptions = {
@@ -19,6 +19,17 @@ export function run(command: string, args: string[], collect: boolean = false) {
         console.error(chalk.red(`${command} ${args.join(' ')}`));
         reject();
       }
+    });
+  });
+}
+
+export function runCommandAsync(command: string): Promise<{ stdout: string; stderr: string }> {
+  return new Promise((resolve, reject) => {
+    exec(command, (err, stdout, stderr) => {
+      if (err) {
+        reject(err);
+      }
+      resolve({ stdout, stderr });
     });
   });
 }

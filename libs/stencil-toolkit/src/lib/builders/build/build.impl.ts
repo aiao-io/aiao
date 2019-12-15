@@ -7,7 +7,7 @@ import { BuilderContext, BuilderOutput, createBuilder } from '@angular-devkit/ar
 import { JsonObject } from '@angular-devkit/core';
 
 import { copyAssets } from '../../util/copy-assets';
-import { run } from '../../util/runner';
+import { runCommandAsync } from '../../util/runner';
 
 export interface StencilBuildOptions extends JsonObject {
   config: string;
@@ -36,7 +36,7 @@ function stencilBuild(options: StencilBuildOptions, context: BuilderContext): Ob
         args.push('--stats');
       }
       const cmd = resolve(workspaceRoot, 'node_modules/.bin/stencil');
-      return run(cmd, args).then(() => {
+      return runCommandAsync(`${cmd} ${args.join(' ')}`).then(() => {
         if (!outputPath) {
           return;
         }
