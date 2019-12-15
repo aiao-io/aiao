@@ -88,6 +88,10 @@ test: &test
   name: test
   command: yarn affected:test ${AFFECTED_ARGS} --parallel --ci --code-coverage
 
+test_master: &test_master
+  name: test
+  command: yarn test --ci --code-coverage
+
 # e2e
 e2e: &e2e
   name: e2e
@@ -116,7 +120,7 @@ store_artifacts_dist: &store_artifacts_dist
 
 # jobs
 jobs:
-  check:
+  check_pr:
     <<: *defaults
     steps:
       - checkout
@@ -136,11 +140,36 @@ jobs:
       - store_artifacts: *store_artifacts_coverage
       - save_cache: *save_yarn_cache
 
+  check_master:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: *set_env
+      - restore_cache: *restore_yarn_cache
+      - run: *install_yarn
+      - run: *build_tools
+      - run: *check_workspace
+      - run: *build_libs
+      - run: *format
+      - run: *lint
+      - run: *test_master
+      - run: *integration_test
+      - run: *coverage
+      # - run: *e2e
+      - store_artifacts: *store_artifacts_dist
+      - store_artifacts: *store_artifacts_coverage
+      - save_cache: *save_yarn_cache
+
 workflows:
   version: 2
   check:
     jobs:
-      - check:
+      - check_master:
+          filters:
+            branches:
+              only:
+                - master
+      - check_pr:
           filters:
             branches:
               ignore:
