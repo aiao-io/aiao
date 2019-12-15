@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 echo "stencil-toolkit"
 
@@ -33,7 +33,3 @@ cp ./README.md $OUT_DIR/README.md
 cp package.json $OUT_DIR
 cp builders.json $OUT_DIR
 cp collection.json $OUT_DIR
-
-# rm -rf $NODE_MODULE_DIR
-# mkdir -pv $AIAO_DIR
-# cp -rf $OUT_DIR $NODE_MODULE_DIR

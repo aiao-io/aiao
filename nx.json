@@ -31,6 +31,15 @@
     },
     "image-storage": {
       "tags": []
+    },
+    "elements-cdk": {
+      "tags": []
+    },
+    "elements-angular": {
+      "tags": []
+    },
+    "typeorm-plus": {
+      "tags": []
     }
   }
 }

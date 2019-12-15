@@ -18,13 +18,18 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@aiao/color": ["libs/color/src/index.ts"],
+      "@aiao/util": ["libs/util/src/index.ts"],
+      "@aiao/lazy-module": ["libs/lazy-module/src/index.ts"],
+      "@aiao/lazy-element": ["libs/lazy-element/src/index.ts"],
+      "@aiao/lazy-component": ["libs/lazy-component/src/index.ts"],
       "@aiao/image-storage/adapters/aliyun": ["libs/image-storage/aliyun/src/index.ts"],
       "@aiao/image-storage": ["libs/image-storage/src/index.ts"],
-      "@aiao/lazy-component": ["libs/lazy-component/src/index.ts"],
-      "@aiao/lazy-element": ["libs/lazy-element/src/index.ts"],
-      "@aiao/lazy-module": ["libs/lazy-module/src/index.ts"],
-      "@aiao/util": ["libs/util/src/index.ts"]
+      "@aiao/elements-cdk/platform": ["libs/elements-cdk/platform/src/index.ts"],
+      "@aiao/elements-cdk/components": ["libs/elements-cdk/components/src/index.ts"],
+      "@aiao/elements-cdk": ["libs/elements-cdk/src/index.ts"],
+      "@aiao/color": ["libs/color/src/index.ts"],
+      "@aiao/elements-angular": ["libs/elements-angular/src/index.ts"],
+      "@aiao/typeorm-plus": ["libs/typeorm-plus/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp", "**/*.stories.ts"]
