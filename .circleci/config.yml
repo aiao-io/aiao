@@ -56,6 +56,7 @@ check_workspace: &check_workspace
 build_libs: &build_libs
   name: Build Libs
   command: node --max_old_space_size=4096 ./node_modules/.bin/lerna run build --scope @aiao/*
+
 # cache
 restore_yarn_cache: &restore_yarn_cache
   name: Restore Yarn Cache
@@ -67,16 +68,6 @@ save_yarn_cache: &save_yarn_cache
   key: node-deps-node12-{{ checksum "yarn.lock" }}
   paths:
     - ~/.cache
-
-restore_build_cache: &restore_build_cache
-  name: Restore Build Cache
-  key: build-{{ .Environment.CIRCLE_WORKFLOW_ID }}
-
-save_build_cache: &save_build_cache
-  name: Save Build Cache
-  key: build-{{ .Environment.CIRCLE_WORKFLOW_ID }}
-  paths:
-    - dist
 
 # format
 format: &format
@@ -131,7 +122,6 @@ jobs:
       - checkout
       - run: *set_env
       - restore_cache: *restore_yarn_cache
-      - restore_cache: *restore_build_cache
       - run: *install_yarn
       - run: *build_tools
       - run: *check_workspace
@@ -145,7 +135,6 @@ jobs:
       - store_artifacts: *store_artifacts_dist
       - store_artifacts: *store_artifacts_coverage
       - save_cache: *save_yarn_cache
-      - save_cache: *save_build_cache
 
 workflows:
   version: 2
