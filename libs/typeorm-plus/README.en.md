@@ -1,7 +1,3 @@
 # typeorm-plus
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test typeorm-plus` to execute the unit tests.
+让 typeorm 支持 sequelize 查询
