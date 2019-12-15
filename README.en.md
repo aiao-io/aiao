@@ -8,14 +8,15 @@ Use `monorepo` style for management some `npm` package.
 
 ## Libs
 
-### normal
+小于 1 的为内测版本，请谨慎使用
 
-| Package               | Description   | Version                                                                                                        |                                |
-| --------------------- | ------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| `@aiao/color`         | color tool    | [![npm](https://img.shields.io/npm/v/@aiao/color?label=&style=flat-square)](https://www.npmjs.com/@aiao/color) | [Detail](./libs/color)         |
-| `@aiao/util`          | utils         | [![npm](https://img.shields.io/npm/v/@aiao/util?label=&style=flat-square)](https://www.npmjs.com/@aiao/util)   | [Detail](./libs/util)          |
-| `@aiao/image-storage` | 线上图片地址生成器     | 开发中                                                                                                            | [Detail](./libs/image-storage) |
-| `@aiao/elements`      | web component | 开发中                                                                                                            | [Detail](./libs/elements)      |
+### elements
+
+| Package                  | Description       | Version                                                                                                                              |                                   |
+| ------------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- |
+| `@aiao/elements`         | web component     | [![npm](https://img.shields.io/npm/v/@aiao/elements?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements)                 | [Detail](./libs/elements)         |
+| `@aiao/elements-angular` | angular 版         | [![npm](https://img.shields.io/npm/v/@aiao/elements-angular?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-angular) | [Detail](./libs/elements-angular) |
+| `@aiao/elements-cdk`     | component Dev Kit | [![npm](https://img.shields.io/npm/v/@aiao/elements-cdk?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-cdk)         | [Detail](./libs/elements-cdk)     |
 
 ### Angular
 
@@ -25,6 +26,20 @@ Use `monorepo` style for management some `npm` package.
 | `@aiao/lazy-element`    | lazy load `angular element`                   | [![npm](https://img.shields.io/npm/v/@aiao/lazy-element?label=&style=flat-square)](https://www.npmjs.com/@aiao/lazy-element)       | [Detail](./libs/lazy-element)    |
 | `@aiao/lazy-component`  | lazy load any `module`'s `component`          | [![npm](https://img.shields.io/npm/v/@aiao/lazy-component?label=&style=flat-square)](https://www.npmjs.com/@aiao/lazy-component)   | [Detail](./libs/lazy-component)  |
 | `@aiao/stencil-toolkit` | `stencil` toolkit from angular , support `nx` | [![npm](https://img.shields.io/npm/v/@aiao/stencil-toolkit?label=&style=flat-square)](https://www.npmjs.com/@aiao/stencil-toolkit) | [Detail](./libs/stencil-toolkit) |
+
+### typeorm
+
+| Package              | Description               | Version                                                                                                                      |                               |
+| -------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| `@aiao/typeorm-plus` | 让 typeorm 支持 sequelize 查询 | [![npm](https://img.shields.io/npm/v/@aiao/typeorm-plus?label=&style=flat-square)](https://www.npmjs.com/@aiao/typeorm-plus) | [Detail](./libs/typeorm-plus) |
+
+### utils
+
+| Package               | Description | Version                                                                                                        |                                |
+| --------------------- | ----------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| `@aiao/color`         | color tool  | [![npm](https://img.shields.io/npm/v/@aiao/color?label=&style=flat-square)](https://www.npmjs.com/@aiao/color) | [Detail](./libs/color)         |
+| `@aiao/util`          | utils       | [![npm](https://img.shields.io/npm/v/@aiao/util?label=&style=flat-square)](https://www.npmjs.com/@aiao/util)   | [Detail](./libs/util)          |
+| `@aiao/image-storage` | 线上图片地址生成器   | [![npm](https://img.shields.io/npm/v/@aiao/util?label=&style=flat-square)](https://www.npmjs.com/@aiao/util)   | [Detail](./libs/image-storage) |
 
 ## License MIT
 
