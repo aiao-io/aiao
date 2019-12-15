@@ -174,3 +174,4 @@ workflows:
             branches:
               ignore:
                 - i10n
+                - master
