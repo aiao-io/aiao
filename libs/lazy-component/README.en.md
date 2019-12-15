@@ -4,7 +4,7 @@
 
 lazy load any `module`'s `component`. https://github.com/angular/angular/issues/14324 issue's solution
 
-> angular 9 has a new way to do this(not delve into yet). This applies to angular 8 for now.
+> angular 9 has a new way to do this(haven't delve into yet). This applies to angular 8 for now.
 
 ## Use Case
 
