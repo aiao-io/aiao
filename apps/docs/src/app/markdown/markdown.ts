@@ -4,6 +4,9 @@ export const BriefMdEn = require('raw-loader!dist/apps/docs/docs/README.en.md');
 export const ColorMdCn = require('raw-loader!dist/apps/docs/docs/libs/color/README.md');
 export const ColorMdEn = require('raw-loader!dist/apps/docs/docs/libs/color/README.en.md');
 
+export const ImageStorageMdCn = require('raw-loader!dist/apps/docs/docs/libs/image-storage/README.md');
+// export const ImageStorageMdEn = require('raw-loader!dist/apps/docs/docs/libs/image-storage/README.en.md');
+
 export const UtilMdCn = require('raw-loader!dist/apps/docs/docs/libs/util/README.md');
 export const UtilMdEn = require('raw-loader!dist/apps/docs/docs/libs/util/README.en.md');
 
