@@ -31,26 +31,38 @@ export const ImageStorageMdCn = require('raw-loader!dist/apps/docs/docs/libs/ima
 export const UtilMdCn = require('raw-loader!dist/apps/docs/docs/libs/util/README.md');
 export const UtilMdEn = require('raw-loader!dist/apps/docs/docs/libs/util/README.en.md');
 
-export const LazyComponentMdCn = require('raw-loader!dist/apps/docs/docs/integration/lazy-component/README.md');
-export const LazyComponentMdEn = require('raw-loader!dist/apps/docs/docs/integration/lazy-component/README.en.md');
+export const LazyComponentMdCn = require('raw-loader!dist/apps/docs/docs/libs/lazy-component/README.md');
+export const LazyComponentMdEn = require('raw-loader!dist/apps/docs/docs/libs/lazy-component/README.en.md');
 
-export const LazyComponentChangeLogMdCn = require('raw-loader!dist/apps/docs/docs/integration/lazy-component/CHANGELOG.md');
-export const LazyComponentChangeLogMdEn = require('raw-loader!dist/apps/docs/docs/integration/lazy-component/CHANGELOG.en.md');
+export const LazyComponentChangeLogMdCn = require('raw-loader!dist/apps/docs/docs/libs/lazy-component/CHANGELOG.md');
+export const LazyComponentChangeLogMdEn = require('raw-loader!dist/apps/docs/docs/libs/lazy-component/CHANGELOG.en.md');
 
-export const LazyElementMdCn = require('raw-loader!dist/apps/docs/docs/integration/lazy-element/README.md');
-export const LazyElementMdEn = require('raw-loader!dist/apps/docs/docs/integration/lazy-element/README.en.md');
+export const LazyComponentIntegrationMdCn = require('raw-loader!dist/apps/docs/docs/integration/lazy-component/README.md');
+export const LazyComponentIntegrationMdEn = require('raw-loader!dist/apps/docs/docs/integration/lazy-component/README.en.md');
 
-export const LazyElementChangeLogMdCn = require('raw-loader!dist/apps/docs/docs/integration/lazy-element/CHANGELOG.md');
-export const LazyElementChangeLogMdEn = require('raw-loader!dist/apps/docs/docs/integration/lazy-element/CHANGELOG.en.md');
+export const LazyElementMdCn = require('raw-loader!dist/apps/docs/docs/libs/lazy-element/README.md');
+export const LazyElementMdEn = require('raw-loader!dist/apps/docs/docs/libs/lazy-element/README.en.md');
 
-export const LazyModuleMdCn = require('raw-loader!dist/apps/docs/docs/integration/lazy-module/README.md');
-export const LazyModuleMdEn = require('raw-loader!dist/apps/docs/docs/integration/lazy-module/README.en.md');
+export const LazyElementChangeLogMdCn = require('raw-loader!dist/apps/docs/docs/libs/lazy-element/CHANGELOG.md');
+export const LazyElementChangeLogMdEn = require('raw-loader!dist/apps/docs/docs/libs/lazy-element/CHANGELOG.en.md');
 
-export const LazyModuleChangeLogMdCn = require('raw-loader!dist/apps/docs/docs/integration/lazy-module/CHANGELOG.md');
-export const LazyModuleChangeLogMdEn = require('raw-loader!dist/apps/docs/docs/integration/lazy-module/CHANGELOG.en.md');
+export const LazyElementIntegrationMdCn = require('raw-loader!dist/apps/docs/docs/integration/lazy-element/README.md');
+export const LazyElementIntegrationMdEn = require('raw-loader!dist/apps/docs/docs/integration/lazy-element/README.en.md');
 
-export const StencilToolkitMdCn = require('raw-loader!dist/apps/docs/docs/integration/stencil-toolkit-nx/README.md');
-export const StencilToolkitMdEn = require('raw-loader!dist/apps/docs/docs/integration/stencil-toolkit-nx/README.en.md');
+export const LazyModuleMdCn = require('raw-loader!dist/apps/docs/docs/libs/lazy-module/README.md');
+export const LazyModuleMdEn = require('raw-loader!dist/apps/docs/docs/libs/lazy-module/README.en.md');
 
-export const StencilToolkitChangeLogMdCn = require('raw-loader!dist/apps/docs/docs/integration/stencil-toolkit-nx/CHANGELOG.md');
-export const StencilToolkitChangeLogMdEn = require('raw-loader!dist/apps/docs/docs/integration/stencil-toolkit-nx/CHANGELOG.en.md');
+export const LazyModuleChangeLogMdCn = require('raw-loader!dist/apps/docs/docs/libs/lazy-module/CHANGELOG.md');
+export const LazyModuleChangeLogMdEn = require('raw-loader!dist/apps/docs/docs/libs/lazy-module/CHANGELOG.en.md');
+
+export const LazyModuleIntegrationMdCn = require('raw-loader!dist/apps/docs/docs/integration/lazy-module/README.md');
+export const LazyModuleIntegrationMdEn = require('raw-loader!dist/apps/docs/docs/integration/lazy-module/README.en.md');
+
+export const StencilToolkitMdCn = require('raw-loader!dist/apps/docs/docs/libs/stencil-toolkit/README.md');
+export const StencilToolkitMdEn = require('raw-loader!dist/apps/docs/docs/libs/stencil-toolkit/README.en.md');
+
+export const StencilToolkitChangeLogMdCn = require('raw-loader!dist/apps/docs/docs/libs/stencil-toolkit/CHANGELOG.md');
+export const StencilToolkitChangeLogMdEn = require('raw-loader!dist/apps/docs/docs/libs/stencil-toolkit/CHANGELOG.en.md');
+
+export const StencilToolkitIntegrationMdCn = require('raw-loader!dist/apps/docs/docs/integration/stencil-toolkit-nx/README.md');
+export const StencilToolkitIntegrationMdEn = require('raw-loader!dist/apps/docs/docs/integration/stencil-toolkit-nx/README.en.md');
