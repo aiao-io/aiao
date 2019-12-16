@@ -37,13 +37,13 @@ export class ElementsEditorPreview implements ComponentInterface {
   }
 
   private renderElement(data: IElementEditorData) {
-    const { tag: TagName, slot, attributes, style, class: cls, innerText, innerHTML, _id } = data;
+    const { tag: TagName, slot, attributes, events, style, class: cls, innerText, innerHTML, _id } = data;
     let children = [];
     if (_id) {
       children = this.nodes.filter(n => n._parentId === _id);
     }
     return (
-      <TagName id={_id} slot={slot} {...attributes} style={style} class={cls} innerHTML={innerHTML}>
+      <TagName id={_id} slot={slot} {...attributes} style={style} class={cls} {...events} innerHTML={innerHTML}>
         {innerText}
         {children.map(c => this.renderElement(c))}
       </TagName>
