@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ColorMdCn, ColorMdEn } from '../markdown/markdown';
+
 @Component({
   selector: 'aiao-color',
   templateUrl: './color.component.html',
   styleUrls: ['./color.component.scss']
 })
 export class ColorComponent implements OnInit {
-  mdCn = require('raw-loader!dist/apps/docs/docs/libs/color/README.md');
+  mdCn = ColorMdCn;
+  mdEn = ColorMdEn;
 
   constructor() {}
 

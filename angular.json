@@ -335,7 +335,7 @@
       "schematics": {
         "@nrwl/angular:component": {
           "style": "scss",
-          "styleex": "scss"
+          "styleext": "scss"
         }
       },
       "root": "apps/docs",
