@@ -15,7 +15,6 @@ const routes: Routes = [
     path: 'lazy-element',
     loadChildren: () => import('./lazy-element/lazy-element.module').then(m => m.LazyElementModule)
   },
-
   {
     path: 'stencil-toolkit',
     loadChildren: () => import('./stencil-toolkit/stencil-toolkit.module').then(m => m.StencilToolkitModule)
@@ -23,6 +22,22 @@ const routes: Routes = [
   {
     path: 'image-storage',
     loadChildren: () => import('./image-storage/image-storage.module').then(m => m.ImageStorageModule)
+  },
+  {
+    path: 'typeorm-plus',
+    loadChildren: () => import('./typeorm-plus/typeorm-plus.module').then(m => m.TypeormPlusModule)
+  },
+  {
+    path: 'elements',
+    loadChildren: () => import('./elements/elements.module').then(m => m.ElementsModule)
+  },
+  {
+    path: 'elements-angular',
+    loadChildren: () => import('./elements-angular/elements-angular.module').then(m => m.ElementsAngularModule)
+  },
+  {
+    path: 'elements-cdk',
+    loadChildren: () => import('./elements-cdk/elements-cdk.module').then(m => m.ElementsCdkModule)
   }
 ];
 
