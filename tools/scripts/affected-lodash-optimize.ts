@@ -8,7 +8,6 @@ import { parseFiles } from '@nrwl/workspace/src/command-line/shared';
 
 const fixLodash = (...path: string[]) => {
   const ora = Ora();
-  ora.succeed('自动修复 lodash 引用:' + path);
   const project = new Project();
   project.addSourceFilesAtPaths(path);
   const sourceFiles = project.getSourceFiles(path);
