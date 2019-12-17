@@ -82,7 +82,7 @@ lint: &lint
 # check_lodash
 check_lodash: &check_lodash
   name: Check Lodash Import
-  command: node ./dist/tools/checks/command lodash ${AFFECTED_ARGS}
+  command: node dist/tools/scripts/affected-lodash-optimize ${AFFECTED_ARGS}
 
 test: &test
   name: test
@@ -129,9 +129,10 @@ jobs:
       - run: *install_yarn
       - run: *build_tools
       - run: *check_workspace
-      - run: *build_libs
       - run: *format
       - run: *lint
+      - run: *check_lodash
+      - run: *build_libs
       - run: *test
       - run: *integration_test
       - run: *coverage
@@ -149,9 +150,10 @@ jobs:
       - run: *install_yarn
       - run: *build_tools
       - run: *check_workspace
-      - run: *build_libs
       - run: *format
       - run: *lint
+      - run: *check_lodash
+      - run: *build_libs
       - run: *test_master
       - run: *integration_test
       - run: *coverage
