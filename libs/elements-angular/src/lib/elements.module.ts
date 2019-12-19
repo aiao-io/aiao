@@ -1,6 +1,6 @@
 import { IAiaoElementsConfig } from '@aiao/elements';
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { ModuleWithProviders, NgModule, APP_INITIALIZER, NgZone } from '@angular/core';
+import { APP_INITIALIZER, ModuleWithProviders, NgModule, NgZone } from '@angular/core';
 
 import {
   AiaoCodeEditor,
@@ -10,16 +10,20 @@ import {
   AiaoElementsView,
   AiaoImg
 } from './directives/proxies';
-import { AIAO_ELEMENTS_CONFIG } from './providers/config';
 import { initialize } from './elements-initialize';
+import { TextValueAccessor } from './providers/control-value-accessors/text-value-accessor';
+import { AIAO_ELEMENTS_CONFIG } from './util/config';
 
 const DECLARATIONS = [
+  // components
   AiaoCodeEditor,
   AiaoElementsEditor,
   AiaoElementsEditorPreview,
   AiaoElementsForm,
   AiaoElementsView,
-  AiaoImg
+  AiaoImg,
+  // accessor
+  TextValueAccessor
 ];
 
 @NgModule({
