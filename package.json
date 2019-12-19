@@ -31,10 +31,10 @@
     "check-workspace": "yarn run:tools tools/scripts/check-workspace",
     "clean": "git clean -dxf",
     "commit": "npx git-cz",
-    "lodash-optimize": "yarn node dist/tools/scripts/lodash-optimize",
     "postinstall": "yarn build:tools && node dist/tools/scripts/check-workspace --lib",
     "preinstall": "rm -rf node_modules/@aiao",
-    "run:tools": "ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register"
+    "run:tools": "ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register",
+    "task:lodash-optimize": "yarn node dist/tools/scripts/affected-lodash-optimize && yarn format"
   },
   "private": true,
   "dependencies": {
