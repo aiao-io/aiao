@@ -7,6 +7,10 @@ const routes: Routes = [
     path: 'intro',
     loadChildren: () => import('./introduction/introduction.module').then(m => m.IntroductionPageModule)
   },
+  {
+    path: 'integration',
+    loadChildren: () => import('./integration/integration.module').then(m => m.IntegrationModule)
+  },
   { path: 'color', loadChildren: () => import('./color/color.module').then(m => m.ColorModule) },
   { path: 'util', loadChildren: () => import('./util/util.module').then(m => m.UtilModule) },
   { path: 'lazy-module', loadChildren: () => import('./lazy-module/lazy-module.module').then(m => m.LazyModuleModule) },

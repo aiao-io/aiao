@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'aiao-elements-angular',
   templateUrl: './elements-angular.component.html',
   styleUrls: ['./elements-angular.component.scss']
 })
-export class ElementsAngularComponent implements OnInit {
+export class ElementsAngularComponent {
   constructor() {}
-
-  ngOnInit() {}
 }

@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
-import { IntroductionPage } from './introduction.page';
+import { IntegrationComponent } from './integration.component';
 
 @NgModule({
   imports: [
@@ -15,10 +15,10 @@ import { IntroductionPage } from './introduction.page';
     RouterModule.forChild([
       {
         path: '',
-        component: IntroductionPage
+        component: IntegrationComponent
       }
     ])
   ],
-  declarations: [IntroductionPage]
+  declarations: [IntegrationComponent]
 })
-export class IntroductionPageModule {}
+export class IntegrationModule {}
