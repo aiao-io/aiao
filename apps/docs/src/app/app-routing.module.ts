@@ -2,8 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'brief', pathMatch: 'full' },
-  { path: 'brief', loadChildren: () => import('./brief/brief.module').then(m => m.BriefPageModule) },
+  { path: '', redirectTo: 'intro', pathMatch: 'full' },
+  {
+    path: 'intro',
+    loadChildren: () => import('./introduction/introduction.module').then(m => m.IntroductionPageModule)
+  },
   { path: 'color', loadChildren: () => import('./color/color.module').then(m => m.ColorModule) },
   { path: 'util', loadChildren: () => import('./util/util.module').then(m => m.UtilModule) },
   { path: 'lazy-module', loadChildren: () => import('./lazy-module/lazy-module.module').then(m => m.LazyModuleModule) },

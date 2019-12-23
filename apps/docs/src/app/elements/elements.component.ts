@@ -1,16 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-
-import { ElementsMdCn } from '../markdown/markdown';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'aiao-elements',
   templateUrl: './elements.component.html',
   styleUrls: ['./elements.component.scss']
 })
-export class ElementsComponent implements OnInit {
-  mdCn = ElementsMdCn;
-
+export class ElementsComponent {
   constructor() {}
-
-  ngOnInit() {}
 }

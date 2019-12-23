@@ -6,8 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./typeorm-plus.component.scss']
 })
 export class TypeormPlusComponent implements OnInit {
-  mdCn: string;
-
   constructor() {}
 
   ngOnInit() {}

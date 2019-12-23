@@ -1,17 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-
-import { ColorMdCn, ColorMdEn } from '../markdown/markdown';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'aiao-color',
   templateUrl: './color.component.html',
   styleUrls: ['./color.component.scss']
 })
-export class ColorComponent implements OnInit {
-  mdCn = ColorMdCn;
-  mdEn = ColorMdEn;
-
+export class ColorComponent {
   constructor() {}
-
-  ngOnInit() {}
 }

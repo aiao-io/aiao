@@ -1,5 +1,13 @@
-#menu-content {
-  margin-top: 56px;
+.split-pane-md {
+  #menu-content {
+    margin-top: 56px;
+  }
+}
+
+.split-pane-ios {
+  #menu-content {
+    margin-top: 44px;
+  }
 }
 
 ion-menu {

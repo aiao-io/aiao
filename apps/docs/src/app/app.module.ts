@@ -1,4 +1,5 @@
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -19,9 +20,11 @@ import { DocsNavModule } from './docs-nav/docs-nav.module';
     AppRoutingModule,
     FormsModule,
     DocsNavModule,
+    HttpClientModule,
     IonicModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     MarkdownModule.forRoot({
+      loader: HttpClient,
       markedOptions: {
         provide: MarkedOptions,
         useValue: {
