@@ -352,6 +352,7 @@
             "tsConfig": "apps/docs/tsconfig.app.json",
             "aot": false,
             "assets": [
+              "apps/docs/src/assets",
               "apps/docs/src/favicon.ico",
               "apps/docs/src/_redirects",
               "apps/docs/src/robots.txt",
