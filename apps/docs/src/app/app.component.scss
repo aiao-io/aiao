@@ -23,3 +23,7 @@ ion-menu {
   max-width: 240px;
   min-width: 240px;
 }
+
+ion-popover.language-list-popover {
+  --max-width: 120px !important;
+}

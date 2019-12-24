@@ -12,16 +12,18 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DocsNavModule } from './docs-nav/docs-nav.module';
+import { LanguageListModule } from './nav/language-list/language-list.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    BrowserModule,
     DocsNavModule,
+    FormsModule,
     HttpClientModule,
     IonicModule.forRoot(),
+    LanguageListModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     MarkdownModule.forRoot({
       loader: HttpClient,
