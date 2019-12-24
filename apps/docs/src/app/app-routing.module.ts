@@ -27,6 +27,10 @@ const routes: Routes = [
     loadChildren: () => import('./stencil-toolkit/stencil-toolkit.module').then(m => m.StencilToolkitModule)
   },
   {
+    path: 'stencil-toolkit-nx',
+    loadChildren: () => import('./stencil-toolkit-nx/stencil-toolkit-nx.module').then(m => m.StencilToolkitNxModule)
+  },
+  {
     path: 'image-storage',
     loadChildren: () => import('./image-storage/image-storage.module').then(m => m.ImageStorageModule)
   },
