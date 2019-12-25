@@ -3,8 +3,8 @@
     <ion-row>
       <ion-col>
         <section>
-          <!-- <div markdown src="docs/README.en.md" (load)="onLoad($event)" (error)="onError($event)"></div> -->
-          <div markdown src="docs/README.md" (load)="onLoad($event)" (error)="onError($event)"></div>
+          <div *ngIf="(language$ |async) === 'en'" markdown src="docs/README.md"></div>
+          <div *ngIf="(language$ |async) === 'zh-cn'" markdown src="docs/README.en.md"></div>
         </section>
       </ion-col>
     </ion-row>
