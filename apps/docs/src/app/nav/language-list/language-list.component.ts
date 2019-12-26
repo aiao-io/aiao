@@ -1,0 +1,21 @@
+import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+
+import { changeLanguageAction } from '../../local/language.actions';
+import { selectLanguage } from '../../local/language.reducer';
+
+@Component({
+  selector: 'aiao-language-list',
+  templateUrl: './language-list.component.html',
+  styleUrls: ['./language-list.component.scss']
+})
+export class LanguageListComponent implements OnInit {
+  lang$ = this.store.pipe(select(selectLanguage));
+  constructor(private store: Store<any>) {}
+
+  ngOnInit() {}
+
+  changeLanguage(language: string) {
+    this.store.dispatch(changeLanguageAction({ language }));
+  }
+}

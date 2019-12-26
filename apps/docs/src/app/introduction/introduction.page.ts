@@ -1,8 +1,11 @@
-import { Subject } from 'rxjs';
+import { combineLatest, Subject } from 'rxjs';
 import { filter, startWith, takeUntil } from 'rxjs/operators';
 
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { select, State } from '@ngrx/store';
+
+import { selectLanguage } from '../local/language.reducer';
 
 @Component({
   selector: 'aiao-introduction',
@@ -13,19 +16,27 @@ export class IntroductionPage implements OnInit, OnDestroy {
   destroy$ = new Subject();
   private readonly urlParser = document.createElement('a');
   url = '';
-  constructor(public activeRouter: ActivatedRoute, public router: Router) {}
+  lang$ = this.state.pipe(select(selectLanguage));
+  routerEvents$ = this.router.events.pipe(
+    startWith(0),
+    takeUntil(this.destroy$),
+    filter(e => e instanceof NavigationEnd)
+  );
+  constructor(public activeRouter: ActivatedRoute, public router: Router, private state: State<any>) {}
 
   ngOnInit() {
-    this.router.events
-      .pipe(
-        startWith(0),
-        takeUntil(this.destroy$),
-        filter(e => e instanceof NavigationEnd)
-      )
-      .subscribe((e: NavigationEnd) => {
-        const readme = /\/$/.test(e.url) ? 'README.md' : '/README.md';
-        this.url = 'docs' + e.url + readme;
-      });
+    combineLatest([this.lang$, this.routerEvents$]).subscribe(val => {
+      console.log('value', val);
+      const lang = val[0];
+      const event = val[1] as NavigationEnd;
+      if (lang === 'cn') {
+        const readme = /\/$/.test(event.url) ? 'README.md' : '/README.md';
+        this.url = 'docs' + event.url + readme;
+      } else {
+        const readme = /\/$/.test(event.url) ? 'README.en.md' : '/README.en.md';
+        this.url = 'docs' + event.url + readme;
+      }
+    });
   }
 
   handleAnchorClick(anchor: HTMLAnchorElement, button = 0, ctrlKey = false, metaKey = false) {
@@ -56,7 +67,6 @@ export class IntroductionPage implements OnInit, OnDestroy {
       if (/\.md$/.test(pathname)) {
         this.url = 'docs' + relativeUrl;
       }
-      console.log("don't navigate if external");
       return false;
     }
 
