@@ -16,7 +16,7 @@ export class IntroductionPage implements OnInit, OnDestroy {
   destroy$ = new Subject();
   private readonly urlParser = document.createElement('a');
   url = '';
-  lang$ = this.state.pipe(select(selectLanguage));
+  lang$ = this.state.pipe(takeUntil(this.destroy$), select(selectLanguage));
   routerEvents$ = this.router.events.pipe(
     startWith(0),
     takeUntil(this.destroy$),
@@ -25,18 +25,20 @@ export class IntroductionPage implements OnInit, OnDestroy {
   constructor(public activeRouter: ActivatedRoute, public router: Router, private state: State<any>) {}
 
   ngOnInit() {
-    combineLatest([this.lang$, this.routerEvents$]).subscribe(val => {
-      console.log('value', val);
-      const lang = val[0];
-      const event = val[1] as NavigationEnd;
-      if (lang === 'cn') {
-        const readme = /\/$/.test(event.url) ? 'README.md' : '/README.md';
-        this.url = 'docs' + event.url + readme;
-      } else {
-        const readme = /\/$/.test(event.url) ? 'README.en.md' : '/README.en.md';
-        this.url = 'docs' + event.url + readme;
-      }
-    });
+    combineLatest([this.lang$, this.routerEvents$])
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(val => {
+        console.log('value', val);
+        const lang = val[0];
+        const event = val[1] as NavigationEnd;
+        if (lang === 'cn') {
+          const readme = /\/$/.test(event.url) ? 'README.md' : '/README.md';
+          this.url = 'docs' + event.url + readme;
+        } else {
+          const readme = /\/$/.test(event.url) ? 'README.en.md' : '/README.en.md';
+          this.url = 'docs' + event.url + readme;
+        }
+      });
   }
 
   handleAnchorClick(anchor: HTMLAnchorElement, button = 0, ctrlKey = false, metaKey = false) {
