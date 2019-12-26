@@ -23,11 +23,8 @@ export class IntroductionPage implements OnInit, OnDestroy {
         filter(e => e instanceof NavigationEnd)
       )
       .subscribe((e: NavigationEnd) => {
-        if (/\/$/.test(e.url)) {
-          this.url = 'docs' + e.url + 'README.md';
-        } else {
-          this.url = 'docs' + e.url + '/README.md';
-        }
+        const readme = /\/$/.test(e.url) ? 'README.md' : '/README.md';
+        this.url = 'docs' + e.url + readme;
       });
   }
 
@@ -76,12 +73,9 @@ export class IntroductionPage implements OnInit, OnDestroy {
     while (target && !(target instanceof HTMLAnchorElement)) {
       target = target.parentElement;
     }
-
     if (target instanceof HTMLAnchorElement) {
-      // return false;
       return this.handleAnchorClick(target, button, ctrlKey, metaKey);
     }
-
     // 允许点击
     return false;
   }
