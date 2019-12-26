@@ -16,7 +16,7 @@ export class IntroductionPage implements OnInit, OnDestroy {
   destroy$ = new Subject();
   private readonly urlParser = document.createElement('a');
   url = '';
-  lang$ = this.state.pipe(takeUntil(this.destroy$), select(selectLanguage));
+  lang$ = this.state.pipe(select(selectLanguage));
   routerEvents$ = this.router.events.pipe(
     startWith(0),
     takeUntil(this.destroy$),
