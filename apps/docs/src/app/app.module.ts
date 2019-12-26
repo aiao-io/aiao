@@ -7,13 +7,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { StoreModule } from '@ngrx/store';
 
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DocsNavModule } from './docs-nav/docs-nav.module';
-import { LanguageListModule } from './nav/language-list/language-list.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +22,6 @@ import { LanguageListModule } from './nav/language-list/language-list.module';
     FormsModule,
     HttpClientModule,
     IonicModule.forRoot(),
-    LanguageListModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     MarkdownModule.forRoot({
       loader: HttpClient,
@@ -35,8 +32,7 @@ import { LanguageListModule } from './nav/language-list/language-list.module';
           tables: true
         }
       }
-    }),
-    StoreModule.forRoot({ lang: changeLanguageReducer })
+    })
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent]
