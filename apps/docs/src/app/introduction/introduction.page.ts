@@ -1,5 +1,5 @@
 import { combineLatest, Subject } from 'rxjs';
-import { filter, startWith, takeUntil } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
@@ -13,25 +13,23 @@ import { selectLanguage } from '../local/language.reducer';
   styleUrls: ['introduction.page.scss']
 })
 export class IntroductionPage implements OnInit, OnDestroy {
-  destroy$ = new Subject();
   private readonly urlParser = document.createElement('a');
+  destroy$ = new Subject();
   url = '';
   lang$ = this.state.pipe(select(selectLanguage));
   routerEvents$ = this.router.events.pipe(
-    startWith(0),
     takeUntil(this.destroy$),
     filter(e => e instanceof NavigationEnd)
   );
   constructor(public activeRouter: ActivatedRoute, public router: Router, private state: State<any>) {}
 
   ngOnInit() {
+    this.url = 'docs' + this.router.url + '/README.md';
     combineLatest([this.lang$, this.routerEvents$])
       .pipe(takeUntil(this.destroy$))
       .subscribe(val => {
-        console.log('value', val);
-        const lang = val[0];
         const event = val[1] as NavigationEnd;
-        if (lang === 'cn') {
+        if (val[0] === 'cn') {
           const readme = /\/$/.test(event.url) ? 'README.md' : '/README.md';
           this.url = 'docs' + event.url + readme;
         } else {
@@ -63,13 +61,16 @@ export class IntroductionPage implements OnInit, OnDestroy {
     const relativeUrl = pathname + search + hash;
     this.urlParser.href = relativeUrl;
     console.log('relativeUrl', relativeUrl);
+    console.log('anchor', anchor);
 
     // don't navigate if external link or has extension
     if (anchor.href !== this.urlParser.href || !/\/[^/.]*$/.test(pathname)) {
       if (/\.md$/.test(pathname)) {
         this.url = 'docs' + relativeUrl;
+        return false;
       }
-      return false;
+      anchor.target = '_blank';
+      return true;
     }
 
     // approved for navigation

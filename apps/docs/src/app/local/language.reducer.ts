@@ -1,4 +1,5 @@
-import { createSelector, createFeatureSelector, on, createReducer } from '@ngrx/store';
+import { createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
+
 import { changeLanguageAction } from './language.actions';
 
 export const CHANGE_LANGUAGE_Key = 'changeLanguage';
@@ -7,13 +8,13 @@ export interface ChangeLanguageState {
   language: string;
 }
 
-export interface LocalState {
-  changeLanguage: ChangeLanguageState;
-}
-
 export const initialState: ChangeLanguageState = {
   language: 'cn'
 };
+
+export interface LocalState {
+  [CHANGE_LANGUAGE_Key]: ChangeLanguageState;
+}
 
 const _changeLanguageReducer = createReducer(
   initialState,

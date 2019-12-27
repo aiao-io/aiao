@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
-import { DocsNavComponent } from './docs-nav.component';
+import { SideNavComponent } from './side-nav.component';
 
 @NgModule({
   imports: [CommonModule, IonicModule, RouterModule],
-  declarations: [DocsNavComponent],
-  exports: [DocsNavComponent]
+  declarations: [SideNavComponent],
+  exports: [SideNavComponent]
 })
-export class DocsNavModule {}
+export class SideNavModule {}

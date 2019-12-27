@@ -12,16 +12,16 @@ import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DocsNavModule } from './docs-nav/docs-nav.module';
 import { changeLanguageReducer } from './local/language.reducer';
 import { LanguageListModule } from './nav/language-list/language-list.module';
+import { SideNavModule } from './nav/side-nav/side-nav.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
-    DocsNavModule,
+    SideNavModule,
     FormsModule,
     HttpClientModule,
     LanguageListModule,
