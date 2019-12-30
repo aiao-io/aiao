@@ -31,6 +31,7 @@
     "clean": "git clean -dxf",
     "commit": "npx git-cz",
     "lodash-optimize": "yarn node dist/tools/scripts/lodash-optimize",
+    "generate-nav": "yarn node dist/tools/scripts/generate-nav",
     "postinstall": "yarn build:tools && node dist/tools/scripts/check-workspace",
     "run:tools": "ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register"
   },

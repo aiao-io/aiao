@@ -11,19 +11,15 @@
 }
 
 ion-menu {
-  --width: 240px;
+  --width: 270px;
 }
 
 .split-pane-md.split-pane-visible > .split-pane-side {
-  max-width: 240px;
-  min-width: 240px;
+  max-width: 270px;
+  min-width: 270px;
 }
 
 .split-pane-ios.split-pane-visible > .split-pane-side {
-  max-width: 240px;
-  min-width: 240px;
-}
-
-ion-popover.language-list-popover {
-  --max-width: 120px !important;
+  max-width: 270px;
+  min-width: 270px;
 }
