@@ -61,7 +61,11 @@ export class IntroductionPage implements OnInit, OnDestroy {
     const relativeUrl = pathname + search + hash;
     this.urlParser.href = relativeUrl;
     console.log('relativeUrl', relativeUrl);
-    console.log('anchor', anchor);
+
+    if (this.router.url === '/integration') {
+      this.router.navigateByUrl(this.router.url + pathname);
+      return false;
+    }
 
     // don't navigate if external link or has extension
     if (anchor.href !== this.urlParser.href || !/\/[^/.]*$/.test(pathname)) {
