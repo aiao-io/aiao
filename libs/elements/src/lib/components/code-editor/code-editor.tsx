@@ -29,8 +29,8 @@ let loader: any;
 @Component({
   tag: 'aiao-code-editor',
   styleUrl: './code-editor.scss',
-  scoped: true,
-  assetsDir: 'assets'
+  assetsDir: 'assets',
+  scoped: true
 })
 export class CodeEditor implements ComponentInterface {
   @Element() el!: HTMLAiaoCodeEditorElement;
