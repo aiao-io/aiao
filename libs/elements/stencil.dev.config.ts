@@ -26,7 +26,7 @@ export const config: Config = {
     },
     {
       src: resolve(__dirname, '../../', 'node_modules/monaco-editor/dev'),
-      dest: resolve(__dirname, 'src/lib/components/code-editor/assets/monaco')
+      dest: resolve(__dirname, 'vendors/monaco-editor')
     }
   ],
   tsconfig: 'tsconfig.json',

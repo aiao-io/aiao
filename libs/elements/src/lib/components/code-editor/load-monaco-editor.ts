@@ -1,3 +1,5 @@
+import { urlJoin } from '@aiao/util';
+
 export class LoadMonacoEditor {
   protected _load: Promise<void>;
   protected supportLanguages = ['de', 'es', 'fr', 'it', 'ja', 'ko', 'ru', 'zh-cn', 'zh-tw'];
@@ -20,7 +22,7 @@ export class LoadMonacoEditor {
         }
         const onGotAmdLoader: any = () => {
           win.require.config({
-            paths: { vs: `${this.baseUrl}/vs` },
+            paths: { vs: urlJoin(this.baseUrl, 'vs') },
             'vs/nls': {
               availableLanguages: {
                 '*': this.localizeCode || this.getLanguage()
@@ -32,7 +34,7 @@ export class LoadMonacoEditor {
         if (!win.require) {
           const loaderScript: HTMLScriptElement = document.createElement('script');
           loaderScript.type = 'text/javascript';
-          loaderScript.src = `${this.baseUrl}/vs/loader.js`;
+          loaderScript.src = urlJoin(this.baseUrl, 'vs/loader.js');
           loaderScript.addEventListener('load', onGotAmdLoader);
           document.body.appendChild(loaderScript);
         } else {

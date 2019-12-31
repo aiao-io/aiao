@@ -227,7 +227,7 @@
           "builder": "@aiao/stencil-toolkit:build",
           "options": {
             "outputPath": "dist/libs/elements",
-            "config": "libs/elements/stencil.config.prod.ts"
+            "config": "libs/elements/stencil.prod.config.ts"
           },
           "configurations": {
             "production": {}
@@ -236,7 +236,7 @@
         "serve": {
           "builder": "@aiao/stencil-toolkit:serve",
           "options": {
-            "config": "libs/elements/stencil.config.dev.ts"
+            "config": "libs/elements/stencil.dev.config.ts"
           }
         },
         "lint": {

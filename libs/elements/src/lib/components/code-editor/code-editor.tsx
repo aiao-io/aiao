@@ -1,5 +1,4 @@
 import { renderHiddenInput } from '@aiao/elements-cdk';
-import { urlJoin } from '@aiao/util';
 import {
   Component,
   ComponentInterface,
@@ -29,12 +28,10 @@ let loader: any;
 @Component({
   tag: 'aiao-code-editor',
   styleUrl: './code-editor.scss',
-  assetsDir: 'assets',
   scoped: true
 })
 export class CodeEditor implements ComponentInterface {
   @Element() el!: HTMLAiaoCodeEditorElement;
-  private resourcesUrl: string = config.get('resourcesUrl');
 
   private editor: monaco.editor.IStandaloneCodeEditor;
 
@@ -114,7 +111,7 @@ export class CodeEditor implements ComponentInterface {
   // --------------------------------------------------------------[ lifecycle ]
 
   async componentDidLoad() {
-    const baseUrl = this.baseUrl || config.get('codeEditorBaseUrl') || urlJoin(this.resourcesUrl, 'assets/monaco');
+    const baseUrl = this.baseUrl || config.get('codeEditorBaseUrl') || 'https://unpkg.com/monaco-editor@0.18.1/min';
     if (!loader) {
       loader = new LoadMonacoEditor(baseUrl, this.localizeCode);
     }

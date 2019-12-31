@@ -2798,6 +2798,11 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
   integrity sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
 
+"@stencil/angular-output-target@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@stencil/angular-output-target/-/angular-output-target-0.0.2.tgz#e534c736d204f9cc7c95f72c9c4d56739beba836"
+  integrity sha512-GyQ/VTipzzweuNYbs+FrK1q3FSEG4LZkzg+keuMQNRDX77aCy5hsYivspMRMwOXIwUXh9wSIzqQR3JuLiFHzcw==
+
 "@stencil/core@^1.8.3":
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/@stencil/core/-/core-1.8.3.tgz#c8ed5801212d709bf8427b94a59aab3ee032bda0"

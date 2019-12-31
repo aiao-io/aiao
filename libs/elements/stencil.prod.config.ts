@@ -1,5 +1,6 @@
 import { resolve } from 'path';
 
+import { angularOutputTarget } from '@stencil/angular-output-target';
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 
@@ -20,24 +21,18 @@ export const config: Config = {
       file: resolve(__dirname, 'lib/html.html-data.json'),
       sourceCodeBaseUrl: 'https://github.com/aiao-io/aiao/tree/master/libs/elements'
     },
-    {
-      type: 'angular',
+    angularOutputTarget({
       componentCorePackage: '@aiao/elements',
       directivesProxyFile: resolve(__dirname, '../elements-angular/src/lib/directives/proxies.ts'),
       directivesUtilsFile: resolve(__dirname, '../elements-angular/src/lib/directives/proxies-utils.ts'),
       directivesArrayFile: resolve(__dirname, '../elements-angular/src/lib/directives/proxies-list.txt'),
       excludeComponents: []
-    }
+    })
     // {
     //   type: 'docs-readme'
     // }
   ],
-  copy: [
-    {
-      src: resolve(__dirname, '../../', 'node_modules/monaco-editor/min'),
-      dest: resolve(__dirname, 'src/lib/components/code-editor/assets/monaco')
-    }
-  ],
+  copy: [],
   bundles: [
     { components: ['aiao-code-editor'] },
     { components: ['aiao-elements-editor', 'aiao-elements-editor-preview'] },
