@@ -13,6 +13,9 @@ export interface IElementOptions {
   attributes?: {
     [name: string]: number | string | any;
   };
+  events?: {
+    [name: string]: any;
+  };
 }
 
 /**

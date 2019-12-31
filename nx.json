@@ -40,6 +40,9 @@
     },
     "typeorm-plus": {
       "tags": []
+    },
+    "elements-react": {
+      "tags": []
     }
   }
 }

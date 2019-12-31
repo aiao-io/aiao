@@ -3,7 +3,7 @@ import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/
 @Component({
   tag: 'aiao-elements-view',
   styleUrl: './elements-view.scss',
-  shadow: false
+  shadow: true
 })
 export class ElementsView implements ComponentInterface {
   @Element() el!: HTMLAiaoElementsViewElement;
@@ -11,7 +11,7 @@ export class ElementsView implements ComponentInterface {
   @Prop() html: string;
 
   render() {
-    this.el.innerHTML = this.html || '';
+    this.el.shadowRoot.innerHTML = this.html || '';
     return <Host></Host>;
   }
 }
