@@ -1,1 +1,2 @@
-export * from './lib/components';
+export * from './lib/proxies';
+export * from './lib/react-component-lib';

@@ -1,6 +1,9 @@
 {
   "name": "elements-react",
   "version": "0.0.1",
+  "scripts": {
+    "build": "ng build elements-react"
+  },
   "dependencies": {
     "@aiao/elements": "^0.0.1"
   },

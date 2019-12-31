@@ -18,7 +18,7 @@
   elements.config = {
     resourcesUrl: '/dist/aiao-elements/',
     imageStorage,
-    codeEditorBaseUrl:'/vendors/monaco-editor'
+    codeEditorBaseUrl: '/vendors/monaco-editor'
   };
   if (window.location.search.indexOf('rtl=true') > -1) {
     document.documentElement.setAttribute('dir', 'rtl');

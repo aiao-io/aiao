@@ -21,7 +21,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "ng build elements"
+    "build": "ng build elements && node scripts/build-clean"
   },
   "peerDependencies": {
     "@aiao/image-storage": "*",
