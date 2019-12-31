@@ -26,7 +26,7 @@ const checkSylink = async () => {
 
 const checkLibBuild = async () => {
   const check = ora('build').start();
-  const libs = ['util', 'image-storage', 'elements-cdk', 'stencil-toolkit', 'elements'];
+  const libs = ['util', 'image-storage', 'elements-cdk', 'stencil-toolkit', 'elements', 'elements-react'];
   const needBuildLibs = [];
   libs.forEach(name => {
     if (!existsSync(`dist/libs/${name}`)) {

@@ -2,6 +2,7 @@ import { resolve } from 'path';
 
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { Config } from '@stencil/core';
+import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
 
 export const config: Config = {
@@ -27,6 +28,10 @@ export const config: Config = {
       directivesUtilsFile: resolve(__dirname, '../elements-angular/src/lib/directives/proxies-utils.ts'),
       directivesArrayFile: resolve(__dirname, '../elements-angular/src/lib/directives/proxies-list.txt'),
       excludeComponents: []
+    }),
+    reactOutputTarget({
+      componentCorePackage: '@aiao/elements',
+      proxiesFile: resolve(__dirname, '../elements-react/src/lib/proxies.ts')
     })
     // {
     //   type: 'docs-readme'

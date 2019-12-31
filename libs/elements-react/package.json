@@ -1,0 +1,12 @@
+{
+  "name": "elements-react",
+  "version": "0.0.1",
+  "dependencies": {
+    "@aiao/elements": "^0.0.1"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "@aiao/elements": "*"
+  }
+}
