@@ -9,7 +9,16 @@ export const config: Config = {
   outputTargets: [
     {
       type: 'dist',
+      dir: 'lib',
       esmLoaderPath: '../loader'
+    },
+    {
+      type: 'dist-hydrate-script'
+    },
+    {
+      type: 'docs-vscode',
+      file: resolve(__dirname, 'lib/html.html-data.json'),
+      sourceCodeBaseUrl: 'https://github.com/aiao-io/aiao/tree/master/libs/elements'
     },
     {
       type: 'angular',
