@@ -1,5 +1,4 @@
 import { renderHiddenInput } from '@aiao/elements-cdk';
-import { urlJoin } from '@aiao/util';
 import {
   Component,
   ComponentInterface,
@@ -29,13 +28,10 @@ let loader: any;
 @Component({
   tag: 'aiao-code-editor',
   styleUrl: './code-editor.scss',
-  scoped: true,
-  assetsDir: 'assets'
+  scoped: true
 })
 export class CodeEditor implements ComponentInterface {
   @Element() el!: HTMLAiaoCodeEditorElement;
-  private editorRef: HTMLElement;
-  private resourcesUrl: string = config.get('resourcesUrl');
 
   private editor: monaco.editor.IStandaloneCodeEditor;
 
@@ -96,7 +92,7 @@ export class CodeEditor implements ComponentInterface {
 
     options.value = this.value;
     options.language = this.language;
-    this.editor = monaco.editor.create(this.editorRef, options);
+    this.editor = monaco.editor.create(this.el, options);
 
     const updateValue = (action?: 'input') => {
       const value = this.editor.getValue();
@@ -115,7 +111,7 @@ export class CodeEditor implements ComponentInterface {
   // --------------------------------------------------------------[ lifecycle ]
 
   async componentDidLoad() {
-    const baseUrl = this.baseUrl || config.get('codeEditorBaseUrl') || urlJoin(this.resourcesUrl, 'assets/monaco');
+    const baseUrl = this.baseUrl || config.get('codeEditorBaseUrl') || 'https://unpkg.com/monaco-editor@0.18.1/min';
     if (!loader) {
       loader = new LoadMonacoEditor(baseUrl, this.localizeCode);
     }
@@ -131,13 +127,6 @@ export class CodeEditor implements ComponentInterface {
 
   render() {
     renderHiddenInput(true, this.el, this.name, this.value, this.disabled);
-    if (this.editorRef && monaco) {
-      this.createMonaco();
-    }
-    return (
-      <Host>
-        <div class="editor-container" ref={ref => (this.editorRef = ref)}></div>
-      </Host>
-    );
+    return <Host></Host>;
   }
 }

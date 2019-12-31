@@ -1,15 +1,14 @@
 import { IAiaoElementsConfig } from '@aiao/elements';
+import { raf } from '@aiao/elements-cdk/angular';
 import { applyPolyfills, defineCustomElements } from '@aiao/elements/loader';
 import { NgZone } from '@angular/core';
-
-import { raf } from './util/util';
 
 let didInitialize = false;
 
 export function initialize(config: IAiaoElementsConfig, doc: Document, zone: NgZone) {
   return (): any => {
     const win = doc.defaultView as any;
-    if (win) {
+    if (win && typeof (window as any) !== 'undefined') {
       if (didInitialize) {
         console.warn('Make sure AiaoElementsModule.forRoot() is just called once.');
       }
@@ -27,7 +26,7 @@ export function initialize(config: IAiaoElementsConfig, doc: Document, zone: NgZ
 
       return applyPolyfills().then(() => {
         return defineCustomElements(win, {
-          exclude: ['ion-tabs', 'ion-tab'],
+          exclude: [],
           syncQueue: true,
           raf,
           jmp: (h: any) => zone.runOutsideAngular(h),

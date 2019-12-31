@@ -227,7 +227,7 @@
           "builder": "@aiao/stencil-toolkit:build",
           "options": {
             "outputPath": "dist/libs/elements",
-            "config": "libs/elements/stencil.config.prod.ts"
+            "config": "libs/elements/stencil.prod.config.ts"
           },
           "configurations": {
             "production": {}
@@ -236,7 +236,7 @@
         "serve": {
           "builder": "@aiao/stencil-toolkit:serve",
           "options": {
-            "config": "libs/elements/stencil.config.dev.ts"
+            "config": "libs/elements/stencil.dev.config.ts"
           }
         },
         "lint": {
@@ -403,6 +403,39 @@
           "styleext": "scss"
         }
       }
+    },
+    "elements-react": {
+      "root": "libs/elements-react",
+      "sourceRoot": "libs/elements-react/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/elements-react/tsconfig.lib.json", "libs/elements-react/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/elements-react/**"]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/web:bundle",
+          "options": {
+            "outputPath": "dist/libs/elements-react",
+            "tsConfig": "libs/elements-react/tsconfig.lib.json",
+            "project": "libs/elements-react/package.json",
+            "entryFile": "libs/elements-react/src/index.ts",
+            "babelConfig": "@nrwl/react/plugins/bundle-babel",
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup"
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/elements-react/jest.config.js",
+            "tsConfig": "libs/elements-react/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {
@@ -416,6 +449,11 @@
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
+    },
+    "@nrwl/react": {
+      "application": {
+        "babel": true
+      }
     }
   },
   "defaultProject": "lazy-component"
