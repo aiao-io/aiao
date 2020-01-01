@@ -6,7 +6,7 @@ import { env, exit } from 'process';
 
 const branchName: string = execSync('git symbolic-ref --short -q HEAD').toString();
 
-if (branchName !== 'master') {
+if (branchName.trim() !== 'master') {
   exit();
 }
 
