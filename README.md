@@ -11,11 +11,11 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/a4096c9731142de97d99/maintainability)](https://codeclimate.com/github/aiao-io/aiao/maintainability)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/aiao-io/aiao.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/aiao-io/aiao/context:javascript)
 
-用 `monorepo` 风格代码统一管理发布一些 `npm` 库.
+用 `monorepo` 风格代码统一管理、发布一些 `npm` 库。
 
 ## Libs
 
-小于 1 的为内测版本，请谨慎使用
+版本小于 1 的为内测版本，请谨慎使用。
 
 ### Elements
 
@@ -94,7 +94,7 @@ ng test util
 
 ## 贡献
 
-非常欢迎各位小伙伴一起贡献代码，请先查阅[贡献指南](./CONTRIBUTING.md)
+非常欢迎各位小伙伴一起贡献代码，请先查阅[贡献指南](CONTRIBUTING.md)
 
 ## License MIT
 
