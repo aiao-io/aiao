@@ -4,11 +4,11 @@
 
 [![CircleCI](https://circleci.com/gh/aiao-io/aiao/tree/master.svg?style=svg)](https://circleci.com/gh/aiao-io/aiao/tree/master) [![codecov](https://codecov.io/gh/aiao-io/aiao/branch/master/graph/badge.svg)](https://codecov.io/gh/aiao-io/aiao) [![Crowdin](https://badges.crowdin.net/aiao-io/localized.svg)](https://crowdin.com/project/aiao-io) [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Faiao-io%2Faiao.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Faiao-io%2Faiao?ref=badge_shield) [![CodeFactor](https://www.codefactor.io/repository/github/aiao-io/aiao/badge)](https://www.codefactor.io/repository/github/aiao-io/aiao) [![Maintainability](https://api.codeclimate.com/v1/badges/a4096c9731142de97d99/maintainability)](https://codeclimate.com/github/aiao-io/aiao/maintainability) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/aiao-io/aiao.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/aiao-io/aiao/context:javascript)
 
-Use `monorepo` style for management some `npm` package.
+用 `monorepo` 风格代码统一管理、发布一些 `npm` 库。
 
 ## Libs
 
-小于 1 的为内测版本，请谨慎使用
+版本小于 `1` 的为内测版本，请谨慎使用。
 
 ### Elements
 
@@ -39,12 +39,12 @@ Use `monorepo` style for management some `npm` package.
 
 ## 项目结构
 
-结构大部分遵循 [NX](https://github.com/nrwl/nx) 规则，有一点小修改。
+结构大部分遵循 [Nx](https://github.com/nrwl/nx) 规则。
 
-- `apps` 应用项目目录
+- `apps` 应用目录
 - `integration` 库的集成方案目录
-- `libs` 所有库目录
-- `tools` 项目用到的工具目录
+- `libs` 库目录
+- `tools` 工具集
 
 ## 安装
 
@@ -87,7 +87,7 @@ ng test util
 
 ## 贡献
 
-非常欢迎各位小伙伴一起贡献代码，请先查阅[贡献指南](./CONTRIBUTING.md)
+非常欢迎各位小伙伴一起贡献代码，请先查阅[贡献指南](CONTRIBUTING.md)
 
 ## License MIT
 
