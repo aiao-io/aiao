@@ -15,7 +15,7 @@
 
 ## Libs
 
-版本小于 1 的为内测版本，请谨慎使用。
+版本小于 `1` 的为内测版本，请谨慎使用。
 
 ### Elements
 
@@ -46,12 +46,12 @@
 
 ## 项目结构
 
-结构大部分遵循 [NX](https://github.com/nrwl/nx) 规则，有一点小修改。
+结构大部分遵循 [Nx](https://github.com/nrwl/nx) 规则。
 
-- `apps` 应用项目目录
+- `apps` 应用目录
 - `integration` 库的集成方案目录
-- `libs` 所有库目录
-- `tools` 项目用到的工具目录
+- `libs` 库目录
+- `tools` 工具集
 
 ## 安装
 
