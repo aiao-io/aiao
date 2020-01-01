@@ -35,8 +35,7 @@
     "postinstall": "yarn build:tools && node dist/tools/scripts/check-workspace --lib",
     "preinstall": "rm -rf node_modules/@aiao",
     "run:tools": "ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register",
-    "task:lodash-optimize": "yarn node dist/tools/scripts/affected-lodash-optimize && yarn format",
-    "prepush": "yarn checkcommit && yarn format:check"
+    "task:lodash-optimize": "yarn node dist/tools/scripts/affected-lodash-optimize && yarn format"
   },
   "private": true,
   "dependencies": {
@@ -102,6 +101,7 @@
     "dotenv": "8.2.0",
     "eslint": "6.8.0",
     "fs-extra": "^8.1.0",
+    "husky": "^3.1.0",
     "jest": "24.9.0",
     "jest-preset-angular": "7.1.1",
     "lerna": "^3.20.1",
@@ -117,6 +117,11 @@
     "tslint-react": "^4.0.0",
     "typescript": "~3.5.0",
     "yargs": "^15.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn checkcommit"
+    }
   },
   "config": {
     "commitizen": {
