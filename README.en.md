@@ -10,7 +10,7 @@ Use `monorepo` style for management some `npm` package.
 
 小于 1 的为内测版本，请谨慎使用
 
-### elements
+### Elements
 
 | Package                  | Description       | Version                                                                                                                              |                                   |
 | ------------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- |
@@ -41,6 +41,20 @@ Use `monorepo` style for management some `npm` package.
 | `@aiao/color`         | color tool  | [![npm](https://img.shields.io/npm/v/@aiao/color?label=&style=flat-square)](https://www.npmjs.com/@aiao/color) | [Detail](./libs/color)         |
 | `@aiao/util`          | utils       | [![npm](https://img.shields.io/npm/v/@aiao/util?label=&style=flat-square)](https://www.npmjs.com/@aiao/util)   | [Detail](./libs/util)          |
 | `@aiao/image-storage` | 线上图片地址生成器   | [![npm](https://img.shields.io/npm/v/@aiao/util?label=&style=flat-square)](https://www.npmjs.com/@aiao/util)   | [Detail](./libs/image-storage) |
+
+## 项目结构
+
+## 安装
+
+## 构建项目
+
+### 单元测试
+
+### 端对端测试
+
+## 贡献
+
+非常欢迎各位小伙伴一起贡献代码，请先查阅[贡献指南](./CONTRIBUTING.md)
 
 ## License MIT
 
