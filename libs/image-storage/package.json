@@ -5,9 +5,9 @@
     "build": "ng build image-storage"
   },
   "peerDependencies": {
-    "@aiao/util": "*"
+    "@aiao/util": "^0.3.0"
   },
   "devDependencies": {
-    "@aiao/util": "^0.3.0"
+    "@aiao/util": "*"
   }
 }
