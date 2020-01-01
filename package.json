@@ -35,7 +35,8 @@
     "postinstall": "yarn build:tools && node dist/tools/scripts/check-workspace --lib",
     "preinstall": "rm -rf node_modules/@aiao",
     "run:tools": "ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register",
-    "task:lodash-optimize": "yarn node dist/tools/scripts/affected-lodash-optimize && yarn format"
+    "task:lodash-optimize": "yarn node dist/tools/scripts/affected-lodash-optimize && yarn format",
+    "prepush": "yarn checkcommit && yarn format:check"
   },
   "private": true,
   "dependencies": {
@@ -120,7 +121,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn checkcommit"
+      "pre-push": "yarn prepush"
     }
   },
   "config": {
