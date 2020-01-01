@@ -17,7 +17,7 @@
 
 小于 1 的为内测版本，请谨慎使用
 
-### elements
+### Elements
 
 | Package                  | 介绍              | 版本                                                     |                                 |
 | ------------------------ | ----------------- | -------------------------------------------------------- | ------------------------------- |
@@ -48,6 +48,20 @@
 | `@aiao/color`         | 处理颜色           | [![npm][shields-color]][npm-color] | [详情](./libs/color)         |
 | `@aiao/util`          | 一些小工具         | [![npm][shields-util]][npm-util]   | [详情](./libs/util)          |
 | `@aiao/image-storage` | 线上图片地址生成器 | [![npm][shields-util]][npm-util]   | [详情](./libs/image-storage) |
+
+## 项目结构
+
+## 安装
+
+## 构建项目
+
+### 单元测试
+
+### 端对端测试
+
+## 贡献
+
+非常欢迎各位小伙伴一起贡献代码，请先查阅[贡献指南](./CONTRIBUTING.md)
 
 ## License MIT
 
