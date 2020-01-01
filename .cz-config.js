@@ -104,14 +104,14 @@ const zh_CN = {
   // override the messages, defaults are as follows
   messages: {
     type: '选择您要提交的更改类型：',
-    scope: '\n更改的范围 (可选):',
+    scope: '\n更改的范围：',
     // used if allowCustomScopes is true
-    customScope: '提交的范围:',
-    subject: '写一个简短的，命令式的代码提交描述：\n',
-    body: '请提供更长的更改提交描述，使用 "|" 符号换行:\n',
-    breaking: '描述不兼容更新：\n',
-    footer: '添加问题编号参考 (例如："fix #123", "re #123".)\n',
-    confirmCommit: '大哥最后再确认次?'
+    customScope: '提交的范围：',
+    subject: '简短的代码提交描述：\n',
+    body: '更详细的代码更改描述，使用 "|" 符号换行：\n',
+    breaking: '描述不兼容的更新：\n',
+    footer: '添加编号参考 (例如："fix #123", "re #123".)\n',
+    confirmCommit: '你确认要这样提交吗?'
   }
 };
 
