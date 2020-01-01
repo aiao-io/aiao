@@ -5,7 +5,7 @@ import chalk from 'chalk';
 
 const all_types = ['feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'chore'];
 const all_spops = [
-  'docs',
+  'aiao',
   'color',
   'elements',
   'elements-angular',
@@ -54,13 +54,14 @@ const gitMessage = execSync('git log -1 --no-merges')
   .toString()
   .trim();
 
-const matchCommit = /(feat|fix|docs|style|refactor|perf|test|chore)\((docs|color|elements|elements-angular|elements-cdk|elements-react|image-storage|lazy-component|lazy-element|lazy-module|stencil-toolkit|typeorm-plus)\):\s(([a-z0-9:\-\s])+)/g.test(
+const matchCommit = /(feat|fix|docs|style|refactor|perf|test|chore)\((aiao|color|elements|elements-angular|elements-cdk|elements-react|image-storage|lazy-component|lazy-element|lazy-module|stencil-toolkit|typeorm-plus)\):\s(([a-z0-9:\-\s])+)/g.test(
   gitMessage
 );
 
 const matchRevert = /revert/gi.test(gitMessage);
 const matchRelease = /release/gi.test(gitMessage);
 const matchWIP = /WIP/gi.test(gitMessage);
+console.log('-------', matchRelease, matchRevert, matchCommit, matchWIP);
 const exitCode = +!(matchRelease || matchRevert || matchCommit || matchWIP);
 
 if (exitCode === 0) {

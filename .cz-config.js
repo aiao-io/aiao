@@ -1,5 +1,6 @@
 const base = {
   scopes: [
+    { name: 'aiao' },
     { name: 'color' },
     { name: 'elements' },
     { name: 'elements-angular' },
@@ -12,6 +13,7 @@ const base = {
     { name: 'stencil-toolkit' },
     { name: 'typeorm-plus' }
   ],
+  allowCustomScopes: false,
   allowTicketNumber: false,
   isTicketNumberRequired: false,
   ticketNumberPrefix: 'TICKET-',
@@ -27,7 +29,6 @@ const base = {
     ]
   },
   */
-  allowCustomScopes: true,
   allowBreakingChanges: ['feat', 'fix'],
   // skip any questions you want
   skipQuestions: ['body'],
@@ -90,15 +91,15 @@ const zh_CN = {
     { value: 'style', name: 'style:    💎 代码格式样式' },
     {
       value: 'refactor',
-      name: 'refactor: 📦 重构了代码非功能也非修复错误'
+      name: 'refactor: 📦 重构了代码，不是添加功能，也不属于修复错误'
     },
     { value: 'perf', name: 'perf:     🚀 改进性能' },
     { value: 'test', name: 'test:     🚨 增加测试' },
     {
       value: 'chore',
-      name: 'chore:    构建过程辅助工具的修改'
+      name: 'chore:    🔨 修改了 CI Build 等辅助工具'
     },
-    { value: 'WIP', name: 'WIP:      临时提交还在进行中' }
+    { value: 'WIP', name: 'WIP:      🐷 临时提交，代码还在进行中' }
   ],
   // override the messages, defaults are as follows
   messages: {
