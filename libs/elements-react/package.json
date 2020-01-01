@@ -1,5 +1,5 @@
 {
-  "name": "elements-react",
+  "name": "@aiao/elements-react",
   "version": "0.0.2",
   "scripts": {
     "build": "ng build elements-react"
