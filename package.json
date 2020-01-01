@@ -30,11 +30,13 @@
     "build:tools": "rimraf dist/tools && tsc -p ./tools/tsconfig.tools.json",
     "check-workspace": "yarn run:tools tools/scripts/check-workspace",
     "clean": "git clean -dxf",
-    "commit": "npx git-cz",
+    "commit": "./node_modules/cz-customizable/standalone.js",
+    "checkcommit": "node dist/tools/scripts/commit-lint.js",
     "postinstall": "yarn build:tools && node dist/tools/scripts/check-workspace --lib",
     "preinstall": "rm -rf node_modules/@aiao",
     "run:tools": "ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register",
-    "task:lodash-optimize": "yarn node dist/tools/scripts/affected-lodash-optimize && yarn format"
+    "task:lodash-optimize": "yarn node dist/tools/scripts/affected-lodash-optimize && yarn format",
+    "prepush": "yarn checkcommit && yarn format:check"
   },
   "private": true,
   "dependencies": {
@@ -96,7 +98,7 @@
     "@types/react-dom": "~16.9.4",
     "codelyzer": "~5.2.1",
     "cypress": "3.8.1",
-    "cz-conventional-changelog": "3.0.2",
+    "cz-customizable": "^6.2.0",
     "dotenv": "8.2.0",
     "eslint": "6.8.0",
     "fs-extra": "^8.1.0",
@@ -118,7 +120,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "./node_modules/cz-customizable"
     }
   }
 }
