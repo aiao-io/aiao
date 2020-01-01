@@ -6,7 +6,7 @@
 
 提交信息应遵循以下格式:
 
-```
+```console
 type(scope): subject
 BLANK LINE
 body
