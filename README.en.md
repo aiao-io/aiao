@@ -12,35 +12,30 @@ Use `monorepo` style for management some `npm` package.
 
 ### Elements
 
-| Package                  | Description       | Version                                                                                                                              |                                   |
-| ------------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- |
-| `@aiao/elements`         | web component     | [![npm](https://img.shields.io/npm/v/@aiao/elements?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements)                 | [Detail](./libs/elements)         |
-| `@aiao/elements-angular` | angular 版         | [![npm](https://img.shields.io/npm/v/@aiao/elements-angular?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-angular) | [Detail](./libs/elements-angular) |
-| `@aiao/elements-react`   | react 版           | [![npm](https://img.shields.io/npm/v/@aiao/elements-react?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-react)     | [Detail](./libs/elements-react)   |
-| `@aiao/elements-cdk`     | component Dev Kit | [![npm](https://img.shields.io/npm/v/@aiao/elements-cdk?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-cdk)         | [详情](./libs/elements-cdk)         |
+| Package                  | Description       | Version                                                                                                                              | 尺寸                                                                                                                                                                      |                               |
+| ------------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| `@aiao/elements`         | web component     | [![npm](https://img.shields.io/npm/v/@aiao/elements?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements)                 | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/elements?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/elements)                 | [详情](./libs/elements)         |
+| `@aiao/elements-angular` | angular 版         | [![npm](https://img.shields.io/npm/v/@aiao/elements-angular?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-angular) | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/elements-angular?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/elements-angular) | [详情](./libs/elements-angular) |
+| `@aiao/elements-react`   | react 版           | [![npm](https://img.shields.io/npm/v/@aiao/elements-react?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-react)     | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/elements-react?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/elements-react)     | [详情](./libs/elements-react)   |
+| `@aiao/elements-cdk`     | component Dev Kit | [![npm](https://img.shields.io/npm/v/@aiao/elements-cdk?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-cdk)         | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/elements-cdk?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/elements-cdk)         | [详情](./libs/elements-cdk)     |
 
 ### Angular
 
-| Package                 | Description                                   | Version                                                                                                                            |                                  |
-| ----------------------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| `@aiao/lazy-module`     | lazy load `angular module`                    | [![npm](https://img.shields.io/npm/v/@aiao/lazy-module?label=&style=flat-square)](https://www.npmjs.com/@aiao/lazy-module)         | [Detail](./libs/lazy-module)     |
-| `@aiao/lazy-element`    | lazy load `angular element`                   | [![npm](https://img.shields.io/npm/v/@aiao/lazy-element?label=&style=flat-square)](https://www.npmjs.com/@aiao/lazy-element)       | [Detail](./libs/lazy-element)    |
-| `@aiao/lazy-component`  | lazy load any `module`'s `component`          | [![npm](https://img.shields.io/npm/v/@aiao/lazy-component?label=&style=flat-square)](https://www.npmjs.com/@aiao/lazy-component)   | [Detail](./libs/lazy-component)  |
-| `@aiao/stencil-toolkit` | `stencil` toolkit from angular , support `nx` | [![npm](https://img.shields.io/npm/v/@aiao/stencil-toolkit?label=&style=flat-square)](https://www.npmjs.com/@aiao/stencil-toolkit) | [Detail](./libs/stencil-toolkit) |
-
-### typeorm
-
-| Package              | Description               | Version                                                                                                                      |                               |
-| -------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| `@aiao/typeorm-plus` | 让 typeorm 支持 sequelize 查询 | [![npm](https://img.shields.io/npm/v/@aiao/typeorm-plus?label=&style=flat-square)](https://www.npmjs.com/@aiao/typeorm-plus) | [Detail](./libs/typeorm-plus) |
+| Package                 | Description                                   | Version                                                                                                                            | 尺寸                                                                                                                                                                    |                              |
+| ----------------------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| `@aiao/lazy-module`     | lazy load `angular module`                    | [![npm](https://img.shields.io/npm/v/@aiao/lazy-module?label=&style=flat-square)](https://www.npmjs.com/@aiao/lazy-module)         | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/lazy-module?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/lazy-module)         | [详情](./libs/lazy-module)     |
+| `@aiao/lazy-element`    | lazy load `angular element`                   | [![npm](https://img.shields.io/npm/v/@aiao/lazy-element?label=&style=flat-square)](https://www.npmjs.com/@aiao/lazy-element)       | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/lazy-element?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/lazy-element)       | [详情](./libs/lazy-element)    |
+| `@aiao/lazy-component`  | lazy load any `module`'s `component`          | [![npm](https://img.shields.io/npm/v/@aiao/lazy-component?label=&style=flat-square)](https://www.npmjs.com/@aiao/lazy-component)   | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/lazy-component?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/lazy-component)   | [详情](./libs/lazy-component)  |
+| `@aiao/stencil-toolkit` | `stencil` toolkit from angular , support `nx` | [![npm](https://img.shields.io/npm/v/@aiao/stencil-toolkit?label=&style=flat-square)](https://www.npmjs.com/@aiao/stencil-toolkit) | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/stencil-toolkit?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/stencil-toolkit) | [详情](./libs/stencil-toolkit) |
 
 ### utils
 
-| Package               | Description | Version                                                                                                        |                                |
-| --------------------- | ----------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| `@aiao/color`         | color tool  | [![npm](https://img.shields.io/npm/v/@aiao/color?label=&style=flat-square)](https://www.npmjs.com/@aiao/color) | [Detail](./libs/color)         |
-| `@aiao/util`          | utils       | [![npm](https://img.shields.io/npm/v/@aiao/util?label=&style=flat-square)](https://www.npmjs.com/@aiao/util)   | [Detail](./libs/util)          |
-| `@aiao/image-storage` | 线上图片地址生成器   | [![npm](https://img.shields.io/npm/v/@aiao/util?label=&style=flat-square)](https://www.npmjs.com/@aiao/util)   | [Detail](./libs/image-storage) |
+| Package               | Description               | Version                                                                                                                        | 尺寸                                                                                                                                                                |                            |
+| --------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| `@aiao/color`         | 处理颜色                      | [![npm](https://img.shields.io/npm/v/@aiao/color?label=&style=flat-square)](https://www.npmjs.com/@aiao/color)                 | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/color?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/color)                 | [详情](./libs/color)         |
+| `@aiao/util`          | 一些小工具                     | [![npm](https://img.shields.io/npm/v/@aiao/util?label=&style=flat-square)](https://www.npmjs.com/@aiao/util)                   | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/util?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/util)                   | [详情](./libs/util)          |
+| `@aiao/image-storage` | 线上图片地址生成器                 | [![npm](https://img.shields.io/npm/v/@aiao/image-storage?label=&style=flat-square)](https://www.npmjs.com/@aiao/image-storage) | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/image-storage?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/image-storage) | [详情](./libs/image-storage) |
+| `@aiao/typeorm-plus`  | 让 typeorm 支持 sequelize 查询 | [![npm](https://img.shields.io/npm/v/@aiao/typeorm-plus?label=&style=flat-square)](https://www.npmjs.com/@aiao/typeorm-plus)   | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/typeorm-plus?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/typeorm-plus)   | [详情](./libs/typeorm-plus)  |
 
 ## 项目结构
 
@@ -53,7 +48,7 @@ Use `monorepo` style for management some `npm` package.
 
 ## 安装
 
-- `cypress` 下载较慢，请安装前手动下载并配制环境变量 `CYPRESS_INSTALL_BINARY=0` 跳过下载。[更多安装方法](cypress-install-zh-cn)
+- `cypress` 下载较慢，请安装前手动下载并配制环境变量 `CYPRESS_INSTALL_BINARY=0` 跳过下载，[更多安装方法](cypress-install-zh-cn)。
 - 本项目请使用 `yarn` 作为默认安装方式。并强制 `registry` 配置为默认值。如果你下载过于缓慢，可以删除 `.yarnrc` 和 `.npmrc` 文件来提高安装速度。
 
 ```console
@@ -97,3 +92,22 @@ ng test util
 ## License MIT
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Faiao-io%2Faiao.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Faiao-io%2Faiao?ref=badge_large)
+
+<!-- npm -->
+
+
+
+<!-- npm url -->
+
+
+
+<!-- bundlephobia -->
+
+
+
+<!-- bundlephobia url -->
+
+
+
+<!-- cypress -->
+
