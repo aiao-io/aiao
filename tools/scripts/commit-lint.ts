@@ -1,7 +1,14 @@
 #!/usr/bin/env node
 
-import { execSync } from 'child_process';
 import chalk from 'chalk';
+import { execSync } from 'child_process';
+import { env, exit } from 'process';
+
+const branchName: string = execSync('git symbolic-ref --short -q HEAD').toString();
+
+if (branchName !== 'master') {
+  exit();
+}
 
 const all_types = ['feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'chore'];
 const all_spops = [
@@ -47,7 +54,7 @@ const message_zh_cn = {
   `
 };
 
-const message = process.env.LANG.includes('zh_CN') ? message_zh_cn : message_en;
+const message = env.LANG.includes('zh_CN') ? message_zh_cn : message_en;
 
 console.log(chalk.green(message.titile));
 const gitMessage = execSync('git log -1 --no-merges')
@@ -75,4 +82,4 @@ if (exitCode === 0) {
   );
   console.log(message.tips);
 }
-process.exit(exitCode);
+exit(exitCode);
