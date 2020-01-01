@@ -16,7 +16,8 @@ Use `monorepo` style for management some `npm` package.
 | ------------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- |
 | `@aiao/elements`         | web component     | [![npm](https://img.shields.io/npm/v/@aiao/elements?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements)                 | [Detail](./libs/elements)         |
 | `@aiao/elements-angular` | angular 版         | [![npm](https://img.shields.io/npm/v/@aiao/elements-angular?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-angular) | [Detail](./libs/elements-angular) |
-| `@aiao/elements-cdk`     | component Dev Kit | [![npm](https://img.shields.io/npm/v/@aiao/elements-cdk?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-cdk)         | [Detail](./libs/elements-cdk)     |
+| `@aiao/elements-react`   | react 版           | [![npm](https://img.shields.io/npm/v/@aiao/elements-react?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-react)     | [Detail](./libs/elements-react)   |
+| `@aiao/elements-cdk`     | component Dev Kit | [![npm](https://img.shields.io/npm/v/@aiao/elements-cdk?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-cdk)         | [详情](./libs/elements-cdk)         |
 
 ### Angular
 
