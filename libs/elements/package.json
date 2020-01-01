@@ -1,6 +1,6 @@
 {
   "name": "@aiao/elements",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Stencil Component Starter",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
@@ -24,14 +24,14 @@
     "build": "ng build elements && node scripts/build-clean"
   },
   "peerDependencies": {
-    "@aiao/image-storage": "*",
-    "@aiao/elements-cdk": "*"
+    "@aiao/elements-cdk": "*",
+    "@aiao/image-storage": "*"
   },
   "devDependencies": {
-    "@stencil/core": "^1.8.1",
-    "@aiao/stencil-toolkit": "*",
-    "@aiao/image-storage": "*",
-    "@aiao/elements-cdk": "*"
+    "@aiao/elements-cdk": "^0.0.2",
+    "@aiao/image-storage": "^0.0.2",
+    "@aiao/stencil-toolkit": "^0.0.10",
+    "@stencil/core": "^1.8.1"
   },
   "license": "MIT"
 }

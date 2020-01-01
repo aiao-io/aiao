@@ -3,15 +3,9 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# 1.3.0 (2020-01-01)
+# 0.1.0 (2020-01-01)
 
 
 ### Features
 
-* **libs:** add angular lazy module libs ([cf1f5ec](https://github.com/aiao-io/aiao/commit/cf1f5ec71dc2213cb7edd6622a43b5ff835bf139))
-
-
-
-
-
-# 1.2.0 (2019-12-04)
+* add elementDataToEditData util ([5e69164](https://github.com/aiao-io/aiao/commit/5e691644530fb3eb5774f116236bb15626b60db5))

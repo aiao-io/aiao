@@ -23,6 +23,7 @@
 | ------------------------ | ----------------- | -------------------------------------------------------- | ------------------------------- |
 | `@aiao/elements`         | web component     | [![npm][shields-elements]][npm-elements]                 | [详情](./libs/elements)         |
 | `@aiao/elements-angular` | angular 版        | [![npm][shields-elements-angular]][npm-elements-angular] | [详情](./libs/elements-angular) |
+| `@aiao/elements-react`   | react 版          | [![npm][shields-elements-react]][npm-elements-react]     | [详情](./libs/elements-react)   |
 | `@aiao/elements-cdk`     | component Dev Kit | [![npm][shields-elements-cdk]][npm-elements-cdk]         | [详情](./libs/elements-cdk)     |
 
 ### Angular
@@ -60,6 +61,7 @@
 [shields-stencil-toolkit]: https://img.shields.io/npm/v/@aiao/stencil-toolkit?label=&style=flat-square
 [shields-elements]: https://img.shields.io/npm/v/@aiao/elements?label=&style=flat-square
 [shields-elements-angular]: https://img.shields.io/npm/v/@aiao/elements-angular?label=&style=flat-square
+[shields-elements-react]: https://img.shields.io/npm/v/@aiao/elements-react?label=&style=flat-square
 [shields-elements-cdk]: https://img.shields.io/npm/v/@aiao/elements-cdk?label=&style=flat-square
 [shields-typeorm-plus]: https://img.shields.io/npm/v/@aiao/typeorm-plus?label=&style=flat-square
 [npm-color]: https://www.npmjs.com/@aiao/color
@@ -70,5 +72,6 @@
 [npm-stencil-toolkit]: https://www.npmjs.com/@aiao/stencil-toolkit
 [npm-elements]: https://www.npmjs.com/@aiao/elements
 [npm-elements-angular]: https://www.npmjs.com/@aiao/elements-angular
+[npm-elements-react]: https://www.npmjs.com/@aiao/elements-react
 [npm-elements-cdk]: https://www.npmjs.com/@aiao/elements-cdk
 [npm-typeorm-plus]: https://www.npmjs.com/@aiao/typeorm-plus
