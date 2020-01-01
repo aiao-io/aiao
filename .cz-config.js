@@ -31,7 +31,7 @@ const base = {
   */
   allowBreakingChanges: ['feat', 'fix'],
   // skip any questions you want
-  skipQuestions: ['body'],
+  skipQuestions: [],
 
   // limit subject length
   subjectLimit: 100
@@ -107,11 +107,11 @@ const zh_CN = {
     scope: '\n更改的范围：',
     // used if allowCustomScopes is true
     customScope: '提交的范围：',
-    subject: '简短的代码提交描述：\n',
-    body: '更详细的代码更改描述，使用 "|" 符号换行：\n',
-    breaking: '描述不兼容的更新：\n',
-    footer: '添加编号参考 (例如："fix #123", "re #123".)\n',
-    confirmCommit: '你确认要这样提交吗?'
+    subject: '简短的代码描述：\n',
+    body: '详细的代码描述，使用 "|" 符号换行：\n',
+    breaking: '不兼容的描述：\n',
+    footer: '关闭的问题（例如："fix #123", "re #123".）\n',
+    confirmCommit: '你确认要这样提交吗？'
   }
 };
 

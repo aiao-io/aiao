@@ -10,3 +10,7 @@ node_modules
 !*.config.js
 
 **/*.en.md
+libs/elements/hydrate/
+libs/elements/vendors/
+libs/elements/lib/
+libs/elements/loader/
