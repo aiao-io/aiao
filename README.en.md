@@ -44,13 +44,51 @@ Use `monorepo` style for management some `npm` package.
 
 ## 项目结构
 
+结构大部分遵循 [NX](https://github.com/nrwl/nx) 规则，有一点小修改。
+
+- `apps` 应用项目目录
+- `integration` 库的集成方案目录
+- `libs` 所有库目录
+- `tools` 项目用到的工具目录
+
 ## 安装
+
+- `cypress` 下载较慢，请安装前手动下载并配制环境变量 `CYPRESS_INSTALL_BINARY=0` 跳过下载。[更多安装方法](cypress-install-zh-cn)
+- 本项目请使用 `yarn` 作为默认安装方式。并强制 `registry` 配置为默认值。如果你下载过于缓慢，可以删除 `.yarnrc` 和 `.npmrc` 文件来提高安装速度。
+
+```console
+yarn
+```
 
 ## 构建项目
 
-### 单元测试
+### 构建所有库
 
-### 端对端测试
+```console
+yarn build:libs
+```
+
+### 单独构建 `util` 库
+
+```console
+ng build util
+```
+
+## 单元测试
+
+> 部分库需要数据库支持，请自行启动
+
+### 测试所有库
+
+```console
+yarn test
+```
+
+### 测试 `util` 库
+
+```console
+ng test util
+```
 
 ## 贡献
 
