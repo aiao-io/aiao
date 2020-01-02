@@ -27,4 +27,7 @@ export function changeLanguageReducer(state: any, action: any) {
 
 export const selectFeature = createFeatureSelector<LocalState, ChangeLanguageState>(CHANGE_LANGUAGE_Key);
 
-export const selectLanguage = createSelector(selectFeature, (state: ChangeLanguageState) => state.language);
+export const selectLanguage = createSelector(
+  selectFeature,
+  (state: ChangeLanguageState) => state.language
+);

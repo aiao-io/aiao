@@ -36,7 +36,7 @@
     "preinstall": "rm -rf node_modules/@aiao",
     "run:tools": "ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register",
     "task:lodash-optimize": "yarn node dist/tools/scripts/affected-lodash-optimize && yarn format",
-    "prepush": "yarn checkcommit && yarn format:check"
+    "prepush": "yarn checkcommit"
   },
   "private": true,
   "dependencies": {
