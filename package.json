@@ -54,7 +54,6 @@
     "@angular/router": "^8.2.14",
     "@angular/service-worker": "^8.2.14",
     "@ionic/angular": "^4.11.7",
-    "@ionic/angular-toolkit": "^2.1.1",
     "@ionic/core": "^4.11.5",
     "@ngrx/effects": "^8.6.0",
     "@ngrx/entity": "^8.6.0",
