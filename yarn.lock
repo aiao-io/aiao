@@ -2210,6 +2210,20 @@
   dependencies:
     "@types/node" "^12.11.1"
 
+"@primer/css@^14.1.0":
+  version "14.1.0"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-14.1.0.tgz#ce54e14cdd6e4a480a37d6eb71813a68412eae87"
+  integrity sha512-mpoUmYNxBcSsZ8MMU6GeJ72s6k6WuFh6UxbAjdVsYIY9amavy6Zoj0d6TaQjp3srwhM6XAzcfHooEn/tMu1Ehw==
+  dependencies:
+    "@primer/octicons" "^9.1.1"
+
+"@primer/octicons@^9.1.1":
+  version "9.3.1"
+  resolved "https://registry.yarnpkg.com/@primer/octicons/-/octicons-9.3.1.tgz#adc2673d9d4f5dae2e829679df3e2d1078a10ed8"
+  integrity sha512-E0Knv/hUfwpfJOVh7cPXXJf6gfNiIMBtMbhnqjkWHnpT/+bPJk4Q3l/YG6sCWELZ05KYpHBunpHNOlTyw3mbwg==
+  dependencies:
+    object-assign "^4.1.1"
+
 "@schematics/angular@8.3.14":
   version "8.3.14"
   resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-8.3.14.tgz#de47af1bb38cdc25d1bb9d36c5f1caf19e4e2882"
