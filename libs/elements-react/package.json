@@ -1,0 +1,15 @@
+{
+  "name": "@aiao/elements-react",
+  "version": "0.0.2",
+  "scripts": {
+    "build": "ng build elements-react"
+  },
+  "peerDependencies": {
+    "@aiao/elements": "^0.1.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@aiao/elements": "*"
+  }
+}

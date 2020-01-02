@@ -7,8 +7,10 @@ node_modules
 /dist
 /coverage
 *.log
-libs/**/*.js
-apps/**/*.js
 !*.config.js
 
 **/*.en.md
+libs/elements/hydrate/
+libs/elements/vendors/
+libs/elements/lib/
+libs/elements/loader/

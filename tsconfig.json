@@ -26,9 +26,12 @@
       "@aiao/image-storage": ["libs/image-storage/src/index.ts"],
       "@aiao/elements-cdk/platform": ["libs/elements-cdk/platform/src/index.ts"],
       "@aiao/elements-cdk/components": ["libs/elements-cdk/components/src/index.ts"],
+      "@aiao/elements-cdk/angular": ["libs/elements-cdk/angular/src/index.ts"],
       "@aiao/elements-cdk": ["libs/elements-cdk/src/index.ts"],
       "@aiao/color": ["libs/color/src/index.ts"],
-      "@aiao/elements-angular": ["libs/elements-angular/src/index.ts"]
+      "@aiao/elements-angular": ["libs/elements-angular/src/index.ts"],
+      "@aiao/typeorm-plus": ["libs/typeorm-plus/src/index.ts"],
+      "@aiao/elements-react": ["libs/elements-react/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp", "**/*.stories.ts"]

@@ -47,6 +47,9 @@
           "options": {
             "tsConfig": "libs/util/tsconfig.lib.json",
             "project": "libs/util/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
@@ -82,6 +85,9 @@
           "options": {
             "tsConfig": "libs/lazy-component/tsconfig.lib.json",
             "project": "libs/lazy-component/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
@@ -117,6 +123,9 @@
           "options": {
             "tsConfig": "libs/lazy-module/tsconfig.lib.json",
             "project": "libs/lazy-module/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
@@ -148,6 +157,9 @@
           "options": {
             "tsConfig": "libs/lazy-element/tsconfig.lib.json",
             "project": "libs/lazy-element/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
@@ -179,6 +191,9 @@
           "options": {
             "tsConfig": "libs/color/tsconfig.lib.json",
             "project": "libs/color/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
@@ -203,6 +218,19 @@
       "sourceRoot": "libs/stencil-toolkit/src",
       "prefix": "aiao",
       "architect": {
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd libs/stencil-toolkit && yarn run build"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -235,13 +263,16 @@
           "builder": "@aiao/stencil-toolkit:build",
           "options": {
             "outputPath": "dist/libs/elements",
-            "config": "libs/elements/stencil.config.prod.ts"
+            "config": "libs/elements/stencil.prod.config.ts"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "serve": {
           "builder": "@aiao/stencil-toolkit:serve",
           "options": {
-            "config": "libs/elements/stencil.config.dev.ts"
+            "config": "libs/elements/stencil.dev.config.ts"
           }
         },
         "lint": {
@@ -271,6 +302,9 @@
           "options": {
             "tsConfig": "libs/image-storage/tsconfig.lib.json",
             "project": "libs/image-storage/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
@@ -306,6 +340,9 @@
           "options": {
             "tsConfig": "libs/elements-cdk/tsconfig.lib.json",
             "project": "libs/elements-cdk/ng-package.json"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {
@@ -496,6 +533,74 @@
           }
         }
       }
+    },
+    "typeorm-plus": {
+      "projectType": "library",
+      "root": "libs/typeorm-plus",
+      "sourceRoot": "libs/typeorm-plus/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/typeorm-plus/tsconfig.lib.json",
+            "project": "libs/typeorm-plus/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/typeorm-plus/tsconfig.lib.json", "libs/typeorm-plus/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/typeorm-plus/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/typeorm-plus/jest.config.js",
+            "tsConfig": "libs/typeorm-plus/tsconfig.spec.json",
+            "setupFile": "libs/typeorm-plus/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "elements-react": {
+      "root": "libs/elements-react",
+      "sourceRoot": "libs/elements-react/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/elements-react/tsconfig.lib.json", "libs/elements-react/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/elements-react/**"]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/web:bundle",
+          "options": {
+            "outputPath": "dist/libs/elements-react",
+            "tsConfig": "libs/elements-react/tsconfig.lib.json",
+            "project": "libs/elements-react/package.json",
+            "entryFile": "libs/elements-react/src/index.ts",
+            "babelConfig": "@nrwl/react/plugins/bundle-babel",
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup"
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/elements-react/jest.config.js",
+            "tsConfig": "libs/elements-react/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
 
@@ -510,6 +615,11 @@
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
+    },
+    "@nrwl/react": {
+      "application": {
+        "babel": true
+      }
     }
   },
   "defaultProject": "docs"

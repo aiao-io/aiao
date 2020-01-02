@@ -1,6 +1,6 @@
 {
   "name": "@aiao/stencil-toolkit",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Schematics and builders for stencil",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -28,8 +28,8 @@
     "build": "./scripts/build.sh"
   },
   "dependencies": {
-    "@nrwl/jest": "*",
-    "@nrwl/workspace": "^8.0.0"
+    "@nrwl/jest": "^8.9.0",
+    "@nrwl/workspace": "^8.9.0"
   },
   "peerDependencies": {
     "@angular-devkit/schematics": "^8.0.0"

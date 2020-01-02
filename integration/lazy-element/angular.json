@@ -62,7 +62,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "lazy-element:build"
+            "browserTarget": "lazy-element:build",
+            "port": 9502
           },
           "configurations": {
             "production": {
@@ -94,17 +95,32 @@
             "tsConfig": ["tsconfig.app.json", "tsconfig.spec.json", "e2e/tsconfig.json"],
             "exclude": ["**/node_modules/**"]
           }
-        },
+        }
+      }
+    },
+    "lazy-element-e2e": {
+      "root": "e2e",
+      "sourceRoot": "e2e/src",
+      "projectType": "application",
+      "architect": {
         "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+          "builder": "@nrwl/cypress:cypress",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
+            "cypressConfig": "e2e/cypress.json",
+            "tsConfig": "e2e/tsconfig.e2e.json",
             "devServerTarget": "lazy-element:serve"
           },
           "configurations": {
             "production": {
               "devServerTarget": "lazy-element:serve:production"
             }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!e2e/**"]
           }
         }
       }

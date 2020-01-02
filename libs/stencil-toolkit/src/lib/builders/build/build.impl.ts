@@ -36,7 +36,9 @@ function stencilBuild(options: StencilBuildOptions, context: BuilderContext): Ob
         args.push('--stats');
       }
       const cmd = resolve(workspaceRoot, 'node_modules/.bin/stencil');
-      return run(cmd, args).then(() => {
+
+      const runPromise = run(cmd, args);
+      return runPromise.then(() => {
         if (!outputPath) {
           return;
         }

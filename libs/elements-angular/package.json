@@ -1,15 +1,31 @@
 {
   "name": "@aiao/elements-angular",
-  "version": "0.0.1",
+  "version": "0.0.3",
+  "description": "elements for angular",
+  "homepage": "https://github.com/aiao-io/aiao",
+  "author": "Jimmy<hero63418@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aiao-io/aiao.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aiao-io/aiao/issues"
+  },
+  "keywords": [
+    "angular",
+    "stencil",
+    "web components"
+  ],
   "scripts": {
-    "build": "ng build lazy-element"
+    "build": "ng build elements-angular"
   },
   "peerDependencies": {
-    "@aiao/elements": "^0.0.1",
+    "@aiao/elements": "^0.1.0",
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14"
   },
   "devDependencies": {
-    "@aiao/elements": "^0.0.1"
+    "@aiao/elements": "*"
   }
 }

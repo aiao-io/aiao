@@ -9,6 +9,13 @@ defaults: &defaults
   working_directory: ~/repo
   docker:
     - image: circleci/node:12-browsers
+    - image: circleci/postgres:12-alpine
+      environment:
+        POSTGRES_USER: test
+        POSTGRES_DB: test
+  environment:
+    TYPEORM_PLUS_TEST_USERNAME: test
+    TYPEORM_PLUS_TEST_DATABASE: test
 
 # env
 set_env: &set_env
@@ -32,128 +39,141 @@ set_env: &set_env
     source $BASH_ENV
     echo $AFFECTED_ARGS
 
+# install
+install_yarn: &install_yarn
+  name: yarn install
+  command: yarn install --frozen-lockfile --non-interactive --ignore-scripts
+
+build_tools: &build_tools
+  name: Build Tools
+  command: yarn build:tools
+
+check_workspace: &check_workspace
+  name: Check Workspace
+  command: node dist/tools/scripts/check-workspace
+
+# build
+build_libs: &build_libs
+  name: Build Libs
+  command: node --max_old_space_size=4096 ./node_modules/.bin/lerna run build --scope @aiao/*
+
 # cache
 restore_yarn_cache: &restore_yarn_cache
+  name: Restore Yarn Cache
   keys:
     - node-deps-node12-{{ checksum "yarn.lock" }}
 
 save_yarn_cache: &save_yarn_cache
+  name: Save Yarn Cache
   key: node-deps-node12-{{ checksum "yarn.lock" }}
   paths:
-    - ~/.cache/Cypress
-    - node_modules
-
-# install
-yarn_install: &yarn_install
-  name: Install Dependencies
-  command: yarn install --frozen-lockfile --non-interactive
+    - ~/.cache
 
 # format
 format: &format
   name: format
-  command: yarn format:check --all
-
-format-affected: &format-affected
-  name: format-affected
   command: yarn format:check ${AFFECTED_ARGS}
 
 # lint
-lint-affected: &lint-affected
-  name: lint-affected
-  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS} --parallel
-
 lint: &lint
   name: lint
-  command: ./node_modules/.bin/nx workspace-lint && yarn lint
+  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS} --parallel
 
-# checks
-check-lodash: &check-lodash
-  name: check-lodash
-  command: node ./dist/tools/checks/command lodash --all
-
-check-lodash-affected: &check-lodash-affected
-  name: check-lodash
-  command: node ./dist/tools/checks/command lodash ${AFFECTED_ARGS}
-
-# test
-test-affected: &test-affected
-  name: test-affected
-  command: yarn affected:test ${AFFECTED_ARGS} --parallel --ci --code-coverage
+# check_lodash
+check_lodash: &check_lodash
+  name: Check Lodash Import
+  command: node dist/tools/scripts/affected-lodash-optimize ${AFFECTED_ARGS}
 
 test: &test
+  name: test
+  command: yarn affected:test ${AFFECTED_ARGS} --parallel --ci --code-coverage
+
+test_master: &test_master
   name: test
   command: yarn test --ci --code-coverage
 
 # e2e
-e2e-affected: &e2e-affected
-  name: e2e-affected
-  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production --headless
-
 e2e: &e2e
   name: e2e
-  command: yarn e2e --configuration production --headless
+  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production --headless
 
 # coverage
 coverage: &coverage
   name: coverage
   command: bash <(curl -s https://codecov.io/bash)
 
+# integration_test
+integration_test: &integration_test
+  name: Integration Test
+  command: bash ./tools/scripts/intergration-test.sh
+
 # artifacts
 store_artifacts_coverage: &store_artifacts_coverage
+  name: Artifacts coverage
   prefix: coverage
   path: coverage
 
-store_artifacts_cypress: &store_artifacts_cypress
-  prefix: cypress
-  path: dist/cypress
+store_artifacts_dist: &store_artifacts_dist
+  name: Artifacts dist
+  prefix: dist
+  path: dist/last-deploy.txt
 
 # jobs
 jobs:
-  check_all:
+  check_pr:
     <<: *defaults
     steps:
       - checkout
       - run: *set_env
       - restore_cache: *restore_yarn_cache
-      - run: *yarn_install
-      - save_cache: *save_yarn_cache
+      - run: *install_yarn
+      - run: *build_tools
+      - run: *check_workspace
       - run: *format
       - run: *lint
+      - run: *check_lodash
+      - run: *build_libs
       - run: *test
+      - run: *integration_test
       - run: *coverage
       # - run: *e2e
+      - store_artifacts: *store_artifacts_dist
       - store_artifacts: *store_artifacts_coverage
-      - store_artifacts: *store_artifacts_cypress
+      - save_cache: *save_yarn_cache
 
-  check_affected:
+  check_master:
     <<: *defaults
     steps:
       - checkout
       - run: *set_env
       - restore_cache: *restore_yarn_cache
-      - run: *yarn_install
-      - save_cache: *save_yarn_cache
-      - run: *check-lodash-affected
-      - run: *format-affected
-      - run: *lint-affected
-      - run: *test-affected
+      - run: *install_yarn
+      - run: *build_tools
+      - run: *check_workspace
+      - run: *format
+      - run: *lint
+      - run: *check_lodash
+      - run: *build_libs
+      - run: *test_master
+      - run: *integration_test
       - run: *coverage
-      # - run: *e2e-affected
+      # - run: *e2e
+      - store_artifacts: *store_artifacts_dist
       - store_artifacts: *store_artifacts_coverage
-      - store_artifacts: *store_artifacts_cypress
-# workflows
+      - save_cache: *save_yarn_cache
+
 workflows:
   version: 2
   check:
     jobs:
-      - check_all:
+      - check_master:
           filters:
             branches:
               only:
                 - master
-      - check_affected:
+      - check_pr:
           filters:
             branches:
               ignore:
-                - master
                 - i10n
+                - master
