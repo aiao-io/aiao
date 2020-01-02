@@ -2331,11 +2331,6 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/cash@*":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@types/cash/-/cash-0.0.3.tgz#770d6382c605bb4f8572f17cea6f40cec5832496"
-  integrity sha512-gS24kdFuVwfo5h7IlStnXyBSIH4e9aFIhNHb4w+o5DwbYDeQJv+i9heh7u7nSvqnOP3v34tQMTe7VoJp2US08w==
-
 "@types/color-name@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
@@ -2394,13 +2389,6 @@
   dependencies:
     jest-diff "^24.3.0"
 
-"@types/jquery@*":
-  version "3.3.31"
-  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.3.31.tgz#27c706e4bf488474e1cb54a71d8303f37c93451b"
-  integrity sha512-Lz4BAJihoFw5nRzKvg4nawXPzutkv7wmfQ5121avptaSIXlDNJCUuxZxX/G+9EVidZGuO0UBlk+YjKbwRKJigg==
-  dependencies:
-    "@types/sizzle" "*"
-
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
@@ -2415,14 +2403,6 @@
   version "0.6.5"
   resolved "https://registry.yarnpkg.com/@types/marked/-/marked-0.6.5.tgz#3cf2a56ef615dad24aaf99784ef90a9eba4e29d8"
   integrity sha512-6kBKf64aVfx93UJrcyEZ+OBM5nGv4RLsI6sR1Ar34bpgvGVRoyTgpxn4ZmtxOM5aDTAaaznYuYUH8bUX3Nk3YA==
-
-"@types/materialize-css@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@types/materialize-css/-/materialize-css-1.0.7.tgz#882bedf3666ba765d01e6692fa391e7ae808af62"
-  integrity sha512-nKsxFTAjUHK7gxnMcbd+Lynp1v8N+1mvrfleWmy5u0Bxd337l9O0U11FfKX3fKZlxE4hD7N4bw8BFhH5hxhXCQ==
-  dependencies:
-    "@types/cash" "*"
-    "@types/jquery" "*"
 
 "@types/minimatch@*", "@types/minimatch@^3.0.3":
   version "3.0.3"
@@ -2456,7 +2436,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/sizzle@*", "@types/sizzle@2.3.2":
+"@types/sizzle@2.3.2":
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.2.tgz#a811b8c18e2babab7d542b3365887ae2e4d9de47"
   integrity sha512-7EJYyKTL7tFR8+gDbB6Wwz/arpGa0Mywk1TJbNzKzHtzbwVmY4HR9WqS5VV7dsBUKQmPNr192jHr/VpBluj/hg==
@@ -8410,11 +8390,6 @@ marked@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.7.0.tgz#b64201f051d271b1edc10a04d1ae9b74bb8e5c0e"
   integrity sha512-c+yYdCZJQrsRjTPhUx7VKkApw9bwDkNbHUKo1ovgcfDjb2kc8rLuRbIFyXL5WOEUwzSSKo3IXpph2K6DqB/KZg==
-
-materialize-css@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/materialize-css/-/materialize-css-1.0.0.tgz#8d5db1c4a81c6d65f3b2e2ca83a8e08daa24d1be"
-  integrity sha512-4/oecXl8y/1i8RDZvyvwAICyqwNoKU4or5uf8uoAd74k76KzZ0Llym4zhJ5lLNUskcqjO0AuMcvNyDkpz8Z6zw==
 
 md5.js@^1.3.4:
   version "1.3.5"
