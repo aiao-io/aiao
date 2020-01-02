@@ -21,7 +21,7 @@ const _changeLanguageReducer = createReducer(
   on(changeLanguageAction, (state, { language }) => ({ ...state, language }))
 );
 
-export function changeLanguageReducer(state, action) {
+export function changeLanguageReducer(state: any, action: any) {
   return _changeLanguageReducer(state, action);
 }
 

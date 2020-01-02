@@ -1,13 +1,12 @@
-import { ConnectableObservable, Observable, Subject } from 'rxjs';
-import { publishLast, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { Router } from '@angular/router';
 
-import { mockNav, NavPath, mockNavs } from '../interface';
+import { mockNav, mockNavs, NavPath } from '../interface';
 
 interface ExampleFlatNode {
   expandable: boolean;
