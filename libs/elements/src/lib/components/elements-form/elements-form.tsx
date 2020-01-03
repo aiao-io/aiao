@@ -145,7 +145,7 @@ export class ElementsFrom implements ComponentInterface {
 
   private get formElements() {
     if (!this._formElements) {
-      this._formElements = Array.from(this.viewRef.querySelectorAll(`.${ELEMENTS_FORM_ITEM}`));
+      this._formElements = Array.from(this.viewRef.shadowRoot.querySelectorAll(`.${ELEMENTS_FORM_ITEM}`));
     }
     return this._formElements;
   }
