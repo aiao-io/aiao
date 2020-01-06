@@ -31,7 +31,10 @@ export class SideNavComponent implements OnInit, OnDestroy {
     };
   };
   // tslint:disable-next-line: member-ordering
-  treeControl = new FlatTreeControl<ExampleFlatNode>(node => node.level, node => node.expandable);
+  treeControl = new FlatTreeControl<ExampleFlatNode>(
+    node => node.level,
+    node => node.expandable
+  );
   // tslint:disable-next-line: member-ordering
   treeFlattener = new MatTreeFlattener(
     this._transformer,
@@ -67,31 +70,12 @@ export class SideNavComponent implements OnInit, OnDestroy {
     //     console.log('navigationInfo', data);
     //   });
 
-    const filterAry = this.navigationFilter(this.navAry);
+    const filterAry = this.navigationFlatter(this.navAry);
     console.log('filterAry', filterAry);
   }
 
-  navigationFilter(navAry: any[]) {
-    let filterAry = [];
-    const navObj: any = {};
-    if (navAry.some(nav => nav.type === 'md')) {
-      navObj.name = 'Introduction';
-      navObj.path = '/';
-      navObj.children = [];
-      filterAry.push(navObj);
-    }
-    navAry = navAry.filter(d => d.type === 'dir');
-    navAry.map(data => {
-      if (data.children.length > 0 && data.children.every(d => d.type === 'md')) {
-        data.children = [];
-      }
-      if (data.children.length > 0 && data.children.every(d => d.type === 'dir')) {
-        data.path = '';
-      }
-      return data;
-    });
-    filterAry = [...filterAry, ...navAry];
-    return filterAry;
+  navigationFlatter(navAry: any) {
+    return navAry.flat(3);
   }
 
   ngOnDestroy() {

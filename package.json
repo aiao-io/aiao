@@ -36,6 +36,7 @@
     "preinstall": "rm -rf node_modules/@aiao",
     "run:tools": "ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register",
     "task:lodash-optimize": "yarn node dist/tools/scripts/affected-lodash-optimize && yarn format",
+    "generate-nav": "yarn node dist/tools/scripts/generate-nav",
     "prepush": "yarn checkcommit"
   },
   "private": true,

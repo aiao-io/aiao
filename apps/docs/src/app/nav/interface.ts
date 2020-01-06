@@ -113,15 +113,9 @@ export const mockNav = [
 
 export const mockNavs = [
   {
-    name: 'README.en.md',
+    name: 'Introduction',
     type: 'md',
-    path: '',
-    children: []
-  },
-  {
-    name: 'README.md',
-    type: 'md',
-    path: '',
+    path: '/',
     children: []
   },
   {
@@ -130,13 +124,7 @@ export const mockNavs = [
     path: '/integration',
     children: [
       {
-        name: 'README.en.md',
-        type: 'md',
-        path: '/integration',
-        children: []
-      },
-      {
-        name: 'README.md',
+        name: 'Introduction',
         type: 'md',
         path: '/integration',
         children: []
@@ -145,77 +133,25 @@ export const mockNavs = [
         name: 'lazy-component',
         type: 'dir',
         path: '/integration/lazy-component',
-        children: [
-          {
-            name: 'README.en.md',
-            type: 'md',
-            path: '/integration/lazy-component',
-            children: []
-          },
-          {
-            name: 'README.md',
-            type: 'md',
-            path: '/integration/lazy-component',
-            children: []
-          }
-        ]
+        children: []
       },
       {
         name: 'lazy-element',
         type: 'dir',
         path: '/integration/lazy-element',
-        children: [
-          {
-            name: 'README.en.md',
-            type: 'md',
-            path: '/integration/lazy-element',
-            children: []
-          },
-          {
-            name: 'README.md',
-            type: 'md',
-            path: '/integration/lazy-element',
-            children: []
-          }
-        ]
+        children: []
       },
       {
         name: 'lazy-module',
         type: 'dir',
         path: '/integration/lazy-module',
-        children: [
-          {
-            name: 'README.en.md',
-            type: 'md',
-            path: '/integration/lazy-module',
-            children: []
-          },
-          {
-            name: 'README.md',
-            type: 'md',
-            path: '/integration/lazy-module',
-            children: []
-          }
-        ]
+        children: []
       },
       {
         name: 'stencil-toolkit-nx',
         type: 'dir',
         path: '/integration/stencil-toolkit-nx',
-        children: [
-          {
-            name: 'README.en.md',
-            type: 'md',
-            path: '/integration/stencil-toolkit-nx',
-            children: []
-          },
-          {
-            name: 'README.md',
-            type: 'md',
-            path: '/integration/stencil-toolkit-nx',
-            children: []
-          }
-        ]
+        children: []
       }
     ]
   },
@@ -228,32 +164,7 @@ export const mockNavs = [
         name: 'color',
         type: 'dir',
         path: '/libs/color',
-        children: [
-          {
-            name: 'CHANGELOG.en.md',
-            type: 'md',
-            path: '/libs/color',
-            children: []
-          },
-          {
-            name: 'CHANGELOG.md',
-            type: 'md',
-            path: '/libs/color',
-            children: []
-          },
-          {
-            name: 'README.en.md',
-            type: 'md',
-            path: '/libs/color',
-            children: []
-          },
-          {
-            name: 'README.md',
-            type: 'md',
-            path: '/libs/color',
-            children: []
-          }
-        ]
+        children: []
       },
       {
         name: 'elements',
@@ -261,7 +172,7 @@ export const mockNavs = [
         path: '/libs/elements',
         children: [
           {
-            name: 'readme.md',
+            name: 'Introduction',
             type: 'md',
             path: '/libs/elements',
             children: []
@@ -285,40 +196,19 @@ export const mockNavs = [
                         name: 'elements-editor',
                         type: 'dir',
                         path: '/libs/elements/src/lib/components/elements-editor',
-                        children: [
-                          {
-                            name: 'readme.md',
-                            type: 'md',
-                            path: '/libs/elements/src/lib/components/elements-editor',
-                            children: []
-                          }
-                        ]
+                        children: []
                       },
                       {
                         name: 'elements-view',
                         type: 'dir',
                         path: '/libs/elements/src/lib/components/elements-view',
-                        children: [
-                          {
-                            name: 'readme.md',
-                            type: 'md',
-                            path: '/libs/elements/src/lib/components/elements-view',
-                            children: []
-                          }
-                        ]
+                        children: []
                       },
                       {
                         name: 'img',
                         type: 'dir',
                         path: '/libs/elements/src/lib/components/img',
-                        children: [
-                          {
-                            name: 'readme.md',
-                            type: 'md',
-                            path: '/libs/elements/src/lib/components/img',
-                            children: []
-                          }
-                        ]
+                        children: []
                       }
                     ]
                   }
@@ -332,195 +222,49 @@ export const mockNavs = [
         name: 'elements-angular',
         type: 'dir',
         path: '/libs/elements-angular',
-        children: [
-          {
-            name: 'README.md',
-            type: 'md',
-            path: '/libs/elements-angular',
-            children: []
-          }
-        ]
+        children: []
       },
       {
         name: 'elements-cdk',
         type: 'dir',
         path: '/libs/elements-cdk',
-        children: [
-          {
-            name: 'README.md',
-            type: 'md',
-            path: '/libs/elements-cdk',
-            children: []
-          }
-        ]
+        children: []
       },
       {
         name: 'image-storage',
         type: 'dir',
         path: '/libs/image-storage',
-        children: [
-          {
-            name: 'README.md',
-            type: 'md',
-            path: '/libs/image-storage',
-            children: []
-          }
-        ]
+        children: []
       },
       {
         name: 'lazy-component',
         type: 'dir',
         path: '/libs/lazy-component',
-        children: [
-          {
-            name: 'CHANGELOG.en.md',
-            type: 'md',
-            path: '/libs/lazy-component',
-            children: []
-          },
-          {
-            name: 'CHANGELOG.md',
-            type: 'md',
-            path: '/libs/lazy-component',
-            children: []
-          },
-          {
-            name: 'README.en.md',
-            type: 'md',
-            path: '/libs/lazy-component',
-            children: []
-          },
-          {
-            name: 'README.md',
-            type: 'md',
-            path: '/libs/lazy-component',
-            children: []
-          }
-        ]
+        children: []
       },
       {
         name: 'lazy-element',
         type: 'dir',
         path: '/libs/lazy-element',
-        children: [
-          {
-            name: 'CHANGELOG.en.md',
-            type: 'md',
-            path: '/libs/lazy-element',
-            children: []
-          },
-          {
-            name: 'CHANGELOG.md',
-            type: 'md',
-            path: '/libs/lazy-element',
-            children: []
-          },
-          {
-            name: 'README.en.md',
-            type: 'md',
-            path: '/libs/lazy-element',
-            children: []
-          },
-          {
-            name: 'README.md',
-            type: 'md',
-            path: '/libs/lazy-element',
-            children: []
-          }
-        ]
+        children: []
       },
       {
         name: 'lazy-module',
         type: 'dir',
         path: '/libs/lazy-module',
-        children: [
-          {
-            name: 'CHANGELOG.en.md',
-            type: 'md',
-            path: '/libs/lazy-module',
-            children: []
-          },
-          {
-            name: 'CHANGELOG.md',
-            type: 'md',
-            path: '/libs/lazy-module',
-            children: []
-          },
-          {
-            name: 'README.en.md',
-            type: 'md',
-            path: '/libs/lazy-module',
-            children: []
-          },
-          {
-            name: 'README.md',
-            type: 'md',
-            path: '/libs/lazy-module',
-            children: []
-          }
-        ]
+        children: []
       },
       {
         name: 'stencil-toolkit',
         type: 'dir',
         path: '/libs/stencil-toolkit',
-        children: [
-          {
-            name: 'CHANGELOG.en.md',
-            type: 'md',
-            path: '/libs/stencil-toolkit',
-            children: []
-          },
-          {
-            name: 'CHANGELOG.md',
-            type: 'md',
-            path: '/libs/stencil-toolkit',
-            children: []
-          },
-          {
-            name: 'README.en.md',
-            type: 'md',
-            path: '/libs/stencil-toolkit',
-            children: []
-          },
-          {
-            name: 'README.md',
-            type: 'md',
-            path: '/libs/stencil-toolkit',
-            children: []
-          }
-        ]
+        children: []
       },
       {
         name: 'util',
         type: 'dir',
         path: '/libs/util',
-        children: [
-          {
-            name: 'CHANGELOG.en.md',
-            type: 'md',
-            path: '/libs/util',
-            children: []
-          },
-          {
-            name: 'CHANGELOG.md',
-            type: 'md',
-            path: '/libs/util',
-            children: []
-          },
-          {
-            name: 'README.en.md',
-            type: 'md',
-            path: '/libs/util',
-            children: []
-          },
-          {
-            name: 'README.md',
-            type: 'md',
-            path: '/libs/util',
-            children: []
-          }
-        ]
+        children: []
       }
     ]
   }
