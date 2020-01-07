@@ -2,15 +2,9 @@ const fs = require('fs');
 const path = require('path');
 
 //设置md文件位置
-const mdFilePath = 'dist/apps/docs/docs';
+const mdFilePath = 'apps/docs/src/assets';
 
 const arr = [];
-
-//调用函数遍历根目录，同时传递 文件夹路径和对应的数组
-//请使用同步读取
-generateNavigation(mdFilePath, arr);
-//读取完毕则写入到json文件中
-fs.writeFileSync('dist/apps/docs/navigation.json', JSON.stringify(arr));
 
 function generateNavigation(dirPath: string, ary: any[], parentName = '', parentPath = '') {
   let filesList = fs.readdirSync(dirPath);
@@ -81,3 +75,9 @@ function resolvePath(regex: string, innerPath: string) {
   const _path = innerPath.replace(reg, '');
   return _path.replace(/\/(README|CHANGELOG).*?d/gi, '');
 }
+
+//调用函数遍历根目录，同时传递 文件夹路径和对应的数组
+//请使用同步读取
+generateNavigation(mdFilePath, arr);
+//读取完毕则写入到json文件中
+fs.writeFileSync('dist/apps/docs/navigation.json', JSON.stringify(arr));

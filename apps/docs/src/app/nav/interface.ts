@@ -1,5 +1,6 @@
 export interface NavPath {
   name: string;
+  type: string;
   path: string;
   children: NavPath[];
 }

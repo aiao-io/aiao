@@ -3,7 +3,7 @@
     <ion-button fill="clear" expand="full" [routerLink]="[node.path]">{{ node.name }}</ion-button>
   </mat-tree-node>
   <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodeToggle>
-    <ion-button fill="clear" expand="full" (click)="onClick(node.path)">
+    <ion-button fill="clear" expand="full" (click)="onClick(node)">
       <ion-icon slot="start" [name]="treeControl.isExpanded(node) ? 'ios-arrow-down' : 'ios-arrow-forward'"></ion-icon>
       {{ node.name }}
     </ion-button>

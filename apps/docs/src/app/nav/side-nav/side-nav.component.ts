@@ -1,4 +1,5 @@
-import { Subject } from 'rxjs';
+import { ConnectableObservable, Observable, Subject } from 'rxjs';
+import { publishLast, takeUntil } from 'rxjs/operators';
 
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { HttpClient } from '@angular/common/http';
@@ -6,12 +7,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { Router } from '@angular/router';
 
-import { mockNav, mockNavs, NavPath } from '../interface';
+import { NavPath } from '../interface';
 
 interface ExampleFlatNode {
   expandable: boolean;
   name: string;
   level: number;
+  path: string;
 }
 
 @Component({
@@ -20,7 +22,6 @@ interface ExampleFlatNode {
   styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent implements OnInit, OnDestroy {
-  navAry = mockNavs;
   $subject = new Subject();
   private _transformer = (node: NavPath, level: number) => {
     return {
@@ -46,37 +47,30 @@ export class SideNavComponent implements OnInit, OnDestroy {
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
   constructor(private router: Router, private http: HttpClient) {
-    this.dataSource.data = mockNav;
+    // this.dataSource.data = mockNav;
+    this.fetchNavigationInfo()
+      .pipe(takeUntil(this.$subject))
+      .subscribe(data => {
+        this.dataSource.data = data;
+        console.log('navigationInfo', data);
+      });
   }
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
-  onClick(path: string) {
-    if (path) {
-      this.router.navigateByUrl(path);
+  onClick(node: ExampleFlatNode) {
+    if (node.path && !node.expandable) {
+      this.router.navigateByUrl(node.path);
     }
   }
 
-  // private fetchNavigationInfo(): Observable<any> {
-  //   const navigationInfo = this.http.get<any>('/navigation.json').pipe(publishLast());
-  //   (navigationInfo as ConnectableObservable<any>).connect();
-  //   return navigationInfo;
-  // }
-
-  ngOnInit() {
-    // this.fetchNavigationInfo()
-    //   .pipe(takeUntil(this.$subject))
-    //   .subscribe(data => {
-    //     console.log('navigationInfo', data);
-    //   });
-
-    const filterAry = this.navigationFlatter(this.navAry);
-    console.log('filterAry', filterAry);
+  private fetchNavigationInfo(): Observable<any> {
+    const navigationInfo = this.http.get<any>('/assets/navigation.json').pipe(publishLast());
+    (navigationInfo as ConnectableObservable<any>).connect();
+    return navigationInfo;
   }
 
-  navigationFlatter(navAry: any) {
-    return navAry.flat(3);
-  }
+  ngOnInit() {}
 
   ngOnDestroy() {
     this.$subject.next();
