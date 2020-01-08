@@ -18,6 +18,10 @@ function generateNavigation(dirPath: string, ary: any[], parentName = '', parent
   const filesList = fs.readdirSync(dirPath);
   const routerPath = resolvePath(mdFilePath, parentPath);
 
+  if (hasAllMd(filesList) && parentName === '') {
+    addIntroductionItem(ary, routerPath, parentName, parentPath);
+  }
+
   if (hasMdAndDir(filesList)) {
     addIntroductionItem(ary, routerPath, parentName, parentPath);
     retrieveFilesList(filterDir(filesList), ary, dirPath, 1);
