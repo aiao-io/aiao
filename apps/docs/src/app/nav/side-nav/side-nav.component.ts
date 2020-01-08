@@ -51,8 +51,7 @@ export class SideNavComponent implements OnInit, OnDestroy {
     this.fetchNavigationInfo()
       .pipe(takeUntil(this.$subject))
       .subscribe(data => {
-        this.dataSource.data = data;
-        console.log('navigationInfo', data);
+        this.dataSource.data = this.filterNavNode(data);
       });
   }
 
@@ -71,6 +70,25 @@ export class SideNavComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {}
+
+  filterNavNode(ary: NavNode[]) {
+    return ary.map(node => {
+      if (node.children.length > 0) {
+        this.compactFolder(node);
+        this.filterNavNode(node.children);
+      }
+      return node;
+    });
+  }
+
+  compactFolder(node: NavNode) {
+    if (node.children.length === 1 && node.children[0].type === 'dir') {
+      node.name = node.name + '/' + node.children[0].name;
+      node.path = node.children[0].path;
+      node.children = node.children[0].children;
+      this.compactFolder(node);
+    }
+  }
 
   ngOnDestroy() {
     this.$subject.next();
