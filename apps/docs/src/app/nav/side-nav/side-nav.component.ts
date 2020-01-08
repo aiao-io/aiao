@@ -22,6 +22,7 @@ interface ExampleFlatNode {
   styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent implements OnInit, OnDestroy {
+  navigationPath = '/assets/navigation.json';
   $subject = new Subject();
   private _transformer = (node: NavNode, level: number) => {
     return {
@@ -46,13 +47,20 @@ export class SideNavComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line: member-ordering
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  constructor(private router: Router, private http: HttpClient) {
-    // this.dataSource.data = mockNav;
+  constructor(private router: Router, private http: HttpClient) {}
+
+  ngOnInit() {
     this.fetchNavigationInfo()
       .pipe(takeUntil(this.$subject))
       .subscribe(data => {
         this.dataSource.data = this.filterNavNode(data);
       });
+  }
+
+  private fetchNavigationInfo(): Observable<any> {
+    const navigationInfo = this.http.get<any>(this.navigationPath).pipe(publishLast());
+    (navigationInfo as ConnectableObservable<any>).connect();
+    return navigationInfo;
   }
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
@@ -63,13 +71,14 @@ export class SideNavComponent implements OnInit, OnDestroy {
     }
   }
 
-  private fetchNavigationInfo(): Observable<any> {
-    const navigationInfo = this.http.get<any>('/assets/navigation.json').pipe(publishLast());
-    (navigationInfo as ConnectableObservable<any>).connect();
-    return navigationInfo;
+  compactFolder(node: NavNode) {
+    if (node.children.length === 1 && node.children[0].type === 'dir') {
+      node.name = node.name + '/' + node.children[0].name;
+      node.path = node.children[0].path;
+      node.children = node.children[0].children;
+      this.compactFolder(node);
+    }
   }
-
-  ngOnInit() {}
 
   filterNavNode(ary: NavNode[]) {
     return ary.map(node => {
@@ -79,15 +88,6 @@ export class SideNavComponent implements OnInit, OnDestroy {
       }
       return node;
     });
-  }
-
-  compactFolder(node: NavNode) {
-    if (node.children.length === 1 && node.children[0].type === 'dir') {
-      node.name = node.name + '/' + node.children[0].name;
-      node.path = node.children[0].path;
-      node.children = node.children[0].children;
-      this.compactFolder(node);
-    }
   }
 
   ngOnDestroy() {
