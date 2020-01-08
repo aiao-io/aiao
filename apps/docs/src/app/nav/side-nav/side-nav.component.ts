@@ -7,7 +7,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { Router } from '@angular/router';
 
-import { NavPath } from '../interface';
+import { NavNode } from '../interface';
 
 interface ExampleFlatNode {
   expandable: boolean;
@@ -23,7 +23,7 @@ interface ExampleFlatNode {
 })
 export class SideNavComponent implements OnInit, OnDestroy {
   $subject = new Subject();
-  private _transformer = (node: NavPath, level: number) => {
+  private _transformer = (node: NavNode, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,

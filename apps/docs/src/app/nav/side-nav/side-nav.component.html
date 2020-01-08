@@ -1,11 +1,17 @@
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-    <ion-button fill="clear" expand="full" [routerLink]="[node.path]">{{ node.name }}</ion-button>
+    <a class="nav-node" [routerLink]="[node.path]">
+      <ion-text color="primary" slot="start"
+        ><span>{{ node.name }}</span></ion-text
+      >
+    </a>
   </mat-tree-node>
   <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodeToggle>
-    <ion-button fill="clear" expand="full" (click)="onClick(node)">
-      <ion-icon slot="start" [name]="treeControl.isExpanded(node) ? 'ios-arrow-down' : 'ios-arrow-forward'"></ion-icon>
-      {{ node.name }}
-    </ion-button>
+    <a class="nav-node" (click)="onClick(node)">
+      <ion-icon [name]="treeControl.isExpanded(node) ? 'ios-arrow-down' : 'ios-arrow-forward'"></ion-icon>
+      <ion-text color="primary"
+        ><span>{{ node.name }}</span></ion-text
+      >
+    </a>
   </mat-tree-node>
 </mat-tree>

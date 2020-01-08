@@ -3,9 +3,9 @@ import { filter, takeUntil } from 'rxjs/operators';
 
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { select, State } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 
-import { selectLanguage } from '../local/language.reducer';
+import { LocalState, selectLanguage } from '../local/language.reducer';
 
 @Component({
   selector: 'aiao-introduction',
@@ -16,12 +16,12 @@ export class IntroductionPage implements OnInit, OnDestroy {
   private readonly urlParser = document.createElement('a');
   destroy$ = new Subject();
   url = '';
-  lang$ = this.state.pipe(select(selectLanguage));
+  lang$ = this.store.pipe(select(selectLanguage));
   routerEvents$ = this.router.events.pipe(
     takeUntil(this.destroy$),
     filter(e => e instanceof NavigationEnd)
   );
-  constructor(public activeRouter: ActivatedRoute, public router: Router, private state: State<any>) {}
+  constructor(public activeRouter: ActivatedRoute, public router: Router, private store: Store<LocalState>) {}
 
   ngOnInit() {
     this.url = 'docs' + this.router.url + '/README.md';

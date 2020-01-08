@@ -3,7 +3,7 @@ import { PopoverController } from '@ionic/angular';
 import { select, Store } from '@ngrx/store';
 
 import { changeLanguageAction } from '../../local/language.actions';
-import { selectLanguage } from '../../local/language.reducer';
+import { LocalState, selectLanguage } from '../../local/language.reducer';
 
 @Component({
   selector: 'aiao-language-list',
@@ -12,7 +12,7 @@ import { selectLanguage } from '../../local/language.reducer';
 })
 export class LanguageListComponent implements OnInit {
   lang$ = this.store.pipe(select(selectLanguage));
-  constructor(private store: Store<any>, private popoverController: PopoverController) {}
+  constructor(private store: Store<LocalState>, private popoverController: PopoverController) {}
 
   ngOnInit() {}
 

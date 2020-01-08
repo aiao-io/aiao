@@ -1,8 +1,8 @@
-export interface NavPath {
+export interface NavNode {
   name: string;
   type: string;
   path: string;
-  children: NavPath[];
+  children: NavNode[];
 }
 
 export const mockNav = [
