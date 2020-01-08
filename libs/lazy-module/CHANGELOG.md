@@ -5,13 +5,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # 1.3.0 (2020-01-01)
 
-
 ### Features
 
-* **libs:** add angular lazy module libs ([cf1f5ec](https://github.com/aiao-io/aiao/commit/cf1f5ec71dc2213cb7edd6622a43b5ff835bf139))
-
-
-
-
+- **libs:** add angular lazy module libs ([cf1f5ec](https://github.com/aiao-io/aiao/commit/cf1f5ec71dc2213cb7edd6622a43b5ff835bf139))
 
 # 1.2.0 (2019-12-04)
