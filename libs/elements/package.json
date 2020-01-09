@@ -23,6 +23,9 @@
   "scripts": {
     "build": "ng build elements && node scripts/build-clean"
   },
+  "dependencies": {
+    "@aiao/elements-cdk": "^0.0.2"
+  },
   "peerDependencies": {
     "@aiao/elements-cdk": "^0.0.2",
     "@aiao/image-storage": "^0.0.2"

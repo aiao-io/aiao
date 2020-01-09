@@ -16,7 +16,7 @@
     adapters: [new adapters.aliyun.ImageStorageAdapterAliyun()]
   });
   elements.config = {
-    resourcesUrl: '/dist/aiao-elements/',
+    resourcesUrl: '/dist/aiao-elements',
     imageStorage,
     codeEditorBaseUrl: '/vendors/monaco-editor'
   };

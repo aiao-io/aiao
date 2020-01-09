@@ -3,12 +3,27 @@
 
 
 "@aiao/elements-angular@file:../../dist/libs/elements-angular":
+  version "0.0.3"
+  dependencies:
+    "@aiao/elements" "^0.1.0"
+    tslib "^1.9.0"
+
+"@aiao/elements-cdk@^0.0.2":
   version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@aiao/elements-cdk/-/elements-cdk-0.0.2.tgz#3c5811c882a9de0120eef5257f62db10258675b8"
+  integrity sha512-2qTGiu5cg/kmI+VN2MgDejAb963+icjBjrjX5vk7Aed0QcRuI63rnwRg4aMRmSS8erlSGMCrtQT6JsETTYmqnw==
   dependencies:
     tslib "^1.9.0"
 
+"@aiao/elements@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@aiao/elements/-/elements-0.1.0.tgz#8e290ff26c7e9b3223d4de9054f89a9463e6e951"
+  integrity sha512-N6B090fAKfDUVCcppyc9Nhzms9riVd3lkITbOlMC7qgoN4oJX8cX339vpttSBrY83qU+3XVYwQFZ8RwgseGBPw==
+
 "@aiao/elements@file:../../dist/libs/elements":
-  version "0.0.2"
+  version "0.1.0"
+  dependencies:
+    "@aiao/elements-cdk" "^0.0.2"
 
 "@angular-devkit/architect@0.803.14":
   version "0.803.14"

@@ -1,6 +1,9 @@
 const fraction = ['角', '分'];
 const digit = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
-const unit = [['元', '万', '亿', '兆'], ['', '拾', '佰', '仟']];
+const unit = [
+  ['元', '万', '亿', '兆'],
+  ['', '拾', '佰', '仟']
+];
 
 export const rmbUppercase = (value: number) => {
   const head = value < 0 ? '欠' : '';

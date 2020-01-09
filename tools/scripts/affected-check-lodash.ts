@@ -1,8 +1,8 @@
 import { Project } from 'ts-morph';
-import { argv } from 'yargs';
+import { Arguments, argv } from 'yargs';
 
-import { YargsAffectedOptions } from '@nrwl/workspace/src/command-line/run-tasks/affected';
 import { parseFiles } from '@nrwl/workspace/src/command-line/shared';
+import { NxArgs } from '@nrwl/workspace/src/command-line/utils';
 
 const findLodash = (...path: string[]) => {
   const project = new Project();
@@ -26,8 +26,8 @@ const findLodash = (...path: string[]) => {
   return findFiles;
 };
 
-export const checkLodash = async (conf: YargsAffectedOptions) => {
-  const config = parseFiles(conf);
+export const checkLodash = async (conf: Arguments) => {
+  const config = parseFiles(conf as NxArgs);
   const { files } = config;
   const needFiles = files.filter(
     d => d.endsWith('.ts') && !d.includes('e2e') && !d.includes('tools') && /(spec|po).ts$/.test(d) === false
@@ -42,3 +42,4 @@ export const checkLodash = async (conf: YargsAffectedOptions) => {
 };
 
 checkLodash(argv);
+// yarn run postinstall && node dist/tools/scripts/affected-check-lodash
