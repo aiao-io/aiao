@@ -10,6 +10,12 @@ yarn install
 yarn ng build stencil-lib
 ```
 
+## build libs
+
+```console
+yarn build:libs
+```
+
 ## angular 演示
 
 ```console
