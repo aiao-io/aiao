@@ -1,6 +1,7 @@
 const base = {
   scopes: [
     { name: 'aiao' },
+    { name: 'integration' },
     { name: 'color' },
     { name: 'elements' },
     { name: 'elements-angular' },

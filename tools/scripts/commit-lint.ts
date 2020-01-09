@@ -13,6 +13,7 @@ if (branchName.trim() !== 'master') {
 const all_types = ['feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'chore'];
 const all_spops = [
   'aiao',
+  'integration',
   'color',
   'elements',
   'elements-angular',
@@ -61,7 +62,7 @@ const gitMessage = execSync('git log -1 --no-merges')
   .toString()
   .trim();
 
-const matchCommit = /(feat|fix|docs|style|refactor|perf|test|chore)\((aiao|color|elements|elements-angular|elements-cdk|elements-react|image-storage|lazy-component|lazy-element|lazy-module|stencil-toolkit|typeorm-plus)\):/g.test(
+const matchCommit = /(feat|fix|docs|style|refactor|perf|test|chore)\((aiao|integration|color|elements|elements-angular|elements-cdk|elements-react|image-storage|lazy-component|lazy-element|lazy-module|stencil-toolkit|typeorm-plus)\):/g.test(
   gitMessage
 );
 
