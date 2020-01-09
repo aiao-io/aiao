@@ -6,10 +6,6 @@ All notable changes to this project will be documented in this file. See [Conven
 
 **Note:** Version bump only for package @aiao/stencil-toolkit
 
-
-
-
-
 ## 0.0.9 (2019-12-05)
 
 **Note:** Version bump only for package @aiao/stencil-toolkit
