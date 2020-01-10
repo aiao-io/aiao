@@ -1,3 +1,4 @@
+import path from 'path';
 import { combineLatest, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
@@ -58,14 +59,8 @@ export class IntroductionPage implements OnInit, OnDestroy {
     }
 
     const { pathname, search, hash } = anchor;
-    const relativeUrl = pathname + search + hash;
+    let relativeUrl = pathname + search + hash;
     this.urlParser.href = relativeUrl;
-    console.log('relativeUrl', relativeUrl);
-
-    if (this.router.url === '/integration') {
-      this.router.navigateByUrl(this.router.url + pathname);
-      return false;
-    }
 
     // don't navigate if external link or has extension
     if (anchor.href !== this.urlParser.href || !/\/[^/.]*$/.test(pathname)) {
@@ -75,6 +70,11 @@ export class IntroductionPage implements OnInit, OnDestroy {
       }
       anchor.target = '_blank';
       return true;
+    }
+
+    const href = anchor.getAttribute('href');
+    if (/^\./.test(href)) {
+      relativeUrl = path.join(this.router.url, href);
     }
 
     // approved for navigation
@@ -93,7 +93,6 @@ export class IntroductionPage implements OnInit, OnDestroy {
     if (target instanceof HTMLAnchorElement) {
       return this.handleAnchorClick(target, button, ctrlKey, metaKey);
     }
-    // 允许点击
     return false;
   }
 
