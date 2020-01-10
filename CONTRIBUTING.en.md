@@ -43,12 +43,12 @@ body
 
 ` subject ` must includes a description of the changes, and ` body ` please include as much detail as possible, and please include ` PR` related to ` issues` numbering information, which helps track issues.
 
-### 例子
+### Example
 
 ```console
-feat(elements): 添加了 xx 功能
+feat(elements): added xx functions
 
-一些功能详细说明
+Detailed description of some functions
 
-关闭 #100
+close#100
 ```
