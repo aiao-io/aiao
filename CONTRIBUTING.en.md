@@ -1,8 +1,8 @@
-# 贡献指南
+# Contribution Guidelines
 
-- 欢迎 `PR`，为了更好的管理项目，所有合并到 `master` 的分支都会 `squash merge` 压缩成一条合并。
-- 请使用 **[Commitizen](https://github.com/commitizen/cz-cli)** 来提交更改，在项目中运行 `yarn commit` 即可。
-- 为了更自由书写代码，只有在 `master` 分支提交时会格式检查。所以在其他分支或是 `PR` 时可以随便提交，但是请在最后一条提交中遵循规则，推送 `PR` 时填入最后条提交信息作为标题和内容。
+- Welcome ` PR `, in order to better manage the project, all branches merged into ` master ` will be ` squash merge ` compressed into one merge.
+- Please use **[ Commitizen ](https://github.com/commitizen/cz-cli)** to commit changes, run ` yarn commit ` in the project.
+- In order to write code more freely, format checking is performed only when the ` master ` branch commits. So you can submit in other branches or ` PR `, but please follow the rules in the last commit, and fill in the last commit information as the title and content when pushing ` PR `.
 
 ## 代码提交信息应遵循以下格式：
 
