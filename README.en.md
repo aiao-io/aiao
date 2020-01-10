@@ -48,46 +48,46 @@ The structure mostly follows the [ Nx ](https://github.com/nrwl/nx) rule
 
 ## Install
 
-- `cypress` 下载较慢，请安装前手动下载并配制环境变量 `CYPRESS_INSTALL_BINARY=0` 跳过下载，[更多安装方法](cypress-install-zh-cn)。
-- 本项目请使用 `yarn` 作为默认安装方式。并强制 `registry` 配置为默认值。如果你下载过于缓慢，可以删除 `.yarnrc` 和 `.npmrc` 文件来提高安装速度。
+- ` cypress ` download is slow, please download and configure environment variables manually before installation ` CYPRESS_INSTALL_BINARY = 0 ` skip download, [ more installation methods ](cypress-install-zh-cn)
+- Please use ` yarn ` as the default installation method for this project. And force ` registry ` to be configured as the default. If you download too slowly, you can delete the `.yarnrc ` and `.npmrc ` files to speed up the installation.
 
 ```console
 yarn
 ```
 
-## 构建项目
+## Build Project
 
-### 构建所有库
+### Build All Libs
 
 ```console
 yarn build:libs
 ```
 
-### 单独构建 `util` 库
+### Build ` util ` library separately
 
 ```console
 ng build util
 ```
 
-## 单元测试
+## Unit Tests
 
-> 部分库需要数据库支持，请自行启动
+> Some libraries require database support, please start by yourself
 
-### 测试所有库
+### Test All Libs
 
 ```console
 yarn test
 ```
 
-### 测试 `util` 库
+### Test `util` Lib
 
 ```console
 ng test util
 ```
 
-## 贡献
+## Contribute
 
-非常欢迎各位小伙伴一起贡献代码，请先查阅[贡献指南](CONTRIBUTING.md)
+Welcome all of you to contribute code, please check the [ Contribution Guide ](CONTRIBUTING.md)
 
 ## License MIT
 
