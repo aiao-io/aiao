@@ -12,9 +12,9 @@ yarn install
 yarn start
 ```
 
-| Package              | Description                                       |                                |
-| -------------------- | ------------------------------------------------- | ------------------------------ |
-| `lazy-component`     | integration `@aiao/lazy-component`                | [Detail](./lazy-component)     |
-| `lazy-element`       | integration `@aiao/lazy-element`                  | [Detail](./lazy-element)       |
-| `lazy-module`        | integration `@aiao/lazy-module`                   | [Detail](./lazy-module)        |
-| `stencil-toolkit-nx` | 在 `nx`环境中创建 `stencil` 组件并应用到 `react`,`angular`等框架 | [Detail](./stencil-toolkit-nx) |
+| Package              | Description                                                                                                   |                                |
+| -------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| `lazy-component`     | Integration `@aiao/lazy-component`                                                                            | [Detail](./lazy-component)     |
+| `lazy-element`       | Integration `@aiao/lazy-element`                                                                              | [Detail](./lazy-element)       |
+| `lazy-module`        | Integration `@aiao/lazy-module`                                                                               | [Detail](./lazy-module)        |
+| `stencil-toolkit-nx` | Create `stencil` components in the `nx` environment and apply them to `react`,`angular` and other frameworks. | [Detail](./stencil-toolkit-nx) |
