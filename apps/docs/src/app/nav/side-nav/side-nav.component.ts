@@ -33,10 +33,7 @@ export class SideNavComponent implements OnInit, OnDestroy {
     };
   };
   // tslint:disable-next-line: member-ordering
-  treeControl = new FlatTreeControl<ExampleFlatNode>(
-    node => node.level,
-    node => node.expandable
-  );
+  treeControl = new FlatTreeControl<ExampleFlatNode>(node => node.level, node => node.expandable);
   // tslint:disable-next-line: member-ordering
   treeFlattener = new MatTreeFlattener(
     this._transformer,

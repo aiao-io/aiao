@@ -10,6 +10,7 @@ node_modules
 !*.config.js
 
 **/*.en.md
+apps/**/navigation.json
 libs/elements/hydrate/
 libs/elements/vendors/
 libs/elements/lib/

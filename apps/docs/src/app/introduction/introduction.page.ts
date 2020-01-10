@@ -1,4 +1,3 @@
-import path from 'path';
 import { combineLatest, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
@@ -7,6 +6,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 
 import { LocalState, selectLanguage } from '../local/language.reducer';
+import { joinUrl } from './join-url';
 
 @Component({
   selector: 'aiao-introduction',
@@ -74,7 +74,8 @@ export class IntroductionPage implements OnInit, OnDestroy {
 
     const href = anchor.getAttribute('href');
     if (/^\./.test(href)) {
-      relativeUrl = path.join(this.router.url, href);
+      relativeUrl = joinUrl([this.router.url, href]);
+      console.log('relativeUrl is', relativeUrl);
     }
 
     // approved for navigation
