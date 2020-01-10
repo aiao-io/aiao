@@ -62,15 +62,10 @@ export class IntroductionPage implements OnInit, OnDestroy {
     this.urlParser.href = relativeUrl;
     console.log('relativeUrl', relativeUrl);
 
-    const re = new RegExp(/^.*\//);
-    const baseUrlAry = re.exec(this.urlParser.href);
-    if (!baseUrlAry) {
+    if (this.router.url === '/integration') {
+      this.router.navigateByUrl(this.router.url + pathname);
       return false;
     }
-
-    const baseUrl = baseUrlAry[0] + this.router.url.replace(/^\//, '');
-    const newUrl = new URL(anchor.getAttribute('href'), baseUrl);
-    console.log('pathname', newUrl.pathname);
 
     // don't navigate if external link or has extension
     if (anchor.href !== this.urlParser.href || !/\/[^/.]*$/.test(pathname)) {
@@ -98,6 +93,7 @@ export class IntroductionPage implements OnInit, OnDestroy {
     if (target instanceof HTMLAnchorElement) {
       return this.handleAnchorClick(target, button, ctrlKey, metaKey);
     }
+    // 允许点击
     return false;
   }
 
