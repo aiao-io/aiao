@@ -13,6 +13,8 @@ export const urlJoin = (...paths: Array<string | number>) => {
     throw new Error('paths must be a string or number');
   }
 
+  paths = paths.filter(d => d !== '');
+
   let prefix = '';
   const firstPath = `${paths[0]}`;
 
@@ -33,13 +35,24 @@ export const urlJoin = (...paths: Array<string | number>) => {
     prefix += '/';
   }
 
-  let backStr =
-    prefix +
-    paths
-      .map(path => `${path}`.replace(/^\/+/, '').replace(/\/+$/, ''))
-      .filter(d => d !== '')
-      .join('/');
+  let pathStr = paths
+    .map(path =>
+      `${path}`
+        .replace(/^\/+/, '')
+        .replace(/^\.\/+/, '')
+        .replace(/\/+$/, '')
+    )
+    .filter(d => d !== '')
+    .join('/');
 
+  while (pathStr.includes('/../')) {
+    const pathArr = pathStr.split('/');
+    const index = pathArr.findIndex(d => d === '..');
+    pathArr.splice(index - 1, 2);
+    pathStr = pathArr.join('/');
+  }
+
+  let backStr = prefix + pathStr;
   if (backStr.includes('?')) {
     const parts = backStr.split('?').filter(d => d !== '');
     backStr = parts.shift() + '?';

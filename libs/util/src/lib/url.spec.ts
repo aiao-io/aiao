@@ -135,4 +135,16 @@ describe('urlJoin', () => {
   it('should return an empty string if no arguments are supplied', () => {
     expect(urlJoin()).toEqual('');
   });
+
+  it('empty string dont absolute path relative', () => {
+    expect(urlJoin('', '/some-path')).toEqual('/some-path');
+  });
+
+  it('relative', () => {
+    expect(urlJoin('/a/b/c/d', './e')).toEqual('/a/b/c/d/e');
+    expect(urlJoin('/a/b/c/d', '../e')).toEqual('/a/b/c/e');
+    expect(urlJoin('/a/b/c/d', '..', 'e')).toEqual('/a/b/c/e');
+    expect(urlJoin('/a/b/c/d', '../../e')).toEqual('/a/b/e');
+    expect(urlJoin('/a/b/c/d', '..', '..', 'e')).toEqual('/a/b/e');
+  });
 });
