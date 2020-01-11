@@ -31,8 +31,8 @@ export const config: Config = {
   ],
   copy: [
     {
-      src: resolve('node_modules/@ionic/core'),
-      dest: resolve('libs/stencil-lib/vendors/ionic')
+      src: resolve(__dirname, '../../', 'node_modules/@ionic/core'),
+      dest: resolve(__dirname, 'vendors/ionic')
     }
   ],
   tsconfig: 'tsconfig.json',

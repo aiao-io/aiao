@@ -20,6 +20,9 @@
   "scripts": {
     "build": "ng build elements-angular"
   },
+  "dependencies": {
+    "@aiao/elements": "^0.1.0"
+  },
   "peerDependencies": {
     "@aiao/elements": "^0.1.0",
     "@angular/common": "^8.2.14",

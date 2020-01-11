@@ -1,6 +1,17 @@
 {
   "name": "@aiao/elements-cdk",
   "version": "0.0.2",
+  "description": "elements component Dev Kit",
+  "homepage": "https://github.com/aiao-io/aiao",
+  "author": "Jimmy<hero63418@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aiao-io/aiao.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aiao-io/aiao/issues"
+  },
   "scripts": {
     "build": "ng build elements-cdk"
   }

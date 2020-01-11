@@ -1,4 +1,19 @@
 # Add files here to ignore them from prettier formatting
 
+tmp
+libs/*/build
+apps/*/build
+node_modules
 /dist
 /coverage
+*.log
+!*.config.js
+
+**/*.en.md
+libs/stencil-lib/hydrate/
+libs/stencil-lib/vendors/
+libs/stencil-lib/loader/
+dist/
+vendors/
+assets/
+react-component-lib/

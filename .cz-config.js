@@ -1,6 +1,7 @@
 const base = {
   scopes: [
     { name: 'aiao' },
+    { name: 'integration' },
     { name: 'color' },
     { name: 'elements' },
     { name: 'elements-angular' },
@@ -11,7 +12,8 @@ const base = {
     { name: 'lazy-element' },
     { name: 'lazy-module' },
     { name: 'stencil-toolkit' },
-    { name: 'typeorm-plus' }
+    { name: 'typeorm-plus' },
+    { name: 'util' }
   ],
   allowCustomScopes: false,
   allowTicketNumber: false,
