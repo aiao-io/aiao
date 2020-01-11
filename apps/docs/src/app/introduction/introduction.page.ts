@@ -6,7 +6,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 
 import { LocalState, selectLanguage } from '../local/language.reducer';
-import { joinUrl } from './join-url';
+import { urlJoin } from '@aiao/util';
 
 @Component({
   selector: 'aiao-introduction',
@@ -74,7 +74,7 @@ export class IntroductionPage implements OnInit, OnDestroy {
 
     const href = anchor.getAttribute('href');
     if (/^\./.test(href)) {
-      relativeUrl = joinUrl([this.router.url, href]);
+      relativeUrl = urlJoin(this.router.url, href);
       console.log('relativeUrl is', relativeUrl);
     }
 
