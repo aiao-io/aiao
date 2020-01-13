@@ -14,7 +14,7 @@
     "dist",
     "loader",
     "package.json",
-    "readme.md"
+    "README.md"
   ],
   "scripts": {
     "build": "ng build elements"
