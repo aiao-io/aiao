@@ -1,6 +1,6 @@
 # StencilToolkitNx
 
-This project is managed using [nx](https://nx.dev)
+This project is managed using [ nx ](https://nx.dev)
 
 ## Install
 
