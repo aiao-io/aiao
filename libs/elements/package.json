@@ -28,7 +28,7 @@
     "loader",
     "hydrate",
     "package.json",
-    "readme.md"
+    "README.md"
   ],
   "publishConfig": {
     "access": "public"
