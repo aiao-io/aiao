@@ -14,13 +14,13 @@
     "dist",
     "loader",
     "package.json",
-    "readme.md"
+    "README.md"
   ],
   "scripts": {
     "build": "ng build stencil-lib && node scripts/build-clean"
   },
   "devDependencies": {
-    "@stencil/core": "^1.8.1"
+    "@stencil/core": "*"
   },
   "license": "MIT"
 }

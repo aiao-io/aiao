@@ -1,15 +1,29 @@
 {
-  "name": "elements-react",
-  "version": "0.0.1",
+  "name": "@aiao/elements-react",
+  "version": "0.0.4",
+  "description": "elements react",
+  "homepage": "https://github.com/aiao-io/aiao",
+  "author": "Jimmy<hero63418@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aiao-io/aiao.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aiao-io/aiao/issues"
+  },
+  "keywords": [
+    "react"
+  ],
   "scripts": {
     "build": "ng build elements-react"
   },
-  "dependencies": {
-    "@aiao/elements": "^0.0.1"
-  },
   "peerDependencies": {
-    "react": "*",
-    "react-dom": "*",
-    "@aiao/elements": "*"
+    "@aiao/elements": "^0.1.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@aiao/elements": "^0.3.0"
   }
 }

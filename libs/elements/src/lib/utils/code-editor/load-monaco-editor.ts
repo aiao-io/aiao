@@ -22,7 +22,7 @@ export class LoadMonacoEditor {
         }
         const onGotAmdLoader: any = () => {
           win.require.config({
-            paths: { vs: urlJoin(this.baseUrl, 'vs') },
+            paths: { vs: urlJoin(this.baseUrl, '/vs') },
             'vs/nls': {
               availableLanguages: {
                 '*': this.localizeCode || this.getLanguage()
@@ -33,8 +33,9 @@ export class LoadMonacoEditor {
         };
         if (!win.require) {
           const loaderScript: HTMLScriptElement = document.createElement('script');
+          loaderScript.id = 'aiao-load-monaco-script';
           loaderScript.type = 'text/javascript';
-          loaderScript.src = urlJoin(this.baseUrl, 'vs/loader.js');
+          loaderScript.src = urlJoin(this.baseUrl, '/vs/loader.js');
           loaderScript.addEventListener('load', onGotAmdLoader);
           document.body.appendChild(loaderScript);
         } else {
