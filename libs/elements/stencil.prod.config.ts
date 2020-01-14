@@ -39,7 +39,7 @@ export const config: Config = {
   ],
   copy: [],
   bundles: [
-    { components: ['aiao-code-editor'] },
+    { components: ['aiao-code-editor', 'aiao-code-diff-editor'] },
     { components: ['aiao-elements-editor', 'aiao-elements-editor-preview'] },
     { components: ['aiao-elements-form'] },
     { components: ['aiao-elements-view'] },

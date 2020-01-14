@@ -3,6 +3,7 @@ import { CommonModule, DOCUMENT } from '@angular/common';
 import { APP_INITIALIZER, ModuleWithProviders, NgModule, NgZone } from '@angular/core';
 
 import {
+  AiaoCodeDiffEditor,
   AiaoCodeEditor,
   AiaoElementsEditor,
   AiaoElementsEditorPreview,
@@ -16,6 +17,7 @@ import { AIAO_ELEMENTS_CONFIG } from './util/config';
 
 const DECLARATIONS = [
   // components
+  AiaoCodeDiffEditor,
   AiaoCodeEditor,
   AiaoElementsEditor,
   AiaoElementsEditorPreview,

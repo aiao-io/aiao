@@ -15,7 +15,6 @@ import {
 import { config } from '../../global/config';
 import { LoadMonacoEditor } from '../../utils/code-editor/load-monaco-editor';
 import { normalizeMonacoEditorValue, normalizeMonacoEditorValueOut } from '../../utils/code-editor/normalize-value';
-import { normalizeMonacoEditorOptions } from '../../utils/code-editor/normalize-options';
 
 const defaultOptions: monaco.editor.IStandaloneEditorConstructionOptions = {
   theme: 'vs-dark',
@@ -28,14 +27,14 @@ const defaultOptions: monaco.editor.IStandaloneEditorConstructionOptions = {
 let loader: any;
 
 @Component({
-  tag: 'aiao-code-editor',
-  styleUrl: './code-editor.scss',
+  tag: 'aiao-code-diff-editor',
+  styleUrl: './code-diff-editor.scss',
   scoped: true
 })
 export class CodeEditor implements ComponentInterface {
   @Element() el!: HTMLAiaoCodeEditorElement;
 
-  private editor: monaco.editor.IStandaloneCodeEditor;
+  private editor: monaco.editor.IStandaloneDiffEditor;
 
   // --------------------------------------------------------------[ State ]
   // --------------------------------------------------------------[ Event ]
@@ -47,6 +46,8 @@ export class CodeEditor implements ComponentInterface {
 
   @Prop() options: monaco.editor.IEditorConstructionOptions;
   @Prop() value: string;
+  @Prop() originalValue: string;
+
   @Prop() language: string;
   @Prop() uri: monaco.Uri;
 
@@ -71,7 +72,7 @@ export class CodeEditor implements ComponentInterface {
 
   @Method()
   async format() {
-    return this.editor.getAction('editor.action.formatDocument').run();
+    // return this.editor.getAction('editor.action.formatDocument').run();
   }
 
   // --------------------------------------------------------------[ private function ]
@@ -80,16 +81,23 @@ export class CodeEditor implements ComponentInterface {
       this.editor.dispose();
     }
 
-    const val = normalizeMonacoEditorValue(this.language, this.value);
-    options = normalizeMonacoEditorOptions(options, this.uri, this.language, val);
+    const originalValue = normalizeMonacoEditorValue(this.language, this.originalValue);
+    const modifiedValue = normalizeMonacoEditorValue(this.language, this.value);
 
-    this.editor = monaco.editor.create(this.el, options);
+    const originalModel = monaco.editor.createModel(originalValue, this.language, this.uri);
+    const modifiedModel = monaco.editor.createModel(modifiedValue, this.language, this.uri);
+
+    this.editor = monaco.editor.createDiffEditor(this.el, options);
+    this.editor.setModel({
+      original: originalModel,
+      modified: modifiedModel
+    });
 
     const updateValue = () => {
-      const value = normalizeMonacoEditorValueOut(this.language, this.editor.getValue());
+      const value = normalizeMonacoEditorValueOut(this.language, modifiedModel.getValue());
       this.aiaoChange.emit({ value });
     };
-    this.editor.onDidChangeModelContent(() => updateValue());
+    modifiedModel.onDidChangeContent(() => updateValue());
   }
 
   // --------------------------------------------------------------[ lifecycle ]
