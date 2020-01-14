@@ -1,5 +1,11 @@
 # Major Change Log
 
+## 2020-01-14 build.2
+
+- @aiao/elements-angular: 0.1.0 => 0.2.0
+- @aiao/elements-react: 0.0.3 => 0.0.4
+- @aiao/elements: 0.2.0 => 0.3.0
+
 ## 2020-01-14
 
 - @aiao/color: 1.0.3 => 1.0.4
