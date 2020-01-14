@@ -12,10 +12,10 @@ import {
   Prop
 } from '@stencil/core';
 
-import { config } from '../../global/config';
+import { getBaseUrl } from '../../utils/code-editor/base-url';
 import { LoadMonacoEditor } from '../../utils/code-editor/load-monaco-editor';
-import { normalizeMonacoEditorValue, normalizeMonacoEditorValueOut } from '../../utils/code-editor/normalize-value';
 import { normalizeMonacoEditorOptions } from '../../utils/code-editor/normalize-options';
+import { normalizeMonacoEditorValue, normalizeMonacoEditorValueOut } from '../../utils/code-editor/normalize-value';
 
 const defaultOptions: monaco.editor.IStandaloneEditorConstructionOptions = {
   theme: 'vs-dark',
@@ -98,9 +98,7 @@ export class CodeEditor implements ComponentInterface {
   // --------------------------------------------------------------[ lifecycle ]
 
   async componentDidLoad() {
-    const baseUrl =
-      this.baseUrl || config.get('codeEditorBaseUrl') || 'https://cdn.jsdelivr.net/npm/monaco-editor@0.19.2/min';
-
+    const baseUrl = getBaseUrl(this.baseUrl);
     if (!loader) {
       loader = new LoadMonacoEditor(baseUrl, this.localizeCode);
     }
