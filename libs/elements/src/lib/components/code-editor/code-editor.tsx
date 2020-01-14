@@ -13,9 +13,10 @@ import {
 } from '@stencil/core';
 
 import { config } from '../../global/config';
-import { LoadMonacoEditor } from './load-monaco-editor';
+import { LoadMonacoEditor } from '../../utils/load-monaco-editor';
+import isPlainObject from 'lodash/isPlainObject';
 
-const defaultOptions: monaco.editor.IEditorConstructionOptions = {
+const defaultOptions: monaco.editor.IStandaloneEditorConstructionOptions = {
   theme: 'vs-dark',
   minimap: {
     enabled: false
@@ -74,23 +75,29 @@ export class CodeEditor implements ComponentInterface {
   }
 
   // --------------------------------------------------------------[ private function ]
-  private createMonaco(options: monaco.editor.IEditorConstructionOptions = defaultOptions) {
+  private createMonaco(options: monaco.editor.IStandaloneEditorConstructionOptions = defaultOptions) {
     if (this.editor) {
       this.editor.dispose();
     }
 
-    const hasModel = this.uri || this.value || this.language;
+    // 支持 json object 转换
+    const val =
+      this.language === 'json' && this.value && isPlainObject(this.value)
+        ? JSON.stringify(this.value, null, 2)
+        : this.value;
+    const hasModel = this.uri || val || this.language;
+
     if (hasModel) {
       const model = monaco.editor.getModel(this.uri || ('' as any));
       if (model) {
         options.model = model;
-        options.model.setValue(this.value);
+        options.model.setValue(val);
       } else {
-        options.model = monaco.editor.createModel(this.value, this.language, this.uri);
+        options.model = monaco.editor.createModel(val, this.language, this.uri);
       }
     }
 
-    options.value = this.value;
+    options.value = val;
     options.language = this.language;
     this.editor = monaco.editor.create(this.el, options);
 
@@ -111,7 +118,9 @@ export class CodeEditor implements ComponentInterface {
   // --------------------------------------------------------------[ lifecycle ]
 
   async componentDidLoad() {
-    const baseUrl = this.baseUrl || config.get('codeEditorBaseUrl') || 'https://unpkg.com/monaco-editor@0.18.1/min';
+    const baseUrl =
+      this.baseUrl || config.get('codeEditorBaseUrl') || 'https://cdn.jsdelivr.net/npm/monaco-editor@0.19.2/min';
+
     if (!loader) {
       loader = new LoadMonacoEditor(baseUrl, this.localizeCode);
     }
