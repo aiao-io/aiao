@@ -6,9 +6,5 @@ export const normalizeMonacoEditorValue = (language: string, value: any) => {
 };
 
 export const normalizeMonacoEditorValueOut = (language: string, value: any) => {
-  try {
-    return language === 'json' && value && isString(value) ? JSON.parse(value) : value;
-  } catch {
-    return {};
-  }
+  return language === 'json' && value && isString(value) ? JSON.parse(value) : value;
 };

@@ -72,7 +72,10 @@ export class CodeEditor implements ComponentInterface {
 
   @Method()
   async format() {
-    // return this.editor.getAction('editor.action.formatDocument').run();
+    return this.editor
+      .getModifiedEditor()
+      .getAction('editor.action.formatDocument')
+      .run();
   }
 
   // --------------------------------------------------------------[ private function ]
@@ -93,11 +96,14 @@ export class CodeEditor implements ComponentInterface {
       modified: modifiedModel
     });
 
-    const updateValue = () => {
-      const value = normalizeMonacoEditorValueOut(this.language, modifiedModel.getValue());
-      this.aiaoChange.emit({ value });
-    };
-    modifiedModel.onDidChangeContent(() => updateValue());
+    modifiedModel.onDidChangeContent(() => {
+      try {
+        const value = normalizeMonacoEditorValueOut(this.language, modifiedModel.getValue());
+        this.aiaoChange.emit({ value });
+      } catch {
+        //
+      }
+    });
   }
 
   // --------------------------------------------------------------[ lifecycle ]

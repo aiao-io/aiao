@@ -85,11 +85,14 @@ export class CodeEditor implements ComponentInterface {
 
     this.editor = monaco.editor.create(this.el, options);
 
-    const updateValue = () => {
-      const value = normalizeMonacoEditorValueOut(this.language, this.editor.getValue());
-      this.aiaoChange.emit({ value });
-    };
-    this.editor.onDidChangeModelContent(() => updateValue());
+    this.editor.onDidChangeModelContent(() => {
+      try {
+        const value = normalizeMonacoEditorValueOut(this.language, this.editor.getValue());
+        this.aiaoChange.emit({ value });
+      } catch {
+        //
+      }
+    });
   }
 
   // --------------------------------------------------------------[ lifecycle ]
