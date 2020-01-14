@@ -29,12 +29,8 @@
   <script>
     const editor = document.querySelector('#editor');
 
-    editor.addEventListener('aiaoInput', e => {
-      console.log('input', e.detail.value);
-    });
-
     editor.addEventListener('aiaoChange', e => {
-      console.log('change:', e.detail.value);
+      console.log('change:', e.detail.value, typeof e.detail.value);
     });
 
     editor.value = {
