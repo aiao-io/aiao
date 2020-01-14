@@ -10,14 +10,15 @@ export class ElementsCodeEditorComponent implements OnInit {
   form: FormGroup;
   constructor(private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
-      a: JSON.stringify(
-        {
-          b: 1
-        },
-        null,
-        2
-      )
+      a: {
+        b: 1
+      }
     });
   }
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    this.form.valueChanges.subscribe(d => {
+      console.log('valueChanges', d);
+    });
+  }
 }

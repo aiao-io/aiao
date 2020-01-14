@@ -9,7 +9,8 @@ import {
   Host,
   Listen,
   Method,
-  Prop
+  Prop,
+  Watch
 } from '@stencil/core';
 
 import { getBaseUrl } from '../../utils/code-editor/base-url';
@@ -57,6 +58,18 @@ export class CodeEditor implements ComponentInterface {
   @Prop() localizeCode: string;
 
   // --------------------------------------------------------------[ Watch ]
+  @Watch('language')
+  @Watch('uri')
+  setModel() {
+    if (this.editor) {
+      setTimeout(() => {
+        const value = normalizeMonacoEditorValue(this.language, this.value);
+        const model = monaco.editor.createModel(value, this.language, this.uri);
+        this.editor.setModel(model);
+      }, 0);
+    }
+  }
+
   // --------------------------------------------------------------[ Listen ]
   @Listen('resize', {
     target: 'window'
@@ -82,12 +95,11 @@ export class CodeEditor implements ComponentInterface {
 
     const val = normalizeMonacoEditorValue(this.language, this.value);
     options = normalizeMonacoEditorOptions(options, this.uri, this.language, val);
-
     this.editor = monaco.editor.create(this.el, options);
-
     this.editor.onDidChangeModelContent(() => {
       try {
         const value = normalizeMonacoEditorValueOut(this.language, this.editor.getValue());
+        this.value = value;
         this.aiaoChange.emit({ value });
       } catch {
         //
@@ -104,12 +116,6 @@ export class CodeEditor implements ComponentInterface {
     }
     await loader.load();
     this.createMonaco(this.options);
-  }
-
-  componentDidRender() {
-    if (this.editor) {
-      this.createMonaco(this.options);
-    }
   }
 
   render() {
