@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2020-01-14)
+
+### Bug Fixes
+
+- **elements:** 修复 code-editor value 未及时更新错误 ([95f201c](https://github.com/aiao-io/aiao/commit/95f201c8c022d980ba9168db5165ca99c017e15b))
+
 # 0.1.0 (2020-01-14)
 
 ### Features
