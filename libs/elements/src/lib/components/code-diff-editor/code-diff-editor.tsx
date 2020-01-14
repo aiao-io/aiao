@@ -9,7 +9,8 @@ import {
   Host,
   Listen,
   Method,
-  Prop
+  Prop,
+  Watch
 } from '@stencil/core';
 
 import { getBaseUrl } from '../../utils/code-editor/base-url';
@@ -58,6 +59,13 @@ export class CodeEditor implements ComponentInterface {
   @Prop() localizeCode: string;
 
   // --------------------------------------------------------------[ Watch ]
+  @Watch('language')
+  @Watch('uri')
+  setModel() {
+    if (this.editor) {
+      setTimeout(() => this.updateModel(), 0);
+    }
+  }
   // --------------------------------------------------------------[ Listen ]
   @Listen('resize', {
     target: 'window'
@@ -79,23 +87,24 @@ export class CodeEditor implements ComponentInterface {
   }
 
   // --------------------------------------------------------------[ private function ]
-  private createMonaco(options: monaco.editor.IStandaloneEditorConstructionOptions = defaultOptions) {
-    if (this.editor) {
-      this.editor.dispose();
-    }
-
+  private updateModel() {
     const originalValue = normalizeMonacoEditorValue(this.language, this.originalValue);
     const modifiedValue = normalizeMonacoEditorValue(this.language, this.value);
-
     const originalModel = monaco.editor.createModel(originalValue, this.language, this.uri);
     const modifiedModel = monaco.editor.createModel(modifiedValue, this.language, this.uri);
-
-    this.editor = monaco.editor.createDiffEditor(this.el, options);
     this.editor.setModel({
       original: originalModel,
       modified: modifiedModel
     });
+    return { originalValue, modifiedValue, originalModel, modifiedModel };
+  }
 
+  private createMonaco(options: monaco.editor.IStandaloneEditorConstructionOptions = defaultOptions) {
+    if (this.editor) {
+      this.editor.dispose();
+    }
+    this.editor = monaco.editor.createDiffEditor(this.el, options);
+    const { modifiedModel } = this.updateModel();
     modifiedModel.onDidChangeContent(() => {
       try {
         const value = normalizeMonacoEditorValueOut(this.language, modifiedModel.getValue());
@@ -115,12 +124,6 @@ export class CodeEditor implements ComponentInterface {
     }
     await loader.load();
     this.createMonaco(this.options);
-  }
-
-  componentDidRender() {
-    if (this.editor) {
-      this.createMonaco(this.options);
-    }
   }
 
   render() {
