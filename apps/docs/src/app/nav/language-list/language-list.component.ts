@@ -1,9 +1,14 @@
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { select, Store } from '@ngrx/store';
 
 import { changeLanguageAction } from '../../local/language.actions';
-import { LocalState, selectLanguage } from '../../local/language.reducer';
+import { ChangeLanguageState } from '../../local/language.reducer';
+
+// import { LocalState, selectLanguage } from '../../local/language.reducer';
 
 @Component({
   selector: 'aiao-language-list',
@@ -11,12 +16,18 @@ import { LocalState, selectLanguage } from '../../local/language.reducer';
   styleUrls: ['./language-list.component.scss']
 })
 export class LanguageListComponent implements OnInit {
-  lang$ = this.store.pipe(select(selectLanguage));
-  constructor(private store: Store<LocalState>, private popoverController: PopoverController) {}
+  lang$: Observable<string>;
+  constructor(private store: Store<{ language: ChangeLanguageState }>, private popoverController: PopoverController) {
+    this.lang$ = this.store.pipe(
+      select('language'),
+      map(lang => lang.language)
+    );
+  }
 
   ngOnInit() {}
 
   changeLanguage(language: string) {
+    console.log('language', language);
     this.store.dispatch(changeLanguageAction({ language }));
     this.popoverController.dismiss();
   }

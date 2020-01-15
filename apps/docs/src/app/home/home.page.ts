@@ -1,43 +1,52 @@
-import { combineLatest, Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 
+import { urlJoin } from '@aiao/util';
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 
-import { LocalState, selectLanguage } from '../local/language.reducer';
-import { urlJoin } from '@aiao/util';
+import { ChangeLanguageState } from '../local/language.reducer';
 
 @Component({
-  selector: 'aiao-introduction',
-  templateUrl: 'introduction.page.html',
-  styleUrls: ['introduction.page.scss']
+  selector: 'aiao-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss']
 })
-export class IntroductionPage implements OnInit, OnDestroy {
+export class HomePage implements OnInit, OnDestroy {
   private readonly urlParser = document.createElement('a');
   destroy$ = new Subject();
   url = '';
-  lang$ = this.store.pipe(select(selectLanguage));
-  routerEvents$ = this.router.events.pipe(
-    takeUntil(this.destroy$),
-    filter(e => e instanceof NavigationEnd)
-  );
-  constructor(public activeRouter: ActivatedRoute, public router: Router, private store: Store<LocalState>) {}
+  lang$: Observable<string>;
+  constructor(
+    public activeRouter: ActivatedRoute,
+    public router: Router,
+    private store: Store<{ language: ChangeLanguageState }>
+  ) {
+    this.lang$ = this.store.pipe(
+      select('language'),
+      map(lang => lang.language)
+    );
+  }
+
+  ionViewWillEnter() {
+    console.log(this.router.url);
+    this.url = 'docs' + this.router.url + '/README.md';
+    console.log('[lifeCycles] ionViewWillEnter');
+  }
 
   ngOnInit() {
     this.url = 'docs' + this.router.url + '/README.md';
-    combineLatest([this.lang$, this.routerEvents$])
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(val => {
-        const event = val[1] as NavigationEnd;
-        if (val[0] === 'cn') {
-          const readme = /\/$/.test(event.url) ? 'README.md' : '/README.md';
-          this.url = 'docs' + event.url + readme;
-        } else {
-          const readme = /\/$/.test(event.url) ? 'README.en.md' : '/README.en.md';
-          this.url = 'docs' + event.url + readme;
-        }
-      });
+    this.lang$.pipe(takeUntil(this.destroy$)).subscribe(lang => {
+      if (lang === 'cn') {
+        const readme = /\/$/.test(this.router.url) ? 'README.md' : '/README.md';
+        this.url = 'docs' + this.router.url + readme;
+      } else {
+        const readme = /\/$/.test(this.router.url) ? 'README.en.md' : '/README.en.md';
+        this.url = 'docs' + this.router.url + readme;
+      }
+    });
+    console.log('ngOnInit', this.router.url);
   }
 
   handleAnchorClick(anchor: HTMLAnchorElement, button = 0, ctrlKey = false, metaKey = false) {

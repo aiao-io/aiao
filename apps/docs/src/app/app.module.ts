@@ -2,7 +2,6 @@ import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -12,17 +11,17 @@ import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomePage } from './home/home.page';
 import { changeLanguageReducer } from './local/language.reducer';
 import { LanguageListModule } from './nav/language-list/language-list.module';
 import { SideNavModule } from './nav/side-nav/side-nav.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomePage],
   imports: [
     AppRoutingModule,
     BrowserModule,
     SideNavModule,
-    FormsModule,
     HttpClientModule,
     LanguageListModule,
     IonicModule.forRoot(),
