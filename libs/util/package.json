@@ -21,7 +21,7 @@
     "build": "ng build util"
   },
   "peerDependencies": {
-    "dayjs": "^1.8.16",
+    "date-fns": "^2.9.0",
     "lodash": "^4.17.15"
   }
 }
