@@ -23,6 +23,14 @@ export class HomePage implements OnInit, OnDestroy {
     public router: Router,
     private store: Store<{ language: ChangeLanguageState }>
   ) {
+    activeRouter.url
+      .pipe(
+        takeUntil(this.destroy$),
+        map(segments => segments.join('/'))
+      )
+      .subscribe(url => {
+        this.url = 'docs/' + '/' + url + '/README.md';
+      });
     this.lang$ = this.store.pipe(
       select('language'),
       map(lang => lang.language)
@@ -30,13 +38,10 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   ionViewWillEnter() {
-    console.log(this.router.url);
     this.url = 'docs' + this.router.url + '/README.md';
-    console.log('[lifeCycles] ionViewWillEnter');
   }
 
   ngOnInit() {
-    this.url = 'docs' + this.router.url + '/README.md';
     this.lang$.pipe(takeUntil(this.destroy$)).subscribe(lang => {
       if (lang === 'cn') {
         const readme = /\/$/.test(this.router.url) ? 'README.md' : '/README.md';
@@ -46,7 +51,6 @@ export class HomePage implements OnInit, OnDestroy {
         this.url = 'docs' + this.router.url + readme;
       }
     });
-    console.log('ngOnInit', this.router.url);
   }
 
   handleAnchorClick(anchor: HTMLAnchorElement, button = 0, ctrlKey = false, metaKey = false) {
@@ -84,7 +88,6 @@ export class HomePage implements OnInit, OnDestroy {
     const href = anchor.getAttribute('href');
     if (/^\./.test(href)) {
       relativeUrl = urlJoin(this.router.url, href);
-      console.log('relativeUrl is', relativeUrl);
     }
 
     // approved for navigation
