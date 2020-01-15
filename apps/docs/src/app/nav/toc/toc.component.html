@@ -1,5 +1,7 @@
 <ul>
-  <li>a</li>
-  <li>b</li>
-  <li>c</li>
+  <ng-container *ngFor="let anchor of anchorItems">
+    <li [ngStyle]="{ 'padding-left.px': (anchor.level - 1) * 16 }">
+      <a [href]="anchor.href">{{ anchor.text }}</a>
+    </li>
+  </ng-container>
 </ul>

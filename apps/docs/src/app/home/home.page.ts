@@ -20,6 +20,7 @@ export class HomePage implements OnInit, OnDestroy {
   url = '';
   lang$: Observable<string>;
   activeUrl$: Observable<string>;
+  anchorAry = [];
   constructor(
     public activeRouter: ActivatedRoute,
     public router: Router,
@@ -38,13 +39,26 @@ export class HomePage implements OnInit, OnDestroy {
 
   ionViewWillEnter() {
     this.url = 'docs' + this.router.url + '/README.md';
+    console.log('anchorAry', this.anchorAry);
     console.log('ionViewWillEnter');
   }
 
   ngOnInit() {
+    console.log('ngOnInit');
     this.markdownService.renderer.heading = (text: string, level: number) => {
-      console.log('text', text);
-      const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+      const anchorItem: any = {};
+      let escapedText = '';
+      console.log('text and level', text, level);
+      if (/[^\w]+/g.test(text)) {
+        escapedText = this.stringHexFun(text);
+      } else {
+        escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+      }
+      anchorItem.text = text;
+      anchorItem.level = level;
+      anchorItem.href = '#' + escapedText;
+
+      this.anchorAry.push(anchorItem);
       return (
         '<h' +
         level +
@@ -66,6 +80,7 @@ export class HomePage implements OnInit, OnDestroy {
     combineLatest([this.lang$, this.activeUrl$])
       .pipe(takeUntil(this.destroy$))
       .subscribe(data => {
+        this.anchorAry = [];
         const url = /^\//.test(data[1]) ? data[1] : '/' + data[1];
         if (data[0] === 'cn') {
           this.url = 'docs' + url + '/README.md';
@@ -129,6 +144,16 @@ export class HomePage implements OnInit, OnDestroy {
       return this.handleAnchorClick(target, button, ctrlKey, metaKey);
     }
     return false;
+  }
+
+  stringHexFun(val: string) {
+    if (val === '' || typeof val === 'undefined') return;
+    let hexStr = '';
+    for (let i = 0; i < val.length; i++) {
+      hexStr += val.charCodeAt(i).toString(16);
+    }
+    console.log('hex string', hexStr);
+    return hexStr;
   }
 
   ngOnDestroy() {
