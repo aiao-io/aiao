@@ -1,11 +1,13 @@
 .split-pane-md {
-  #menu-content {
+  #menu-content,
+  .toc-content {
     margin-top: 56px;
   }
 }
 
 .split-pane-ios {
-  #menu-content {
+  #menu-content,
+  .toc-content {
     margin-top: 44px;
   }
 }
@@ -22,4 +24,7 @@ ion-menu {
 .split-pane-ios.split-pane-visible > .split-pane-side {
   max-width: 270px;
   min-width: 270px;
+}
+
+.toc-content {
 }

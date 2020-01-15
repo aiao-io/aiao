@@ -1,4 +1,5 @@
-import { Observable, Subject } from 'rxjs';
+import { MarkdownService } from 'ngx-markdown';
+import { Observable, Subject, combineLatest } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 
 import { urlJoin } from '@aiao/util';
@@ -18,19 +19,17 @@ export class HomePage implements OnInit, OnDestroy {
   destroy$ = new Subject();
   url = '';
   lang$: Observable<string>;
+  activeUrl$: Observable<string>;
   constructor(
     public activeRouter: ActivatedRoute,
     public router: Router,
-    private store: Store<{ language: ChangeLanguageState }>
+    private store: Store<{ language: ChangeLanguageState }>,
+    private markdownService: MarkdownService
   ) {
-    activeRouter.url
-      .pipe(
-        takeUntil(this.destroy$),
-        map(segments => segments.join('/'))
-      )
-      .subscribe(url => {
-        this.url = 'docs/' + '/' + url + '/README.md';
-      });
+    this.activeUrl$ = activeRouter.url.pipe(
+      takeUntil(this.destroy$),
+      map(segments => segments.join('/'))
+    );
     this.lang$ = this.store.pipe(
       select('language'),
       map(lang => lang.language)
@@ -39,18 +38,41 @@ export class HomePage implements OnInit, OnDestroy {
 
   ionViewWillEnter() {
     this.url = 'docs' + this.router.url + '/README.md';
+    console.log('ionViewWillEnter');
   }
 
   ngOnInit() {
-    this.lang$.pipe(takeUntil(this.destroy$)).subscribe(lang => {
-      if (lang === 'cn') {
-        const readme = /\/$/.test(this.router.url) ? 'README.md' : '/README.md';
-        this.url = 'docs' + this.router.url + readme;
-      } else {
-        const readme = /\/$/.test(this.router.url) ? 'README.en.md' : '/README.en.md';
-        this.url = 'docs' + this.router.url + readme;
-      }
-    });
+    this.markdownService.renderer.heading = (text: string, level: number) => {
+      console.log('text', text);
+      const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+      return (
+        '<h' +
+        level +
+        '>' +
+        '<a name="' +
+        escapedText +
+        '" class="anchor" href="#' +
+        escapedText +
+        '">' +
+        '<span class="header-link"></span>' +
+        '</a>' +
+        text +
+        '</h' +
+        level +
+        '>'
+      );
+    };
+
+    combineLatest([this.lang$, this.activeUrl$])
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(data => {
+        const url = /^\//.test(data[1]) ? data[1] : '/' + data[1];
+        if (data[0] === 'cn') {
+          this.url = 'docs' + url + '/README.md';
+        } else {
+          this.url = 'docs' + url + '/README.en.md';
+        }
+      });
   }
 
   handleAnchorClick(anchor: HTMLAnchorElement, button = 0, ctrlKey = false, metaKey = false) {

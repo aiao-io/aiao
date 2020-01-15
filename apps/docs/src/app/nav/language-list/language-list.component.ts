@@ -27,7 +27,6 @@ export class LanguageListComponent implements OnInit {
   ngOnInit() {}
 
   changeLanguage(language: string) {
-    console.log('language', language);
     this.store.dispatch(changeLanguageAction({ language }));
     this.popoverController.dismiss();
   }
