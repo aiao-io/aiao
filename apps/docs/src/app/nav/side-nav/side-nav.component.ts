@@ -7,7 +7,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { Router } from '@angular/router';
 
-import { NavNode } from '../interface';
+interface NavNode {
+  name: string;
+  type: string;
+  path: string;
+  children: NavNode[];
+}
 
 interface ExampleFlatNode {
   expandable: boolean;
