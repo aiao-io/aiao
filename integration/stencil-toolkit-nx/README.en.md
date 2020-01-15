@@ -1,6 +1,6 @@
 # StencilToolkitNx
 
-这个项目使用 [nx](https://nx.dev) 管理
+This project is managed using [nx](https://nx.dev)
 
 ## Install
 
@@ -10,13 +10,19 @@ yarn install
 yarn ng build stencil-lib
 ```
 
-## angular 演示
+## build libs
+
+```console
+yarn build:libs
+```
+
+## angular launch
 
 ```console
 yarn ng serve angular
 ```
 
-## react 演示
+## react launch
 
 ```console
 yarn ng serve react

@@ -9,13 +9,16 @@ import {
   Host,
   Listen,
   Method,
-  Prop
+  Prop,
+  Watch
 } from '@stencil/core';
 
-import { config } from '../../global/config';
-import { LoadMonacoEditor } from './load-monaco-editor';
+import { getBaseUrl } from '../../utils/code-editor/base-url';
+import { LoadMonacoEditor } from '../../utils/code-editor/load-monaco-editor';
+import { normalizeMonacoEditorOptions } from '../../utils/code-editor/normalize-options';
+import { normalizeMonacoEditorValue, normalizeMonacoEditorValueOut } from '../../utils/code-editor/normalize-value';
 
-const defaultOptions: monaco.editor.IEditorConstructionOptions = {
+const defaultOptions: monaco.editor.IStandaloneEditorConstructionOptions = {
   theme: 'vs-dark',
   minimap: {
     enabled: false
@@ -38,7 +41,6 @@ export class CodeEditor implements ComponentInterface {
   // --------------------------------------------------------------[ State ]
   // --------------------------------------------------------------[ Event ]
   @Event() aiaoChange: EventEmitter<any>;
-  @Event() aiaoInput: EventEmitter<any>;
   // --------------------------------------------------------------[ Prop ]
 
   @Prop() name: string;
@@ -56,6 +58,18 @@ export class CodeEditor implements ComponentInterface {
   @Prop() localizeCode: string;
 
   // --------------------------------------------------------------[ Watch ]
+  @Watch('language')
+  @Watch('uri')
+  setModel() {
+    if (this.editor) {
+      setTimeout(() => {
+        const value = normalizeMonacoEditorValue(this.language, this.value);
+        const model = monaco.editor.createModel(value, this.language, this.uri);
+        this.editor.setModel(model);
+      }, 0);
+    }
+  }
+
   // --------------------------------------------------------------[ Listen ]
   @Listen('resize', {
     target: 'window'
@@ -74,55 +88,34 @@ export class CodeEditor implements ComponentInterface {
   }
 
   // --------------------------------------------------------------[ private function ]
-  private createMonaco(options: monaco.editor.IEditorConstructionOptions = defaultOptions) {
+  private createMonaco(options: monaco.editor.IStandaloneEditorConstructionOptions = defaultOptions) {
     if (this.editor) {
       this.editor.dispose();
     }
 
-    const hasModel = this.uri || this.value || this.language;
-    if (hasModel) {
-      const model = monaco.editor.getModel(this.uri || ('' as any));
-      if (model) {
-        options.model = model;
-        options.model.setValue(this.value);
-      } else {
-        options.model = monaco.editor.createModel(this.value, this.language, this.uri);
-      }
-    }
-
-    options.value = this.value;
-    options.language = this.language;
+    const val = normalizeMonacoEditorValue(this.language, this.value);
+    options = normalizeMonacoEditorOptions(options, this.uri, this.language, val);
     this.editor = monaco.editor.create(this.el, options);
-
-    const updateValue = (action?: 'input') => {
-      const value = this.editor.getValue();
-      switch (action) {
-        case 'input':
-          this.aiaoInput.emit({ value });
-          break;
-        default:
-          this.aiaoChange.emit({ value });
+    this.editor.onDidChangeModelContent(() => {
+      try {
+        const value = normalizeMonacoEditorValueOut(this.language, this.editor.getValue());
+        this.value = value;
+        this.aiaoChange.emit({ value });
+      } catch {
+        //
       }
-    };
-    this.editor.onDidChangeModelContent(() => updateValue('input'));
-    this.editor.onDidBlurEditorWidget(() => updateValue());
+    });
   }
 
   // --------------------------------------------------------------[ lifecycle ]
 
   async componentDidLoad() {
-    const baseUrl = this.baseUrl || config.get('codeEditorBaseUrl') || 'https://unpkg.com/monaco-editor@0.18.1/min';
+    const baseUrl = getBaseUrl(this.baseUrl);
     if (!loader) {
       loader = new LoadMonacoEditor(baseUrl, this.localizeCode);
     }
     await loader.load();
     this.createMonaco(this.options);
-  }
-
-  componentDidRender() {
-    if (this.editor) {
-      this.createMonaco(this.options);
-    }
   }
 
   render() {
