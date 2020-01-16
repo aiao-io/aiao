@@ -107,17 +107,14 @@ export class TocComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   handleAnchorClick(anchor: HTMLAnchorElement, button = 0, ctrlKey = false, metaKey = false) {
-    console.log('this.router.url', this.router.url);
-    const url = this.router.url.replace(/^\#.*/, '');
-    const relativeUrl = url + anchor.getAttribute('href');
-    console.log('relativeUrl', relativeUrl);
-    this.router.navigateByUrl(relativeUrl);
-    return true;
+    const url = this.router.url.replace(/\#.*/g, '');
+    const fragment = anchor.getAttribute('href').replace(/\#/g, '');
+    this.router.navigate([url], { fragment });
+    return false;
   }
 
   @HostListener('click', ['$event.target', '$event.button', '$event.ctrlKey', '$event.metaKey'])
   hookAllClick(eventTarget: HTMLElement, button: number, ctrlKey: boolean, metaKey: boolean): boolean {
-    console.log('listen click');
     // 找到有 anchor 的点击
     let target: HTMLElement | null = eventTarget;
     while (target && !(target instanceof HTMLAnchorElement)) {
@@ -126,7 +123,7 @@ export class TocComponent implements OnInit, AfterViewInit, OnDestroy {
     if (target instanceof HTMLAnchorElement) {
       return this.handleAnchorClick(target, button, ctrlKey, metaKey);
     }
-    return true;
+    return false;
   }
 }
 

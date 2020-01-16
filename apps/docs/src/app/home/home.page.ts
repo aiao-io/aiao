@@ -1,6 +1,6 @@
 import { MarkdownService } from 'ngx-markdown';
 import { combineLatest, Observable, Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { map, takeUntil, tap } from 'rxjs/operators';
 
 import { urlJoin } from '@aiao/util';
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
@@ -32,6 +32,7 @@ export class HomePage implements OnInit, OnDestroy {
   ) {
     this.activeUrl$ = activeRouter.url.pipe(
       takeUntil(this.destroy$),
+      tap(data => console.log('data', data)),
       map(segments => segments.join('/'))
     );
     this.lang$ = this.store.pipe(
@@ -51,7 +52,6 @@ export class HomePage implements OnInit, OnDestroy {
     this.markdownService.renderer.heading = (text: string, level: number) => {
       const anchorItem: any = {};
       let escapedText = '';
-      // console.log('text and level', text, level);
       if (/[^\w]+/g.test(text)) {
         // escapedText = this.stringHexFun(text);
       } else {
@@ -84,7 +84,6 @@ export class HomePage implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(([lang, activeUrl]) => {
         const url = /^\//.test(activeUrl) ? activeUrl : '/' + activeUrl;
-        console.log('home page url', url);
         if (lang === 'cn') {
           this.url = 'docs' + url + '/README.md';
         } else {
@@ -114,12 +113,7 @@ export class HomePage implements OnInit, OnDestroy {
     const { pathname, search, hash } = anchor;
     let relativeUrl = pathname + search + hash;
     this.urlParser.href = relativeUrl;
-
-    if (/^\#/.test(anchor.getAttribute('href'))) {
-      console.log('href', anchor.getAttribute('href'));
-      relativeUrl = this.router.url + '/' + anchor.getAttribute('href');
-      return false;
-    }
+    const url = this.router.url.replace(/#.*/g, '');
 
     // don't navigate if external link or has extension
     if (anchor.href !== this.urlParser.href || !/\/[^/.]*$/.test(pathname)) {
@@ -133,7 +127,7 @@ export class HomePage implements OnInit, OnDestroy {
 
     const href = anchor.getAttribute('href');
     if (/^\./.test(href)) {
-      relativeUrl = urlJoin(this.router.url, href);
+      relativeUrl = urlJoin(url, href);
     }
 
     // approved for navigation
