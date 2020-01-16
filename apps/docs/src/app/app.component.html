@@ -1,3 +1,4 @@
+<div id="top-of-page"></div>
 <ion-app>
   <ion-header>
     <ion-toolbar>
@@ -32,7 +33,13 @@
         <aiao-side-nav></aiao-side-nav>
       </ion-content>
     </ion-menu>
-    <div class="toc-content" contentId="menu-content" side="end">
+    <!-- <div class="toc-content" contentId="menu-content" side="end">
+      <aiao-toc></aiao-toc>
+    </div> -->
+    <!-- <div *ngIf="hasFloatingToc" class="toc-container no-print" [style.max-height.px]="tocMaxHeight" (wheel)="restrainScrolling($event)">
+      <aio-lazy-ce selector="aio-toc"></aio-lazy-ce>
+    </div> -->
+    <div contentId="menu-content" side="end" *ngIf="hasNonEmptyToc$ | async" class="toc-container no-print" [style.max-height.px]="tocMaxHeight" (wheel)="restrainScrolling($event)">
       <aiao-toc></aiao-toc>
     </div>
     <ion-router-outlet id="menu-content"></ion-router-outlet>

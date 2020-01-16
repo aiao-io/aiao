@@ -17,6 +17,9 @@ import { changeLanguageReducer } from './local/language.reducer';
 import { LanguageListComponent } from './nav/language-list/language-list.component';
 import { SideNavComponent } from './nav/side-nav/side-nav.component';
 import { TocComponent } from './nav/toc/toc.component';
+import { ScrollSpyService } from './share/scroll-spy.service';
+import { ScrollService } from './share/scroll.service';
+import { TocService } from './share/toc.service';
 
 @NgModule({
   declarations: [AppComponent, HomePage, LanguageListComponent, SideNavComponent, TocComponent, SideNavComponent],
@@ -50,7 +53,12 @@ import { TocComponent } from './nav/toc/toc.component';
     )
   ],
   entryComponents: [LanguageListComponent],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    ScrollService,
+    ScrollSpyService,
+    TocService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

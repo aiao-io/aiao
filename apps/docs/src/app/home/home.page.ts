@@ -1,5 +1,5 @@
 import { MarkdownService } from 'ngx-markdown';
-import { Observable, Subject, combineLatest } from 'rxjs';
+import { combineLatest, Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 
 import { urlJoin } from '@aiao/util';
@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 
 import { ChangeLanguageState } from '../local/language.reducer';
+import { TocService } from '../share/toc.service';
 
 @Component({
   selector: 'aiao-home',
@@ -16,6 +17,7 @@ import { ChangeLanguageState } from '../local/language.reducer';
 })
 export class HomePage implements OnInit, OnDestroy {
   private readonly urlParser = document.createElement('a');
+  protected nextViewContainer: HTMLElement = document.createElement('div');
   destroy$ = new Subject();
   url = '';
   lang$: Observable<string>;
@@ -25,7 +27,8 @@ export class HomePage implements OnInit, OnDestroy {
     public activeRouter: ActivatedRoute,
     public router: Router,
     private store: Store<{ language: ChangeLanguageState }>,
-    private markdownService: MarkdownService
+    private markdownService: MarkdownService,
+    private tocService: TocService
   ) {
     this.activeUrl$ = activeRouter.url.pipe(
       takeUntil(this.destroy$),
@@ -39,7 +42,7 @@ export class HomePage implements OnInit, OnDestroy {
 
   ionViewWillEnter() {
     this.url = 'docs' + this.router.url + '/README.md';
-    console.log('anchorAry', this.anchorAry);
+    // console.log('anchorAry', this.anchorAry);
     console.log('ionViewWillEnter');
   }
 
@@ -48,9 +51,9 @@ export class HomePage implements OnInit, OnDestroy {
     this.markdownService.renderer.heading = (text: string, level: number) => {
       const anchorItem: any = {};
       let escapedText = '';
-      console.log('text and level', text, level);
+      // console.log('text and level', text, level);
       if (/[^\w]+/g.test(text)) {
-        escapedText = this.stringHexFun(text);
+        // escapedText = this.stringHexFun(text);
       } else {
         escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
       }
@@ -79,10 +82,10 @@ export class HomePage implements OnInit, OnDestroy {
 
     combineLatest([this.lang$, this.activeUrl$])
       .pipe(takeUntil(this.destroy$))
-      .subscribe(data => {
-        this.anchorAry = [];
-        const url = /^\//.test(data[1]) ? data[1] : '/' + data[1];
-        if (data[0] === 'cn') {
+      .subscribe(([lang, activeUrl]) => {
+        const url = /^\//.test(activeUrl) ? activeUrl : '/' + activeUrl;
+        console.log('home page url', url);
+        if (lang === 'cn') {
           this.url = 'docs' + url + '/README.md';
         } else {
           this.url = 'docs' + url + '/README.en.md';
@@ -111,6 +114,12 @@ export class HomePage implements OnInit, OnDestroy {
     const { pathname, search, hash } = anchor;
     let relativeUrl = pathname + search + hash;
     this.urlParser.href = relativeUrl;
+
+    if (/^\#/.test(anchor.getAttribute('href'))) {
+      console.log('href', anchor.getAttribute('href'));
+      relativeUrl = this.router.url + '/' + anchor.getAttribute('href');
+      return false;
+    }
 
     // don't navigate if external link or has extension
     if (anchor.href !== this.urlParser.href || !/\/[^/.]*$/.test(pathname)) {
@@ -154,6 +163,39 @@ export class HomePage implements OnInit, OnDestroy {
     }
     console.log('hex string', hexStr);
     return hexStr;
+  }
+
+  onLoad() {
+    this.generateTitleAndToc(document.body, '');
+  }
+
+  protected generateTitleAndToc(targetElem: HTMLElement, docId: string) {
+    const titleEl = targetElem.querySelector('h1');
+    const needsToc = !!titleEl && !/no-?toc/i.test(titleEl.className);
+    const embeddedToc = targetElem.querySelector('aiao-toc.embedded');
+
+    if (needsToc && !embeddedToc) {
+      // Add an embedded ToC if it's needed and there isn't one in the content already.
+      titleEl!.insertAdjacentHTML('afterend', '<aiao-toc class="embedded"></aiao-toc>');
+    } else if (!needsToc && embeddedToc && embeddedToc.parentNode !== null) {
+      // Remove the embedded Toc if it's there and not needed.
+      // We cannot use ChildNode.remove() because of IE11
+      embeddedToc.parentNode.removeChild(embeddedToc);
+    }
+
+    this.tocService.reset();
+    let title: string | null = '';
+
+    // Only create ToC for docs with an `<h1>` heading.
+    // If you don't want a ToC, add "no-toc" class to `<h1>`.
+    if (titleEl) {
+      title = typeof titleEl.innerText === 'string' ? titleEl.innerText : titleEl.textContent;
+
+      if (needsToc) {
+        this.tocService.genToc(targetElem, docId);
+      }
+      // this.titleService.setTitle(title ? `Angular - ${title}` : 'Angular');
+    }
   }
 
   ngOnDestroy() {

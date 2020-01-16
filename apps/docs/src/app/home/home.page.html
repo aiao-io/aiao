@@ -2,7 +2,7 @@
   <ion-grid fixed>
     <ion-row>
       <ion-col>
-        <div markdown [src]="url" class="markdown-body"></div>
+        <div markdown [src]="url" class="markdown-body" (load)="onLoad($event)"></div>
       </ion-col>
     </ion-row>
   </ion-grid>
