@@ -207,7 +207,7 @@
             "assets": ["apps/react/src/favicon.ico", "apps/react/src/assets"],
             "styles": ["apps/react/src/styles.scss"],
             "scripts": [],
-            "webpackConfig": "@nrwl/react/plugins/babel"
+            "webpackConfig": "@nrwl/react/plugins/webpack"
           },
           "configurations": {
             "production": {
