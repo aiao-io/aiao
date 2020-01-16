@@ -1,6 +1,6 @@
 import { MarkdownService } from 'ngx-markdown';
 import { combineLatest, Observable, Subject } from 'rxjs';
-import { map, takeUntil, tap } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 
 import { urlJoin } from '@aiao/util';
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
@@ -22,7 +22,6 @@ export class HomePage implements OnInit, OnDestroy {
   url = '';
   lang$: Observable<string>;
   activeUrl$: Observable<string>;
-  anchorAry = [];
   constructor(
     public activeRouter: ActivatedRoute,
     public router: Router,
@@ -32,7 +31,6 @@ export class HomePage implements OnInit, OnDestroy {
   ) {
     this.activeUrl$ = activeRouter.url.pipe(
       takeUntil(this.destroy$),
-      tap(data => console.log('data', data)),
       map(segments => segments.join('/'))
     );
     this.lang$ = this.store.pipe(
@@ -43,12 +41,9 @@ export class HomePage implements OnInit, OnDestroy {
 
   ionViewWillEnter() {
     this.url = 'docs' + this.router.url + '/README.md';
-    // console.log('anchorAry', this.anchorAry);
-    console.log('ionViewWillEnter');
   }
 
   ngOnInit() {
-    console.log('ngOnInit');
     this.markdownService.renderer.heading = (text: string, level: number) => {
       const anchorItem: any = {};
       let escapedText = '';
@@ -60,8 +55,6 @@ export class HomePage implements OnInit, OnDestroy {
       anchorItem.text = text;
       anchorItem.level = level;
       anchorItem.href = '#' + escapedText;
-
-      this.anchorAry.push(anchorItem);
       return (
         '<h' +
         level +
@@ -149,21 +142,13 @@ export class HomePage implements OnInit, OnDestroy {
     return false;
   }
 
-  stringHexFun(val: string) {
-    if (val === '' || typeof val === 'undefined') return;
-    let hexStr = '';
-    for (let i = 0; i < val.length; i++) {
-      hexStr += val.charCodeAt(i).toString(16);
-    }
-    console.log('hex string', hexStr);
-    return hexStr;
-  }
-
   onLoad() {
-    this.generateTitleAndToc(document.body, '');
+    this.activeUrl$.pipe(takeUntil(this.destroy$)).subscribe(url => {
+      this.generateTitleAndToc(document.body, '', url);
+    });
   }
 
-  protected generateTitleAndToc(targetElem: HTMLElement, docId: string) {
+  protected generateTitleAndToc(targetElem: HTMLElement, docId: string, url = '') {
     const titleEl = targetElem.querySelector('h1');
     const needsToc = !!titleEl && !/no-?toc/i.test(titleEl.className);
     const embeddedToc = targetElem.querySelector('aiao-toc.embedded');
@@ -186,7 +171,7 @@ export class HomePage implements OnInit, OnDestroy {
       title = typeof titleEl.innerText === 'string' ? titleEl.innerText : titleEl.textContent;
 
       if (needsToc) {
-        this.tocService.genToc(targetElem, docId);
+        this.tocService.genToc(targetElem, docId, url);
       }
       // this.titleService.setTitle(title ? `Angular - ${title}` : 'Angular');
     }

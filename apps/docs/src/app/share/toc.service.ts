@@ -26,7 +26,7 @@ export class TocService {
     private scrollSpyService: ScrollSpyService
   ) {}
 
-  genToc(docElement?: Element, docId = '') {
+  genToc(docElement?: Element, docId = '', activeUrl = '') {
     this.resetScrollSpyInfo();
 
     if (!docElement) {
@@ -36,12 +36,13 @@ export class TocService {
 
     const headings = this.findTocHeadings(docElement);
     const idMap = new Map<string, number>();
+
     const tocList = headings.map(heading => {
       const { title, content } = this.extractHeadingSafeHtml(heading);
-
+      const url = activeUrl.replace(/^\//, '');
       return {
         level: heading.tagName.toLowerCase(),
-        href: `${docId}#${this.getId(heading, idMap)}`,
+        href: `${docId}${url}#${this.getId(heading, idMap)}`,
         title,
         content
       };

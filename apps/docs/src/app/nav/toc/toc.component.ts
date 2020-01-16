@@ -1,5 +1,5 @@
 import { asapScheduler, combineLatest, Subject } from 'rxjs';
-import { startWith, subscribeOn, takeUntil, tap } from 'rxjs/operators';
+import { startWith, subscribeOn, takeUntil } from 'rxjs/operators';
 
 import {
   AfterViewInit,
@@ -9,10 +9,8 @@ import {
   OnInit,
   QueryList,
   ViewChild,
-  ViewChildren,
-  HostListener
+  ViewChildren
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { IonContent } from '@ionic/angular';
 
 import { TocItem, TocService } from '../../share/toc.service';
@@ -38,7 +36,7 @@ export class TocComponent implements OnInit, AfterViewInit, OnDestroy {
   primaryMax = 4;
   tocList: TocItem[];
 
-  constructor(elementRef: ElementRef, private tocService: TocService, private router: Router) {
+  constructor(elementRef: ElementRef, private tocService: TocService) {
     this.isEmbedded = elementRef.nativeElement.className.indexOf('embedded') !== -1;
   }
 
@@ -104,26 +102,6 @@ export class TocComponent implements OnInit, AfterViewInit, OnDestroy {
 
   toTop() {
     this.ionContent.scrollToTop();
-  }
-
-  handleAnchorClick(anchor: HTMLAnchorElement, button = 0, ctrlKey = false, metaKey = false) {
-    const url = this.router.url.replace(/\#.*/g, '');
-    const fragment = anchor.getAttribute('href').replace(/\#/g, '');
-    this.router.navigate([url], { fragment });
-    return false;
-  }
-
-  @HostListener('click', ['$event.target', '$event.button', '$event.ctrlKey', '$event.metaKey'])
-  hookAllClick(eventTarget: HTMLElement, button: number, ctrlKey: boolean, metaKey: boolean): boolean {
-    // 找到有 anchor 的点击
-    let target: HTMLElement | null = eventTarget;
-    while (target && !(target instanceof HTMLAnchorElement)) {
-      target = target.parentElement;
-    }
-    if (target instanceof HTMLAnchorElement) {
-      return this.handleAnchorClick(target, button, ctrlKey, metaKey);
-    }
-    return false;
   }
 }
 
