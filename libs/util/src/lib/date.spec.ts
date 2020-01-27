@@ -141,7 +141,6 @@ describe('formatPassTime', () => {
     expect(canBeDate(null)).toBeFalsy();
     expect(canBeDate(undefined)).toBeFalsy();
     expect(canBeDate({})).toBeFalsy();
-    console.log(`canBeDate('adf')`, canBeDate('adf'));
     expect(canBeDate('adf')).toBeFalsy();
     expect(canBeDate(1)).toBeTruthy();
     expect(canBeDate('20')).toBeTruthy();
