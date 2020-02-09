@@ -1990,20 +1990,20 @@
     tslib "^1.9.0"
     ws "^7.0.1"
 
-"@ionic/angular@^4.11.10":
-  version "4.11.10"
-  resolved "https://registry.yarnpkg.com/@ionic/angular/-/angular-4.11.10.tgz#467430de7ae49c5c5e1506fa64b2d51847ce62eb"
-  integrity sha512-wdi4LJLUEfGK7jxYLNH+8Q2nMPBFCGaheRmQV4hQLQDx3RjVMFJKCsqAmgXXkLtUJfSDBY68r/dvWeYO645HaQ==
+"@ionic/angular@^5.0.0-rc.3":
+  version "5.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@ionic/angular/-/angular-5.0.0-rc.3.tgz#9d14bd81f53c0cf3384198b7117366a17f9bbdab"
+  integrity sha512-ODuGjLhrM6T7GDcW83vZj4dRy/kF1r9Bwyastqyy9NGwOwMtb4Ep32Kai+mnTbbLvefNwLXyQEJpxySMv0NTAA==
   dependencies:
-    "@ionic/core" "4.11.10"
+    "@ionic/core" "5.0.0-rc.3"
     tslib "^1.9.3"
 
-"@ionic/core@4.11.10", "@ionic/core@^4.11.10":
-  version "4.11.10"
-  resolved "https://registry.yarnpkg.com/@ionic/core/-/core-4.11.10.tgz#1aa5f2e31b8d0c741471af9c272964c34155ab5a"
-  integrity sha512-PeonKl5E+VOTBeKDr83y0N/1wbfkZ5jV3PSJTsVPE3Q15LxGEO0GzBvVMgkmkssuqOI3WJPXxYWZVL8ejzSFOQ==
+"@ionic/core@5.0.0-rc.3", "@ionic/core@^5.0.0-rc.3":
+  version "5.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@ionic/core/-/core-5.0.0-rc.3.tgz#c2ea4f09c74ea1bd6ea8aad64974241fedefca39"
+  integrity sha512-3fIVUIVXlClAOjg/eqFYmxYPJr9+2KvYrGtTl0qQFy0Obwvog6VGZJ62eqoZxuJB9Qeg6wdrDqDbHWMa0ksIpg==
   dependencies:
-    ionicons "^4.6.3"
+    ionicons "5.0.0-17"
     tslib "^1.10.0"
 
 "@istanbuljs/load-nyc-config@^1.0.0":
@@ -8740,10 +8740,10 @@ invert-kv@^2.0.0:
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-2.0.0.tgz#7393f5afa59ec9ff5f67a27620d11c226e3eec02"
   integrity sha512-wPVv/y/QQ/Uiirj/vh3oP+1Ww+AWehmi1g5fFWGPF6IpCBCDVrhgHRMvrLfdYcwDh3QJbGXDW4JAuzxElLSqKA==
 
-ionicons@^4.6.3:
-  version "4.6.3"
-  resolved "https://registry.yarnpkg.com/ionicons/-/ionicons-4.6.3.tgz#e4f3a3e9b66761eb8c0db27798cc1a8ce97777d2"
-  integrity sha512-cgP+VIr2cTJpMfFyVHTerq6n2jeoiGboVoe3GlaAo5zoSBDAEXORwUZhv6m+lCyxlsHCS3nqPUE+MKyZU71t8Q==
+ionicons@5.0.0-17:
+  version "5.0.0-17"
+  resolved "https://registry.yarnpkg.com/ionicons/-/ionicons-5.0.0-17.tgz#830cc3e6e901460edda7a11f1194b53a4898ea4f"
+  integrity sha512-Ih63KBQiPLTnEkCyC/g3fBWl2c0Id7581opRzHe6cxO2Vs6vymskkhdinEUwAYuqUvJY3mYasxpMqSF5W5GLsQ==
 
 ip-regex@^2.1.0:
   version "2.1.0"
