@@ -30,8 +30,8 @@ describe('LazyModuleLoader', () => {
       ]
     ];
     const injector = TestBed.configureTestingModule({ providers: [LazyModuleLoader] });
-    lazyModuleLoader = injector.get(LazyModuleLoader);
-    compiler = injector.get(Compiler);
+    lazyModuleLoader = injector.inject(LazyModuleLoader);
+    compiler = injector.inject(Compiler);
     lazyModuleLoader.add(lazymodules);
   });
 
