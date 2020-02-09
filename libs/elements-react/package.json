@@ -16,7 +16,7 @@
     "react"
   ],
   "scripts": {
-    "build": "ng build elements-react"
+    "build": "cd ../.. && ng build elements-react"
   },
   "peerDependencies": {
     "@aiao/elements": "^0.1.0",

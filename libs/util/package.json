@@ -18,7 +18,7 @@
     "string"
   ],
   "scripts": {
-    "build": "ng build util"
+    "build": "cd ../.. && ng build util"
   },
   "peerDependencies": {
     "date-fns": "^2.9.0",

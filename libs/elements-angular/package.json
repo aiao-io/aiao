@@ -18,7 +18,7 @@
     "web components"
   ],
   "scripts": {
-    "build": "ng build elements-angular"
+    "build": "cd ../.. && ng build elements-angular"
   },
   "dependencies": {
     "@aiao/elements": "^0.3.0"
