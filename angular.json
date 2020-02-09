@@ -418,7 +418,7 @@
           }
         },
         "build": {
-          "builder": "@nrwl/web:bundle",
+          "builder": "@nrwl/web:package",
           "options": {
             "outputPath": "dist/libs/elements-react",
             "tsConfig": "libs/elements-react/tsconfig.lib.json",

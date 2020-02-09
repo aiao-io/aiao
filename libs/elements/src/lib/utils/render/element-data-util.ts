@@ -6,7 +6,7 @@ let elemntEditId = 1;
 
 const getEditData = (data: IElementData, back: IElementEditorData[] = [], _sort: number): IElementEditorData => {
   const _id = '__node_' + elemntEditId++;
-  const hasChildren = data.children && data.children.length > 0;
+  const hasChildren = data.children?.length > 0;
   if (hasChildren) {
     elementDataToEditData(data.children, back, _id);
     data.children = undefined;

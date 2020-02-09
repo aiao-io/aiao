@@ -14,7 +14,7 @@ export class ImageStorage extends ImageStorageBase {
           d.height >= result.height
       )
       .sort((a, b) => b.width - a.width);
-    if (find && find.length > 0) return find[0];
+    if (find?.length > 0) return find[0];
     return undefined;
   }
 
