@@ -21,6 +21,6 @@ export interface IElementOptions {
  * 单个元素的结构数据
  */
 export interface IElementData extends IElementOptions {
-  tag?: string;
+  tag: string;
   children?: IElementData[];
 }
