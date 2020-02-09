@@ -7,7 +7,7 @@
       "sourceRoot": "libs/util/src",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/util/tsconfig.lib.json",
             "project": "libs/util/ng-package.json"
@@ -45,7 +45,7 @@
       "prefix": "aiao",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/lazy-component/tsconfig.lib.json",
             "project": "libs/lazy-component/ng-package.json"
@@ -83,7 +83,7 @@
       "prefix": "aiao",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/lazy-module/tsconfig.lib.json",
             "project": "libs/lazy-module/ng-package.json"
@@ -117,7 +117,7 @@
       "prefix": "aiao",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/lazy-element/tsconfig.lib.json",
             "project": "libs/lazy-element/ng-package.json"
@@ -151,7 +151,7 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/color/tsconfig.lib.json",
             "project": "libs/color/ng-package.json"
@@ -262,7 +262,7 @@
       "prefix": "aiao",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/image-storage/tsconfig.lib.json",
             "project": "libs/image-storage/ng-package.json"
@@ -300,7 +300,7 @@
       "prefix": "aiao",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/elements-cdk/tsconfig.lib.json",
             "project": "libs/elements-cdk/ng-package.json"
@@ -338,7 +338,7 @@
       "prefix": "aiao",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/elements-angular/tsconfig.lib.json",
             "project": "libs/elements-angular/ng-package.json"
@@ -376,7 +376,7 @@
       "prefix": "aiao",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/typeorm-plus/tsconfig.lib.json",
             "project": "libs/typeorm-plus/ng-package.json"
