@@ -1,6 +1,6 @@
 {
   "name": "@aiao/image-storage",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "image storage",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -20,6 +20,6 @@
     "@aiao/util": "^0.3.0"
   },
   "devDependencies": {
-    "@aiao/util": "^0.4.0"
+    "@aiao/util": "^0.5.0"
   }
 }
