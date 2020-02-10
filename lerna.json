@@ -3,16 +3,19 @@
   "packages": ["libs/*"],
   "version": "independent",
   "ignoreChanges": [
-    "angular.json",
+    "**/*.e2e.ts",
     "**/*.md",
     "**/*.spec.ts",
-    "**/*.e2e.ts",
+    "**/jest.config.js",
+    "**/ng-package.json",
     "**/package.json",
+    "**/scripts/**",
+    "**/stencil.*.config.ts",
     "**/test-setup.ts",
-    "**/tsconfig.lib.json",
-    "**/tsconfig.spec.json",
+    "**/test/**",
+    "**/tsconfig.*.json",
     "**/tsconfig.json",
-    "**/jest.config.js"
+    "**/tslint.json"
   ],
   "command": {
     "version": {
