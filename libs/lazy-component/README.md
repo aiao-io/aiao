@@ -4,7 +4,7 @@
 
 按需加载 任意 `module` 的 `component`. https://github.com/angular/angular/issues/14324 的解决方案
 
-> angular 9 有新的方式还没研究. 此方法暂时适用 angular 8
+> angular 9 有新的方式，此方法只适用 angular 8
 
 ## 场景
 

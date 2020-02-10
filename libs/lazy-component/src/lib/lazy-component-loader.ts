@@ -1,5 +1,7 @@
-import { findComponentFromModuleRef, LazyModuleLoader } from '@aiao/lazy-module';
+import { LazyModuleLoader } from '@aiao/lazy-module';
 import { Injectable, Type } from '@angular/core';
+
+import { findComponentFromModuleRef } from './util';
 
 @Injectable({
   providedIn: 'root'

@@ -6,9 +6,17 @@
 
 ## 场景
 
-动态显示内容
+动态加载模块
 
 ## 安装
+
+### Angular 8
+
+```console
+yarn add @aiao/lazy-module@^1.3
+```
+
+### Angular 9+
 
 ```console
 yarn add @aiao/lazy-module

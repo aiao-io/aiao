@@ -4,15 +4,19 @@ echo "integration test"
 port=6200
 
 SKIP_TEST=(
+  integration/elements-angular/
   integration/stencil-toolkit-nx/
   integration/lazy-module/
 )
 
-for D in integration/*/; do
+for name in integration/*/; do
   port=$((port + 1))
-  if [[ "${SKIP_TEST[*]}" =~ "${D}" ]]; then
-    echo "skip ${D}"
+  if [[ "${SKIP_TEST[*]}" =~ "${name}" ]]; then
+    echo "skip ${name}"
   else
-    sh -c "cd ${D} && yarn install --frozen-lockfile --non-interactive && yarn run e2e"
+    echo "================================="
+    echo "[integration] test ${name}"
+    echo "================================="
+    sh -c "cd ${name} && yarn install --frozen-lockfile --non-interactive && yarn run e2e"
   fi
 done
