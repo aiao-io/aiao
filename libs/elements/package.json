@@ -34,7 +34,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "ng build elements && node scripts/build-clean"
+    "build": "cd ../../ && ng build elements && cd libs/elements && node scripts/build-clean"
   },
   "dependencies": {
     "@aiao/elements-cdk": "^0.0.4"
