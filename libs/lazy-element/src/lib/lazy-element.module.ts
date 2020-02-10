@@ -1,5 +1,5 @@
 import { LAZY_ROUTES_TOKEN, LazyModule, LazyRoutes } from '@aiao/lazy-module';
-import { CUSTOM_ELEMENTS_SCHEMA, Inject, ModuleWithProviders, NgModule, Optional } from '@angular/core';
+import { Inject, ModuleWithProviders, NgModule, Optional } from '@angular/core';
 import { ROUTES } from '@angular/router';
 
 import { LazyElementLoader } from './lazy-element-loader';
@@ -10,8 +10,7 @@ import { LazyElementsComponent } from './lazy-elements.component';
 @NgModule({
   imports: [LazyModule],
   declarations: [LazyElementsComponent, LazyElementDirective],
-  exports: [LazyElementsComponent, LazyElementDirective],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  exports: [LazyElementsComponent, LazyElementDirective]
 })
 export class LazyElementModule {
   constructor(

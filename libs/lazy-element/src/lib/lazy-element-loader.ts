@@ -1,4 +1,4 @@
-import { findComponentFromModuleRef, LazyModuleLoader, LazyModuleLoaderBase } from '@aiao/lazy-module';
+import { LazyModuleLoader, LazyModuleLoaderBase } from '@aiao/lazy-module';
 import { Injectable } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 
@@ -39,7 +39,7 @@ export class LazyElementLoader extends LazyModuleLoaderBase {
       .load(selector)
       .then(moduleRef => {
         const injector = moduleRef.injector;
-        const CustomElementComponent = findComponentFromModuleRef(moduleRef, selector);
+        const CustomElementComponent = moduleRef.instance.customElementComponent;
         const CustomElement = createCustomElement(CustomElementComponent, { injector });
         customElements.define(selector, CustomElement);
         return customElements.whenDefined(selector);

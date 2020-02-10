@@ -3,5 +3,6 @@
   "dest": "../../dist/libs/lazy-element",
   "lib": {
     "entryFile": "src/index.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": ["@aiao/lazy-module"]
 }

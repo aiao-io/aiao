@@ -21,7 +21,7 @@
     "build": "cd ../.. && ng build lazy-module"
   },
   "peerDependencies": {
-    "@angular/common": "^8.0.0",
-    "@angular/core": "^8.0.0"
+    "@angular/common": "^9.0.0",
+    "@angular/core": "^9.0.0"
   }
 }
