@@ -12,7 +12,7 @@ export const DIRECTIVES = [MyComponent];
   exports: DIRECTIVES
 })
 export class AngularLibModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<AngularLibModule> {
     return {
       ngModule: AngularLibModule,
       providers: [

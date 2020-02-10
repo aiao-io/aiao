@@ -20,7 +20,7 @@
             "main": "apps/angular/src/main.ts",
             "polyfills": "apps/angular/src/polyfills.ts",
             "tsConfig": "apps/angular/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/angular/src/favicon.ico", "apps/angular/src/assets"],
             "styles": ["apps/angular/src/styles.scss"],
             "scripts": []
@@ -38,7 +38,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -162,7 +161,7 @@
       "prefix": "stencil-toolkit-nx",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/angular-lib/tsconfig.lib.json",
             "project": "libs/angular-lib/ng-package.json"
@@ -304,7 +303,7 @@
           }
         },
         "build": {
-          "builder": "@nrwl/web:bundle",
+          "builder": "@nrwl/web:package",
           "options": {
             "outputPath": "dist/libs/react-lib",
             "tsConfig": "libs/react-lib/tsconfig.lib.json",

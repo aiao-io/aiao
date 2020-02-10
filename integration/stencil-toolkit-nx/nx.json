@@ -9,7 +9,8 @@
   },
   "projects": {
     "angular-e2e": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["angular"]
     },
     "angular": {
       "tags": []
@@ -24,7 +25,8 @@
       "tags": []
     },
     "react-e2e": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["react"]
     },
     "react-lib": {
       "tags": []
