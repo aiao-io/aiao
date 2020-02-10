@@ -13,7 +13,7 @@
 ## 安装
 
 ```console
-yarn add @aiao/lazy-module
+yarn add @aiao/lazy-component
 ```
 
 ## 使用
