@@ -2,13 +2,23 @@
   "npmClient": "yarn",
   "packages": ["libs/*"],
   "version": "independent",
-  "ignoreChanges": ["apps/**", "integration/**", "**/*.md"],
+  "ignoreChanges": [
+    "angular.json",
+    "**/*.md",
+    "**/*.spec.ts",
+    "**/*.e2e.ts",
+    "**/package.json",
+    "**/test-setup.ts",
+    "**/tsconfig.lib.json",
+    "**/tsconfig.spec.json",
+    "**/tsconfig.json",
+    "**/jest.config.js"
+  ],
   "command": {
     "version": {
       "conventionalCommits": true,
-      "allowBranch": ["master"],
-      "push": false,
-      "gitTagVersion": false
+      "allowBranch": ["master", "version"],
+      "push": false
     }
   }
 }
