@@ -137,7 +137,7 @@ export class ElementsFrom implements ComponentInterface {
   private get formInputElements() {
     if (!this._formInputElements) {
       this._formInputElements = Array.from(this.form.elements).filter(
-        (d: any) => d && d.name && d.name !== 'undefined'
+        (d: any) => d?.name && d.name !== 'undefined'
       ) as HTMLInputElement[];
     }
     return this._formInputElements;
