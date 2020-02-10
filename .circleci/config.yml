@@ -42,7 +42,7 @@ set_env: &set_env
 # install
 install_yarn: &install_yarn
   name: yarn install
-  command: yarn install --frozen-lockfile --non-interactive --ignore-scripts && yarn run ngcc
+  command: yarn install --frozen-lockfile --non-interactive --ignore-scripts && yarn run ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points
 
 build_tools: &build_tools
   name: Build Tools
