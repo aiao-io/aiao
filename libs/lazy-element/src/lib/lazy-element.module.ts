@@ -23,7 +23,7 @@ export class LazyElementModule {
     }
   }
 
-  public static register(routes: LazyRoutes): ModuleWithProviders {
+  public static register(routes: LazyRoutes): ModuleWithProviders<LazyElementModule> {
     return {
       ngModule: LazyElementModule,
       providers: [

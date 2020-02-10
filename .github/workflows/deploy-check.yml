@@ -35,6 +35,7 @@ jobs:
         run: |
           yarn install --non-interactive --no-lockfile --ignore-scripts
           yarn build:tools
+          yarn run ngcc
           node dist/tools/scripts/check-workspace
       - name: build libs
         run: |

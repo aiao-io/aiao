@@ -16,7 +16,7 @@
     "color"
   ],
   "scripts": {
-    "build": "ng build color"
+    "build": "cd ../.. && ng build color"
   },
   "peerDependencies": {
     "lodash": "^4.17.15"

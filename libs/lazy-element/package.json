@@ -18,7 +18,7 @@
     "module"
   ],
   "scripts": {
-    "build": "ng build lazy-element"
+    "build": "cd ../.. && ng build lazy-element"
   },
   "peerDependencies": {
     "@aiao/lazy-module": "^1.3.0",
