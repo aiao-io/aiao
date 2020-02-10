@@ -14,7 +14,9 @@
             "project": "libs/util/ng-package.json"
           },
           "configurations": {
-            "production": {}
+            "production": {
+              "tsConfig": "libs/util/tsconfig.lib.prod.json"
+            }
           }
         },
         "lint": {
@@ -52,7 +54,9 @@
             "project": "libs/lazy-component/ng-package.json"
           },
           "configurations": {
-            "production": {}
+            "production": {
+              "tsConfig": "libs/lazy-component/tsconfig.lib.prod.json"
+            }
           }
         },
         "lint": {
@@ -90,7 +94,9 @@
             "project": "libs/lazy-module/ng-package.json"
           },
           "configurations": {
-            "production": {}
+            "production": {
+              "tsConfig": "libs/lazy-module/tsconfig.lib.prod.json"
+            }
           }
         },
         "lint": {
@@ -124,7 +130,9 @@
             "project": "libs/lazy-element/ng-package.json"
           },
           "configurations": {
-            "production": {}
+            "production": {
+              "tsConfig": "libs/lazy-element/tsconfig.lib.prod.json"
+            }
           }
         },
         "lint": {
@@ -158,7 +166,9 @@
             "project": "libs/color/ng-package.json"
           },
           "configurations": {
-            "production": {}
+            "production": {
+              "tsConfig": "libs/color/tsconfig.lib.prod.json"
+            }
           }
         },
         "lint": {
@@ -269,7 +279,9 @@
             "project": "libs/image-storage/ng-package.json"
           },
           "configurations": {
-            "production": {}
+            "production": {
+              "tsConfig": "libs/image-storage/tsconfig.lib.prod.json"
+            }
           }
         },
         "lint": {
@@ -307,7 +319,9 @@
             "project": "libs/elements-cdk/ng-package.json"
           },
           "configurations": {
-            "production": {}
+            "production": {
+              "tsConfig": "libs/elements-cdk/tsconfig.lib.prod.json"
+            }
           }
         },
         "lint": {
@@ -345,7 +359,9 @@
             "project": "libs/elements-angular/ng-package.json"
           },
           "configurations": {
-            "production": {}
+            "production": {
+              "tsConfig": "libs/elements-angular/tsconfig.lib.prod.json"
+            }
           }
         },
         "lint": {
@@ -381,6 +397,11 @@
           "options": {
             "tsConfig": "libs/typeorm-plus/tsconfig.lib.json",
             "project": "libs/typeorm-plus/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/typeorm-plus/tsconfig.lib.prod.json"
+            }
           }
         },
         "lint": {

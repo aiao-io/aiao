@@ -17,7 +17,7 @@
     "typeorm"
   ],
   "scripts": {
-    "build": "cd ../.. && ng build typeorm-plus"
+    "build": "cd ../.. && ng build typeorm-plus --prod"
   },
   "peerDependencies": {
     "sequelize": "^5.21.3",
