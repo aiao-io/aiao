@@ -7,8 +7,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @aiao/elements
 
-
-
-
-
 # 0.4.0 (2020-02-10)

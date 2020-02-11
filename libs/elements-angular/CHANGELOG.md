@@ -5,13 +5,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [0.4.0](https://github.com/aiao-io/aiao/compare/@aiao/elements-angular@0.3.0...@aiao/elements-angular@0.4.0) (2020-02-11)
 
-
-### Features
-
-* **aiao:** 修复 build lib 错误 ([f9376fe](https://github.com/aiao-io/aiao/commit/f9376fe1a4823cf18965187a50bc8eaad16eadfd))
-
-
-
-
-
 # 0.3.0 (2020-02-10)
