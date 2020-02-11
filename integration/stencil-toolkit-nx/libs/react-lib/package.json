@@ -2,12 +2,10 @@
   "name": "@stencil-toolkit-nx/react-lib",
   "version": "0.0.1",
   "scripts": {
-    "build": "ng build react-lib"
-  },
-  "dependencies": {
-    "@stencil-toolkit-nx/stencil-lib": "*"
+    "build": "cd ../../ && ng build react-lib"
   },
   "peerDependencies": {
+    "@stencil-toolkit-nx/stencil-lib": "*",
     "react": "*",
     "react-dom": "*"
   }

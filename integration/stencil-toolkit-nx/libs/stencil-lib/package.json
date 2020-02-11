@@ -17,10 +17,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "ng build stencil-lib && node scripts/build-clean"
-  },
-  "devDependencies": {
-    "@stencil/core": "*"
+    "build": "cd ../../ && ng build stencil-lib"
   },
   "license": "MIT"
 }

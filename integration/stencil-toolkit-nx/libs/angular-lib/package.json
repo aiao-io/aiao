@@ -2,13 +2,14 @@
   "name": "@stencil-toolkit-nx/angular-lib",
   "version": "0.0.1",
   "scripts": {
-    "build": "ng build angular-lib"
-  },
-  "dependencies": {
-    "@stencil-toolkit-nx/stencil-lib": "*"
+    "build": "cd ../../ && ng build angular-lib"
   },
   "peerDependencies": {
+    "@stencil-toolkit-nx/stencil-lib": "*",
     "@angular/common": "^8.2.11",
     "@angular/core": "^8.2.11"
+  },
+  "devDependencies": {
+    "@stencil-toolkit-nx/stencil-lib": "*"
   }
 }
