@@ -106,7 +106,7 @@ describe('formatPassTime', () => {
   });
 
   it('dayUTCFormat', () => {
-    const date = dayUTCFormat('2019-09-10T00:00:00.000Z', 480, 'yyyy-MM-dd HH:mm');
+    const date = dayUTCFormat('2019-09-10T00:00:00.000Z', 480, 'YYYY-MM-DD HH:mm');
     expect(date).toEqual('2019-09-10 08:00');
   });
 
@@ -123,27 +123,29 @@ describe('formatPassTime', () => {
   });
 
   it('safeAddDate', () => {
-    const date = safeAddDate(new Date('2019-09-10T00:00:00.000Z'), { days: 10 });
+    const date = safeAddDate(new Date('2019-09-10T00:00:00.000Z'), 10, 'day');
     expect(date.toISOString()).toEqual('2019-09-20T00:00:00.000Z');
   });
 
   it('safeAddDate end', () => {
-    const date = safeAddDate(new Date('2019-09-10T00:00:00.000Z'), { days: 10 }, new Date('2019-09-12T00:00:00.000Z'));
+    const date = safeAddDate(new Date('2019-09-10T00:00:00.000Z'), 10, 'day', new Date('2019-09-12T00:00:00.000Z'));
     expect(date.toISOString()).toEqual('2019-09-12T00:00:00.000Z');
   });
 
   it('safeAddDate end2', () => {
-    const date = safeAddDate(new Date('2019-09-10T00:00:00.000Z'), { days: 10 }, new Date('2019-10-12T00:00:00.000Z'));
+    const date = safeAddDate(new Date('2019-09-10T00:00:00.000Z'), 10, 'day', new Date('2019-10-12T00:00:00.000Z'));
     expect(date.toISOString()).toEqual('2019-09-20T00:00:00.000Z');
   });
 
   it('canBeDate', () => {
+    // false
     expect(canBeDate(null)).toBeFalsy();
     expect(canBeDate(undefined)).toBeFalsy();
     expect(canBeDate({})).toBeFalsy();
     expect(canBeDate('adf')).toBeFalsy();
+    expect(canBeDate('20')).toBeFalsy();
+    // true
     expect(canBeDate(1)).toBeTruthy();
-    expect(canBeDate('20')).toBeTruthy();
     expect(canBeDate(new Date())).toBeTruthy();
     expect(canBeDate(new Date(null))).toBeTruthy();
     expect(canBeDate(new Date().getTime())).toBeTruthy();
