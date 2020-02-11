@@ -1,4 +1,7 @@
-import { add as dfAdd, differenceInMinutes, format as dfFormat, parseISO } from 'date-fns';
+import dfAdd from 'date-fns/add';
+import differenceInMinutes from 'date-fns/differenceInMinutes';
+import dfFormat from 'date-fns/format';
+import parseISO from 'date-fns/parseISO';
 import isDate from 'lodash/isDate';
 import isFunction from 'lodash/isFunction';
 import isNil from 'lodash/isNil';
