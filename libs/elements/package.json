@@ -1,6 +1,6 @@
 {
   "name": "@aiao/elements",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "web components",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -40,10 +40,10 @@
     "@aiao/elements-cdk": "^0.0.4"
   },
   "devDependencies": {
-    "@aiao/util": "*",
     "@aiao/elements-cdk": "*",
-    "@aiao/image-storage": "*",
+    "@aiao/image-storage": "^0.1.0",
     "@aiao/stencil-toolkit": "*",
+    "@aiao/util": "^0.6.0",
     "@stencil/core": "*"
   }
 }
