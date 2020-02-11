@@ -1,7 +1,5 @@
-import dfAdd from 'date-fns/add';
-import differenceInMinutes from 'date-fns/differenceInMinutes';
-import dfFormat from 'date-fns/format';
-import parseISO from 'date-fns/parseISO';
+import dayJs, { ConfigType, OpUnitType } from 'dayjs';
+
 import isDate from 'lodash/isDate';
 import isFunction from 'lodash/isFunction';
 import isNil from 'lodash/isNil';
@@ -66,9 +64,9 @@ export const formatCountdown = (startDate: Date, endDate: Date, config?: ParseTi
  *  UTC 时间转换, 不同时区显示指定时区时间
  *  offset 分钟
  */
-export const dayUTCFormat = (data: string | number | Date, offset: number, format?: string): string => {
-  const d = toDate(data);
-  return dfFormat(d.getTime() + (offset + d.getTimezoneOffset()) * 60 * 1000, format);
+export const dayUTCFormat = (data: ConfigType, offset: number, format?: string): string => {
+  const d: any = dayJs(data);
+  return dayJs(d.valueOf() + (offset - d.utcOffset()) * 60 * 1000).format(format);
 };
 
 const offsetFn = (offset: number) => {
@@ -107,15 +105,16 @@ export const dateStringToDate = (date: string, time: string, offset: number) =>
 /**
  * 安全添加时间
  */
-export const safeAddDate = (start: Date, value: Duration, end?: Date): Date => {
-  const _date = dfAdd(start, value);
+export const safeAddDate = (start: ConfigType, value: number, unit: OpUnitType, end?: ConfigType): Date => {
+  const _dateStart = dayJs(start);
   if (end) {
-    const ex = differenceInMinutes(_date, end);
-    if (ex > 0) {
-      return end;
+    const _dateEnd = dayJs(end);
+    const ex = _dateEnd.diff(_dateStart, unit);
+    if (ex <= value) {
+      return _dateEnd.toDate();
     }
   }
-  return _date;
+  return _dateStart.add(value, unit).toDate();
 };
 
 /**
@@ -125,14 +124,11 @@ export const canBeDate = (date?: unknown) => {
   if (isNumber(date) || isDate(date)) {
     return true;
   }
-
   if (isNil(date)) {
     return false;
   }
-
   if (isString(date)) {
-    const a = parseISO(date);
-    return !isNaN(a.getTime());
+    return dayJs(date).isValid();
   }
   return false;
 };
@@ -140,15 +136,4 @@ export const canBeDate = (date?: unknown) => {
 /**
  * 转换字符串日期
  */
-export const toDate = (date: string | number | Date): Date => {
-  if (isNumber(date)) {
-    return new Date(date);
-  }
-  if (isDate(date)) {
-    return date;
-  }
-  if (isString(date)) {
-    return parseISO(date);
-  }
-  throw new Error(`${date} can't be Date`);
-};
+export const toDate = (date: ConfigType): Date => dayJs(date).toDate();
