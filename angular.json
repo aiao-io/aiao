@@ -498,6 +498,86 @@
           "styleext": "scss"
         }
       }
+    },
+    "random": {
+      "projectType": "library",
+      "root": "libs/random",
+      "sourceRoot": "libs/random/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/random/tsconfig.lib.json",
+            "project": "libs/random/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/random/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/random/tsconfig.lib.json", "libs/random/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/random/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/random/jest.config.js",
+            "tsConfig": "libs/random/tsconfig.spec.json",
+            "setupFile": "libs/random/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "url-join": {
+      "projectType": "library",
+      "root": "libs/url-join",
+      "sourceRoot": "libs/url-join/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/url-join/tsconfig.lib.json",
+            "project": "libs/url-join/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/url-join/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/url-join/tsconfig.lib.json", "libs/url-join/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/url-join/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/url-join/jest.config.js",
+            "tsConfig": "libs/url-join/tsconfig.spec.json",
+            "setupFile": "libs/url-join/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

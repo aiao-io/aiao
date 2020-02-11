@@ -46,6 +46,12 @@
     },
     "date": {
       "tags": []
+    },
+    "random": {
+      "tags": []
+    },
+    "url-join": {
+      "tags": []
     }
   }
 }

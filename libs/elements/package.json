@@ -37,12 +37,14 @@
     "build": "cd ../../ && ng build elements"
   },
   "dependencies": {
-    "@aiao/elements-cdk": "^0.0.4"
+    "@aiao/elements-cdk": "^0.0.4",
+    "@aiao/url-join": "^0.0.1"
   },
   "devDependencies": {
     "@aiao/elements-cdk": "*",
     "@aiao/image-storage": "^0.1.0",
     "@aiao/stencil-toolkit": "*",
+    "@aiao/url-join": "*",
     "@aiao/util": "^0.6.0",
     "@stencil/core": "*"
   }
