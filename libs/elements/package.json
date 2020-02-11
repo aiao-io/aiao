@@ -34,18 +34,16 @@
     "access": "public"
   },
   "scripts": {
-    "build": "cd ../../ && ng build elements && cd libs/elements && node scripts/build-clean"
+    "build": "cd ../../ && ng build elements"
   },
   "dependencies": {
     "@aiao/elements-cdk": "^0.0.4"
   },
-  "peerDependencies": {
-    "@aiao/image-storage": "^0.0.2"
-  },
   "devDependencies": {
+    "@aiao/util": "*",
     "@aiao/elements-cdk": "*",
-    "@aiao/image-storage": "^0.0.4",
-    "@aiao/stencil-toolkit": "^0.0.12",
+    "@aiao/image-storage": "*",
+    "@aiao/stencil-toolkit": "*",
     "@stencil/core": "*"
   }
 }

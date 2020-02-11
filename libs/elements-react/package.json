@@ -19,11 +19,11 @@
     "build": "cd ../../ && ng build elements-react"
   },
   "peerDependencies": {
-    "@aiao/elements": "^0.1.0",
+    "@aiao/elements": "^0.4.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
-    "@aiao/elements": "^0.4.0"
+    "@aiao/elements": "*"
   }
 }

@@ -15,11 +15,5 @@
   "keywords": [],
   "scripts": {
     "build": "cd ../../ && ng build image-storage --prod"
-  },
-  "peerDependencies": {
-    "@aiao/util": "^0.3.0"
-  },
-  "devDependencies": {
-    "@aiao/util": "^0.5.0"
   }
 }

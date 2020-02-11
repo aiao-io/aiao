@@ -353,7 +353,7 @@
       "prefix": "aiao",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/elements-angular/tsconfig.lib.json",
             "project": "libs/elements-angular/ng-package.json"
