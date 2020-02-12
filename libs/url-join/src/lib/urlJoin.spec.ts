@@ -1,4 +1,4 @@
-import { urlJoin } from './url';
+import { urlJoin } from './urlJoin';
 
 describe('urlJoin', () => {
   it('should work for simple case', () => {

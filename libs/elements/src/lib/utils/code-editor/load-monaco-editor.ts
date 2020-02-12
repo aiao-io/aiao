@@ -1,4 +1,4 @@
-import { urlJoin } from '@aiao/util';
+import { urlJoin } from '@aiao/url-join';
 
 export class LoadMonacoEditor {
   protected _load: Promise<void>;
