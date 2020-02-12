@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'url-join',
+  name: 'url',
   preset: '../../jest.config.js',
-  coverageDirectory: '../../coverage/libs/url-join',
+  coverageDirectory: '../../coverage/libs/url',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

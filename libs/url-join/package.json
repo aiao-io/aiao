@@ -1,8 +1,8 @@
 {
-  "name": "@aiao/url-join",
+  "name": "@aiao/url",
   "version": "0.0.1",
   "scripts": {
-    "build": "cd ../../ && ng build url-join --prod"
+    "build": "cd ../../ && ng build url --prod"
   },
   "peerDependencies": {
     "@angular/common": "^9.0.0",

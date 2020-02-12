@@ -539,37 +539,37 @@
         }
       }
     },
-    "url-join": {
+    "url": {
       "projectType": "library",
-      "root": "libs/url-join",
-      "sourceRoot": "libs/url-join/src",
+      "root": "libs/url",
+      "sourceRoot": "libs/url/src",
       "prefix": "aiao",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
           "options": {
-            "tsConfig": "libs/url-join/tsconfig.lib.json",
-            "project": "libs/url-join/ng-package.json"
+            "tsConfig": "libs/url/tsconfig.lib.json",
+            "project": "libs/url/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/url-join/tsconfig.lib.prod.json"
+              "tsConfig": "libs/url/tsconfig.lib.prod.json"
             }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/url-join/tsconfig.lib.json", "libs/url-join/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/url-join/**"]
+            "tsConfig": ["libs/url/tsconfig.lib.json", "libs/url/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/url/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/url-join/jest.config.js",
-            "tsConfig": "libs/url-join/tsconfig.spec.json",
-            "setupFile": "libs/url-join/src/test-setup.ts"
+            "jestConfig": "libs/url/jest.config.js",
+            "tsConfig": "libs/url/tsconfig.spec.json",
+            "setupFile": "libs/url/src/test-setup.ts"
           }
         }
       },
