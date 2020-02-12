@@ -42,10 +42,10 @@
   },
   "devDependencies": {
     "@aiao/elements-cdk": "*",
-    "@aiao/image-storage": "^0.1.0",
+    "@aiao/image-storage": "*",
     "@aiao/stencil-toolkit": "*",
     "@aiao/url-join": "*",
-    "@aiao/util": "^0.6.0",
+    "@aiao/util": "*",
     "@stencil/core": "*"
   }
 }

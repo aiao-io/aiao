@@ -1978,18 +1978,18 @@
     tslib "^1.9.0"
     ws "^7.0.1"
 
-"@ionic/angular@^5.0.0-rc.4":
-  version "5.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/@ionic/angular/-/angular-5.0.0-rc.4.tgz#2fb63ddadb8e9f6f4b89c8559e1e0f276aec4853"
-  integrity sha512-xRMBXYGz3n3kph4fshQ7BadcXon/E8xWQBFaHGXQo6pR7iFHVifc4pyR2XwwZRsNTB0kWxsDZL7FT4j12nQ9KA==
+"@ionic/angular@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@ionic/angular/-/angular-5.0.0.tgz#198bc0845c096f06e0363e82c234841fdf5dfea2"
+  integrity sha512-LUcc3xj/yEminnMC4mRWcOVgXP0LjWS6MKA7GHHChsXHKvg7xhP39z2l88kmplTED3TH6bSD2HF060/jFkXaPg==
   dependencies:
-    "@ionic/core" "5.0.0-rc.4"
+    "@ionic/core" "5.0.0"
     tslib "^1.9.3"
 
-"@ionic/core@5.0.0-rc.4", "@ionic/core@^5.0.0-rc.4":
-  version "5.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/@ionic/core/-/core-5.0.0-rc.4.tgz#8564957a8487c96c5ed8158228d26d1ee10e28c8"
-  integrity sha512-G2r4x+eed4AcQGsVV/UfyM8xRBKg+Pr8jPtSBSnuiPjDEB7dN9n3cfBsIG86AEjhELa17YPjNgsAWAqXOw72Pg==
+"@ionic/core@5.0.0", "@ionic/core@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@ionic/core/-/core-5.0.0.tgz#c872c2658b174c6320761094b781557001f703d3"
+  integrity sha512-F+qSeL6Icy34dgpWvXe2ImwtlXrz6KbAthVpy3VSzlbZ5Du8V7xfe4RXXE2TtFsfV1lLOmX1KAgxbYnlMMlYzw==
   dependencies:
     ionicons "^5.0.0"
     tslib "^1.10.0"
@@ -7985,11 +7985,6 @@ gzip-size@^5.1.1:
     duplexer "^0.1.1"
     pify "^4.0.1"
 
-hammerjs@^2.0.8:
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
-  integrity sha1-BO93hiz/K7edMPdpIJWTAiK/YPE=
-
 handle-thing@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-2.0.0.tgz#0e039695ff50c93fc288557d696f3c1dc6776754"
@@ -8306,10 +8301,10 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
-husky@^4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-4.2.1.tgz#b09f1bd9129e6c323cc515dc17081d0615e2d7c1"
-  integrity sha512-Qa0lRreeIf4Tl92sSs42ER6qc3hzoyQPPorzOrFWfPEVbdi6LuvJEqWKPk905fOWIR76iBpp7ECZNIwk+a8xuQ==
+husky@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-4.2.2.tgz#aa858a99ad685f13ab5f99fa71b60e0fe0cd9048"
+  integrity sha512-RAjZNO74zJyFJuRFESy+3LXTJvYbjGL+jhoSNJNF1DTKq2USrL5fEH70e1cJXEgvLaPyZt1NoGi0oNQQkPs4jA==
   dependencies:
     chalk "^3.0.0"
     ci-info "^2.0.0"
@@ -10695,10 +10690,10 @@ moment@2.24.0, "moment@>= 2.9.0", moment@^2.24.0:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
 
-monaco-editor@^0.19.3:
-  version "0.19.3"
-  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.19.3.tgz#1c994b3186c00650dbcd034d5370d46bf56c0663"
-  integrity sha512-2n1vJBVQF2Hhi7+r1mMeYsmlf18hjVb6E0v5SoMZyb4aeOmYPKun+CE3gYpiNA1KEvtSdaDHFBqH9d7Wd9vREg==
+monaco-editor@^0.20.0:
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.20.0.tgz#5d5009343a550124426cb4d965a4d27a348b4dea"
+  integrity sha512-hkvf4EtPJRMQlPC3UbMoRs0vTAFAYdzFQ+gpMb8A+9znae1c43q8Mab9iVsgTcg/4PNiLGGn3SlDIa8uvK1FIQ==
 
 move-concurrently@^1.0.1:
   version "1.0.1"
