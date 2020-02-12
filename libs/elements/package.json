@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@aiao/elements-cdk": "^0.0.4",
-    "@aiao/url": "^0.0.2"
+    "@aiao/url": "^0.0.1"
   },
   "devDependencies": {
     "@aiao/elements-cdk": "*",
