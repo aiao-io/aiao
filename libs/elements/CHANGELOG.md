@@ -5,17 +5,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [0.5.0](https://github.com/aiao-io/aiao/compare/@aiao/elements@0.4.1...@aiao/elements@0.5.0) (2020-02-12)
 
-
-### Features
-
-* **aiao:** 添加 @aiao/date ([#62](https://github.com/aiao-io/aiao/issues/62)) ([78c783a](https://github.com/aiao-io/aiao/commit/78c783a7dba041da41a6e83624ed35d8d371b54b))
-
-
-
-
+**Note:** Version bump only for package @aiao/elements
 
 ## [0.4.1](https://github.com/aiao-io/aiao/compare/@aiao/elements@0.4.0...@aiao/elements@0.4.1) (2020-02-11)
 
 **Note:** Version bump only for package @aiao/elements
 
 # 0.4.0 (2020-02-10)
+
+**Note:** Version bump only for package @aiao/elements

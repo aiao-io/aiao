@@ -6,11 +6,3 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## [0.4.1](https://github.com/aiao-io/aiao/compare/@aiao/elements-angular@0.4.0...@aiao/elements-angular@0.4.1) (2020-02-12)
 
 **Note:** Version bump only for package @aiao/elements-angular
-
-
-
-
-
-# [0.4.0](https://github.com/aiao-io/aiao/compare/@aiao/elements-angular@0.3.0...@aiao/elements-angular@0.4.0) (2020-02-11)
-
-# 0.3.0 (2020-02-10)
