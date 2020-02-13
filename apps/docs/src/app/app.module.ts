@@ -13,28 +13,16 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePage } from './home/home.page';
-import { NavItemComponent } from './layout/nav-item/nav-item.component';
-import { NavMenuComponent } from './layout/nav-menu/nav-menu.component';
 import { changeLanguageReducer } from './local/language.reducer';
 import { LanguageListComponent } from './nav/language-list/language-list.component';
 import { SideNavComponent } from './nav/side-nav/side-nav.component';
 import { TocComponent } from './nav/toc/toc.component';
-import { NavigationService } from './navigation/navigation.service';
 import { ScrollSpyService } from './share/scroll-spy.service';
 import { ScrollService } from './share/scroll.service';
 import { TocService } from './share/toc.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomePage,
-    LanguageListComponent,
-    SideNavComponent,
-    TocComponent,
-    SideNavComponent,
-    NavMenuComponent,
-    NavItemComponent
-  ],
+  declarations: [AppComponent, HomePage, LanguageListComponent, SideNavComponent, TocComponent, SideNavComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
@@ -69,8 +57,7 @@ import { TocService } from './share/toc.service';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ScrollService,
     ScrollSpyService,
-    TocService,
-    NavigationService
+    TocService
   ],
   bootstrap: [AppComponent]
 })
