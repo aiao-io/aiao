@@ -14,4 +14,7 @@ mat-tree-node {
   justify-content: flex-start;
   cursor: pointer;
   user-select: none;
+  ion-text {
+    flex: 1;
+  }
 }

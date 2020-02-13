@@ -11,6 +11,7 @@ interface NavNode {
   name: string;
   type: string;
   path: string;
+  hasMd: boolean;
   children: NavNode[];
 }
 
@@ -19,6 +20,7 @@ interface ExampleFlatNode {
   name: string;
   level: number;
   path: string;
+  hasMd: boolean;
 }
 
 @Component({
@@ -34,7 +36,8 @@ export class SideNavComponent implements OnInit, OnDestroy {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
       level: level,
-      path: node.path
+      path: node.path,
+      hasMd: node.hasMd
     };
   };
   // tslint:disable-next-line: member-ordering
@@ -71,15 +74,13 @@ export class SideNavComponent implements OnInit, OnDestroy {
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
   onClick(node: ExampleFlatNode) {
-    if (node.path && !node.expandable) {
+    if (node.path && (!node.expandable || node.hasMd)) {
       this.router.navigateByUrl(node.path);
     }
   }
 
   compactFolder(node: NavNode) {
     if (node.children.length === 1 && node.children[0].type === 'dir') {
-      node.name = node.name + '/' + node.children[0].name;
-      node.path = node.children[0].path;
       node.children = node.children[0].children;
       this.compactFolder(node);
     }

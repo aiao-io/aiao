@@ -8,10 +8,10 @@
   </mat-tree-node>
   <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodeToggle>
     <a class="nav-node" (click)="onClick(node)">
-      <ion-icon [name]="treeControl.isExpanded(node) ? 'ios-arrow-down' : 'ios-arrow-forward'"></ion-icon>
       <ion-text color="primary"
         ><span>{{ node.name }}</span></ion-text
       >
+      <ion-icon class="ion-padding-end" [name]="treeControl.isExpanded(node) ? 'ios-arrow-down' : 'ios-arrow-forward'"></ion-icon>
     </a>
   </mat-tree-node>
 </mat-tree>

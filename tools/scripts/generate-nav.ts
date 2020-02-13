@@ -10,11 +10,11 @@ const arr = [];
 
 //调用函数遍历根目录，同时传递 文件夹路径和对应的数组
 //请使用同步读取
-generateNavigation(mdFilePath, arr);
+generateNavigation(mdFilePath, arr, undefined);
 //读取完毕则写入到json文件中
 fs.writeFileSync(destinationFile, JSON.stringify(arr));
 
-function generateNavigation(dirPath: string, ary: any[], parentName = '', parentPath = '') {
+function generateNavigation(dirPath: string, ary: any[], parent: any, parentName = '', parentPath = '') {
   const filesList = fs.readdirSync(dirPath);
   const routerPath = resolvePath(mdFilePath, parentPath);
 
@@ -23,8 +23,12 @@ function generateNavigation(dirPath: string, ary: any[], parentName = '', parent
   }
 
   if (hasMdAndDir(filesList)) {
-    addIntroductionItem(ary, routerPath, parentName, parentPath);
-    retrieveFilesList(filterDir(filesList), ary, dirPath, 1);
+    if (!parent) {
+      addIntroductionItem(ary, routerPath, parentName, parentPath);
+      retrieveFilesList(filterDir(filesList), ary, dirPath, 1);
+    } else {
+      retrieveFilesList(filterDir(filesList), ary, dirPath);
+    }
   } else {
     retrieveFilesList(filesList, ary, dirPath);
   }
@@ -43,10 +47,17 @@ function retrieveFilesList(filesList: any[], ary: any[], dirPath: string, indexP
       //如果是文件夹
       fileObj.type = 'dir';
       fileObj.path = resolvePath(mdFilePath, filePath);
+      const _filesList = fs.readdirSync(filePath);
+      console.log('_filesList', _filesList);
+      if (_filesList.some(fl => /.md$/i.test(fl))) {
+        fileObj.hasMd = true;
+      } else {
+        fileObj.hasMd = false;
+      }
       fileObj.children = [];
       ary.push(fileObj);
       //递归调用
-      generateNavigation(filePath, ary[i + indexPlus].children, filesList[i], filePath);
+      generateNavigation(filePath, ary[i + indexPlus].children, ary[i + indexPlus], filesList[i], filePath);
     }
   }
 }
