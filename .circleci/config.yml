@@ -165,7 +165,9 @@ jobs:
       - run: *format
       - run: *lint
       - run: *check_lodash
-      - run: *build_libs
+      - run: *build_libs1
+      - run: *build_libs2
+      - run: *build_libs3
       - run: *test_master
       - run: *integration_test
       - run: *coverage
