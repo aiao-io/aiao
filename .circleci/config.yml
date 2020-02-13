@@ -53,9 +53,19 @@ check_workspace: &check_workspace
   command: node dist/tools/scripts/check-workspace
 
 # build
-build_libs: &build_libs
+build_libs1: &build_libs1
   name: Build Libs
-  command: node --max_old_space_size=2048 ./node_modules/.bin/lerna run build --scope @aiao/*
+  command: node --max_old_space_size=4096 ./node_modules/.bin/lerna run build --scope @aiao/color --scope @aiao/date --scope @aiao/image-storage --scope @aiao/random --scope @aiao/url --scope @aiao/util
+
+# build
+build_libs2: &build_libs2
+  name: Build Libs
+  command: node --max_old_space_size=4096 ./node_modules/.bin/lerna run build --scope @aiao/elements --scope @aiao/elements-angular --scope @aiao/elements-cdk --scope @aiao/elements-react --scope @aiao/stencil-toolkit
+
+# build
+build_libs3: &build_libs3
+  name: Build Libs
+  command: node --max_old_space_size=4096 ./node_modules/.bin/lerna run build --scope @aiao/lazy-component --scope @aiao/lazy-element --scope @aiao/lazy-module --scope @aiao/typeorm-plus
 
 # cache
 restore_yarn_cache: &restore_yarn_cache
@@ -132,7 +142,9 @@ jobs:
       - run: *format
       - run: *lint
       - run: *check_lodash
-      - run: *build_libs
+      - run: *build_libs1
+      - run: *build_libs2
+      - run: *build_libs3
       - run: *test
       - run: *integration_test
       - run: *coverage
