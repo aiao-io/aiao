@@ -1,6 +1,6 @@
 {
   "name": "@aiao/elements-angular",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "elements for angular",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -21,7 +21,7 @@
     "build": "cd ../../ && ng build elements-angular --prod"
   },
   "dependencies": {
-    "@aiao/elements": "^0.5.0"
+    "@aiao/elements": "^0.5.2"
   },
   "peerDependencies": {
     "@angular/common": "^9.0.0",

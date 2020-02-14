@@ -1,6 +1,6 @@
 {
   "name": "@aiao/elements",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "web components",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -37,7 +37,7 @@
     "build": "cd ../../ && ng build elements"
   },
   "dependencies": {
-    "@aiao/elements-cdk": "^0.0.4",
+    "@aiao/elements-cdk": "^0.1.0",
     "@aiao/url": "^0.0.1"
   },
   "devDependencies": {
