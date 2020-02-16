@@ -4,7 +4,7 @@
 
 lazy load any `module`'s `component`. https://github.com/angular/angular/issues/14324 issue's solution
 
-> 此方法只适用 angular 8 或是 angular 9 非 ivy（待验证）
+> 此方法只适用 angular 8 或是 angular 9 非 ivy
 
 ## Use Case
 
