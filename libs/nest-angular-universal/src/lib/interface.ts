@@ -1,7 +1,7 @@
 import { NgSetupOptions } from '@aiao/universal-fastify-engine';
 import { StaticProvider } from '@angular/core';
 
-export interface NgUniversalFastifyOptions extends NgSetupOptions {
+export interface NestUniversalOptions extends NgSetupOptions {
   disableRender?: boolean;
   production?: boolean;
   providers?: StaticProvider[];

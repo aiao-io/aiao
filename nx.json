@@ -65,6 +65,13 @@
     "dev-universal-fastify-engine-e2e": {
       "tags": [],
       "implicitDependencies": ["dev-universal-fastify-engine"]
+    },
+    "dev-nest-angular-universal": {
+      "tags": []
+    },
+    "dev-nest-angular-universal-e2e": {
+      "tags": [],
+      "implicitDependencies": ["dev-nest-angular-universal"]
     }
   }
 }

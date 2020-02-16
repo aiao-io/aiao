@@ -832,6 +832,180 @@
           }
         }
       }
+    },
+    "dev-nest-angular-universal": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/dev-nest-angular-universal",
+      "sourceRoot": "apps/dev-nest-angular-universal/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/dev-nest-angular-universal/browser",
+            "index": "apps/dev-nest-angular-universal/src/index.html",
+            "main": "apps/dev-nest-angular-universal/src/main.ts",
+            "polyfills": "apps/dev-nest-angular-universal/src/polyfills.ts",
+            "tsConfig": "apps/dev-nest-angular-universal/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/dev-nest-angular-universal/src/favicon.ico", "apps/dev-nest-angular-universal/src/assets"],
+            "styles": ["apps/dev-nest-angular-universal/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/dev-nest-angular-universal/src/environments/environment.ts",
+                  "with": "apps/dev-nest-angular-universal/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "dev-nest-angular-universal:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "dev-nest-angular-universal:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "dev-nest-angular-universal:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/dev-nest-angular-universal/tsconfig.app.json",
+              "apps/dev-nest-angular-universal/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/dev-nest-angular-universal/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/dev-nest-angular-universal/jest.config.js",
+            "tsConfig": "apps/dev-nest-angular-universal/tsconfig.spec.json",
+            "setupFile": "apps/dev-nest-angular-universal/src/test-setup.ts"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/apps/dev-nest-angular-universal/server",
+            "main": "apps/dev-nest-angular-universal/server.ts",
+            "tsConfig": "apps/dev-nest-angular-universal/tsconfig.server.json",
+            "showCircularDependencies": false,
+            "externalDependencies": [
+              "@nestjs/microservices",
+              "@nestjs/microservices/microservices-module",
+              "@nestjs/websockets",
+              "@nestjs/websockets/socket-module",
+              "cache-manager",
+              "@nestjs/platform-fastify",
+              "fast-json-stringify"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "apps/dev-nest-angular-universal/src/environments/environment.ts",
+                  "with": "apps/dev-nest-angular-universal/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": false
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "dev-nest-angular-universal:build",
+            "serverTarget": "dev-nest-angular-universal:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "dev-nest-angular-universal:build:production",
+              "serverTarget": "dev-nest-angular-universal:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "dev-nest-angular-universal:build:production",
+            "serverTarget": "dev-nest-angular-universal:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
+          }
+        }
+      }
+    },
+    "dev-nest-angular-universal-e2e": {
+      "root": "apps/dev-nest-angular-universal-e2e",
+      "sourceRoot": "apps/dev-nest-angular-universal-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/dev-nest-angular-universal-e2e/cypress.json",
+            "tsConfig": "apps/dev-nest-angular-universal-e2e/tsconfig.e2e.json",
+            "devServerTarget": "dev-nest-angular-universal:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "dev-nest-angular-universal:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/dev-nest-angular-universal-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/dev-nest-angular-universal-e2e/**"]
+          }
+        }
+      }
     }
   },
   "cli": {
@@ -852,5 +1026,5 @@
       }
     }
   },
-  "defaultProject": "dev-universal-fastify-engine"
+  "defaultProject": "dev-nest-angular-universal"
 }

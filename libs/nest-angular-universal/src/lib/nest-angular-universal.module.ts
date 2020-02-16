@@ -6,7 +6,7 @@ import { DynamicModule, Inject, Module, OnModuleInit } from '@nestjs/common';
 import { HttpAdapterHost } from '@nestjs/core';
 
 import { NEST_ANGULAR_UNIVERSAL_OPTIONS } from './constants';
-import { NgUniversalFastifyOptions } from './interface';
+import { NestUniversalOptions } from './interface';
 import { angularUniversalProviders } from './providers';
 
 @Module({
@@ -15,11 +15,11 @@ import { angularUniversalProviders } from './providers';
 export class NestAngularUniversalModule implements OnModuleInit {
   constructor(
     @Inject(NEST_ANGULAR_UNIVERSAL_OPTIONS)
-    private readonly options: NgUniversalFastifyOptions,
+    private readonly options: NestUniversalOptions,
     private readonly httpAdapterHost: HttpAdapterHost
   ) {}
 
-  static forRoot(options: NgUniversalFastifyOptions): DynamicModule {
+  static forRoot(options: NestUniversalOptions): DynamicModule {
     return {
       module: NestAngularUniversalModule,
       providers: [

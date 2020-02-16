@@ -6,7 +6,7 @@ import { join } from 'path';
 
 import { ngFastilyEngine } from '@aiao/universal-fastify-engine';
 
-import { NgUniversalFastifyOptions } from './interface';
+import { NestUniversalOptions } from './interface';
 
 const promiseExistFile = (indexHtml: string) => {
   return new Promise(resolve => {
@@ -25,7 +25,7 @@ const promiseExistFile = (indexHtml: string) => {
   });
 };
 
-export const setupUniversal = async (app: FastifyInstance, options: NgUniversalFastifyOptions) => {
+export const setupUniversal = async (app: FastifyInstance, options: NestUniversalOptions) => {
   const {
     bootstrap,
     defaultLocale,
