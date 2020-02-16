@@ -10,13 +10,12 @@ import { NestUniversalOptions } from './interface';
 
 const promiseExistFile = (indexHtml: string) => {
   return new Promise(resolve => {
-    let timer: any;
     const pt = () => {
       if (existsSync(indexHtml)) {
         resolve(true);
       } else {
         console.log(`waiting browser build`);
-        timer = setTimeout(() => {
+        setTimeout(() => {
           pt();
         }, 500);
       }
