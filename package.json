@@ -35,12 +35,13 @@
     "clean": "git clean -dxf",
     "commit": "./node_modules/cz-customizable/standalone.js",
     "intergration-test": "bash ./tools/scripts/intergration-test.sh",
-    "postinstall": "yarn build:tools && yarn check:workspace && yarn postngcc",
+    "postinstall": "yarn build:tools && yarn check:workspace && yarn task:hotfix && yarn postngcc",
     "postngcc": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "preinstall": "rm -rf node_modules/@aiao",
     "prepush": "yarn check:commit && yarn format:check",
     "run:tools": "ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register",
-    "task:lodash-optimize": "yarn node dist/tools/scripts/affected-lodash-optimize && yarn format"
+    "task:lodash-optimize": "yarn node dist/tools/scripts/affected-lodash-optimize && yarn format",
+    "task:hotfix": "node dist/tools/hotfix/hotfix"
   },
   "private": true,
   "dependencies": {
