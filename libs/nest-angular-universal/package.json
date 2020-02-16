@@ -2,6 +2,13 @@
   "name": "@aiao/nest-angular-universal",
   "version": "0.0.1",
   "peerDependencies": {
+    "@aiao/universal-fastify-engine": "^0.0.1",
+    "@angular/core": "^9.0.0",
+    "@nestjs/common": "^6.11.7",
+    "@nestjs/core": "^6.11.7",
     "tslib": "^1.10.0"
+  },
+  "devDependencies": {
+    "@aiao/universal-fastify-engine": "*"
   }
 }

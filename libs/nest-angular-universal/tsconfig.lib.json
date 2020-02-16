@@ -6,7 +6,10 @@
     "declaration": true,
     "inlineSources": true,
     "types": [],
-    "lib": ["dom", "es2018"]
+    "lib": ["dom", "es2018"],
+    "paths": {
+      "@aiao/universal-fastify-engine": ["dist/libs/universal-fastify-engine"]
+    }
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,

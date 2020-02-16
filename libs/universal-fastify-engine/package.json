@@ -2,8 +2,11 @@
   "name": "@aiao/universal-fastify-engine",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^9.0.0",
     "@angular/core": "^9.0.0",
+    "@nguniversal/common": "^9.0.0",
+    "fastify-plugin": "^1.6.0",
+    "fastify-static": "^2.6.0",
+    "fastify": "^2.0.0",
     "tslib": "^1.10.0"
   }
 }
