@@ -578,6 +578,92 @@
           "styleext": "scss"
         }
       }
+    },
+    "universal-fastify-engine": {
+      "projectType": "library",
+      "root": "libs/universal-fastify-engine",
+      "sourceRoot": "libs/universal-fastify-engine/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/universal-fastify-engine/tsconfig.lib.json",
+            "project": "libs/universal-fastify-engine/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/universal-fastify-engine/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/universal-fastify-engine/tsconfig.lib.json",
+              "libs/universal-fastify-engine/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/universal-fastify-engine/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/universal-fastify-engine/jest.config.js",
+            "tsConfig": "libs/universal-fastify-engine/tsconfig.spec.json",
+            "setupFile": "libs/universal-fastify-engine/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "nest-angular-universal": {
+      "projectType": "library",
+      "root": "libs/nest-angular-universal",
+      "sourceRoot": "libs/nest-angular-universal/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/nest-angular-universal/tsconfig.lib.json",
+            "project": "libs/nest-angular-universal/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/nest-angular-universal/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/nest-angular-universal/tsconfig.lib.json",
+              "libs/nest-angular-universal/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/nest-angular-universal/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/nest-angular-universal/jest.config.js",
+            "tsConfig": "libs/nest-angular-universal/tsconfig.spec.json",
+            "setupFile": "libs/nest-angular-universal/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

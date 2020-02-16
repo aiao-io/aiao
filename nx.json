@@ -52,6 +52,12 @@
     },
     "url": {
       "tags": []
+    },
+    "universal-fastify-engine": {
+      "tags": []
+    },
+    "nest-angular-universal": {
+      "tags": []
     }
   }
 }
