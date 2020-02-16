@@ -1,7 +1,16 @@
-# random
+# @aiao/random
 
-This library was generated with [Nx](https://nx.dev).
+[![npm][shields-random]][npm-random]
 
-## Running unit tests
+一些随机数生成方法
 
-Run `nx test random` to execute the unit tests.
+## Install
+
+```console
+npm install @aiao/random
+```
+
+## Usage
+
+[shields-random]: https://img.shields.io/npm/v/@aiao/random?style=flat-square
+[npm-random]: https://www.npmjs.com/@aiao/random

@@ -4,7 +4,7 @@
 
 按需加载 任意 `module` 的 `component`. https://github.com/angular/angular/issues/14324 的解决方案
 
-> 此方法只适用 angular 8 或是 angular 9 非 ivy（待验证）
+> 此方法只适用 angular 8 或是 angular 9 非 ivy
 
 ## 场景
 
