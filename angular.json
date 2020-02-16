@@ -664,6 +664,174 @@
           "styleext": "scss"
         }
       }
+    },
+    "dev-universal-fastify-engine": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/dev-universal-fastify-engine",
+      "sourceRoot": "apps/dev-universal-fastify-engine/src",
+      "prefix": "aiao",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/dev-universal-fastify-engine/browser",
+            "index": "apps/dev-universal-fastify-engine/src/index.html",
+            "main": "apps/dev-universal-fastify-engine/src/main.ts",
+            "polyfills": "apps/dev-universal-fastify-engine/src/polyfills.ts",
+            "tsConfig": "apps/dev-universal-fastify-engine/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/dev-universal-fastify-engine/src/favicon.ico",
+              "apps/dev-universal-fastify-engine/src/assets"
+            ],
+            "styles": ["apps/dev-universal-fastify-engine/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/dev-universal-fastify-engine/src/environments/environment.ts",
+                  "with": "apps/dev-universal-fastify-engine/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "dev-universal-fastify-engine:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "dev-universal-fastify-engine:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "dev-universal-fastify-engine:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/dev-universal-fastify-engine/tsconfig.app.json",
+              "apps/dev-universal-fastify-engine/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/dev-universal-fastify-engine/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/dev-universal-fastify-engine/jest.config.js",
+            "tsConfig": "apps/dev-universal-fastify-engine/tsconfig.spec.json",
+            "setupFile": "apps/dev-universal-fastify-engine/src/test-setup.ts"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/apps/dev-universal-fastify-engine/server",
+            "main": "apps/dev-universal-fastify-engine/server.ts",
+            "tsConfig": "apps/dev-universal-fastify-engine/tsconfig.server.json",
+            "externalDependencies": ["fast-json-stringify", "pino"]
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "apps/dev-universal-fastify-engine/src/environments/environment.ts",
+                  "with": "apps/dev-universal-fastify-engine/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "dev-universal-fastify-engine:build",
+            "serverTarget": "dev-universal-fastify-engine:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "dev-universal-fastify-engine:build:production",
+              "serverTarget": "dev-universal-fastify-engine:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "dev-universal-fastify-engine:build:production",
+            "serverTarget": "dev-universal-fastify-engine:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
+          }
+        }
+      }
+    },
+    "dev-universal-fastify-engine-e2e": {
+      "root": "apps/dev-universal-fastify-engine-e2e",
+      "sourceRoot": "apps/dev-universal-fastify-engine-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/dev-universal-fastify-engine-e2e/cypress.json",
+            "tsConfig": "apps/dev-universal-fastify-engine-e2e/tsconfig.e2e.json",
+            "devServerTarget": "dev-universal-fastify-engine:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "dev-universal-fastify-engine:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/dev-universal-fastify-engine-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/dev-universal-fastify-engine-e2e/**"]
+          }
+        }
+      }
     }
   },
   "cli": {
@@ -684,5 +852,5 @@
       }
     }
   },
-  "defaultProject": "lazy-component"
+  "defaultProject": "dev-universal-fastify-engine"
 }

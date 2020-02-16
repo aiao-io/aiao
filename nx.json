@@ -58,6 +58,13 @@
     },
     "nest-angular-universal": {
       "tags": []
+    },
+    "dev-universal-fastify-engine": {
+      "tags": []
+    },
+    "dev-universal-fastify-engine-e2e": {
+      "tags": [],
+      "implicitDependencies": ["dev-universal-fastify-engine"]
     }
   }
 }
