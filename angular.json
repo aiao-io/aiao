@@ -448,6 +448,9 @@
             "entryFile": "libs/elements-react/src/index.ts",
             "babelConfig": "@nrwl/react/plugins/bundle-babel",
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup"
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "test": {
