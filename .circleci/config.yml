@@ -16,6 +16,7 @@ defaults: &defaults
   environment:
     TYPEORM_PLUS_TEST_USERNAME: test
     TYPEORM_PLUS_TEST_DATABASE: test
+    NODE_OPTIONS: --max-old-space-size=4096
 
 # env
 set_env: &set_env
@@ -55,7 +56,7 @@ check_workspace: &check_workspace
 # build
 build_libs: &build_libs
   name: Build Libs
-  command: where yarn && yarn affected:build --concurrency 3
+  command: yarn affected:build --concurrency 3
 
 # cache
 restore_yarn_cache: &restore_yarn_cache
