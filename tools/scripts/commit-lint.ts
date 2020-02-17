@@ -13,6 +13,7 @@ if (branchName.trim() !== 'master') {
 const all_types = ['feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'chore'];
 const all_scopes = [
   'aiao',
+  'tools',
   'color',
   'date',
   'elements-angular',

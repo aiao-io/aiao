@@ -30,7 +30,6 @@ console.log('fixFileRoot', fixFileRoot);
 
 async function fixFiles() {
   const globbyFiles = await globby(join(fixFileRoot, '**'));
-  console.log('globbyFiles', globbyFiles);
   const files = globbyFiles.map(d => {
     let p = d.lastIndexOf('.');
     let md5 = d.slice(p + 1);
