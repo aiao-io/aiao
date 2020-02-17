@@ -128,8 +128,7 @@ store_artifacts_coverage: &store_artifacts_coverage
 store_artifacts_dist: &store_artifacts_dist
   name: Artifacts dist
   prefix: dist
-  paths:
-    - dist/last-deploy.txt
+  path: dist/last-deploy.txt
 
 # jobs
 jobs:
@@ -139,6 +138,7 @@ jobs:
       - checkout
       - run: *set_env
       - restore_cache: *restore_yarn_cache
+      - restore_dist: *restore_dist
       - run: *install_yarn
       - run: *build_tools
       - run: *check_workspace
@@ -150,9 +150,10 @@ jobs:
       - run: *integration_test
       - run: *coverage
       # - run: *e2e
+      - save_dist: *save_dist
       - store_artifacts: *store_artifacts_dist
       - store_artifacts: *store_artifacts_coverage
-      - save_cache: *save_yarn_cache
+      - save_yarn_cache: *save_yarn_cache
 
   check_master:
     <<: *defaults
@@ -173,7 +174,7 @@ jobs:
       # - run: *e2e
       - store_artifacts: *store_artifacts_dist
       - store_artifacts: *store_artifacts_coverage
-      - save_cache: *save_yarn_cache
+      - save_yarn_cache: *save_yarn_cache
 
 workflows:
   version: 2
