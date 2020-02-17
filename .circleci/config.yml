@@ -9,8 +9,6 @@ defaults: &defaults
   working_directory: ~/repo
   docker:
     - image: circleci/node:12-browsers
-      environment:
-        NODE_OPTIONS: '--max_old_space_size=4096'
     - image: circleci/postgres:12-alpine
       environment:
         POSTGRES_USER: test
@@ -150,6 +148,8 @@ store_artifacts_dist: &store_artifacts_dist
 jobs:
   check_pr:
     <<: *defaults
+    environment:
+      NODE_OPTIONS: --max_old_space_size=4096
     steps:
       - checkout
       - run: *set_env
