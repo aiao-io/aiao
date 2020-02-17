@@ -85,11 +85,11 @@ save_yarn_cache: &save_yarn_cache
 restore_dist: &restore_dist
   name: Restore Dist
   keys:
-    - aiao-dist
+    - aiao-dist-node12-{{ checksum "nx.json" }}
 
 save_dist: &save_dist
   name: Save Dist
-  key: aiao-dist
+  key: aiao-dist-node12-{{ checksum "nx.json" }}
   paths:
     - coverage
     - dist/libs
@@ -164,7 +164,7 @@ jobs:
       - run: *coverage
       # - run: *e2e
       - save_cache: *save_dist
-      - store_artifacts: *store_artifacts_dist
+      # - store_artifacts: *store_artifacts_dist
       # - store_artifacts: *store_artifacts_coverage
       - save_cache: *save_yarn_cache
 
