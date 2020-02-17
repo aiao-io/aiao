@@ -57,8 +57,7 @@
       "tags": []
     },
     "nest-angular-universal": {
-      "tags": [],
-      "implicitDependencies": ["universal-fastify-engine"]
+      "tags": []
     },
     "dev-universal-fastify-engine": {
       "tags": []
