@@ -81,6 +81,7 @@ save_dist: &save_dist
   key: aiao-dist-{{ checksum "yarn.lock" }}
   paths:
     - dist/libs
+    - dist/last-deploy.txt
 
 # format
 format: &format
@@ -129,7 +130,7 @@ store_artifacts_coverage: &store_artifacts_coverage
 store_artifacts_dist: &store_artifacts_dist
   name: Artifacts dist
   prefix: dist
-  path: dist/last-deploy.txt
+  path: dist
 
 # jobs
 jobs:
