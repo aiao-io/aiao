@@ -1,7 +1,39 @@
-# nest-angular-universal
+# @aiao/nest-angular-universal
 
-This library was generated with [Nx](https://nx.dev).
+[![npm][shields-nest-angular-universal]][npm-nest-angular-universal]
 
-## Running unit tests
+支持 Angular universal 的 nest 模块
 
-Run `nx test nest-angular-universal` to execute the unit tests.
+### <a name="head1234"></a>A Heading in this SO entry!
+
+## 场景
+
+SSR
+
+## 安装
+
+```console
+yarn add @aiao/nest-angular-universal
+```
+
+## 使用
+
+参考 [apps/dev-nest-angular-universal](/apps/dev-nest-angular-universal)
+
+## API
+
+[create an anchor](#anchors-in-markdown)
+
+### NestUniversalOptions
+
+继承 [NgSetupOptions](/libs/nest-angular-universal#NgSetupOptions) 的所有配置
+
+| 属性           | 类型    | 说明                          |
+| -------------- | ------- | ----------------------------- |
+| production     | boolean | 是否是生产环境                |
+| disableRender? | boolean | 禁止默认渲染                  |
+| browserHost?   | string  | 测试环境的 Angular app 的主机 |
+| browserPort?   | number  | 测试环境的 Angular app 的端口 |
+
+[shields-nest-angular-universal]: https://img.shields.io/npm/v/@aiao/nest-angular-universal?style=flat-square
+[npm-nest-angular-universal]: https://www.npmjs.com/@aiao/nest-angular-universal

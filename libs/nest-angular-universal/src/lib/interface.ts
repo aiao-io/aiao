@@ -1,11 +1,9 @@
 import { NgSetupOptions } from '@aiao/universal-fastify-engine';
-import { StaticProvider } from '@angular/core';
 
 export interface NestUniversalOptions extends NgSetupOptions {
+  production: boolean;
   disableRender?: boolean;
-  production?: boolean;
-  providers?: StaticProvider[];
-  // use locale
+  // only production false
   browserHost?: string;
   browserPort?: number;
 }
