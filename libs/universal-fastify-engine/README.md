@@ -20,7 +20,7 @@ yarn add @aiao/universal-fastify-engine
 
 ## API
 
-### NgSetupOptions
+### <a name="ng-setup-options"></a> NgSetupOptions
 
 | 属性              | 类型             | 说明                                    |
 | ----------------- | ---------------- | --------------------------------------- |
