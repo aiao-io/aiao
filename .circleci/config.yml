@@ -112,7 +112,7 @@ check_lodash: &check_lodash
 
 test: &test
   name: test
-  command: yarn affected:test ${AFFECTED_ARGS} --parallel --ci --code-coverage
+  command: yarn affected:test ${AFFECTED_ARGS} --parallel --maxParallel=3 --ci --code-coverage
 
 test_master: &test_master
   name: test
