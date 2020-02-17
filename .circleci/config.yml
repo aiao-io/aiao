@@ -67,7 +67,7 @@ check_workspace: &check_workspace
 # build_libs
 build_libs: &build_libs
   name: Build Libs
-  command: yarn affected:build ${AFFECTED_ARGS} --with-deps --parallel --maxParallel=2 --prod
+  command: node --max_old_space_size=4096 ./node_modules/.bin/nx affected:build ${AFFECTED_ARGS} --with-deps --parallel --maxParallel=2 --prod
 
 # cache
 restore_yarn_cache: &restore_yarn_cache
@@ -148,8 +148,6 @@ store_artifacts_dist: &store_artifacts_dist
 jobs:
   check_pr:
     <<: *defaults
-    environment:
-      NODE_OPTIONS: --max_old_space_size=4096
     steps:
       - checkout
       - run: *set_env
