@@ -1,6 +1,9 @@
 {
   "name": "@aiao/universal-fastify-engine",
   "version": "0.0.1",
+  "scripts": {
+    "build": "cd ../../ && ng build universal-fastify-engine --prod"
+  },
   "peerDependencies": {
     "@angular/core": "^9.0.0",
     "@nguniversal/common": "^9.0.0",
