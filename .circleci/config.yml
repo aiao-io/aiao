@@ -55,7 +55,7 @@ check_workspace: &check_workspace
 # build
 build_libs: &build_libs
   name: Build Libs
-  command: node --max_old_space_size=4096 ./node_modules/.bin/lerna run build --scope @aiao/* --concurrency 3
+  command: node --max_old_space_size=4096 yarn affected:build --concurrency 3
 
 # cache
 restore_yarn_cache: &restore_yarn_cache
