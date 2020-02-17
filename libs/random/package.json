@@ -15,6 +15,9 @@
   "keywords": [
     "random"
   ],
+  "scripts": {
+    "build": "cd ../../ && ng build random --prod"
+  },
   "peerDependencies": {
     "lodash": "^4.17.15"
   }
