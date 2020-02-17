@@ -167,8 +167,8 @@ jobs:
       - run: *coverage
       # - run: *e2e
       - save_cache: *save_dist
-      - store_artifacts: *store_artifacts_dist
-      - store_artifacts: *store_artifacts_coverage
+      # - store_artifacts: *store_artifacts_dist
+      # - store_artifacts: *store_artifacts_coverage
       - save_cache: *save_yarn_cache
 
   check_master:
@@ -191,8 +191,9 @@ jobs:
       - run: *integration_test
       - run: *coverage
       # - run: *e2e
-      - store_artifacts: *store_artifacts_dist
-      - store_artifacts: *store_artifacts_coverage
+      - save_cache: *save_dist
+      # - store_artifacts: *store_artifacts_dist
+      # - store_artifacts: *store_artifacts_coverage
       - save_cache: *save_yarn_cache
 
 workflows:
