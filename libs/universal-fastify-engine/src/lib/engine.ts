@@ -21,6 +21,7 @@ function fastifyAngularEngine(fastify: FastifyInstance, setupOptions: NgSetupOpt
   next();
 }
 
+// plugin
 export const ngFastilyEngine = fastifyPlugin(fastifyAngularEngine, {
   fastify: '2.x',
   name: '@aiao/universal-fastify-engine'
