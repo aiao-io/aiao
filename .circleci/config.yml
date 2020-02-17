@@ -85,12 +85,13 @@ save_yarn_cache: &save_yarn_cache
 restore_dist: &restore_dist
   name: Restore Dist
   keys:
-    - aiao-dist-{{ checksum "yarn.lock" }}
+    - aiao-dist
 
 save_dist: &save_dist
   name: Save Dist
-  key: aiao-dist-{{ checksum "yarn.lock" }}
+  key: aiao-dist
   paths:
+    - coverage
     - dist/libs
     - dist/apps
     - dist/last-deploy.txt
@@ -113,10 +114,6 @@ check_lodash: &check_lodash
 test: &test
   name: test
   command: yarn affected:test ${AFFECTED_ARGS} --parallel --maxParallel=2 --ci --code-coverage
-
-test_master: &test_master
-  name: test
-  command: yarn test --ci --code-coverage
 
 # e2e
 e2e: &e2e
@@ -167,32 +164,7 @@ jobs:
       - run: *coverage
       # - run: *e2e
       - save_cache: *save_dist
-      # - store_artifacts: *store_artifacts_dist
-      # - store_artifacts: *store_artifacts_coverage
-      - save_cache: *save_yarn_cache
-
-  check_master:
-    <<: *defaults
-    steps:
-      - checkout
-      - run: *set_env
-      - restore_cache: *restore_yarn_cache
-      - restore_cache: *restore_dist
-      - run: *install_yarn
-      - run: *build_tools
-      - run: *hotfix
-      - run: *check_workspace
-      - run: *ngcc
-      - run: *format
-      - run: *lint
-      - run: *check_lodash
-      - run: *build_libs
-      - run: *test_master
-      - run: *integration_test
-      - run: *coverage
-      # - run: *e2e
-      - save_cache: *save_dist
-      # - store_artifacts: *store_artifacts_dist
+      - store_artifacts: *store_artifacts_dist
       # - store_artifacts: *store_artifacts_coverage
       - save_cache: *save_yarn_cache
 
@@ -200,14 +172,8 @@ workflows:
   version: 2
   check:
     jobs:
-      - check_master:
-          filters:
-            branches:
-              only:
-                - master
       - check_pr:
           filters:
             branches:
               ignore:
                 - i10n
-                - master
