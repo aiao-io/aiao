@@ -50,7 +50,7 @@ build_tools: &build_tools
 
 check_workspace: &check_workspace
   name: Check Workspace
-  command: node dist/tools/scripts/check-workspace
+  command: node dist/tools/scripts/check-workspace --lib
 
 # build
 build_libs: &build_libs
@@ -73,11 +73,11 @@ save_yarn_cache: &save_yarn_cache
 restore_dist: &restore_dist
   name: Restore Dist
   keys:
-    - node-deps-node12-{{ checksum "yarn.lock" }}
+    - aiao-dist-{{ checksum "yarn.lock" }}
 
 save_dist: &save_dist
   name: Save Dist
-  key: node-deps-node12-{{ checksum "yarn.lock" }}
+  key: aiao-dist-{{ checksum "yarn.lock" }}
   paths:
     - dist/libs
 
