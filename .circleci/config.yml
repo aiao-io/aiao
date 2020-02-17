@@ -56,7 +56,7 @@ check_workspace: &check_workspace
 # build
 build_libs: &build_libs
   name: Build Libs
-  command: yarn affected:build ${AFFECTED_ARGS} --parallel --maxParallel=5
+  command: yarn affected:build ${AFFECTED_ARGS} --parallel --maxParallel=3
 
 # cache
 restore_yarn_cache: &restore_yarn_cache
