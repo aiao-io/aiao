@@ -56,7 +56,7 @@ check_workspace: &check_workspace
 # build
 build_libs: &build_libs
   name: Build Libs
-  command: yarn affected:build --concurrency 3
+  command: yarn affected:build ${AFFECTED_ARGS} --concurrency 5
 
 # cache
 restore_yarn_cache: &restore_yarn_cache
