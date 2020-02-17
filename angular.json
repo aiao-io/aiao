@@ -734,6 +734,10 @@
           "configurations": {
             "production": {
               "browserTarget": "dev-universal-fastify-engine:build:production"
+            },
+            "ci": {
+              "browserTarget": "dev-universal-fastify-engine:build:production",
+              "progress": false
             }
           }
         },
@@ -823,7 +827,7 @@
           },
           "configurations": {
             "production": {
-              "devServerTarget": "dev-universal-fastify-engine:serve:production"
+              "devServerTarget": "dev-universal-fastify-engine:serve:ci"
             }
           }
         },
@@ -899,6 +903,10 @@
           "configurations": {
             "production": {
               "browserTarget": "dev-nest-angular-universal:build:production"
+            },
+            "ci": {
+              "browserTarget": "dev-nest-angular-universal:build:production",
+              "progress": false
             }
           }
         },
@@ -997,7 +1005,7 @@
           },
           "configurations": {
             "production": {
-              "devServerTarget": "dev-nest-angular-universal:serve:production"
+              "devServerTarget": "dev-nest-angular-universal:serve:ci"
             }
           }
         },
