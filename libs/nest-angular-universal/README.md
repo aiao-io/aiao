@@ -26,7 +26,7 @@ yarn add @aiao/nest-angular-universal
 
 ### NestUniversalOptions
 
-继承 [NgSetupOptions](/libs/universal-fastify-engine#ng-setup-options) 的所有配置
+继承 [NgSetupOptions](/libs/universal-fastify-engine#setup-options) 的所有配置
 
 | 属性           | 类型    | 说明                          |
 | -------------- | ------- | ----------------------------- |
