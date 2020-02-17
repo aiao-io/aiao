@@ -58,6 +58,10 @@ build_libs: &build_libs
   name: Build Libs
   command: yarn affected:build ${AFFECTED_ARGS} --with-deps --parallel --maxParallel=3 --prod
 
+build_libs_failed: &build_libs_failed
+  name: Build build libs only failed
+  command: yarn affected:build ${AFFECTED_ARGS} --with-deps --parallel --maxParallel=3 --prod --only-failed
+
 # cache
 restore_yarn_cache: &restore_yarn_cache
   name: Restore Yarn Cache
@@ -149,6 +153,7 @@ jobs:
       - run: *lint
       - run: *check_lodash
       - run: *build_libs
+      - run: *build_libs_failed
       - run: *test
       - run: *integration_test
       - run: *coverage
