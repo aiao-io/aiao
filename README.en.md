@@ -42,9 +42,8 @@ Versions less than ` 1 ` are internal beta versions, please use with caution
 The structure mostly follows the [ Nx ](https://github.com/nrwl/nx) rule
 
 - `apps` application directory
-- `integration` directory of integrated solutions for libraries
-- `libs` directory of libraries
-- `tools` utils
+- `libs` 库目录
+- `tools` 工具集
 
 ## Install
 
