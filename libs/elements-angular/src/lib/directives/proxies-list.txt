@@ -1,0 +1,12 @@
+
+import * as d from './proxies';
+
+export const DIRECTIVES = [
+d.AiaoCodeDiffEditor,
+  d.AiaoCodeEditor,
+  d.AiaoElementsEditor,
+  d.AiaoElementsEditorPreview,
+  d.AiaoElementsForm,
+  d.AiaoElementsView,
+  d.AiaoImg
+];

@@ -7,7 +7,10 @@
     "inlineSources": true,
     "types": [],
     "lib": ["dom", "es2018"],
-    "paths": {}
+    "paths": {
+      "@aiao/elements": ["dist/libs/elements"],
+      "@aiao/elements-cdk": ["dist/libs/elements-cdk"]
+    }
   },
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,

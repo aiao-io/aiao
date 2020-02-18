@@ -131,7 +131,7 @@ export class Img implements ComponentInterface, IImg {
     }
   }
   private getImageRequest() {
-    if (this.imageStorage && this.imageStorage.requestOptions) {
+    if (this.imageStorage?.requestOptions) {
       const width = this.el.clientWidth;
       const height = this.el.clientHeight || this.el.clientWidth;
       return this.imageStorage.requestOptions(this.src, {

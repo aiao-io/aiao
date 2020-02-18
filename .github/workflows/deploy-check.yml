@@ -22,20 +22,21 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Get yarn cache
-        id: yarn-cache
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
       - uses: actions/cache@v1
+        id: yarn-cache
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          restore-keys: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
       - name: install
         run: |
           yarn install --non-interactive --no-lockfile --ignore-scripts
           yarn build:tools
-          node dist/tools/scripts/check-workspace
+          yarn run ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points
+      - name: check workspace
+        run: node dist/tools/scripts/check-workspace
       - name: build libs
-        run: |
-          yarn run build:libs
+        run: ./node_modules/.bin/lerna run build --scope @aiao/*

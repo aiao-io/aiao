@@ -43,6 +43,63 @@
     },
     "elements-react": {
       "tags": []
+    },
+    "date": {
+      "tags": []
+    },
+    "random": {
+      "tags": []
+    },
+    "url": {
+      "tags": []
+    },
+    "universal-fastify-engine": {
+      "tags": []
+    },
+    "nest-angular-universal": {
+      "tags": []
+    },
+    "dev-universal-fastify-engine": {
+      "tags": []
+    },
+    "dev-universal-fastify-engine-e2e": {
+      "tags": [],
+      "implicitDependencies": ["dev-universal-fastify-engine"]
+    },
+    "dev-nest-angular-universal": {
+      "tags": []
+    },
+    "dev-nest-angular-universal-e2e": {
+      "tags": [],
+      "implicitDependencies": ["dev-nest-angular-universal"]
+    },
+    "dev-elements-angular": {
+      "tags": []
+    },
+    "dev-elements-angular-e2e": {
+      "tags": [],
+      "implicitDependencies": ["dev-elements-angular"]
+    },
+    "dev-lazy-element": {
+      "tags": []
+    },
+    "dev-lazy-element-e2e": {
+      "tags": [],
+      "implicitDependencies": ["dev-lazy-element"]
+    },
+    "dev-lazy-module": {
+      "tags": []
+    },
+    "dev-lazy-module-e2e": {
+      "tags": [],
+      "implicitDependencies": ["dev-lazy-module"]
+    },
+    "dev-lazy-component": {
+      "tags": []
+    },
+    "dev-lazy-component-e2e": {
+      "tags": [],
+      "implicitDependencies": ["dev-lazy-component"]
     }
   }
 }

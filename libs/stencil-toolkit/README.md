@@ -20,7 +20,5 @@ yarn add @aiao/stencil-toolkit --dev
 ng generate @aiao/stencil-toolkit:library you-library-name
 ```
 
-nx 项目请参考 [integration/stencil-toolkit-nx](/integration/stencil-toolkit-nx)
-
 [shields-stencil-toolkit]: https://img.shields.io/npm/v/@aiao/stencil-toolkit?style=flat-square
 [npm-stencil-toolkit]: https://www.npmjs.com/@aiao/stencil-toolkit

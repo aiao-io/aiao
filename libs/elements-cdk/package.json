@@ -1,6 +1,6 @@
 {
   "name": "@aiao/elements-cdk",
-  "version": "0.0.2",
+  "version": "0.1.1",
   "description": "elements component Dev Kit",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -13,6 +13,6 @@
     "url": "https://github.com/aiao-io/aiao/issues"
   },
   "scripts": {
-    "build": "ng build elements-cdk"
+    "build": "cd ../../ && ng build elements-cdk --prod"
   }
 }

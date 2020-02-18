@@ -9,6 +9,8 @@ defaults: &defaults
   working_directory: ~/repo
   docker:
     - image: circleci/node:12-browsers
+      environment:
+        NODE_OPTIONS: --max_old_space_size=4096
     - image: circleci/postgres:12-alpine
       environment:
         POSTGRES_USER: test
@@ -44,18 +46,30 @@ install_yarn: &install_yarn
   name: yarn install
   command: yarn install --frozen-lockfile --non-interactive --ignore-scripts
 
+# ngcc
+ngcc: &ngcc
+  name: Ngcc
+  command: yarn run ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points
+
+# build_tools
 build_tools: &build_tools
   name: Build Tools
   command: yarn build:tools
 
+# hotfix
+hotfix: &hotfix
+  name: Hotfix
+  command: yarn task:hotfix
+
+# check_workspace
 check_workspace: &check_workspace
   name: Check Workspace
-  command: node dist/tools/scripts/check-workspace
+  command: node dist/tools/scripts/check-workspace --lib
 
-# build
-build_libs: &build_libs
-  name: Build Libs
-  command: node --max_old_space_size=4096 ./node_modules/.bin/lerna run build --scope @aiao/*
+# Build
+build: &build
+  name: Build
+  command: yarn affected:build ${AFFECTED_ARGS} --with-deps --prod
 
 # cache
 restore_yarn_cache: &restore_yarn_cache
@@ -68,6 +82,21 @@ save_yarn_cache: &save_yarn_cache
   key: node-deps-node12-{{ checksum "yarn.lock" }}
   paths:
     - ~/.cache
+
+# dist
+restore_dist: &restore_dist
+  name: Restore Dist
+  keys:
+    - aiao-dist-node12-{{ checksum "nx.json" }}
+
+save_dist: &save_dist
+  name: Save Dist
+  key: aiao-dist-node12-{{ checksum "nx.json" }}
+  paths:
+    - coverage
+    - dist/libs
+    - dist/apps
+    - dist/last-deploy.txt
 
 # format
 format: &format
@@ -86,11 +115,7 @@ check_lodash: &check_lodash
 
 test: &test
   name: test
-  command: yarn affected:test ${AFFECTED_ARGS} --parallel --ci --code-coverage
-
-test_master: &test_master
-  name: test
-  command: yarn test --ci --code-coverage
+  command: yarn affected:test ${AFFECTED_ARGS} --parallel --maxParallel=2 --ci --code-coverage
 
 # e2e
 e2e: &e2e
@@ -102,11 +127,6 @@ coverage: &coverage
   name: coverage
   command: bash <(curl -s https://codecov.io/bash)
 
-# integration_test
-integration_test: &integration_test
-  name: Integration Test
-  command: bash ./tools/scripts/intergration-test.sh
-
 # artifacts
 store_artifacts_coverage: &store_artifacts_coverage
   name: Artifacts coverage
@@ -116,7 +136,7 @@ store_artifacts_coverage: &store_artifacts_coverage
 store_artifacts_dist: &store_artifacts_dist
   name: Artifacts dist
   prefix: dist
-  path: dist/last-deploy.txt
+  path: dist
 
 # jobs
 jobs:
@@ -126,54 +146,30 @@ jobs:
       - checkout
       - run: *set_env
       - restore_cache: *restore_yarn_cache
+      - restore_cache: *restore_dist
       - run: *install_yarn
       - run: *build_tools
+      - run: *hotfix
       - run: *check_workspace
+      - run: *ngcc
       - run: *format
       - run: *lint
       - run: *check_lodash
-      - run: *build_libs
+      - run: *build
       - run: *test
-      - run: *integration_test
       - run: *coverage
-      # - run: *e2e
-      - store_artifacts: *store_artifacts_dist
-      - store_artifacts: *store_artifacts_coverage
-      - save_cache: *save_yarn_cache
-
-  check_master:
-    <<: *defaults
-    steps:
-      - checkout
-      - run: *set_env
-      - restore_cache: *restore_yarn_cache
-      - run: *install_yarn
-      - run: *build_tools
-      - run: *check_workspace
-      - run: *format
-      - run: *lint
-      - run: *check_lodash
-      - run: *build_libs
-      - run: *test_master
-      - run: *integration_test
-      - run: *coverage
-      # - run: *e2e
-      - store_artifacts: *store_artifacts_dist
-      - store_artifacts: *store_artifacts_coverage
+      - run: *e2e
+      - save_cache: *save_dist
+      # - store_artifacts: *store_artifacts_dist
+      # - store_artifacts: *store_artifacts_coverage
       - save_cache: *save_yarn_cache
 
 workflows:
   version: 2
   check:
     jobs:
-      - check_master:
-          filters:
-            branches:
-              only:
-                - master
       - check_pr:
           filters:
             branches:
               ignore:
                 - i10n
-                - master

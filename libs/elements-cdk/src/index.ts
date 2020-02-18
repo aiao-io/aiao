@@ -1,4 +1,4 @@
-export * from './lib/element-config.interface';
-export * from './lib/element-data.interface';
-export * from './lib/ConfigBase';
-export * from './lib/render-hidden-input';
+export { ConfigBase } from './lib/ConfigBase';
+export { hasShadowDom, renderHiddenInput } from './lib/render-hidden-input';
+export { IElementConfig } from './lib/element-config.interface';
+export { IElementOptions, IElementData } from './lib/element-data.interface';

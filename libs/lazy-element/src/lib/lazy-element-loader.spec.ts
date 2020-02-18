@@ -39,7 +39,7 @@ describe('LazyElementLoader', () => {
         ])
       ]
     });
-    lazyElementLoader = injector.get(LazyElementLoader);
+    lazyElementLoader = injector.inject(LazyElementLoader);
   }));
 
   describe('loadFromHtmlElement()', () => {

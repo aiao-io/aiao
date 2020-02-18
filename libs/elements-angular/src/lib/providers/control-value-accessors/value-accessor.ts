@@ -1,5 +1,5 @@
 import { raf, ValueAccessorBase } from '@aiao/elements-cdk/angular';
-import { ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener } from '@angular/core';
 
 const getClasses = (element: HTMLElement) => {
   const classList = element.classList;
@@ -30,7 +30,12 @@ export const setAiaoClasses = (element: ElementRef) => {
   });
 };
 
+@Directive()
 export abstract class ValueAccessor extends ValueAccessorBase {
+  constructor(el: ElementRef) {
+    super(el);
+  }
+
   writeValue(value: any) {
     super.writeValue(value);
     setAiaoClasses(this.el);

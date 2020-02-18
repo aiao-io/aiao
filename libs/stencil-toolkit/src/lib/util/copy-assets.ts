@@ -37,7 +37,7 @@ export async function copyAssets(
 
     for (const file of files) {
       const src = path.join(cwd, file);
-      if (changed && !changed.has(src)) {
+      if (changed?.has(src)) {
         continue;
       }
 

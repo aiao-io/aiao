@@ -1,12 +1,13 @@
 import { Observable, of } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
 
-import { ElementRef, EventEmitter, OnDestroy, Output } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, OnDestroy } from '@angular/core';
 
 import { LazyElementLoader } from './lazy-element-loader';
 
-export class LazyElementBase implements OnDestroy {
-  @Output() docReady = new EventEmitter<void>();
+@Directive()
+export abstract class LazyElementBase implements OnDestroy {
+  docReady: EventEmitter<void>;
 
   private void$ = of<void>(undefined);
   protected readonly onDestroy$ = new EventEmitter<void>();
@@ -22,6 +23,7 @@ export class LazyElementBase implements OnDestroy {
         switchMap(newDoc => this.render(newDoc))
       )
       .subscribe();
+    this.docReady = new EventEmitter<void>();
   }
 
   protected render(html: string): Observable<void> {

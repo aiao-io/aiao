@@ -39,8 +39,4 @@ testem.log
 .DS_Store
 Thumbs.db
 
-libs/**/directives/proxies-list.txt
-libs/**/directives/proxies-utils.ts
-libs/**/directives/proxies.ts
-
 *.env

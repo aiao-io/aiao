@@ -21,12 +21,3 @@ export interface ColorOptions {
   hsb: ColorHSB;
   opacity: number;
 }
-export interface ColorObject {
-  red: number;
-  green: number;
-  blue: number;
-  hue: number;
-  saturation: number;
-  brightness: number;
-  opacity: number;
-}

@@ -1,6 +1,6 @@
 {
   "name": "@aiao/image-storage",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "image storage",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -14,12 +14,6 @@
   },
   "keywords": [],
   "scripts": {
-    "build": "ng build image-storage"
-  },
-  "peerDependencies": {
-    "@aiao/util": "^0.3.0"
-  },
-  "devDependencies": {
-    "@aiao/util": "*"
+    "build": "cd ../../ && ng build image-storage --prod"
   }
 }

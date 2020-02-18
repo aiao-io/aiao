@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "dev:ssr": "cd ../../ && ng run dev-universal-fastify-engine:serve-ssr",
+    "serve:ssr": "cd ../../ && node dist/dev-universal-fastify-engine/server/main.js",
+    "build:ssr": "cd ../../ && ng build dev-universal-fastify-engine --prod && ng run dev-universal-fastify-engine:server:production",
+    "prerender": "cd ../../ && ng run dev-universal-fastify-engine:prerender"
+  }
+}
