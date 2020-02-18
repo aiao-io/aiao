@@ -4,9 +4,10 @@ on:
   push:
     branches:
       - master
+      - next
   pull_request:
     branches-ignore:
-      - 'prff'
+      - 'i10n'
 
 jobs:
   check:
