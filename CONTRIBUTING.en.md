@@ -4,7 +4,7 @@
 - Please use **[ Commitizen ](https://github.com/commitizen/cz-cli)** to commit changes, run ` yarn commit ` in the project.
 - In order to write code more freely, format checking is performed only when the ` master ` branch commits. So you can submit in other branches or ` PR `, but please follow the rules in the last commit, and fill in the last commit information as the title and content when pushing ` PR `.
 
-## 代码提交信息应遵循以下格式
+## Commit Message Guidelines
 
 ```console
 type(scope): subject
@@ -12,7 +12,7 @@ BLANK LINE
 body
 ```
 
-### `type` 必须是以下类型之一
+### Type
 
 - feat
 - fix
@@ -23,7 +23,7 @@ body
 - test
 - chore
 
-### `scope` 范围必须是下列之一
+### Scope
 
 - `aiao` Non-specific project code
 - tools
@@ -56,5 +56,5 @@ feat(elements): 添加了 xx 功能
 
 一些功能详细说明
 
-close #100
+Close #100
 ```
