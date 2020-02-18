@@ -12,7 +12,7 @@ BLANK LINE
 body
 ```
 
-### `type` 必须是以下类型之一：
+### Type
 
 - feat
 - fix
@@ -23,7 +23,7 @@ body
 - test
 - chore
 
-### `scope` 范围必须是下列之一：
+### Scope
 
 - `aiao` 非具体项目代码
 - color
@@ -50,5 +50,5 @@ feat(elements): 添加了 xx 功能
 
 一些功能详细说明
 
-关闭 #100
+Close #100
 ```
