@@ -1,0 +1,11 @@
+<ul>
+  <li>
+    <h2><a routerLink="/">App Module</a></h2>
+  </li>
+  <li>
+    <h2><a routerLink="/home">Home Module</a></h2>
+  </li>
+</ul>
+<button (click)="openDialogDirectly()">Open Dialog ( without LazyComponentLoader )</button>
+<button (click)="openDialog()">Open Dialog( with LazyComponentLoader )</button>
+<router-outlet></router-outlet>

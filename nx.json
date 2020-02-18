@@ -93,6 +93,13 @@
     "dev-lazy-module-e2e": {
       "tags": [],
       "implicitDependencies": ["dev-lazy-module"]
+    },
+    "dev-lazy-component": {
+      "tags": []
+    },
+    "dev-lazy-component-e2e": {
+      "tags": [],
+      "implicitDependencies": ["dev-lazy-component"]
     }
   }
 }
