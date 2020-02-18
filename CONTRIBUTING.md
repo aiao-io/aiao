@@ -26,8 +26,9 @@ body
 ### `scope` 范围必须是下列之一
 
 - `aiao` 非具体项目代码
+- tools
 - color
-- docs
+- date
 - elements
 - elements-angular
 - elements-cdk
@@ -36,8 +37,13 @@ body
 - lazy-component
 - lazy-element
 - lazy-module
+- nest-angular-universal
+- random
 - stencil-toolkit
 - typeorm-plus
+- universal-fastify-engine
+- url
+- util
 
 ### `subject` 和 `body` 规定
 
@@ -50,5 +56,5 @@ feat(elements): 添加了 xx 功能
 
 一些功能详细说明
 
-关闭 #100
+close #100
 ```
