@@ -22,8 +22,6 @@ yarn add @aiao/nest-angular-universal
 
 ## API
 
-[create an anchor](#anchors-in-markdown)
-
 ### NestUniversalOptions
 
 继承 [NgSetupOptions](/libs/universal-fastify-engine#setup-options) 的所有配置
