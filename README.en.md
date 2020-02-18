@@ -39,15 +39,15 @@ Versions less than ` 1 ` are internal beta versions, please use with caution
 
 ## Project Structure
 
-The structure mostly follows the [Nx](https://github.com/nrwl/nx) rule
+The structure mostly follows the [ Nx ](https://github.com/nrwl/nx) rule
 
 - `apps` application directory
-- `libs` 库目录
-- `tools` 工具集
+- `libs` directory of libraries
+- `tools` utils
 
 ## Install
 
-- ` cypress ` download is slow, please download and configure environment variables manually before installation ` CYPRESS_INSTALL_BINARY = 0 ` skip download, [more installation methods](cypress-install-zh-cn)
+- ` cypress ` download is slow, please download and configure environment variables manually before installation ` CYPRESS_INSTALL_BINARY = 0 ` skip download, [ more installation methods ](cypress-install-zh-cn)
 - Please use ` yarn ` as the default installation method for this project. And force ` registry ` to be configured as the default. If you download too slowly, you can delete the `.yarnrc ` and `.npmrc ` files to speed up the installation.
 
 ```console
@@ -86,7 +86,7 @@ ng test util
 
 ## Contribute
 
-Welcome all of you to contribute code, please check the [Contribution Guide](CONTRIBUTING.md)
+Welcome all of you to contribute code, please check the [ Contribution Guide ](CONTRIBUTING.md)
 
 ## License MIT
 

@@ -4,17 +4,17 @@
 
 fastify 支持 Angular universal 的 engine 支持多语言环境
 
-## 场景
+## Use Case
 
 SSR
 
-## 安装
+## Install
 
 ```console
 yarn add @aiao/universal-fastify-engine
 ```
 
-## 使用
+## Usage
 
 参考 [apps/dev-universal-fastify-engine](/apps/dev-universal-fastify-engine)
 
