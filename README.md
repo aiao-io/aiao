@@ -49,7 +49,6 @@
 结构大部分遵循 [Nx](https://github.com/nrwl/nx) 规则。
 
 - `apps` 应用目录
-- `integration` 库的集成方案目录
 - `libs` 库目录
 - `tools` 工具集
 

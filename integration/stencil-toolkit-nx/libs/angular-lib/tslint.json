@@ -1,7 +1,0 @@
-{
-  "extends": "../../tslint.json",
-  "rules": {
-    "directive-selector": [true, "attribute", "stencilToolkitNx", "camelCase"],
-    "component-selector": [true, "element", "stencil-toolkit-nx", "kebab-case"]
-  }
-}
