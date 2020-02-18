@@ -41,5 +41,5 @@
       "@aiao/nest-angular-universal": ["libs/nest-angular-universal/src/index.ts"]
     }
   },
-  "exclude": ["node_modules", "tmp", "**/*.stories.ts"]
+  "exclude": ["node_modules", "**/node_modules", "tmp"]
 }
