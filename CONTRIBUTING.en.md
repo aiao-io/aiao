@@ -1,7 +1,7 @@
 # Contribution Guidelines
 
 - Welcome ` PR `, in order to better manage the project, all branches merged into ` master ` will be ` squash merge ` compressed into one merge.
-- Please use **[ Commitizen ](https://github.com/commitizen/cz-cli)** to commit changes, run ` yarn commit ` in the project.
+- Please use **[Commitizen](https://github.com/commitizen/cz-cli)** to commit changes, run ` yarn commit ` in the project.
 - In order to write code more freely, format checking is performed only when the ` master ` branch commits. So you can submit in other branches or ` PR `, but please follow the rules in the last commit, and fill in the last commit information as the title and content when pushing ` PR `.
 
 ## Commit information should follow this format:
