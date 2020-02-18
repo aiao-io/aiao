@@ -67,7 +67,7 @@ check_workspace: &check_workspace
 # build_libs
 build_libs: &build_libs
   name: Build Libs
-  command: node --max_old_space_size=4096 ./node_modules/.bin/nx affected:build ${AFFECTED_ARGS} --with-deps --prod --process=false
+  command: node --max_old_space_size=4096 ./node_modules/.bin/nx affected:build ${AFFECTED_ARGS} --with-deps --prod
 
 # cache
 restore_yarn_cache: &restore_yarn_cache
