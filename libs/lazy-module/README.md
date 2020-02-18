@@ -24,7 +24,5 @@ yarn add @aiao/lazy-module
 
 ## 使用
 
-集成方法 [integration/lazy-module](/integration/lazy-module)
-
 [shields-lazy-module]: https://img.shields.io/npm/v/@aiao/lazy-module?style=flat-square
 [npm-lazy-module]: https://www.npmjs.com/@aiao/lazy-module

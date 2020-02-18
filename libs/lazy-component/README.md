@@ -26,7 +26,5 @@ yarn add @aiao/lazy-component
 
 ## 使用
 
-集成方法 [integration/lazy-component](/integration/lazy-component)
-
 [shields-lazy-component]: https://img.shields.io/npm/v/@aiao/lazy-component?label=&style=flat-square
 [npm-lazy-component]: https://www.npmjs.com/@aiao/lazy-component

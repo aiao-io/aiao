@@ -21,7 +21,6 @@ const all_scopes = [
   'elements-react',
   'elements',
   'image-storage',
-  'integration',
   'lazy-component',
   'lazy-element',
   'lazy-module',

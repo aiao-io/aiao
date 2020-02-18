@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { APIService } from './api.service';
 
 @Component({
-  selector: 'aiao-hello',
+  selector: 'app-hello',
   templateUrl: './hello.component.html',
   styleUrls: ['./hello.component.scss']
 })
