@@ -146,6 +146,9 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./dist/tools/scripts/cz-config"
     }
   }
 }

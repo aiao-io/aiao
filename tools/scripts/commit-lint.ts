@@ -4,34 +4,16 @@ import chalk from 'chalk';
 import { execSync } from 'child_process';
 import { env, exit } from 'process';
 
+import { WORKSPACE_SCOPES, WORKSPACE_TYPES } from '../util/workspace';
+
 const branchName: string = execSync('git symbolic-ref --short -q HEAD').toString();
 
 if (branchName.trim() !== 'master') {
   exit();
 }
 
-const all_types = ['feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'chore'];
-const all_scopes = [
-  'aiao',
-  'tools',
-  'color',
-  'date',
-  'elements',
-  'elements-angular',
-  'elements-cdk',
-  'elements-react',
-  'image-storage',
-  'lazy-component',
-  'lazy-element',
-  'lazy-module',
-  'nest-angular-universal',
-  'random',
-  'stencil-toolkit',
-  'typeorm-plus',
-  'universal-fastify-engine',
-  'url',
-  'util'
-];
+const all_types = WORKSPACE_TYPES;
+const all_scopes = WORKSPACE_SCOPES;
 
 const message_en = {
   titile: '🐟🐟🐟 Validating git commit message 🐟🐟🐟',
