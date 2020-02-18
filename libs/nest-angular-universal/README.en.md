@@ -6,17 +6,17 @@
 
 ### <a name="head1234"></a>A Heading in this SO entry!
 
-## 场景
+## Use Case
 
 SSR
 
-## 安装
+## Install
 
 ```console
 yarn add @aiao/nest-angular-universal
 ```
 
-## 使用
+## Usage
 
 参考 [apps/dev-nest-angular-universal](/apps/dev-nest-angular-universal)
 
