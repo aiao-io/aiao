@@ -4,7 +4,6 @@
 
 支持 Angular universal 的 nest 模块
 
-### <a name="head1234"></a>A Heading in this SO entry!
 
 ## Use Case
 
@@ -21,8 +20,6 @@ yarn add @aiao/nest-angular-universal
 参考 [apps/dev-nest-angular-universal](/apps/dev-nest-angular-universal)
 
 ## API
-
-[create an anchor](#anchors-in-markdown)
 
 ### NestUniversalOptions
 
