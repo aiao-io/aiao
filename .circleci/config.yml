@@ -160,7 +160,7 @@ workflows:
   version: 2
   check:
     jobs:
-      - check:
+      - check_pr:
           filters:
             branches:
               ignore:
