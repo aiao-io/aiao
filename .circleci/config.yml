@@ -38,14 +38,6 @@ set_env: &set_env
       fi
       echo 'export AFFECTED_ARGS="--base $(cat dist/last-deploy.txt)"' >> $BASH_ENV
     fi
-    echo $CIRCLE_BUILD_NUM
-    if [[ ! -f dist/last-test.txt ]]
-    then
-      echo "bcz"
-    else
-      cat dist/last-test.txt
-    fi
-    mkdir dist && echo $CIRCLE_BUILD_NUM > dist/last-test.txt
     source $BASH_ENV
     echo $AFFECTED_ARGS
 
@@ -104,7 +96,6 @@ save_dist: &save_dist
   paths:
     - coverage
     - dist/last-deploy.txt
-    - dist/last-test.txt
 
 # format
 format: &format

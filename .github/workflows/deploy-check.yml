@@ -57,4 +57,4 @@ jobs:
         run: node dist/tools/scripts/check-workspace
 
       - name: build libs
-        run: yarn affected:build --base=$NX_BASE --with-deps --prod
+        run: yarn affected:build --base=${NX_BASE} --with-deps --prod
