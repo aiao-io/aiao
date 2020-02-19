@@ -11,6 +11,13 @@ defaults: &defaults
     - image: circleci/node:12-browsers
       environment:
         NODE_OPTIONS: --max_old_space_size=4096
+
+db: &db
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:12-browsers
+      environment:
+        NODE_OPTIONS: --max_old_space_size=4096
     - image: circleci/postgres:12-alpine
       environment:
         POSTGRES_USER: test
@@ -172,6 +179,7 @@ jobs:
       - run: *format
       - run: *lint
       - run: *check_lodash
+      - run: *build
       - save_cache: *save_yarn_cache
       - persist_to_workspace:
           root: ~/repo
@@ -179,12 +187,11 @@ jobs:
             - '*'
 
   check_build:
-    <<: *defaults
+    <<: *db
     steps:
       - attach_workspace:
           at: ~/repo
       - run: *set_env
-      - run: *build
       - run: *test
       - run: *e2e
       - run: *coverage
