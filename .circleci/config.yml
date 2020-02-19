@@ -45,6 +45,8 @@ set_env: &set_env
       fi
       echo 'export AFFECTED_ARGS="--base $(cat dist/last-deploy.txt)"' >> $BASH_ENV
     fi
+    let s=$CIRCLE_PREVIOUS_BUILD_NUM-1;
+    echo 'export v1="$s"' >> $BASH_ENV
     source $BASH_ENV
     echo $AFFECTED_ARGS
 
@@ -76,7 +78,7 @@ check_workspace: &check_workspace
 # Build
 build: &build
   name: Build
-  command: yarn affected:build ${AFFECTED_ARGS} --with-deps --prod --parallel --maxParallel=3
+  command: yarn affected:build ${AFFECTED_ARGS} --with-deps --prod
 
 # cache
 restore_yarn_cache: &restore_yarn_cache
@@ -164,49 +166,12 @@ jobs:
       - store_artifacts: *store_artifacts_coverage
       - save_cache: *save_yarn_cache
 
-  install:
-    <<: *defaults
-    steps:
-      - checkout
-      - restore_cache: *restore_yarn_cache
-      - restore_cache: *restore_dist
-      - run: *set_env
-      - run: *install_yarn
-      - run: *build_tools
-      - run: *hotfix
-      - run: *check_workspace
-      - run: *ngcc
-      - run: *format
-      - run: *lint
-      - run: *check_lodash
-      - run: *build
-      - save_cache: *save_yarn_cache
-      - persist_to_workspace:
-          root: ~/repo
-          paths:
-            - '*'
-
-  check_build:
-    <<: *db
-    steps:
-      - attach_workspace:
-          at: ~/repo
-      - run: *set_env
-      - run: *test
-      - run: *e2e
-      - run: *coverage
-      - save_cache: *save_dist
-      - store_artifacts: *store_artifacts_coverage
-
 workflows:
   version: 2
   check:
     jobs:
-      - install
-      - check_build:
-          requires: [install]
-      # - check_pr:
-      #     filters:
-      #       branches:
-      #         ignore:
-      #           - i10n
+      - check_pr:
+          filters:
+            branches:
+              ignore:
+                - i10n
