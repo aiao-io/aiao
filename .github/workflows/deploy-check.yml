@@ -36,12 +36,25 @@ jobs:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+
       - name: install
         run: |
           yarn install --non-interactive --no-lockfile --ignore-scripts
           yarn build:tools
           yarn run ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points
+
+      - name: Setup Environment Variables
+          shell: bash
+          run: |
+            if [[ $GITHUB_BASE_REF ]]
+            then
+              export NX_BASE=remotes/origin/$GITHUB_BASE_REF
+            else
+              export NX_BASE=$(git rev-parse HEAD~1)
+            fi
+
       - name: check workspace
         run: node dist/tools/scripts/check-workspace
+
       - name: build libs
-        run: ./node_modules/.bin/lerna run build --scope @aiao/*
+        run: yarn affected:build --base=$NX_BASE --with-deps --prod
