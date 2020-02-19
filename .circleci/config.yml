@@ -157,7 +157,11 @@ jobs:
       - run: *test
       - run: *coverage
       - run: *e2e
-      - save_cache: *save_dist
+      - save_cache:
+          key: aiao-dist-node12-{{ checksum "nx.json" }}-{{ epoch }}
+          paths:
+            - coverage
+            - dist/last-deploy.txt
       # - store_artifacts: *store_artifacts_dist
       # - store_artifacts: *store_artifacts_coverage
       - save_cache: *save_yarn_cache
