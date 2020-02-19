@@ -1,5 +1,5 @@
-import React from "react";
-import { attachEventProps } from "./utils/attachEventProps";
+import React from 'react';
+import { attachEventProps } from './utils/attachEventProps';
 
 interface LoadingElement {
   present: () => any;
@@ -15,10 +15,7 @@ export function createControllerComponent<
   OptionsType extends object,
   LoadingElementType extends LoadingElement,
   OverlayEventDetail
->(
-  displayName: string,
-  controller: { create: (options: any) => Promise<LoadingElementType> }
-) {
+>(displayName: string, controller: { create: (options: any) => Promise<LoadingElementType> }) {
   const dismissEventName = `on${displayName}DidDismiss`;
 
   type Props = OptionsType & ReactControllerProps<OverlayEventDetail>;
@@ -41,17 +38,10 @@ export function createControllerComponent<
     }
 
     async componentDidUpdate(prevProps: Props) {
-      if (
-        prevProps.isOpen !== this.props.isOpen &&
-        this.props.isOpen === true
-      ) {
+      if (prevProps.isOpen !== this.props.isOpen && this.props.isOpen === true) {
         this.present(prevProps);
       }
-      if (
-        this.controller &&
-        prevProps.isOpen !== this.props.isOpen &&
-        this.props.isOpen === false
-      ) {
+      if (this.controller && prevProps.isOpen !== this.props.isOpen && this.props.isOpen === false) {
         await this.controller.dismiss();
       }
     }

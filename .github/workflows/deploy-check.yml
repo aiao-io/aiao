@@ -3,10 +3,17 @@ name: deploy-check
 on:
   push:
     branches:
-      - master
+      - 'master'
+    paths-ignore:
+      - '**.md'
+      - '.github/**'
   pull_request:
-    branches-ignore:
-      - i10n
+    branches:
+      - '**'
+      - '!*i10n*'
+    paths-ignore:
+      - '**.md'
+      - '.github/**'
 
 jobs:
   check:

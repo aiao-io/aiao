@@ -12,11 +12,7 @@ interface ReactOverlayProps<E> {
   onDidDismiss?: (event: CustomEvent<E>) => void;
 }
 
-export function createOverlayComponent<
-  T extends object,
-  LoadingElementType extends LoadingElement,
-  OverlayEventDetail
->(
+export function createOverlayComponent<T extends object, LoadingElementType extends LoadingElement, OverlayEventDetail>(
   displayName: string,
   controller: { create: (options: any) => Promise<LoadingElementType> }
 ): any {
@@ -30,7 +26,7 @@ export function createOverlayComponent<
 
     constructor(props: Props) {
       super(props);
-      this.el = document.createElement("div");
+      this.el = document.createElement('div');
     }
 
     static get displayName() {
@@ -44,17 +40,10 @@ export function createOverlayComponent<
     }
 
     async componentDidUpdate(prevProps: Props) {
-      if (
-        prevProps.isOpen !== this.props.isOpen &&
-        this.props.isOpen === true
-      ) {
+      if (prevProps.isOpen !== this.props.isOpen && this.props.isOpen === true) {
         this.present(prevProps);
       }
-      if (
-        this.controller &&
-        prevProps.isOpen !== this.props.isOpen &&
-        this.props.isOpen === false
-      ) {
+      if (this.controller && prevProps.isOpen !== this.props.isOpen && this.props.isOpen === false) {
         await this.controller.dismiss();
       }
     }
