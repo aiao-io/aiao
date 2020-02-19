@@ -69,7 +69,7 @@ check_workspace: &check_workspace
 # Build
 build: &build
   name: Build
-  command: yarn affected:build ${AFFECTED_ARGS} --with-deps --prod
+  command: yarn affected:build ${AFFECTED_ARGS} --with-deps --prod --parallel --maxParallel=3
 
 # cache
 restore_yarn_cache: &restore_yarn_cache
