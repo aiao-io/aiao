@@ -11,13 +11,6 @@ defaults: &defaults
     - image: circleci/node:12-browsers
       environment:
         NODE_OPTIONS: --max_old_space_size=4096
-
-db: &db
-  working_directory: ~/repo
-  docker:
-    - image: circleci/node:12-browsers
-      environment:
-        NODE_OPTIONS: --max_old_space_size=4096
     - image: circleci/postgres:12-alpine
       environment:
         POSTGRES_USER: test
@@ -46,7 +39,7 @@ set_env: &set_env
       echo 'export AFFECTED_ARGS="--base $(cat dist/last-deploy.txt)"' >> $BASH_ENV
     fi
     echo $CIRCLE_BUILD_NUM
-    if [[ ! -f dist/last-deploy.txt ]]
+    if [[ ! -f dist/last-test.txt ]]
     then
       echo "bcz"
     else
