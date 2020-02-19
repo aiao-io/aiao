@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "allowJs": true,
     "rootDir": ".",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
