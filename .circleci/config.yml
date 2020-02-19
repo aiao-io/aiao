@@ -131,11 +131,6 @@ store_artifacts_coverage: &store_artifacts_coverage
   prefix: coverage
   path: coverage
 
-store_artifacts_dist: &store_artifacts_dist
-  name: Artifacts dist
-  prefix: dist
-  path: dist
-
 # jobs
 jobs:
   check_pr:
@@ -157,20 +152,15 @@ jobs:
       - run: *test
       - run: *coverage
       - run: *e2e
-      - save_cache:
-          key: aiao-dist-node12-{{ checksum "nx.json" }}-{{ epoch }}
-          paths:
-            - coverage
-            - dist/last-deploy.txt
-      # - store_artifacts: *store_artifacts_dist
-      # - store_artifacts: *store_artifacts_coverage
+      - save_cache: *save_dist
+      - store_artifacts: *store_artifacts_coverage
       - save_cache: *save_yarn_cache
 
 workflows:
   version: 2
   check:
     jobs:
-      - check_pr:
+      - check:
           filters:
             branches:
               ignore:
