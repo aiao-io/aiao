@@ -181,9 +181,9 @@ jobs:
   check_build:
     <<: *defaults
     steps:
-      - checkout
       - attach_workspace:
           at: ~/repo
+      - run: *set_env
       - run: *build
       - run: *test
       - run: *e2e
