@@ -45,13 +45,9 @@ set_env: &set_env
       fi
       echo 'export AFFECTED_ARGS="--base $(cat dist/last-deploy.txt)"' >> $BASH_ENV
     fi
-
-    let s=$CIRCLE_PREVIOUS_BUILD_NUM-1;
-    echo 'export v1="$s"' >> $BASH_ENV
     echo "$CIRCLE_PREVIOUS_BUILD_NUM" > dist/last-deploy.txt
     source $BASH_ENV
     echo $AFFECTED_ARGS
-    echo $v1
 
 # install
 install_yarn: &install_yarn
