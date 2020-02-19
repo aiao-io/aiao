@@ -132,16 +132,6 @@ store_artifacts_coverage: &store_artifacts_coverage
   prefix: coverage
   path: coverage
 
-# persist_to_workspace
-persist_to_workspace: &persist_to_workspace
-  name: persist_to_workspace
-  root: ~/repo
-  paths:
-    - '*'
-
-attach_workspace: &attach_workspace
-  name: attach_workspace
-  at: ~/repo
 # jobs
 jobs:
   check_pr:
@@ -183,13 +173,17 @@ jobs:
       - run: *lint
       - run: *check_lodash
       - save_cache: *save_yarn_cache
-      - persist_to_workspace: *persist_to_workspace
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - '*'
 
   check_build:
     <<: *defaults
     steps:
       - checkout
-      - attach_workspace: *attach_workspace
+      - attach_workspace:
+          at: ~/repo
       - run: *build
       - run: *test
       - run: *e2e
