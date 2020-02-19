@@ -45,7 +45,7 @@ set_env: &set_env
       fi
       echo 'export AFFECTED_ARGS="--base $(cat dist/last-deploy.txt)"' >> $BASH_ENV
     fi
-    echo "$CIRCLE_PREVIOUS_BUILD_NUM" > dist/last-deploy.txt
+    echo $CIRCLE_BUILD_NUM > dist/last-deploy.txt
     source $BASH_ENV
     echo $AFFECTED_ARGS
 
