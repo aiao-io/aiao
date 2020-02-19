@@ -131,6 +131,14 @@ store_artifacts_coverage: &store_artifacts_coverage
   prefix: coverage
   path: coverage
 
+# persist_to_workspace
+persist_to_workspace: &persist_to_workspace
+  root: ~/repo
+  paths:
+    - '*'
+
+attach_workspace: &attach_workspace
+  at: ~/repo
 # jobs
 jobs:
   check_pr:
@@ -150,18 +158,51 @@ jobs:
       - run: *check_lodash
       - run: *build
       - run: *test
-      - run: *coverage
       - run: *e2e
+      - run: *coverage
       - save_cache: *save_dist
       - store_artifacts: *store_artifacts_coverage
       - save_cache: *save_yarn_cache
+
+  install:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache: *restore_yarn_cache
+      - restore_cache: *restore_dist
+      - run: *set_env
+      - run: *install_yarn
+      - run: *build_tools
+      - run: *hotfix
+      - run: *check_workspace
+      - run: *ngcc
+      - run: *format
+      - run: *lint
+      - run: *check_lodash
+      - save_cache: *save_yarn_cache
+      - persist_to_workspace: *persist_to_workspace
+
+  check_build:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace: *attach_workspace
+      - run: *build
+      - run: *test
+      - run: *e2e
+      - run: *coverage
+      - save_cache: *save_dist
+      - store_artifacts: *store_artifacts_coverage
 
 workflows:
   version: 2
   check:
     jobs:
-      - check_pr:
-          filters:
-            branches:
-              ignore:
-                - i10n
+      - install
+      - check_build:
+        requires: [install]
+      # - check_pr:
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - i10n
