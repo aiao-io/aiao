@@ -114,7 +114,7 @@ check_lodash: &check_lodash
 
 test: &test
   name: test
-  command: yarn affected:test ${AFFECTED_ARGS} --parallel --maxParallel=2 --ci --code-coverage
+  command: yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage
 
 # e2e
 e2e: &e2e
