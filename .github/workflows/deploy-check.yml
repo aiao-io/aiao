@@ -64,4 +64,4 @@ jobs:
       - name: e2e
         shell: bash
         run: |
-        yarn affected:e2e --base=$NX_BASE --configuration production --headless --parallel --maxParallel=5
+          yarn affected:e2e --base=$NX_BASE --configuration production --headless --parallel --maxParallel=5
