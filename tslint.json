@@ -43,13 +43,53 @@
     "unified-signatures": true,
     "variable-name": false,
     "nx-enforce-module-boundaries": [
-      false,
+      true,
       {
         "allow": [],
         "depConstraints": [
           {
-            "sourceTag": "*",
+            "sourceTag": "all",
+            "onlyDependOnLibsWithTags": ["all"]
+          },
+          {
+            "sourceTag": "universal-lib",
             "onlyDependOnLibsWithTags": ["*"]
+          },
+          {
+            "sourceTag": "angular-lib",
+            "onlyDependOnLibsWithTags": ["all", "angular-lib", "stencil-lib"]
+          },
+          {
+            "sourceTag": "angular-app",
+            "onlyDependOnLibsWithTags": ["all", "angular-lib", "universal-lib"]
+          },
+          {
+            "sourceTag": "react-lib",
+            "onlyDependOnLibsWithTags": ["all", "react-lib", "stencil-lib"]
+          },
+          {
+            "sourceTag": "react-app",
+            "onlyDependOnLibsWithTags": ["all", "react-lib"]
+          },
+          {
+            "sourceTag": "nest-lib",
+            "onlyDependOnLibsWithTags": ["all", "nest-lib", "universal-lib"]
+          },
+          {
+            "sourceTag": "nest-app",
+            "onlyDependOnLibsWithTags": ["all", "nest-lib"]
+          },
+          {
+            "sourceTag": "stencil-lib",
+            "onlyDependOnLibsWithTags": ["all", "stencil-lib"]
+          },
+          {
+            "sourceTag": "stencil-app",
+            "onlyDependOnLibsWithTags": ["all", "stencil-lib"]
+          },
+          {
+            "sourceTag": "angular-e2e",
+            "onlyDependOnLibsWithTags": ["all", "angular-app"]
           }
         ],
         "enforceBuildableLibDependency": true
