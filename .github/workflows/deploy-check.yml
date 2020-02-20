@@ -35,12 +35,19 @@ jobs:
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
 
       - name: install
         run: |
           yarn install --frozen-lockfile --non-interactive
-
+      - uses: actions/cache@v1
+        id: dist-cache
+        with:
+          path: dist/last-deploy.txt
+          key: dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
+          restore-keys: |
+            dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-
       - name: Setup Environment Variables
         shell: bash
         run: |
