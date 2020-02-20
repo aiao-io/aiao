@@ -56,11 +56,6 @@ jobs:
       - name: check workspace
         run: node dist/tools/scripts/check-workspace
 
-      - name: build libs
-        shell: bash
-        run: |
-          yarn affected:build --base=$NX_BASE --with-deps --prod --parallel --maxParallel=5
-
       - name: e2e
         shell: bash
         run: |

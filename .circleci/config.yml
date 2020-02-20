@@ -149,9 +149,9 @@ jobs:
       - run: *format
       - run: *lint
       - run: *check_lodash
-      - run: *build
+      # - run: *build
       - run: *test
-      - run: *e2e
+      # - run: *e2e
       - run: *coverage
       - save_cache: *save_dist
       - store_artifacts: *store_artifacts_coverage
