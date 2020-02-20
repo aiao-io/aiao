@@ -6,14 +6,38 @@ on:
       - 'master'
     paths-ignore:
       - '**.md'
-      - '.github/**'
+      - '**/*.e2e.ts'
+      - '**/*.md'
+      - '**/*.spec.ts'
+      - '**/jest.config.js'
+      - '**/ng-package.json'
+      - '**/package.json'
+      - '**/scripts/**'
+      - '**/stencil.*.config.ts'
+      - '**/test-setup.ts'
+      - '**/test/**'
+      - '**/tsconfig.*.json'
+      - '**/tsconfig.json'
+      - '**/tslint.json'
   pull_request:
     branches:
       - '**'
       - '!*i10n*'
     paths-ignore:
       - '**.md'
-      - '.github/**'
+      - '**/*.e2e.ts'
+      - '**/*.md'
+      - '**/*.spec.ts'
+      - '**/jest.config.js'
+      - '**/ng-package.json'
+      - '**/package.json'
+      - '**/scripts/**'
+      - '**/stencil.*.config.ts'
+      - '**/test-setup.ts'
+      - '**/test/**'
+      - '**/tsconfig.*.json'
+      - '**/tsconfig.json'
+      - '**/tslint.json'
 
 jobs:
   check:
@@ -51,7 +75,7 @@ jobs:
       - name: Setup Environment Variables
         shell: bash
         run: |
-          if [[ ! $GITHUB_BASE_REF ]]
+          if [[ -n $GITHUB_BASE_REF ]]
           then
             echo "Fetching Base Commit from GitHub"
             echo "::set-env name=NX_BASE::remotes/origin/$GITHUB_BASE_REF"
