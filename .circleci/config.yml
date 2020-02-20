@@ -33,6 +33,8 @@ set_env: &set_env
     else
       echo 'Fetching Base Commit from Deploy Cache'
       if [[ ! -f dist/last-deploy.txt ]]
+        echo "find last deploy"
+        cat dist/last-deploy.txt
       then
         mkdir dist && git rev-parse HEAD~1 > dist/last-deploy.txt
       fi
