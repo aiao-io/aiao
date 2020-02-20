@@ -160,10 +160,10 @@ jobs:
       - run: *test
       # - run: *e2e
       - run: *coverage
-      - save_cache: *save_dist
       - run: *update_deploy
-      # - store_artifacts: *store_artifacts_coverage
+      - save_cache: *save_dist
       - save_cache: *save_yarn_cache
+      # - store_artifacts: *store_artifacts_coverage
 
 workflows:
   version: 2
