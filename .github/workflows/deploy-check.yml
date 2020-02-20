@@ -48,9 +48,9 @@ jobs:
         run: |
           if [[ $GITHUB_BASE_REF ]]
           then
-            export NX_BASE=remotes/origin/$GITHUB_BASE_REF
+            echo "::set-env name=NX_BASE::remotes/origin/$GITHUB_BASE_REF"
           else
-            export NX_BASE=$(git rev-parse HEAD~1)
+            echo "::set-env name=NX_BASE::remotes/origin/$(git rev-parse HEAD~1)"
           fi
 
       - name: check workspace
