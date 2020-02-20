@@ -154,7 +154,7 @@ jobs:
       # - run: *e2e
       - run: *coverage
       - save_cache: *save_dist
-      - store_artifacts: *store_artifacts_coverage
+      # - store_artifacts: *store_artifacts_coverage
       - save_cache: *save_yarn_cache
 
 workflows:
