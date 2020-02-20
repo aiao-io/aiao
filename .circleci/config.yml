@@ -142,10 +142,10 @@ jobs:
       - restore_cache: *restore_dist
       - run: *set_env
       - run: *install_yarn
+      - run: *ngcc
       - run: *build_tools
       - run: *hotfix
       - run: *check_workspace
-      - run: *ngcc
       - run: *format
       - run: *lint
       - run: *check_lodash

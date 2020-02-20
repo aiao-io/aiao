@@ -40,8 +40,10 @@ jobs:
       - name: install
         run: |
           yarn install --non-interactive --no-lockfile --ignore-scripts
-          yarn build:tools
           yarn run ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points
+          yarn build:tools
+          yarn task:hotfix
+          node dist/tools/scripts/check-workspace --lib
 
       - name: Setup Environment Variables
         shell: bash
