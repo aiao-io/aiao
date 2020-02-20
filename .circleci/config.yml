@@ -33,10 +33,11 @@ set_env: &set_env
     else
       echo 'Fetching Base Commit from Deploy Cache'
       if [[ ! -f dist/last-deploy.txt ]]
-        echo "find last deploy"
-        cat dist/last-deploy.txt
       then
         mkdir dist && git rev-parse HEAD~1 > dist/last-deploy.txt
+      else
+        echo "find last deploy"
+        cat dist/last-deploy.txt
       fi
       echo 'export AFFECTED_ARGS="--base $(cat dist/last-deploy.txt)"' >> $BASH_ENV
     fi
@@ -134,6 +135,10 @@ store_artifacts_coverage: &store_artifacts_coverage
   prefix: coverage
   path: coverage
 
+update_deploy: &update_deploy
+  name: Update Deploy
+  command: git rev-parse HEAD > dist/last-deploy.txt
+
 # jobs
 jobs:
   check_pr:
@@ -156,6 +161,7 @@ jobs:
       # - run: *e2e
       - run: *coverage
       - save_cache: *save_dist
+      - run: *update_deploy
       # - store_artifacts: *store_artifacts_coverage
       - save_cache: *save_yarn_cache
 

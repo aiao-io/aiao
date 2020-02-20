@@ -44,13 +44,17 @@ jobs:
       - name: Setup Environment Variables
         shell: bash
         run: |
-          if [[ $GITHUB_BASE_REF ]]
+          if [[ ! $GITHUB_BASE_REF ]]
           then
+            echo "Fetching Base Commit from GitHub"
             echo "::set-env name=NX_BASE::remotes/origin/$GITHUB_BASE_REF"
           else
-            echo "::set-env name=NX_BASE::$(git rev-parse HEAD~1)"
+            if [[ ! -f dist/last-deploy.txt ]]
+            then
+              mkdir dist && git rev-parse HEAD~1 > dist/last-deploy.txt
+            fi
+            echo "::set-env name=NX_BASE::$(cat dist/last-deploy.txt)"
           fi
-
       - name: check workspace
         run: node dist/tools/scripts/check-workspace
 
@@ -58,3 +62,8 @@ jobs:
         shell: bash
         run: |
           yarn affected:e2e --base=$NX_BASE --configuration production --headless --parallel --maxParallel=2
+
+      - name: update last-deploy
+          shell: bash
+          run: |
+            git rev-parse HEAD~1 > dist/last-deploy.txt
