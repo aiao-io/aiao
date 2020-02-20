@@ -681,7 +681,8 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "dev-universal-fastify-engine:build:production"
+              "browserTarget": "dev-universal-fastify-engine:build:production",
+              "port": 5201
             }
           }
         },
@@ -843,7 +844,8 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "dev-nest-angular-universal:build:production"
+              "browserTarget": "dev-nest-angular-universal:build:production",
+              "port": 5202
             }
           }
         },
@@ -1022,7 +1024,8 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "dev-elements-angular:build:production"
+              "browserTarget": "dev-elements-angular:build:production",
+              "port": 5203
             }
           }
         },
@@ -1135,7 +1138,8 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "dev-lazy-element:build:production"
+              "browserTarget": "dev-lazy-element:build:production",
+              "port": 5204
             }
           }
         },
@@ -1249,7 +1253,8 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "dev-lazy-module:build:production"
+              "browserTarget": "dev-lazy-module:build:production",
+              "port": 5205
             }
           }
         },
@@ -1363,7 +1368,8 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "dev-lazy-component:build:production"
+              "browserTarget": "dev-lazy-component:build:production",
+              "port": 5206
             }
           }
         },
@@ -1420,8 +1426,13 @@
     }
   },
   "cli": {
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
     "defaultCollection": "@nrwl/angular",
-    "packageManager": "yarn"
+    "packageManager": "yarn",
+    "analytics": false
   },
   "schematics": {
     "@nrwl/angular:application": {

@@ -1,4 +1,4 @@
-import { LAZY_ROUTES_TOKEN, LazyModule, matcher } from '@aiao/lazy-module';
+import { LAZY_ROUTES_TOKEN, LazyModule, matcher } from '..';
 import { TestBed } from '@angular/core/testing';
 
 describe('LazyModule', () => {

@@ -36,12 +36,25 @@ jobs:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+
       - name: install
         run: |
-          yarn install --non-interactive --no-lockfile --ignore-scripts
-          yarn build:tools
-          yarn run ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points
+          yarn install --frozen-lockfile --non-interactive
+
+      - name: Setup Environment Variables
+        shell: bash
+        run: |
+          if [[ $GITHUB_BASE_REF ]]
+          then
+            echo "::set-env name=NX_BASE::remotes/origin/$GITHUB_BASE_REF"
+          else
+            echo "::set-env name=NX_BASE::remotes/origin/$(git rev-parse HEAD~1)"
+          fi
+
       - name: check workspace
         run: node dist/tools/scripts/check-workspace
-      - name: build libs
-        run: ./node_modules/.bin/lerna run build --scope @aiao/*
+
+      - name: e2e
+        shell: bash
+        run: |
+          yarn affected:e2e --base=$NX_BASE --configuration production --headless --parallel --maxParallel=2

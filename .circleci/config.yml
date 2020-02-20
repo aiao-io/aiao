@@ -87,15 +87,14 @@ save_yarn_cache: &save_yarn_cache
 restore_dist: &restore_dist
   name: Restore Dist
   keys:
-    - aiao-dist-node12-{{ checksum "nx.json" }}
+    - aiao-dist-node12-{{ checksum "nx.json" }}-{{ .Environment.CIRCLE_PREVIOUS_BUILD_NUM }}
+    - aiao-dist-node12-{{ checksum "nx.json" }}-
 
 save_dist: &save_dist
   name: Save Dist
-  key: aiao-dist-node12-{{ checksum "nx.json" }}
+  key: aiao-dist-node12-{{ checksum "nx.json" }}-{{ .Environment.CIRCLE_BUILD_NUM }}
   paths:
     - coverage
-    - dist/libs
-    - dist/apps
     - dist/last-deploy.txt
 
 # format
@@ -133,34 +132,28 @@ store_artifacts_coverage: &store_artifacts_coverage
   prefix: coverage
   path: coverage
 
-store_artifacts_dist: &store_artifacts_dist
-  name: Artifacts dist
-  prefix: dist
-  path: dist
-
 # jobs
 jobs:
   check_pr:
     <<: *defaults
     steps:
       - checkout
-      - run: *set_env
       - restore_cache: *restore_yarn_cache
       - restore_cache: *restore_dist
+      - run: *set_env
       - run: *install_yarn
+      - run: *ngcc
       - run: *build_tools
       - run: *hotfix
       - run: *check_workspace
-      - run: *ngcc
       - run: *format
       - run: *lint
       - run: *check_lodash
-      - run: *build
+      # - run: *build
       - run: *test
+      # - run: *e2e
       - run: *coverage
-      - run: *e2e
       - save_cache: *save_dist
-      # - store_artifacts: *store_artifacts_dist
       # - store_artifacts: *store_artifacts_coverage
       - save_cache: *save_yarn_cache
 

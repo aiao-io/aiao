@@ -4,6 +4,8 @@ module.exports = {
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../coverage/libs/elements'
+  coverageDirectory: '../../coverage/libs/elements',
+  coverageReporters: ['html', 'json'],
+  collectCoverageFrom: ['./src/lib/**/*.ts', './src/lib/**/*.tsx'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html']
 };
