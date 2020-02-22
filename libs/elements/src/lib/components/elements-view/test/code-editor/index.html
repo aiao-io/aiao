@@ -67,7 +67,7 @@
     editor.value = html;
     view.html = html;
 
-    editor.addEventListener('aiaoInput', e => {
+    editor.addEventListener('aiaoChange', e => {
       view.html = e.detail.value;
     });
     editor.config = [
