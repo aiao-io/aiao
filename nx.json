@@ -105,7 +105,7 @@
       "tags": ["react-app"]
     },
     "dev-elements-react-e2e": {
-      "tags": [],
+      "tags": ["angular-e2e"],
       "implicitDependencies": ["dev-elements-react"]
     }
   }
