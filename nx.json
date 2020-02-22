@@ -100,6 +100,13 @@
     "dev-lazy-component-e2e": {
       "tags": ["angular-e2e"],
       "implicitDependencies": ["dev-lazy-component"]
+    },
+    "dev-elements-react": {
+      "tags": []
+    },
+    "dev-elements-react-e2e": {
+      "tags": [],
+      "implicitDependencies": ["dev-elements-react"]
     }
   }
 }
