@@ -102,7 +102,7 @@
       "implicitDependencies": ["dev-lazy-component"]
     },
     "dev-elements-react": {
-      "tags": []
+      "tags": ["react-app"]
     },
     "dev-elements-react-e2e": {
       "tags": [],
