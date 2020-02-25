@@ -13,6 +13,18 @@
 
 用 `monorepo` 风格代码统一管理、发布一些 `npm` 库。
 
+## apps
+
+| app                            | 介绍                           |                                             |
+| ------------------------------ | ------------------------------ | ------------------------------------------- |
+| `dev-elements-angular`         | angular 集成演示               | [详情](./apps/dev-elements-angular)         |
+| `dev-elements-react`           | react 集成演示                 | [详情](./apps/dev-elements-react)           |
+| `dev-lazy-component`           | lazy-component 集成演示        | [详情](./apps/dev-lazy-component)           |
+| `dev-lazy-element`             | lazy-element 集成演示          | [详情](./apps/dev-lazy-element)             |
+| `dev-lazy-module`              | lazy-module 集成演示           | [详情](./apps/dev-lazy-module)              |
+| `dev-nest-angular-universal`   | nest+angular 服务器渲染演示    | [详情](./apps/dev-nest-angular-universal)   |
+| `dev-universal-fastify-engine` | universal fastify 渲染引擎演示 | [详情](./apps/dev-universal-fastify-engine) |
+
 ## Libs
 
 版本小于 `1` 的为内测版本，请谨慎使用。
