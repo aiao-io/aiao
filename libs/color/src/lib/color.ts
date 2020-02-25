@@ -139,7 +139,9 @@ export class Color {
    * @param type 颜色类型
    * @param decimal true 显示数字, false 百分比
    */
-  toString(type: ColorType = 'hex', decimal?: boolean) {
+  toString(type?: ColorType): string;
+  toString(type: 'hsb', decimal?: boolean): string;
+  toString(type = 'hex', decimal?: boolean): string {
     switch (type) {
       case 'hex':
         const rgb = [this._red, this._green, this._blue].map(val => val.toString(16).padStart(2, '0'));
