@@ -3,12 +3,12 @@ import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, P
 import { TreeNodeEvent } from './tree-node.interface';
 
 @Component({
-  tag: 'mlab-tree-node',
+  tag: 'aiao-tree-node',
   styleUrl: 'tree-node.scss',
   shadow: true
 })
 export class TreeNode implements ComponentInterface {
-  @Element() el!: HTMLMlabTreeNodeElement;
+  @Element() el!: HTMLElement;
 
   /**
    * 唯一值

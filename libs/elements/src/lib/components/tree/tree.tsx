@@ -373,13 +373,13 @@ export class Tree implements ComponentInterface {
     }
 
     return (
-      <mlab-tree-node id={eleId} {...attrs}>
+      <aiao-tree-node id={eleId} {...attrs}>
         {hasChildren && (
           <div class="children">
             {sortBy(children || [], 'sort').map(n => this.renderNode(n, needId, childConfigIds, nextLevel))}
           </div>
         )}
-      </mlab-tree-node>
+      </aiao-tree-node>
     );
   }
 
