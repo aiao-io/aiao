@@ -6,6 +6,18 @@
 
 Use `monorepo` style for management some `npm` package。
 
+## apps
+
+| app                            | Description              |                                           |
+| ------------------------------ | ------------------------ | ----------------------------------------- |
+| `dev-elements-angular`         | angular 集成演示             | [详情](./apps/dev-elements-angular)         |
+| `dev-elements-react`           | react 集成演示               | [详情](./apps/dev-elements-react)           |
+| `dev-lazy-component`           | lazy-component 集成演示      | [详情](./apps/dev-lazy-component)           |
+| `dev-lazy-element`             | lazy-element 集成演示        | [详情](./apps/dev-lazy-element)             |
+| `dev-lazy-module`              | lazy-module 集成演示         | [详情](./apps/dev-lazy-module)              |
+| `dev-nest-angular-universal`   | nest+angular 服务器渲染演示     | [详情](./apps/dev-nest-angular-universal)   |
+| `dev-universal-fastify-engine` | universal fastify 渲染引擎演示 | [详情](./apps/dev-universal-fastify-engine) |
+
 ## Libs
 
 Versions less than ` 1 ` are internal beta versions, please use with caution
@@ -15,25 +27,25 @@ Versions less than ` 1 ` are internal beta versions, please use with caution
 | Package                  | Description       | Version                                                                                                                              | Scale                                                                                                                                                                   |                                    |
 | ------------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
 | `@aiao/elements`         | web component     | [![npm](https://img.shields.io/npm/v/@aiao/elements?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements)                 | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/elements?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/elements)                 | [Details](./libs/elements)         |
-| `@aiao/elements-angular` | angular version   | [![npm](https://img.shields.io/npm/v/@aiao/elements-angular?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-angular) | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/elements-angular?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/elements-angular) | [Details](./libs/elements-angular) |
-| `@aiao/elements-react`   | react version     | [![npm](https://img.shields.io/npm/v/@aiao/elements-react?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-react)     | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/elements-react?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/elements-react)     | [Details](./libs/elements-react)   |
-| `@aiao/elements-cdk`     | component Dev Kit | [![npm](https://img.shields.io/npm/v/@aiao/elements-cdk?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-cdk)         | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/elements-cdk?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/elements-cdk)         | [Detail](./libs/elements-cdk)      |
+| `@aiao/elements-angular` | angular 版         | [![npm](https://img.shields.io/npm/v/@aiao/elements-angular?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-angular) | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/elements-angular?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/elements-angular) | [Details](./libs/elements-angular) |
+| `@aiao/elements-react`   | react 版           | [![npm](https://img.shields.io/npm/v/@aiao/elements-react?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-react)     | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/elements-react?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/elements-react)     | [Details](./libs/elements-react)   |
+| `@aiao/elements-cdk`     | component Dev Kit | [![npm](https://img.shields.io/npm/v/@aiao/elements-cdk?label=&style=flat-square)](https://www.npmjs.com/@aiao/elements-cdk)         | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/elements-cdk?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/elements-cdk)         | [Details](./libs/elements-cdk)     |
 
 ### Angular
 
-| Package                          | Description                                   | Version                                                                                                                                              | Scale                                                                                                                                                                                   |                                       |
-| -------------------------------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
-| `@aiao/lazy-module`              | lazy load `angular module`                    | [![npm](https://img.shields.io/npm/v/@aiao/lazy-module?label=&style=flat-square)](https://www.npmjs.com/@aiao/lazy-module)                           | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/lazy-module?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/lazy-module)                           | [Details](./libs/lazy-module)         |
-| `@aiao/lazy-element`             | lazy load `angular element`                   | [![npm](https://img.shields.io/npm/v/@aiao/lazy-element?label=&style=flat-square)](https://www.npmjs.com/@aiao/lazy-element)                         | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/lazy-element?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/lazy-element)                         | [Details](./libs/lazy-element)        |
-| `@aiao/lazy-component`           | lazy load any `module`'s `component`          | [![npm](https://img.shields.io/npm/v/@aiao/lazy-component?label=&style=flat-square)](https://www.npmjs.com/@aiao/lazy-component)                     | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/lazy-component?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/lazy-component)                     | [Details](./libs/lazy-component)      |
-| `@aiao/stencil-toolkit`          | `stencil` toolkit from angular , support `nx` | [![npm](https://img.shields.io/npm/v/@aiao/stencil-toolkit?label=&style=flat-square)](https://www.npmjs.com/@aiao/stencil-toolkit)                   | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/stencil-toolkit?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/stencil-toolkit)                   | [Details](./libs/stencil-toolkit)     |
-| `@aiao/universal-fastify-engine` | universal fastify engine                      | [![npm](https://img.shields.io/npm/v/@aiao/universal-fastify-engine?label=&style=flat-square)](https://www.npmjs.com/@aiao/universal-fastify-engine) | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/universal-fastify-engine?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/universal-fastify-engine) | [详情](./libs/universal-fastify-engine) |
+| Package                          | Description                    | Version                                                                                                                                              | Scale                                                                                                                                                                                   |                                       |
+| -------------------------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
+| `@aiao/lazy-module`              | 按需加载 `angular module`          | [![npm](https://img.shields.io/npm/v/@aiao/lazy-module?label=&style=flat-square)](https://www.npmjs.com/@aiao/lazy-module)                           | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/lazy-module?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/lazy-module)                           | [Details](./libs/lazy-module)         |
+| `@aiao/lazy-element`             | 按需加载 `angular element`         | [![npm](https://img.shields.io/npm/v/@aiao/lazy-element?label=&style=flat-square)](https://www.npmjs.com/@aiao/lazy-element)                         | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/lazy-element?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/lazy-element)                         | [详情](./libs/lazy-element)             |
+| `@aiao/lazy-component`           | 按需加载 任意 `module` 的 `component` | [![npm](https://img.shields.io/npm/v/@aiao/lazy-component?label=&style=flat-square)](https://www.npmjs.com/@aiao/lazy-component)                     | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/lazy-component?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/lazy-component)                     | [详情](./libs/lazy-component)           |
+| `@aiao/stencil-toolkit`          | `stencil` 工具集 , 支持 `nx`        | [![npm](https://img.shields.io/npm/v/@aiao/stencil-toolkit?label=&style=flat-square)](https://www.npmjs.com/@aiao/stencil-toolkit)                   | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/stencil-toolkit?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/stencil-toolkit)                   | [详情](./libs/stencil-toolkit)          |
+| `@aiao/universal-fastify-engine` | universal fastify engine       | [![npm](https://img.shields.io/npm/v/@aiao/universal-fastify-engine?label=&style=flat-square)](https://www.npmjs.com/@aiao/universal-fastify-engine) | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/universal-fastify-engine?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/universal-fastify-engine) | [详情](./libs/universal-fastify-engine) |
 
 ### Nest
 
-| Package                        | Description | Version                                                                                                                                          | Scale                                                                                                                                                                               |                                          |
-| ------------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
-| `@aiao/nest-angular-universal` | color tool  | [![npm](https://img.shields.io/npm/v/@aiao/nest-angular-universal?label=&style=flat-square)](https://www.npmjs.com/@aiao/nest-angular-universal) | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/nest-angular-universal?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/nest-angular-universal) | [Details](./libs/nest-angular-universal) |
+| Package                        | 介绍   | 版本                                                                                                                                               | 尺寸                                                                                                                                                                                  |                                     |
+| ------------------------------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| `@aiao/nest-angular-universal` | 处理颜色 | [![npm](https://img.shields.io/npm/v/@aiao/nest-angular-universal?label=&style=flat-square)](https://www.npmjs.com/@aiao/nest-angular-universal) | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/nest-angular-universal?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/nest-angular-universal) | [详情](./libs/nest-angular-universal) |
 
 ### utils
 
@@ -47,7 +59,7 @@ Versions less than ` 1 ` are internal beta versions, please use with caution
 | `@aiao/url`           | 处理 url                    | [![npm](https://img.shields.io/npm/v/@aiao/url?label=&style=flat-square)](https://www.npmjs.com/@aiao/url)                     | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/url?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/url)                     | [详情](./libs/url)           |
 | `@aiao/util`          | 一些小工具                     | [![npm](https://img.shields.io/npm/v/@aiao/util?label=&style=flat-square)](https://www.npmjs.com/@aiao/util)                   | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/util?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/util)                   | [详情](./libs/util)          |
 
-## Project Structure
+## 项目结构
 
 The structure mostly follows the [ Nx ](https://github.com/nrwl/nx) rule
 
@@ -55,7 +67,7 @@ The structure mostly follows the [ Nx ](https://github.com/nrwl/nx) rule
 - `libs` directory of libraries
 - `tools` utils
 
-## Install
+## 安装
 
 - ` cypress ` download is slow, please download and configure environment variables manually before installation ` CYPRESS_INSTALL_BINARY = 0 ` skip download, [ more installation methods ](cypress-install-zh-cn)
 - Please use ` yarn ` as the default installation method for this project. And force ` registry ` to be configured as the default. If you download too slowly, you can delete the `.yarnrc ` and `.npmrc ` files to speed up the installation.
@@ -64,7 +76,7 @@ The structure mostly follows the [ Nx ](https://github.com/nrwl/nx) rule
 yarn
 ```
 
-## Build Project
+## 构建项目
 
 ### 构建所有库
 
@@ -78,7 +90,7 @@ yarn build:libs
 ng build util
 ```
 
-## Unit Tests
+## 单元测试
 
 > Some libraries require database support, please start by yourself
 
@@ -94,7 +106,7 @@ yarn test
 ng test util
 ```
 
-## Contribute
+## 贡献
 
 Welcome all of you to contribute code, please check the [ Contribution Guide ](CONTRIBUTING.md)
 
