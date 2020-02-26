@@ -32,7 +32,8 @@ export function createControllerComponent<
     }
 
     async componentDidMount() {
-      if (this.props.isOpen) {
+      const { isOpen } = this.props;
+      if (isOpen) {
         this.present();
       }
     }
@@ -41,20 +42,23 @@ export function createControllerComponent<
       if (prevProps.isOpen !== this.props.isOpen && this.props.isOpen === true) {
         this.present(prevProps);
       }
-      if (this.controller && prevProps.isOpen !== this.props.isOpen && this.props.isOpen === false) {
+      if (
+        this.controller &&
+        prevProps.isOpen !== this.props.isOpen &&
+        this.props.isOpen === false
+      ) {
         await this.controller.dismiss();
       }
     }
 
     async present(prevProps?: Props) {
-      const elementProps: any = {
-        ...this.props,
-        [dismissEventName]: this.props.onDidDismiss
+      const { isOpen, onDidDismiss, ...cProps } = this.props;
+      const elementProps = {
+        ...cProps,
+        [dismissEventName]: onDidDismiss,
       };
-      elementProps.isOpen = undefined;
-      elementProps.onDidDismiss = undefined;
       this.controller = await controller.create({
-        ...elementProps
+        ...elementProps,
       });
       attachEventProps(this.controller as any, elementProps, prevProps);
       this.controller.present();

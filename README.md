@@ -13,6 +13,18 @@
 
 用 `monorepo` 风格代码统一管理、发布一些 `npm` 库。
 
+## apps
+
+| app                            | 介绍                           |                                             |
+| ------------------------------ | ------------------------------ | ------------------------------------------- |
+| `dev-elements-angular`         | angular 集成演示               | [详情](./apps/dev-elements-angular)         |
+| `dev-elements-react`           | react 集成演示                 | [详情](./apps/dev-elements-react)           |
+| `dev-lazy-component`           | lazy-component 集成演示        | [详情](./apps/dev-lazy-component)           |
+| `dev-lazy-element`             | lazy-element 集成演示          | [详情](./apps/dev-lazy-element)             |
+| `dev-lazy-module`              | lazy-module 集成演示           | [详情](./apps/dev-lazy-module)              |
+| `dev-nest-angular-universal`   | nest+angular 服务器渲染演示    | [详情](./apps/dev-nest-angular-universal)   |
+| `dev-universal-fastify-engine` | universal fastify 渲染引擎演示 | [详情](./apps/dev-universal-fastify-engine) |
+
 ## Libs
 
 版本小于 `1` 的为内测版本，请谨慎使用。
@@ -49,7 +61,7 @@
 | `@aiao/color`         | 处理颜色                       | [![npm][npm-color]][npm-color-url]                 | [![bundlephobia][bundlephobia-color]][bundlephobia-color-url]                 | [详情](./libs/color)         |
 | `@aiao/date`          | 处理日期                       | [![npm][npm-date]][npm-date-url]                   | [![bundlephobia][bundlephobia-date]][bundlephobia-date-url]                   | [详情](./libs/date)          |
 | `@aiao/image-storage` | 线上图片地址生成器             | [![npm][npm-image-storage]][npm-image-storage-url] | [![bundlephobia][bundlephobia-image-storage]][bundlephobia-image-storage-url] | [详情](./libs/image-storage) |
-| `@aiao/random`        | 处理日期                       | [![npm][npm-random]][npm-random-url]               | [![bundlephobia][bundlephobia-random]][bundlephobia-random-url]               | [详情](./libs/random)        |
+| `@aiao/random`        | 随机生成工具                   | [![npm][npm-random]][npm-random-url]               | [![bundlephobia][bundlephobia-random]][bundlephobia-random-url]               | [详情](./libs/random)        |
 | `@aiao/typeorm-plus`  | 让 typeorm 支持 sequelize 查询 | [![npm][npm-typeorm-plus]][npm-typeorm-plus-url]   | [![bundlephobia][bundlephobia-typeorm-plus]][bundlephobia-typeorm-plus-url]   | [详情](./libs/typeorm-plus)  |
 | `@aiao/url`           | 处理 url                       | [![npm][npm-url]][npm-url-url]                     | [![bundlephobia][bundlephobia-url]][bundlephobia-url-url]                     | [详情](./libs/url)           |
 | `@aiao/util`          | 一些小工具                     | [![npm][npm-util]][npm-util-url]                   | [![bundlephobia][bundlephobia-util]][bundlephobia-util-url]                   | [详情](./libs/util)          |
