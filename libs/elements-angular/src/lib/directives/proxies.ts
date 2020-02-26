@@ -91,3 +91,52 @@ export class AiaoImg {
     proxyOutputs(this, this.el, ['aiaoImgDidLoad', 'ionError']);
   }
 }
+
+export declare interface AiaoTextEditor extends Components.AiaoTextEditor {}
+@ProxyCmp({inputs: ['defaultParagraphSeparator', 'disabled', 'edit', 'element', 'name', 'placeholder', 'value'], 'methods': ['bold', 'italic', 'underline', 'strikethrough', 'heading', 'paragraph', 'backColor', 'foreColor', 'quote', 'indent', 'outdent', 'olist', 'ulist', 'line', 'insertHTML', 'link', 'unlink', 'image', 'alginCenter', 'alginLeft', 'alginFull', 'alginRight', 'undo', 'redo', 'getSelectionElements', 'saveSelection', 'restoreSelection']})
+@Component({ selector: 'aiao-text-editor', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['defaultParagraphSeparator', 'disabled', 'edit', 'element', 'name', 'placeholder', 'value'] })
+export class AiaoTextEditor {
+  mlabChange!: EventEmitter<CustomEvent>;
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['mlabChange']);
+  }
+}
+
+export declare interface AiaoTree extends Components.AiaoTree {}
+@ProxyCmp({inputs: ['autoExpandParent', 'canDrag', 'checkable', 'config', 'data', 'defaultExpandLevel', 'defaultExpandParent', 'defaultExpandedKeys', 'defaultSelectedKeys', 'disabled', 'multiple', 'selectable', 'showIcon', 'showLine', 'showMode'], 'methods': ['canDrop', 'select', 'overElement', 'outElement', 'nodeRefMap']})
+@Component({ selector: 'aiao-tree', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['autoExpandParent', 'canDrag', 'checkable', 'config', 'data', 'defaultExpandLevel', 'defaultExpandParent', 'defaultExpandedKeys', 'defaultSelectedKeys', 'disabled', 'multiple', 'selectable', 'showIcon', 'showLine', 'showMode'] })
+export class AiaoTree {
+  mlabChange!: EventEmitter<CustomEvent>;
+  mlabTreeNodeChange!: EventEmitter<CustomEvent>;
+  mlabTreeDrop!: EventEmitter<CustomEvent>;
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['mlabChange', 'mlabTreeNodeChange', 'mlabTreeDrop']);
+  }
+}
+
+export declare interface AiaoTreeNode extends Components.AiaoTreeNode {}
+@ProxyCmp({inputs: ['canDrag', 'checkable', 'disabled', 'expanded', 'hover', 'icon', 'isLeaf', 'name', 'selectable', 'selected', 'showIcon', 'showLine', 'value']})
+@Component({ selector: 'aiao-tree-node', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canDrag', 'checkable', 'disabled', 'expanded', 'hover', 'icon', 'isLeaf', 'name', 'selectable', 'selected', 'showIcon', 'showLine', 'value'] })
+export class AiaoTreeNode {
+  mlabTreeNodeDragStart!: EventEmitter<CustomEvent>;
+  mlabTreeNodeDragEnter!: EventEmitter<CustomEvent>;
+  mlabTreeNodeDragOver!: EventEmitter<CustomEvent>;
+  mlabTreeNodeDragLeave!: EventEmitter<CustomEvent>;
+  mlabTreeNodeDrop!: EventEmitter<CustomEvent>;
+  mlabTreeNodeDragEnd!: EventEmitter<CustomEvent>;
+  mlabTreeNodeClick!: EventEmitter<CustomEvent>;
+  mlabTreeNodeOver!: EventEmitter<CustomEvent>;
+  mlabTreeNodeOut!: EventEmitter<CustomEvent>;
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['mlabTreeNodeDragStart', 'mlabTreeNodeDragEnter', 'mlabTreeNodeDragOver', 'mlabTreeNodeDragLeave', 'mlabTreeNodeDrop', 'mlabTreeNodeDragEnd', 'mlabTreeNodeClick', 'mlabTreeNodeOver', 'mlabTreeNodeOut']);
+  }
+}

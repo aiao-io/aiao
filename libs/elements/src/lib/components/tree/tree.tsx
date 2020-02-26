@@ -28,7 +28,7 @@ import { findTreeNodeElement, treeNodeDateToTreeState } from './util';
 export class Tree implements ComponentInterface {
   @Element() private el!: HTMLAiaoTreeElement;
 
-  refMap: Map<string, HTMLMlabTreeNodeElement> = new Map();
+  refMap: Map<string, HTMLAiaoTreeNodeElement> = new Map();
   dataMap: Map<string, TreeNodeData> = new Map();
   private dragNode: TreeNode;
   // private selectedKeys: Set<Id> = new Set();

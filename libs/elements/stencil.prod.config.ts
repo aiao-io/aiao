@@ -43,7 +43,9 @@ export const config: Config = {
     { components: ['aiao-elements-editor', 'aiao-elements-editor-preview'] },
     { components: ['aiao-elements-form'] },
     { components: ['aiao-elements-view'] },
-    { components: ['aiao-img'] }
+    { components: ['aiao-img'] },
+    { components: ['aiao-text-editor'] },
+    { components: ['aiao-tree-node', 'aiao-tree'] }
   ],
   tsconfig: 'tsconfig.json',
   globalScript: 'src/lib/global/global.ts'
