@@ -8,5 +8,8 @@ d.AiaoCodeDiffEditor,
   d.AiaoElementsEditorPreview,
   d.AiaoElementsForm,
   d.AiaoElementsView,
-  d.AiaoImg
+  d.AiaoImg,
+  d.AiaoTextEditor,
+  d.AiaoTree,
+  d.AiaoTreeNode
 ];

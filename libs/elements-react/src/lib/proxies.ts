@@ -15,3 +15,6 @@ export const AiaoElementsEditorPreview = /*@__PURE__*/createReactComponent<JSX.A
 export const AiaoElementsForm = /*@__PURE__*/createReactComponent<JSX.AiaoElementsForm, HTMLAiaoElementsFormElement>('aiao-elements-form');
 export const AiaoElementsView = /*@__PURE__*/createReactComponent<JSX.AiaoElementsView, HTMLAiaoElementsViewElement>('aiao-elements-view');
 export const AiaoImg = /*@__PURE__*/createReactComponent<JSX.AiaoImg, HTMLAiaoImgElement>('aiao-img');
+export const AiaoTextEditor = /*@__PURE__*/createReactComponent<JSX.AiaoTextEditor, HTMLAiaoTextEditorElement>('aiao-text-editor');
+export const AiaoTree = /*@__PURE__*/createReactComponent<JSX.AiaoTree, HTMLAiaoTreeElement>('aiao-tree');
+export const AiaoTreeNode = /*@__PURE__*/createReactComponent<JSX.AiaoTreeNode, HTMLAiaoTreeNodeElement>('aiao-tree-node');
