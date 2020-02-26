@@ -497,7 +497,7 @@ export class RichTextEditor {
             <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/list-ul.svg`} />
           </ion-button>
           <ion-button fill={blockquote ? 'solid' : 'clear'} onClick={() => this.quote()}>
-          <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/quote.svg`} />
+            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/quote.svg`} />
           </ion-button>
           <ion-button fill="clear" onClick={() => this.line()}>
             <ion-icon name="return-down-back-outline"></ion-icon>
