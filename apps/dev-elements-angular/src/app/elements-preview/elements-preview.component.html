@@ -7,9 +7,11 @@
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
-  <div class="editor">
-    <aiao-code-editor class="item" language="json" [value]="data"></aiao-code-editor>
-    <aiao-code-editor class="item" language="json" [value]="config"></aiao-code-editor>
+  <div class="container">
+    <form class="editor" [formGroup]="form">
+      <aiao-code-editor class="item" language="json" formControlName="elements"></aiao-code-editor>
+      <aiao-code-editor class="item" language="json" formControlName="config"></aiao-code-editor>
+    </form>
+    <aiao-elements-editor-preview id="preview" [value]="form.value.elements" [config]="form.value.config"></aiao-elements-editor-preview>
   </div>
-  <aiao-elements-editor-preview id="preview"></aiao-elements-editor-preview>
 </ion-content>

@@ -54,5 +54,13 @@ export class ElementsPreviewComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      config: [this.config],
+      elements: [this.data]
+    });
+    this.form.valueChanges.subscribe(d => {
+      console.log('valueChanges', d);
+    });
+  }
 }
