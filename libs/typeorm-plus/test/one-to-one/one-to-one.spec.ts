@@ -1,7 +1,7 @@
 import { env } from 'process';
 import { Connection, ConnectionOptions, createConnection, Repository } from 'typeorm';
 
-import { SequelizeRepository, TypeormPlus } from '@aiao/typeorm-plus';
+import { SequelizeRepository, TypeormPlus } from '../../src';
 
 import { Profile } from './profile.entity';
 import { User } from './user.entity';

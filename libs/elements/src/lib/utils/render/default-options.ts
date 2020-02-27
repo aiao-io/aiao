@@ -48,7 +48,7 @@ const elementsDefaultOption = (configs: IElementConfig[], data: IElementData): I
     innerHTML = undefined;
   }
   let newChildren: IElementData[];
-  if (hasChildren && children && children.length > 0) {
+  if (hasChildren && children?.length > 0) {
     newChildren = elementsViewDefaultOptions(configs, children);
   }
 

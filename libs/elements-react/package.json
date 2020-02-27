@@ -1,6 +1,6 @@
 {
   "name": "@aiao/elements-react",
-  "version": "0.0.4",
+  "version": "0.0.9",
   "description": "elements react",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -16,14 +16,14 @@
     "react"
   ],
   "scripts": {
-    "build": "ng build elements-react"
+    "build": "cd ../../ && ng build elements-react"
   },
   "peerDependencies": {
-    "@aiao/elements": "^0.1.0",
+    "@aiao/elements": "^0.5.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
-    "@aiao/elements": "^0.3.0"
+    "@aiao/elements": "^0.5.2"
   }
 }

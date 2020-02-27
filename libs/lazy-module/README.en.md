@@ -6,9 +6,17 @@ lazy load `angular module`
 
 ## Use Case
 
-render content dynamically
+动态加载模块
 
 ## Install
+
+### Angular 8
+
+```console
+yarn add @aiao/lazy-module@^1.3
+```
+
+### Angular 9+
 
 ```console
 yarn add @aiao/lazy-module

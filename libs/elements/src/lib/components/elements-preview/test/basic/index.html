@@ -87,15 +87,11 @@
     editor2.value = JSON.stringify(value, null, 2);
     preview.config = config;
     preview.value = value;
-    editor1.addEventListener('aiaoInput', e => {
-      try {
-        preview.config = JSON.parse(e.detail.value);
-      } catch {}
+    editor1.addEventListener('aiaoChange', e => {
+      preview.config = e.detail.value;
     });
-    editor2.addEventListener('aiaoInput', e => {
-      try {
-        preview.value = JSON.parse(e.detail.value);
-      } catch {}
+    editor2.addEventListener('aiaoChange', e => {
+      preview.value = e.detail.value;
     });
   </script>
 </html>

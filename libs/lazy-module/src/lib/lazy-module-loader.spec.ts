@@ -1,4 +1,4 @@
-import { LazyModuleLoader, LazyRoutes, matcher } from '@aiao/lazy-module';
+import { LazyModuleLoader, LazyRoutes, matcher } from '..';
 import { Compiler, ComponentFactoryResolver, Injector, NgModuleFactory, NgModuleRef, Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
@@ -30,8 +30,8 @@ describe('LazyModuleLoader', () => {
       ]
     ];
     const injector = TestBed.configureTestingModule({ providers: [LazyModuleLoader] });
-    lazyModuleLoader = injector.get(LazyModuleLoader);
-    compiler = injector.get(Compiler);
+    lazyModuleLoader = injector.inject(LazyModuleLoader);
+    compiler = injector.inject(Compiler);
     lazyModuleLoader.add(lazymodules);
   });
 

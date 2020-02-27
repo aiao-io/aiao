@@ -9,7 +9,10 @@ import {
   AiaoElementsEditorPreview,
   AiaoElementsForm,
   AiaoElementsView,
-  AiaoImg
+  AiaoImg,
+  AiaoTextEditor,
+  AiaoTree,
+  AiaoTreeNode
 } from './directives/proxies';
 import { initialize } from './elements-initialize';
 import { TextValueAccessor } from './providers/control-value-accessors/text-value-accessor';
@@ -24,6 +27,9 @@ const DECLARATIONS = [
   AiaoElementsForm,
   AiaoElementsView,
   AiaoImg,
+  AiaoTextEditor,
+  AiaoTree,
+  AiaoTreeNode,
   // accessor
   TextValueAccessor
 ];

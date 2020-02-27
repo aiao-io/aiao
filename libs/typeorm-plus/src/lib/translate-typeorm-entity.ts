@@ -58,7 +58,7 @@ export function translateTypeOrmEntity(metadata: EntityMetadata): SeqModel {
       unique: uniques.includes(databaseName)
     };
 
-    if (relationMetadata && relationMetadata.isWithJoinColumn) {
+    if (relationMetadata?.isWithJoinColumn) {
       columnOptions.references = { model: entityMetadata.name, key: databaseName };
     }
 

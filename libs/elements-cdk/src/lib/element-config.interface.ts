@@ -18,18 +18,18 @@ export interface IElementConfig {
   // 查看器的标签
   inspectorTag?: string;
   // 是否有子元素
-  hasChildren: boolean;
+  hasChildren?: boolean;
 
   // 是否支持内联 html
-  innerHTML: boolean;
+  innerHTML?: boolean;
   // 是否支持内联普通问呗
-  innerText: boolean;
+  innerText?: boolean;
 
   // 是按钮么
-  isButton: boolean;
+  isButton?: boolean;
 
   // 是输入类型
-  isInput: boolean;
+  isInput?: boolean;
 
   // 元素的默认配置
   defaultOptions?: IElementOptions;

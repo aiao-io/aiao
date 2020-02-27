@@ -4,29 +4,16 @@ import chalk from 'chalk';
 import { execSync } from 'child_process';
 import { env, exit } from 'process';
 
+import { WORKSPACE_SCOPES, WORKSPACE_TYPES } from '../util/workspace';
+
 const branchName: string = execSync('git symbolic-ref --short -q HEAD').toString();
 
 if (branchName.trim() !== 'master') {
   exit();
 }
 
-const all_types = ['feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'chore'];
-const all_spops = [
-  'aiao',
-  'integration',
-  'color',
-  'elements',
-  'elements-angular',
-  'elements-cdk',
-  'elements-react',
-  'image-storage',
-  'lazy-component',
-  'lazy-element',
-  'lazy-module',
-  'stencil-toolkit',
-  'typeorm-plus',
-  'util'
-];
+const all_types = WORKSPACE_TYPES;
+const all_scopes = WORKSPACE_SCOPES;
 
 const message_en = {
   titile: '🐟🐟🐟 Validating git commit message 🐟🐟🐟',
@@ -36,7 +23,7 @@ const message_en = {
   tips: `
   type(scope): subject \n BLANK LINE \n body
   possible types: ${chalk.green(all_types.join(', '))}
-  possible scopes: ${chalk.green(all_spops.join(', '))}
+  possible scopes: ${chalk.green(all_scopes.join(', '))}
 
   EXAMPLE: ${chalk.green('feat(elements): add some feature')}
   `
@@ -50,7 +37,7 @@ const message_zh_cn = {
   tips: `
   type(scope): subject \n BLANK LINE \n body
   可选 types: ${chalk.green(all_types.join(', '))}
-  可选 scopes: ${chalk.green(all_spops.join(', '))}
+  可选 scopes: ${chalk.green(all_scopes.join(', '))}
 
   例子: ${chalk.green('feat(elements): add some feature')}
   `
@@ -63,14 +50,14 @@ const gitMessage = execSync('git log -1 --no-merges')
   .toString()
   .trim();
 
-const matchCommit = /(feat|fix|docs|style|refactor|perf|test|chore)\((aiao|integration|color|elements|elements-angular|elements-cdk|elements-react|image-storage|lazy-component|lazy-element|lazy-module|stencil-toolkit|typeorm-plus|util)\):/g.test(
-  gitMessage
-);
-
+const match = /(?<type>[a-z-]+)\((?<scope>[a-z-]+)\):/.exec(gitMessage);
+const type = match?.groups?.type;
+const scope = match?.groups?.scope;
+const matchCommit = type && scope && all_scopes.includes(scope) && all_types.includes(type);
 const matchRevert = /revert/gi.test(gitMessage);
 const matchRelease = /release/gi.test(gitMessage);
 const matchWIP = /WIP/gi.test(gitMessage);
-const exitCode = +!(matchRelease || matchRevert || matchCommit || matchWIP);
+const exitCode = +!(matchRelease || matchRevert || matchWIP || matchCommit);
 
 if (exitCode === 0) {
   console.log(message.accepted);

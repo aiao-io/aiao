@@ -1,6 +1,6 @@
 import isNumber from 'lodash/isNumber';
 
-import { ColorHSB, ColorOptions, ColorRGBA } from './interface';
+import { ColorHSB, ColorRGBA } from './interface';
 
 const CSS_INTEGER = '[-\\+]?\\d+%?';
 const CSS_NUMBER = '[-\\+]?\\d*\\.\\d+%?';
@@ -75,7 +75,7 @@ export const getRGBA = (color: string): ColorRGBA => {
   return null;
 };
 
-export const colorStringToOptions = (colorString: string): ColorOptions => {
+export const colorStringToOptions = (colorString: string) => {
   const color = colorString.trim().toLowerCase();
   let rgba: ColorRGBA;
   let hsb: ColorHSB;

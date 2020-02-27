@@ -134,10 +134,11 @@ export class ElementsFrom implements ComponentInterface {
     Object.keys(pathValues).forEach(path => set(values, path, pathValues[path]));
     return values;
   }
+
   private get formInputElements() {
     if (!this._formInputElements) {
       this._formInputElements = Array.from(this.form.elements).filter(
-        (d: any) => d && d.name && d.name !== 'undefined'
+        (d: any) => d?.name && d.name !== 'undefined'
       ) as HTMLInputElement[];
     }
     return this._formInputElements;
@@ -145,7 +146,7 @@ export class ElementsFrom implements ComponentInterface {
 
   private get formElements() {
     if (!this._formElements) {
-      this._formElements = Array.from(this.viewRef.shadowRoot.querySelectorAll(`.${ELEMENTS_FORM_ITEM}`));
+      this._formElements = Array.from(this.viewRef.querySelectorAll(`.${ELEMENTS_FORM_ITEM}`));
     }
     return this._formElements;
   }
@@ -175,8 +176,7 @@ export class ElementsFrom implements ComponentInterface {
     if (this.value) {
       this.setValues(this.value, false);
     }
-    const formInputElements = this.formInputElements;
-    formInputElements.forEach((d: HTMLInputElement) => {
+    this.formInputElements.forEach((d: HTMLInputElement) => {
       d.onchange = () => this.valueChanged('change');
       d.oninput = () => this.valueChanged('input');
     });

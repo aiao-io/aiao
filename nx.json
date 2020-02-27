@@ -9,40 +9,104 @@
   },
   "projects": {
     "util": {
-      "tags": []
+      "tags": ["all"]
     },
     "lazy-component": {
-      "tags": []
+      "tags": ["angular-lib"]
     },
     "lazy-module": {
-      "tags": []
+      "tags": ["angular-lib"]
     },
     "lazy-element": {
-      "tags": []
+      "tags": ["angular-lib"]
     },
     "color": {
-      "tags": []
+      "tags": ["all"]
     },
     "stencil-toolkit": {
-      "tags": []
+      "tags": ["stencil-tool"]
     },
     "elements": {
-      "tags": []
+      "tags": ["stencil-lib"]
     },
     "image-storage": {
-      "tags": []
+      "tags": ["all"]
     },
     "elements-cdk": {
-      "tags": []
+      "tags": ["all"]
     },
     "elements-angular": {
-      "tags": []
+      "tags": ["angular-lib"]
     },
     "typeorm-plus": {
-      "tags": []
+      "tags": ["nest-lib"]
     },
     "elements-react": {
-      "tags": []
+      "tags": ["react-lib"]
+    },
+    "date": {
+      "tags": ["all"]
+    },
+    "random": {
+      "tags": ["all"]
+    },
+    "url": {
+      "tags": ["all"]
+    },
+    "universal-fastify-engine": {
+      "tags": ["universal-lib"]
+    },
+    "nest-angular-universal": {
+      "tags": ["universal-lib"]
+    },
+    "dev-universal-fastify-engine": {
+      "tags": ["angular-app", "nest-app"]
+    },
+    "dev-universal-fastify-engine-e2e": {
+      "tags": ["angular-e2e"],
+      "implicitDependencies": ["dev-universal-fastify-engine"]
+    },
+    "dev-nest-angular-universal": {
+      "tags": ["angular-app", "nest-app"]
+    },
+    "dev-nest-angular-universal-e2e": {
+      "tags": ["angular-e2e"],
+      "implicitDependencies": ["dev-nest-angular-universal"]
+    },
+    "dev-elements-angular": {
+      "tags": ["angular-app"]
+    },
+    "dev-elements-angular-e2e": {
+      "tags": ["angular-e2e"],
+      "implicitDependencies": ["dev-elements-angular"]
+    },
+    "dev-lazy-element": {
+      "tags": ["angular-app"]
+    },
+    "dev-lazy-element-e2e": {
+      "tags": ["angular-e2e"],
+      "implicitDependencies": ["dev-lazy-element"]
+    },
+    "dev-lazy-module": {
+      "tags": ["angular-app"]
+    },
+    "dev-lazy-module-e2e": {
+      "tags": ["angular-e2e"],
+      "implicitDependencies": ["dev-lazy-module"]
+    },
+    "dev-lazy-component": {
+      "tags": ["angular-app"]
+    },
+    "dev-lazy-component-e2e": {
+      "tags": ["angular-e2e"],
+      "implicitDependencies": ["dev-lazy-component"]
+    },
+    "dev-elements-react": {
+      "tags": ["react-app"]
+    },
+    "dev-elements-react-e2e": {
+      "tags": ["angular-e2e"],
+      "implicitDependencies": ["dev-elements-react"]
     }
   }
 }

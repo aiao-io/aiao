@@ -36,7 +36,7 @@ export function initRepository(metadata: EntityMetadata, ormSequelize: Sequelize
           model.belongsTo(inverseModel, { as: propertyName, foreignKey: { name: fkName } });
           break;
         case 'one-to-one':
-          const inverseJoinColumns = (relation.inverseRelation && relation.inverseRelation.joinColumns) || [];
+          const inverseJoinColumns = relation.inverseRelation?.joinColumns || [];
           if (relation.joinColumns.length > 0 && inverseJoinColumns.length > 0) {
             throw new Error(`modelName: ${modelName}, 一对一关系不能两边 使用 joinColumns`);
           }

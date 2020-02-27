@@ -1,4 +1,4 @@
-import { LAZY_ROUTES_TOKEN, LazyModule, matcher } from '@aiao/lazy-module';
+import { LAZY_ROUTES_TOKEN, LazyModule, matcher } from '..';
 import { TestBed } from '@angular/core/testing';
 
 describe('LazyModule', () => {
@@ -14,16 +14,16 @@ describe('LazyModule', () => {
         ])
       ]
     });
-    injector.get(LazyModule);
+    injector.inject(LazyModule);
     expect(LazyModule).toBeDefined();
-    expect(injector.get(LAZY_ROUTES_TOKEN)[0][0].name).toEqual('AModule');
+    expect(injector.inject(LAZY_ROUTES_TOKEN)[0][0].name).toEqual('AModule');
   });
 
   it('should create', () => {
     const injector = TestBed.configureTestingModule({
       imports: [LazyModule]
     });
-    injector.get(LazyModule);
+    injector.inject(LazyModule);
     expect(LazyModule).toBeDefined();
   });
 });

@@ -31,7 +31,7 @@ describe('LazyComponentModule', () => {
         LazyComponentModule.forRoot()
       ]
     });
-    lazyComponentLoader = injector.get(LazyComponentLoader);
+    lazyComponentLoader = injector.inject(LazyComponentLoader);
     injector.compileComponents();
   }));
 

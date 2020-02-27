@@ -12,7 +12,7 @@ export class LazyComponentModule {
     lazyComponentFactoryResolver.registerResolver(componentFactoryResolver);
   }
 
-  public static forRoot(): ModuleWithProviders {
+  public static forRoot(): ModuleWithProviders<LazyComponentModule> {
     return {
       ngModule: LazyComponentModule,
       providers: [

@@ -5,6 +5,7 @@ import { NgZone } from '@angular/core';
 
 let didInitialize = false;
 
+// 初始化
 export function initialize(config: IAiaoElementsConfig, doc: Document, zone: NgZone) {
   return (): any => {
     const win = doc.defaultView as any;

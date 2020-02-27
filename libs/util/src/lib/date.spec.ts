@@ -123,28 +123,33 @@ describe('formatPassTime', () => {
   });
 
   it('safeAddDate', () => {
-    const date = safeAddDate('2019-09-10T00:00:00.000Z', 10, 'day');
+    const date = safeAddDate(new Date('2019-09-10T00:00:00.000Z'), 10, 'day');
     expect(date.toISOString()).toEqual('2019-09-20T00:00:00.000Z');
   });
 
   it('safeAddDate end', () => {
-    const date = safeAddDate('2019-09-10T00:00:00.000Z', 10, 'day', '2019-09-12T00:00:00.000Z');
+    const date = safeAddDate(new Date('2019-09-10T00:00:00.000Z'), 10, 'day', new Date('2019-09-12T00:00:00.000Z'));
     expect(date.toISOString()).toEqual('2019-09-12T00:00:00.000Z');
   });
 
   it('safeAddDate end2', () => {
-    const date = safeAddDate('2019-09-10T00:00:00.000Z', 10, 'day', '2019-10-12T00:00:00.000Z');
+    const date = safeAddDate(new Date('2019-09-10T00:00:00.000Z'), 10, 'day', new Date('2019-10-12T00:00:00.000Z'));
     expect(date.toISOString()).toEqual('2019-09-20T00:00:00.000Z');
   });
 
   it('canBeDate', () => {
+    // false
     expect(canBeDate(null)).toBeFalsy();
     expect(canBeDate(undefined)).toBeFalsy();
     expect(canBeDate({})).toBeFalsy();
     expect(canBeDate('adf')).toBeFalsy();
+    expect(canBeDate('20')).toBeFalsy();
+    // true
     expect(canBeDate(1)).toBeTruthy();
-    expect(canBeDate('1')).toBeTruthy();
     expect(canBeDate(new Date())).toBeTruthy();
+    expect(canBeDate(new Date(null))).toBeTruthy();
+    expect(canBeDate(new Date().getTime())).toBeTruthy();
+    expect(canBeDate(new Date().toISOString())).toBeTruthy();
   });
 
   it('toDate', () => {

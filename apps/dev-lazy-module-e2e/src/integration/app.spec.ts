@@ -1,0 +1,1 @@
+describe('dev-lazy-module', () => {});
