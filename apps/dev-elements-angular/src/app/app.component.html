@@ -6,15 +6,15 @@
           <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
-          <ion-title>dev-elements-angular</ion-title>
+          <ion-title>Elements Angular</ion-title>
         </ion-toolbar>
       </ion-toolbar>
       <ion-content>
         <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let n of navs; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[n.url]" [routerLinkActive]="'selected'">
-              <ion-icon *ngIf="n.icon" slot="start" [ios]="n.icon + '-outline'" [md]="n.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ n.title }}</ion-label>
+          <ion-menu-toggle auto-hide="false" *ngFor="let m of menus; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[m.url]" [routerLinkActive]="'selected'">
+              <ion-icon *ngIf="m.icon" slot="start" [ios]="m.icon + '-outline'" [md]="m.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ m.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>

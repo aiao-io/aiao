@@ -17,7 +17,7 @@ export const CodeEditor: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <AiaoCodeEditor base-url="assets/monaco" language="typescript" value="const a = 'react';"></AiaoCodeEditor>
+        <AiaoCodeEditor baseUrl="assets/monaco" language="typescript" value="const a = 'react';"></AiaoCodeEditor>
       </IonContent>
     </IonPage>
   );

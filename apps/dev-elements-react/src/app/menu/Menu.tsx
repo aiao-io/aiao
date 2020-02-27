@@ -22,16 +22,26 @@ interface MenuProps extends RouteComponentProps {
   selectedPage: string;
 }
 
-interface AppPage {
+interface IMenu {
   url: string;
   icon?: string;
   title: string;
 }
 
-const appPages: AppPage[] = [
+const appPages: IMenu[] = [
   {
     title: 'Code Editor',
     url: '/code-editor',
+    icon: link
+  },
+  {
+    title: 'Elements Editor',
+    url: '/elements-editor',
+    icon: link
+  },
+  {
+    title: 'Elements Preview',
+    url: '/elements-preview',
     icon: link
   }
 ];
