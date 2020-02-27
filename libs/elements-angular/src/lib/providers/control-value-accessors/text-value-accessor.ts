@@ -5,7 +5,7 @@ import { ValueAccessor } from './value-accessor';
 
 @Directive({
   /* tslint:disable-next-line:directive-selector */
-  selector: 'aiao-code-editor,aiao-code-diff-editor',
+  selector: 'aiao-code-editor,aiao-code-diff-editor,aiao-elements-editor',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

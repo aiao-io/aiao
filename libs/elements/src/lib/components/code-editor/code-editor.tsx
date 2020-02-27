@@ -64,6 +64,7 @@ export class CodeEditor implements ComponentInterface {
     if (this.editor) {
       setTimeout(() => {
         const value = normalizeMonacoEditorValue(this.language, this.value);
+        console.log('val', value);
         const model = monaco.editor.createModel(value, this.language, this.uri);
         this.editor.setModel(model);
       }, 0);

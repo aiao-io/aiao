@@ -5,17 +5,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
-import { ElementsCodeEditorComponent } from './code-editor.component';
+import { ElementsEditorComponent } from './elements-editor.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ElementsCodeEditorComponent
+    component: ElementsEditorComponent
   }
 ];
 
 @NgModule({
-  declarations: [ElementsCodeEditorComponent],
+  declarations: [ElementsEditorComponent],
   imports: [CommonModule, IonicModule, AiaoElementsModule, ReactiveFormsModule, RouterModule.forChild(routes)]
 })
-export class ElementsCodeEditorModule {}
+export class ElementsEditorModule {}

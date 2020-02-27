@@ -6,5 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'elements';
+  public selectedIndex = 0;
+  public navs: { title: string; url: string; icon?: string }[] = [
+    {
+      title: 'Code Editor',
+      url: '/code-editor'
+    },
+    {
+      title: 'Elements Editor',
+      url: '/elements-editor'
+    },
+    {
+      title: 'Elements Preview',
+      url: '/elements-preview'
+    }
+  ];
 }
