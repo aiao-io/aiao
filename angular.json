@@ -977,12 +977,22 @@
               "apps/dev-elements-angular/src/favicon.ico",
               "apps/dev-elements-angular/src/assets",
               {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              },
+              {
                 "glob": "**/*",
                 "input": "node_modules/monaco-editor/min",
                 "output": "./assets/monaco"
               }
             ],
-            "styles": ["apps/dev-elements-angular/src/styles.scss"],
+            "styles": [
+              {
+                "input": "apps/dev-elements-angular/src/theme/variables.scss"
+              },
+              "apps/dev-elements-angular/src/global.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -1436,10 +1446,18 @@
             "main": "apps/dev-elements-react/src/main.tsx",
             "polyfills": "apps/dev-elements-react/src/polyfills.ts",
             "tsConfig": "apps/dev-elements-react/tsconfig.app.json",
-            "assets": ["apps/dev-elements-react/src/favicon.ico", "apps/dev-elements-react/src/assets"],
-            "styles": ["apps/dev-elements-react/src/styles.scss"],
+            "assets": [
+              "apps/dev-elements-react/src/favicon.ico",
+              "apps/dev-elements-react/src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/monaco-editor/min",
+                "output": "./assets/monaco"
+              }
+            ],
+            "styles": ["apps/dev-elements-react/src/theme/variables.scss", "apps/dev-elements-react/src/global.scss"],
             "scripts": [],
-            "webpackConfig": "@nrwl/react/plugins/webpack"
+            "webpackConfig": "apps/dev-elements-react/webpack.config.js"
           },
           "configurations": {
             "production": {

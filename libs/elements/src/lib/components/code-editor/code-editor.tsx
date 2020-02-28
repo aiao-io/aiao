@@ -47,7 +47,7 @@ export class CodeEditor implements ComponentInterface {
   @Prop() disabled: boolean;
 
   @Prop() options: monaco.editor.IEditorConstructionOptions;
-  @Prop() value: string;
+  @Prop() value: string | any;
   @Prop() language: string;
   @Prop() uri: monaco.Uri;
 
@@ -64,6 +64,7 @@ export class CodeEditor implements ComponentInterface {
     if (this.editor) {
       setTimeout(() => {
         const value = normalizeMonacoEditorValue(this.language, this.value);
+        console.log('val', value);
         const model = monaco.editor.createModel(value, this.language, this.uri);
         this.editor.setModel(model);
       }, 0);

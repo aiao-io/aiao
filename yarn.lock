@@ -1488,6 +1488,22 @@
     ionicons "^5.0.0"
     tslib "^1.10.0"
 
+"@ionic/react-router@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@ionic/react-router/-/react-router-5.0.3.tgz#63c497ef7ddcc0e1122ff44ad5bb5e2fe7ec23d7"
+  integrity sha512-jpsD2XTVpBKYOXDaqJnW9aRSt7l0UQgYAKRO+JAUiD0bxvymuOu4rj3OzktMc0SReSLzY9KHOFBGUngjz0wS8A==
+  dependencies:
+    tslib "*"
+
+"@ionic/react@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@ionic/react/-/react-5.0.3.tgz#95aa9668270df68ae8b1845f5da3586eeaf5517e"
+  integrity sha512-Ck8WZavTGvvgfxrwQeFCTFm5R9180yTF2dm/jGWSKDJtVpr8/BTY1l6THNdEGMCZNAtlYUgZIBb8ZhyOd/TKsw==
+  dependencies:
+    "@ionic/core" "5.0.3"
+    ionicons "^5.0.0"
+    tslib "*"
+
 "@istanbuljs/schema@^0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.2.tgz#26520bf09abe4a5644cd5414e37125a8954241dd"
@@ -15908,6 +15924,11 @@ tsickle@^0.38.0:
   resolved "https://registry.yarnpkg.com/tsickle/-/tsickle-0.38.0.tgz#89f5952c9bb3ba0b36dc384975e23cf90e584822"
   integrity sha512-k7kI6afBuLd2jIrj9JR8lKhEkp99sFVRKQbHeaHQkdvDaH5AvzwqA/qX+aNj28OfuAsWryOKAZoXm24l7JelEw==
 
+tslib@*, tslib@^1.10.0, tslib@^1.9.0, tslib@^1.9.3:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.11.0.tgz#f1f3528301621a53220d58373ae510ff747a66bc"
+  integrity sha512-BmndXUtiTn/VDDrJzQE7Mm22Ix3PxgLltW9bSNLoeCY31gnG2OPx0QqJnuc9oMIKioYrz487i6K9o4Pdn0j+Kg==
+
 tslib@1.10.0, tslib@^1.8.0, tslib@^1.8.1:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
@@ -15917,11 +15938,6 @@ tslib@1.9.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.0.tgz#e37a86fda8cbbaf23a057f473c9f4dc64e5fc2e8"
   integrity sha512-f/qGG2tUkrISBlQZEjEqoZ3B2+npJjIf04H1wuAv9iA8i04Icp+61KRXxFdha22670NJopsZCIjhC3SnjPRKrQ==
-
-tslib@^1.10.0, tslib@^1.9.0, tslib@^1.9.3:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.11.0.tgz#f1f3528301621a53220d58373ae510ff747a66bc"
-  integrity sha512-BmndXUtiTn/VDDrJzQE7Mm22Ix3PxgLltW9bSNLoeCY31gnG2OPx0QqJnuc9oMIKioYrz487i6K9o4Pdn0j+Kg==
 
 tslint-eslint-rules@^5.3.1:
   version "5.4.0"

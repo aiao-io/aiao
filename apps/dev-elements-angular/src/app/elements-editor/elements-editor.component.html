@@ -8,6 +8,6 @@
 </ion-header>
 <ion-content fullscreen>
   <form [formGroup]="form">
-    <aiao-code-editor base-url="assets/monaco" formControlName="json" language="json"></aiao-code-editor>
+    <aiao-elements-editor formControlName="elements" [config]="config"></aiao-elements-editor>
   </form>
 </ion-content>

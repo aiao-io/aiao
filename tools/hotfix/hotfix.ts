@@ -1,5 +1,6 @@
 import chalk from 'chalk';
-import { readFileSync, removeSync, writeFileSync } from 'fs-extra';
+import { readFileSync, writeFileSync } from 'fs';
+import { removeSync } from 'fs-extra';
 import globby from 'globby';
 import Ora from 'ora';
 import { join } from 'path';
@@ -26,10 +27,8 @@ function fixFile(path: string, md5: string, fixStr: string, fixMd5: string) {
 
 const fixFileRoot = join(cwd(), 'tools/hotfix/node_modules_files/');
 
-console.log('fixFileRoot', fixFileRoot);
-
 async function fixFiles() {
-  const globbyFiles = await globby(join(fixFileRoot, '**'));
+  const globbyFiles = await globby(join(fixFileRoot, '**/*.*'));
   const files = globbyFiles.map(d => {
     let p = d.lastIndexOf('.');
     let md5 = d.slice(p + 1);

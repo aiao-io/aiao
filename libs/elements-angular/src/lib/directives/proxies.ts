@@ -32,8 +32,8 @@ export class AiaoCodeEditor {
 }
 
 export declare interface AiaoElementsEditor extends Components.AiaoElementsEditor {}
-@ProxyCmp({inputs: ['config', 'editMode', 'value', 'view']})
-@Component({ selector: 'aiao-elements-editor', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['config', 'editMode', 'value', 'view'] })
+@ProxyCmp({inputs: ['config', 'disabled', 'editMode', 'name', 'value', 'view']})
+@Component({ selector: 'aiao-elements-editor', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['config', 'disabled', 'editMode', 'name', 'value', 'view'] })
 export class AiaoElementsEditor {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {

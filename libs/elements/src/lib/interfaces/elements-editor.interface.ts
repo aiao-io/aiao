@@ -5,7 +5,7 @@ import { IElementOptions } from '@aiao/elements-cdk';
  */
 export interface IElementEditorData extends IElementOptions {
   tag: string;
-  _id: string;
-  _parentId?: string;
-  _sort: number;
+  _id: string | number;
+  _parentId?: string | number;
+  _sort?: number;
 }
