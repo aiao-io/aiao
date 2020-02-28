@@ -87,7 +87,7 @@ yarn build:libs
 ### 单独构建 `util` 库
 
 ```console
-ng build util
+yarn build util
 ```
 
 ## 单元测试
@@ -103,7 +103,19 @@ yarn test
 ### 测试 `util` 库
 
 ```console
-ng test util
+yarn test util
+```
+
+### E2E 测试所有库
+
+```console
+yarn e2e
+```
+
+### E2E 测试 `dev-elements-react-e2e` 库
+
+```console
+yarn e2e dev-elements-react-e2e
 ```
 
 ## 贡献
