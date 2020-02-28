@@ -83,8 +83,8 @@
         }
       }
     ];
-    editor1.value = JSON.stringify(config, null, 2);
-    editor2.value = JSON.stringify(value, null, 2);
+    editor1.value = config;
+    editor2.value = value;
     preview.config = config;
     preview.value = value;
     editor1.addEventListener('aiaoChange', e => {

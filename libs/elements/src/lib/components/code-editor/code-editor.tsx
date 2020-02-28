@@ -47,7 +47,7 @@ export class CodeEditor implements ComponentInterface {
   @Prop() disabled: boolean;
 
   @Prop() options: monaco.editor.IEditorConstructionOptions;
-  @Prop() value: string;
+  @Prop() value: string | any;
   @Prop() language: string;
   @Prop() uri: monaco.Uri;
 
