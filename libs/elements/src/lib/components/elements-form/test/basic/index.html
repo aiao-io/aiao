@@ -34,19 +34,18 @@
     const input = document.querySelector('#input');
     const change = document.querySelector('#change');
     form.html = `
-    <label>name:</label>
-<input class="elements-form_item" name="name" value="name" />
-<div>
-  <ion-item>
-    <ion-label>car 0</ion-label>
-    <ion-input class="elements-form_item" name="car[0]" value="BMW"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>car 1</ion-label>
-    <ion-input class="elements-form_item" name="car[1]" value="Honda"></ion-input>
-  </ion-item>
-</div>
-
+    <div>
+      <label>name:</label>
+      <input class="elements-form_item" name="name" value="name" />
+    </div>
+    <div>
+      <label>car 0</label>
+      <input class="elements-form_item" name="car[0]" value="BMW" />
+    </div>
+    <div>
+      <label>car 1</label>
+      <input class="elements-form_item" name="car[1]" value="Honda" />
+    </div>
     `;
 
     form.value = {
@@ -54,12 +53,10 @@
       car: ['BMW', 'Honda']
     };
     form.addEventListener('aiaoChange', e => {
-      console.log('change', e);
       change.textContent = JSON.stringify(e.detail.value, { spece: 2 });
     });
 
     form.addEventListener('aiaoInput', e => {
-      console.log('input', e);
       input.textContent = JSON.stringify(e.detail.value, { spece: 2 });
     });
 
