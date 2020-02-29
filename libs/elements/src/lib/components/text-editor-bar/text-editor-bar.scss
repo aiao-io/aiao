@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+.action-bar {
+  background: #fff;
+  border: 1px solid #999;
+}
+
+.action-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  outline: 0;
+  font-size: medium;
+  vertical-align: bottom;
+
+  &.selected {
+    background-color: #f0f0f0;
+  }
+}
