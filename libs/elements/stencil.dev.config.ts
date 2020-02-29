@@ -17,10 +17,6 @@ export const config: Config = {
   ],
   copy: [
     {
-      src: resolve(__dirname, '../../', 'node_modules/@ionic/core'),
-      dest: resolve(__dirname, 'vendors/ionic')
-    },
-    {
       src: resolve(__dirname, '../../', 'dist/libs/image-storage'),
       dest: resolve(__dirname, 'vendors/image-storage')
     },

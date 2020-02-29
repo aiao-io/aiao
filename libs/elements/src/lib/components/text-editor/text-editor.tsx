@@ -1,11 +1,11 @@
 import toNumber from 'lodash/toNumber';
 
 import { renderHiddenInput } from '@aiao/elements-cdk';
-import { InputChangeEventDetail } from '@ionic/core';
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 
 import { config } from '../../global/config';
 import { getSelectionElements, restoreRange, saveRange } from '../../utils/selection';
+import { InputChangeEventDetail } from '../../interfaces/input.interface';
 
 // https://developer.mozilla.org/zh-CN/docs/Web/API/Document/execCommand
 
