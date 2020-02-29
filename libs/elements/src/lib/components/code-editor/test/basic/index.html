@@ -18,11 +18,17 @@
     <script src="/scripts/testing/scripts.js"></script>
   </head>
   <body>
-    <ion-button type="button" onclick="css()">css</ion-button>
-    <ion-button type="button" onclick="ts()">typescript</ion-button>
-    <ion-button type="button" onclick="format()">format</ion-button>
-
+    <button type="button" onclick="css()">css</button>
+    <button type="button" onclick="ts()">typescript</button>
+    <button type="button" onclick="format()">format</button>
     <aiao-code-editor id="editor" language="typescript" value="const a=123;"></aiao-code-editor>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
   </body>
 
   <script>

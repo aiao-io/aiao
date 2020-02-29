@@ -16,6 +16,11 @@
     <!-- test -->
     <link href="/scripts/testing/styles.css" rel="stylesheet" />
     <script src="/scripts/testing/scripts.js"></script>
+    <style>
+      button.a {
+        background: red;
+      }
+    </style>
   </head>
   <body>
     <aiao-elements-editor id="editor"></aiao-elements-editor>
@@ -34,30 +39,16 @@
     ];
     editor.value = [
       {
-        tag: 'ion-button',
+        tag: 'button',
         innerText: 'button',
         class: {
           a: true
-        },
-        attributes: {
-          mode: 'ios'
         },
         style: {
           minWidth: '200px'
         }
       },
-      {
-        tag: 'h1'
-      },
-      {
-        tag: 'div',
-        children: [
-          {
-            tag: 'h1',
-            innerText: 'true'
-          }
-        ]
-      },
+      { tag: 'h1' },
       {
         tag: 'aiao-img',
         attributes: {

@@ -18,6 +18,12 @@
     <script src="/scripts/testing/scripts.js"></script>
   </head>
   <body>
-    <aiao-img src="https://www.baidu.com/img/bd_logo1.png?where=super"></aiao-img>
+    <aiao-elements-view id="view"></aiao-elements-view>
+    <script>
+      const view = document.querySelector('#view');
+      view.html = `<button onclick="ff()">javascript</button>`;
+      view.css = `button { background: red; }`;
+      view.js = `function ff() { alert('success') }`;
+    </script>
   </body>
 </html>
