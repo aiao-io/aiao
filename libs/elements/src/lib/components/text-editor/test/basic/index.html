@@ -18,33 +18,29 @@
     <script src="/scripts/testing/scripts.js"></script>
   </head>
   <body>
-    <ion-app>
-      <ion-content>
-        <ion-button onClick="bold()">粗体</ion-button>
-        <ion-button onClick="italic()">斜体</ion-button>
-        <ion-button onClick="underline()">下划线</ion-button>
-        <ion-button onClick="strikethrough()">删除线</ion-button>
-        <ion-button onClick="heading(1)">H1</ion-button>
-        <ion-button onClick="heading(2)">H2</ion-button>
-        <ion-button onClick="heading(3)">H3</ion-button>
-        <ion-button onClick="paragraph()">paragraph</ion-button>
-        <ion-button onClick="quote()">quote</ion-button>
-        <ion-button onClick="olist()">olist</ion-button>
-        <ion-button onClick="ulist()">ulist</ion-button>
-        <ion-button onClick="line()">line</ion-button>
-        <ion-button onClick="link()">link</ion-button>
-        <ion-button onClick="image()">插入图片</ion-button>
-        <ion-button onClick="backColor()">背景颜色</ion-button>
-        <ion-button onClick="foreColor()">字体颜色</ion-button>
-        <ion-button onClick="insertHTML()">插入html</ion-button>
-        <ion-button onClick="editor.saveSelection()">记录指针位置</ion-button>
-        <ion-button onClick="editor.restoreSelection()">还原指针</ion-button>
-        <aiao-text-editor id="editor"></aiao-text-editor>
-        <div id="element"></div>
-        <pre id="html" style="white-space: pre-wrap;"></pre>
-        <pre id="state" style="white-space: pre-wrap;"></pre>
-      </ion-content>
-    </ion-app>
+    <button onClick="bold()">粗体</button>
+    <button onClick="italic()">斜体</button>
+    <button onClick="underline()">下划线</button>
+    <button onClick="strikethrough()">删除线</button>
+    <button onClick="heading(1)">H1</button>
+    <button onClick="heading(2)">H2</button>
+    <button onClick="heading(3)">H3</button>
+    <button onClick="paragraph()">paragraph</button>
+    <button onClick="quote()">quote</button>
+    <button onClick="olist()">olist</button>
+    <button onClick="ulist()">ulist</button>
+    <button onClick="line()">line</button>
+    <button onClick="link()">link</button>
+    <button onClick="image()">插入图片</button>
+    <button onClick="backColor()">背景颜色</button>
+    <button onClick="foreColor()">字体颜色</button>
+    <button onClick="insertHTML()">插入html</button>
+    <button onClick="editor.saveSelection()">记录指针位置</button>
+    <button onClick="editor.restoreSelection()">还原指针</button>
+    <aiao-text-editor id="editor"></aiao-text-editor>
+    <div id="element"></div>
+    <pre id="html" style="white-space: pre-wrap;"></pre>
+    <pre id="state" style="white-space: pre-wrap;"></pre>
   </body>
   <script>
     const editor = document.getElementById('editor');
@@ -122,8 +118,8 @@
       document.body.appendChild(script);
 
       editor.insertHTML(`
-     <ion-button onClick="clickBtn()">执行预设代码</ion-button>
-<ion-button onClick="clickBtn2()">执行动态脚本</ion-button>
+     <button onClick="clickBtn()">执行预设代码</button>
+<button onClick="clickBtn2()">执行动态脚本</button>
     `);
     }
   </script>

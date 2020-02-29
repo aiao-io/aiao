@@ -1,14 +1,12 @@
 import toNumber from 'lodash/toNumber';
 
 import { renderHiddenInput } from '@aiao/elements-cdk';
-import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import { config } from '../../global/config';
-import { getSelectionElements, restoreRange, saveRange } from '../../utils/selection';
 import { InputChangeEventDetail } from '../../interfaces/input.interface';
+import { getSelectionElements, restoreRange, saveRange } from '../../utils/selection';
 
 // https://developer.mozilla.org/zh-CN/docs/Web/API/Document/execCommand
-
 @Component({
   tag: 'aiao-text-editor',
   styleUrl: 'text-editor.scss',
@@ -18,8 +16,6 @@ import { InputChangeEventDetail } from '../../interfaces/input.interface';
 export class RichTextEditor {
   @Element() el!: HTMLElement;
   private range: Range;
-  private options = ['1', '2', '3', '4', '5', '6', '7'];
-  private resourcesUrl: string = config.get('resourcesUrl');
   private _lastElement: HTMLElement;
 
   // --------------------------------------------------------------[ Event ]
@@ -59,7 +55,9 @@ export class RichTextEditor {
       if (this._lastElement) {
         this._lastElement.removeEventListener('keyup', this.statChange);
         this._lastElement.removeEventListener('mouseup', this.statChange);
-        this._lastElement.addEventListener('input', this.onInput);
+        this._lastElement.removeEventListener('input', this.onInput);
+        this._lastElement.removeEventListener('focus', this.onFocus);
+        this._lastElement.removeEventListener('blur', this.onBlur);
       }
       this._lastElement = value;
       this._lastElement.addEventListener('keyup', this.statChange);
@@ -436,115 +434,29 @@ export class RichTextEditor {
       this.elementChanged(this.element);
     }
   }
-  hostData() {
-    return {
-      class: {
-        edit: this.edit
-      }
-    };
-  }
 
   render() {
     renderHiddenInput(true, this.el, this.name, this.value, this.disabled);
-    const {
-      bold,
-      italic,
-      underline,
-      strikeThrough,
-      // backColor,
-      foreColor,
-      fontSize,
-      alginLeft,
-      alginCenter,
-      alginRight,
-      alginFull,
-      blockquote,
-      h1,
-      h2,
-      h3
-    } = this._state;
-    return [
-      this.edit && (
-        <div class="action-bar">
-          <ion-button fill={bold ? 'solid' : 'clear'} onClick={() => this.bold()}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/bold.svg`} />
-          </ion-button>
-          <ion-button fill={italic ? 'solid' : 'clear'} onClick={() => this.italic()}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/italic.svg`} />
-          </ion-button>
-          <ion-button fill={underline ? 'solid' : 'clear'} onClick={() => this.underline()}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/underline.svg`} />
-          </ion-button>
-          <ion-button fill={strikeThrough ? 'solid' : 'clear'} onClick={() => this.strikethrough()}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/strikeThrough.svg`} />
-          </ion-button>
-          <ion-button fill={h1 ? 'solid' : 'clear'} onClick={() => this.heading(1)}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/h1.svg`} />
-          </ion-button>
-          <ion-button fill={h2 ? 'solid' : 'clear'} onClick={() => this.heading(2)}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/h2.svg`} />
-          </ion-button>
-          <ion-button fill={h3 ? 'solid' : 'clear'} onClick={() => this.heading(3)}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/h3.svg`} />
-          </ion-button>
-          <ion-button fill="clear" onClick={() => this.paragraph()}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/paragraph.svg`} />
-          </ion-button>
-          <ion-button fill="clear" onClick={() => this.olist()}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/list-ol.svg`} />
-          </ion-button>
-          <ion-button fill="clear" onClick={() => this.ulist()}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/list-ul.svg`} />
-          </ion-button>
-          <ion-button fill={blockquote ? 'solid' : 'clear'} onClick={() => this.quote()}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/quote.svg`} />
-          </ion-button>
-          <ion-button fill="clear" onClick={() => this.line()}>
-            <ion-icon name="return-down-back-outline"></ion-icon>
-          </ion-button>
-          <select onChange={e => this.fontSizeChange(e)}>
-            {this.options.map(option => (
-              <option value={option} selected={fontSize === option}>
-                {option}
-              </option>
-            ))}
-          </select>
-          <mlab-color
-            value={foreColor}
-            onMlabOpen={() => this._saveSelection()}
-            onMlabChange={(ev: any) => this.foreColorChanged(ev)}
-          >
-            文字
-          </mlab-color>
-          <ion-button fill="clear" onClick={() => this.indent()}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/indent.svg`} />
-          </ion-button>
-          <ion-button fill="clear" onClick={() => this.outdent()}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/outdent.svg`} />
-          </ion-button>
-          <ion-button fill={alginLeft ? 'solid' : 'clear'} onClick={() => this.alginLeft()}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/align-left.svg`} />
-          </ion-button>
-          <ion-button fill={alginCenter ? 'solid' : 'clear'} onClick={() => this.alginCenter()}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/align-center.svg`} />
-          </ion-button>
-          <ion-button fill={alginRight ? 'solid' : 'clear'} onClick={() => this.alginRight()}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/align-right.svg`} />
-          </ion-button>
-          <ion-button fill={alginFull ? 'solid' : 'clear'} onClick={() => this.alginFull()}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/align-justify.svg`} />
-          </ion-button>
-          <ion-button fill="clear" onClick={() => this.undo()}>
-            <ion-icon slot="icon-only" name="arrow-undo-outline"></ion-icon>
-          </ion-button>
-          <ion-button fill="clear" onClick={() => this.redo()}>
-            <ion-icon slot="icon-only" name="arrow-redo-outline" />
-          </ion-button>
-          <ion-button fill="clear" onClick={() => this.unlink()}>
-            <ion-icon slot="icon-only" src={`${this.resourcesUrl}/assets/text-editor/unlink.svg`} />
-          </ion-button>
-        </div>
-      )
-    ];
+    // const {
+    //   bold,
+    //   italic,
+    //   underline,
+    //   strikeThrough,
+    //   // backColor,
+    //   foreColor,
+    //   fontSize,
+    //   alginLeft,
+    //   alginCenter,
+    //   alginRight,
+    //   alginFull,
+    //   blockquote,
+    //   h1,
+    //   h2,
+    //   h3
+    // } = this._state;
+    const cls = {
+      edit: this.edit
+    };
+    return <Host class={cls}>{this.edit && <text-editor-bar></text-editor-bar>}</Host>;
   }
 }
