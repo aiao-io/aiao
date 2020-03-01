@@ -27,7 +27,7 @@ export const config: Config = {
       directivesProxyFile: resolve(__dirname, '../elements-angular/src/lib/directives/proxies.ts'),
       directivesUtilsFile: resolve(__dirname, '../elements-angular/src/lib/directives/proxies-utils.ts'),
       directivesArrayFile: resolve(__dirname, '../elements-angular/src/lib/directives/proxies-list.txt'),
-      excludeComponents: []
+      excludeComponents: ['aiao-text-editor-bar']
     }),
     reactOutputTarget({
       componentCorePackage: '@aiao/elements',
@@ -44,7 +44,7 @@ export const config: Config = {
     { components: ['aiao-elements-form'] },
     { components: ['aiao-elements-view'] },
     { components: ['aiao-img'] },
-    { components: ['aiao-text-editor'] },
+    { components: ['aiao-text-editor', 'aiao-text-editor-bar'] },
     { components: ['aiao-tree-node', 'aiao-tree'] }
   ],
   tsconfig: 'tsconfig.json',
