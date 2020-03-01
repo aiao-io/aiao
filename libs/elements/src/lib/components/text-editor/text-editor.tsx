@@ -2,8 +2,9 @@ import { renderHiddenInput } from '@aiao/elements-cdk';
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { InputChangeEventDetail } from '../../interfaces/input.interface';
-import { TextActionState, TextEditorAcitons as TA } from '../../interfaces/text-editor.interface';
 import { getSelectionElements, restoreRange, saveRange } from '../../utils/selection';
+import { TextActionState } from '../text-editor-bar/text-editor-bar.interface';
+import { TextEditorAcitons as TA } from './text-editor.interface';
 
 const IGNORE_ACTIONS = [TA.heading, TA.undo, TA.redo, TA.createLink, TA.indent, TA.outdent, TA.quote];
 

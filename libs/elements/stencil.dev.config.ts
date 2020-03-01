@@ -23,6 +23,10 @@ export const config: Config = {
     {
       src: resolve(__dirname, '../../', 'node_modules/monaco-editor/dev'),
       dest: resolve(__dirname, 'vendors/monaco-editor')
+    },
+    {
+      src: resolve(__dirname, '../../', 'node_modules/ionicons'),
+      dest: resolve(__dirname, 'vendors/ionicons')
     }
   ],
   tsconfig: 'tsconfig.json',
