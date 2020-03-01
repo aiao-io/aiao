@@ -93,8 +93,8 @@ export class AiaoImg {
 }
 
 export declare interface AiaoTextEditor extends Components.AiaoTextEditor {}
-@ProxyCmp({inputs: ['actionBar', 'defaultParagraphSeparator', 'disabled', 'element', 'name', 'placeholder', 'value'], 'methods': ['getSelectionElements', 'saveSelection', 'restoreSelection', 'action']})
-@Component({ selector: 'aiao-text-editor', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['actionBar', 'defaultParagraphSeparator', 'disabled', 'element', 'name', 'placeholder', 'value'] })
+@ProxyCmp({inputs: ['actionBar', 'defaultParagraphSeparator', 'disabled', 'element', 'name', 'value'], 'methods': ['getSelectionElements', 'saveSelection', 'restoreSelection', 'action']})
+@Component({ selector: 'aiao-text-editor', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['actionBar', 'defaultParagraphSeparator', 'disabled', 'element', 'name', 'value'] })
 export class AiaoTextEditor {
   aiaoChange!: EventEmitter<CustomEvent>;
   aiaoStateChange!: EventEmitter<CustomEvent>;
