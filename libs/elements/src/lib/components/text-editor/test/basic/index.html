@@ -18,22 +18,24 @@
     <script src="/scripts/testing/scripts.js"></script>
   </head>
   <body>
-    <button onClick="bold()">粗体</button>
-    <button onClick="italic()">斜体</button>
-    <button onClick="underline()">下划线</button>
-    <button onClick="strikethrough()">删除线</button>
-    <button onClick="heading(1)">H1</button>
-    <button onClick="heading(2)">H2</button>
-    <button onClick="heading(3)">H3</button>
-    <button onClick="paragraph()">paragraph</button>
-    <button onClick="quote()">quote</button>
-    <button onClick="olist()">olist</button>
-    <button onClick="ulist()">ulist</button>
-    <button onClick="line()">line</button>
-    <button onClick="link()">link</button>
-    <button onClick="image()">插入图片</button>
-    <button onClick="backColor()">背景颜色</button>
-    <button onClick="foreColor()">字体颜色</button>
+    <button onClick="editor.bold()">粗体</button>
+    <button onClick="editor.italic()">斜体</button>
+    <button onClick="editor.underline()">下划线</button>
+    <button onClick="editor.strikethrough()">删除线</button>
+    <button onClick="editor.heading(1)">H1</button>
+    <button onClick="editor.heading(2)">H2</button>
+    <button onClick="editor.heading(3)">H3</button>
+    <button onClick="editor.paragraph()">paragraph</button>
+    <button onClick="editor.quote()">quote</button>
+    <button onClick="editor.olist()">olist</button>
+    <button onClick="editor.ulist()">ulist</button>
+    <button onClick="editor.line()">line</button>
+    <button onClick="editor.link('https://baidu.com')">link</button>
+    <button onClick="editor.image('https://www.baidu.com/img/bd_logo1.png')">插入图片</button>
+    <button onClick="editor.backColor('#333')">背景颜色</button>
+    <button onClick="editor.foreColor('red')">字体颜色</button>
+    <button onClick="editor.undo()">还原</button>
+    <button onClick="editor.redo()">重做</button>
     <button onClick="insertHTML()">插入html</button>
     <button onClick="editor.saveSelection()">记录指针位置</button>
     <button onClick="editor.restoreSelection()">还原指针</button>
@@ -57,70 +59,8 @@
       state.textContent = JSON.stringify(e.detail, null, 2);
     });
 
-    function bold() {
-      editor.bold();
-    }
-    function italic() {
-      editor.italic();
-    }
-    function underline() {
-      editor.underline();
-    }
-    function strikethrough() {
-      editor.strikethrough();
-    }
-    function heading(value) {
-      editor.heading(value);
-    }
-    function paragraph() {
-      editor.paragraph();
-    }
-    function quote() {
-      editor.quote();
-    }
-    function olist() {
-      editor.olist();
-    }
-    function ulist() {
-      editor.ulist();
-    }
-    function line() {
-      editor.line();
-    }
-
-    function link() {
-      editor.link('https://baidu.com');
-    }
-    function image() {
-      editor.image('https://www.baidu.com/img/bd_logo1.png');
-    }
-
-    function backColor() {
-      editor.backColor('#333');
-    }
-
-    function foreColor() {
-      editor.foreColor('red');
-    }
-
-    function hiliteColor() {
-      editor.hiliteColor('blue');
-    }
-
-    function clickBtn() {
-      console.log('clickBtn');
-      alert('执行预设代码 ok');
-    }
-
     function insertHTML() {
-      const script = document.createElement('script');
-      script.text = 'function clickBtn2(){alert("执行动态脚本 ok")}';
-      document.body.appendChild(script);
-
-      editor.insertHTML(`
-     <button onClick="clickBtn()">执行预设代码</button>
-<button onClick="clickBtn2()">执行动态脚本</button>
-    `);
+      editor.insertHTML(`<h1>html</h1><h2>123123</h2>`);
     }
   </script>
 </html>
