@@ -18,27 +18,27 @@
     <script src="/scripts/testing/scripts.js"></script>
   </head>
   <body>
-    <button onClick="editor.bold()">粗体</button>
-    <button onClick="editor.italic()">斜体</button>
-    <button onClick="editor.underline()">下划线</button>
-    <button onClick="editor.strikethrough()">删除线</button>
-    <button onClick="editor.heading(1)">H1</button>
-    <button onClick="editor.heading(2)">H2</button>
-    <button onClick="editor.heading(3)">H3</button>
-    <button onClick="editor.paragraph()">paragraph</button>
-    <button onClick="editor.quote()">quote</button>
-    <button onClick="editor.olist()">olist</button>
-    <button onClick="editor.ulist()">ulist</button>
-    <button onClick="editor.line()">line</button>
-    <button onClick="editor.link('https://baidu.com')">link</button>
-    <button onClick="editor.image('https://www.baidu.com/img/bd_logo1.png')">插入图片</button>
-    <button onClick="editor.backColor('#333')">背景颜色</button>
-    <button onClick="editor.foreColor('red')">字体颜色</button>
-    <button onClick="editor.undo()">还原</button>
-    <button onClick="editor.redo()">重做</button>
-    <button onClick="insertHTML()">插入html</button>
-    <button onClick="editor.saveSelection()">记录指针位置</button>
-    <button onClick="editor.restoreSelection()">还原指针</button>
+    <button onClick="editor.action('bold')">bold</button>
+    <button onClick="editor.action('italic')">italic</button>
+    <button onClick="editor.aciton('underline')">underline</button>
+    <button onClick="editor.action('strikethrough')">strikethrough</button>
+    <button onClick="editor.action('heading',1)">H1</button>
+    <button onClick="editor.action('heading',2)">H2</button>
+    <button onClick="editor.action('heading',3)">H3</button>
+    <button onClick="editor.action('paragraph')">paragraph</button>
+    <button onClick="editor.action('quote')">quote</button>
+    <button onClick="editor.action('insertOrderedList')">insertOrderedList</button>
+    <button onClick="editor.action('insertUnorderedList')">insertUnorderedList</button>
+    <button onClick="editor.action('insertHorizontalRule')">insertHorizontalRule</button>
+    <button onClick="editor.action('createLink','https://baidu.com')">createLink</button>
+    <button onClick="editor.action('insertImage','https://www.baidu.com/img/bd_logo1.png')">insertImage</button>
+    <button onClick="editor.action('backColor','#333')">backColor</button>
+    <button onClick="editor.action('foreColor','red')">foreColor</button>
+    <button onClick="editor.action('undo')">undo</button>
+    <button onClick="editor.action('redo')">redo</button>
+    <button onClick="insertHTML()">insertHTML</button>
+    <button onClick="editor.saveSelection()">saveSelection</button>
+    <button onClick="editor.restoreSelection()">restoreSelection</button>
     <aiao-text-editor id="editor"></aiao-text-editor>
     <div id="element"></div>
     <pre id="html" style="white-space: pre-wrap;"></pre>
@@ -51,16 +51,16 @@
     const element = document.getElementById('element');
     editor.element = element;
     editor.value = '<p>输入文字</p>';
-    editor.addEventListener('mlabChange', e => {
+    editor.addEventListener('aiaoChange', e => {
       html.textContent = e.detail.value;
     });
 
-    editor.addEventListener('mlabStateChange', e => {
+    editor.addEventListener('aiaoStateChange', e => {
       state.textContent = JSON.stringify(e.detail, null, 2);
     });
 
     function insertHTML() {
-      editor.insertHTML(`<h1>html</h1><h2>123123</h2>`);
+      editor.action('insertHTML', `<h1>html</h1><h2>123123</h2>`);
     }
   </script>
 </html>

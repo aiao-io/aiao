@@ -1,10 +1,11 @@
-import toNumber from 'lodash/toNumber';
-
 import { renderHiddenInput } from '@aiao/elements-cdk';
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { InputChangeEventDetail } from '../../interfaces/input.interface';
+import { TextActionState, TextEditorAcitons as TA } from '../../interfaces/text-editor.interface';
 import { getSelectionElements, restoreRange, saveRange } from '../../utils/selection';
+
+const IGNORE_ACTIONS = [TA.heading, TA.undo, TA.redo, TA.createLink, TA.indent, TA.outdent, TA.quote];
 
 // https://developer.mozilla.org/zh-CN/docs/Web/API/Document/execCommand
 @Component({
@@ -23,12 +24,13 @@ export class RichTextEditor {
   /**
    * 值改变
    */
-  @Event() mlabChange: EventEmitter<InputChangeEventDetail>;
+  @Event() aiaoChange: EventEmitter<InputChangeEventDetail>;
+  @Event() aiaoStateChange: EventEmitter<TextActionState>;
 
   // --------------------------------------------------------------[ State ]
 
   @State() editable = false;
-  @State() _state: any = {};
+  @State() _state: TextActionState = {};
 
   // --------------------------------------------------------------[ Prop ]
   @Prop() placeholder = '请输入...';
@@ -36,7 +38,7 @@ export class RichTextEditor {
   /**
    * 段落符
    */
-  @Prop() defaultParagraphSeparator = 'p';
+  @Prop() defaultParagraphSeparator: string;
 
   /**
    * 编辑模式
@@ -53,235 +55,24 @@ export class RichTextEditor {
   elementChanged(value: HTMLElement) {
     if (this._lastElement !== value && value) {
       if (this._lastElement) {
-        this._lastElement.removeEventListener('keyup', this.statChange);
-        this._lastElement.removeEventListener('mouseup', this.statChange);
+        this._lastElement.removeEventListener('keyup', this.statChangeHander);
+        this._lastElement.removeEventListener('mouseup', this.statChangeHander);
         this._lastElement.removeEventListener('input', this.onInput);
         this._lastElement.removeEventListener('focus', this.onFocus);
         this._lastElement.removeEventListener('blur', this.onBlur);
       }
       this._lastElement = value;
-      this._lastElement.addEventListener('keyup', this.statChange);
-      this._lastElement.addEventListener('mouseup', this.statChange);
+      this._lastElement.addEventListener('keyup', this.statChangeHander);
+      this._lastElement.addEventListener('mouseup', this.statChangeHander);
       this._lastElement.addEventListener('input', this.onInput);
       this._lastElement.addEventListener('focus', this.onFocus);
       this._lastElement.addEventListener('blur', this.onBlur);
     }
-    this.element.contentEditable = 'true';
+    this._lastElement.contentEditable = 'true';
   }
   //
 
   // --------------------------------------------------------------[ public function ]
-  /**
-   * 粗体
-   */
-  @Method()
-  async bold() {
-    this.exec('bold');
-    this.statChange();
-  }
-
-  /**
-   * 斜体
-   */
-  @Method()
-  async italic() {
-    this.exec('italic');
-    this.statChange();
-  }
-
-  /**
-   * 下划线
-   */
-  @Method()
-  async underline() {
-    this.exec('underline');
-    this.statChange();
-  }
-
-  /**
-   * 删除线
-   */
-  @Method()
-  async strikethrough() {
-    this.exec('strikethrough');
-    this.statChange();
-  }
-
-  /**
-   * 标题
-   */
-  @Method()
-  async heading(val = 1) {
-    this.exec('formatBlock', `h${val}`);
-    this.statChange();
-  }
-
-  /**
-   * 段落
-   */
-  @Method()
-  async paragraph(defaultParagraphSeparator?: string) {
-    this.exec('formatBlock', defaultParagraphSeparator || this.defaultParagraphSeparator);
-  }
-
-  /**
-   * 背景颜色
-   */
-  @Method()
-  async backColor(value: string) {
-    this.exec('backColor', value);
-  }
-
-  /**
-   * 字体颜色
-   */
-  @Method()
-  async foreColor(value: string) {
-    this.exec('foreColor', value);
-  }
-
-  /**
-   * 引用
-   */
-  @Method()
-  async quote() {
-    if (this.queryCommandValue('formatBlock') === 'blockquote') {
-      this.exec('formatBlock', this.defaultParagraphSeparator);
-    } else {
-      this.exec('formatBlock', 'blockquote');
-    }
-  }
-
-  /**
-   * 缩进
-   */
-  @Method()
-  async indent() {
-    this.exec('indent');
-  }
-  /**
-   * 减少缩进
-   */
-  @Method()
-  async outdent() {
-    this.exec('outdent');
-    this.checkEle();
-  }
-
-  /**
-   * 有序列表
-   */
-  @Method()
-  async olist() {
-    this.exec('insertOrderedList');
-  }
-
-  /**
-   * 无序列表
-   */
-  @Method()
-  async ulist() {
-    this.exec('insertUnorderedList');
-  }
-
-  /**
-   * 分隔列表
-   */
-  @Method()
-  async line() {
-    this.exec('insertHorizontalRule');
-  }
-
-  /**
-   * 插入 html
-   */
-  @Method()
-  async insertHTML(val: string) {
-    this.exec('insertHTML', val.trim());
-  }
-
-  /**
-   * 链接
-   */
-  @Method()
-  async link(url: string) {
-    this.exec('createLink', url);
-  }
-
-  /**
-   * 去除链接
-   */
-  @Method()
-  async unlink() {
-    this.exec('unlink');
-  }
-
-  /**
-   * 图片
-   */
-  @Method()
-  async image(url: string) {
-    this.exec('insertImage', url);
-    console.log('insertImage', document.queryCommandSupported('insertImage'));
-  }
-
-  /**
-   * 居中
-   */
-  @Method()
-  async alginCenter() {
-    this.exec('justifyCenter');
-    this.statChange();
-  }
-
-  /**
-   * 左对齐
-   */
-  @Method()
-  async alginLeft() {
-    this.exec('justifyLeft');
-    this.statChange();
-  }
-
-  /**
-   * 两边对齐
-   */
-  @Method()
-  async alginFull() {
-    this.exec('justifyFull');
-    this.statChange();
-  }
-
-  /**
-   * 右对齐
-   */
-  @Method()
-  async alginRight() {
-    this.exec('justifyRight');
-    this.statChange();
-  }
-
-  /**
-   * 撤销
-   */
-  @Method()
-  async undo() {
-    this.exec('undo');
-  }
-
-  /**
-   * 重做
-   */
-  @Method()
-  async redo() {
-    this.exec('redo');
-  }
-  /**
-   * 字体大小
-   */
-  fontSize(value: number) {
-    this.exec('fontSize', value);
-  }
 
   /**
    * 得到选中的标签
@@ -307,12 +98,82 @@ export class RichTextEditor {
     this._restoreSelection();
   }
 
+  async action(
+    action:
+      | TA.bold
+      | TA.indent
+      | TA.insertHorizontalRule
+      | TA.insertOrderedList
+      | TA.insertUnorderedList
+      | TA.italic
+      | TA.redo
+      | TA.strikeThrough
+      | TA.underline
+      | TA.undo
+      | TA.unlink
+      | TA.outdent
+      | TA.justifyCenter
+      | TA.justifyFull
+      | TA.justifyLeft
+      | TA.justifyRight
+  ): Promise<any>;
+  async action(
+    action: TA.foreColor | TA.createLink | TA.foreColor | TA.insertHTML | TA.insertImage,
+    value: string
+  ): Promise<any>;
+  async action(action: TA.fontSize | TA.heading, value: number): Promise<any>;
+  @Method()
+  async action(action: TA, value?: any) {
+    switch (action) {
+      case TA.bold:
+      case TA.indent:
+      case TA.insertHorizontalRule:
+      case TA.insertOrderedList:
+      case TA.insertUnorderedList:
+      case TA.italic:
+      case TA.justifyCenter:
+      case TA.justifyFull:
+      case TA.justifyLeft:
+      case TA.justifyRight:
+      case TA.outdent:
+      case TA.redo:
+      case TA.strikeThrough:
+      case TA.underline:
+      case TA.undo:
+      case TA.unlink:
+        this.exec(action);
+        break;
+      case TA.backColor:
+      case TA.createLink:
+      case TA.foreColor:
+      case TA.insertHTML:
+      case TA.insertImage:
+        this.exec(action, (value || '').trim());
+        break;
+      case TA.fontSize:
+        this.exec(action, value);
+        break;
+      case TA.heading:
+        this.exec('formatBlock', `h${value}`);
+        break;
+      case TA.paragraph:
+        this.exec('formatBlock', value || this.paragraphSeparator);
+        break;
+      case TA.quote:
+        this.exec('formatBlock', 'blockquote');
+        break;
+      default:
+        break;
+    }
+    this.statChangeHander();
+  }
+
   // --------------------------------------------------------------[ Listen ]
 
   onInput = () => {
     this.checkEle();
-    this.value = this.element.innerHTML;
-    this.mlabChange.emit({ value: this.value });
+    this.value = this._lastElement.innerHTML;
+    this.aiaoChange.emit({ value: this.value });
   };
 
   onFocus = (_: Event) => {
@@ -337,42 +198,33 @@ export class RichTextEditor {
 
   // --------------------------------------------------------------[ event Handler ]
 
-  async foreColorChanged(ev: CustomEvent<any>) {
-    ev.preventDefault();
-    ev.stopPropagation();
-    await this.restoreSelection();
-    await this.foreColor(ev.detail.value);
-  }
-
-  async backColorChanged(ev: CustomEvent<any>) {
-    ev.preventDefault();
-    ev.stopPropagation();
-    // await this.restoreSelection();
-    // await this.backColor(ev.detail.value);
-  }
-
-  async linkChanged(ev: CustomEvent<string>) {
-    ev.preventDefault();
-    ev.stopPropagation();
-    await this.restoreSelection();
-    await this.link(ev.detail);
-  }
+  private onAction = (event: CustomEvent<any>) => {
+    const { action, value } = event.detail;
+    this.action(action, value);
+  };
 
   // --------------------------------------------------------------[ private function ]
-  private statChange = () => {
+  private statChangeHander = () => {
     this._state = this.getState();
+    this.aiaoStateChange.emit(this._state);
   };
+
+  private get paragraphSeparator() {
+    return this.defaultParagraphSeparator || 'p';
+  }
 
   // 检测元素, 保证文本使用 p 标签
   private checkEle() {
-    if (this.element.firstChild && this.element.firstChild.nodeType === 3) {
-      this.exec('formatBlock', this.defaultParagraphSeparator);
+    if (this._lastElement.firstChild && this._lastElement.firstChild.nodeType === 3) {
+      this.exec('formatBlock', this.paragraphSeparator);
     }
   }
 
   private getSelectionAttributeValue(attribute: string) {
-    const _doc = this.el.shadowRoot || document;
-    const selection = _doc.getSelection();
+    let selection = document.getSelection();
+    if (this._lastElement) {
+      selection = this._lastElement.ownerDocument.getSelection();
+    }
     if (selection.rangeCount < 1) {
       return '';
     }
@@ -382,29 +234,41 @@ export class RichTextEditor {
   }
 
   private getState() {
+    const backState: TextActionState = {};
     const fb = this.queryCommandValue('formatBlock');
-    return {
-      bold: this.queryCommandState('bold'),
-      italic: this.queryCommandState('italic'),
-      underline: this.queryCommandState('underline'),
-      strikeThrough: this.queryCommandState('strikeThrough'),
-      backColor: this.queryCommandValue('backColor'),
-      foreColor: this.queryCommandValue('foreColor'),
-      fontSize: this.queryCommandValue('fontSize'),
-      alginLeft: this.queryCommandValue('justifyLeft') === 'true',
-      alginCenter: this.queryCommandValue('justifyCenter') === 'true',
-      alginRight: this.queryCommandValue('justifyRight') === 'true',
-      alginFull: this.queryCommandValue('justifyFull') === 'true',
-      blockquote: fb === 'blockquote',
-      h1: fb === 'h1',
-      h2: fb === 'h2',
-      h3: fb === 'h3',
-      hrefValue: this.getSelectionAttributeValue('href')
-    };
-  }
+    if (fb === 'blockquote') {
+      backState[TA.quote] = true;
+    }
+    // heading
+    const heading = /^h(?<heading>\d+)$/i.exec(fb)?.groups?.heading;
+    if (heading) {
+      backState[TA.heading] = +heading;
+    }
 
-  private queryCommandState(commandId: string) {
-    return document.queryCommandState(commandId);
+    // link
+    const href = this.getSelectionAttributeValue('href');
+    if (href) {
+      backState.createLink = href;
+    }
+
+    Object.keys(TA)
+      .filter(key => IGNORE_ACTIONS.includes(key as any) === false)
+      .forEach(key => {
+        let val: any = this.queryCommandValue(key);
+        if (val === 'false' || val === '') {
+          return;
+        }
+        if (val === 'true') {
+          val = true;
+        }
+        backState[key] = val;
+      });
+
+    if (backState.fontSize) {
+      backState.fontSize = +backState.fontSize;
+    }
+
+    return backState;
   }
 
   private queryCommandValue(commandId: string) {
@@ -415,48 +279,27 @@ export class RichTextEditor {
     return document.execCommand(commandId, true, value);
   }
 
-  private fontSizeChange(e: Event) {
-    e.preventDefault();
-    const { value } = e.target as any;
-    const size = toNumber(value);
-    this.fontSize(size);
-  }
-
   // --------------------------------------------------------------[ lifecycle ]
 
-  componentWillLoad() {
-    this.element.innerHTML = this.value || '';
-    this.exec('defaultParagraphSeparator', this.defaultParagraphSeparator);
-  }
-
   componentDidLoad() {
-    if (this.element) {
-      this.elementChanged(this.element);
+    const ele: HTMLElement = this.element || this._lastElement;
+    if (ele) {
+      this.elementChanged(ele);
+      ele.innerHTML = this.value || '';
+      this.exec('defaultParagraphSeparator', this.defaultParagraphSeparator);
     }
   }
 
   render() {
     renderHiddenInput(true, this.el, this.name, this.value, this.disabled);
-    // const {
-    //   bold,
-    //   italic,
-    //   underline,
-    //   strikeThrough,
-    //   // backColor,
-    //   foreColor,
-    //   fontSize,
-    //   alginLeft,
-    //   alginCenter,
-    //   alginRight,
-    //   alginFull,
-    //   blockquote,
-    //   h1,
-    //   h2,
-    //   h3
-    // } = this._state;
     const cls = {
       edit: this.edit
     };
-    return <Host class={cls}>{this.edit && <text-editor-bar></text-editor-bar>}</Host>;
+    return (
+      <Host class={cls}>
+        {this.edit && <text-editor-bar actionState={this._state} onAction={this.onAction}></text-editor-bar>}
+        {!this.element && <div ref={e => this.elementChanged(e)}></div>}
+      </Host>
+    );
   }
 }

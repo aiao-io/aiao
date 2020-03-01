@@ -198,9 +198,7 @@ export class TreeNode implements ComponentInterface {
         {...dragAttrs}
         draggable={this.canDrag}
       >
-        {!this.isLeaf && (
-          <ion-icon onClick={this.onExpand} name={this.expanded ? 'caret-down-outline' : 'caret-forward-outline'} />
-        )}
+        {!this.isLeaf && <ion-icon onClick={this.onExpand} name={this.expanded ? 'caret-down' : 'caret-forward'} />}
         {this.selectable && <ion-checkbox />}
         <span class="tree-node-content">
           {this.showIcon && this.icon && <ion-icon {...this.icon} />}

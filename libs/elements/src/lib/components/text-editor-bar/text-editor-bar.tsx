@@ -1,7 +1,7 @@
-import { Component, h, Host, Prop, EventEmitter, Event } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 
 import { config } from '../../global/config';
-import { TextEditorAcitons } from '../../interfaces/text-editor.interface';
+import { TextActionState, TextEditorAcitons } from '../../interfaces/text-editor.interface';
 
 @Component({
   tag: 'text-editor-bar',
@@ -15,97 +15,100 @@ export class TextEditorBar {
 
   private defaultSettings = [
     {
-      action: TextEditorAcitons.Bold,
+      action: TextEditorAcitons.bold,
       icon: 'bold.svg',
       title: 'Bold'
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.italic,
       icon: 'italic.svg',
       title: 'italic'
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.underline,
       icon: 'underline.svg',
       title: 'underline'
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.strikeThrough,
       icon: 'strikeThrough.svg',
       title: 'strikeThrough'
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.heading,
       icon: 'h1.svg',
-      title: 'h1'
+      title: 'h1',
+      value: 1
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.heading,
       icon: 'h2.svg',
-      title: 'h2'
+      title: 'h2',
+      value: 2
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.heading,
       icon: 'h3.svg',
-      title: 'h3'
+      title: 'h3',
+      value: 3
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.paragraph,
       icon: 'paragraph.svg',
       title: 'paragraph'
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.insertOrderedList,
       icon: 'list-ol.svg',
       title: 'list-ol'
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.insertUnorderedList,
       icon: 'list-ul.svg',
       title: 'list-ul'
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.quote,
       icon: 'quote.svg',
       title: 'quote'
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.indent,
       icon: 'indent.svg',
       title: 'indent'
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.outdent,
       icon: 'outdent.svg',
       title: 'outdent'
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.justifyLeft,
       icon: 'align-left.svg',
       title: 'align-left'
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.justifyCenter,
       icon: 'align-center.svg',
       title: 'align-center'
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.justifyRight,
       icon: 'align-right.svg',
       title: 'align-right'
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.justifyFull,
       icon: 'align-justify.svg',
       title: 'align-justify'
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.undo,
       icon: 'undo.svg',
       title: 'undo'
     },
     {
-      action: TextEditorAcitons.Italic,
+      action: TextEditorAcitons.redo,
       icon: 'redo.svg',
       title: 'redo'
     }
@@ -115,13 +118,20 @@ export class TextEditorBar {
 
   @Prop() actions = this.defaultSettings;
 
+  @Prop() actionState: TextActionState;
   render() {
     return (
       <Host class="action-bar">
-        {this.actions.map(({ action, icon, title }) => {
+        {this.actions.map(({ action, icon, title, value }) => {
           const src = `${this.resourcesUrl}/text-editor/${icon}`;
+          const selected = this.actionState && this.actionState[action];
+          const cls = {
+            'action-button': true,
+            selected: selected !== undefined && selected !== false
+          };
+
           return (
-            <button class="action-button" onClick={() => this.action.emit({ detail: action })}>
+            <button class={cls} onClick={() => this.action.emit({ action, value })}>
               {icon ? <ion-icon title={title} src={src} /> : title}
             </button>
           );
