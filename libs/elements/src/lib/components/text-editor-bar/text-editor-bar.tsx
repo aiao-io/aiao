@@ -124,10 +124,14 @@ export class TextEditorBar {
       <Host class="action-bar">
         {this.actions.map(({ action, icon, title, value }) => {
           const src = `${this.resourcesUrl}/text-editor/${icon}`;
-          const selected = this.actionState && this.actionState[action];
+          let selected = this.actionState && this.actionState[action];
+          selected = selected !== undefined && selected !== false;
+          if (selected && value) {
+            selected = value === this.actionState[action];
+          }
           const cls = {
             'action-button': true,
-            selected: selected !== undefined && selected !== false
+            selected
           };
 
           return (

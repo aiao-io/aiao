@@ -14,10 +14,16 @@
   width: 30px;
   font-size: medium;
   vertical-align: bottom;
+  outline: 0;
 
+  &:hover {
+    background: rgb(224, 224, 224);
+  }
+
+  &:active,
   &.selected {
     color: #fff;
-    background-color: #000000;
+    background: #000000;
   }
   ion-icon {
     margin-top: 3px;
