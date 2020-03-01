@@ -156,7 +156,8 @@ export class RichTextEditor {
         break;
       case TA.paragraph:
       case TA.quote:
-        if (!(this._state.insertOrderedList || this._state.insertUnorderedList)) {
+        const { insertOrderedList, insertUnorderedList } = this._state;
+        if (!(insertOrderedList || insertUnorderedList)) {
           if (action === TA.paragraph) {
             this.exec('formatBlock', value || this.paragraphSeparator);
           } else {
