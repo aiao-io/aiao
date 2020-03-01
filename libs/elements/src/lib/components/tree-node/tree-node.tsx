@@ -69,11 +69,6 @@ export class TreeNode implements ComponentInterface {
   @Prop({ mutable: true }) selected = false;
 
   /**
-   * hover
-   */
-  @Prop({ mutable: true }) hover = false;
-
-  /**
    * drag
    */
   @Event() mlabTreeNodeDragStart: EventEmitter<TreeNodeEvent>;
@@ -116,7 +111,6 @@ export class TreeNode implements ComponentInterface {
     this.mlabTreeNodeOver.emit({ ev, node: this, value: this.value });
   };
   onMouseOut = (ev: MouseEvent) => {
-    this.hover = false;
     this.mlabTreeNodeOut.emit({ ev, node: this, value: this.value });
   };
 
@@ -168,7 +162,7 @@ export class TreeNode implements ComponentInterface {
           dragging: this.dragging,
           [`drop-${this.dropType}`]: this.dragOver,
           selected: this.selected,
-          hover: this.hover
+          drag: this.canDrag
         }}
         onClick={this.onClick}
       >
@@ -199,7 +193,7 @@ export class TreeNode implements ComponentInterface {
         draggable={this.canDrag}
       >
         {!this.isLeaf && <ion-icon onClick={this.onExpand} name={this.expanded ? 'caret-down' : 'caret-forward'} />}
-        {this.selectable && <ion-checkbox />}
+        {this.selectable && <input type="checkbox" />}
         <span class="tree-node-content">
           {this.showIcon && this.icon && <ion-icon {...this.icon} />}
           <span>{this.name}</span>

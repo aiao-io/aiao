@@ -183,16 +183,14 @@ export class Tree implements ComponentInterface {
 
   @Method()
   async overElement(elementId: string) {
-    // tslint:disable-next-line: triple-equals
-    this.refMap.forEach((btn, id) => (btn.hover = id == elementId));
+    //
+    console.log('over', elementId);
   }
 
   @Method()
   async outElement(elementId: string) {
-    const btn = this.refMap.get(`${elementId}`);
-    if (btn) {
-      btn.hover = false;
-    }
+    // const btn = this.refMap.get(`${elementId}`);
+    console.log('out', elementId);
   }
 
   // --------------------------------------------------------------[ Listen ]

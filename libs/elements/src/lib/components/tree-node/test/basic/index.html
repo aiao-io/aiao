@@ -18,7 +18,11 @@
     <script src="/scripts/testing/scripts.js"></script>
   </head>
   <body>
-    <aiao-tree-node name="tree"></aiao-tree-node>
+    <aiao-tree-node name="tree" expanded>
+      <aiao-tree-node name="a" expanded>
+        <aiao-tree-node name="b" is-leaf="true" />
+      </aiao-tree-node>
+    </aiao-tree-node>
     <aiao-tree-node name="leaf" is-leaf="fasle"></aiao-tree-node>
     <aiao-tree-node name="leaf" is-leaf="fasle" selectable></aiao-tree-node>
   </body>
