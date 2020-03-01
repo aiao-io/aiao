@@ -5,6 +5,8 @@ import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
 
+const excludeComponents = ['aiao-text-editor-bar', 'aiao-tree-node', 'aiao-elements-editor-preview', 'ion-icon'];
+
 export const config: Config = {
   namespace: 'aiao-elements',
   plugins: [sass()],
@@ -27,11 +29,12 @@ export const config: Config = {
       directivesProxyFile: resolve(__dirname, '../elements-angular/src/lib/directives/proxies.ts'),
       directivesUtilsFile: resolve(__dirname, '../elements-angular/src/lib/directives/proxies-utils.ts'),
       directivesArrayFile: resolve(__dirname, '../elements-angular/src/lib/directives/proxies-list.txt'),
-      excludeComponents: ['aiao-text-editor-bar']
+      excludeComponents
     }),
     reactOutputTarget({
       componentCorePackage: '@aiao/elements',
-      proxiesFile: resolve(__dirname, '../elements-react/src/lib/proxies.ts')
+      proxiesFile: resolve(__dirname, '../elements-react/src/lib/proxies.ts'),
+      excludeComponents
     })
     // {
     //   type: 'docs-readme'
@@ -45,7 +48,7 @@ export const config: Config = {
     { components: ['aiao-elements-view'] },
     { components: ['aiao-img'] },
     { components: ['aiao-text-editor', 'aiao-text-editor-bar'] },
-    { components: ['aiao-tree-node', 'aiao-tree'] }
+    { components: ['aiao-tree', 'aiao-tree-node'] }
   ],
   tsconfig: 'tsconfig.json',
   globalScript: 'src/lib/global/global.ts'

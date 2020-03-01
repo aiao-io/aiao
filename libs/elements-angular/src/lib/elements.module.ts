@@ -6,13 +6,11 @@ import {
   AiaoCodeDiffEditor,
   AiaoCodeEditor,
   AiaoElementsEditor,
-  AiaoElementsEditorPreview,
   AiaoElementsForm,
   AiaoElementsView,
   AiaoImg,
   AiaoTextEditor,
-  AiaoTree,
-  AiaoTreeNode
+  AiaoTree
 } from './directives/proxies';
 import { initialize } from './elements-initialize';
 import { TextValueAccessor } from './providers/control-value-accessors/text-value-accessor';
@@ -23,13 +21,11 @@ const DECLARATIONS = [
   AiaoCodeDiffEditor,
   AiaoCodeEditor,
   AiaoElementsEditor,
-  AiaoElementsEditorPreview,
   AiaoElementsForm,
   AiaoElementsView,
   AiaoImg,
   AiaoTextEditor,
   AiaoTree,
-  AiaoTreeNode,
   // accessor
   TextValueAccessor
 ];
