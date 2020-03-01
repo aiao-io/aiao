@@ -6,10 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./text-editor.component.scss']
 })
 export class TextEditorComponent implements OnInit {
+  hello = '<p>hello world</p>';
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

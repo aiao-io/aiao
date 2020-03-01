@@ -287,7 +287,7 @@ export class RichTextEditor {
     const ele: HTMLElement = this.element || this._lastElement;
     if (ele) {
       this.elementChanged(ele);
-      ele.innerHTML = this.value || 'a';
+      ele.innerHTML = this.value || '';
     }
   }
 
