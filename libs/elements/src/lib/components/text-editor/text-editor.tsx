@@ -45,7 +45,7 @@ export class RichTextEditor {
    */
   @Prop({ mutable: true }) value = '';
   @Prop() disabled = false;
-  @Prop() edit = true;
+  @Prop() actionBar = true;
 
   @Prop() name: string;
   @Prop() element: HTMLElement;
@@ -293,12 +293,14 @@ export class RichTextEditor {
   render() {
     renderHiddenInput(true, this.el, this.name, this.value, this.disabled);
     const cls = {
-      edit: this.edit
+      'inline-element': !this.element
     };
     return (
       <Host class={cls}>
-        {this.edit && <text-editor-bar actionState={this._state} onAction={this.onAction}></text-editor-bar>}
-        {!this.element && <div ref={e => this.elementChanged(e)}></div>}
+        {this.actionBar && (
+          <aiao-text-editor-bar actionState={this._state} onAction={this.onAction}></aiao-text-editor-bar>
+        )}
+        {!this.element && <div class="element" ref={e => this.elementChanged(e)}></div>}
       </Host>
     );
   }

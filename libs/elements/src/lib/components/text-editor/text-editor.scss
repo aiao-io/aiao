@@ -2,19 +2,14 @@
   display: block;
   max-width: 100%;
 }
-
-:host(.edit) {
-  .action-bar {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+:host(.inline-element) {
+  border: 1px solid #999;
+  aiao-text-editor-bar {
+    border-bottom: 1px solid #999;
   }
 }
 
-ion-button {
-  --padding-top: 0;
-  --padding-start: 5px;
-  --padding-end: 5px;
-  --padding-bottom: 0;
-  font-size: 12px;
+.element {
+  padding: 0 10px;
+  outline: 0;
 }

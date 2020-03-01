@@ -4,7 +4,7 @@ import { config } from '../../global/config';
 import { TextActionState, TextEditorAcitons } from '../../interfaces/text-editor.interface';
 
 @Component({
-  tag: 'text-editor-bar',
+  tag: 'aiao-text-editor-bar',
   styleUrl: 'text-editor-bar.scss',
   assetsDir: 'text-editor',
   shadow: true
