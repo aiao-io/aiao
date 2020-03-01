@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
 
-    <!-- ionic -->
-    <link href="/vendors/ionic/css/ionic.bundle.css" rel="stylesheet" />
-    <script type="module" src="/vendors/ionic/dist/ionic/ionic.esm.js"></script>
-    <script nomodule src="/vendors/ionic/dist/ionic/ionic.js"></script>
-
     <!-- image-storage -->
     <script src="/vendors/image-storage/bundles/aiao-image-storage.umd.js"></script>
     <script src="/vendors/image-storage/bundles/aiao-image-storage-adapters-aliyun.umd.js"></script>
@@ -23,113 +18,49 @@
     <script src="/scripts/testing/scripts.js"></script>
   </head>
   <body>
-    <ion-app>
-      <ion-content>
-        <ion-button onClick="bold()">粗体</ion-button>
-        <ion-button onClick="italic()">斜体</ion-button>
-        <ion-button onClick="underline()">下划线</ion-button>
-        <ion-button onClick="strikethrough()">删除线</ion-button>
-        <ion-button onClick="heading(1)">H1</ion-button>
-        <ion-button onClick="heading(2)">H2</ion-button>
-        <ion-button onClick="heading(3)">H3</ion-button>
-        <ion-button onClick="paragraph()">paragraph</ion-button>
-        <ion-button onClick="quote()">quote</ion-button>
-        <ion-button onClick="olist()">olist</ion-button>
-        <ion-button onClick="ulist()">ulist</ion-button>
-        <ion-button onClick="line()">line</ion-button>
-        <ion-button onClick="link()">link</ion-button>
-        <ion-button onClick="image()">插入图片</ion-button>
-        <ion-button onClick="backColor()">背景颜色</ion-button>
-        <ion-button onClick="foreColor()">字体颜色</ion-button>
-        <ion-button onClick="insertHTML()">插入html</ion-button>
-        <ion-button onClick="editor.saveSelection()">记录指针位置</ion-button>
-        <ion-button onClick="editor.restoreSelection()">还原指针</ion-button>
-        <aiao-text-editor id="editor"></aiao-text-editor>
-        <div id="element"></div>
-        <pre id="html" style="white-space: pre-wrap;"></pre>
-        <pre id="state" style="white-space: pre-wrap;"></pre>
-      </ion-content>
-    </ion-app>
+    <button onClick="editor.action('bold')">bold</button>
+    <button onClick="editor.action('italic')">italic</button>
+    <button onClick="editor.aciton('underline')">underline</button>
+    <button onClick="editor.action('strikethrough')">strikethrough</button>
+    <button onClick="editor.action('heading',1)">H1</button>
+    <button onClick="editor.action('heading',2)">H2</button>
+    <button onClick="editor.action('heading',3)">H3</button>
+    <button onClick="editor.action('paragraph')">paragraph</button>
+    <button onClick="editor.action('quote')">quote</button>
+    <button onClick="editor.action('insertOrderedList')">insertOrderedList</button>
+    <button onClick="editor.action('insertUnorderedList')">insertUnorderedList</button>
+    <button onClick="editor.action('insertHorizontalRule')">insertHorizontalRule</button>
+    <button onClick="editor.action('createLink','https://baidu.com')">createLink</button>
+    <button onClick="editor.action('insertImage','https://www.baidu.com/img/bd_logo1.png')">insertImage</button>
+    <button onClick="editor.action('backColor','#333')">backColor</button>
+    <button onClick="editor.action('foreColor','red')">foreColor</button>
+    <button onClick="editor.action('undo')">undo</button>
+    <button onClick="editor.action('redo')">redo</button>
+    <button onClick="insertHTML()">insertHTML</button>
+    <button onClick="editor.saveSelection()">saveSelection</button>
+    <button onClick="editor.restoreSelection()">restoreSelection</button>
+    <aiao-text-editor id="editor"></aiao-text-editor>
+    <div id="element"></div>
+    <pre id="html" style="white-space: pre-wrap;"></pre>
+    <pre id="state" style="white-space: pre-wrap;"></pre>
   </body>
   <script>
     const editor = document.getElementById('editor');
     const html = document.getElementById('html');
     const state = document.getElementById('state');
     const element = document.getElementById('element');
-    editor.element = element;
-    editor.value = '<p>输入文字</p>';
-    editor.addEventListener('mlabChange', e => {
+    // editor.element = element;
+    editor.value = '<p>简单文本编辑器</p>';
+    editor.addEventListener('aiaoChange', e => {
       html.textContent = e.detail.value;
     });
 
-    editor.addEventListener('mlabStateChange', e => {
+    editor.addEventListener('aiaoStateChange', e => {
       state.textContent = JSON.stringify(e.detail, null, 2);
     });
 
-    function bold() {
-      editor.bold();
-    }
-    function italic() {
-      editor.italic();
-    }
-    function underline() {
-      editor.underline();
-    }
-    function strikethrough() {
-      editor.strikethrough();
-    }
-    function heading(value) {
-      editor.heading(value);
-    }
-    function paragraph() {
-      editor.paragraph();
-    }
-    function quote() {
-      editor.quote();
-    }
-    function olist() {
-      editor.olist();
-    }
-    function ulist() {
-      editor.ulist();
-    }
-    function line() {
-      editor.line();
-    }
-
-    function link() {
-      editor.link('https://baidu.com');
-    }
-    function image() {
-      editor.image('https://www.baidu.com/img/bd_logo1.png');
-    }
-
-    function backColor() {
-      editor.backColor('#333');
-    }
-
-    function foreColor() {
-      editor.foreColor('red');
-    }
-
-    function hiliteColor() {
-      editor.hiliteColor('blue');
-    }
-
-    function clickBtn() {
-      console.log('clickBtn');
-      alert('执行预设代码 ok');
-    }
-
     function insertHTML() {
-      const script = document.createElement('script');
-      script.text = 'function clickBtn2(){alert("执行动态脚本 ok")}';
-      document.body.appendChild(script);
-
-      editor.insertHTML(`
-     <ion-button onClick="clickBtn()">执行预设代码</ion-button>
-<ion-button onClick="clickBtn2()">执行动态脚本</ion-button>
-    `);
+      editor.action('insertHTML', `<h1>html</h1><h2>123123</h2>`);
     }
   </script>
 </html>

@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
 
-    <!-- ionic -->
-    <link href="/vendors/ionic/css/ionic.bundle.css" rel="stylesheet" />
-    <script type="module" src="/vendors/ionic/dist/ionic/ionic.esm.js"></script>
-    <script nomodule src="/vendors/ionic/dist/ionic/ionic.js"></script>
-
     <!-- image-storage -->
     <script src="/vendors/image-storage/bundles/aiao-image-storage.umd.js"></script>
     <script src="/vendors/image-storage/bundles/aiao-image-storage-adapters-aliyun.umd.js"></script>
@@ -39,19 +34,18 @@
     const input = document.querySelector('#input');
     const change = document.querySelector('#change');
     form.html = `
-    <label>name:</label>
-<input class="elements-form_item" name="name" value="name" />
-<div>
-  <ion-item>
-    <ion-label>car 0</ion-label>
-    <ion-input class="elements-form_item" name="car[0]" value="BMW"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>car 1</ion-label>
-    <ion-input class="elements-form_item" name="car[1]" value="Honda"></ion-input>
-  </ion-item>
-</div>
-
+    <div>
+      <label>name:</label>
+      <input class="elements-form_item" name="name" value="name" />
+    </div>
+    <div>
+      <label>car 0</label>
+      <input class="elements-form_item" name="car[0]" value="BMW" />
+    </div>
+    <div>
+      <label>car 1</label>
+      <input class="elements-form_item" name="car[1]" value="Honda" />
+    </div>
     `;
 
     form.value = {
@@ -59,12 +53,10 @@
       car: ['BMW', 'Honda']
     };
     form.addEventListener('aiaoChange', e => {
-      console.log('change', e);
       change.textContent = JSON.stringify(e.detail.value, { spece: 2 });
     });
 
     form.addEventListener('aiaoInput', e => {
-      console.log('input', e);
       input.textContent = JSON.stringify(e.detail.value, { spece: 2 });
     });
 

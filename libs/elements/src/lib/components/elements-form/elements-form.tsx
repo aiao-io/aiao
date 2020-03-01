@@ -14,7 +14,7 @@ export class ElementsFrom implements ComponentInterface {
   private _formInputElements: HTMLInputElement[];
   private _formElements: Element[];
 
-  viewRef: HTMLAiaoElementsViewElement;
+  viewRef: HTMLElement;
 
   @Element() el!: HTMLElement;
   form: HTMLFormElement;
@@ -186,7 +186,7 @@ export class ElementsFrom implements ComponentInterface {
     return (
       <Host>
         <form ref={ref => (this.form = ref)}>
-          <aiao-elements-view html={this.html} ref={ref => (this.viewRef = ref)}></aiao-elements-view>
+          <div innerHTML={this.html} ref={ref => (this.viewRef = ref)}></div>
         </form>
       </Host>
     );
