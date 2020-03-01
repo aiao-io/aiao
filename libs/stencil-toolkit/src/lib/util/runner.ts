@@ -7,7 +7,6 @@ export function run(command: string, args: string[], collect: boolean = false) {
     stdio: 'inherit',
     shell: true
   };
-  console.log('run', command, args);
   return new Promise<null | string>((resolve, reject) => {
     const child: ChildProcess = spawn(`${command}`, args, options);
     if (collect) {
