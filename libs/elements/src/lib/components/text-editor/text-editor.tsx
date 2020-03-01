@@ -11,7 +11,6 @@ const IGNORE_ACTIONS = [TA.heading, TA.undo, TA.redo, TA.createLink, TA.indent, 
 @Component({
   tag: 'aiao-text-editor',
   styleUrl: 'text-editor.scss',
-  assetsDir: 'assets/text-editor',
   shadow: true
 })
 export class RichTextEditor {
@@ -33,7 +32,6 @@ export class RichTextEditor {
   @State() _state: TextActionState = {};
 
   // --------------------------------------------------------------[ Prop ]
-  @Prop() placeholder = '请输入...';
 
   /**
    * 段落符
@@ -157,10 +155,14 @@ export class RichTextEditor {
         this.exec('formatBlock', `h${value}`);
         break;
       case TA.paragraph:
-        this.exec('formatBlock', value || this.paragraphSeparator);
-        break;
       case TA.quote:
-        this.exec('formatBlock', 'blockquote');
+        if (!(this._state.insertOrderedList || this._state.insertUnorderedList)) {
+          if (action === TA.paragraph) {
+            this.exec('formatBlock', value || this.paragraphSeparator);
+          } else {
+            this.exec('formatBlock', 'blockquote');
+          }
+        }
         break;
       default:
         break;
@@ -177,12 +179,11 @@ export class RichTextEditor {
   };
 
   onFocus = (_: Event) => {
-    console.log('focus');
+    //
   };
 
   onBlur = (_: Event) => {
     //
-    console.log('blur');
   };
 
   // --------------------------------------------------------------[ public function ]
@@ -285,8 +286,7 @@ export class RichTextEditor {
     const ele: HTMLElement = this.element || this._lastElement;
     if (ele) {
       this.elementChanged(ele);
-      ele.innerHTML = this.value || '';
-      this.exec('defaultParagraphSeparator', this.defaultParagraphSeparator);
+      ele.innerHTML = this.value || 'a';
     }
   }
 

@@ -14,6 +14,7 @@ import {
   AiaoTree
 } from './directives/proxies';
 import { initialize } from './elements-initialize';
+import { AiaoElementsOptions } from './interface';
 import { TextValueAccessor } from './providers/control-value-accessors/text-value-accessor';
 import { AIAO_ELEMENTS_CONFIG } from './util/config';
 
@@ -38,13 +39,13 @@ const DECLARATIONS = [
   exports: DECLARATIONS
 })
 export class AiaoElementsModule {
-  static forRoot(config?: IAiaoElementsConfig): ModuleWithProviders {
+  static forRoot(opts?: AiaoElementsOptions): ModuleWithProviders {
     return {
       ngModule: AiaoElementsModule,
       providers: [
         {
           provide: AIAO_ELEMENTS_CONFIG,
-          useValue: config
+          useValue: opts
         },
         {
           provide: APP_INITIALIZER,

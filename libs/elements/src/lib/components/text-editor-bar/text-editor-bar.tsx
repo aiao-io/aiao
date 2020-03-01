@@ -2,11 +2,12 @@ import { Component, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 
 import { config } from '../../global/config';
 import { TextActionState, TextEditorAcitons } from '../../interfaces/text-editor.interface';
+import { urlJoin } from '@aiao/url';
 
 @Component({
   tag: 'aiao-text-editor-bar',
   styleUrl: 'text-editor-bar.scss',
-  assetsDir: 'text-editor',
+  assetsDir: 'assets/text-editor-bar',
   shadow: true
 })
 export class TextEditorBar {
@@ -31,7 +32,7 @@ export class TextEditorBar {
     },
     {
       action: TextEditorAcitons.strikeThrough,
-      icon: 'strikeThrough.svg',
+      icon: 'strike-through.svg',
       title: 'strikeThrough'
     },
     {
@@ -123,7 +124,7 @@ export class TextEditorBar {
     return (
       <Host class="action-bar">
         {this.actions.map(({ action, icon, title, value }) => {
-          const src = `${this.resourcesUrl}/text-editor/${icon}`;
+          const src = urlJoin(this.resourcesUrl, 'assets/text-editor-bar', icon);
           let selected = this.actionState && this.actionState[action];
           selected = selected !== undefined && selected !== false;
           if (selected && value) {
