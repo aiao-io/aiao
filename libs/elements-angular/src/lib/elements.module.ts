@@ -1,4 +1,3 @@
-import { IAiaoElementsConfig } from '@aiao/elements';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { APP_INITIALIZER, ModuleWithProviders, NgModule, NgZone } from '@angular/core';
 

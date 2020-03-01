@@ -297,9 +297,6 @@
       right: $end;
     }
     @include rtl() {
-      left: unset;
-      right: unset;
-
       left: $end;
       right: $start;
     }

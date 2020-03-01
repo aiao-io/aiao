@@ -1,4 +1,7 @@
+import { AiaoElementsModule } from '@aiao/elements-angular';
+import { CommonModule } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { IonicModule } from '@ionic/angular';
 
 import { TextEditorComponent } from './text-editor.component';
 
@@ -8,9 +11,9 @@ describe('TextEditorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TextEditorComponent ]
-    })
-    .compileComponents();
+      declarations: [TextEditorComponent],
+      imports: [CommonModule, IonicModule, AiaoElementsModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
