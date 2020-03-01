@@ -42,6 +42,17 @@ export class AiaoElementsEditor {
   }
 }
 
+export declare interface AiaoElementsEditorPreview extends Components.AiaoElementsEditorPreview {}
+@ProxyCmp({inputs: ['config', 'editMode', 'value']})
+@Component({ selector: 'aiao-elements-editor-preview', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['config', 'editMode', 'value'] })
+export class AiaoElementsEditorPreview {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
 export declare interface AiaoElementsForm extends Components.AiaoElementsForm {}
 @ProxyCmp({inputs: ['html', 'schema', 'value'], 'methods': ['values', 'flattenPathValues', 'getValue', 'setValue', 'setValues', 'reset', 'markAsPristine', 'markAsDirty']})
 @Component({ selector: 'aiao-elements-form', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['html', 'schema', 'value'] })
