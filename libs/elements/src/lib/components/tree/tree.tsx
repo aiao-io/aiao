@@ -47,7 +47,7 @@ export class Tree implements ComponentInterface {
   /**
    * 改版的数据节点
    */
-  @Event() mlabTreeNodeChange: EventEmitter<TreeNodeData[]>;
+  @Event() aiaoTreeNodeChange: EventEmitter<TreeNodeData[]>;
   @Event() mlabTreeDrop: EventEmitter<any>;
 
   // --------------------------------------------------------------[ State ]
@@ -194,13 +194,13 @@ export class Tree implements ComponentInterface {
   }
 
   // --------------------------------------------------------------[ Listen ]
-  @Listen('mlabTreeNodeDragStart')
+  @Listen('aiaoTreeNodeDragStart')
   onNodeDragStart(e: CustomEvent<TreeNodeEvent>) {
     const { node } = e.detail;
     this.dragNode = node;
   }
 
-  @Listen('mlabTreeNodeDragEnter')
+  @Listen('aiaoTreeNodeDragEnter')
   onNodeDragEnter(e: CustomEvent<TreeNodeEvent>) {
     const { node } = e.detail;
     if (node !== this.dragNode) {
@@ -211,7 +211,7 @@ export class Tree implements ComponentInterface {
     }
   }
 
-  @Listen('mlabTreeNodeDragOver')
+  @Listen('aiaoTreeNodeDragOver')
   onNodeDragOver(e: CustomEvent<TreeNodeEvent>) {
     const { ev, node } = e.detail;
     if (node !== this.dragNode) {
@@ -247,12 +247,12 @@ export class Tree implements ComponentInterface {
     }
   }
 
-  @Listen('mlabTreeNodeDragLeave')
+  @Listen('aiaoTreeNodeDragLeave')
   onNodeDragLeave(_: CustomEvent<TreeNodeEvent>) {
     //
   }
 
-  @Listen('mlabTreeNodeDrop')
+  @Listen('aiaoTreeNodeDrop')
   async onNodeDrop(_: CustomEvent<TreeNodeEvent>) {
     const { node } = _.detail;
     const dropNodeData = this.dataMap.get(`${node.value}`);
@@ -320,12 +320,12 @@ export class Tree implements ComponentInterface {
     if (changeIds.size > 0) {
       this.data = [...this.data];
       const changedData = Array.from(changeIds).map(id => this.dataMap.get(id));
-      this.mlabTreeNodeChange.emit(changedData);
+      this.aiaoTreeNodeChange.emit(changedData);
       this.mlabChange.emit();
     }
   }
 
-  @Listen('mlabTreeNodeDragEnd')
+  @Listen('aiaoTreeNodeDragEnd')
   onNodeDragEnd(_: CustomEvent<TreeNodeEvent>) {
     this.dragNode = undefined;
   }
