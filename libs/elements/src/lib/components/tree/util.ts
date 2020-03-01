@@ -1,7 +1,7 @@
 import { TreeDataState, TreeNodeData } from '../tree-node/tree-node.interface';
 
 export const findTreeNodeElement = (el: Element): Element | undefined => {
-  if (el.classList.contains('tree-drag-node') || el.tagName === 'mlab-tree') {
+  if (el.classList.contains('tree-drag-node') || el.tagName === 'aiao-tree') {
     return el;
   } else if (el.parentElement) {
     return findTreeNodeElement(el.parentElement);

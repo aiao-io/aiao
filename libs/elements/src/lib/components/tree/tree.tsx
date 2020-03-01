@@ -42,13 +42,13 @@ export class Tree implements ComponentInterface {
   /**
    * change
    */
-  @Event() mlabChange: EventEmitter<void>;
+  @Event() aiaoChange: EventEmitter<void>;
 
   /**
    * 改版的数据节点
    */
   @Event() aiaoTreeNodeChange: EventEmitter<TreeNodeData[]>;
-  @Event() mlabTreeDrop: EventEmitter<any>;
+  @Event() aiaoTreeDrop: EventEmitter<any>;
 
   // --------------------------------------------------------------[ State ]
   /**
@@ -321,7 +321,7 @@ export class Tree implements ComponentInterface {
       this.data = [...this.data];
       const changedData = Array.from(changeIds).map(id => this.dataMap.get(id));
       this.aiaoTreeNodeChange.emit(changedData);
-      this.mlabChange.emit();
+      this.aiaoChange.emit();
     }
   }
 
@@ -395,7 +395,7 @@ export class Tree implements ComponentInterface {
   }
 
   componentDidLoad() {
-    this.el.ondrop = ev => this.mlabTreeDrop.emit({ ev, tree: this });
+    this.el.ondrop = ev => this.aiaoTreeDrop.emit({ ev, tree: this });
     this.el.ondragover = e => e.preventDefault();
   }
 
