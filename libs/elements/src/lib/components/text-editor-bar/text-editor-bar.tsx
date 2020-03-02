@@ -12,7 +12,7 @@ import { TextActionState, TextEditorBarOptions } from './text-editor-bar.interfa
   shadow: true
 })
 export class TextEditorBar {
-  private resourcesUrl: string = config.get('resourcesUrl');
+  private resourcesUrl = config.get('resourcesUrl');
 
   @Event() action: EventEmitter<any>;
 

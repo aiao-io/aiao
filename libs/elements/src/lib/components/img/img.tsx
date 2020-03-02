@@ -1,5 +1,5 @@
 import { IImg, IImgArea, imgGetAreas } from '@aiao/elements-cdk/components';
-import { IImageRequestOptions, IImageStorage, ImageMethodType } from '@aiao/image-storage';
+import { IImageRequestOptions, ImageMethodType } from '@aiao/image-storage';
 import { IMAGE_MIN_BASE64_TRANSPARENT } from '@aiao/util';
 import {
   Component,
@@ -29,7 +29,7 @@ export class Img implements ComponentInterface, IImg {
   private io?: IntersectionObserver | any;
   private cacheImageRequest: IImageRequestOptions;
   private usemap = `img-usemap-${imageId++}`;
-  private imageStorage: IImageStorage = config.get('imageStorage');
+  private imageStorage = config.get('imageStorage');
   private img: HTMLImageElement;
 
   @Element() el!: HTMLAiaoImgElement;

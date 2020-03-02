@@ -5,7 +5,7 @@ export class ConfigBase<T> {
     this.m = new Map<keyof T, any>(Object.entries(configObj) as any);
   }
 
-  get(key: keyof T, fallback?: any): any {
+  get<K extends keyof T>(key: K, fallback?: any): T[K] {
     const value = this.m.get(key);
     return value || fallback;
   }

@@ -1,7 +1,6 @@
 import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core';
 
 import { config } from '../../global/config';
-import { IDomSanitizer } from '../../interfaces/context.interface';
 
 @Component({
   tag: 'aiao-elements-view',
@@ -11,7 +10,7 @@ import { IDomSanitizer } from '../../interfaces/context.interface';
 export class ElementsView implements ComponentInterface {
   @Element() el!: HTMLAiaoElementsViewElement;
 
-  private domSanitizer: IDomSanitizer = config.get('domSanitizer');
+  private domSanitizer = config.get('domSanitizer');
 
   @Prop() html: string;
   @Prop() css: string;
