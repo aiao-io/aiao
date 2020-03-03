@@ -9,7 +9,7 @@ module.exports = {
     '!./src/main.server.ts',
     '!./src/app/app.server.module.ts',
     '!./src/zone-flsgs.ts',
-    '!**/polyfills.ts'
+    '!./src/polyfills.ts'
   ],
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
