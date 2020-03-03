@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./elements-preview/elements-preview.module').then(_ => _.ElementsPreviewModule)
   },
   {
+    path: 'text-editor',
+    loadChildren: () => import('./text-editor/text-editor.module').then(_ => _.TextEditorModule)
+  },
+  {
     path: '',
     redirectTo: 'code-editor',
     pathMatch: 'full'

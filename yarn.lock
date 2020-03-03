@@ -4119,6 +4119,15 @@ avvio@^6.2.2, avvio@^6.3.0:
     debug "^4.0.0"
     fastq "^1.6.0"
 
+avvio@^6.3.0:
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/avvio/-/avvio-6.3.1.tgz#201ec26505551657272cda90c23ef1cb0c7e390a"
+  integrity sha512-jfcOyzK+TVBRae/FrIhlgVIDcGzRzIyDvOq+5e1IkxY141QSVZoe9kKhOwLdYkDBCkOQT6JU/53NkJY0qNrpqw==
+  dependencies:
+    archy "^1.0.0"
+    debug "^4.0.0"
+    fastq "^1.6.0"
+
 aws-sign2@~0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
@@ -7440,6 +7449,15 @@ fast-json-stable-stringify@2.x, fast-json-stable-stringify@^2.0.0:
   integrity sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==
 
 fast-json-stringify@^1.15.7, fast-json-stringify@^1.16.0:
+  version "1.16.4"
+  resolved "https://registry.yarnpkg.com/fast-json-stringify/-/fast-json-stringify-1.16.4.tgz#5f08f946df7e13d7a381fcc4a360e89d1d3d419e"
+  integrity sha512-VPhWesykpU9pQR6QyoCcg+UuGyYlSzREoygujxqep+KinnoDnPBNw2LrOxxiECbwfpNnZavsyph8zFKUan2J3w==
+  dependencies:
+    ajv "^6.11.0"
+    deepmerge "^4.2.2"
+    string-similarity "^4.0.1"
+
+fast-json-stringify@^1.16.0:
   version "1.16.4"
   resolved "https://registry.yarnpkg.com/fast-json-stringify/-/fast-json-stringify-1.16.4.tgz#5f08f946df7e13d7a381fcc4a360e89d1d3d419e"
   integrity sha512-VPhWesykpU9pQR6QyoCcg+UuGyYlSzREoygujxqep+KinnoDnPBNw2LrOxxiECbwfpNnZavsyph8zFKUan2J3w==
@@ -12535,6 +12553,18 @@ pino-std-serializers@^2.4.2:
   integrity sha512-WaL504dO8eGs+vrK+j4BuQQq6GLKeCCcHaMB2ItygzVURcL1CycwNEUHTD/lHFHs/NL5qAz2UKrjYWXKSf4aMQ==
 
 pino@^5.14.0, pino@^5.15.0:
+  version "5.17.0"
+  resolved "https://registry.yarnpkg.com/pino/-/pino-5.17.0.tgz#b9def314e82402154f89a25d76a31f20ca84b4c8"
+  integrity sha512-LqrqmRcJz8etUjyV0ddqB6OTUutCgQULPFg2b4dtijRHUsucaAdBgSUW58vY6RFSX+NT8963F+q0tM6lNwGShA==
+  dependencies:
+    fast-redact "^2.0.0"
+    fast-safe-stringify "^2.0.7"
+    flatstr "^1.0.12"
+    pino-std-serializers "^2.4.2"
+    quick-format-unescaped "^3.0.3"
+    sonic-boom "^0.7.5"
+
+pino@^5.15.0:
   version "5.17.0"
   resolved "https://registry.yarnpkg.com/pino/-/pino-5.17.0.tgz#b9def314e82402154f89a25d76a31f20ca84b4c8"
   integrity sha512-LqrqmRcJz8etUjyV0ddqB6OTUutCgQULPFg2b4dtijRHUsucaAdBgSUW58vY6RFSX+NT8963F+q0tM6lNwGShA==

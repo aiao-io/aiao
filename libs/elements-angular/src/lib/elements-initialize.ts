@@ -8,6 +8,8 @@ let didInitialize = false;
 // 初始化
 export function initialize(config: IAiaoElementsConfig, doc: Document, zone: NgZone) {
   return (): any => {
+    let { resourcesUrl } = config;
+    resourcesUrl = resourcesUrl || './';
     const win = doc.defaultView as any;
     if (win && typeof (window as any) !== 'undefined') {
       if (didInitialize) {
@@ -19,6 +21,7 @@ export function initialize(config: IAiaoElementsConfig, doc: Document, zone: NgZ
 
       elements.config = {
         ...config,
+        resourcesUrl,
         _zoneGate: (h: any) => zone.run(h)
       };
 
@@ -27,6 +30,7 @@ export function initialize(config: IAiaoElementsConfig, doc: Document, zone: NgZ
 
       return applyPolyfills().then(() => {
         return defineCustomElements(win, {
+          resourcesUrl,
           exclude: [],
           syncQueue: true,
           raf,

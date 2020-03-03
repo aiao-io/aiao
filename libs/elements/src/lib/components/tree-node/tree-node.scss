@@ -5,6 +5,7 @@
   --drop-hint-line-height: 1px;
   --drop-hint-line-color: #18a0fb;
   cursor: pointer;
+  user-select: none;
 }
 
 .tree-node-native {
@@ -27,14 +28,10 @@
   z-index: 1;
 }
 
-:host(.hover) {
-  .tree-node-native:after {
+:host(.drag) {
+  .tree-node-native:hover:after {
     @extend .hover-style;
   }
-}
-
-.tree-node-native:hover:after {
-  @extend .hover-style;
 }
 
 .tree-node-content {
@@ -74,9 +71,6 @@
   }
 }
 
-ion-checkbox {
-  position: relative;
-}
 ::slotted(.children) {
   display: none;
 }

@@ -17,16 +17,16 @@ export const config: Config = {
   ],
   copy: [
     {
-      src: resolve(__dirname, '../../', 'node_modules/@ionic/core'),
-      dest: resolve(__dirname, 'vendors/ionic')
-    },
-    {
       src: resolve(__dirname, '../../', 'dist/libs/image-storage'),
       dest: resolve(__dirname, 'vendors/image-storage')
     },
     {
       src: resolve(__dirname, '../../', 'node_modules/monaco-editor/dev'),
       dest: resolve(__dirname, 'vendors/monaco-editor')
+    },
+    {
+      src: resolve(__dirname, '../../', 'node_modules/ionicons'),
+      dest: resolve(__dirname, 'vendors/ionicons')
     }
   ],
   tsconfig: 'tsconfig.json',

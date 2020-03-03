@@ -28,6 +28,11 @@ export class AppComponent {
       title: 'Elements Preview',
       url: '/elements-preview',
       icon: 'link'
+    },
+    {
+      title: 'Text Editor',
+      url: '/text-editor',
+      icon: 'link'
     }
   ];
 }
