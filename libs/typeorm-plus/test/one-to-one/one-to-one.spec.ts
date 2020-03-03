@@ -1,31 +1,9 @@
-import { env } from 'process';
 import { Connection, ConnectionOptions, createConnection, Repository } from 'typeorm';
 
 import { SequelizeRepository, TypeormPlus } from '../../src';
-
+import { baseOptions } from '../test-helper';
 import { Profile } from './profile.entity';
 import { User } from './user.entity';
-
-try {
-  require('dotenv').config();
-} catch {}
-
-const {
-  TYPEORM_PLUS_TEST_DB_TYPE,
-  TYPEORM_PLUS_TEST_USERNAME,
-  TYPEORM_PLUS_TEST_PASSWORD,
-  TYPEORM_PLUS_TEST_DATABASE
-} = env;
-
-const options: ConnectionOptions = {
-  type: (TYPEORM_PLUS_TEST_DB_TYPE as any) || 'postgres',
-  username: TYPEORM_PLUS_TEST_USERNAME,
-  password: TYPEORM_PLUS_TEST_PASSWORD,
-  database: TYPEORM_PLUS_TEST_DATABASE || 'test',
-  synchronize: true,
-  dropSchema: true,
-  entities: [User, Profile]
-};
 
 describe('one-to-one', () => {
   let connection: Connection;
@@ -35,6 +13,7 @@ describe('one-to-one', () => {
   let userSequelizeRepository: SequelizeRepository<User>;
 
   beforeAll(async () => {
+    const options: ConnectionOptions = { ...baseOptions, entities: [User, Profile] };
     connection = await createConnection(options);
     userRepository = connection.getRepository(User);
     typeormPlus = new TypeormPlus(options, connection);
@@ -59,7 +38,7 @@ describe('one-to-one', () => {
 
     it('relation', async () => {
       const d1 = await userRepository.findOne({ where: { id }, relations: ['profile'] });
-      const d2 = await userSequelizeRepository.findOne({ include: ['profile'], where: { id } });
+      const d2 = await userSequelizeRepository.findOne({ where: { id }, include: ['profile'] });
       expect(d1.profile.gender).toEqual(d2.profile.gender);
     });
   });
