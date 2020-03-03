@@ -15,7 +15,7 @@ const getEditData = (data: IElementData, back: IElementEditorData[] = [], _sort:
 };
 
 export const elementDataToEditData = (
-  data: IElementData[],
+  data: IElementData[] = [],
   back: IElementEditorData[] = [],
   _parentId?: string
 ): IElementEditorData[] => {

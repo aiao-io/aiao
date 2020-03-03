@@ -13,7 +13,7 @@ export const checkLibBuild = async () => {
     }
   });
   if (needBuildLibs.length > 0) {
-    await run('node_modules/.bin/lerna', ['run', 'build', ...needBuildLibs]);
+    await run('node_modules/.bin/lerna', ['run', 'build', ...needBuildLibs, '--concurrency=1']);
   }
   check.succeed();
   return;

@@ -69,41 +69,36 @@ export class TreeNode implements ComponentInterface {
   @Prop({ mutable: true }) selected = false;
 
   /**
-   * hover
+   * drag
    */
-  @Prop({ mutable: true }) hover = false;
+  @Event() aiaoTreeNodeDragStart: EventEmitter<TreeNodeEvent>;
+  /**
+   * drag
+   */
+  @Event() aiaoTreeNodeDragEnter: EventEmitter<TreeNodeEvent>;
+  /**
+   * drag
+   */
+  @Event() aiaoTreeNodeDragOver: EventEmitter<TreeNodeEvent>;
 
   /**
    * drag
    */
-  @Event() mlabTreeNodeDragStart: EventEmitter<TreeNodeEvent>;
+  @Event() aiaoTreeNodeDragLeave: EventEmitter<TreeNodeEvent>;
   /**
    * drag
    */
-  @Event() mlabTreeNodeDragEnter: EventEmitter<TreeNodeEvent>;
+  @Event() aiaoTreeNodeDrop: EventEmitter<TreeNodeEvent>;
   /**
    * drag
    */
-  @Event() mlabTreeNodeDragOver: EventEmitter<TreeNodeEvent>;
-
-  /**
-   * drag
-   */
-  @Event() mlabTreeNodeDragLeave: EventEmitter<TreeNodeEvent>;
-  /**
-   * drag
-   */
-  @Event() mlabTreeNodeDrop: EventEmitter<TreeNodeEvent>;
-  /**
-   * drag
-   */
-  @Event() mlabTreeNodeDragEnd: EventEmitter<TreeNodeEvent>;
+  @Event() aiaoTreeNodeDragEnd: EventEmitter<TreeNodeEvent>;
   /**
    * 节点 click
    */
-  @Event() mlabTreeNodeClick: EventEmitter<TreeNodeEvent>;
-  @Event() mlabTreeNodeOver: EventEmitter<TreeNodeEvent>;
-  @Event() mlabTreeNodeOut: EventEmitter<TreeNodeEvent>;
+  @Event() aiaoTreeNodeClick: EventEmitter<TreeNodeEvent>;
+  @Event() aiaoTreeNodeOver: EventEmitter<TreeNodeEvent>;
+  @Event() aiaoTreeNodeOut: EventEmitter<TreeNodeEvent>;
 
   @State() dragOver = false;
   @State() dropType: 'in' | 'top' | 'bottom' = 'in';
@@ -111,13 +106,12 @@ export class TreeNode implements ComponentInterface {
 
   onExpand = () => (this.expanded = !this.expanded);
 
-  onClick = (ev: MouseEvent) => this.mlabTreeNodeClick.emit({ ev, node: this, value: this.value });
+  onClick = (ev: MouseEvent) => this.aiaoTreeNodeClick.emit({ ev, node: this, value: this.value });
   onMouseOver = (ev: MouseEvent) => {
-    this.mlabTreeNodeOver.emit({ ev, node: this, value: this.value });
+    this.aiaoTreeNodeOver.emit({ ev, node: this, value: this.value });
   };
   onMouseOut = (ev: MouseEvent) => {
-    this.hover = false;
-    this.mlabTreeNodeOut.emit({ ev, node: this, value: this.value });
+    this.aiaoTreeNodeOut.emit({ ev, node: this, value: this.value });
   };
 
   onDragStart = (ev: DragEvent) => {
@@ -131,31 +125,31 @@ export class TreeNode implements ComponentInterface {
     if (labelEle) {
       ev.dataTransfer.setDragImage(labelEle, labelEle.clientWidth, labelEle.clientHeight);
     }
-    this.mlabTreeNodeDragStart.emit({ ev, node: this, value: this.value });
+    this.aiaoTreeNodeDragStart.emit({ ev, node: this, value: this.value });
   };
 
   protected onDragEnter = (ev: DragEvent) => {
-    this.mlabTreeNodeDragEnter.emit({ ev, node: this, value: this.value });
+    this.aiaoTreeNodeDragEnter.emit({ ev, node: this, value: this.value });
   };
 
   protected onDragOver = (ev: DragEvent) => {
     ev.preventDefault();
-    this.mlabTreeNodeDragOver.emit({ ev, node: this, value: this.value });
+    this.aiaoTreeNodeDragOver.emit({ ev, node: this, value: this.value });
   };
 
   protected onDragLeave = (ev: DragEvent) => {
     this.dragOver = false;
-    this.mlabTreeNodeDragLeave.emit({ ev, node: this, value: this.value });
+    this.aiaoTreeNodeDragLeave.emit({ ev, node: this, value: this.value });
   };
 
   protected onDrop = (ev: DragEvent) => {
     this.dragOver = false;
-    this.mlabTreeNodeDrop.emit({ ev, node: this, value: this.value });
+    this.aiaoTreeNodeDrop.emit({ ev, node: this, value: this.value });
   };
 
   protected onDragEnd = (ev: DragEvent) => {
     this.dragging = false;
-    this.mlabTreeNodeDragEnd.emit({ ev, node: this, value: this.value });
+    this.aiaoTreeNodeDragEnd.emit({ ev, node: this, value: this.value });
   };
 
   render() {
@@ -168,7 +162,7 @@ export class TreeNode implements ComponentInterface {
           dragging: this.dragging,
           [`drop-${this.dropType}`]: this.dragOver,
           selected: this.selected,
-          hover: this.hover
+          drag: this.canDrag
         }}
         onClick={this.onClick}
       >
@@ -195,13 +189,11 @@ export class TreeNode implements ComponentInterface {
         onClick={this.onClick}
         onMouseOver={this.onMouseOver}
         onMouseOut={this.onMouseOut}
-        {...dragAttrs}
         draggable={this.canDrag}
+        {...dragAttrs}
       >
-        {!this.isLeaf && (
-          <ion-icon onClick={this.onExpand} name={this.expanded ? 'caret-down-outline' : 'caret-forward-outline'} />
-        )}
-        {this.selectable && <ion-checkbox />}
+        {!this.isLeaf && <ion-icon onClick={this.onExpand} name={this.expanded ? 'caret-down' : 'caret-forward'} />}
+        {this.selectable && <input type="checkbox" />}
         <span class="tree-node-content">
           {this.showIcon && this.icon && <ion-icon {...this.icon} />}
           <span>{this.name}</span>

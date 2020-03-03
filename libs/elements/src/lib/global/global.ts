@@ -1,4 +1,5 @@
 import { config } from './config';
+import { IAiaoElementsConfig } from '../interfaces/elements.interface';
 
 declare const Context: any;
 
@@ -7,6 +8,10 @@ export default () => {
   const aiao = (win.aiao = win.aiao || {});
   const elements: any = (aiao['elements'] = aiao['elements'] || {});
   elements.Context = Context;
-  config.reset(elements.config || {});
+  const conf: IAiaoElementsConfig = {
+    resourcesUrl: './',
+    ...elements.config
+  };
+  config.reset(conf);
   elements.config = config;
 };
