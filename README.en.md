@@ -76,6 +76,30 @@ The structure mostly follows the [ Nx ](https://github.com/nrwl/nx) rule
 yarn
 ```
 
+## 启动服务
+
+### 启动 lib 服务
+
+> 部分 lib 有服务
+
+```console
+yarn start elements
+```
+
+### 启动 app 服务
+
+#### 启动 dev-elements-angular 项目
+
+```console
+yarn start dev-elements-angular
+```
+
+#### 启动 dev-elements-react 项目
+
+```console
+yarn start dev-elements-react
+```
+
 ## 构建项目
 
 ### 构建所有库
@@ -87,12 +111,12 @@ yarn build:libs
 ### 单独构建 `util` 库
 
 ```console
-yarn build util
+yarn build util --prod
 ```
 
 ## 单元测试
 
-> Some libraries require database support, please start by yourself
+> 部分库需要数据库支持，请自行启动
 
 ### 测试所有库
 
