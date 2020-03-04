@@ -1,5 +1,5 @@
 import { env } from 'process';
-import { ConnectionOptions, createConnection } from 'typeorm';
+import { ConnectionOptions } from 'typeorm';
 
 try {
   require('dotenv').config();
