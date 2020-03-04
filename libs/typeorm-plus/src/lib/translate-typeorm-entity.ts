@@ -1,6 +1,7 @@
 import flatten from 'lodash/flatten';
 import isArray from 'lodash/isArray';
 import { IndexType, ModelAttributeColumnOptions, ModelAttributes, ModelOptions } from 'sequelize';
+import { EntityMetadata } from 'typeorm';
 
 import { translateTypeormType } from './translate-typeorm-type';
 
@@ -10,7 +11,7 @@ interface SeqModel {
   options: ModelOptions;
 }
 
-export function translateTypeOrmEntity(metadata: any): SeqModel {
+export function translateTypeOrmEntity(metadata: EntityMetadata): SeqModel {
   const { name: modelName, columns, tableName, schema, createDateColumn, updateDateColumn, indices } = metadata;
 
   const uniqueArrs: any[] = metadata.uniques.map(d => d.givenColumnNames);
@@ -19,8 +20,7 @@ export function translateTypeOrmEntity(metadata: any): SeqModel {
   // ModelAttributes
   const attributes: { [name: string]: ModelAttributeColumnOptions } = {};
   columns.forEach(col => {
-    const _type = col.type as any;
-    const type = _type.name || _type;
+    const type = col.type;
     const {
       propertyName,
       databaseName,

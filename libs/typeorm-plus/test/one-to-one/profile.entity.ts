@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity()
+@Entity('one_to_one_profile')
 export class Profile {
   @PrimaryGeneratedColumn()
   id: number;
