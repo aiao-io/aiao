@@ -29,7 +29,6 @@ fdescribe('many-to-many', () => {
         images: [{ name: 'cat' }]
       });
       id = data.id;
-      console.log('data', data);
     });
 
     it('findOne/findByPk', async () => {

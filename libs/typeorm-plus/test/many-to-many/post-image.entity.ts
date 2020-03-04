@@ -2,7 +2,7 @@ import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 import { Post } from './post.entity';
 
-@Entity()
+@Entity('many_to_many_image')
 export class PostImage {
   @PrimaryGeneratedColumn()
   id: number;

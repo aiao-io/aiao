@@ -20,8 +20,7 @@ export function translateTypeOrmEntity(metadata: EntityMetadata): SeqModel {
   // ModelAttributes
   const attributes: { [name: string]: ModelAttributeColumnOptions } = {};
   columns.forEach(col => {
-    const _type = col.type as any;
-    const type = _type.name || _type;
+    const type = col.type;
     const {
       propertyName,
       databaseName,

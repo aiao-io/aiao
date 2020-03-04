@@ -2,7 +2,7 @@ import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 't
 
 import { PostImage } from './post-image.entity';
 
-@Entity()
+@Entity('many_to_many_post')
 export class Post {
   @PrimaryGeneratedColumn()
   id: number;

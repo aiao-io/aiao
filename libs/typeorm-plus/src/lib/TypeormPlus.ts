@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
-import { ConnectionOptions, Connection, EntityMetadata } from 'typeorm';
+import { Connection, ConnectionOptions, EntityMetadata } from 'typeorm';
 
 import { initRepository } from './init-repository';
 import { translateTypeOrmEntity } from './translate-typeorm-entity';
