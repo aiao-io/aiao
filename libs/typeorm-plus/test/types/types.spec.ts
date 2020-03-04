@@ -44,7 +44,6 @@ describe('one-to-one', () => {
         characterVarying: ['a', 'b', 'c']
       });
       uuid = data.uuid;
-      console.log(data);
     });
 
     it('findOne/findByPk', async () => {
