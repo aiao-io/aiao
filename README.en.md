@@ -43,9 +43,9 @@ Versions less than ` 1 ` are internal beta versions, please use with caution
 
 ### Nest
 
-| Package                        | 介绍   | 版本                                                                                                                                               | 尺寸                                                                                                                                                                                  |                                     |
-| ------------------------------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
-| `@aiao/nest-angular-universal` | 处理颜色 | [![npm](https://img.shields.io/npm/v/@aiao/nest-angular-universal?label=&style=flat-square)](https://www.npmjs.com/@aiao/nest-angular-universal) | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/nest-angular-universal?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/nest-angular-universal) | [详情](./libs/nest-angular-universal) |
+| Package                        | 介绍       | 版本                                                                                                                                               | 尺寸                                                                                                                                                                                  |                                     |
+| ------------------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| `@aiao/nest-angular-universal` | nest SSR | [![npm](https://img.shields.io/npm/v/@aiao/nest-angular-universal?label=&style=flat-square)](https://www.npmjs.com/@aiao/nest-angular-universal) | [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@aiao/nest-angular-universal?label=&style=flat-square)](https://bundlephobia.com/result?p=@aiao/nest-angular-universal) | [详情](./libs/nest-angular-universal) |
 
 ### utils
 
