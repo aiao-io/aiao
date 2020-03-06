@@ -48,7 +48,7 @@ export class Img implements ComponentInterface, IImg {
    */
   @Event() aiaoImgDidLoad!: EventEmitter<void>;
   // 图片加载错误
-  @Event() ionError!: EventEmitter<void>;
+  @Event() aiaoError!: EventEmitter<void>;
   // --------------------------------------------------------------[ Prop ]
   /**
    * 锚点
@@ -168,7 +168,7 @@ export class Img implements ComponentInterface, IImg {
     img.onabort = img.onerror = () => {
       this.loading = false;
       this.error = true;
-      this.ionError.emit();
+      this.aiaoError.emit();
       this.img = null;
     };
     img.src = request.url;

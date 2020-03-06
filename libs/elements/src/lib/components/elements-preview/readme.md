@@ -1,4 +1,4 @@
-# aiao-elements-editor
+# aiao-elements-editor-preview
 
 <!-- Auto Generated Below -->
 
@@ -7,24 +7,21 @@
 | Property   | Attribute   | Description       | Type                                              | Default     |
 | ---------- | ----------- | ----------------- | ------------------------------------------------- | ----------- |
 | `config`   | --          | elements 配置     | `IElementConfig[]`                                | `undefined` |
-| `disabled` | `disabled`  |                   | `boolean`                                         | `undefined` |
 | `editMode` | `edit-mode` | elements 编辑模式 | `"add" \| "edit" \| "move" \| "resize" \| "view"` | `'edit'`    |
-| `name`     | `name`      |                   | `string`                                          | `undefined` |
-| `value`    | --          | elements 数据     | `IElementData[]`                                  | `undefined` |
-| `view`     | --          | 视图元素          | `HTMLElement`                                     | `undefined` |
+| `value`    | --          | elements 数据     | `IElementEditorData[]`                            | `undefined` |
 
 ## Dependencies
 
-### Depends on
+### Used by
 
-- [aiao-elements-editor-preview](../elements-preview)
+- [aiao-elements-editor](../elements-editor)
 
 ### Graph
 
 ```mermaid
 graph TD;
   aiao-elements-editor --> aiao-elements-editor-preview
-  style aiao-elements-editor fill:#f9f,stroke:#333,stroke-width:4px
+  style aiao-elements-editor-preview fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ---

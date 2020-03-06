@@ -52,7 +52,7 @@
 
 | Package                        | 介绍     | 版本                                                                 | 尺寸                                                                                            |                                       |
 | ------------------------------ | -------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------- |
-| `@aiao/nest-angular-universal` | 处理颜色 | [![npm][npm-nest-angular-universal]][npm-nest-angular-universal-url] | [![bundlephobia][bundlephobia-nest-angular-universal]][bundlephobia-nest-angular-universal-url] | [详情](./libs/nest-angular-universal) |
+| `@aiao/nest-angular-universal` | nest SSR | [![npm][npm-nest-angular-universal]][npm-nest-angular-universal-url] | [![bundlephobia][bundlephobia-nest-angular-universal]][bundlephobia-nest-angular-universal-url] | [详情](./libs/nest-angular-universal) |
 
 ### utils
 

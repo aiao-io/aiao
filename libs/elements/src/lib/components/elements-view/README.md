@@ -6,21 +6,9 @@
 
 | Property | Attribute | Description | Type     | Default     |
 | -------- | --------- | ----------- | -------- | ----------- |
+| `css`    | `css`     |             | `string` | `undefined` |
 | `html`   | `html`    |             | `string` | `undefined` |
-
-## Dependencies
-
-### Used by
-
-- [aiao-elements-editor](../elements-editor)
-
-### Graph
-
-```mermaid
-graph TD;
-  aiao-elements-editor --> aiao-elements-view
-  style aiao-elements-view fill:#f9f,stroke:#333,stroke-width:4px
-```
+| `js`     | `js`      |             | `string` | `undefined` |
 
 ---
 
