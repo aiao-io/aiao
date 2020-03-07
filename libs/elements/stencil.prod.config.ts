@@ -35,10 +35,10 @@ export const config: Config = {
       componentCorePackage: '@aiao/elements',
       proxiesFile: resolve(__dirname, '../elements-react/src/lib/proxies.ts'),
       excludeComponents
-    }),
-    {
-      type: 'docs-readme'
-    }
+    })
+    // {
+    //   type: 'docs-readme'
+    // }
   ],
   copy: [],
   bundles: [
