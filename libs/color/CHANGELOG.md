@@ -7,10 +7,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @aiao/color
 
-
-
-
-
 # 1.1.0 (2020-02-12)
 
 **Note:** Version bump only for package @aiao/color
