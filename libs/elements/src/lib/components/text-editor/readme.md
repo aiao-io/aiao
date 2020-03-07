@@ -2,31 +2,38 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property                    | Attribute                     | Description | Type          | Default     |
 | --------------------------- | ----------------------------- | ----------- | ------------- | ----------- |
 | `actionBar`                 | `action-bar`                  |             | `boolean`     | `true`      |
-| `defaultParagraphSeparator` | `default-paragraph-separator` | 段落符      | `string`      | `undefined` |
+| `defaultParagraphSeparator` | `default-paragraph-separator` | 段落符         | `string`      | `undefined` |
 | `disabled`                  | `disabled`                    |             | `boolean`     | `false`     |
 | `element`                   | --                            |             | `HTMLElement` | `undefined` |
 | `name`                      | `name`                        |             | `string`      | `undefined` |
-| `value`                     | `value`                       | 编辑模式    | `string`      | `''`        |
+| `value`                     | `value`                       | 编辑模式        | `string`      | `''`        |
+
 
 ## Events
 
 | Event             | Description | Type                                  |
 | ----------------- | ----------- | ------------------------------------- |
-| `aiaoChange`      | 值改变      | `CustomEvent<InputChangeEventDetail>` |
+| `aiaoChange`      | 值改变         | `CustomEvent<InputChangeEventDetail>` |
 | `aiaoStateChange` |             | `CustomEvent<TextActionState>`        |
+
 
 ## Methods
 
 ### `action(action: TA, value?: any) => Promise<void>`
 
+
+
 #### Returns
 
 Type: `Promise<void>`
+
+
 
 ### `getSelectionElements() => Promise<HTMLElement[]>`
 
@@ -36,6 +43,8 @@ Type: `Promise<void>`
 
 Type: `Promise<HTMLElement[]>`
 
+
+
 ### `restoreSelection() => Promise<void>`
 
 恢复选择位置
@@ -43,6 +52,8 @@ Type: `Promise<HTMLElement[]>`
 #### Returns
 
 Type: `Promise<void>`
+
+
 
 ### `saveSelection() => Promise<void>`
 
@@ -52,6 +63,9 @@ Type: `Promise<void>`
 
 Type: `Promise<void>`
 
+
+
+
 ## Dependencies
 
 ### Depends on
@@ -59,13 +73,12 @@ Type: `Promise<void>`
 - [aiao-text-editor-bar](../text-editor-bar)
 
 ### Graph
-
 ```mermaid
 graph TD;
   aiao-text-editor --> aiao-text-editor-bar
   style aiao-text-editor fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

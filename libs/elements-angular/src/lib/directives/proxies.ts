@@ -83,12 +83,12 @@ export declare interface AiaoImg extends Components.AiaoImg {}
 @Component({ selector: 'aiao-img', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['alt', 'animation', 'map', 'method', 'platform', 'src'] })
 export class AiaoImg {
   aiaoImgDidLoad!: EventEmitter<CustomEvent>;
-  ionError!: EventEmitter<CustomEvent>;
+  aiaoError!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['aiaoImgDidLoad', 'ionError']);
+    proxyOutputs(this, this.el, ['aiaoImgDidLoad', 'aiaoError']);
   }
 }
 
