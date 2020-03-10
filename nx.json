@@ -107,6 +107,9 @@
     "dev-elements-react-e2e": {
       "tags": ["angular-e2e"],
       "implicitDependencies": ["dev-elements-react"]
+    },
+    "leancloud-hash": {
+      "tags": ["node"]
     }
   }
 }

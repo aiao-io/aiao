@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/libs/leancloud-hash",
+    "rootDir": "./src",
+    "target": "es2015",
+    "module": "commonjs",
+    "declaration": true,
+    "inlineSources": true,
+    "types": ["node"],
+    "lib": ["dom", "es2018"]
+  },
+  "exclude": ["**/*.spec.ts"],
+  "include": ["**/*.ts"]
+}

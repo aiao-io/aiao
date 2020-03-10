@@ -1548,6 +1548,42 @@
           }
         }
       }
+    },
+    "leancloud-hash": {
+      "root": "libs/leancloud-hash",
+      "sourceRoot": "libs/leancloud-hash/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd libs/leancloud-hash && yarn run build"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/leancloud-hash/tsconfig.lib.json", "libs/leancloud-hash/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/leancloud-hash/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/leancloud-hash/jest.config.js",
+            "tsConfig": "libs/leancloud-hash/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
