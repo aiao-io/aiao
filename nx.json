@@ -110,6 +110,13 @@
     },
     "leancloud-hash": {
       "tags": ["node"]
+    },
+    "dev-elements-vue": {
+      "tags": []
+    },
+    "dev-elements-vue-e2e": {
+      "tags": [],
+      "implicitDependencies": ["dev-elements-vue"]
     }
   }
 }

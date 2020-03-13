@@ -1,4 +1,5 @@
 const getWebpackConfig = require('@nrwl/react/plugins/webpack');
+const { VueLoaderPlugin } = require('vue-loader');
 
 function getCustomWebpackConfig(webpackConfig) {
   const config = getWebpackConfig(webpackConfig);
@@ -9,6 +10,12 @@ function getCustomWebpackConfig(webpackConfig) {
     process: true
   };
 
+  // add vue
+  config.module.rules.push({
+    test: /\.vue$/,
+    use: 'vue-loader'
+  });
+  config.plugins.push(new VueLoaderPlugin());
   return config;
 }
 
