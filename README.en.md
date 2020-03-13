@@ -12,6 +12,7 @@ Use `monorepo` style for management some `npm` package。
 | ------------------------------ | ------------------------ | ----------------------------------------- |
 | `dev-elements-angular`         | angular 集成演示             | [详情](./apps/dev-elements-angular)         |
 | `dev-elements-react`           | react 集成演示               | [详情](./apps/dev-elements-react)           |
+| `dev-elements-vue`             | vue 3.0 集成演示             | [详情](./apps/dev-elements-vue)             |
 | `dev-lazy-component`           | lazy-component 集成演示      | [详情](./apps/dev-lazy-component)           |
 | `dev-lazy-element`             | lazy-element 集成演示        | [详情](./apps/dev-lazy-element)             |
 | `dev-lazy-module`              | lazy-module 集成演示         | [详情](./apps/dev-lazy-module)              |
