@@ -1,5 +1,5 @@
 import { defineCustomElements as defineIcons } from 'ionicons/dist/loader';
-import { createApp } from 'vue';
+import { createApp, h } from 'vue';
 
 import { applyPolyfills, defineCustomElements } from '@aiao/elements/loader';
 
@@ -15,6 +15,4 @@ applyPolyfills().then(() => {
 const app = createApp(App);
 app.provide('state', globalState);
 app.use(router);
-
-app.use();
 app.mount('#app');
