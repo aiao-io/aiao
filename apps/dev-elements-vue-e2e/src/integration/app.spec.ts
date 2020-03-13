@@ -8,6 +8,6 @@ describe('dev-elements-vue', () => {
     cy.login('my-email@something.com', 'myPassword');
 
     // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome to dev-elements-vue!');
+    getGreeting().contains('Hello Vue 3!');
   });
 });
