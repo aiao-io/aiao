@@ -1599,7 +1599,15 @@
             "main": "apps/dev-elements-vue/src/main.ts",
             "polyfills": "apps/dev-elements-vue/src/polyfills.ts",
             "tsConfig": "apps/dev-elements-vue/tsconfig.app.json",
-            "assets": ["apps/dev-elements-vue/src/favicon.ico", "apps/dev-elements-vue/src/assets"],
+            "assets": [
+              "apps/dev-elements-vue/src/favicon.ico",
+              "apps/dev-elements-vue/src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/@aiao/elements/lib/aiao-elements/assets",
+                "output": "./assets"
+              }
+            ],
             "styles": ["apps/dev-elements-vue/src/styles.scss"],
             "scripts": [],
             "webpackConfig": "apps/dev-elements-vue/webpack.config.js"

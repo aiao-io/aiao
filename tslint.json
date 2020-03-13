@@ -90,6 +90,10 @@
           {
             "sourceTag": "angular-e2e",
             "onlyDependOnLibsWithTags": ["all", "angular-app"]
+          },
+          {
+            "sourceTag": "vue-app",
+            "onlyDependOnLibsWithTags": ["all", "vue-lib"]
           }
         ],
         "enforceBuildableLibDependency": true

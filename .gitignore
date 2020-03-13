@@ -42,3 +42,5 @@ Thumbs.db
 *.env
 
 **/proxies-list.txt
+
+!tools/hotfix/node_modules_files/**/dist/

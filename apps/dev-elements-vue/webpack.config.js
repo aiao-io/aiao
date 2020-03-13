@@ -11,10 +11,17 @@ function getCustomWebpackConfig(webpackConfig) {
   };
 
   // add vue
+  config.resolve.alias = {
+    ...config.resolve.alias,
+    vue: '@vue/runtime-dom'
+  };
+  config.resolve.extensions.push('.vue');
+
   config.module.rules.push({
     test: /\.vue$/,
     use: 'vue-loader'
   });
+
   config.plugins.push(new VueLoaderPlugin());
   return config;
 }

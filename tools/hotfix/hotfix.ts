@@ -21,8 +21,9 @@ function fixFile(path: string, md5: string, fixStr: string, fixMd5: string) {
     } else {
       ora.fail(chalk.red(path) + ' ' + chalk.red(fileMd5));
     }
+  } else {
+    ora.succeed(msg);
   }
-  ora.succeed(msg);
 }
 
 const fixFileRoot = join(cwd(), 'tools/hotfix/node_modules_files/');

@@ -112,10 +112,10 @@
       "tags": ["node"]
     },
     "dev-elements-vue": {
-      "tags": []
+      "tags": ["vue-app"]
     },
     "dev-elements-vue-e2e": {
-      "tags": [],
+      "tags": ["vue-e2e"],
       "implicitDependencies": ["dev-elements-vue"]
     }
   }
