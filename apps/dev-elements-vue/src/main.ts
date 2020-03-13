@@ -1,5 +1,5 @@
 import { defineCustomElements as defineIcons } from 'ionicons/dist/loader';
-import { createApp, h } from 'vue';
+import { createApp } from 'vue';
 
 import { applyPolyfills, defineCustomElements } from '@aiao/elements/loader';
 

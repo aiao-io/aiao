@@ -93,7 +93,7 @@
           },
           {
             "sourceTag": "vue-app",
-            "onlyDependOnLibsWithTags": ["all", "vue-lib"]
+            "onlyDependOnLibsWithTags": ["all", "vue-lib", "stencil-lib"]
           }
         ],
         "enforceBuildableLibDependency": true
