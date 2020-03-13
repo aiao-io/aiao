@@ -1501,7 +1501,8 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "dev-elements-react:build:production"
+              "buildTarget": "dev-elements-react:build:production",
+              "port": 5208
             }
           }
         },
