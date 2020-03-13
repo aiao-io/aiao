@@ -1649,7 +1649,8 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "dev-elements-vue:build:production"
+              "buildTarget": "dev-elements-vue:build:production",
+              "port": 5207
             }
           }
         },
