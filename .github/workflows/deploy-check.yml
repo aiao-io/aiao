@@ -54,7 +54,9 @@ jobs:
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
+
       - uses: actions/cache@v1
+      - name: Yarn Cache
         id: yarn-cache
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -65,13 +67,16 @@ jobs:
       - name: install
         run: |
           yarn install --frozen-lockfile --non-interactive
+
       - uses: actions/cache@v1
+      - name: Dist Cache
         id: dist-cache
         with:
-          path: dist/last-deploy.txt
+          path: dist/ci
           key: dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
           restore-keys: |
             dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-
+
       - name: Setup Environment Variables
         shell: bash
         run: |
@@ -80,12 +85,13 @@ jobs:
             echo "Fetching Base Commit from GitHub"
             echo "::set-env name=NX_BASE::remotes/origin/$GITHUB_BASE_REF"
           else
-            if [[ ! -f dist/last-deploy.txt ]]
+            if [[ ! -f dist/ci/last-deploy.txt ]]
             then
-              mkdir -p dist && git rev-parse HEAD~1 > dist/last-deploy.txt
+              mkdir -p dist && git rev-parse HEAD~1 > dist/ci/last-deploy.txt
             fi
-            echo "::set-env name=NX_BASE::$(cat dist/last-deploy.txt)"
+            echo "::set-env name=NX_BASE::$(cat dist/ci/last-deploy.txt)"
           fi
+
       - name: check workspace
         run: node dist/tools/scripts/check-workspace
 
@@ -97,4 +103,4 @@ jobs:
       - name: update last-deploy
         shell: bash
         run: |
-          git rev-parse HEAD~1 > dist/last-deploy.txt
+          git rev-parse HEAD~1 > dist/ci/last-deploy.txt
