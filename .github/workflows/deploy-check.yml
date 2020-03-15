@@ -85,7 +85,7 @@ jobs:
           else
             if [[ ! -f dist/ci/last-deploy.txt ]]
             then
-            mkdir -p dist && mkdir -p dist/ci && git rev-parse HEAD~1 > dist/ci/last-deploy.txt
+            mkdir -p dist/ci && git rev-parse HEAD~1 > dist/ci/last-deploy.txt
             fi
             echo "::set-env name=NX_BASE::$(cat dist/ci/last-deploy.txt)"
           fi
@@ -100,5 +100,4 @@ jobs:
 
       - name: update last-deploy
         shell: bash
-        run: |
-          git rev-parse HEAD~1 > dist/ci/last-deploy.txt
+        run: mkdir -p dist/ci && git rev-parse HEAD~1 > dist/ci/last-deploy.txt
