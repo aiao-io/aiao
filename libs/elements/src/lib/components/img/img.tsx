@@ -48,7 +48,9 @@ export class Img implements ComponentInterface, IImg {
    * 图片被加载
    */
   @Event() aiaoImgDidLoad!: EventEmitter<void>;
-  // 图片加载错误
+  /**
+   * 图片加载错误
+   */
   @Event() aiaoError!: EventEmitter<void>;
   // --------------------------------------------------------------[ Prop ]
   /**
@@ -87,7 +89,9 @@ export class Img implements ComponentInterface, IImg {
     }
   }
   // --------------------------------------------------------------[ public function ]
-  // TODO: 网络状态改变, 如果加载是因为网络问题, 重载
+  /**
+   * 重新加载
+   */
   @Method()
   async reload() {
     if (this.loading === false || this.error) {

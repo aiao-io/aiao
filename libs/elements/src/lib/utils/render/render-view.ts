@@ -2,6 +2,10 @@ import kebabCase from 'lodash/kebabCase';
 
 import { IElementData } from '@aiao/elements-cdk';
 
+/**
+ * 转换单个 element 数据为 html 格式
+ * @param data 数据
+ */
 export const elementDataStringify = (data: IElementData) => {
   const { tag, children, innerHTML, innerText, class: cls, attributes, slot, style } = data;
   const innerString = innerText || innerHTML || (children && children.length ? elementsDataStringify(children) : '');
@@ -41,4 +45,9 @@ export const elementDataStringify = (data: IElementData) => {
   return `<${tag}${propStr}>${innerString}</${tag}>`;
 };
 
-export const elementsDataStringify = (data: IElementData[] = []) => data.map(d => elementDataStringify(d)).join('');
+/**
+ * 转换多个 elements 数据为 html 格式
+ * @param dataArray 数据
+ */
+export const elementsDataStringify = (dataArray: IElementData[] = []) =>
+  dataArray.map(d => elementDataStringify(d)).join('');

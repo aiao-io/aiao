@@ -1,5 +1,5 @@
 import { urlJoin } from '@aiao/url';
-import { Component, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 
 import { config } from '../../global/config';
 import { TEXT_EDITOR_DEFAULT_SETTINGS } from './default-actions';
@@ -12,14 +12,33 @@ import { TextActionState, TextEditorBarOptions } from './text-editor-bar.interfa
   shadow: true
 })
 export class TextEditorBar {
+  @Element() el!: HTMLElement;
   private resourcesUrl = config.get('resourcesUrl');
 
+  // --------------------------------------------------------------[ State ]
+  // --------------------------------------------------------------[ Event ]
+  /**
+   * 发送 action
+   */
   @Event() action: EventEmitter<any>;
 
-  @Prop() options: TextEditorBarOptions[];
+  // --------------------------------------------------------------[ Prop ]
 
+  /**
+   * action 的状态
+   */
   @Prop() actionState: TextActionState;
 
+  /**
+   * 配置
+   */
+  @Prop() options: TextEditorBarOptions[];
+  // --------------------------------------------------------------[ Watch ]
+  // --------------------------------------------------------------[ Listen ]
+  // --------------------------------------------------------------[ event hander ]
+  // --------------------------------------------------------------[ public function ]
+  // --------------------------------------------------------------[ private function ]
+  // --------------------------------------------------------------[ lifecycle ]
   render() {
     return (
       <Host class="action-bar">

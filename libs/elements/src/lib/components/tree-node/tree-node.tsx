@@ -9,6 +9,50 @@ import { TreeNodeEvent } from './tree-node.interface';
 })
 export class TreeNode implements ComponentInterface {
   @Element() el!: HTMLElement;
+  // --------------------------------------------------------------[ State ]
+  @State() dragOver = false;
+  @State() dropType: 'in' | 'top' | 'bottom' = 'in';
+  @State() dragging = false;
+  // --------------------------------------------------------------[ Event ]
+  /**
+   * drag start
+   */
+  @Event() aiaoTreeNodeDragStart: EventEmitter<TreeNodeEvent>;
+  /**
+   * drag enter
+   */
+  @Event() aiaoTreeNodeDragEnter: EventEmitter<TreeNodeEvent>;
+  /**
+   * drag over
+   */
+  @Event() aiaoTreeNodeDragOver: EventEmitter<TreeNodeEvent>;
+
+  /**
+   * drag leave
+   */
+  @Event() aiaoTreeNodeDragLeave: EventEmitter<TreeNodeEvent>;
+  /**
+   * drop
+   */
+  @Event() aiaoTreeNodeDrop: EventEmitter<TreeNodeEvent>;
+  /**
+   * drag end
+   */
+  @Event() aiaoTreeNodeDragEnd: EventEmitter<TreeNodeEvent>;
+  /**
+   * click
+   */
+  @Event() aiaoTreeNodeClick: EventEmitter<TreeNodeEvent>;
+  /**
+   * over
+   */
+  @Event() aiaoTreeNodeOver: EventEmitter<TreeNodeEvent>;
+  /**
+   * out
+   */
+  @Event() aiaoTreeNodeOut: EventEmitter<TreeNodeEvent>;
+
+  // --------------------------------------------------------------[ Prop ]
 
   /**
    * 唯一值
@@ -52,7 +96,7 @@ export class TreeNode implements ComponentInterface {
   /**
    * 图标名
    */
-  @Prop() icon: { icon?: string; src?: string };
+  @Prop() icon: { name?: string; src?: string };
   /**
    * 标题
    */
@@ -67,42 +111,9 @@ export class TreeNode implements ComponentInterface {
    * 是否被选中
    */
   @Prop({ mutable: true }) selected = false;
-
-  /**
-   * drag
-   */
-  @Event() aiaoTreeNodeDragStart: EventEmitter<TreeNodeEvent>;
-  /**
-   * drag
-   */
-  @Event() aiaoTreeNodeDragEnter: EventEmitter<TreeNodeEvent>;
-  /**
-   * drag
-   */
-  @Event() aiaoTreeNodeDragOver: EventEmitter<TreeNodeEvent>;
-
-  /**
-   * drag
-   */
-  @Event() aiaoTreeNodeDragLeave: EventEmitter<TreeNodeEvent>;
-  /**
-   * drag
-   */
-  @Event() aiaoTreeNodeDrop: EventEmitter<TreeNodeEvent>;
-  /**
-   * drag
-   */
-  @Event() aiaoTreeNodeDragEnd: EventEmitter<TreeNodeEvent>;
-  /**
-   * 节点 click
-   */
-  @Event() aiaoTreeNodeClick: EventEmitter<TreeNodeEvent>;
-  @Event() aiaoTreeNodeOver: EventEmitter<TreeNodeEvent>;
-  @Event() aiaoTreeNodeOut: EventEmitter<TreeNodeEvent>;
-
-  @State() dragOver = false;
-  @State() dropType: 'in' | 'top' | 'bottom' = 'in';
-  @State() dragging = false;
+  // --------------------------------------------------------------[ Watch ]
+  // --------------------------------------------------------------[ Listen ]
+  // --------------------------------------------------------------[ event hander ]
 
   onExpand = () => (this.expanded = !this.expanded);
 
@@ -151,6 +162,10 @@ export class TreeNode implements ComponentInterface {
     this.dragging = false;
     this.aiaoTreeNodeDragEnd.emit({ ev, node: this, value: this.value });
   };
+
+  // --------------------------------------------------------------[ public function ]
+  // --------------------------------------------------------------[ private function ]
+  // --------------------------------------------------------------[ lifecycle ]
 
   render() {
     const renders = this.treeRender();

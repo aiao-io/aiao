@@ -3,6 +3,7 @@ import set from 'lodash/set';
 import { plainObjectToFlattenPathObject } from '@aiao/util';
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
 
+import { config } from '../../global/config';
 import { ELEMENTS_FORM_ITEM } from '../../utils/render/render.interface';
 
 @Component({
@@ -13,35 +14,37 @@ import { ELEMENTS_FORM_ITEM } from '../../utils/render/render.interface';
 export class ElementsFrom implements ComponentInterface {
   private _formInputElements: HTMLInputElement[];
   private _formElements: Element[];
-
-  viewRef: HTMLElement;
+  private viewRef: HTMLElement;
+  private domSanitizer = config.get('domSanitizer');
 
   @Element() el!: HTMLElement;
   form: HTMLFormElement;
 
   // --------------------------------------------------------------[ State ]
   // --------------------------------------------------------------[ Event ]
+  /**
+   * 侦听值改变
+   */
   @Event() aiaoChange: EventEmitter<any>;
+  /**
+   * 侦听输入改变
+   */
   @Event() aiaoInput: EventEmitter<any>;
 
   // --------------------------------------------------------------[ Prop ]
 
+  /**
+   * form html
+   */
   @Prop() html: string;
 
   /**
-   * schema
-   */
-  @Prop() schema: any;
-
-  /**
-   * elements value
+   * 值
    */
   @Prop() value: any;
 
   // --------------------------------------------------------------[ Watch ]
-
   // --------------------------------------------------------------[ Listen ]
-
   // --------------------------------------------------------------[ event hander ]
   // --------------------------------------------------------------[ public function ]
 
@@ -55,19 +58,11 @@ export class ElementsFrom implements ComponentInterface {
   }
 
   /**
-   * 得到 form 的值(路径模式)
+   * 得到 form 的值 (路径模式)
    */
   @Method()
   async flattenPathValues() {
     return this.getFlattenPathValues();
-  }
-
-  private getInputElementByPath(path: string) {
-    const pathElement: any = this.formElements.find((ele: any) => ele.name === path);
-    if (!pathElement) {
-      throw new Error(`${path} 没找到`);
-    }
-    return pathElement;
   }
 
   /**
@@ -92,7 +87,7 @@ export class ElementsFrom implements ComponentInterface {
   }
 
   /**
-   * 设置 form 的值
+   * 设置 form 值
    */
   @Method()
   async setValues(values: any, emit = true) {
@@ -104,22 +99,40 @@ export class ElementsFrom implements ComponentInterface {
     }
   }
 
+  /**
+   * 重置 form 值
+   */
   @Method()
   async reset() {
     //
   }
 
+  /**
+   * 当前值变成原始值
+   */
   @Method()
   async markAsPristine() {
     //
   }
 
+  /**
+   * 数据已更改
+   */
   @Method()
   async markAsDirty() {
     //
   }
 
   // --------------------------------------------------------------[ private function ]
+
+  private getInputElementByPath(path: string) {
+    const pathElement: any = this.formElements.find((ele: any) => ele.name === path);
+    if (!pathElement) {
+      throw new Error(`${path} 没找到`);
+    }
+    return pathElement;
+  }
+
   private getFlattenPathValues() {
     const value: any = {};
     this.formElements.forEach((ele: any) => {
@@ -183,10 +196,16 @@ export class ElementsFrom implements ComponentInterface {
   }
 
   render() {
+    let { html } = this;
+    if (this.domSanitizer) {
+      if (html) {
+        html = this.domSanitizer.bypassSecurityTrustHtml(html);
+      }
+    }
     return (
       <Host>
         <form ref={ref => (this.form = ref)}>
-          <div innerHTML={this.html} ref={ref => (this.viewRef = ref)}></div>
+          <div innerHTML={html} ref={ref => (this.viewRef = ref)}></div>
         </form>
       </Host>
     );

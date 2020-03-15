@@ -43,8 +43,8 @@ export class AiaoElementsEditor {
 }
 
 export declare interface AiaoElementsForm extends Components.AiaoElementsForm {}
-@ProxyCmp({inputs: ['html', 'schema', 'value'], 'methods': ['values', 'flattenPathValues', 'getValue', 'setValue', 'setValues', 'reset', 'markAsPristine', 'markAsDirty']})
-@Component({ selector: 'aiao-elements-form', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['html', 'schema', 'value'] })
+@ProxyCmp({inputs: ['html', 'value'], 'methods': ['values', 'flattenPathValues', 'getValue', 'setValue', 'setValues', 'reset', 'markAsPristine', 'markAsDirty']})
+@Component({ selector: 'aiao-elements-form', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['html', 'value'] })
 export class AiaoElementsForm {
   aiaoChange!: EventEmitter<CustomEvent>;
   aiaoInput!: EventEmitter<CustomEvent>;
@@ -93,8 +93,8 @@ export class AiaoImg {
 }
 
 export declare interface AiaoTextEditor extends Components.AiaoTextEditor {}
-@ProxyCmp({inputs: ['actionBar', 'defaultParagraphSeparator', 'disabled', 'element', 'name', 'value'], 'methods': ['getSelectionElements', 'saveSelection', 'restoreSelection', 'action']})
-@Component({ selector: 'aiao-text-editor', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['actionBar', 'defaultParagraphSeparator', 'disabled', 'element', 'name', 'value'] })
+@ProxyCmp({inputs: ['defaultParagraphSeparator', 'disabled', 'element', 'name', 'showActionBar', 'value'], 'methods': ['getSelectionElements', 'saveSelection', 'restoreSelection', 'action']})
+@Component({ selector: 'aiao-text-editor', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['defaultParagraphSeparator', 'disabled', 'element', 'name', 'showActionBar', 'value'] })
 export class AiaoTextEditor {
   aiaoChange!: EventEmitter<CustomEvent>;
   aiaoStateChange!: EventEmitter<CustomEvent>;

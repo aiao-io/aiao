@@ -12,30 +12,37 @@ import { EditMode } from '../../utils/render/render.interface';
 })
 export class ElementsEditorPreview implements ComponentInterface {
   @Element() el!: HTMLElement;
-
   private nodes: IElementEditorData[];
 
+  // --------------------------------------------------------------[ State ]
+  // --------------------------------------------------------------[ Event ]
+  // --------------------------------------------------------------[ Prop ]
+
   /**
-   * elements 配置
+   *  配置
    */
   @Prop() config: IElementConfig[];
 
   /**
-   * elements 数据
+   *  数据
    */
   @Prop() value: IElementEditorData[];
 
   /**
-   * elements 编辑模式
+   *  编辑模式
    */
   @Prop() editMode: EditMode = 'edit';
 
-  buildNodes() {
+  // --------------------------------------------------------------[ Watch ]
+  // --------------------------------------------------------------[ Listen ]
+  // --------------------------------------------------------------[ event hander ]
+  // --------------------------------------------------------------[ public function ]
+  // --------------------------------------------------------------[ private function ]
+  private buildNodes() {
     this.nodes = elementsPreviewRender(this.config, this.value, { editMode: this.editMode });
     const needNodes = this.nodes.filter(d => d._parentId === undefined);
     return needNodes.map(d => this.renderElement(d));
   }
-
   private renderElement(data: IElementEditorData) {
     const { tag: TagName, slot, attributes, events, style, class: cls, innerText, innerHTML, _id } = data;
     let children = [];
@@ -50,6 +57,7 @@ export class ElementsEditorPreview implements ComponentInterface {
     );
   }
 
+  // --------------------------------------------------------------[ lifecycle ]
   render() {
     return <Host>{this.buildNodes()}</Host>;
   }

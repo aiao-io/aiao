@@ -1,39 +1,36 @@
 # aiao-text-editor
 
-<!-- Auto Generated Below -->
+富文本编辑器
 
+<!-- Auto Generated Below -->
 
 ## Properties
 
-| Property                    | Attribute                     | Description | Type          | Default     |
-| --------------------------- | ----------------------------- | ----------- | ------------- | ----------- |
-| `actionBar`                 | `action-bar`                  |             | `boolean`     | `true`      |
-| `defaultParagraphSeparator` | `default-paragraph-separator` | 段落符         | `string`      | `undefined` |
-| `disabled`                  | `disabled`                    |             | `boolean`     | `false`     |
-| `element`                   | --                            |             | `HTMLElement` | `undefined` |
-| `name`                      | `name`                        |             | `string`      | `undefined` |
-| `value`                     | `value`                       | 编辑模式        | `string`      | `''`        |
-
+| Property                    | Attribute                     | Description      | Type          | Default     |
+| --------------------------- | ----------------------------- | ---------------- | ------------- | ----------- |
+| `defaultParagraphSeparator` | `default-paragraph-separator` | 段落符           | `string`      | `'p'`       |
+| `disabled`                  | `disabled`                    | 禁用             | `boolean`     | `false`     |
+| `element`                   | --                            |  绑定的 dom 元素 | `HTMLElement` | `undefined` |
+| `name`                      | `name`                        | form name        | `string`      | `undefined` |
+| `showActionBar`             | `show-action-bar`             | 显示命令条       | `boolean`     | `true`      |
+| `value`                     | `value`                       | form value       | `string`      | `''`        |
 
 ## Events
 
 | Event             | Description | Type                                  |
 | ----------------- | ----------- | ------------------------------------- |
-| `aiaoChange`      | 值改变         | `CustomEvent<InputChangeEventDetail>` |
+| `aiaoChange`      | 值改变      | `CustomEvent<InputChangeEventDetail>` |
 | `aiaoStateChange` |             | `CustomEvent<TextActionState>`        |
-
 
 ## Methods
 
 ### `action(action: TA, value?: any) => Promise<void>`
 
-
+执行命令
 
 #### Returns
 
 Type: `Promise<void>`
-
-
 
 ### `getSelectionElements() => Promise<HTMLElement[]>`
 
@@ -43,8 +40,6 @@ Type: `Promise<void>`
 
 Type: `Promise<HTMLElement[]>`
 
-
-
 ### `restoreSelection() => Promise<void>`
 
 恢复选择位置
@@ -52,8 +47,6 @@ Type: `Promise<HTMLElement[]>`
 #### Returns
 
 Type: `Promise<void>`
-
-
 
 ### `saveSelection() => Promise<void>`
 
@@ -63,9 +56,6 @@ Type: `Promise<void>`
 
 Type: `Promise<void>`
 
-
-
-
 ## Dependencies
 
 ### Depends on
@@ -73,12 +63,13 @@ Type: `Promise<void>`
 - [aiao-text-editor-bar](../text-editor-bar)
 
 ### Graph
+
 ```mermaid
 graph TD;
   aiao-text-editor --> aiao-text-editor-bar
   style aiao-text-editor fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
