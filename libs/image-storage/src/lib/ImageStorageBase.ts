@@ -1,5 +1,8 @@
 import { IImageOptions, IImageRequestOptions, IImageStorage, IImageStorageConfig } from './image-storage.interface';
 
+/**
+ * 适配器模式基类
+ */
 export abstract class ImageStorageBase implements IImageStorage {
   protected cacheMap = new Map<string, IImageRequestOptions[]>();
 
