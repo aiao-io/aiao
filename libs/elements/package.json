@@ -43,7 +43,6 @@
   "devDependencies": {
     "@aiao/elements-cdk": "*",
     "@aiao/image-storage": "^0.1.1",
-    "@aiao/stencil-toolkit": "^0.1.0",
     "@aiao/url": "*",
     "@aiao/util": "^0.7.1",
     "@stencil/core": "*"

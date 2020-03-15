@@ -28,10 +28,10 @@
     "build": "./scripts/build.sh"
   },
   "dependencies": {
-    "@nrwl/jest": "^8.9.0",
-    "@nrwl/workspace": "^8.9.0"
+    "@nrwl/jest": "^9.1.2",
+    "@nrwl/workspace": "^9.1.2"
   },
   "peerDependencies": {
-    "@angular-devkit/schematics": "^8.0.0"
+    "@angular-devkit/schematics": "^9.0.0"
   }
 }

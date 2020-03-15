@@ -44,3 +44,4 @@ Thumbs.db
 **/proxies-list.txt
 
 !tools/hotfix/node_modules_files/**/dist/
+package-lock.json

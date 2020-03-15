@@ -6,13 +6,13 @@ import { Schema } from './schema';
 function addDependencies(schema: Schema): Rule {
   let deps = {};
   const devDeps = {
-    '@stencil/core': '^1.8.1',
+    '@stencil/core': '^1.9.2',
     '@stencil/sass': '^1.1.1',
     'tslint-ionic-rules': '^0.0.21',
-    'tslint-react': '^4.0.0'
+    'tslint-react': '^4.2.0'
   };
   if (schema.vendors.ionic) {
-    deps = { ...deps, '@ionic/core': '^4.11.3' };
+    deps = { ...deps, '@ionic/core': '^5.0.0' };
   }
   return addDepsToPackageJson(deps, devDeps);
 }
