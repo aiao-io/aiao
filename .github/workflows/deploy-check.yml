@@ -56,7 +56,6 @@ jobs:
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
       - uses: actions/cache@v1
-      - name: Yarn Cache
         id: yarn-cache
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -69,7 +68,6 @@ jobs:
           yarn install --frozen-lockfile --non-interactive
 
       - uses: actions/cache@v1
-      - name: Dist Cache
         id: dist-cache
         with:
           path: dist/ci
