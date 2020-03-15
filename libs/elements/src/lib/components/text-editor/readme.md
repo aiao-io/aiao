@@ -1,17 +1,19 @@
 # aiao-text-editor
 
+富文本编辑器
+
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property                    | Attribute                     | Description | Type          | Default     |
-| --------------------------- | ----------------------------- | ----------- | ------------- | ----------- |
-| `actionBar`                 | `action-bar`                  |             | `boolean`     | `true`      |
-| `defaultParagraphSeparator` | `default-paragraph-separator` | 段落符      | `string`      | `undefined` |
-| `disabled`                  | `disabled`                    |             | `boolean`     | `false`     |
-| `element`                   | --                            |             | `HTMLElement` | `undefined` |
-| `name`                      | `name`                        |             | `string`      | `undefined` |
-| `value`                     | `value`                       | 编辑模式    | `string`      | `''`        |
+| Property                    | Attribute                     | Description      | Type          | Default     |
+| --------------------------- | ----------------------------- | ---------------- | ------------- | ----------- |
+| `defaultParagraphSeparator` | `default-paragraph-separator` | 段落符           | `string`      | `'p'`       |
+| `disabled`                  | `disabled`                    | 禁用             | `boolean`     | `false`     |
+| `element`                   | --                            |  绑定的 dom 元素 | `HTMLElement` | `undefined` |
+| `name`                      | `name`                        | form name        | `string`      | `undefined` |
+| `showActionBar`             | `show-action-bar`             | 显示命令条       | `boolean`     | `true`      |
+| `value`                     | `value`                       | form value       | `string`      | `''`        |
 
 ## Events
 
@@ -23,6 +25,8 @@
 ## Methods
 
 ### `action(action: TA, value?: any) => Promise<void>`
+
+执行命令
 
 #### Returns
 

@@ -45,9 +45,13 @@ export class Tree implements ComponentInterface {
   @Event() aiaoChange: EventEmitter<void>;
 
   /**
-   * 改版的数据节点
+   * 改变的数据节点
    */
   @Event() aiaoTreeNodeChange: EventEmitter<TreeNodeData[]>;
+
+  /**
+   * tree drop
+   */
   @Event() aiaoTreeDrop: EventEmitter<any>;
 
   // --------------------------------------------------------------[ State ]

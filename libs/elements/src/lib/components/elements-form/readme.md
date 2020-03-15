@@ -1,27 +1,28 @@
 # aiao-elements-form
 
+elements 表单
+
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property | Attribute | Description    | Type     | Default     |
-| -------- | --------- | -------------- | -------- | ----------- |
-| `html`   | `html`    |                | `string` | `undefined` |
-| `schema` | `schema`  | schema         | `any`    | `undefined` |
-| `value`  | `value`   | elements value | `any`    | `undefined` |
+| Property | Attribute | Description | Type     | Default     |
+| -------- | --------- | ----------- | -------- | ----------- |
+| `html`   | `html`    | form html   | `string` | `undefined` |
+| `value`  | `value`   | 值          | `any`    | `undefined` |
 
 ## Events
 
-| Event        | Description | Type               |
-| ------------ | ----------- | ------------------ |
-| `aiaoChange` |             | `CustomEvent<any>` |
-| `aiaoInput`  |             | `CustomEvent<any>` |
+| Event        | Description  | Type               |
+| ------------ | ------------ | ------------------ |
+| `aiaoChange` | 侦听值改变   | `CustomEvent<any>` |
+| `aiaoInput`  | 侦听输入改变 | `CustomEvent<any>` |
 
 ## Methods
 
 ### `flattenPathValues() => Promise<any>`
 
-得到 form 的值(路径模式)
+得到 form 的值 (路径模式)
 
 #### Returns
 
@@ -37,17 +38,23 @@ Type: `Promise<any>`
 
 ### `markAsDirty() => Promise<void>`
 
+数据已更改
+
 #### Returns
 
 Type: `Promise<void>`
 
 ### `markAsPristine() => Promise<void>`
 
+当前值变成原始值
+
 #### Returns
 
 Type: `Promise<void>`
 
 ### `reset() => Promise<void>`
+
+重置 form 值
 
 #### Returns
 
@@ -63,7 +70,7 @@ Type: `Promise<void>`
 
 ### `setValues(values: any, emit?: boolean) => Promise<void>`
 
-设置 form 的值
+设置 form 值
 
 #### Returns
 

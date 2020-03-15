@@ -20,15 +20,15 @@
 | `selectable`          | `selectable`            | 可选模式          | `boolean`          | `true`      |
 | `showIcon`            | `show-icon`             | 显示图标          | `boolean`          | `true`      |
 | `showLine`            | `show-line`             | 显示线            | `boolean`          | `false`     |
-| `showMode`            | `show-mode`             | 显示模式          | `"list" \| "tree"` | `'tree'`    |
+| `showMode`            | `show-mode`             | 显示模式          | `"list" or "tree"` | `'tree'`    |
 
 ## Events
 
 | Event                | Description    | Type                          |
 | -------------------- | -------------- | ----------------------------- |
 | `aiaoChange`         | change         | `CustomEvent<void>`           |
-| `aiaoTreeDrop`       |                | `CustomEvent<any>`            |
-| `aiaoTreeNodeChange` | 改版的数据节点 | `CustomEvent<TreeNodeData[]>` |
+| `aiaoTreeDrop`       | tree drop      | `CustomEvent<any>`            |
+| `aiaoTreeNodeChange` | 改变的数据节点 | `CustomEvent<TreeNodeData[]>` |
 
 ## Methods
 

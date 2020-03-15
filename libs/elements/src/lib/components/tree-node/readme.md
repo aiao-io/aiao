@@ -1,5 +1,7 @@
 # aiao-tree-node
 
+tree 节点
+
 <!-- Auto Generated Below -->
 
 ## Properties
@@ -10,28 +12,28 @@
 | `checkable`  | `checkable`  | 是否可检查     | `boolean`                          | `false`     |
 | `disabled`   | `disabled`   | 是否禁用       | `boolean`                          | `false`     |
 | `expanded`   | `expanded`   | 是否展开       | `boolean`                          | `false`     |
-| `icon`       | --           | 图标名         | `{ icon?: string; src?: string; }` | `undefined` |
+| `icon`       | --           | 图标名         | `{ name?: string; src?: string; }` | `undefined` |
 | `isLeaf`     | `is-leaf`    | 是否是叶子节点 | `boolean`                          | `false`     |
 | `name`       | `name`       | 标题           | `string`                           | `undefined` |
 | `selectable` | `selectable` | 可选模式       | `boolean`                          | `false`     |
 | `selected`   | `selected`   |                | `boolean`                          | `false`     |
 | `showIcon`   | `show-icon`  | 显示图标       | `boolean`                          | `false`     |
 | `showLine`   | `show-line`  | 显示线         | `boolean`                          | `false`     |
-| `value`      | `value`      | 唯一值         | `number \| string`                 | `undefined` |
+| `value`      | `value`      | 唯一值         | `number or string`                 | `undefined` |
 
 ## Events
 
 | Event                   | Description | Type                         |
 | ----------------------- | ----------- | ---------------------------- |
-| `aiaoTreeNodeClick`     | 节点 click  | `CustomEvent<TreeNodeEvent>` |
-| `aiaoTreeNodeDragEnd`   | drag        | `CustomEvent<TreeNodeEvent>` |
-| `aiaoTreeNodeDragEnter` | drag        | `CustomEvent<TreeNodeEvent>` |
-| `aiaoTreeNodeDragLeave` | drag        | `CustomEvent<TreeNodeEvent>` |
-| `aiaoTreeNodeDragOver`  | drag        | `CustomEvent<TreeNodeEvent>` |
-| `aiaoTreeNodeDragStart` | drag        | `CustomEvent<TreeNodeEvent>` |
-| `aiaoTreeNodeDrop`      | drag        | `CustomEvent<TreeNodeEvent>` |
-| `aiaoTreeNodeOut`       |             | `CustomEvent<TreeNodeEvent>` |
-| `aiaoTreeNodeOver`      |             | `CustomEvent<TreeNodeEvent>` |
+| `aiaoTreeNodeClick`     | click       | `CustomEvent<TreeNodeEvent>` |
+| `aiaoTreeNodeDragEnd`   | drag end    | `CustomEvent<TreeNodeEvent>` |
+| `aiaoTreeNodeDragEnter` | drag enter  | `CustomEvent<TreeNodeEvent>` |
+| `aiaoTreeNodeDragLeave` | drag leave  | `CustomEvent<TreeNodeEvent>` |
+| `aiaoTreeNodeDragOver`  | drag over   | `CustomEvent<TreeNodeEvent>` |
+| `aiaoTreeNodeDragStart` | drag start  | `CustomEvent<TreeNodeEvent>` |
+| `aiaoTreeNodeDrop`      | drop        | `CustomEvent<TreeNodeEvent>` |
+| `aiaoTreeNodeOut`       | out         | `CustomEvent<TreeNodeEvent>` |
+| `aiaoTreeNodeOver`      | over        | `CustomEvent<TreeNodeEvent>` |
 
 ## Dependencies
 

@@ -1,3 +1,7 @@
+/**
+ * 获取选中的元素
+ * @param doc 文档
+ */
 export const getSelectionElements = (doc: Document | ShadowRoot): HTMLElement[] => {
   const selection = doc.getSelection();
 
@@ -41,4 +45,8 @@ export const restoreRange = (doc: Document | ShadowRoot, range: Range) => {
   selection.addRange(range);
 };
 
+/**
+ * 用户是否选中
+ * @param doc 文档
+ */
 export const hasRange = (doc: Document | ShadowRoot) => doc.getSelection().focusOffset > 0;

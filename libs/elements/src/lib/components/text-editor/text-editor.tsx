@@ -35,19 +35,29 @@ export class RichTextEditor {
   // --------------------------------------------------------------[ Prop ]
 
   /**
+   * 显示命令条
+   */
+  @Prop() showActionBar = true;
+  /**
    * 段落符
    */
-  @Prop() defaultParagraphSeparator: string;
-
+  @Prop() defaultParagraphSeparator = 'p';
   /**
-   * 编辑模式
+   * 禁用
+   */
+  @Prop() disabled = false;
+  /**
+   * 绑定的 dom 元素
+   */
+  @Prop() element: HTMLElement;
+  /**
+   * form name
+   */
+  @Prop() name: string;
+  /**
+   * form value
    */
   @Prop({ mutable: true }) value = '';
-  @Prop() disabled = false;
-  @Prop() actionBar = true;
-
-  @Prop() name: string;
-  @Prop() element: HTMLElement;
 
   // --------------------------------------------------------------[ Watch ]
   @Watch('element')
@@ -121,6 +131,11 @@ export class RichTextEditor {
     value: string
   ): Promise<any>;
   async action(action: TA.fontSize | TA.heading, value: number): Promise<any>;
+  /**
+   * 执行命令
+   * @param action 命令
+   * @param value 值
+   */
   @Method()
   async action(action: TA, value?: any) {
     switch (action) {
@@ -299,7 +314,7 @@ export class RichTextEditor {
     };
     return (
       <Host class={cls}>
-        {this.actionBar && (
+        {this.showActionBar && (
           <aiao-text-editor-bar actionState={this._state} onAction={this.onAction}></aiao-text-editor-bar>
         )}
         {!this.element && <div class="element" ref={e => this.elementChanged(e)}></div>}

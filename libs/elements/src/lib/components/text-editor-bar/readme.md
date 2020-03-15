@@ -1,19 +1,21 @@
 # aiao-text-editor-bar
 
+富文本编辑器控制条
+
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property      | Attribute | Description | Type                     | Default     |
-| ------------- | --------- | ----------- | ------------------------ | ----------- |
-| `actionState` | --        |             | `TextActionState`        | `undefined` |
-| `options`     | --        |             | `TextEditorBarOptions[]` | `undefined` |
+| Property      | Attribute | Description   | Type                     | Default     |
+| ------------- | --------- | ------------- | ------------------------ | ----------- |
+| `actionState` | --        | action 的状态 | `TextActionState`        | `undefined` |
+| `options`     | --        | 配置          | `TextEditorBarOptions[]` | `undefined` |
 
 ## Events
 
 | Event    | Description | Type               |
 | -------- | ----------- | ------------------ |
-| `action` |             | `CustomEvent<any>` |
+| `action` | 发送 action | `CustomEvent<any>` |
 
 ## Dependencies
 

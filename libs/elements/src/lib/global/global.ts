@@ -1,5 +1,5 @@
-import { config } from './config';
 import { IAiaoElementsConfig } from '../interfaces/elements.interface';
+import { config } from './config';
 
 declare const Context: any;
 

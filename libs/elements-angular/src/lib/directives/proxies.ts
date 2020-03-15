@@ -6,7 +6,7 @@ import { ProxyCmp, proxyOutputs } from './proxies-utils';
 import { Components } from '@aiao/elements'
 
 export declare interface AiaoCodeDiffEditor extends Components.AiaoCodeDiffEditor {}
-@ProxyCmp({inputs: ['baseUrl', 'disabled', 'language', 'localizeCode', 'name', 'options', 'originalValue', 'uri', 'value'], 'methods': ['format']})
+@ProxyCmp({inputs: ['baseUrl', 'disabled', 'language', 'localizeCode', 'name', 'options', 'originalValue', 'uri', 'value'], 'methods': ['format', 'action']})
 @Component({ selector: 'aiao-code-diff-editor', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['baseUrl', 'disabled', 'language', 'localizeCode', 'name', 'options', 'originalValue', 'uri', 'value'] })
 export class AiaoCodeDiffEditor {
   aiaoChange!: EventEmitter<CustomEvent>;
@@ -19,7 +19,7 @@ export class AiaoCodeDiffEditor {
 }
 
 export declare interface AiaoCodeEditor extends Components.AiaoCodeEditor {}
-@ProxyCmp({inputs: ['baseUrl', 'disabled', 'language', 'localizeCode', 'name', 'options', 'uri', 'value'], 'methods': ['format']})
+@ProxyCmp({inputs: ['baseUrl', 'disabled', 'language', 'localizeCode', 'name', 'options', 'uri', 'value'], 'methods': ['format', 'action']})
 @Component({ selector: 'aiao-code-editor', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['baseUrl', 'disabled', 'language', 'localizeCode', 'name', 'options', 'uri', 'value'] })
 export class AiaoCodeEditor {
   aiaoChange!: EventEmitter<CustomEvent>;
@@ -42,20 +42,9 @@ export class AiaoElementsEditor {
   }
 }
 
-export declare interface AiaoElementsEditorPreview extends Components.AiaoElementsEditorPreview {}
-@ProxyCmp({inputs: ['config', 'editMode', 'value']})
-@Component({ selector: 'aiao-elements-editor-preview', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['config', 'editMode', 'value'] })
-export class AiaoElementsEditorPreview {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
 export declare interface AiaoElementsForm extends Components.AiaoElementsForm {}
-@ProxyCmp({inputs: ['html', 'schema', 'value'], 'methods': ['values', 'flattenPathValues', 'getValue', 'setValue', 'setValues', 'reset', 'markAsPristine', 'markAsDirty']})
-@Component({ selector: 'aiao-elements-form', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['html', 'schema', 'value'] })
+@ProxyCmp({inputs: ['html', 'value'], 'methods': ['values', 'flattenPathValues', 'getValue', 'setValue', 'setValues', 'reset', 'markAsPristine', 'markAsDirty']})
+@Component({ selector: 'aiao-elements-form', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['html', 'value'] })
 export class AiaoElementsForm {
   aiaoChange!: EventEmitter<CustomEvent>;
   aiaoInput!: EventEmitter<CustomEvent>;
@@ -64,6 +53,17 @@ export class AiaoElementsForm {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['aiaoChange', 'aiaoInput']);
+  }
+}
+
+export declare interface AiaoElementsPreview extends Components.AiaoElementsPreview {}
+@ProxyCmp({inputs: ['config', 'editMode', 'value']})
+@Component({ selector: 'aiao-elements-preview', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['config', 'editMode', 'value'] })
+export class AiaoElementsPreview {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
   }
 }
 
@@ -93,8 +93,8 @@ export class AiaoImg {
 }
 
 export declare interface AiaoTextEditor extends Components.AiaoTextEditor {}
-@ProxyCmp({inputs: ['actionBar', 'defaultParagraphSeparator', 'disabled', 'element', 'name', 'value'], 'methods': ['getSelectionElements', 'saveSelection', 'restoreSelection', 'action']})
-@Component({ selector: 'aiao-text-editor', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['actionBar', 'defaultParagraphSeparator', 'disabled', 'element', 'name', 'value'] })
+@ProxyCmp({inputs: ['defaultParagraphSeparator', 'disabled', 'element', 'name', 'showActionBar', 'value'], 'methods': ['getSelectionElements', 'saveSelection', 'restoreSelection', 'action']})
+@Component({ selector: 'aiao-text-editor', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['defaultParagraphSeparator', 'disabled', 'element', 'name', 'showActionBar', 'value'] })
 export class AiaoTextEditor {
   aiaoChange!: EventEmitter<CustomEvent>;
   aiaoStateChange!: EventEmitter<CustomEvent>;

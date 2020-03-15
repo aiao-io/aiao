@@ -13,5 +13,10 @@ const elementFromDataOptions = (configs: IElementConfig[], data: IElementData) =
   return { ...data, class: newCls, attributes: newAttrs };
 };
 
+/**
+ * 获取 elements 表单配置
+ * @param configs elements 配置
+ * @param data elements 数据
+ */
 export const elementsFromDataOptions = (configs: IElementConfig[], data: IElementData[]) =>
   [...data].map(d => elementFromDataOptions(configs, d));
