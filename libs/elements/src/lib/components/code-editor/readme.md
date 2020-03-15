@@ -1,19 +1,21 @@
 # aiao-code-editor
 
+代码编辑器
+
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property       | Attribute       | Description | Type                         | Default     |
-| -------------- | --------------- | ----------- | ---------------------------- | ----------- |
-| `baseUrl`      | `base-url`      |             | `string`                     | `undefined` |
-| `disabled`     | `disabled`      |             | `boolean`                    | `undefined` |
-| `language`     | `language`      |             | `string`                     | `undefined` |
-| `localizeCode` | `localize-code` |             | `string`                     | `undefined` |
-| `name`         | `name`          |             | `string`                     | `undefined` |
-| `options`      | --              |             | `IEditorConstructionOptions` | `undefined` |
-| `uri`          | --              |             | `Uri`                        | `undefined` |
-| `value`        | `value`         |             | `any`                        | `undefined` |
+| Property       | Attribute       | Description                  | Type                         | Default     |
+| -------------- | --------------- | ---------------------------- | ---------------------------- | ----------- |
+| `baseUrl`      | `base-url`      | 默认路径 monaco 资源路径     | `string`                     | `undefined` |
+| `disabled`     | `disabled`      | 禁用                         | `boolean`                    | `undefined` |
+| `language`     | `language`      | 语言                         | `string`                     | `undefined` |
+| `localizeCode` | `localize-code` | 显示语言，默认根据浏览器判断 | `string`                     | `undefined` |
+| `name`         | `name`          | form 名                      | `string`                     | `undefined` |
+| `options`      | --              | 配置                         | `IEditorConstructionOptions` | `undefined` |
+| `uri`          | --              | monaco uri                   | `Uri`                        | `undefined` |
+| `value`        | `value`         | 当前值                       | `any`                        | `undefined` |
 
 ## Events
 
@@ -23,7 +25,17 @@
 
 ## Methods
 
+### `action(action: CodeEditorAcitons) => Promise<void>`
+
+action
+
+#### Returns
+
+Type: `Promise<void>`
+
 ### `format() => Promise<void>`
+
+格式化
 
 #### Returns
 

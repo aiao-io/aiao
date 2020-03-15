@@ -7,6 +7,7 @@ import {
   Element,
   Event,
   EventEmitter,
+  forceUpdate,
   h,
   Host,
   Listen,
@@ -82,7 +83,7 @@ export class Img implements ComponentInterface, IImg {
   @Listen('resize', { target: 'window' })
   resize() {
     if (!this.loaded) {
-      this.el.forceUpdate();
+      forceUpdate(this.el);
     }
   }
   // --------------------------------------------------------------[ public function ]

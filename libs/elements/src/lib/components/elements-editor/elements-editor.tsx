@@ -13,26 +13,16 @@ import { EditMode } from '../../utils/render/render.interface';
 })
 export class ElementsEditor implements ComponentInterface {
   @Element() el!: HTMLElement;
-  @Prop() name: string;
-  @Prop() disabled: boolean;
-  /**
-   * elements 配置
-   */
+
+  // --------------------------------------------------------------[ State ]
+  // --------------------------------------------------------------[ Event ]
+  // --------------------------------------------------------------[ Prop ]
+
   @Prop() config: IElementConfig[];
-
-  /**
-   * elements 数据
-   */
-  @Prop() value: IElementData[];
-
-  /**
-   * elements 编辑模式
-   */
+  @Prop() disabled: boolean;
   @Prop() editMode: EditMode = 'edit';
-
-  /**
-   * 视图元素
-   */
+  @Prop() name: string;
+  @Prop() value: IElementData[];
   @Prop() view: HTMLElement;
 
   render() {
@@ -53,9 +43,7 @@ export class ElementsEditor implements ComponentInterface {
 
     renderHiddenInput(true, this.el, this.name, needValue, this.disabled);
     return (
-      <Host>
-        {!this.view && <aiao-elements-editor-preview config={this.config} value={data}></aiao-elements-editor-preview>}
-      </Host>
+      <Host>{!this.view && <aiao-elements-preview config={this.config} value={data}></aiao-elements-preview>}</Host>
     );
   }
 }

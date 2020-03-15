@@ -3,7 +3,7 @@ import './ElementsPreview.scss';
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { AiaoCodeEditor, AiaoElementsEditorPreview } from '@aiao/elements-react';
+import { AiaoCodeEditor, AiaoElementsPreview } from '@aiao/elements-react';
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 
 const ELementsPreviewPage: React.FC = () => {
@@ -84,7 +84,7 @@ const ELementsPreviewPage: React.FC = () => {
               onAiaoChange={e => setConfig(e.detail.value)}
             ></AiaoCodeEditor>
           </form>
-          <AiaoElementsEditorPreview id="preview" value={elements} config={config}></AiaoElementsEditorPreview>
+          <AiaoElementsPreview id="preview" value={elements} config={config}></AiaoElementsPreview>
         </div>
       </IonContent>
     </IonPage>

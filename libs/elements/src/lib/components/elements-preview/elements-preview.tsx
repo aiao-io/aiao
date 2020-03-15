@@ -6,8 +6,8 @@ import { elementsPreviewRender } from '../../utils/render/render';
 import { EditMode } from '../../utils/render/render.interface';
 
 @Component({
-  tag: 'aiao-elements-editor-preview',
-  styleUrl: './elements-editor-preview.scss',
+  tag: 'aiao-elements-preview',
+  styleUrl: './elements-preview.scss',
   shadow: true
 })
 export class ElementsEditorPreview implements ComponentInterface {

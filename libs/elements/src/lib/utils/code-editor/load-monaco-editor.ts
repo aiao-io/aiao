@@ -1,5 +1,8 @@
 import { urlJoin } from '@aiao/url';
 
+/**
+ * moaco 加载器
+ */
 export class LoadMonacoEditor {
   protected _load: Promise<void>;
   protected supportLanguages = ['de', 'es', 'fr', 'it', 'ja', 'ko', 'ru', 'zh-cn', 'zh-tw'];

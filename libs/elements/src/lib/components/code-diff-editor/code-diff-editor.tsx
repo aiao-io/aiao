@@ -13,7 +13,8 @@ import {
   Watch
 } from '@stencil/core';
 
-import { getBaseUrl } from '../../utils/code-editor/base-url';
+import { CodeEditorAcitons } from '../../utils/code-editor/actions';
+import { getBaseMonacoUrl } from '../../utils/code-editor/base-url';
 import { LoadMonacoEditor } from '../../utils/code-editor/load-monaco-editor';
 import { normalizeMonacoEditorValue, normalizeMonacoEditorValueOut } from '../../utils/code-editor/normalize-value';
 
@@ -39,23 +40,58 @@ export class CodeEditor implements ComponentInterface {
 
   // --------------------------------------------------------------[ State ]
   // --------------------------------------------------------------[ Event ]
+  /**
+   * 侦听值更改
+   */
   @Event() aiaoChange: EventEmitter<any>;
   // --------------------------------------------------------------[ Prop ]
 
-  @Prop() name: string;
-  @Prop() disabled: boolean;
-
-  @Prop() options: monaco.editor.IEditorConstructionOptions;
-  @Prop() value: string;
-  @Prop() originalValue: string;
-
-  @Prop() language: string;
-  @Prop() uri: monaco.Uri;
-
-  // 'https://cdn.bootcss.com/monaco-editor/0.18.0/min/';
+  /**
+   * 默认路径 monaco 资源路径
+   * @example 'https://cdn.jsdelivr.net/npm/monaco-editor@0.20.0/min'
+   */
   @Prop() baseUrl: string;
 
-  // 'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'ru' | 'zh-cn' | 'zh-tw'
+  /**
+   * 禁用
+   */
+  @Prop() disabled: boolean;
+
+  /**
+   * 语言
+   * @example javascript, json
+   */
+  @Prop() language: string;
+
+  /**
+   * form 名
+   */
+  @Prop() name: string;
+
+  /**
+   * 配置
+   */
+  @Prop() options: monaco.editor.IEditorConstructionOptions;
+
+  /**
+   * 原始值
+   */
+  @Prop() originalValue: string;
+
+  /**
+   * monaco uri
+   */
+  @Prop() uri: monaco.Uri;
+
+  /**
+   * 当前值
+   */
+  @Prop() value: string | any;
+
+  /**
+   * 显示语言，默认根据浏览器判断
+   * @example  'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'ru' | 'zh-cn' | 'zh-tw'
+   */
   @Prop() localizeCode: string;
 
   // --------------------------------------------------------------[ Watch ]
@@ -67,9 +103,7 @@ export class CodeEditor implements ComponentInterface {
     }
   }
   // --------------------------------------------------------------[ Listen ]
-  @Listen('resize', {
-    target: 'window'
-  })
+  @Listen('resize', { target: 'window' })
   resize() {
     if (this.editor) {
       this.editor.layout();
@@ -78,12 +112,28 @@ export class CodeEditor implements ComponentInterface {
   // --------------------------------------------------------------[ event hander ]
   // --------------------------------------------------------------[ public function ]
 
+  /**
+   * 格式化
+   */
   @Method()
   async format() {
     return this.editor
       .getModifiedEditor()
       .getAction('editor.action.formatDocument')
       .run();
+  }
+
+  /**
+   * action
+   */
+  @Method()
+  async action(action: CodeEditorAcitons) {
+    switch (action) {
+      case CodeEditorAcitons.format:
+        return this.format();
+      default:
+        break;
+    }
   }
 
   // --------------------------------------------------------------[ private function ]
@@ -118,7 +168,7 @@ export class CodeEditor implements ComponentInterface {
   // --------------------------------------------------------------[ lifecycle ]
 
   async componentDidLoad() {
-    const baseUrl = getBaseUrl(this.baseUrl);
+    const baseUrl = getBaseMonacoUrl(this.baseUrl);
     if (!loader) {
       loader = new LoadMonacoEditor(baseUrl, this.localizeCode);
     }
