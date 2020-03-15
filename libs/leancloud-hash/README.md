@@ -1,7 +1,11 @@
 # leancloud-hash
 
-This library was generated with [Nx](https://nx.dev).
+leancloud 密码算法
 
-## Running unit tests
+# Use
 
-Run `ng test leancloud-hash` to execute the unit tests via [Jest](https://jestjs.io).
+```ts
+import { leancloudHash } from '@aiao/leancloud-hash';
+const hash = leancloudHash('password', 'h60d8x797d3oa0naxybxxv9bn7xpt2yiowz68mpiwou7gwr2');
+console.log(hash);
+```

@@ -7,10 +7,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @aiao/util
 
-
-
-
-
 # [0.7.0](https://github.com/aiao-io/aiao/compare/@aiao/util@0.6.0...@aiao/util@0.7.0) (2020-02-12)
 
 ### Bug Fixes
