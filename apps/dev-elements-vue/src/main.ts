@@ -13,6 +13,8 @@ applyPolyfills().then(() => {
 });
 
 const app = createApp(App);
+app.config.isCustomElement = (tag: string) => tag.startsWith('aiao-');
 app.provide('state', globalState);
+
 app.use(router);
 app.mount('#app');
