@@ -14,12 +14,19 @@
           <aiao-code-editor
             class="editor-item"
             language="json"
-            :value="data"
-            @change="formChange($event)"
+            name="data"
+            :value="state.data"
+            @input="setData($event)"
           ></aiao-code-editor>
-          <aiao-code-editor class="editor-item" language="json" :value="config"></aiao-code-editor>
+          <aiao-code-editor
+            class="editor-item"
+            language="json"
+            name="config"
+            :value="state.config"
+            @input="setConfig($event)"
+          ></aiao-code-editor>
         </form>
-        <aiao-elements-preview id="preview" :value="data" :config="config"></aiao-elements-preview>
+        <aiao-elements-preview id="preview" :value="state.data" :config="state.config"></aiao-elements-preview>
       </div>
     </ion-content>
   </div>
@@ -49,7 +56,6 @@
 </style>
 
 <script>
-import { defineComponent } from 'vue';
 const config = [
   {
     tag: 'h1',
@@ -92,12 +98,28 @@ const data = [
     }
   }
 ];
+
+import { defineComponent, reactive } from 'vue';
 export default defineComponent({
-  data: () => ({ config, data }),
-  methods: {
-    formChange: e => {
-      console.log(e.data);
-    }
-  }
+  setup() {
+    const state = reactive({
+      config,
+      data
+    });
+
+    const setConfig = e => {
+      state.config = JSON.parse(e.target.value);
+    };
+    const setData = e => {
+      // state.data = JSON.parse(e.target.value);
+    };
+
+    return {
+      state,
+      setData,
+      setConfig
+    };
+  },
+  methods: {}
 });
 </script>
