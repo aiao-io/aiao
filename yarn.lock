@@ -3027,7 +3027,7 @@
   resolved "https://registry.yarnpkg.com/@stencil/angular-output-target/-/angular-output-target-0.0.2.tgz#e534c736d204f9cc7c95f72c9c4d56739beba836"
   integrity sha512-GyQ/VTipzzweuNYbs+FrK1q3FSEG4LZkzg+keuMQNRDX77aCy5hsYivspMRMwOXIwUXh9wSIzqQR3JuLiFHzcw==
 
-"@stencil/core@^1.10.0":
+"@stencil/core@^1.8.7":
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/@stencil/core/-/core-1.10.0.tgz#0935fe54fcf6b2385621270c23ba06add9740c8a"
   integrity sha512-DeTI+cVNjeLfu/MChlmz+rtC76b8ZJd9bDZS0H8/sBRHLsSnSRzeKoihYvxPsjlW0MsipJgdReRGKlI8h6ylog==
