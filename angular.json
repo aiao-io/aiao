@@ -1604,6 +1604,11 @@
               "apps/dev-elements-vue/src/favicon.ico",
               "apps/dev-elements-vue/src/assets",
               {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              },
+              {
                 "glob": "**/*",
                 "input": "node_modules/@aiao/elements/lib/aiao-elements/assets",
                 "output": "./assets"

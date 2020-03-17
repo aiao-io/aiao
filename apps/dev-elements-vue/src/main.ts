@@ -1,7 +1,7 @@
-import { defineCustomElements as defineIcons } from 'ionicons/dist/loader';
 import { createApp } from 'vue';
 
 import { applyPolyfills, defineCustomElements } from '@aiao/elements/loader';
+import { defineCustomElements as IonicCore } from '@ionic/core/loader';
 
 import App from './app/App.vue';
 import { router } from './router';
@@ -9,11 +9,10 @@ import { globalState } from './store';
 
 applyPolyfills().then(() => {
   defineCustomElements(window);
-  defineIcons(window);
+  IonicCore(window);
 });
 
 const app = createApp(App);
-app.config.isCustomElement = (tag: string) => tag.startsWith('aiao-');
 app.provide('state', globalState);
 
 app.use(router);

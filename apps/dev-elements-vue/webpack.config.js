@@ -19,7 +19,14 @@ function getCustomWebpackConfig(webpackConfig) {
 
   config.module.rules.push({
     test: /\.vue$/,
-    use: 'vue-loader'
+    use: {
+      loader: 'vue-loader',
+      options: {
+        compilerOptions: {
+          isCustomElement: tag => tag.startsWith('aiao-') || tag.startsWith('ion-')
+        }
+      }
+    }
   });
 
   config.plugins.push(new VueLoaderPlugin());
