@@ -4,8 +4,9 @@ import React from 'react';
 
 import { AiaoCodeEditor } from '@aiao/elements-react';
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { RouteComponentProps } from 'react-router-dom';
 
-export const CodeEditor: React.FC = () => {
+export const CodeEditor: React.FC<RouteComponentProps<any>> = () => {
   return (
     <IonPage>
       <IonHeader>

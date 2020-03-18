@@ -1,12 +1,13 @@
 import './Menu.scss';
 
 import { link } from 'ionicons/icons';
-import React from 'react';
+import React, { useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import {
   IonButtons,
   IonContent,
+  IonHeader,
   IonIcon,
   IonItem,
   IonLabel,
@@ -18,9 +19,8 @@ import {
   IonToolbar
 } from '@ionic/react';
 
-interface MenuProps extends RouteComponentProps {
-  selectedPage: string;
-}
+// tslint:disable-next-line: no-empty-interface
+interface MenuProps extends RouteComponentProps {}
 
 interface IMenu {
   url: string;
@@ -51,26 +51,30 @@ const appPages: IMenu[] = [
   }
 ];
 
-const Menu: React.FunctionComponent<MenuProps> = ({ selectedPage }) => {
+const Menu: React.FunctionComponent<MenuProps> = ({ history }) => {
+  const [selectedPage, setSelectedPage] = useState('');
+
+  history.listen(d => {
+    setSelectedPage(d.pathname);
+  });
+
   return (
     <IonMenu contentId="main" type="overlay">
-      <IonToolbar>
-        <IonButtons slot="start">
-          <IonMenuButton />
-        </IonButtons>
-        <IonTitle>Elements React</IonTitle>
-      </IonToolbar>
+      <IonHeader>
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonMenuButton />
+          </IonButtons>
+          <IonTitle>Elements React</IonTitle>
+        </IonToolbar>
+      </IonHeader>
       <IonContent>
         <IonList>
           {appPages.map((appPage, index) => {
+            const selectClass = selectedPage === appPage.url ? 'selected' : '';
             return (
               <IonMenuToggle key={index} autoHide={false}>
-                <IonItem
-                  className={selectedPage === appPage.title ? 'selected' : ''}
-                  routerLink={appPage.url}
-                  routerDirection="none"
-                  detail={false}
-                >
+                <IonItem className={selectClass} routerLink={appPage.url} routerDirection="none" detail={false}>
                   {appPage.icon && <IonIcon slot="start" icon={appPage.icon} />}
                   <IonLabel>{appPage.title}</IonLabel>
                 </IonItem>
