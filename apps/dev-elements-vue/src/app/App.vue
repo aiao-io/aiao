@@ -12,9 +12,9 @@
         </ion-header>
         <ion-content>
           <ion-list class="pane-left">
-            <ion-item v-for="m in menus" v-bind:href="m.url">
-              <ion-icon v-if="m.icon" slot="start" v-bind:name="m.icon"></ion-icon>
-              <ion-label>{{ m.title }}</ion-label>
+            <ion-item :class="{ selected: currentLocation.path === m.url }" v-for="m in menus" :href="m.url">
+              <ion-icon v-if="m.icon" slot="start" :name="m.icon"></ion-icon>
+              <ion-label>{{ m.title }} </ion-label>
             </ion-item>
           </ion-list>
         </ion-content>
@@ -78,16 +78,20 @@ const menus = [
 
 export default defineComponent({
   data: () => ({ menus }),
+
   setup() {
     const route = useRoute();
+    const router = inject('router');
     const currentLocation = computed(() => {
       const { matched, ...rest } = route.value;
       return rest;
     });
+
     const state = inject('state');
 
     return {
       currentLocation,
+      router,
       state
     };
   }

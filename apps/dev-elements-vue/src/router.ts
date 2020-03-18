@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+
 import CodeEditor from './app/views/code-editor.vue';
 import ElementsEditor from './app/views/elements-editor.vue';
 import ElementsPreview from './app/views/elements-preview.vue';
