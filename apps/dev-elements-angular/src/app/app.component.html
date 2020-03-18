@@ -1,22 +1,20 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
-      <ion-toolbar>
+      <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
           <ion-title>Elements Angular</ion-title>
         </ion-toolbar>
-      </ion-toolbar>
+      </ion-header>
       <ion-content>
         <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let m of menus; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[m.url]" [routerLinkActive]="'selected'">
-              <ion-icon *ngIf="m.icon" slot="start" [ios]="m.icon + '-outline'" [md]="m.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ m.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
+          <ion-item routerDirection="root" [routerLink]="[m.url]" [routerLinkActive]="'selected'" *ngFor="let m of menus; let i = index">
+            <ion-icon *ngIf="m.icon" slot="start" [ios]="m.icon + '-outline'" [md]="m.icon + '-sharp'"></ion-icon>
+            <ion-label>{{ m.title }}</ion-label>
+          </ion-item>
         </ion-list>
       </ion-content>
     </ion-menu>
