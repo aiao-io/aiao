@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, inject, computed } from 'vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   setup() {}
