@@ -1,13 +1,8 @@
-import { getGreeting } from '../support/app.po';
-
-describe('dev-elements-vue', () => {
-  beforeEach(() => cy.visit('/'));
-
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
-
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Hello Vue 3!');
+describe('dev-elements-react', () => {
+  it('code-editor', () => {
+    cy.visit('/code-editor');
+    cy.get('aiao-code-editor')
+      .get('.monaco-editor')
+      .should('exist');
   });
 });
