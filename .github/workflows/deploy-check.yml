@@ -96,7 +96,7 @@ jobs:
       - name: e2e
         shell: bash
         run: |
-          yarn affected:e2e --base=$NX_BASE --configuration production --headless --parallel --maxParallel=2
+          yarn affected:e2e --base=$NX_BASE --configuration production --headless --parallel --maxParallel=1
 
       - name: update last-deploy
         shell: bash
