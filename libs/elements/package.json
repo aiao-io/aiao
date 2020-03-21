@@ -45,6 +45,7 @@
     "@aiao/image-storage": "^0.1.1",
     "@aiao/url": "*",
     "@aiao/util": "^0.7.1",
+    "@aiao/stencil-toolkit": "*",
     "@stencil/core": "*"
   }
 }
