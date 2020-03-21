@@ -5,7 +5,7 @@ import { run } from '../util/runner';
 
 export const checkLibBuild = async () => {
   const check = ora('build').start();
-  const libs = ['util', 'url', 'image-storage', 'elements-cdk', 'stencil-toolkit', 'elements'];
+  const libs = ['stencil-toolkit'];
   const needBuildLibs = [];
   libs.forEach(name => {
     if (!existsSync(`dist/libs/${name}`)) {
