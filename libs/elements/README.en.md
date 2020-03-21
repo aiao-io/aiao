@@ -12,3 +12,15 @@
 | `aiao-img`              | 支持图片云, 自动请求合适宽度 | [详情](./src/lib/components/img)                  |
 | `aiao-text-editor`      | 富文本编辑器          | [详情](./src/lib/components/text-editor)          |
 | `aiao-tree`             | 可拖放 tree 组件     | [详情](./src/lib/components/tree)                 |
+
+## 服务
+
+```console
+yarn start elements
+```
+
+## 构建库
+
+```console
+yarn build elements --prod
+```
