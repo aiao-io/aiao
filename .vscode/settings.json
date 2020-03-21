@@ -5,6 +5,7 @@
     "**/.*": true,
     "**/dist": true,
     "**/node_modules": true,
+    "**/*.en.md": true,
     "bazel-out": true,
     "coverage": true,
     "libs/elements/elements-cdk": true,
