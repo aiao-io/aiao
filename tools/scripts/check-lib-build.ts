@@ -3,11 +3,15 @@ import ora from 'ora';
 
 import { run } from '../util/runner';
 
+const NEED_CHECK_LIBS = ['stencil-toolkit'];
+
+/**
+ * 检查顶层基础 lib 是否已经构建
+ */
 export const checkLibBuild = async () => {
   const check = ora('build').start();
-  const libs = ['stencil-toolkit'];
   const needBuildLibs = [];
-  libs.forEach(name => {
+  NEED_CHECK_LIBS.forEach(name => {
     if (!existsSync(`dist/libs/${name}`)) {
       needBuildLibs.push(`--scope @aiao/${name}`);
     }

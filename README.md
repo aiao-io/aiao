@@ -13,7 +13,7 @@
 
 用 `monorepo` 风格代码统一管理、发布一些 `npm` 库。
 
-## apps
+## Apps
 
 | app                            | 介绍                           |                                             |
 | ------------------------------ | ------------------------------ | ------------------------------------------- |
@@ -116,6 +116,8 @@ yarn start dev-elements-react
 
 ## 构建项目
 
+> 所有构建都在根目录 `dist` 文件夹中
+
 ### 构建所有库
 
 ```console
@@ -154,6 +156,14 @@ yarn e2e
 
 ```console
 yarn e2e dev-elements-react-e2e
+```
+
+## 构建 App
+
+### 单独构建 dev-elements-angular
+
+```
+yarn run build dev-elements-angular --prod
 ```
 
 ## 贡献

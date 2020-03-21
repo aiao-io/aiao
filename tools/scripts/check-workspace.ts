@@ -6,6 +6,9 @@ import { checkSylink } from './check-sylink';
 
 const config = yargs.option('lib', { type: 'boolean' }).argv;
 
+/**
+ * 检查工作空间
+ */
 const checkWorkspace = async () => {
   await checkSylink();
   if (config.lib) {

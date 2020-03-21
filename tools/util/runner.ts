@@ -1,6 +1,12 @@
 import chalk from 'chalk';
 import { ChildProcess, spawn, SpawnOptions } from 'child_process';
 
+/**
+ * 运行命令
+ * @param command 命令
+ * @param args 参数
+ * @param collect 格式输出
+ */
 export function run(command: string, args: string[], collect: boolean = false) {
   const options: SpawnOptions = {
     cwd: process.cwd(),

@@ -1,3 +1,4 @@
+// 可选范围
 export const WORKSPACE_SCOPES = [
   'aiao',
   'tools',
@@ -20,4 +21,5 @@ export const WORKSPACE_SCOPES = [
   'util'
 ];
 
+// 可选类型
 export const WORKSPACE_TYPES = ['feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'chore'];
