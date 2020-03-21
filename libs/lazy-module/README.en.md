@@ -6,17 +6,9 @@ lazy load `angular module`
 
 ## Use Case
 
-动态加载模块
+不用等到路由触发后才加载相应模块，可以由代码控制主动预加载，提高用户体验
 
 ## Install
-
-### Angular 8
-
-```console
-yarn add @aiao/lazy-module@^1.3
-```
-
-### Angular 9+
 
 ```console
 yarn add @aiao/lazy-module
@@ -24,4 +16,4 @@ yarn add @aiao/lazy-module
 
 ## Usage
 
-Integration: [integration/lazy-module](/integration/lazy-module)
+参考 [dev-lazy-module](../../apps/dev-lazy-module)
