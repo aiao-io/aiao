@@ -10,6 +10,5 @@ export { addSeconds } from './lib/addSeconds';
 export { addWeeks } from './lib/addWeeks';
 export { addYears } from './lib/addYears';
 export { getDaysInMonth } from './lib/getDaysInMonth';
-export { getUnixTimestamp } from './lib/getUnixTimestamp';
 export { isISODateString } from './lib/isISODateString';
 export { isWeekend } from './lib/isWeekend';
