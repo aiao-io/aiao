@@ -26,5 +26,7 @@ yarn add @aiao/lazy-component
 
 ## 使用
 
+参考 [dev-lazy-component](../../apps/dev-lazy-component)
+
 [shields-lazy-component]: https://img.shields.io/npm/v/@aiao/lazy-component?label=&style=flat-square
 [npm-lazy-component]: https://www.npmjs.com/@aiao/lazy-component

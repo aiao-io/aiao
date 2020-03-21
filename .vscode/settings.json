@@ -1,5 +1,21 @@
 {
   "editor.wordWrap": "on",
+  "files.exclude": {
+    "*.log": true,
+    "**/.*": true,
+    "**/dist": true,
+    "**/node_modules": true,
+    "**/*.en.md": true,
+    "bazel-out": true,
+    "coverage": true,
+    "libs/elements/elements-cdk": true,
+    "libs/elements/hydrate": true,
+    "libs/elements/image-storage": true,
+    "libs/elements/lib": true,
+    "libs/elements/loader": true,
+    "libs/elements/url": true,
+    "libs/elements/util": true
+  },
   "gitlens.codeLens.authors.enabled": false,
   "gitlens.codeLens.recentChange.enabled": false,
   "typescript.tsdk": "node_modules/typescript/lib",

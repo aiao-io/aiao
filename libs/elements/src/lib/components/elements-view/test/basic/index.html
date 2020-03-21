@@ -3,12 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
+    <title>Elements View</title>
 
-    <!-- ionic -->
-    <link href="/vendors/ionic/css/ionic.bundle.css" rel="stylesheet" />
-    <script type="module" src="/vendors/ionic/dist/ionic/ionic.esm.js"></script>
-    <script nomodule src="/vendors/ionic/dist/ionic/ionic.js"></script>
+    <!-- ionicons -->
+    <script src="/vendors/ionicons/dist/ionicons.js"></script>
 
     <!-- image-storage -->
     <script src="/vendors/image-storage/bundles/aiao-image-storage.umd.js"></script>
@@ -23,6 +21,12 @@
     <script src="/scripts/testing/scripts.js"></script>
   </head>
   <body>
-    <aiao-img src="https://www.baidu.com/img/bd_logo1.png?where=super"></aiao-img>
+    <aiao-elements-view id="view"></aiao-elements-view>
+    <script>
+      const view = document.querySelector('#view');
+      view.html = `<button onclick="ff()">javascript</button>`;
+      view.css = `button { background: red; }`;
+      view.js = `function ff() { alert('success') }`;
+    </script>
   </body>
 </html>

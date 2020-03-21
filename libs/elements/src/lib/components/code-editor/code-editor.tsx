@@ -13,10 +13,11 @@ import {
   Watch
 } from '@stencil/core';
 
-import { getBaseUrl } from '../../utils/code-editor/base-url';
+import { getBaseMonacoUrl } from '../../utils/code-editor/base-url';
 import { LoadMonacoEditor } from '../../utils/code-editor/load-monaco-editor';
 import { normalizeMonacoEditorOptions } from '../../utils/code-editor/normalize-options';
 import { normalizeMonacoEditorValue, normalizeMonacoEditorValueOut } from '../../utils/code-editor/normalize-value';
+import { CodeEditorAcitons } from '../../utils/code-editor/actions';
 
 const defaultOptions: monaco.editor.IStandaloneEditorConstructionOptions = {
   theme: 'vs-dark',
@@ -43,19 +44,41 @@ export class CodeEditor implements ComponentInterface {
   @Event() aiaoChange: EventEmitter<any>;
   // --------------------------------------------------------------[ Prop ]
 
-  @Prop() name: string;
-  @Prop() disabled: boolean;
-
-  @Prop() options: monaco.editor.IEditorConstructionOptions;
-  @Prop() value: string;
-  @Prop() language: string;
-  @Prop() uri: monaco.Uri;
-
-  // 'https://cdn.bootcss.com/monaco-editor/0.18.0/min/';
+  /**
+   * 默认路径 monaco 资源路径
+   * @example 'https://cdn.jsdelivr.net/npm/monaco-editor@0.20.0/min'
+   */
   @Prop() baseUrl: string;
-
-  // 'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'ru' | 'zh-cn' | 'zh-tw'
+  /**
+   * 禁用
+   */
+  @Prop() disabled: boolean;
+  /**
+   * 语言
+   * @example javascript, json
+   */
+  @Prop() language: string;
+  /**
+   * 显示语言，默认根据浏览器判断
+   * @example  'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'ru' | 'zh-cn' | 'zh-tw'
+   */
   @Prop() localizeCode: string;
+  /**
+   * form 名
+   */
+  @Prop() name: string;
+  /**
+   * 配置
+   */
+  @Prop() options: monaco.editor.IEditorConstructionOptions;
+  /**
+   * monaco uri
+   */
+  @Prop() uri: monaco.Uri;
+  /**
+   * 当前值
+   */
+  @Prop() value: string | any;
 
   // --------------------------------------------------------------[ Watch ]
   @Watch('language')
@@ -64,6 +87,7 @@ export class CodeEditor implements ComponentInterface {
     if (this.editor) {
       setTimeout(() => {
         const value = normalizeMonacoEditorValue(this.language, this.value);
+        console.log('val', value);
         const model = monaco.editor.createModel(value, this.language, this.uri);
         this.editor.setModel(model);
       }, 0);
@@ -81,12 +105,26 @@ export class CodeEditor implements ComponentInterface {
   }
   // --------------------------------------------------------------[ event hander ]
   // --------------------------------------------------------------[ public function ]
-
+  /**
+   * 格式化
+   */
   @Method()
   async format() {
     return this.editor.getAction('editor.action.formatDocument').run();
   }
 
+  /**
+   * action
+   */
+  @Method()
+  async action(action: CodeEditorAcitons) {
+    switch (action) {
+      case CodeEditorAcitons.format:
+        return this.format();
+      default:
+        break;
+    }
+  }
   // --------------------------------------------------------------[ private function ]
   private createMonaco(options: monaco.editor.IStandaloneEditorConstructionOptions = defaultOptions) {
     if (this.editor) {
@@ -110,7 +148,7 @@ export class CodeEditor implements ComponentInterface {
   // --------------------------------------------------------------[ lifecycle ]
 
   async componentDidLoad() {
-    const baseUrl = getBaseUrl(this.baseUrl);
+    const baseUrl = getBaseMonacoUrl(this.baseUrl);
     if (!loader) {
       loader = new LoadMonacoEditor(baseUrl, this.localizeCode);
     }

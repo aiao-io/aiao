@@ -4,11 +4,14 @@ import { Arguments, argv } from 'yargs';
 import { parseFiles } from '@nrwl/workspace/src/command-line/shared';
 import { NxArgs } from '@nrwl/workspace/src/command-line/utils';
 
-const findLodash = (...path: string[]) => {
+/**
+ * 找到 ts 代码中 lodash 方法直接导入的所有文件，import { isString } from 'lodash';
+ */
+const findLodash = (...path: string[]): string[] => {
   const project = new Project();
   project.addSourceFilesAtPaths(path);
   const sourceFiles = project.getSourceFiles(path);
-  const findFiles = [];
+  const findFiles: string[] = [];
   sourceFiles.forEach(file => {
     const imports = file.getImportDeclarations().filter(d => {
       const name = d
@@ -26,6 +29,10 @@ const findLodash = (...path: string[]) => {
   return findFiles;
 };
 
+/**
+ * 检查 lodash 方法是否是直接导入
+ * @param conf targs 的参数
+ */
 export const checkLodash = async (conf: Arguments) => {
   const config = parseFiles(conf as NxArgs);
   const { files } = config;
@@ -42,4 +49,5 @@ export const checkLodash = async (conf: Arguments) => {
 };
 
 checkLodash(argv);
+// 测试用
 // yarn run postinstall && node dist/tools/scripts/affected-check-lodash

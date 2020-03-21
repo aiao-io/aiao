@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { ReactPortal } from 'react';
 import ReactDOM from 'react-dom';
+
 import { attachEventProps } from './utils/attachEventProps';
 
 interface LoadingElement {
@@ -12,10 +13,11 @@ interface ReactOverlayProps<E> {
   onDidDismiss?: (event: CustomEvent<E>) => void;
 }
 
-export function createOverlayComponent<T extends object, LoadingElementType extends LoadingElement, OverlayEventDetail>(
-  displayName: string,
-  controller: { create: (options: any) => Promise<LoadingElementType> }
-): any {
+export function createOverlayComponent<
+  T extends object,
+  LoadingElementType extends LoadingElement,
+  OverlayEventDetail
+>(displayName: string, controller: { create: (options: any) => Promise<LoadingElementType> }) {
   const dismissEventName = `on${displayName}DidDismiss`;
 
   type Props = T & ReactOverlayProps<OverlayEventDetail>;
@@ -43,27 +45,27 @@ export function createOverlayComponent<T extends object, LoadingElementType exte
       if (prevProps.isOpen !== this.props.isOpen && this.props.isOpen === true) {
         this.present(prevProps);
       }
-      if (this.controller && prevProps.isOpen !== this.props.isOpen && this.props.isOpen === false) {
+      if (
+        this.controller &&
+        prevProps.isOpen !== this.props.isOpen &&
+        this.props.isOpen === false
+      ) {
         await this.controller.dismiss();
       }
     }
 
     async present(prevProps?: Props) {
       // tslint:disable-next-line:no-empty
-      const elementProps: any = {
-        ...this.props,
-        [dismissEventName]: this.props.onDidDismiss
+      const { children, isOpen, onDidDismiss = () => {}, ...cProps } = this.props;
+      const elementProps = {
+        ...cProps,
+        [dismissEventName]: onDidDismiss,
       };
-      elementProps.children = undefined;
-      elementProps.isOpen = undefined;
-      elementProps.onDidDismiss = undefined;
-      if (elementProps[dismissEventName]) {
-        elementProps[dismissEventName] = () => {};
-      }
+
       this.controller = await controller.create({
         ...elementProps,
         component: this.el,
-        componentProps: {}
+        componentProps: {},
       });
 
       attachEventProps(this.controller as any, elementProps, prevProps);
@@ -71,7 +73,7 @@ export function createOverlayComponent<T extends object, LoadingElementType exte
       this.controller.present();
     }
 
-    render() {
+    render(): ReactPortal {
       return ReactDOM.createPortal(this.props.children, this.el);
     }
   };

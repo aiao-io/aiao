@@ -1,25 +1,33 @@
 import './app.scss';
 
-import React from 'react';
-import { Link, Redirect, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Redirect, Route } from 'react-router-dom';
 
-import CodeEditor from './code-editor/code-editor';
+import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
+import { IonReactRouter } from '@ionic/react-router';
 
-export const App = () => {
+import CodeEditorPage from './code-editor/code-editor';
+import ElementsEditorPage from './elements-editor/ElementsEditor';
+import ElementsPreviewPage from './elements-preview/ElementsPreview';
+import TextEditorPage from './text-editor/TextEditor';
+import Menu from './menu/Menu';
+
+export const App: React.FunctionComponent = () => {
   return (
-    <>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/code-editor">code-editor</Link>
-          </li>
-        </ul>
-      </nav>
-      <Route path="/">
-        <Redirect to="/code-editor" />
-      </Route>
-      <Route path="/code-editor" exact component={CodeEditor} />
-    </>
+    <IonApp>
+      <IonReactRouter>
+        <IonSplitPane contentId="main">
+          <Menu />
+          <IonRouterOutlet id="main" ref={e => console.log(e)}>
+            <Route path="/code-editor" exact component={CodeEditorPage} />
+            <Route path="/elements-editor" exact component={ElementsEditorPage} />
+            <Route path="/elements-preview" exact component={ElementsPreviewPage} />
+            <Route path="/text-editor" exact component={TextEditorPage} />
+            <Route exact path="/" render={() => <Redirect to="/code-editor" />} />
+          </IonRouterOutlet>
+        </IonSplitPane>
+      </IonReactRouter>
+    </IonApp>
   );
 };
 

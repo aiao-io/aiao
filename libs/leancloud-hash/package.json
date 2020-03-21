@@ -1,0 +1,22 @@
+{
+  "name": "@aiao/leancloud-hash",
+  "version": "1.1.0",
+  "description": "leancloud hash",
+  "homepage": "https://github.com/aiao-io/aiao",
+  "author": "Jimmy<hero63418@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aiao-io/aiao.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aiao-io/aiao/issues"
+  },
+  "keywords": [
+    "leancloud",
+    "hash"
+  ],
+  "scripts": {
+    "build": "./scripts/build.sh"
+  }
+}

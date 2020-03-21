@@ -1,0 +1,95 @@
+:host {
+  display: block;
+  padding-left: 16px;
+  position: relative;
+  --drop-hint-line-height: 1px;
+  --drop-hint-line-color: #18a0fb;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tree-node-native {
+  line-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.hover-style {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 1px solid var(--drop-hint-line-color);
+  pointer-events: none;
+  z-index: 1;
+}
+
+:host(.drag) {
+  .tree-node-native:hover:after {
+    @extend .hover-style;
+  }
+}
+
+.tree-node-content {
+  display: inline-block;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+:host(.drag-over.drop-in) {
+  .tree-node-native {
+    background: #a6dbff;
+  }
+}
+
+.drop-hint-line {
+  content: '';
+  position: absolute;
+  height: 0;
+  border-top: var(--drop-hint-line-height) solid var(--drop-hint-line-color);
+  left: 0;
+  width: 100%;
+}
+
+:host(.drag-over.drop-top) {
+  .tree-node-native::before {
+    @extend .drop-hint-line;
+    top: calc(-1 * var(--drop-hint-line-height));
+  }
+}
+
+:host(.drag-over.drop-bottom) {
+  .tree-node-native::before {
+    @extend .drop-hint-line;
+    bottom: 0;
+  }
+}
+
+::slotted(.children) {
+  display: none;
+}
+
+::slotted([slot='end']) {
+  display: block;
+  margin: 0 16px 0 auto;
+}
+
+:host(.expanded) {
+  ::slotted(.children) {
+    display: initial;
+  }
+}
+
+:host(.dragging) {
+  opacity: 0.5;
+}
+
+.arrow {
+  cursor: pointer;
+}

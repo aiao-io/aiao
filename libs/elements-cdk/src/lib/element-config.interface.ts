@@ -1,9 +1,11 @@
 import { IElementOptions } from './element-data.interface';
 
+// 元素插槽
 export interface IElementConfigSlot {
   name: string;
 }
 
+// 元素配置
 export interface IElementConfig {
   // 元素的标签
   tag: string;

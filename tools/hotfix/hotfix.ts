@@ -1,5 +1,6 @@
 import chalk from 'chalk';
-import { readFileSync, removeSync, writeFileSync } from 'fs-extra';
+import { readFileSync, writeFileSync } from 'fs';
+import { removeSync } from 'fs-extra';
 import globby from 'globby';
 import Ora from 'ora';
 import { join } from 'path';
@@ -9,6 +10,15 @@ import { getFileMD5 } from '../util/md5';
 
 const ora = Ora();
 console.log(chalk.bgGreen.black('热修复'));
+
+/**
+ * 热修复 node_modules 文件
+ * 有时候依赖性库有错误，或是新版未发布，或是单纯想改变功能，可以用热修复直接替换 node_modules 相应文件
+ * @param path 路径
+ * @param md5 原始 md5
+ * @param fixStr 修复后的文件 string
+ * @param fixMd5 修复后的 md5
+ */
 function fixFile(path: string, md5: string, fixStr: string, fixMd5: string) {
   const msg = chalk.green(path);
   ora.start(msg);
@@ -20,16 +30,15 @@ function fixFile(path: string, md5: string, fixStr: string, fixMd5: string) {
     } else {
       ora.fail(chalk.red(path) + ' ' + chalk.red(fileMd5));
     }
+  } else {
+    ora.succeed(msg);
   }
-  ora.succeed(msg);
 }
 
 const fixFileRoot = join(cwd(), 'tools/hotfix/node_modules_files/');
 
-console.log('fixFileRoot', fixFileRoot);
-
 async function fixFiles() {
-  const globbyFiles = await globby(join(fixFileRoot, '**'));
+  const globbyFiles = await globby(join(fixFileRoot, '**/*.*'));
   const files = globbyFiles.map(d => {
     let p = d.lastIndexOf('.');
     let md5 = d.slice(p + 1);

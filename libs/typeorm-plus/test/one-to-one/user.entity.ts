@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToOne } from 'typeorm';
 import { Profile } from './profile.entity';
 
-@Entity()
+@Entity('one_to_one_user')
 export class User {
   @PrimaryGeneratedColumn()
   id: number;

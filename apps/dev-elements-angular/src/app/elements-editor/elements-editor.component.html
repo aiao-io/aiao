@@ -1,0 +1,13 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Code Editor</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <form [formGroup]="form">
+    <aiao-elements-editor formControlName="elements" [config]="config"></aiao-elements-editor>
+  </form>
+</ion-content>

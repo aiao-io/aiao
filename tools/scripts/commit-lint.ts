@@ -6,6 +6,9 @@ import { env, exit } from 'process';
 
 import { WORKSPACE_SCOPES, WORKSPACE_TYPES } from '../util/workspace';
 
+/**
+ * git 代码提交格式检查
+ */
 const branchName: string = execSync('git symbolic-ref --short -q HEAD').toString();
 
 if (branchName.trim() !== 'master') {

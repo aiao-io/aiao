@@ -26,7 +26,9 @@ export const elementsPreviewRender = (
   const newData = elementsViewDefaultOptions(config, data);
   return elementsPreviewHtmlData(config, newData, options) as any;
 };
-
+/**
+ *  elements 预览渲染 html 格式
+ */
 export const elementsPreviewHtmlRender = (
   config: IElementConfig[] = [],
   data: IElementData[] = [],

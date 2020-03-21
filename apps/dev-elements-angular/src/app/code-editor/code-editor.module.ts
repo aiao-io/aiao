@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
 
 import { ElementsCodeEditorComponent } from './code-editor.component';
 
@@ -15,8 +16,6 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [ElementsCodeEditorComponent],
-  imports: [CommonModule, AiaoElementsModule, ReactiveFormsModule, RouterModule.forChild(routes)],
-  exports: [],
-  providers: []
+  imports: [CommonModule, IonicModule, AiaoElementsModule, ReactiveFormsModule, RouterModule.forChild(routes)]
 })
 export class ElementsCodeEditorModule {}

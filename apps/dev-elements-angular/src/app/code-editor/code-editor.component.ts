@@ -10,7 +10,7 @@ export class ElementsCodeEditorComponent implements OnInit {
   form: FormGroup;
   constructor(private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
-      a: {
+      json: {
         b: 1
       }
     });

@@ -1,5 +1,5 @@
 import { IImg, IImgArea, imgGetAreas } from '@aiao/elements-cdk/components';
-import { IImageRequestOptions, IImageStorage, ImageMethodType } from '@aiao/image-storage';
+import { IImageRequestOptions, ImageMethodType } from '@aiao/image-storage';
 import { IMAGE_MIN_BASE64_TRANSPARENT } from '@aiao/util';
 import {
   Component,
@@ -7,6 +7,7 @@ import {
   Element,
   Event,
   EventEmitter,
+  forceUpdate,
   h,
   Host,
   Listen,
@@ -29,7 +30,7 @@ export class Img implements ComponentInterface, IImg {
   private io?: IntersectionObserver | any;
   private cacheImageRequest: IImageRequestOptions;
   private usemap = `img-usemap-${imageId++}`;
-  private imageStorage: IImageStorage = config.get('imageStorage');
+  private imageStorage = config.get('imageStorage');
   private img: HTMLImageElement;
 
   @Element() el!: HTMLAiaoImgElement;
@@ -47,8 +48,10 @@ export class Img implements ComponentInterface, IImg {
    * 图片被加载
    */
   @Event() aiaoImgDidLoad!: EventEmitter<void>;
-  // 图片加载错误
-  @Event() ionError!: EventEmitter<void>;
+  /**
+   * 图片加载错误
+   */
+  @Event() aiaoError!: EventEmitter<void>;
   // --------------------------------------------------------------[ Prop ]
   /**
    * 锚点
@@ -82,11 +85,13 @@ export class Img implements ComponentInterface, IImg {
   @Listen('resize', { target: 'window' })
   resize() {
     if (!this.loaded) {
-      this.el.forceUpdate();
+      forceUpdate(this.el);
     }
   }
   // --------------------------------------------------------------[ public function ]
-  // TODO: 网络状态改变, 如果加载是因为网络问题, 重载
+  /**
+   * 重新加载
+   */
   @Method()
   async reload() {
     if (this.loading === false || this.error) {
@@ -168,7 +173,7 @@ export class Img implements ComponentInterface, IImg {
     img.onabort = img.onerror = () => {
       this.loading = false;
       this.error = true;
-      this.ionError.emit();
+      this.aiaoError.emit();
       this.img = null;
     };
     img.src = request.url;

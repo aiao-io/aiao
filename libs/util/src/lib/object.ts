@@ -9,7 +9,11 @@ import toPlainObject from 'lodash/toPlainObject';
 
 import { PlainObject } from './types';
 
-export const objDeepSort = (objData: unknown): unknown => {
+/**
+ * 简单的 object 深度排序
+ * @param objData
+ */
+export const objDeepSort = (objData: PlainObject): PlainObject => {
   if (isArray(objData)) {
     return objData.map(objDeepSort);
   } else if (isObject(objData)) {
@@ -22,22 +26,36 @@ export const objDeepSort = (objData: unknown): unknown => {
   return objData;
 };
 
-export const toPlainObjectDeep = (obj: any): any => {
-  if (isArray(obj)) {
-    return obj.map(d => toPlainObjectDeep(d));
-  } else if (isDate(obj)) {
-    return obj;
-  } else if (isObject(obj)) {
-    const toJSON = (obj as any).toJSON;
-    const newObj: any = toJSON && isFunction(toJSON) ? (obj as any).toJSON() : toPlainObject(obj);
+/**
+ * 复杂 object 数据变成简单 object
+ * @param object
+ */
+export const toPlainObjectDeep = (object: unknown): PlainObject => {
+  if (isArray(object)) {
+    return object.map(d => toPlainObjectDeep(d));
+  } else if (isDate(object)) {
+    return object;
+  } else if (isObject(object)) {
+    const toJSON = (object as any).toJSON;
+    const newObj: any = toJSON && isFunction(toJSON) ? (object as any).toJSON() : toPlainObject(object);
     Object.keys(newObj).forEach(key => (newObj[key] = toPlainObjectDeep(newObj[key])));
     return newObj;
   } else {
-    return obj;
+    return object;
   }
 };
 
-export const plainObjectToFlattenPathObject = (object: unknown, prefix: string = '', result: PlainObject = {}) => {
+/**
+ * object 转化成扁平的 路径对象 object
+ * @param object
+ * @param prefix
+ * @param result
+ * @example
+ * in { a: { a: [0, 1] } }
+ * out { 'a.a[0]': 0, 'a.a[1]': 1 }
+ *
+ */
+export const plainObjectToFlattenPathObject = (object: PlainObject, prefix: string = '', result: PlainObject = {}) => {
   if (isArray(object)) {
     object.forEach((value, index) => {
       plainObjectToFlattenPathObject(value, `${prefix}[${index}]`, result);
@@ -53,6 +71,10 @@ export const plainObjectToFlattenPathObject = (object: unknown, prefix: string =
   return result;
 };
 
+/**
+ * 转换 PathObject 到 plainObject
+ * @param value
+ */
 export const flattenPathObjectTOplainObject = (value: PlainObject) => {
   const back = {};
   Object.keys(value).forEach(path => {

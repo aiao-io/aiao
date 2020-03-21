@@ -1,17 +1,28 @@
+// 裁剪类型
 export type ImageMethodType = 'lfit' | 'mfit' | 'fill' | 'pad' | 'fixed';
+// 图片类型
 export type ImageFormatType = 'webp' | 'jpg' | 'png' | 'gif' | 'src';
 
+/**
+ * 图片仓库配置
+ */
 export interface IImageStorageConfig {
   defaultAdapter: string;
   defaultOptions?: Partial<IImageOptions>;
   adapters: IImageStorageAdapter[];
 }
 
+/**
+ * 图片仓库接口
+ */
 export interface IImageStorage {
   requestOptions(url: string, options: IImageOptions): IImageRequestOptions;
   cache(url: string, request: IImageRequestOptions): void;
 }
 
+/**
+ * 配置
+ */
 export interface IImageOptions {
   adapter?: string;
   width: number;
@@ -23,6 +34,9 @@ export interface IImageOptions {
   format?: ImageFormatType;
 }
 
+/**
+ * 请求配置
+ */
 export interface IImageRequestOptions {
   url: string;
   width: number;
@@ -32,7 +46,12 @@ export interface IImageRequestOptions {
   format: ImageFormatType;
 }
 
+/**
+ * 适配器接口
+ */
 export interface IImageStorageAdapter {
+  // 适配器名
   name: string;
+  // 请求
   requestOptions(url: string, options: IImageOptions): IImageRequestOptions;
 }

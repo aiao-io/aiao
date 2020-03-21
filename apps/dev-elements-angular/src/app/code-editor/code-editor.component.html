@@ -1,3 +1,13 @@
-<form [formGroup]="form">
-  <aiao-code-editor base-url="assets/monaco" formControlName="a" language="json"></aiao-code-editor>
-</form>
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Code Editor</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <form [formGroup]="form">
+    <aiao-code-editor base-url="assets/monaco" formControlName="json" language="json"></aiao-code-editor>
+  </form>
+</ion-content>

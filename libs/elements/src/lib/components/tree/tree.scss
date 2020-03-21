@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+  > aiao-tree-node {
+    padding-left: 0;
+  }
+
+  aiao-tree-node.selected {
+    background: #daebf7;
+    aiao-tree-node {
+      background: #edf5fa;
+    }
+  }
+}

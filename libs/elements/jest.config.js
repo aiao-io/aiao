@@ -6,6 +6,6 @@ module.exports = {
   },
   coverageDirectory: '../../coverage/libs/elements',
   coverageReporters: ['html', 'json'],
-  collectCoverageFrom: ['./src/lib/**/*.ts', './src/lib/**/*.tsx'],
+  collectCoverageFrom: ['./src/lib/**/*.ts'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html']
 };

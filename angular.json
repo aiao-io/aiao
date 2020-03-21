@@ -977,12 +977,27 @@
               "apps/dev-elements-angular/src/favicon.ico",
               "apps/dev-elements-angular/src/assets",
               {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              },
+              {
                 "glob": "**/*",
                 "input": "node_modules/monaco-editor/min",
                 "output": "./assets/monaco"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/@aiao/elements/lib/aiao-elements/assets",
+                "output": "./assets"
               }
             ],
-            "styles": ["apps/dev-elements-angular/src/styles.scss"],
+            "styles": [
+              {
+                "input": "apps/dev-elements-angular/src/theme/variables.scss"
+              },
+              "apps/dev-elements-angular/src/global.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -1436,10 +1451,23 @@
             "main": "apps/dev-elements-react/src/main.tsx",
             "polyfills": "apps/dev-elements-react/src/polyfills.ts",
             "tsConfig": "apps/dev-elements-react/tsconfig.app.json",
-            "assets": ["apps/dev-elements-react/src/favicon.ico", "apps/dev-elements-react/src/assets"],
-            "styles": ["apps/dev-elements-react/src/styles.scss"],
+            "assets": [
+              "apps/dev-elements-react/src/favicon.ico",
+              "apps/dev-elements-react/src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/monaco-editor/min",
+                "output": "./assets/monaco"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/@aiao/elements/lib/aiao-elements/assets",
+                "output": "./assets"
+              }
+            ],
+            "styles": ["apps/dev-elements-react/src/theme/variables.scss", "apps/dev-elements-react/src/global.scss"],
             "scripts": [],
-            "webpackConfig": "@nrwl/react/plugins/webpack"
+            "webpackConfig": "apps/dev-elements-react/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -1473,7 +1501,8 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "dev-elements-react:build:production"
+              "buildTarget": "dev-elements-react:build:production",
+              "port": 5208
             }
           }
         },
@@ -1517,6 +1546,161 @@
           "options": {
             "tsConfig": ["apps/dev-elements-react-e2e/tsconfig.e2e.json"],
             "exclude": ["**/node_modules/**", "!apps/dev-elements-react-e2e/**"]
+          }
+        }
+      }
+    },
+    "leancloud-hash": {
+      "root": "libs/leancloud-hash",
+      "sourceRoot": "libs/leancloud-hash/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd libs/leancloud-hash && yarn run build"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/leancloud-hash/tsconfig.lib.json", "libs/leancloud-hash/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/leancloud-hash/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/leancloud-hash/jest.config.js",
+            "tsConfig": "libs/leancloud-hash/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "dev-elements-vue": {
+      "root": "apps/dev-elements-vue",
+      "sourceRoot": "apps/dev-elements-vue/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "options": {
+            "outputPath": "dist/apps/dev-elements-vue",
+            "index": "apps/dev-elements-vue/src/index.html",
+            "main": "apps/dev-elements-vue/src/main.ts",
+            "polyfills": "apps/dev-elements-vue/src/polyfills.ts",
+            "tsConfig": "apps/dev-elements-vue/tsconfig.app.json",
+            "assets": [
+              "apps/dev-elements-vue/src/favicon.ico",
+              "apps/dev-elements-vue/src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/@aiao/elements/lib/aiao-elements/assets",
+                "output": "./assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/monaco-editor/min",
+                "output": "./assets/monaco"
+              }
+            ],
+            "styles": ["apps/dev-elements-vue/src/styles.scss"],
+            "scripts": [],
+            "webpackConfig": "apps/dev-elements-vue/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/dev-elements-vue/src/environments/environment.ts",
+                  "with": "apps/dev-elements-vue/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "dev-elements-vue:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "dev-elements-vue:build:production",
+              "port": 5207
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/dev-elements-vue/tsconfig.app.json", "apps/dev-elements-vue/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/dev-elements-vue/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/dev-elements-vue/jest.config.js",
+            "tsConfig": "apps/dev-elements-vue/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/dev-elements-vue/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "dev-elements-vue-e2e": {
+      "root": "apps/dev-elements-vue-e2e",
+      "sourceRoot": "apps/dev-elements-vue-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/dev-elements-vue-e2e/cypress.json",
+            "tsConfig": "apps/dev-elements-vue-e2e/tsconfig.e2e.json",
+            "devServerTarget": "dev-elements-vue:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "dev-elements-vue:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/dev-elements-vue-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/dev-elements-vue-e2e/**"]
           }
         }
       }

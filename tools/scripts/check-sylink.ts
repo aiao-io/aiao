@@ -5,6 +5,9 @@ import ora from 'ora';
 const aiaoNpmPath = 'node_modules/@aiao';
 const libDistPath = 'dist/libs';
 
+/**
+ * 检查库的符号链接是否建立
+ */
 export const checkSylink = async () => {
   const check = ora('symlink').start();
   if (existsSync(aiaoNpmPath)) {

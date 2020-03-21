@@ -1,4 +1,4 @@
-import { IElementConfig, IElementData } from '@aiao/elements-cdk';
+import { IElementConfig, IElementData, renderHiddenInput } from '@aiao/elements-cdk';
 import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core';
 
 import { IElementEditorData } from '../../interfaces/elements-editor.interface';
@@ -14,37 +14,60 @@ import { EditMode } from '../../utils/render/render.interface';
 export class ElementsEditor implements ComponentInterface {
   @Element() el!: HTMLElement;
 
+  // --------------------------------------------------------------[ State ]
+  // --------------------------------------------------------------[ Event ]
+  // --------------------------------------------------------------[ Prop ]
   /**
-   * elements 配置
+   * 配置
    */
   @Prop() config: IElementConfig[];
-
   /**
-   * elements 数据
+   * 禁用
+   */
+  @Prop() disabled: boolean;
+  /**
+   * 编辑模式
+   */
+  @Prop() editMode: EditMode = 'edit';
+  /**
+   * form 名
+   */
+  @Prop() name: string;
+  /**
+   * 值
    */
   @Prop() value: IElementData[];
 
   /**
-   * elements 编辑模式
-   */
-  @Prop() editMode: EditMode = 'edit';
-
-  /**
-   * 视图元素
+   * 显示视图
    */
   @Prop() view: HTMLElement;
+  // --------------------------------------------------------------[ Watch ]
+  // --------------------------------------------------------------[ Listen ]
+  // --------------------------------------------------------------[ event hander ]
+  // --------------------------------------------------------------[ public function ]
+  // --------------------------------------------------------------[ private function ]
+  // --------------------------------------------------------------[ lifecycle ]
 
   render() {
     let data: IElementEditorData[];
-    if (this.view) {
-      this.view.innerHTML = elementsPreviewHtmlRender(this.config, this.value, { editMode: this.editMode });
-    } else {
-      data = elementDataToEditData(this.value);
+    let needValue = '';
+    if (this.value) {
+      if (this.view) {
+        this.view.innerHTML = elementsPreviewHtmlRender(this.config, this.value, { editMode: this.editMode });
+      } else {
+        data = elementDataToEditData(this.value);
+      }
+      try {
+        needValue = JSON.stringify(data);
+      } catch {
+        //
+      }
     }
+
+    renderHiddenInput(true, this.el, this.name, needValue, this.disabled);
     return (
-      <Host>
-        {!this.view && <aiao-elements-editor-preview config={this.config} value={data}></aiao-elements-editor-preview>}
-      </Host>
+      <Host>{!this.view && <aiao-elements-preview config={this.config} value={data}></aiao-elements-preview>}</Host>
     );
   }
 }

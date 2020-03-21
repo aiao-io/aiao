@@ -3,17 +3,21 @@ import ora from 'ora';
 
 import { run } from '../util/runner';
 
+const NEED_CHECK_LIBS = ['stencil-toolkit', 'elements'];
+
+/**
+ * 检查顶层基础 lib 是否已经构建
+ */
 export const checkLibBuild = async () => {
   const check = ora('build').start();
-  const libs = ['util', 'url', 'image-storage', 'elements-cdk', 'stencil-toolkit', 'elements'];
   const needBuildLibs = [];
-  libs.forEach(name => {
+  NEED_CHECK_LIBS.forEach(name => {
     if (!existsSync(`dist/libs/${name}`)) {
       needBuildLibs.push(`--scope @aiao/${name}`);
     }
   });
   if (needBuildLibs.length > 0) {
-    await run('node_modules/.bin/lerna', ['run', 'build', ...needBuildLibs]);
+    await run('node_modules/.bin/lerna', ['run', 'build', ...needBuildLibs, '--concurrency=1']);
   }
   check.succeed();
   return;
