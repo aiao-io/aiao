@@ -110,7 +110,7 @@
     "@nrwl/web": "9.1.2",
     "@nrwl/workspace": "9.1.2",
     "@stencil/angular-output-target": "^0.0.2",
-    "@stencil/core": "^1.10.1",
+    "@stencil/core": "1.11.0",
     "@stencil/react-output-target": "^0.0.4",
     "@stencil/sass": "^1.1.1",
     "@testing-library/react": "9.4.0",
