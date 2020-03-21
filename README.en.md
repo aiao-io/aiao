@@ -6,7 +6,7 @@
 
 Use `monorepo` style for management some `npm` package。
 
-## apps
+## Apps
 
 | app                            | Description              |                                           |
 | ------------------------------ | ------------------------ | ----------------------------------------- |
@@ -109,6 +109,8 @@ yarn start dev-elements-react
 
 ## 构建项目
 
+> 所有构建都在根目录 `dist` 文件夹中
+
 ### 构建所有库
 
 ```console
@@ -147,6 +149,14 @@ yarn e2e
 
 ```console
 yarn e2e dev-elements-react-e2e
+```
+
+## 构建 App
+
+### 单独构建 dev-elements-angular
+
+```
+yarn run build dev-elements-angular --prod
 ```
 
 ## 贡献
