@@ -45,3 +45,12 @@ Thumbs.db
 
 !tools/hotfix/node_modules_files/**/dist/
 package-lock.json
+
+# elements
+libs/elements/elements-cdk
+libs/elements/hydrate
+libs/elements/image-storage
+libs/elements/lib
+libs/elements/loader
+libs/elements/url
+libs/elements/util
