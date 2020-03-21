@@ -63,9 +63,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
 
-      - name: install
-        run: |
-          yarn install --frozen-lockfile --non-interactive
+      - name: Install
+        run: yarn install --frozen-lockfile --non-interactive
 
       - uses: actions/cache@v1
         id: dist-cache
@@ -90,13 +89,9 @@ jobs:
             echo "::set-env name=NX_BASE::$(cat dist/ci/last-deploy.txt)"
           fi
 
-      - name: check workspace
-        run: node dist/tools/scripts/check-workspace --lib
-
       - name: e2e
         shell: bash
-        run: |
-          yarn affected:e2e --base=$NX_BASE --configuration production --headless --parallel --maxParallel=1
+        run: yarn affected:e2e --base=$NX_BASE --configuration production --headless --parallel --maxParallel=1
 
       - name: update last-deploy
         shell: bash
