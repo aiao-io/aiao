@@ -91,7 +91,7 @@ jobs:
           fi
 
       - name: check workspace
-        run: node dist/tools/scripts/check-workspace
+        run: node dist/tools/scripts/check-workspace --lib
 
       - name: e2e
         shell: bash
