@@ -6,6 +6,13 @@ import { Arguments, argv } from 'yargs';
 import { parseFiles } from '@nrwl/workspace/src/command-line/shared';
 import { NxArgs } from '@nrwl/workspace/src/command-line/utils';
 
+/**
+ * 改变 ts 文件夹 lodash 导入方式，达到缩小 lodash 方法最小目的；
+ * import { isString } from 'lodash'; 代码会变成 import isString from 'lodash/isString';
+ * @param path ts 文件路径
+ */
+
+// TODO: angular 9 ivy 已经可以正常树摇 lodash, 待进一步测试
 const fixLodash = (...path: string[]) => {
   const ora = Ora();
   const project = new Project();

@@ -1,5 +1,9 @@
 import { WORKSPACE_SCOPES } from '../util/workspace';
 
+/**
+ * 交互式自动生成代码提交消息文本
+ * yarn commit
+ */
 const scopes = WORKSPACE_SCOPES.map(name => ({ name }));
 
 const base = {
