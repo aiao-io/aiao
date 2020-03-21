@@ -1,3 +1,4 @@
+import { editor, Uri } from 'monaco-editor';
 /**
  * 正常化 monaco 默认配置
  * @param opts 配置
@@ -6,20 +7,20 @@
  * @param value 值
  */
 export const normalizeMonacoEditorOptions = (
-  opts: monaco.editor.IStandaloneEditorConstructionOptions,
-  uri: monaco.Uri,
+  opts: editor.IStandaloneEditorConstructionOptions,
+  uri: Uri,
   language: string,
   value: any
 ) => {
   const options = { ...opts };
   const hasModel = uri || language || value;
   if (hasModel) {
-    const model = monaco.editor.getModel(uri || ('' as any));
+    const model = editor.getModel(uri || ('' as any));
     if (model) {
       options.model = model;
       options.model.setValue(value);
     } else {
-      options.model = monaco.editor.createModel(value, language, uri);
+      options.model = editor.createModel(value, language, uri);
     }
   }
   options.value = value;

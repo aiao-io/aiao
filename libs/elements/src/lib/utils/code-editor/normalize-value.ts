@@ -6,20 +6,18 @@ import isString from 'lodash/isString';
  * @param value 值
  */
 export const normalizeMonacoEditorValue = (language: string, value: any) => {
-  let backVal = value;
   switch (language) {
     case 'json':
       try {
-        backVal = JSON.stringify(value, null, 2);
+        value = JSON.stringify(value, null, 2);
       } catch {
         //
       }
       break;
-
     default:
       break;
   }
-  return backVal;
+  return value;
 };
 
 /**
