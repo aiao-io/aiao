@@ -1,12 +1,11 @@
 import './TextEditor.scss';
 
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
 
 import { AiaoTextEditor } from '@aiao/elements-react';
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 
-const ELementsPreviewPage: React.FC = () => {
+const TextEditorPage: React.FC = () => {
   const [hello, setHello] = useState('hello world');
 
   return (
@@ -26,4 +25,4 @@ const ELementsPreviewPage: React.FC = () => {
   );
 };
 
-export default withRouter(ELementsPreviewPage);
+export default TextEditorPage;

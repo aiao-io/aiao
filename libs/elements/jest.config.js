@@ -1,11 +1,7 @@
 module.exports = {
   name: 'elements',
-  preset: '@stencil/core/testing',
-  transform: {
-    '^.+\\.[tj]sx?$': 'ts-jest'
-  },
+  preset: '../../jest.config.js',
   coverageDirectory: '../../coverage/libs/elements',
-  coverageReporters: ['html', 'json'],
-  collectCoverageFrom: ['./src/lib/**/*.ts'],
+  collectCoverageFrom: ['./src/lib/**/*.ts', '!src/lib/global/global.ts'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html']
 };

@@ -1,7 +1,6 @@
 import './ElementsEditor.scss';
 
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 
 import { AiaoElementsEditor } from '@aiao/elements-react';
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
@@ -69,4 +68,4 @@ const ELementsEditorPage: React.FC = () => {
   );
 };
 
-export default withRouter(ELementsEditorPage);
+export default ELementsEditorPage;

@@ -1,12 +1,11 @@
 import './ElementsPreview.scss';
 
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
 
 import { AiaoCodeEditor, AiaoElementsPreview } from '@aiao/elements-react';
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 
-const ELementsPreviewPage: React.FC = () => {
+const ElementsPreviewPage: React.FC = () => {
   const configObj = [
     {
       tag: 'h1',
@@ -91,4 +90,4 @@ const ELementsPreviewPage: React.FC = () => {
   );
 };
 
-export default withRouter(ELementsPreviewPage);
+export default ElementsPreviewPage;
