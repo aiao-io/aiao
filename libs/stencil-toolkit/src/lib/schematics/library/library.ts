@@ -161,7 +161,6 @@ export default function(schema: Schema): Rule {
     const { isNx } = options;
     return chain([
       init({
-        vendors: options.vendors,
         skipFormat: true
       }),
       addFiles(options),

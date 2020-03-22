@@ -4,17 +4,13 @@ import { addDepsToPackageJson, addPackageWithInit, formatFiles, updateJsonInTree
 import { Schema } from './schema';
 
 function addDependencies(schema: Schema): Rule {
-  let deps = {};
   const devDeps = {
     '@stencil/core': '^1.11.0',
     '@stencil/sass': '^1.1.1',
     'tslint-ionic-rules': '^0.0.21',
     'tslint-react': '^4.2.0'
   };
-  if (schema.vendors.ionic) {
-    deps = { ...deps, '@ionic/core': '^5.0.0' };
-  }
-  return addDepsToPackageJson(deps, devDeps);
+  return addDepsToPackageJson({}, devDeps);
 }
 
 function moveDependency(): Rule {

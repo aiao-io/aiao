@@ -34,12 +34,12 @@
 :root,
 html,
 html.md.md {
-  --aiao-font-family: Roboto, 'mdTestingFont', sans-serif;
+  --ion-font-family: Roboto, 'mdTestingFont', sans-serif;
   font-family: Roboto, 'mdTestingFont', sans-serif;
 }
 
 :root.ios.ios,
 html.ios.ios {
-  --aiao-font-family: -apple-system, BlinkMacSystemFont, 'iosTestingFont', sans-serif;
+  --ion-font-family: -apple-system, BlinkMacSystemFont, 'iosTestingFont', sans-serif;
   font-family: -apple-system, BlinkMacSystemFont, 'iosTestingFont', sans-serif;
 }

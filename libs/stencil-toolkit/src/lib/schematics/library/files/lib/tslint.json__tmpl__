@@ -16,9 +16,6 @@
     "no-invalid-template-strings": true,
     "ban-export-const-enum": true,
     "only-arrow-functions": true,
-    "ordered-imports": false,
-    "strict-boolean-conditions": false,
-    "semicolon": [true, "always", "ignore-bound-class-methods"],
 
     "jsx-key": false,
     "jsx-self-close": false,
