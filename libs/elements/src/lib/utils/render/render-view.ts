@@ -8,7 +8,8 @@ import { IElementData } from '@aiao/elements-cdk';
  */
 export const elementDataStringify = (data: IElementData) => {
   const { tag, children, innerHTML, innerText, class: cls, attributes, slot, style } = data;
-  const innerString = innerText || innerHTML || (children && children.length ? elementsDataStringify(children) : '');
+  const childrenHtml = children?.length ? elementsDataStringify(children) : '';
+  const innerString = childrenHtml || innerText || innerHTML;
 
   const props: any = {
     slot
@@ -42,12 +43,12 @@ export const elementDataStringify = (data: IElementData) => {
     propStr = ' ' + propStr;
   }
 
-  return `<${tag}${propStr}>${innerString}</${tag}>`;
+  return `<${tag}${propStr}>${innerString || ''}</${tag}>`;
 };
 
 /**
  * 转换多个 elements 数据为 html 格式
  * @param dataArray 数据
  */
-export const elementsDataStringify = (dataArray: IElementData[] = []) =>
+export const elementsDataStringify = (dataArray: IElementData[]) =>
   dataArray.map(d => elementDataStringify(d)).join('');

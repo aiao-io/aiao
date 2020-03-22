@@ -2,7 +2,7 @@ import { IElementConfig, IElementData } from '@aiao/elements-cdk';
 
 import { ELEMENTS_EDIT_ITEM, ElementsEditOptions } from './render.interface';
 
-const elementEditDataOptions = (configs: IElementConfig[], data: IElementData, options: ElementsEditOptions) => {
+const elementEditDataOptions = (configs: IElementConfig[], data: IElementData, options?: ElementsEditOptions) => {
   const { tag, class: cls, attributes: attrs, events } = data;
   const config: IElementConfig = configs.find(conf => conf.tag === tag);
   if (!config) {
@@ -15,7 +15,7 @@ const elementEditDataOptions = (configs: IElementConfig[], data: IElementData, o
   const newEvents = { ...events };
   const newTag = editTag || tag;
 
-  switch (options.editMode) {
+  switch (options?.editMode) {
     case 'edit':
       newCls[ELEMENTS_EDIT_ITEM] = true;
       if (allowInnerHTML || allowInnerText) {
@@ -25,8 +25,6 @@ const elementEditDataOptions = (configs: IElementConfig[], data: IElementData, o
         const value = allowInnerHTML ? e.target.innerHTML : e.target.innerText;
         console.log('input', value);
       };
-      break;
-    default:
       break;
   }
 
@@ -42,5 +40,5 @@ const elementEditDataOptions = (configs: IElementConfig[], data: IElementData, o
 export const elementsPreviewHtmlData = (
   configs: IElementConfig[],
   data: IElementData[],
-  options: ElementsEditOptions
+  options?: ElementsEditOptions
 ) => [...data].map(d => elementEditDataOptions(configs, d, options));
