@@ -1,7 +1,9 @@
 import { chain, Rule } from '@angular-devkit/schematics';
 import { addDepsToPackageJson, addPackageWithInit, formatFiles, updateJsonInTree } from '@nrwl/workspace';
 
-import { Schema } from './schema';
+interface Schema {
+  skipFormat: boolean;
+}
 
 function addDependencies(schema: Schema): Rule {
   const devDeps = {

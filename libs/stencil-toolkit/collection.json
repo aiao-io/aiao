@@ -11,8 +11,13 @@
     "init": {
       "factory": "./lib/schematics/init/init",
       "schema": "./lib/schematics/init/schema.json",
-      "description": "Create an stencil init",
+      "description": "init",
       "hidden": true
+    },
+    "component": {
+      "factory": "./lib/schematics/component/component",
+      "schema": "./lib/schematics/component/schema.json",
+      "description": "Create an stencil component"
     }
   }
 }

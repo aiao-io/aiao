@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "SchematicsStencilComponent",
+  "title": "Create a stencil component",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Component name",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use for the component?"
+    },
+    "project": {
+      "type": "string",
+      "description": "The name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "style": {
+      "type": "string",
+      "description": "The file extension to be used for style files.",
+      "alias": "s",
+      "default": "scss",
+      "x-prompt": {
+        "message": "Which stylesheet format would you like to use?",
+        "type": "list",
+        "items": [
+          { "value": "css", "label": "CSS" },
+          {
+            "value": "scss",
+            "label": "SASS(.scss)       [ http://sass-lang.com          ]"
+          }
+        ]
+      }
+    }
+  },
+  "required": ["name"]
+}
