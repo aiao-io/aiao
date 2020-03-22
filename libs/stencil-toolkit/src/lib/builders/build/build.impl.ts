@@ -1,4 +1,4 @@
-import { readJson, readJSONSync, removeSync, statSync } from 'fs-extra';
+import { readJSONSync, removeSync, statSync } from 'fs-extra';
 import { join, resolve } from 'path';
 import { from, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -14,20 +14,21 @@ export interface StencilBuildOptions extends JsonObject {
   outputPath: string;
   stats?: boolean;
   docs?: boolean;
+  assets: any[];
 }
 
 export default createBuilder<StencilBuildOptions>(stencilBuild);
 
 function stencilBuild(options: StencilBuildOptions, context: BuilderContext): Observable<BuilderOutput> {
-  const { config: config_path, docs, outputPath, stats } = options;
+  const { config: config_path, docs, outputPath, stats, assets } = options;
   const {
     workspaceRoot,
     target: { project }
   } = context;
 
-  return from(readJson(join(workspaceRoot, 'angular.json'))).pipe(
-    map(c => c.projects[project]),
-    switchMap(projectConfig => {
+  return from(context.getProjectMetadata(project)).pipe(
+    map(projectConfig => {
+      const { root } = projectConfig as any;
       const args = ['build', `--config ${join(workspaceRoot, config_path)}`];
       if (docs) {
         args.push('--docs');
@@ -36,16 +37,17 @@ function stencilBuild(options: StencilBuildOptions, context: BuilderContext): Ob
         args.push('--stats');
       }
       const cmd = resolve(workspaceRoot, 'node_modules/.bin/stencil');
-
+      return { cmd, args, root };
+    }),
+    switchMap(({ cmd, args, root }) => {
       const runPromise = run(cmd, args);
       return runPromise.then(() => {
         if (!outputPath) {
           return;
         }
-        const projectRoot = resolve(workspaceRoot, projectConfig.root);
+        const projectRoot = resolve(workspaceRoot, root);
         const projectPkg = readJSONSync(resolve(projectRoot, 'package.json'));
         const output = resolve(workspaceRoot, outputPath);
-        const assets = [];
         projectPkg.files.forEach((file: string) => {
           const fp = resolve(projectRoot, file);
           const stat = statSync(fp);
