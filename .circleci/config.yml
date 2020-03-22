@@ -47,27 +47,7 @@ set_env: &set_env
 # install
 install_yarn: &install_yarn
   name: yarn install
-  command: yarn install --frozen-lockfile --non-interactive --ignore-scripts
-
-# ngcc
-ngcc: &ngcc
-  name: Ngcc
-  command: yarn run ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points
-
-# build_tools
-build_tools: &build_tools
-  name: Build Tools
-  command: yarn build:tools
-
-# hotfix
-hotfix: &hotfix
-  name: Hotfix
-  command: yarn task:hotfix
-
-# check_workspace
-check_workspace: &check_workspace
-  name: Check Workspace
-  command: node dist/tools/scripts/check-workspace --lib
+  command: yarn install --frozen-lockfile --non-interactive
 
 # Build
 build: &build
@@ -149,10 +129,6 @@ jobs:
       - restore_cache: *restore_dist
       - run: *set_env
       - run: *install_yarn
-      - run: *ngcc
-      - run: *build_tools
-      - run: *hotfix
-      - run: *check_workspace
       - run: *format
       - run: *lint
       - run: *check_lodash
