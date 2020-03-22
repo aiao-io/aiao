@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { AiaoCodeEditor, AiaoElementsPreview } from '@aiao/elements-react';
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 
-const ELementsPreviewPage: React.FC = () => {
+const ElementsPreviewPage: React.FC = () => {
   const configObj = [
     {
       tag: 'h1',
@@ -90,4 +90,4 @@ const ELementsPreviewPage: React.FC = () => {
   );
 };
 
-export default ELementsPreviewPage;
+export default ElementsPreviewPage;
