@@ -14,13 +14,7 @@ export const config: Config = {
     {
       type: 'docs-readme'
     }
-  ],<% if(vendors.ionic){  %>
-  copy: [
-    {
-      src: join(__dirname, '../../', 'node_modules/@ionic/core'),
-      dest: join(__dirname, 'vendors/ionic')
-    }
-  ],<% } %>
+  ],
   tsconfig: 'tsconfig.json',
   globalScript: 'src/lib/global/global.ts'
 };

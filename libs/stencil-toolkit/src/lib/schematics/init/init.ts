@@ -6,7 +6,7 @@ import { Schema } from './schema';
 function addDependencies(schema: Schema): Rule {
   let deps = {};
   const devDeps = {
-    '@stencil/core': '^1.9.2',
+    '@stencil/core': '^1.11.0',
     '@stencil/sass': '^1.1.1',
     'tslint-ionic-rules': '^0.0.21',
     'tslint-react': '^4.2.0'
@@ -20,7 +20,6 @@ function addDependencies(schema: Schema): Rule {
 function moveDependency(): Rule {
   return updateJsonInTree('package.json', json => {
     json.dependencies = json.dependencies || {};
-
     delete json.dependencies['@stencil/core'];
     return json;
   });
