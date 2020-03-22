@@ -38,8 +38,7 @@ export default function(schema: Schema): Rule {
             ...schema,
             name,
             scope,
-            classify: strings.classify,
-            dasherize: strings.dasherize
+            ...strings
           }),
           move(join(projectRoot, 'src/lib/components', name))
         ])
