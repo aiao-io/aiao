@@ -5,7 +5,7 @@ interface Schema {
   skipFormat: boolean;
 }
 
-function addDependencies(schema: Schema): Rule {
+function addDependencies(): Rule {
   const devDeps = {
     '@stencil/core': '^1.11.0',
     '@stencil/sass': '^1.1.1',
@@ -24,5 +24,5 @@ function moveDependency(): Rule {
 }
 
 export default function(schema: Schema) {
-  return chain([addPackageWithInit('@nrwl/jest'), addDependencies(schema), moveDependency(), formatFiles(schema)]);
+  return chain([addPackageWithInit('@nrwl/jest'), addDependencies(), moveDependency(), formatFiles(schema)]);
 }
