@@ -234,7 +234,14 @@
         "serve": {
           "builder": "@aiao/stencil-toolkit:serve",
           "options": {
-            "config": "libs/elements/stencil.dev.config.ts"
+            "config": "libs/elements/stencil.dev.config.ts",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "node_modules/monaco-editor/min",
+                "output": "./vendors/monaco"
+              }
+            ]
           }
         },
         "lint": {
