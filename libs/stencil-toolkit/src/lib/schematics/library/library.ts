@@ -12,73 +12,20 @@ import {
   Tree,
   url
 } from '@angular-devkit/schematics';
-import {
-  formatFiles,
-  generateProjectLint,
-  getNpmScope,
-  Linter,
-  readJsonInTree,
-  updateJsonInTree,
-  updateWorkspaceInTree
-} from '@nrwl/workspace';
+import { formatFiles, generateProjectLint, Linter, updateJsonInTree, updateWorkspaceInTree } from '@nrwl/workspace';
 
-import { isNxWorkspace } from '../../util/is-nx';
+import { NormalizedSchema, normalizeOptions } from '../../util/normalize-options';
 import init from '../init/init';
-import { Schema } from './schema';
 
-interface NormalizedSchema extends Schema {
+interface Schema extends NormalizedSchema {
   name: string;
-  scope: string;
-  isNx: boolean;
-  projectRoot: string;
-  projectDirectory: string;
-  parsedTags: string[];
+  directory?: string;
+  style?: string;
+  tags?: string;
+  unitTestRunner?: any;
 }
 
-function toFileName(s: string): string {
-  return s
-    .replace(/([a-z\d])([A-Z])/g, '$1_$2')
-    .toLowerCase()
-    .replace(/[ _]/g, '-');
-}
-
-function normalizeOptions(host: Tree, options: Schema): NormalizedSchema {
-  const isNx = isNxWorkspace(host);
-  const name = toFileName(options.name);
-  const scope = isNx ? getNpmScope(host) : '';
-  const angularConfig = readJsonInTree(host, '/angular.json');
-  const libs = isNx ? 'libs' : angularConfig.newProjectRoot;
-  const projectDirectory = options.directory ? `${toFileName(options.directory)}/${name}` : name;
-  const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
-  const projectRoot = `${libs}/${projectDirectory}`;
-
-  const parsedTags = options.tags ? options.tags.split(',').map(s => s.trim()) : [];
-
-  return {
-    ...options,
-    scope,
-    isNx,
-    name: projectName,
-    projectRoot,
-    projectDirectory,
-    parsedTags
-  };
-}
-
-function addFiles(options: NormalizedSchema): Rule {
-  return mergeWith(
-    apply(url(`./files/lib`), [
-      template({
-        ...options,
-        tmpl: '',
-        root: options.projectRoot
-      }),
-      move(options.projectRoot)
-    ])
-  );
-}
-
-function updateLibPackageNpmScope(options: NormalizedSchema): Rule {
+function updateLibPackageNpmScope(options: Schema): Rule {
   const { projectRoot, name, scope } = options;
   return () => {
     return updateJsonInTree(`${projectRoot}/package.json`, json => {
@@ -88,7 +35,7 @@ function updateLibPackageNpmScope(options: NormalizedSchema): Rule {
   };
 }
 
-function getBuildConfig(options: NormalizedSchema) {
+function getBuildConfig(options: Schema) {
   return {
     builder: '@aiao/stencil-toolkit:build',
     options: {
@@ -98,7 +45,7 @@ function getBuildConfig(options: NormalizedSchema) {
   };
 }
 
-function getServeConfig(options: NormalizedSchema) {
+function getServeConfig(options: Schema) {
   return {
     builder: '@aiao/stencil-toolkit:serve',
     options: {
@@ -107,7 +54,7 @@ function getServeConfig(options: NormalizedSchema) {
   };
 }
 
-function updateWorkspaceJson(options: NormalizedSchema): Rule {
+function updateWorkspaceJson(options: Schema): Rule {
   return updateWorkspaceInTree(workspaceJson => {
     const project = {
       root: options.projectRoot,
@@ -131,7 +78,7 @@ function updateWorkspaceJson(options: NormalizedSchema): Rule {
   });
 }
 
-function updateNxJson(options: NormalizedSchema): Rule {
+function updateNxJson(options: Schema): Rule {
   return updateJsonInTree(`/nx.json`, json => {
     return {
       ...json,
@@ -143,7 +90,7 @@ function updateNxJson(options: NormalizedSchema): Rule {
   });
 }
 
-function addTest(options: NormalizedSchema): Rule {
+function addTest(options: Schema): Rule {
   if (options.unitTestRunner === 'jest') {
     return externalSchematic('@nrwl/jest', 'jest-project', {
       project: options.name,
@@ -154,14 +101,26 @@ function addTest(options: NormalizedSchema): Rule {
   }
   return noop();
 }
+const addFiles = (options: NormalizedSchema): Rule => {
+  const { projectRoot } = options;
+  return mergeWith(
+    apply(url(`./files/lib`), [
+      template({
+        ...options,
+        tmpl: '',
+        root: projectRoot
+      }),
+      move(projectRoot)
+    ])
+  );
+};
 
 export default function(schema: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
-    const options = normalizeOptions(host, schema);
+    const options = normalizeOptions<Schema>(host, schema);
     const { isNx } = options;
     return chain([
       init({
-        vendors: options.vendors,
         skipFormat: true
       }),
       addFiles(options),
