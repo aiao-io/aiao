@@ -12,3 +12,4 @@
 **/tsconfig.*.json
 **/tsconfig.json
 **/tslint.json
+angular.json

@@ -41,7 +41,7 @@ const elementEditDataOptions = (configs: IElementConfig[], data: IElementData, o
 };
 
 /**
- * 针对不通配置切换多个编辑数据
+ * 针对不同配置切换多个编辑数据
  * @param configs elements 配置
  * @param data 原始数据
  * @param options 编辑器配置
