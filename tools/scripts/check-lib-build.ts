@@ -3,7 +3,7 @@ import ora from 'ora';
 
 import { run } from '../util/runner';
 
-const NEED_CHECK_LIBS = ['stencil-toolkit', 'elements'];
+const NEED_CHECK_LIBS = ['stencil-toolkit', 'elements', 'image-storage'];
 
 /**
  * 检查顶层基础 lib 是否已经构建

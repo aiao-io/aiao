@@ -239,7 +239,17 @@
               {
                 "glob": "**/*",
                 "input": "node_modules/monaco-editor/min",
-                "output": "./vendors/monaco"
+                "output": "./vendors/monaco-editor"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/@ionic/core",
+                "output": "./vendors/ionic"
+              },
+              {
+                "glob": "**/*",
+                "input": "dist/libs/image-storage",
+                "output": "./vendors/image-storage"
               }
             ]
           }
