@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
   "id": "SchematicsStencilLibrary",
-  "title": "Create a library",
+  "title": "Create a stencil library",
   "type": "object",
   "properties": {
     "name": {
@@ -14,9 +14,8 @@
       "x-prompt": "What name would you like to use for the library?"
     },
     "directory": {
-      "description": "The directory of the new application.",
-      "type": "string",
-      "x-prompt": "In which directory should the node application be generated?"
+      "description": "The directory of the new library",
+      "type": "string"
     },
     "unitTestRunner": {
       "type": "string",
@@ -27,17 +26,6 @@
     "tags": {
       "type": "string",
       "description": "Add tags to the library (used for linting)"
-    },
-    "vendors": {
-      "type": "object",
-      "description": "custom vendors",
-      "hidden": true,
-      "properties": {
-        "ionic": {
-          "type": "boolean",
-          "x-prompt": "add vendor @ionic/core?"
-        }
-      }
     }
   },
   "required": []

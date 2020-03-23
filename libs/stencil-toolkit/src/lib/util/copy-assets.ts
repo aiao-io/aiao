@@ -23,7 +23,6 @@ export async function copyAssets(
   changed?: Set<string>
 ) {
   const defaultIgnore = ['.gitkeep', '**/.DS_Store', '**/Thumbs.db'];
-
   for (const entry of entries) {
     const cwd = path.resolve(root, entry.input);
     const files = await globAsync(entry.glob, {

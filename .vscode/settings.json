@@ -14,7 +14,8 @@
     "libs/elements/lib": true,
     "libs/elements/loader": true,
     "libs/elements/url": true,
-    "libs/elements/util": true
+    "libs/elements/util": true,
+    "libs/elements/vendors": true
   },
   "gitlens.codeLens.authors.enabled": false,
   "gitlens.codeLens.recentChange.enabled": false,
