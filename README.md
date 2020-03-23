@@ -148,8 +148,16 @@ yarn test util
 
 ### E2E 测试所有库
 
+> cypress 如果不能正常启动请尝试更高权限
+
 ```console
-yarn e2e
+yarn e2e --prod
+```
+
+#### MacOS 带权限启动
+
+```console
+sudo yarn e2e --prod
 ```
 
 ### E2E 测试 `dev-elements-react-e2e` 库
