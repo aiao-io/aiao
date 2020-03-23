@@ -163,14 +163,14 @@ sudo yarn e2e --prod
 ### E2E 测试 `dev-elements-react-e2e` 库
 
 ```console
-yarn e2e dev-elements-react-e2e
+yarn e2e dev-elements-react-e2e --prod
 ```
 
 ## 构建 App
 
 ### 单独构建 dev-elements-angular
 
-```
+```console
 yarn run build dev-elements-angular --prod
 ```
 
