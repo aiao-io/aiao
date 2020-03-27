@@ -4,12 +4,12 @@
 
 `elements` react 版本，可在 react 项目中直接使用
 
-## 安装
+## Install
 
 ```console
 yarn add @aiao/elements-react
 ```
 
-## 使用
+## Usage
 
 参考 [dev-elements-react](../../apps/dev-elements-react)
