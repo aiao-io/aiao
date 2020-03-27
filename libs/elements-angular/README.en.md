@@ -4,12 +4,12 @@
 
 `elements` angular 版本，可在 angular 项目中直接使用
 
-## 安装
+## Install
 
 ```console
 yarn add @aiao/elements-angular
 ```
 
-## 使用
+## Usage
 
 参考 [dev-elements-angular](../../apps/dev-elements-angular)
