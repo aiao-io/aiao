@@ -83,7 +83,7 @@ export default defineComponent({
     const route = useRoute();
     const router = inject('router');
     const currentLocation = computed(() => {
-      const { matched, ...rest } = route.value;
+      const { ...rest } = route.value;
       return rest;
     });
 
