@@ -2804,7 +2804,7 @@
   dependencies:
     "@angular-devkit/architect" "~0.901.0"
 
-"@nrwl/react@^9.2.1":
+"@nrwl/react@9.2.1":
   version "9.2.1"
   resolved "https://registry.yarnpkg.com/@nrwl/react/-/react-9.2.1.tgz#250cd6c15306d608301f6bce8aff91fa0d187b6c"
   integrity sha512-KR9n3xrSclLd2S6B6sC7DPn1M/i90CqRFOKHnQbYdR5OSnbdw1f6t+vN9hnb07DWLTTnd3Smh7GjOjwk/4nxlA==
