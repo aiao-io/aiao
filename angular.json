@@ -1484,7 +1484,8 @@
             ],
             "styles": ["apps/dev-elements-react/src/theme/variables.scss", "apps/dev-elements-react/src/global.scss"],
             "scripts": [],
-            "webpackConfig": "apps/dev-elements-react/webpack.config.js"
+            "webpackConfig": "apps/dev-elements-react/webpack.config.js",
+            "buildLibsFromSource": true
           },
           "configurations": {
             "production": {
@@ -1638,7 +1639,8 @@
             ],
             "styles": ["apps/dev-elements-vue/src/styles.scss"],
             "scripts": [],
-            "webpackConfig": "apps/dev-elements-vue/webpack.config.js"
+            "webpackConfig": "apps/dev-elements-vue/webpack.config.js",
+            "buildLibsFromSource": true
           },
           "configurations": {
             "production": {

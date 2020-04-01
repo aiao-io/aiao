@@ -118,5 +118,13 @@
       "tags": ["vue-e2e"],
       "implicitDependencies": ["dev-elements-vue"]
     }
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
   }
 }
