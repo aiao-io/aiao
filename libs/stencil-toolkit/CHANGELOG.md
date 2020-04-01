@@ -5,14 +5,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [0.2.0](https://github.com/aiao-io/aiao/compare/@aiao/stencil-toolkit@0.1.1...@aiao/stencil-toolkit@0.2.0) (2020-04-01)
 
-
 ### Features
 
-* **stencil-toolkit:** update @stencil/core 1.11.0 ([#91](https://github.com/aiao-io/aiao/issues/91)) ([7fa51d6](https://github.com/aiao-io/aiao/commit/7fa51d63a6dd441afbb44aaf180c4c33ae44e72b))
-
-
-
-
+- **stencil-toolkit:** update @stencil/core 1.11.0 ([#91](https://github.com/aiao-io/aiao/issues/91)) ([7fa51d6](https://github.com/aiao-io/aiao/commit/7fa51d63a6dd441afbb44aaf180c4c33ae44e72b))
 
 ## [0.1.1](https://github.com/aiao-io/aiao/compare/@aiao/stencil-toolkit@0.1.0...@aiao/stencil-toolkit@0.1.1) (2020-03-15)
 

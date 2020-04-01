@@ -7,10 +7,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @aiao/date
 
-
-
-
-
 # 0.1.0 (2020-02-12)
 
 ### Features

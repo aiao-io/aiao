@@ -5,19 +5,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [0.7.0](https://github.com/aiao-io/aiao/compare/@aiao/elements@0.6.1...@aiao/elements@0.7.0) (2020-04-01)
 
-
 ### Bug Fixes
 
-* **stencil-toolkit:** 修复版本错误 ([946061f](https://github.com/aiao-io/aiao/commit/946061f3ae0fd1e4bc65997a7a156594604830ea))
-
+- **stencil-toolkit:** 修复版本错误 ([946061f](https://github.com/aiao-io/aiao/commit/946061f3ae0fd1e4bc65997a7a156594604830ea))
 
 ### Features
 
-* **stencil-toolkit:** update @stencil/core 1.11.0 ([#91](https://github.com/aiao-io/aiao/issues/91)) ([7fa51d6](https://github.com/aiao-io/aiao/commit/7fa51d63a6dd441afbb44aaf180c4c33ae44e72b))
-
-
-
-
+- **stencil-toolkit:** update @stencil/core 1.11.0 ([#91](https://github.com/aiao-io/aiao/issues/91)) ([7fa51d6](https://github.com/aiao-io/aiao/commit/7fa51d63a6dd441afbb44aaf180c4c33ae44e72b))
 
 ## [0.6.1](https://github.com/aiao-io/aiao/compare/@aiao/elements@0.6.0...@aiao/elements@0.6.1) (2020-03-15)
 
