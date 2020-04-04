@@ -1,3 +1,3 @@
-export * from './lib/TypeormPlus';
-export * from './lib/interface';
-export * from './lib/translate-typeorm-options';
+export { TypeormPlus } from './lib/TypeormPlus';
+export { SequelizeRepository } from './lib/interface';
+export { translateTypeormOptions } from './lib/translate-typeorm-options';

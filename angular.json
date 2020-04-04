@@ -1052,7 +1052,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "dev-elements-angular:build"
+            "browserTarget": "dev-elements-angular:build",
+            "open": true
           },
           "configurations": {
             "production": {
@@ -1515,7 +1516,8 @@
         "serve": {
           "builder": "@nrwl/web:dev-server",
           "options": {
-            "buildTarget": "dev-elements-react:build"
+            "buildTarget": "dev-elements-react:build",
+            "open": true
           },
           "configurations": {
             "production": {
@@ -1670,7 +1672,8 @@
         "serve": {
           "builder": "@nrwl/web:dev-server",
           "options": {
-            "buildTarget": "dev-elements-vue:build"
+            "buildTarget": "dev-elements-vue:build",
+            "open": true
           },
           "configurations": {
             "production": {
