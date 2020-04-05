@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import { execSync } from 'child_process';
 import { env, exit } from 'process';
 
-import { WORKSPACE_SCOPES, WORKSPACE_TYPES } from '../util/workspace';
+import { WORKSPACE_SCOPES, WORKSPACE_TYPES } from '../workspace';
 
 /**
  * git 代码提交格式检查

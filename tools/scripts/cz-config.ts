@@ -1,4 +1,4 @@
-import { WORKSPACE_SCOPES } from '../util/workspace';
+import { WORKSPACE_SCOPES } from '../workspace';
 
 /**
  * 交互式自动生成代码提交消息文本
