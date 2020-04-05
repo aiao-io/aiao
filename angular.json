@@ -1577,13 +1577,13 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "@nrwl/workspace:run-commands",
+          "builder": "@nrwl/node:package",
           "options": {
-            "commands": [
-              {
-                "command": "cd libs/leancloud-hash && yarn run build"
-              }
-            ]
+            "outputPath": "dist/libs/leancloud-hash",
+            "tsConfig": "libs/leancloud-hash/tsconfig.lib.json",
+            "packageJson": "libs/leancloud-hash/package.json",
+            "main": "libs/leancloud-hash/src/index.ts",
+            "assets": ["libs/leancloud-hash/README.md", "LICENSE"]
           },
           "configurations": {
             "production": {}
