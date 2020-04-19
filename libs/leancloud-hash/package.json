@@ -17,6 +17,6 @@
     "hash"
   ],
   "scripts": {
-    "build": "./scripts/build.sh"
+    "build": "cd ../../ && ng build leancloud-hash --prod"
   }
 }

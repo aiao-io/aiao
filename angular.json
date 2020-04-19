@@ -186,12 +186,22 @@
       "prefix": "aiao",
       "architect": {
         "build": {
-          "builder": "@nrwl/workspace:run-commands",
+          "builder": "@nrwl/node:package",
           "options": {
-            "commands": [
+            "outputPath": "dist/libs/stencil-toolkit",
+            "tsConfig": "libs/stencil-toolkit/tsconfig.lib.json",
+            "packageJson": "libs/stencil-toolkit/package.json",
+            "main": "libs/stencil-toolkit/src/index.ts",
+            "assets": [
+              "libs/stencil-toolkit/README.md",
+              "libs/stencil-toolkit/builders.json",
+              "libs/stencil-toolkit/collection.json",
               {
-                "command": "cd libs/stencil-toolkit && yarn run build"
-              }
+                "glob": "**/*.json",
+                "input": "libs/stencil-toolkit/src/lib",
+                "output": "lib"
+              },
+              "LICENSE"
             ]
           },
           "configurations": {

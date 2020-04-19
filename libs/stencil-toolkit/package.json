@@ -25,7 +25,7 @@
   "builders": "builders.json",
   "schematics": "./collection.json",
   "scripts": {
-    "build": "./scripts/build.sh"
+    "build": "cd ../../ && ng build stencil-toolkit --prod"
   },
   "dependencies": {
     "@nrwl/jest": "^9.1.2",

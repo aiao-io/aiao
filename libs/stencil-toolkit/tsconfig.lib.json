@@ -1,14 +1,12 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/libs/stencil-toolkit",
-    "rootDir": "./src",
-    "target": "es2015",
     "module": "commonjs",
+    "outDir": "../../dist/out-tsc",
     "declaration": true,
-    "inlineSources": true,
-    "types": [],
-    "lib": ["dom", "es2018"]
+    "rootDir": "./src",
+    "types": ["node"]
   },
-  "exclude": ["src/test-setup.ts", "**/*.spec.ts", "**/files/**/*"]
+  "exclude": ["**/*.spec.ts"],
+  "include": ["**/*.ts"]
 }
