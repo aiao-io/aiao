@@ -42,5 +42,5 @@
       "@aiao/leancloud-hash": ["libs/leancloud-hash/src/index.ts"]
     }
   },
-  "exclude": ["node_modules", "**/node_modules/**", "tmp"]
+  "exclude": ["node_modules", "coverage", "dist", "tmp"]
 }
