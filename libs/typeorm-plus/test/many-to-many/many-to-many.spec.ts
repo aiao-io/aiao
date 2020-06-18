@@ -5,7 +5,7 @@ import { baseOptions } from '../test-helper';
 import { PostImage } from './post-image.entity';
 import { Post } from './post.entity';
 
-fdescribe('many-to-many', () => {
+describe('many-to-many', () => {
   let connection: Connection;
   let typeormPlus: TypeormPlus;
 

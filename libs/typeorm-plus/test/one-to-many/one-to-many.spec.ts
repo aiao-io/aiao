@@ -5,7 +5,7 @@ import { baseOptions } from '../test-helper';
 import { PostCategory } from './post-category.entity';
 import { Post } from './post.entity';
 
-fdescribe('one-to-many', () => {
+describe('one-to-many', () => {
   let connection: Connection;
   let typeormPlus: TypeormPlus;
 
@@ -18,7 +18,7 @@ fdescribe('one-to-many', () => {
     postRepository = connection.getRepository(Post);
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
-    postSequelizeRepository = typeormPlus.sequelize.model('Post') as any;
+    postSequelizeRepository = typeormPlus.sequelize.model('Post') ;
   });
 
   describe('get', () => {
