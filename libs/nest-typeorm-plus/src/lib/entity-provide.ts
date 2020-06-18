@@ -5,7 +5,7 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 
 import { getSequelizeRepositoryToken, NEST_TYPEORM_PLUS } from './interface';
 
-export const createTypeOrmSequelizeProviders = (
+export const createSequelizeProviders = (
   entities: Function[] = [],
   connection?: Connection | ConnectionOptions | string
 ) => {
