@@ -2,6 +2,7 @@
   "editor.wordWrap": "on",
   "files.exclude": {
     "*.log": true,
+    "tmp": true,
     "**/.*": true,
     "**/*.en.md": true,
     "**/dist": true,
