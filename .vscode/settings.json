@@ -3,9 +3,9 @@
   "files.exclude": {
     "*.log": true,
     "**/.*": true,
+    "**/*.en.md": true,
     "**/dist": true,
     "**/node_modules": true,
-    "**/*.en.md": true,
     "bazel-out": true,
     "coverage": true,
     "libs/elements/elements-cdk": true,
@@ -15,7 +15,8 @@
     "libs/elements/loader": true,
     "libs/elements/url": true,
     "libs/elements/util": true,
-    "libs/elements/vendors": true
+    "libs/elements/vendors": true,
+    "tmp": true
   },
   "gitlens.codeLens.authors.enabled": false,
   "gitlens.codeLens.recentChange.enabled": false,
