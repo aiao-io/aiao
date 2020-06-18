@@ -4,7 +4,7 @@ import { DynamicModule, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { createSequelizeProviders } from './entity.provider';
-import { AiaoTypeormPlusModuleConfig } from './interface';
+import { AiaoTypeormPlusModuleConfig, EntityClassOrSchema } from './interface';
 import { AiaoNestTypeormPlusCoreModule } from './nest-typeorm-plus-core.module';
 
 @Module({
@@ -12,10 +12,10 @@ import { AiaoNestTypeormPlusCoreModule } from './nest-typeorm-plus-core.module';
   exports: [],
 })
 export class AiaoTypeormPlusModule {
-  static entities: Set<Repository<any>> = new Set();
+  static entities: Set<EntityClassOrSchema> = new Set();
 
   static forRoot(config: AiaoTypeormPlusModuleConfig): DynamicModule {
-    const entities = [...(config.entities || []), ...Array.from(AiaoNestTypeormPlusCoreModule.entities)];
+    const entities: any = [...(config.entities || []), ...Array.from(AiaoNestTypeormPlusCoreModule.entities)];
     config = { ...config, entities };
     return {
       module: AiaoTypeormPlusModule,

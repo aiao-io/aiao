@@ -1,5 +1,3 @@
-import { Repository } from 'typeorm';
-
 import { TypeormPlus } from '@aiao/typeorm-plus';
 import { DynamicModule, Global, Module } from '@nestjs/common';
 
@@ -10,7 +8,7 @@ import { AiaoTypeormPlusModuleConfig, EntityClassOrSchema, NEST_TYPEORM_PLUS_MOD
 @Global()
 @Module({})
 export class AiaoNestTypeormPlusCoreModule {
-  static entities: Set<Repository<EntityClassOrSchema>> = new Set();
+  static entities: Set<EntityClassOrSchema> = new Set();
 
   static forRoot(config: AiaoTypeormPlusModuleConfig): DynamicModule {
     const connectionProvider = createTypeormPlusConnect();
