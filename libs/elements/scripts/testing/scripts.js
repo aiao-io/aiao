@@ -1,4 +1,4 @@
-(function() {
+(function () {
   // test config
   const win = window;
   const aiao = (win.aiao = win.aiao || {});

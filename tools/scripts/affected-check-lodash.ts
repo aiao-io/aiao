@@ -14,10 +14,7 @@ const findLodash = (...path: string[]): string[] => {
   const findFiles: string[] = [];
   sourceFiles.forEach(file => {
     const imports = file.getImportDeclarations().filter(d => {
-      const name = d
-        .getModuleSpecifier()
-        .getText()
-        .replace(/^'|'$/g, '');
+      const name = d.getModuleSpecifier().getText().replace(/^'|'$/g, '');
       return name === 'lodash';
     });
 

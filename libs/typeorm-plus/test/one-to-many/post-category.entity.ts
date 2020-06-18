@@ -10,9 +10,6 @@ export class PostCategory {
   @Column()
   name: string;
 
-  @OneToMany(
-    () => Post,
-    _ => _.category
-  )
+  @OneToMany(() => Post, _ => _.category)
   posts: Post[];
 }

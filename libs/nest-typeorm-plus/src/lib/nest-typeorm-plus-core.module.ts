@@ -17,7 +17,7 @@ export class AiaoNestTypeormPlusCoreModule {
     return {
       module: AiaoNestTypeormPlusCoreModule,
       providers: [configProvider, connectionProvider],
-      exports: [configProvider, connectionProvider],
+      exports: [configProvider, connectionProvider]
     };
   }
 

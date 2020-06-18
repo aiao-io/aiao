@@ -117,10 +117,7 @@ export class CodeEditor implements ComponentInterface {
    */
   @Method()
   async format() {
-    return this.editor
-      .getModifiedEditor()
-      .getAction('editor.action.formatDocument')
-      .run();
+    return this.editor.getModifiedEditor().getAction('editor.action.formatDocument').run();
   }
 
   /**

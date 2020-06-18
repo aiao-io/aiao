@@ -14,12 +14,12 @@ export class TypeormPlus {
     this.sequelize = new Sequelize(opts);
 
     if (connection) {
-      connection.entityMetadatas.forEach((d) => this.addMetadata(d));
+      connection.entityMetadatas.forEach(d => this.addMetadata(d));
     }
   }
 
   init() {
-    this.entitiyMetadatas.forEach((metadata) => initRepository(metadata, this.sequelize));
+    this.entitiyMetadatas.forEach(metadata => initRepository(metadata, this.sequelize));
   }
 
   addMetadata(meta: EntityMetadata) {

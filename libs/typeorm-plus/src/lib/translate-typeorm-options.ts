@@ -28,6 +28,6 @@ export function translateTypeormOptions(options: Partial<ConnectionOptions>): Op
     username,
     password,
     database: database,
-    ssl,
+    ssl
   };
 }

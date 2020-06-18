@@ -12,7 +12,5 @@ export const getFileMD5 = (path: string | Buffer) => {
   } else {
     file = readFileSync(path);
   }
-  return createHash('md5')
-    .update(file)
-    .digest('hex');
+  return createHash('md5').update(file).digest('hex');
 };

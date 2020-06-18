@@ -10,9 +10,6 @@ export class PostImage {
   @Column()
   name: string;
 
-  @ManyToMany(
-    () => Post,
-    _ => _.images
-  )
+  @ManyToMany(() => Post, _ => _.images)
   posts: Post[];
 }

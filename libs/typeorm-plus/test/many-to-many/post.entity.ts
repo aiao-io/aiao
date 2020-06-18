@@ -10,11 +10,7 @@ export class Post {
   @Column()
   name: string;
 
-  @ManyToMany(
-    () => PostImage,
-    _ => _.posts,
-    { cascade: true }
-  )
+  @ManyToMany(() => PostImage, _ => _.posts, { cascade: true })
   @JoinTable()
   images: PostImage[];
 }

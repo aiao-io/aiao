@@ -9,7 +9,7 @@ import { AiaoNestTypeormPlusCoreModule } from './nest-typeorm-plus-core.module';
 
 @Module({
   providers: [],
-  exports: [],
+  exports: []
 })
 export class AiaoTypeormPlusModule {
   static entities: Set<EntityClassOrSchema> = new Set();
@@ -19,18 +19,18 @@ export class AiaoTypeormPlusModule {
     config = { ...config, entities };
     return {
       module: AiaoTypeormPlusModule,
-      imports: [TypeOrmModule.forRoot(config), AiaoNestTypeormPlusCoreModule.forRoot(config)],
+      imports: [TypeOrmModule.forRoot(config), AiaoNestTypeormPlusCoreModule.forRoot(config)]
     };
   }
 
   static forFeature(entities: any[] = [], connection?: Connection | ConnectionOptions | string): DynamicModule {
-    entities.forEach((d) => AiaoNestTypeormPlusCoreModule.entities.add(d));
+    entities.forEach(d => AiaoNestTypeormPlusCoreModule.entities.add(d));
     const entityProvides = createSequelizeProviders(entities, connection);
     return {
       module: AiaoTypeormPlusModule,
       imports: [TypeOrmModule.forFeature(entities, connection)],
       providers: [...entityProvides],
-      exports: [TypeOrmModule, ...entityProvides],
+      exports: [TypeOrmModule, ...entityProvides]
     };
   }
 }

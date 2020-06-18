@@ -9,6 +9,6 @@ export function createTypeormPlusConnect(): Provider {
     useFactory: async (options: AiaoTypeormPlusModuleConfig) => {
       return new TypeormPlus(options);
     },
-    inject: [NEST_TYPEORM_PLUS_MODULE_CONFIG],
+    inject: [NEST_TYPEORM_PLUS_MODULE_CONFIG]
   };
 }

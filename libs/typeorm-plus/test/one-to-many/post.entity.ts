@@ -10,11 +10,7 @@ export class Post {
   @Column()
   name: string;
 
-  @ManyToOne(
-    () => PostCategory,
-    _ => _.posts,
-    { cascade: true }
-  )
+  @ManyToOne(() => PostCategory, _ => _.posts, { cascade: true })
   @JoinColumn()
   category: PostCategory;
   @Column({ nullable: true })

@@ -20,10 +20,7 @@ const fixLodash = (...path: string[]) => {
   const sourceFiles = project.getSourceFiles(path);
   sourceFiles.forEach(file => {
     const imports = file.getImportDeclarations().filter(d => {
-      const name = d
-        .getModuleSpecifier()
-        .getText()
-        .replace(/^'|'$/g, '');
+      const name = d.getModuleSpecifier().getText().replace(/^'|'$/g, '');
       return name === 'lodash';
     });
 

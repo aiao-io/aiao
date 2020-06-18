@@ -22,7 +22,7 @@ interface Schema extends NormalizedSchema {
   project: string;
 }
 
-export default function(schema: Schema): Rule {
+export default function (schema: Schema): Rule {
   return (tree: Tree, context: SchematicContext) => {
     const { name: sName, project } = schema;
     const isNx = isNxWorkspace(tree);
