@@ -1,4 +1,5 @@
 import { Options } from 'sequelize';
+import { EntitySchema } from 'typeorm';
 
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { getRepositoryToken } from '@nestjs/typeorm';
@@ -15,3 +16,4 @@ export const NEST_TYPEORM_PLUS = 'NEST_TYPEORM_PLUS';
 export function getSequelizeRepositoryToken(entity: any, connection?: any): string {
   return `${getRepositoryToken(entity, connection)}_SEQUELIZE_REPOSITORY`;
 }
+export type EntityClassOrSchema = Function | EntitySchema;
