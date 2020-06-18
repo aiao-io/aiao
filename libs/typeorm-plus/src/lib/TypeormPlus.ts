@@ -9,17 +9,17 @@ export class TypeormPlus {
   private entitiyMetadatas = new Set<EntityMetadata>();
   sequelize: Sequelize;
 
-  constructor(options: ConnectionOptions, connection?: Connection) {
+  constructor(options: Partial<ConnectionOptions>, connection?: Connection) {
     const opts = translateTypeormOptions(options);
     this.sequelize = new Sequelize(opts);
 
     if (connection) {
-      connection.entityMetadatas.forEach(d => this.addMetadata(d));
+      connection.entityMetadatas.forEach((d) => this.addMetadata(d));
     }
   }
 
   init() {
-    this.entitiyMetadatas.forEach(metadata => initRepository(metadata, this.sequelize));
+    this.entitiyMetadatas.forEach((metadata) => initRepository(metadata, this.sequelize));
   }
 
   addMetadata(meta: EntityMetadata) {

@@ -39,7 +39,8 @@
       "@aiao/url": ["libs/url/src/index.ts"],
       "@aiao/universal-fastify-engine": ["libs/universal-fastify-engine/src/index.ts"],
       "@aiao/nest-angular-universal": ["libs/nest-angular-universal/src/index.ts"],
-      "@aiao/leancloud-hash": ["libs/leancloud-hash/src/index.ts"]
+      "@aiao/leancloud-hash": ["libs/leancloud-hash/src/index.ts"],
+      "@aiao/nest-typeorm-plus": ["libs/nest-typeorm-plus/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "coverage", "dist", "tmp"]

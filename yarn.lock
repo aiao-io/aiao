@@ -3042,6 +3042,13 @@
     path-to-regexp "3.2.0"
     tslib "2.0.0"
 
+"@nestjs/typeorm@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/typeorm/-/typeorm-7.1.0.tgz#ea964ff1724524e585f75bf7469784ca787e7983"
+  integrity sha512-xKqvhMF68TDFjptBerLD6HDe7qrb9RpZ2X1zBTdGKipFQrlVBTJtgs6Hmy+deuPJ3OnFzw0oe78U57Ur87xq8g==
+  dependencies:
+    uuid "8.1.0"
+
 "@ngtools/webpack@9.1.9":
   version "9.1.9"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-9.1.9.tgz#2098afd6f1f028238468262df2ad10afa81b82a5"

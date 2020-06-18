@@ -128,6 +128,9 @@
     "dev-elements-vue-e2e": {
       "tags": ["vue-e2e"],
       "implicitDependencies": ["dev-elements-vue"]
+    },
+    "nest-typeorm-plus": {
+      "tags": ["nest-lib"]
     }
   }
 }

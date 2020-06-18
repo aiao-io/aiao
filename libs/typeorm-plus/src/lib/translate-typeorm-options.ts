@@ -2,7 +2,7 @@ import { Options, Dialect } from 'sequelize';
 import { ConnectionOptions } from 'typeorm';
 import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions';
 
-export function translateTypeormOptions(options: ConnectionOptions): Options {
+export function translateTypeormOptions(options: Partial<ConnectionOptions>): Options {
   const { type } = options;
   const { host, port, username, password, database, ssl } = options as MysqlConnectionOptions;
 
@@ -28,6 +28,6 @@ export function translateTypeormOptions(options: ConnectionOptions): Options {
     username,
     password,
     database: database,
-    ssl
+    ssl,
   };
 }

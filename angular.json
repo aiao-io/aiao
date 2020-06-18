@@ -1736,6 +1736,29 @@
           }
         }
       }
+    },
+    "nest-typeorm-plus": {
+      "root": "libs/nest-typeorm-plus",
+      "sourceRoot": "libs/nest-typeorm-plus/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/nest-typeorm-plus/tsconfig.lib.json", "libs/nest-typeorm-plus/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/nest-typeorm-plus/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/nest-typeorm-plus/jest.config.js",
+            "tsConfig": "libs/nest-typeorm-plus/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
