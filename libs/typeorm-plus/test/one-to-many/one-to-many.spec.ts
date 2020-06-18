@@ -18,7 +18,7 @@ describe('one-to-many', () => {
     postRepository = connection.getRepository(Post);
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
-    postSequelizeRepository = typeormPlus.sequelize.model('Post') ;
+    postSequelizeRepository = typeormPlus.sequelize.model('Post') as any;
   });
 
   describe('get', () => {
