@@ -3085,6 +3085,14 @@
     path-to-regexp "3.2.0"
     tslib "2.0.0"
 
+"@nestjs/testing@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.2.0.tgz#af70ca5684173eb8d7e2095074ea4baa1b93514d"
+  integrity sha512-XVU3LgbHwZ5ijtM6xEpN9dLUb9dLzG7UlA//sLDyOfLQNpCFynL9l73JGGqQNyMpFUaSYG7VPWvhNEBBQn1ibQ==
+  dependencies:
+    optional "0.1.4"
+    tslib "2.0.0"
+
 "@nestjs/typeorm@^7.1.0":
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/@nestjs/typeorm/-/typeorm-7.1.0.tgz#ea964ff1724524e585f75bf7469784ca787e7983"
@@ -13716,6 +13724,11 @@ opn@^5.3.0, opn@^5.5.0:
   integrity sha512-PqHpggC9bLV0VeWcdKhkpxY+3JTzetLSqTCWL/z/tFIbI6G8JCjondXklT1JinczLz2Xib62sSp0T/gKT4KksA==
   dependencies:
     is-wsl "^1.1.0"
+
+optional@0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/optional/-/optional-0.1.4.tgz#cdb1a9bedc737d2025f690ceeb50e049444fd5b3"
+  integrity sha512-gtvrrCfkE08wKcgXaVwQVgwEQ8vel2dc5DDBn9RLQZ3YtmtkBss6A2HY6BnJH4N/4Ku97Ri/SF8sNWE2225WJw==
 
 optionator@^0.8.1, optionator@^0.8.3:
   version "0.8.3"

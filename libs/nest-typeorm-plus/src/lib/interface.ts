@@ -1,11 +1,9 @@
-import { Options } from 'sequelize';
 import { Connection, ConnectionOptions, EntitySchema } from 'typeorm';
 
 import { getRepositoryToken, TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 export type AiaoTypeormPlusModuleConfig = TypeOrmModuleOptions & {
-  sequelize: Options;
-  entities: EntityClassOrSchema[];
+  entities?: EntityClassOrSchema[];
 };
 
 export const NEST_TYPEORM_PLUS_MODULE_CONFIG = 'NEST_TYPEORM_PLUS_MODULE_CONFIG';

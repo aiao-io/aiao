@@ -19,11 +19,17 @@ export class TypeormPlus {
   }
 
   init() {
+    console.log('this.entitiyMetadatas', this.entitiyMetadatas.size);
+
+    console.log();
+    console.log();
+    console.log();
     this.entitiyMetadatas.forEach(metadata => initRepository(metadata, this.sequelize));
   }
 
   addMetadata(meta: EntityMetadata) {
     this.entitiyMetadatas.add(meta);
+    console.log('addMetadata');
     const { modelName, attributes, options } = translateTypeOrmEntity(meta);
     return this.sequelize.define(modelName, attributes, options);
   }
