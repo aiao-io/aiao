@@ -8,7 +8,6 @@ import {
   Event,
   EventEmitter,
   forceUpdate,
-  h,
   Host,
   Listen,
   Method,

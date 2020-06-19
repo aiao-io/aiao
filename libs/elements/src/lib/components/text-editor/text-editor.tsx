@@ -1,5 +1,5 @@
 import { renderHiddenInput } from '@aiao/elements-cdk';
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { InputChangeEventDetail } from '../../interfaces/input.interface';
 import { getSelectionElements, restoreRange, saveRange } from '../../utils/selection';

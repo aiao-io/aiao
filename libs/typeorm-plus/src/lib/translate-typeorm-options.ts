@@ -1,4 +1,4 @@
-import { Options, Dialect } from 'sequelize';
+import { Dialect, Options } from 'sequelize';
 import { ConnectionOptions } from 'typeorm';
 import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions';
 

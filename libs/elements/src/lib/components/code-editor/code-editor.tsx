@@ -13,11 +13,11 @@ import {
   Watch
 } from '@stencil/core';
 
+import { CodeEditorAcitons } from '../../utils/code-editor/actions';
 import { getBaseMonacoUrl } from '../../utils/code-editor/base-url';
 import { LoadMonacoEditor } from '../../utils/code-editor/load-monaco-editor';
 import { normalizeMonacoEditorOptions } from '../../utils/code-editor/normalize-options';
 import { normalizeMonacoEditorValue, normalizeMonacoEditorValueOut } from '../../utils/code-editor/normalize-value';
-import { CodeEditorAcitons } from '../../utils/code-editor/actions';
 
 const defaultOptions: monaco.editor.IStandaloneEditorConstructionOptions = {
   theme: 'vs-dark',

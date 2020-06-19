@@ -1,6 +1,7 @@
-import { LazyModuleLoader, LazyRoutes, matcher } from '..';
 import { Compiler, ComponentFactoryResolver, Injector, NgModuleFactory, NgModuleRef, Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+
+import { LazyModuleLoader, LazyRoutes, matcher } from '../';
 
 describe('LazyModuleLoader', () => {
   let lazyModuleLoader: LazyModuleLoader;

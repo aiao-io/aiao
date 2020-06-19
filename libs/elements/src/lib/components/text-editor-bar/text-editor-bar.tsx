@@ -1,5 +1,5 @@
 import { urlJoin } from '@aiao/url';
-import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Prop } from '@stencil/core';
 
 import { config } from '../../global/config';
 import { TEXT_EDITOR_DEFAULT_SETTINGS } from './default-actions';

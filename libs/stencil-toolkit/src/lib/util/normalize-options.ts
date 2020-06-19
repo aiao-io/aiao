@@ -1,5 +1,6 @@
 import { Tree } from '@angular-devkit/schematics';
 import { getNpmScope, readJsonInTree } from '@nrwl/workspace';
+
 import { isNxWorkspace } from './is-nx';
 
 function toFileName(s: string): string {

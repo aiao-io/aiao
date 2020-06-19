@@ -1,5 +1,6 @@
-import { LAZY_ROUTES_TOKEN, LazyModule, matcher } from '..';
 import { TestBed } from '@angular/core/testing';
+
+import { LAZY_ROUTES_TOKEN, LazyModule, matcher } from '../';
 
 describe('LazyModule', () => {
   it('should create', () => {

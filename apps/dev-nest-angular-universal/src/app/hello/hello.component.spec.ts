@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HelloComponent } from './hello.component';
 import { APIService } from './api.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HelloComponent } from './hello.component';
 
 describe('HelloComponent', () => {
   let component: HelloComponent;

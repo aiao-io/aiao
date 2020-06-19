@@ -1,4 +1,4 @@
-import { Connection, ConnectionOptions, Repository } from 'typeorm';
+import { Connection, ConnectionOptions } from 'typeorm';
 
 import { DynamicModule, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';

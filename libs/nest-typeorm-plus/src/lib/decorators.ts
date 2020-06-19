@@ -1,7 +1,6 @@
 import { Inject } from '@nestjs/common';
 
-import { getSequelizeRepositoryToken, NEST_TYPEORM_PLUS } from './interface';
-import { EntityClassOrSchema } from '@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type';
+import { EntityClassOrSchema, getSequelizeRepositoryToken, NEST_TYPEORM_PLUS } from './interface';
 
 export const InjectSequlizeRepository = (entity: EntityClassOrSchema) => Inject(getSequelizeRepositoryToken(entity));
 

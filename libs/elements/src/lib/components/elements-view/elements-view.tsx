@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core';
+import { Component, ComponentInterface, Element, Host, Prop } from '@stencil/core';
 
 import { config } from '../../global/config';
 
