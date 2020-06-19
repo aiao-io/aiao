@@ -431,8 +431,9 @@
       "projectType": "library",
       "architect": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:lint",
           "options": {
+            "linter": "eslint",
             "tsConfig": ["libs/elements-react/tsconfig.lib.json", "libs/elements-react/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!libs/elements-react/**/*"]
           }
@@ -444,8 +445,16 @@
             "tsConfig": "libs/elements-react/tsconfig.lib.json",
             "project": "libs/elements-react/package.json",
             "entryFile": "libs/elements-react/src/index.ts",
+            "external": ["react", "react-dom"],
             "babelConfig": "@nrwl/react/plugins/bundle-babel",
-            "rollupConfig": "@nrwl/react/plugins/bundle-rollup"
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
           },
           "configurations": {
             "production": {}
@@ -1771,6 +1780,69 @@
     "analytics": false
   },
   "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/react": {
+      "application": {
+        "style": "scss",
+        "linter": "eslint",
+        "babel": true
+      },
+      "library": {
+        "style": "scss",
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      },
+      "component": {
+        "style": "scss"
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/web": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nx-plugin": {
+      "plugin": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
     "@nrwl/angular:application": {
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
@@ -1780,20 +1852,6 @@
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
-    },
-    "@nrwl/react": {
-      "application": {
-        "style": "scss",
-        "linter": "tslint",
-        "babel": true
-      },
-      "component": {
-        "style": "scss"
-      },
-      "library": {
-        "style": "scss",
-        "linter": "tslint"
-      }
     }
   },
   "defaultProject": "dev-nest-angular-universal"
