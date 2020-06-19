@@ -7,6 +7,7 @@ import {
   Element,
   Event,
   EventEmitter,
+  h,
   Listen,
   Method,
   Prop,

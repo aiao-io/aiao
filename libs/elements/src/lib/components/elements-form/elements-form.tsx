@@ -1,7 +1,7 @@
 import set from 'lodash/set';
 
 import { plainObjectToFlattenPathObject } from '@aiao/util';
-import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Method, Prop } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
 
 import { config } from '../../global/config';
 import { ELEMENTS_FORM_ITEM } from '../../utils/render/render.interface';

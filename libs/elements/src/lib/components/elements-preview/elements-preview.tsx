@@ -1,5 +1,5 @@
 import { IElementConfig } from '@aiao/elements-cdk';
-import { Component, ComponentInterface, Element, Host, Prop } from '@stencil/core';
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core';
 
 import { IElementEditorData } from '../../interfaces/elements-editor.interface';
 import { elementsPreviewRender } from '../../utils/render/render';
