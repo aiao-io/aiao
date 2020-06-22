@@ -33,7 +33,10 @@ export const baseOptions: ConnectionOptions = {
 
 @Controller()
 export class TestService {
-  constructor(@InjectRepository(Post) post: Post, @InjectSequlizeRepository(Post) post2: SequelizeRepository<Post>) {}
+  constructor(
+    @InjectSequlizeRepository(Post) public post: SequelizeRepository<Post>,
+    @InjectSequlizeRepository(PostCategory) public postCategory: SequelizeRepository<PostCategory>
+  ) {}
 }
 @Module({
   imports: [AiaoTypeormPlusModule.forFeature([Post, PostCategory])],
@@ -68,7 +71,14 @@ describe('Error messages', () => {
     await app.init();
   });
 
-  it(`/GET (Observable stream) `, () => {
-    console.log('testService', testService);
+  it(`test`, async () => {
+    const postCat = await testService.postCategory.create({ name: 'cat' });
+    await testService.post.create({
+      name: 'post',
+      categoryId: postCat.id
+    });
+    const post = await testService.post.findOne({ include: ['category'] });
+    expect(post.name).toEqual('post');
+    expect(post.categoryId).toEqual(postCat.id);
   });
 });

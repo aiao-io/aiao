@@ -19,8 +19,6 @@ export class TypeormPlus {
   }
 
   init() {
-    console.log('this.entitiyMetadatas', this.entitiyMetadatas.size);
-
     this.entitiyMetadatas.forEach(metadata => initRepository(metadata, this.sequelize));
   }
 

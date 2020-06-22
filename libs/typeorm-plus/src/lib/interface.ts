@@ -10,7 +10,7 @@ import {
 } from 'sequelize';
 
 // @ts-ignore
-export interface SequelizeRepository<M> extends ModelType {
+export interface SequelizeRepository<M> extends ModelType<M> {
   findAll(options?: FindOptions): Promise<M[]>;
   findByPk(identifier?: Identifier, options?: Omit<FindOptions | NonNullFindOptions, 'where'>): Promise<M | null>;
 
