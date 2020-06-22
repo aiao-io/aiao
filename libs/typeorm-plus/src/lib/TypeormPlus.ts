@@ -1,4 +1,4 @@
-import { Sequelize } from 'sequelize';
+import { ModelType, Sequelize } from 'sequelize';
 import { Connection, ConnectionOptions, EntityMetadata } from 'typeorm';
 
 import { initRepository } from './init-repository';
@@ -27,9 +27,8 @@ export class TypeormPlus {
     this.entitiyMetadatas.forEach(metadata => initRepository(metadata, this.sequelize));
   }
 
-  addMetadata(meta: EntityMetadata) {
+  addMetadata(meta: EntityMetadata): ModelType {
     this.entitiyMetadatas.add(meta);
-    console.log('addMetadata');
     const { modelName, attributes, options } = translateTypeOrmEntity(meta);
     return this.sequelize.define(modelName, attributes, options);
   }

@@ -1,7 +1,7 @@
 import { env } from 'process';
 import { ConnectionOptions } from 'typeorm';
 
-import { TypeormPlus } from '@aiao/typeorm-plus';
+import { SequelizeRepository, TypeormPlus } from '@aiao/typeorm-plus';
 import { Controller, INestApplication, Module } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { InjectRepository, TypeOrmModule } from '@nestjs/typeorm';
@@ -32,16 +32,23 @@ export const baseOptions: ConnectionOptions = {
 };
 
 @Controller()
-export class TestService {}
+export class TestService {
+  constructor(@InjectRepository(Post) post: Post, @InjectSequlizeRepository(Post) post2: SequelizeRepository<Post>) {}
+}
+@Module({
+  imports: [AiaoTypeormPlusModule.forFeature([Post, PostCategory])],
+  providers: [TestService]
+})
+export class DBModule {}
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
+    DBModule,
+    AiaoTypeormPlusModule.forRoot({
       ...baseOptions,
-      entities: [Post, PostCategory]
+      entities: []
     })
-  ],
-  providers: [TestService]
+  ]
 })
 export class AppModule {}
 
