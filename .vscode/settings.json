@@ -43,7 +43,6 @@
   "editor.formatOnSave": true,
   // importSorter 配置
   "importSorter.generalConfiguration.sortOnBeforeSave": true,
-  "importSorter.sortConfiguration.removeUnusedDefaultImports": true,
   "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 120,
   "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimit",
   "importSorter.importStringConfiguration.tabSize": 2
