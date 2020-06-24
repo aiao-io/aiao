@@ -19,8 +19,8 @@ export class AiaoTypeormPlusModule {
     };
   }
 
-  static forFeature(entities: any[] = [], connection?: Connection | ConnectionOptions | string): DynamicModule {
-    entities.forEach(d => AiaoNestTypeormPlusCoreModule.entities.add(d));
+  static forFeature(entities: any[] = [], connection?: ConnectionOptions | string): DynamicModule {
+    AiaoNestTypeormPlusCoreModule.addEntities(entities, connection);
     const entityProvides = createSequelizeProviders(entities, connection);
     return {
       module: AiaoTypeormPlusModule,
