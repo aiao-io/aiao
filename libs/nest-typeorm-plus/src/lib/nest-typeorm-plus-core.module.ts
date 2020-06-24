@@ -13,7 +13,7 @@ import { NEST_TYPEORM_PLUS_MODULE_CONFIG } from './interface';
 export class AiaoNestTypeormPlusCoreModule {
   static entities: Set<Repository<any>> = new Set();
   static forRoot(config: TypeOrmModuleOptions): DynamicModule {
-    const entities: any = [...(config.entities || []), ...Array.from(AiaoNestTypeormPlusCoreModule.entities)];
+    const entities: any = [...(config.entities || []), ...Array.from(this.entities)];
     config = { ...config, entities };
     const connectionProvider = createTypeormPlusConnection(config as ConnectionOptions);
     const configProvider = { provide: NEST_TYPEORM_PLUS_MODULE_CONFIG, useValue: config };

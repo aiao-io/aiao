@@ -50,6 +50,13 @@ export class DBModule {}
     AiaoTypeormPlusModule.forRoot({
       ...baseOptions,
       entities: []
+    }),
+    AiaoTypeormPlusModule.forRoot({
+      ...baseOptions,
+      name: 'test2',
+      dropSchema: false,
+      database: 'test2',
+      entities: []
     })
   ]
 })
