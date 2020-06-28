@@ -1,13 +1,12 @@
 import { env } from 'process';
 import { ConnectionOptions } from 'typeorm';
 
-import { SequelizeRepository, TypeormPlus } from '@aiao/typeorm-plus';
+import { SequelizeRepository } from '@aiao/typeorm-plus';
 import { Controller, INestApplication, Module } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import { InjectRepository, TypeOrmModule } from '@nestjs/typeorm';
 
 import { AiaoTypeormPlusModule } from '../src';
-import { InjectSequlizeRepository, InjectTypeormPlus } from '../src/lib/decorators';
+import { InjectSequlizeRepository } from '../src/lib/decorators';
 import { PostCategory } from './post-category.entity';
 import { Post } from './post.entity';
 
@@ -35,7 +34,9 @@ export const baseOptions: ConnectionOptions = {
 export class TestService {
   constructor(
     @InjectSequlizeRepository(Post) public post: SequelizeRepository<Post>,
-    @InjectSequlizeRepository(PostCategory) public postCategory: SequelizeRepository<PostCategory>
+    @InjectSequlizeRepository(PostCategory) public postCategory: SequelizeRepository<PostCategory>,
+    @InjectSequlizeRepository(Post, 'test2') public post2: SequelizeRepository<Post>,
+    @InjectSequlizeRepository(PostCategory, 'test2') public postCategory2: SequelizeRepository<PostCategory>
   ) {}
 }
 @Module({
@@ -78,7 +79,7 @@ describe('Error messages', () => {
     await app.init();
   });
 
-  it(`test`, async () => {
+  fit(`test`, async () => {
     const postCat = await testService.postCategory.create({ name: 'cat' });
     await testService.post.create({
       name: 'post',
@@ -86,6 +87,17 @@ describe('Error messages', () => {
     });
     const post = await testService.post.findOne({ include: ['category'] });
     expect(post.name).toEqual('post');
+    expect(post.categoryId).toEqual(postCat.id);
+  });
+
+  it(`test2`, async () => {
+    const postCat = await testService.postCategory2.create({ name: 'cat2' });
+    await testService.post2.create({
+      name: 'post2',
+      categoryId: postCat.id
+    });
+    const post = await testService.post2.findOne({ include: ['category2'] });
+    expect(post.name).toEqual('post2');
     expect(post.categoryId).toEqual(postCat.id);
   });
 });

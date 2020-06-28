@@ -12,7 +12,6 @@ import { getTypeOrmPlusConnectionToken } from './utils';
 @Global()
 @Module({})
 export class AiaoNestTypeormPlusCoreModule {
-  static entities = new Set<Repository<any>>();
   static connectionEntities = new Map<string, Set<Repository<any>>>();
 
   static addEntities(entities: any[] = [], connection?: ConnectionOptions | string) {
