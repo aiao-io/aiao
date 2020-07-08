@@ -1,4 +1,4 @@
-import { isString } from 'lodash';
+import isString from 'lodash/isString';
 import { ConnectionOptions } from 'typeorm';
 
 export function getTypeOrmPlusConnectionToken(connection?: ConnectionOptions | string) {

@@ -1766,6 +1766,16 @@
             "tsConfig": "libs/nest-typeorm-plus/tsconfig.spec.json",
             "passWithNoTests": true
           }
+        },
+        "check": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register tools/scripts/affected-lodash-optimize"
+              }
+            ]
+          }
         }
       }
     }

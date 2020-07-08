@@ -1,5 +1,5 @@
 import Ora from 'ora';
-import { exit } from 'process';
+import { cwd, exit } from 'process';
 import { Project } from 'ts-morph';
 import { Arguments, argv } from 'yargs';
 
@@ -44,14 +44,15 @@ const fixLodash = (...path: string[]) => {
 };
 
 export const autoFixLodash = async (conf: Arguments) => {
-  const config = parseFiles(conf as NxArgs);
-  const { files } = config;
-  const needFiles = files.filter(
-    d => d.endsWith('.ts') && !d.includes('e2e') && !d.includes('tools') && /(spec|po).ts$/.test(d) === false
-  );
-  if (needFiles.length > 0) {
-    fixLodash(...needFiles);
-  }
+  console.log('conf', conf, cwd());
+  // const config = parseFiles(conf as NxArgs);
+  // const { files } = config;
+  // const needFiles = files.filter(
+  //   d => d.endsWith('.ts') && !d.includes('e2e') && !d.includes('tools') && /(spec|po).ts$/.test(d) === false
+  // );
+  // if (needFiles.length > 0) {
+  //   fixLodash(...needFiles);
+  // }
   exit();
 };
 
