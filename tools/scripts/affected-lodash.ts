@@ -38,8 +38,8 @@ const fixLodash = (paths: string[], mode: 'check' | 'write' = 'check') => {
         });
         imports.forEach(imp => imp.remove());
         file.saveSync();
-        ora.succeed(filePath);
       }
+      ora.succeed(filePath);
       findFiles.push(filePath);
     }
   });
