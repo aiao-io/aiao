@@ -20,7 +20,7 @@
     "fastify"
   ],
   "scripts": {
-    "build": "cd ../../ && ng build nest-angular-universal --prod"
+    "build": "cd ../../ && yarn build nest-angular-universal --prod"
   },
   "peerDependencies": {
     "@aiao/universal-fastify-engine": "^0.0.1",

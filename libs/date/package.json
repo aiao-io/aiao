@@ -16,7 +16,7 @@
     "date"
   ],
   "scripts": {
-    "build": "cd ../../ && ng build date --prod"
+    "build": "cd ../../ && yarn build date --prod"
   },
   "peerDependencies": {
     "lodash": "^4.17.15"

@@ -34,7 +34,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "cd ../../ && ng build elements"
+    "build": "cd ../../ && yarn build elements"
   },
   "dependencies": {
     "@aiao/elements-cdk": "^0.1.3",

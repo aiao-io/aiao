@@ -16,7 +16,7 @@
     "url"
   ],
   "scripts": {
-    "build": "cd ../../ && ng build url --prod"
+    "build": "cd ../../ && yarn build url --prod"
   },
   "peerDependencies": {
     "lodash": "^4.17.15"
