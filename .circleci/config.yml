@@ -113,7 +113,7 @@ lint: &lint
 # check_lodash
 check_lodash: &check_lodash
   name: Check Lodash Import
-  command: node dist/tools/scripts/affected-lodash-optimize ${AFFECTED_ARGS}
+  command: node dist/tools/scripts/affected-lodash ${AFFECTED_ARGS} --check
 
 test: &test
   name: test

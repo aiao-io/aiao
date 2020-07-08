@@ -38,7 +38,7 @@
     "preinstall": "node tools/scripts/unlink",
     "prepush": "yarn check:commit && yarn format:check",
     "run:tools": "ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register",
-    "task:lodash-optimize": "yarn node dist/tools/scripts/affected-lodash-optimize && yarn format",
+    "task:lodash-optimize": "yarn node dist/tools/scripts/affected-lodash && yarn format --write",
     "task:hotfix": "node dist/tools/hotfix/hotfix"
   },
   "private": true,
