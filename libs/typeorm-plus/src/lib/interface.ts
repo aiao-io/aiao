@@ -25,3 +25,5 @@ export interface SequelizeRepository<M> extends ModelType<M> {
   increment(field: string | string[], options: IncrementDecrementOptionsWithBy): Promise<M>;
   increment(fields: { [key: string]: number }, options: IncrementDecrementOptions): Promise<M>;
 }
+
+export const a = 1;
