@@ -34,7 +34,9 @@ export const baseOptions: ConnectionOptions = {
 export class TestService {
   constructor(
     @InjectSequlizeRepository(Post) public post: SequelizeRepository<Post>,
-    @InjectSequlizeRepository(PostCategory) public postCategory: SequelizeRepository<PostCategory>
+    @InjectSequlizeRepository(PostCategory) public postCategory: SequelizeRepository<PostCategory>,
+    @InjectSequlizeRepository(Post, 'test2') public post2: SequelizeRepository<Post>,
+    @InjectSequlizeRepository(PostCategory, 'test2') public postCategory2: SequelizeRepository<PostCategory>
   ) {}
 }
 @Module({
@@ -61,7 +63,7 @@ export class DBModule {}
 })
 export class AppModule {}
 
-describe('单库测试', () => {
+describe('多库测试', () => {
   let server: any;
   let app: INestApplication;
   let testService: TestService;
@@ -87,4 +89,15 @@ describe('单库测试', () => {
     expect(post.name).toEqual('post');
     expect(post.categoryId).toEqual(postCat.id);
   });
+
+  // it(`第二个库, 写入一对多关系`, async () => {
+  //   const postCat = await testService.postCategory2.create({ name: 'cat2' });
+  //   await testService.post2.create({
+  //     name: 'post2',
+  //     categoryId: postCat.id
+  //   });
+  //   const post = await testService.post2.findOne({ include: ['category2'] });
+  //   expect(post.name).toEqual('post2');
+  //   expect(post.categoryId).toEqual(postCat.id);
+  // });
 });
