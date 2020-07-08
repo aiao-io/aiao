@@ -1,8 +1,6 @@
-import { execSync } from 'child_process';
 import { statSync } from 'fs-extra';
 import { flattenDeep } from 'lodash';
 import path from 'path';
-import resolve from 'resolve';
 import { Arguments } from 'yargs';
 
 import { getProjectRoots, parseFiles } from '@nrwl/workspace/src/command-line/shared';
@@ -53,31 +51,6 @@ function chunkify(target: string[], size: number): string[][] {
     current[current.length - 1].push(value);
     return current;
   }, []);
-}
-
-function write(patterns: string[]) {
-  if (patterns.length > 0) {
-    execSync(`node "${prettierPath()}" --write ${patterns.join(' ')}`, {
-      stdio: [0, 1, 2]
-    });
-  }
-}
-
-function check(patterns: string[]) {
-  if (patterns.length > 0) {
-    try {
-      execSync(`node "${prettierPath()}" --list-different ${patterns.join(' ')}`, {
-        stdio: [0, 1, 2]
-      });
-    } catch (e) {
-      process.exit(1);
-    }
-  }
-}
-
-function prettierPath() {
-  const basePath = path.dirname(resolve.sync('prettier', { basedir: __dirname }));
-  return path.join(basePath, 'bin-prettier.js');
 }
 
 export const getAffectedFiles = async (args: Arguments) => {

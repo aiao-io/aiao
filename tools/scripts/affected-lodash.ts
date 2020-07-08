@@ -3,6 +3,7 @@ import { exit } from 'process';
 import { Project } from 'ts-morph';
 import yargs from 'yargs';
 
+import { prettierSync } from '../util/pretter';
 import { getAffectedFiles } from './affected-base';
 
 /**
@@ -62,17 +63,18 @@ const autoFixLodash = async () => {
 
   if (needFiles.length > 0) {
     const fixFiles = fixLodash(needFiles, mode as any);
-    switch (mode) {
-      case 'write':
-        break;
-      case 'check':
-        if (fixFiles.length > 0) {
+    if (fixFiles.length > 0) {
+      switch (mode) {
+        case 'write':
+          prettierSync(fixFiles);
+          break;
+        case 'check':
           fixFiles.forEach((f, i) => console.error(`${i} ${f}`));
           process.exit(1);
-        }
+      }
     }
   }
 };
 
-// ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register tools/scripts/affected-lodash --write
+// ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register tools/scripts/affected-lodash --mode=write
 autoFixLodash().then(() => exit());
