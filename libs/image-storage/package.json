@@ -14,6 +14,6 @@
   },
   "keywords": [],
   "scripts": {
-    "build": "cd ../../ && ng build image-storage --prod"
+    "build": "cd ../../ && yarn build image-storage --prod"
   }
 }

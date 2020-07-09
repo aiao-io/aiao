@@ -16,7 +16,7 @@
     "random"
   ],
   "scripts": {
-    "build": "cd ../../ && ng build random --prod"
+    "build": "cd ../../ && yarn build random --prod"
   },
   "peerDependencies": {
     "lodash": "^4.17.15"

@@ -2,7 +2,7 @@
   "scripts": {
     "dev:ssr": "cd ../../ && ng run dev-nest-angular-universal:serve-ssr",
     "serve:ssr": "cd ../../ && node dist/dev-nest-angular-universal/server/main.js",
-    "build:ssr": "cd ../../ && ng build dev-nest-angular-universal --prod && ng run dev-nest-angular-universal:server:production",
+    "build:ssr": "cd ../../ && yarn build dev-nest-angular-universal --prod && ng run dev-nest-angular-universal:server:production",
     "prerender": "cd ../../ && ng run dev-nest-angular-universal:prerender"
   }
 }

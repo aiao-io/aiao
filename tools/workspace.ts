@@ -16,6 +16,7 @@ export const WORKSPACE_SCOPES = [
   'lazy-module',
   'leancloud-hash',
   'nest-angular-universal',
+  'nest-typeorm-plus',
   'random',
   'stencil-toolkit',
   'tools',
