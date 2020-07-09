@@ -16,9 +16,6 @@ assets/
 
 react-component-lib/
 
-/integration/stencil-toolkit-nx/libs/angular-lib/src/lib/directives
-/integration/stencil-toolkit-nx/libs/stencil-lib/loader
-integration/stencil-toolkit-nx/libs/react-lib/src/lib/proxies*
 /libs/elements-angular/src/lib/directives
 /libs/elements-react/src/lib/proxies*
 

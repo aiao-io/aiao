@@ -1,5 +1,8 @@
 {
   "npmScope": "aiao",
+  "affected": {
+    "defaultBase": "master"
+  },
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": {
