@@ -43,6 +43,7 @@ set_env: &set_env
     fi
     source $BASH_ENV
     echo $AFFECTED_ARGS
+    echo $BASH_ENV
 
 # install
 install_yarn: &install_yarn
