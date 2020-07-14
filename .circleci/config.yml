@@ -50,10 +50,16 @@ install_yarn: &install_yarn
   name: yarn install
   command: yarn install --frozen-lockfile --non-interactive --ignore-scripts
 
+#
+
+decorate_angular_cli: &decorate_angular_cli
+  name: Decorate Angular Cli
+  command: node ./decorate-angular-cli.js
+
 # ngcc
 ngcc: &ngcc
   name: Ngcc
-  command: yarn run ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points
+  command: yarn run postngcc
 
 # build_tools
 build_tools: &build_tools
@@ -150,6 +156,7 @@ jobs:
       - restore_cache: *restore_dist
       - run: *set_env
       - run: *install_yarn
+      - run: *decorate_angular_cli
       - run: *ngcc
       - run: *build_tools
       - run: *hotfix

@@ -1,17 +1,20 @@
 import { existsSync } from 'fs';
 import ora from 'ora';
 
+import { getAffectedLibs } from '../util/get-affected-libs';
 import { run } from '../util/runner';
 import { NEED_CHECK_LIBS, NPM_SCOPE } from '../workspace';
 
 /**
- * 检查顶层基础 lib 是否已经构建
+ * 检查基础 lib 是否已经构建
  */
 export const checkLibBuild = async () => {
   const check = ora('build').start();
   const needBuildLibs = [];
+  const affectedLibs = getAffectedLibs();
   NEED_CHECK_LIBS.forEach(name => {
-    if (!existsSync(`dist/libs/${name}`)) {
+    // 文件不存在, 或是已经变化都重新构建
+    if (!existsSync(`dist/libs/${name}`) || affectedLibs.includes(name)) {
       needBuildLibs.push(`--scope @${NPM_SCOPE}/${name}`);
     }
   });
