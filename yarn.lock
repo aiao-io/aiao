@@ -4060,11 +4060,6 @@
   dependencies:
     type-detect "4.0.8"
 
-"@stencil/angular-output-target@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@stencil/angular-output-target/-/angular-output-target-0.0.2.tgz#e534c736d204f9cc7c95f72c9c4d56739beba836"
-  integrity sha512-GyQ/VTipzzweuNYbs+FrK1q3FSEG4LZkzg+keuMQNRDX77aCy5hsYivspMRMwOXIwUXh9wSIzqQR3JuLiFHzcw==
-
 "@stencil/core@^1.12.0":
   version "1.16.5"
   resolved "https://registry.yarnpkg.com/@stencil/core/-/core-1.16.5.tgz#c7c6f50abce3cf68f23d8984e97ba77fa6bd9aff"
