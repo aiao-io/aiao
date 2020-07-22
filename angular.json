@@ -1705,6 +1705,18 @@
       "projectType": "library",
       "schematics": {},
       "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/nest-typeorm-plus/tsconfig.lib.json",
+            "project": "libs/nest-typeorm-plus/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/nest-typeorm-plus/tsconfig.lib.prod.json"
+            }
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
