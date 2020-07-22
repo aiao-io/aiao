@@ -7,10 +7,10 @@ export interface CustomEvents {
 export abstract class EventDispatcher<Events extends CustomEvents> {
   private m: Map<keyof Events, Set<(event: Events[keyof Events]) => void>> = new Map();
 
-  private getListener(type: keyof Events) {
+  private getListener(type: keyof Events): Set<any> {
     const has = this.m.has(type);
     if (has) {
-      return this.m.get(type);
+      return this.m.get(type) as any;
     } else {
       const listeners = new Set<any>();
       this.m.set(type, listeners);

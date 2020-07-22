@@ -43,7 +43,7 @@ const stringTime = (key: keyof ParseTime, value: number, config?: ParseTimeConfi
 // 过去了多少时间
 export const formatPassTime = (startDate: Date, endDate: Date, config?: ParseTimeConfig | fotmatPassFunction) => {
   const passTime = parseTime(startDate, endDate);
-  const key = dateKeys.find(k => passTime[k] > 0);
+  const key = dateKeys.find(k => passTime[k] > 0) || 'second';
   const value = passTime[key];
   return isFunction(config) ? config({ key, value }) : stringTime(key, value, config as ParseTimeConfig);
 };

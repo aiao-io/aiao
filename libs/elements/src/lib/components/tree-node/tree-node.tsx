@@ -17,47 +17,47 @@ export class TreeNode implements ComponentInterface {
   /**
    * drag start
    */
-  @Event() aiaoTreeNodeDragStart: EventEmitter<TreeNodeEvent>;
+  @Event() aiaoTreeNodeDragStart!: EventEmitter<TreeNodeEvent>;
   /**
    * drag enter
    */
-  @Event() aiaoTreeNodeDragEnter: EventEmitter<TreeNodeEvent>;
+  @Event() aiaoTreeNodeDragEnter!: EventEmitter<TreeNodeEvent>;
   /**
    * drag over
    */
-  @Event() aiaoTreeNodeDragOver: EventEmitter<TreeNodeEvent>;
+  @Event() aiaoTreeNodeDragOver!: EventEmitter<TreeNodeEvent>;
 
   /**
    * drag leave
    */
-  @Event() aiaoTreeNodeDragLeave: EventEmitter<TreeNodeEvent>;
+  @Event() aiaoTreeNodeDragLeave!: EventEmitter<TreeNodeEvent>;
   /**
    * drop
    */
-  @Event() aiaoTreeNodeDrop: EventEmitter<TreeNodeEvent>;
+  @Event() aiaoTreeNodeDrop!: EventEmitter<TreeNodeEvent>;
   /**
    * drag end
    */
-  @Event() aiaoTreeNodeDragEnd: EventEmitter<TreeNodeEvent>;
+  @Event() aiaoTreeNodeDragEnd!: EventEmitter<TreeNodeEvent>;
   /**
    * click
    */
-  @Event() aiaoTreeNodeClick: EventEmitter<TreeNodeEvent>;
+  @Event() aiaoTreeNodeClick!: EventEmitter<TreeNodeEvent>;
   /**
    * over
    */
-  @Event() aiaoTreeNodeOver: EventEmitter<TreeNodeEvent>;
+  @Event() aiaoTreeNodeOver!: EventEmitter<TreeNodeEvent>;
   /**
    * out
    */
-  @Event() aiaoTreeNodeOut: EventEmitter<TreeNodeEvent>;
+  @Event() aiaoTreeNodeOut!: EventEmitter<TreeNodeEvent>;
 
   // --------------------------------------------------------------[ Prop ]
 
   /**
    * 唯一值
    */
-  @Prop() value: string | number;
+  @Prop() value?: string | number;
 
   /**
    * 显示线
@@ -96,11 +96,11 @@ export class TreeNode implements ComponentInterface {
   /**
    * 图标名
    */
-  @Prop() icon: { name?: string; src?: string };
+  @Prop() icon?: { name?: string; src?: string };
   /**
    * 标题
    */
-  @Prop() name: string;
+  @Prop() name?: string;
 
   /**
    * 是否展开
@@ -134,7 +134,7 @@ export class TreeNode implements ComponentInterface {
     const labelEle = (ev.target as HTMLElement).querySelector('.tree-node-content');
     // 设置拖放图标
     if (labelEle) {
-      ev.dataTransfer.setDragImage(labelEle, labelEle.clientWidth, labelEle.clientHeight);
+      ev.dataTransfer?.setDragImage(labelEle, labelEle.clientWidth, labelEle.clientHeight);
     }
     this.aiaoTreeNodeDragStart.emit({ ev, node: this, value: this.value });
   };

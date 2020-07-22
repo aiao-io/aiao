@@ -20,19 +20,19 @@ export class TextEditorBar {
   /**
    * 发送 action
    */
-  @Event() action: EventEmitter<any>;
+  @Event() action!: EventEmitter<any>;
 
   // --------------------------------------------------------------[ Prop ]
 
   /**
    * action 的状态
    */
-  @Prop() actionState: TextActionState;
+  @Prop() actionState?: TextActionState;
 
   /**
    * 配置
    */
-  @Prop() options: TextEditorBarOptions[];
+  @Prop() options?: TextEditorBarOptions[];
   // --------------------------------------------------------------[ Watch ]
   // --------------------------------------------------------------[ Listen ]
   // --------------------------------------------------------------[ event hander ]
@@ -43,18 +43,21 @@ export class TextEditorBar {
     return (
       <Host class="action-bar">
         {(this.options || TEXT_EDITOR_DEFAULT_SETTINGS).map(({ action, iconName, iconSrc, title, value }) => {
-          let needIconSrc: string;
-          let needIconName: string;
+          let needIconSrc: string | undefined;
+          let needIconName: string | undefined;
           if (iconSrc) {
-            needIconSrc = iconSrc.startsWith('http') ? iconSrc : urlJoin(this.resourcesUrl, iconSrc);
+            needIconSrc = iconSrc.startsWith('http')
+              ? iconSrc
+              : this.resourcesUrl && urlJoin(this.resourcesUrl, iconSrc);
           } else if (iconName) {
             needIconName = iconName;
           }
 
           let selected = this.actionState && this.actionState[action];
           selected = selected !== undefined && selected !== false;
+          const actionValue = this.actionState && this.actionState[action];
           if (selected && value) {
-            selected = value === this.actionState[action];
+            selected = value === actionValue;
           }
           const cls = {
             'action-button': true,

@@ -16,11 +16,15 @@ import { PlainObject } from './types';
 export const objDeepSort = (objData: PlainObject): PlainObject => {
   if (isArray(objData)) {
     return objData.map(objDeepSort);
+  } else if (isDate(objData)) {
+    return objData;
   } else if (isObject(objData)) {
-    const backObject: any = {};
+    const backObject: PlainObject = {};
     Object.keys(objData)
       .sort()
-      .forEach(key => (backObject[key] = objDeepSort(objData[key])));
+      .forEach(key => {
+        backObject[key] = objDeepSort((objData as any)[key]);
+      });
     return backObject;
   }
   return objData;
@@ -41,7 +45,7 @@ export const toPlainObjectDeep = (object: unknown): PlainObject => {
     Object.keys(newObj).forEach(key => (newObj[key] = toPlainObjectDeep(newObj[key])));
     return newObj;
   } else {
-    return object;
+    return object as any;
   }
 };
 

@@ -12,6 +12,7 @@ import { EditMode } from '../../utils/render/render.interface';
   shadow: true
 })
 export class ElementsEditor implements ComponentInterface {
+  private inputId = `aiao-elements-editor:${elementEditorId++}`;
   @Element() el!: HTMLElement;
 
   // --------------------------------------------------------------[ State ]
@@ -20,11 +21,11 @@ export class ElementsEditor implements ComponentInterface {
   /**
    * 配置
    */
-  @Prop() config: IElementConfig[];
+  @Prop() config?: IElementConfig[];
   /**
    * 禁用
    */
-  @Prop() disabled: boolean;
+  @Prop() disabled = false;
   /**
    * 编辑模式
    */
@@ -32,16 +33,16 @@ export class ElementsEditor implements ComponentInterface {
   /**
    * form 名
    */
-  @Prop() name: string;
+  @Prop() name: string = this.inputId;
   /**
    * 值
    */
-  @Prop() value: IElementData[];
+  @Prop() value?: IElementData[];
 
   /**
    * 显示视图
    */
-  @Prop() view: HTMLElement;
+  @Prop() view?: HTMLElement;
   // --------------------------------------------------------------[ Watch ]
   // --------------------------------------------------------------[ Listen ]
   // --------------------------------------------------------------[ event hander ]
@@ -50,18 +51,18 @@ export class ElementsEditor implements ComponentInterface {
   // --------------------------------------------------------------[ lifecycle ]
 
   render() {
-    let data: IElementEditorData[];
+    let data: IElementEditorData[] = [];
     let needValue = '';
     if (this.value) {
       if (this.view) {
         this.view.innerHTML = elementsPreviewHtmlRender(this.config, this.value, { editMode: this.editMode });
       } else {
         data = elementDataToEditData(this.value);
-      }
-      try {
-        needValue = JSON.stringify(data);
-      } catch {
-        //
+        try {
+          needValue = JSON.stringify(data);
+        } catch {
+          //
+        }
       }
     }
 
@@ -71,3 +72,4 @@ export class ElementsEditor implements ComponentInterface {
     );
   }
 }
+let elementEditorId = 0;

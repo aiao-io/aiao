@@ -28,21 +28,21 @@ let imageId = 0;
 })
 export class Img implements ComponentInterface, IImg {
   private io?: IntersectionObserver | any;
-  private cacheImageRequest: IImageRequestOptions;
+  private cacheImageRequest?: IImageRequestOptions | null;
   private usemap = `img-usemap-${imageId++}`;
   private imageStorage = config.get('imageStorage');
-  private img: HTMLImageElement;
+  private img?: HTMLImageElement;
 
   @Element() el!: HTMLAiaoImgElement;
   // --------------------------------------------------------------[ State ]
   // 是否已加载
-  @State() loaded: boolean;
+  @State() loaded = false;
   // 是否有错误
-  @State() error: boolean;
+  @State() error = false;
   // 加载的src
-  @State() loadSrc: string;
+  @State() loadSrc = '';
   // 加载状态
-  @State() loading: boolean;
+  @State() loading = false;
   // --------------------------------------------------------------[ Event ]
   /**
    * 图片被加载
@@ -56,7 +56,7 @@ export class Img implements ComponentInterface, IImg {
   /**
    * 锚点
    */
-  @Prop({ mutable: true }) map: IImgArea[];
+  @Prop({ mutable: true }) map?: IImgArea[];
   /**
    * 平台
    */
@@ -72,11 +72,11 @@ export class Img implements ComponentInterface, IImg {
   /**
    * alt
    */
-  @Prop() alt: string;
+  @Prop() alt?: string;
   /**
    * 图片地址
    */
-  @Prop({ mutable: true }) src: string;
+  @Prop({ mutable: true }) src?: string;
   @Watch('src')
   srcChanged() {
     this.beginLazyLoad();
@@ -135,8 +135,8 @@ export class Img implements ComponentInterface, IImg {
       this.io = undefined;
     }
   }
-  private getImageRequest() {
-    if (this.imageStorage?.requestOptions) {
+  private getImageRequest(): IImageRequestOptions {
+    if (this.src && this.imageStorage?.requestOptions) {
       const width = this.el.clientWidth;
       const height = this.el.clientHeight || this.el.clientWidth;
       return this.imageStorage.requestOptions(this.src, {
@@ -158,7 +158,7 @@ export class Img implements ComponentInterface, IImg {
     const request = this.cacheImageRequest || this.getImageRequest();
     this.cacheImageRequest = request;
     if (this.img) {
-      this.img.onabort = this.img.onerror = this.img.onload = undefined;
+      this.img.onabort = this.img.onerror = this.img.onload = null;
     }
     const img = new Image();
     this.img = img;
@@ -168,13 +168,13 @@ export class Img implements ComponentInterface, IImg {
       this.loaded = true;
       this.error = false;
       this.loadSrc = request.url;
-      this.img = null;
+      this.img = undefined;
     };
     img.onabort = img.onerror = () => {
       this.loading = false;
       this.error = true;
       this.aiaoError.emit();
-      this.img = null;
+      this.img = undefined;
     };
     img.src = request.url;
   }
@@ -185,12 +185,15 @@ export class Img implements ComponentInterface, IImg {
   }
   render() {
     const cls = {
-      loaded: this.loaded,
+      loaded: !!this.loaded,
       [this.animation]: !!this.animation
     };
+
     const areas =
-      this.loadSrc && imgGetAreas(this.map, this.el.clientWidth, this.el.clientHeight || this.el.clientWidth);
-    const attrs = { usemap: areas && `#${this.usemap}` };
+      this.loadSrc &&
+      this.map &&
+      imgGetAreas(this.map, this.el.clientWidth, this.el.clientHeight || this.el.clientWidth);
+    const usemap: string = (areas && `#${this.usemap}`) || '';
     return (
       <Host class={cls}>
         {this.error && (
@@ -204,7 +207,7 @@ export class Img implements ComponentInterface, IImg {
           </div>
         )}
         <img
-          {...attrs}
+          usemap={usemap}
           src={this.loadSrc || IMAGE_MIN_BASE64_TRANSPARENT}
           alt={this.alt}
           decoding="async"

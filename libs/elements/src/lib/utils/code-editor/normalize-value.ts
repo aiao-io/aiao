@@ -5,7 +5,7 @@ import isString from 'lodash/isString';
  * @param language 语言
  * @param value 值
  */
-export const normalizeMonacoEditorValue = (language: string, value: any) => {
+export const normalizeMonacoEditorValue = (value: any, language?: string) => {
   switch (language) {
     case 'json':
       try {
@@ -25,6 +25,6 @@ export const normalizeMonacoEditorValue = (language: string, value: any) => {
  * @param language 语言
  * @param value 值
  */
-export const normalizeMonacoEditorValueOut = (language: string, value: any) => {
+export const normalizeMonacoEditorValueOut = (value: any, language?: string) => {
   return language === 'json' && value && isString(value) ? JSON.parse(value) : value;
 };

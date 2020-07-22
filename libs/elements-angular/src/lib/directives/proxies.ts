@@ -4,12 +4,13 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Even
 import { ProxyCmp, proxyOutputs } from './proxies-utils';
 
 import { Components } from '@aiao/elements'
-
+import { CodeEditor as ICodeEditor } from '../@aiao/elements/lib/types/lib/components/code-diff-editor/code-diff-editor';
 export declare interface AiaoCodeDiffEditor extends Components.AiaoCodeDiffEditor {}
 @ProxyCmp({inputs: ['baseUrl', 'disabled', 'language', 'localizeCode', 'name', 'options', 'originalValue', 'uri', 'value'], 'methods': ['format', 'action']})
-@Component({ selector: 'aiao-code-diff-editor', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['baseUrl', 'disabled', 'language', 'localizeCode', 'name', 'options', 'originalValue', 'uri', 'value'] })
+@Component({ selector: 'aiao-code-diff-editor', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['baseUrl', 'disabled', 'language', 'localizeCode', 'name', 'options', 'originalValue', 'uri', 'value'], outputs: ['aiaoChange'] })
 export class AiaoCodeDiffEditor {
-  aiaoChange!: EventEmitter<CustomEvent>;
+  /** 侦听值更改 */
+  aiaoChange!: ICodeEditor['aiaoChange'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -17,12 +18,13 @@ export class AiaoCodeDiffEditor {
     proxyOutputs(this, this.el, ['aiaoChange']);
   }
 }
-
+import { CodeEditor as ICodeEditor } from '../@aiao/elements/lib/types/lib/components/code-editor/code-editor';
 export declare interface AiaoCodeEditor extends Components.AiaoCodeEditor {}
 @ProxyCmp({inputs: ['baseUrl', 'disabled', 'language', 'localizeCode', 'name', 'options', 'uri', 'value'], 'methods': ['format', 'action']})
-@Component({ selector: 'aiao-code-editor', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['baseUrl', 'disabled', 'language', 'localizeCode', 'name', 'options', 'uri', 'value'] })
+@Component({ selector: 'aiao-code-editor', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['baseUrl', 'disabled', 'language', 'localizeCode', 'name', 'options', 'uri', 'value'], outputs: ['aiaoChange'] })
 export class AiaoCodeEditor {
-  aiaoChange!: EventEmitter<CustomEvent>;
+  /**  */
+  aiaoChange!: ICodeEditor['aiaoChange'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -41,13 +43,15 @@ export class AiaoElementsEditor {
     this.el = r.nativeElement;
   }
 }
-
+import { ElementsFrom as IElementsFrom } from '../@aiao/elements/lib/types/lib/components/elements-form/elements-form';
 export declare interface AiaoElementsForm extends Components.AiaoElementsForm {}
 @ProxyCmp({inputs: ['html', 'value'], 'methods': ['values', 'flattenPathValues', 'getValue', 'setValue', 'setValues', 'reset', 'markAsPristine', 'markAsDirty']})
-@Component({ selector: 'aiao-elements-form', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['html', 'value'] })
+@Component({ selector: 'aiao-elements-form', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['html', 'value'], outputs: ['aiaoChange', 'aiaoInput'] })
 export class AiaoElementsForm {
-  aiaoChange!: EventEmitter<CustomEvent>;
-  aiaoInput!: EventEmitter<CustomEvent>;
+  /** 侦听值改变 */
+  aiaoChange!: IElementsFrom['aiaoChange'];
+  /** 侦听输入改变 */
+  aiaoInput!: IElementsFrom['aiaoInput'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -77,13 +81,15 @@ export class AiaoElementsView {
     this.el = r.nativeElement;
   }
 }
-
+import { Img as IImg } from '../@aiao/elements/lib/types/lib/components/img/img';
 export declare interface AiaoImg extends Components.AiaoImg {}
 @ProxyCmp({inputs: ['alt', 'animation', 'map', 'method', 'platform', 'src'], 'methods': ['reload']})
-@Component({ selector: 'aiao-img', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['alt', 'animation', 'map', 'method', 'platform', 'src'] })
+@Component({ selector: 'aiao-img', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['alt', 'animation', 'map', 'method', 'platform', 'src'], outputs: ['aiaoImgDidLoad', 'aiaoError'] })
 export class AiaoImg {
-  aiaoImgDidLoad!: EventEmitter<CustomEvent>;
-  aiaoError!: EventEmitter<CustomEvent>;
+  /** 图片被加载 */
+  aiaoImgDidLoad!: IImg['aiaoImgDidLoad'];
+  /** 图片加载错误 */
+  aiaoError!: IImg['aiaoError'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -91,13 +97,15 @@ export class AiaoImg {
     proxyOutputs(this, this.el, ['aiaoImgDidLoad', 'aiaoError']);
   }
 }
-
+import { RichTextEditor as IRichTextEditor } from '../@aiao/elements/lib/types/lib/components/text-editor/text-editor';
 export declare interface AiaoTextEditor extends Components.AiaoTextEditor {}
 @ProxyCmp({inputs: ['defaultParagraphSeparator', 'disabled', 'element', 'name', 'showActionBar', 'value'], 'methods': ['getSelectionElements', 'saveSelection', 'restoreSelection', 'action']})
-@Component({ selector: 'aiao-text-editor', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['defaultParagraphSeparator', 'disabled', 'element', 'name', 'showActionBar', 'value'] })
+@Component({ selector: 'aiao-text-editor', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['defaultParagraphSeparator', 'disabled', 'element', 'name', 'showActionBar', 'value'], outputs: ['aiaoChange', 'aiaoStateChange'] })
 export class AiaoTextEditor {
-  aiaoChange!: EventEmitter<CustomEvent>;
-  aiaoStateChange!: EventEmitter<CustomEvent>;
+  /** 值改变 */
+  aiaoChange!: IRichTextEditor['aiaoChange'];
+  /**  */
+  aiaoStateChange!: IRichTextEditor['aiaoStateChange'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -105,14 +113,17 @@ export class AiaoTextEditor {
     proxyOutputs(this, this.el, ['aiaoChange', 'aiaoStateChange']);
   }
 }
-
+import { Tree as ITree } from '../@aiao/elements/lib/types/lib/components/tree/tree';
 export declare interface AiaoTree extends Components.AiaoTree {}
 @ProxyCmp({inputs: ['autoExpandParent', 'canDrag', 'checkable', 'config', 'data', 'defaultExpandLevel', 'defaultExpandParent', 'defaultExpandedKeys', 'defaultSelectedKeys', 'disabled', 'multiple', 'selectable', 'showIcon', 'showLine', 'showMode'], 'methods': ['canDrop', 'select', 'overElement', 'outElement', 'nodeRefMap']})
-@Component({ selector: 'aiao-tree', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['autoExpandParent', 'canDrag', 'checkable', 'config', 'data', 'defaultExpandLevel', 'defaultExpandParent', 'defaultExpandedKeys', 'defaultSelectedKeys', 'disabled', 'multiple', 'selectable', 'showIcon', 'showLine', 'showMode'] })
+@Component({ selector: 'aiao-tree', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['autoExpandParent', 'canDrag', 'checkable', 'config', 'data', 'defaultExpandLevel', 'defaultExpandParent', 'defaultExpandedKeys', 'defaultSelectedKeys', 'disabled', 'multiple', 'selectable', 'showIcon', 'showLine', 'showMode'], outputs: ['aiaoChange', 'aiaoTreeNodeChange', 'aiaoTreeDrop'] })
 export class AiaoTree {
-  aiaoChange!: EventEmitter<CustomEvent>;
-  aiaoTreeNodeChange!: EventEmitter<CustomEvent>;
-  aiaoTreeDrop!: EventEmitter<CustomEvent>;
+  /** change */
+  aiaoChange!: ITree['aiaoChange'];
+  /** 改变的数据节点 */
+  aiaoTreeNodeChange!: ITree['aiaoTreeNodeChange'];
+  /** tree drop */
+  aiaoTreeDrop!: ITree['aiaoTreeDrop'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

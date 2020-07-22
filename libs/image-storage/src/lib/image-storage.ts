@@ -11,7 +11,7 @@ export class ImageStorage extends ImageStorageBase {
    * @param req 请求数据
    */
   private findBetter(url: string, req: IImageRequestOptions) {
-    const imgs = this.cacheMap.get(url);
+    const imgs = this.cacheMap.get(url) || [];
     // 找出同样配置像素更宽的图片结果
     const find = imgs
       .filter(
@@ -36,7 +36,7 @@ export class ImageStorage extends ImageStorageBase {
     if (this.cacheMap.has(url)) {
       const hasBetter = this.findBetter(url, req);
       if (!hasBetter) {
-        this.cacheMap.get(url).push(req);
+        this.cacheMap.get(url)!.push(req);
       }
     } else {
       this.cacheMap.set(url, [req]);

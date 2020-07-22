@@ -60,6 +60,10 @@ describe('formatPassTime', () => {
     const d = formatPassTime(new Date('2015-11-01 20:18:10'), new Date('2015-11-01 20:18:30'), { s: 'a' } as any);
     expect(d).toEqual('20 second');
   });
+  it('formatPassTime 0 second', () => {
+    const d = formatPassTime(new Date('2015-11-01 20:18:10'), new Date('2015-11-01 20:18:10'), { s: 'a' } as any);
+    expect(d).toEqual('0 second');
+  });
 
   it('formatPassTime', () => {
     const d = formatPassTime(

@@ -10,7 +10,7 @@ const elementEditDataOptions = (configs: IElementConfig[], data: IElementData, o
   }
 
   // 从配置里算出内容
-  const config: IElementConfig = configs.find(conf => conf.tag === tag);
+  const config = configs.find(conf => conf.tag === tag);
   if (!config) {
     return data;
   }
@@ -50,4 +50,6 @@ export const elementsPreviewHtmlData = (
   configs: IElementConfig[],
   data: IElementData[],
   options?: ElementsEditOptions
-) => [...data].map(d => elementEditDataOptions(configs, d, options)).filter(d => d !== null);
+) => {
+  return data.map(d => elementEditDataOptions(configs, d, options)).filter(d => d !== null) as IElementData[];
+};

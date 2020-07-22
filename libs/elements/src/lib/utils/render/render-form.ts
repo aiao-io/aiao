@@ -4,7 +4,7 @@ import { ELEMENTS_FORM_ITEM } from './render.interface';
 
 const elementFromDataOptions = (configs: IElementConfig[], data: IElementData) => {
   const { tag, class: cls, attributes: attrs } = data;
-  const config: IElementConfig = configs.find(conf => conf.tag === tag);
+  const config = configs.find(conf => conf.tag === tag);
   const newCls = { ...cls, [ELEMENTS_FORM_ITEM]: true };
   if (!config) {
     return { ...data, class: newCls };

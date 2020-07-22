@@ -19,15 +19,15 @@ export class ElementsView implements ComponentInterface {
   /**
    * html
    */
-  @Prop() html: string;
+  @Prop() html?: string;
   /**
    * css
    */
-  @Prop() css: string;
+  @Prop() css?: string;
   /**
    * js
    */
-  @Prop() js: string;
+  @Prop() js?: string;
   // --------------------------------------------------------------[ Watch ]
   // --------------------------------------------------------------[ Listen ]
   // --------------------------------------------------------------[ event hander ]

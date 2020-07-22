@@ -1,5 +1,5 @@
 export const queryParse = (query: string) => {
-  const obj = {};
+  const obj: any = {};
   const params = new URLSearchParams(query);
   params.forEach((value, key) => {
     if (obj.hasOwnProperty(key)) {

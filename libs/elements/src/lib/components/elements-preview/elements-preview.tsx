@@ -12,7 +12,8 @@ import { EditMode } from '../../utils/render/render.interface';
 })
 export class ElementsEditorPreview implements ComponentInterface {
   @Element() el!: HTMLElement;
-  private nodes: IElementEditorData[];
+
+  private nodes?: IElementEditorData[];
 
   // --------------------------------------------------------------[ State ]
   // --------------------------------------------------------------[ Event ]
@@ -21,12 +22,12 @@ export class ElementsEditorPreview implements ComponentInterface {
   /**
    *  配置
    */
-  @Prop() config: IElementConfig[];
+  @Prop() config?: IElementConfig[];
 
   /**
    *  数据
    */
-  @Prop() value: IElementEditorData[];
+  @Prop() value?: IElementEditorData[];
 
   /**
    *  编辑模式
@@ -43,11 +44,12 @@ export class ElementsEditorPreview implements ComponentInterface {
     const needNodes = this.nodes.filter(d => d._parentId === undefined);
     return needNodes.map(d => this.renderElement(d));
   }
+
   private renderElement(data: IElementEditorData) {
     const { tag: TagName, slot, attributes, events, style, class: cls, innerText, innerHTML, _id } = data;
-    let children = [];
+    let children: IElementEditorData[] = [];
     if (_id) {
-      children = this.nodes.filter(n => n._parentId === _id);
+      children = this.nodes!.filter(n => n._parentId === _id);
     }
     return (
       <TagName id={_id} slot={slot} {...attributes} style={style} class={cls} {...events} innerHTML={innerHTML}>
