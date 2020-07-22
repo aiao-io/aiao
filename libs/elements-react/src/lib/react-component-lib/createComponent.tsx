@@ -1,13 +1,8 @@
 import React from 'react';
 
-import {
-  attachProps,
-  createForwardRef,
-  dashToPascalCase,
-  isCoveredByReact,
-  mergeRefs,
-} from './utils';
 import { HTMLStencilElement } from '@stencil/core/internal/stencil-public-runtime';
+
+import { attachProps, createForwardRef, dashToPascalCase, isCoveredByReact, mergeRefs } from './utils';
 
 interface StencilReactInternalProps<ElementType> extends React.HTMLAttributes<ElementType> {
   forwardedRef?: React.RefObject<ElementType>;
@@ -24,8 +19,8 @@ export const createReactComponent = <
   ReactComponentContext?: React.Context<ContextStateType>,
   manipulatePropsFunction: (
     originalProps: StencilReactInternalProps<ElementType>,
-    propsToPass: any,
-  ) => ExpandedPropsTypes = undefined,
+    propsToPass: any
+  ) => ExpandedPropsTypes = undefined
 ) => {
   const displayName = dashToPascalCase(tagName);
 
@@ -65,10 +60,10 @@ export const createReactComponent = <
         propsToPass = manipulatePropsFunction(this.props, propsToPass);
       }
 
-      let newProps: StencilReactInternalProps<ElementType> = {
+      const newProps: StencilReactInternalProps<ElementType> = {
         ...propsToPass,
         ref: mergeRefs(forwardedRef, this.setComponentElRef),
-        style,
+        style
       };
 
       return React.createElement(tagName, newProps, children);
