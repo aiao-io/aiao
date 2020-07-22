@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
@@ -17,6 +17,15 @@
     "jsxFactory": "h",
     "types": ["node", "jest"]
   },
-  "include": ["src", "types/jsx.d.ts"],
-  "exclude": ["node_modules"]
+  "include": [],
+  "exclude": ["node_modules"],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }

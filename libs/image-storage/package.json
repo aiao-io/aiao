@@ -15,5 +15,8 @@
   "keywords": [],
   "scripts": {
     "build": "cd ../../ && yarn build image-storage --prod"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

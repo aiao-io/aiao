@@ -22,5 +22,8 @@
   "peerDependencies": {
     "sequelize": "^5.21.3",
     "typeorm": "^0.2.21"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

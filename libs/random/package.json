@@ -20,5 +20,8 @@
   },
   "peerDependencies": {
     "lodash": "^4.17.15"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

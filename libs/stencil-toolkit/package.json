@@ -30,7 +30,8 @@
   "dependencies": {
     "@nrwl/jest": "^9.1.2",
     "@nrwl/workspace": "^9.1.2"
-  },
+  ,    "tslib": "^2.0.0"
+},
   "peerDependencies": {
     "@angular-devkit/schematics": "^9.0.0"
   }

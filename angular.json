@@ -30,8 +30,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/util/jest.config.js",
-            "tsConfig": "libs/util/tsconfig.spec.json",
-            "setupFile": "libs/util/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
@@ -66,8 +64,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/lazy-component/jest.config.js",
-            "tsConfig": "libs/lazy-component/tsconfig.spec.json",
-            "setupFile": "libs/lazy-component/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
@@ -102,8 +98,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/lazy-module/jest.config.js",
-            "tsConfig": "libs/lazy-module/tsconfig.spec.json",
-            "setupFile": "libs/lazy-module/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
@@ -138,8 +132,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/lazy-element/jest.config.js",
-            "tsConfig": "libs/lazy-element/tsconfig.spec.json",
-            "setupFile": "libs/lazy-element/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
@@ -173,7 +165,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/color/jest.config.js",
-            "tsConfig": "libs/color/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -219,8 +210,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stencil-toolkit/jest.config.js",
-            "tsConfig": "libs/stencil-toolkit/tsconfig.spec.json",
-            "setupFile": "libs/stencil-toolkit/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
@@ -275,7 +264,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/elements/jest.config.js",
-            "tsConfig": "libs/elements/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -310,8 +298,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/image-storage/jest.config.js",
-            "tsConfig": "libs/image-storage/tsconfig.spec.json",
-            "setupFile": "libs/image-storage/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
@@ -346,8 +332,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/elements-cdk/jest.config.js",
-            "tsConfig": "libs/elements-cdk/tsconfig.spec.json",
-            "setupFile": "libs/elements-cdk/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
@@ -382,8 +366,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/elements-angular/jest.config.js",
-            "tsConfig": "libs/elements-angular/tsconfig.spec.json",
-            "setupFile": "libs/elements-angular/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
@@ -418,8 +400,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/typeorm-plus/jest.config.js",
-            "tsConfig": "libs/typeorm-plus/tsconfig.spec.json",
-            "setupFile": "libs/typeorm-plus/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
@@ -464,7 +444,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/elements-react/jest.config.js",
-            "tsConfig": "libs/elements-react/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -499,8 +478,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/date/jest.config.js",
-            "tsConfig": "libs/date/tsconfig.spec.json",
-            "setupFile": "libs/date/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
@@ -535,8 +512,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/random/jest.config.js",
-            "tsConfig": "libs/random/tsconfig.spec.json",
-            "setupFile": "libs/random/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
@@ -571,8 +546,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/url/jest.config.js",
-            "tsConfig": "libs/url/tsconfig.spec.json",
-            "setupFile": "libs/url/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
@@ -610,8 +583,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/universal-fastify-engine/jest.config.js",
-            "tsConfig": "libs/universal-fastify-engine/tsconfig.spec.json",
-            "setupFile": "libs/universal-fastify-engine/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
@@ -649,8 +620,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/nest-angular-universal/jest.config.js",
-            "tsConfig": "libs/nest-angular-universal/tsconfig.spec.json",
-            "setupFile": "libs/nest-angular-universal/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
@@ -742,8 +711,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/dev-universal-fastify-engine/jest.config.js",
-            "tsConfig": "apps/dev-universal-fastify-engine/tsconfig.spec.json",
-            "setupFile": "apps/dev-universal-fastify-engine/src/test-setup.ts",
             "passWithNoTests": true
           }
         },
@@ -905,8 +872,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/dev-nest-angular-universal/jest.config.js",
-            "tsConfig": "apps/dev-nest-angular-universal/tsconfig.spec.json",
-            "setupFile": "apps/dev-nest-angular-universal/src/test-setup.ts",
             "passWithNoTests": true
           }
         },
@@ -1098,9 +1063,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/dev-elements-angular/jest.config.js",
-            "tsConfig": "apps/dev-elements-angular/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/dev-elements-angular/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -1212,9 +1175,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/dev-lazy-element/jest.config.js",
-            "tsConfig": "apps/dev-lazy-element/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/dev-lazy-element/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -1326,9 +1287,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/dev-lazy-module/jest.config.js",
-            "tsConfig": "apps/dev-lazy-module/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/dev-lazy-module/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -1440,9 +1399,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/dev-lazy-component/jest.config.js",
-            "tsConfig": "apps/dev-lazy-component/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/dev-lazy-component/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -1556,7 +1513,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/dev-elements-react/jest.config.js",
-            "tsConfig": "apps/dev-elements-react/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -1619,7 +1575,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/leancloud-hash/jest.config.js",
-            "tsConfig": "libs/leancloud-hash/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -1712,9 +1667,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/dev-elements-vue/jest.config.js",
-            "tsConfig": "apps/dev-elements-vue/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/dev-elements-vue/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -1763,7 +1716,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/nest-typeorm-plus/jest.config.js",
-            "tsConfig": "libs/nest-typeorm-plus/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -1772,7 +1724,6 @@
   },
   "cli": {
     "warnings": {
-      "typescriptMismatch": false,
       "versionMismatch": false
     },
     "defaultCollection": "@nrwl/angular",

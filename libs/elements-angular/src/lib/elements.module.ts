@@ -38,7 +38,7 @@ const DECLARATIONS = [
   exports: DECLARATIONS
 })
 export class AiaoElementsModule {
-  static forRoot(opts?: AiaoElementsOptions): ModuleWithProviders {
+  static forRoot(opts?: AiaoElementsOptions): ModuleWithProviders<AiaoElementsModule> {
     return {
       ngModule: AiaoElementsModule,
       providers: [

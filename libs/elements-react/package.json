@@ -25,5 +25,8 @@
   },
   "devDependencies": {
     "@aiao/elements": "^0.7.0"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

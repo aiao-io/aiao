@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { attachEventProps } from './utils/attachEventProps';
 
 interface LoadingElement {
@@ -24,8 +23,8 @@ export function createControllerComponent<
   return class ReactControllerComponent extends React.Component<Props> {
     controller?: LoadingElementType;
 
-    constructor(readonly value: Props) {
-      super(value);
+    constructor(props: Props) {
+      super(props);
     }
 
     static get displayName() {

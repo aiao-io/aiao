@@ -14,5 +14,8 @@
   },
   "scripts": {
     "build": "cd ../../ && yarn build elements-cdk --prod"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }
