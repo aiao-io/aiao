@@ -86,15 +86,6 @@ jobs:
             echo "::set-env name=NX_BASE::$(cat dist/ci/last-deploy.txt)"
           fi
 
-          - yarn --frozen-lockfile --non-interactive --ignore-scripts
-          - yarn cypress install
-          - node ./decorate-angular-cli.js
-          - yarn build:tools
-          - yarn task:hotfix
-          - yarn postngcc
-          - AFFECTED_ARGS=$(node dist/tools/scripts/set-env)
-          - yarn check:workspace ${AFFECTED_ARGS}
-
       - name: Install
           run: yarn --frozen-lockfile --non-interactive --ignore-scripts
 
