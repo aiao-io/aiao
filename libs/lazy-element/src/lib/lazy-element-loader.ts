@@ -11,7 +11,7 @@ export class LazyElementLoader extends LazyModuleLoaderBase {
   }
 
   async loadFromHtmlString(htmlString: string): Promise<void> {
-    const unregisteredSelectors = Array.from(this.toLoad.keys()).filter(s => htmlString.includes(s));
+    const unregisteredSelectors = this.toLoadKeys().filter(s => htmlString.includes(s));
     if (!unregisteredSelectors.length) {
       return;
     }
@@ -19,7 +19,7 @@ export class LazyElementLoader extends LazyModuleLoaderBase {
   }
 
   async loadFromHtmlElement(element: HTMLElement): Promise<void> {
-    const unregisteredSelectors = Array.from(this.toLoad.keys()).filter(s => element.querySelector(s));
+    const unregisteredSelectors = this.toLoadKeys().filter(s => element.querySelector(s));
     if (!unregisteredSelectors.length) {
       return;
     }
