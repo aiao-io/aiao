@@ -1,7 +1,7 @@
 {
   "extends": ["tslint-ionic-rules/strict", "tslint-react"],
   "linterOptions": {
-    "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "lib/**", "loader/**", "vendors/**", "hydrate/**"]
+    "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "lib/**", "loader/**", "vendors/**", "hydrate/**", "*.d.ts"]
   },
   "rules": {
     "no-conditional-assignment": false,
