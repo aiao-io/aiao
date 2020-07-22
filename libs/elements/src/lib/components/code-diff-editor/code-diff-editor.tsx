@@ -33,7 +33,7 @@ let loader: any;
   styleUrl: './code-diff-editor.scss',
   scoped: true
 })
-export class CodeEditor implements ComponentInterface {
+export class CodeDiffEditor implements ComponentInterface {
   @Element() el!: HTMLAiaoCodeEditorElement;
   private inputId = `aiao-code-diff-editor:${codeDiffEditorId++}`;
   private editor?: monaco.editor.IStandaloneDiffEditor;
@@ -43,7 +43,7 @@ export class CodeEditor implements ComponentInterface {
   /**
    * 侦听值更改
    */
-  @Event() aiaoChange!: EventEmitter<any>;
+  @Event() aiaoChange!: EventEmitter<{ value: any }>;
   // --------------------------------------------------------------[ Prop ]
 
   /**

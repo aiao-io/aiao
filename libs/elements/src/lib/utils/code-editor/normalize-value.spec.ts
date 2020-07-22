@@ -3,13 +3,13 @@ import { normalizeMonacoEditorValue, normalizeMonacoEditorValueOut } from './nor
 describe('normalizeMonacoEditorValue', () => {
   it('json', () => {
     const val = { a: 1 };
-    const jsonString = normalizeMonacoEditorValue('json', val);
+    const jsonString = normalizeMonacoEditorValue(val, 'json');
     expect(JSON.parse(jsonString)).toEqual(val);
   });
 
   it('default', () => {
     const val = { a: 1 };
-    const jsonString = normalizeMonacoEditorValue('js', val);
+    const jsonString = normalizeMonacoEditorValue(val, 'js');
     expect(jsonString).toEqual(val);
   });
 
