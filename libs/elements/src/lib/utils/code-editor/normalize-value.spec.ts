@@ -15,12 +15,12 @@ describe('normalizeMonacoEditorValue', () => {
 
   it('out', () => {
     const val = { a: 1 };
-    const jsonObject = normalizeMonacoEditorValueOut('json', JSON.stringify(val));
+    const jsonObject = normalizeMonacoEditorValueOut(JSON.stringify(val), 'json');
     expect(jsonObject).toEqual(val);
   });
   it('out', () => {
     const val = undefined;
-    const jsonObject = normalizeMonacoEditorValueOut('json', val);
+    const jsonObject = normalizeMonacoEditorValueOut(val, 'json');
     expect(jsonObject).toEqual(val);
   });
 });
