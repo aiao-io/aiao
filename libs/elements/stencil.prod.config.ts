@@ -1,12 +1,10 @@
 import { resolve } from 'path';
 
-import { angularOutputTarget } from '@stencil/angular-output-target';
 import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
 
 const excludeComponents = ['aiao-text-editor-bar', 'aiao-tree-node', 'ion-icon'];
-
 export const config: Config = {
   namespace: 'aiao-elements',
   plugins: [sass()],
