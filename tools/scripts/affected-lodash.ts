@@ -3,8 +3,8 @@ import { exit } from 'process';
 import { Project } from 'ts-morph';
 import yargs from 'yargs';
 
-import { prettierSync } from '../util/pretter';
 import { getAffectedFiles } from '../util/get-affected-files';
+import { prettierSync } from '../util/pretter';
 
 /**
  * 改变 ts 文件夹 lodash 导入方式，达到缩小 lodash 方法最小目的；

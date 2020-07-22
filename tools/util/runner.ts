@@ -7,7 +7,7 @@ import { ChildProcess, spawn, SpawnOptions } from 'child_process';
  * @param args 参数
  * @param collect 格式输出
  */
-export function run(command: string, args: string[], collect: boolean = false) {
+export function run(command: string, args: string[] = [], collect: boolean = false) {
   const options: SpawnOptions = {
     cwd: process.cwd(),
     stdio: 'inherit',
@@ -15,8 +15,11 @@ export function run(command: string, args: string[], collect: boolean = false) {
   };
   return new Promise<null | string>((resolve, reject) => {
     const child: ChildProcess = spawn(`${command}`, args, options);
+
     if (collect) {
-      child.stdout.on('data', data => resolve(data.toString().replace(/\r\n|\n/, '')));
+      child.stdout.on('data', data => {
+        resolve(data.toString().replace(/\r\n|\n/, ''));
+      });
     }
     child.on('close', code => {
       if (code === 0) {
