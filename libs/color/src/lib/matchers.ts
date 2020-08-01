@@ -1,6 +1,6 @@
 import isNumber from 'lodash/isNumber';
 
-import { ColorHSB, ColorRGBA } from './interface';
+import { ColorHSB, ColorRGBA, ColorRGBAKeys } from './interface';
 
 const CSS_INTEGER = '[-\\+]?\\d+%?';
 const CSS_NUMBER = '[-\\+]?\\d*\\.\\d+%?';
@@ -17,7 +17,7 @@ const MATCH_HEX6 = /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/;
 const MATCH_HEX4 = /^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/;
 const MATCH_HEX8 = /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/;
 
-const RGBA = ['r', 'g', 'b', 'a'];
+const RGBA: ColorRGBAKeys[] = ['r', 'g', 'b', 'a'];
 
 const bfb = (str: string) => {
   if (str.endsWith('%')) {
@@ -27,9 +27,9 @@ const bfb = (str: string) => {
   }
 };
 
-const matchToRgba = (opt: { radix: number; double?: boolean }, ...match: any[]): ColorRGBA => {
+const matchToRgba = (opt: { radix: number; double?: boolean }, ...match: RegExpExecArray): ColorRGBA => {
   const { radix, double } = opt;
-  const back = { r: match[1], g: match[2], b: match[3], a: match[4] };
+  const back: ColorRGBA = { r: match[1], g: match[2], b: match[3], a: match[4] };
   RGBA.forEach(key => {
     let val = back[key];
     if (double) {
@@ -55,16 +55,16 @@ const matchToRgba = (opt: { radix: number; double?: boolean }, ...match: any[]):
 
 const matchToHsb = (...match: any[]) => ({ h: parseFloat(match[1]), s: bfb(match[2]), b: bfb(match[3]) });
 
-export const getHSB = (color: string): ColorHSB => {
-  const match: string[] = MATCH_HSB.exec(color);
+export const getHSB = (color: string): ColorHSB | null => {
+  const match = MATCH_HSB.exec(color);
   if (match) {
     return matchToHsb(...match);
   }
   return null;
 };
 
-export const getRGBA = (color: string): ColorRGBA => {
-  let match: string[];
+export const getRGBA = (color: string): ColorRGBA | null => {
+  let match: RegExpExecArray | null;
   if ((match = MATCH_RGBA.exec(color)) || (match = MATCH_RGB.exec(color))) {
     return matchToRgba({ radix: 10 }, ...match);
   } else if ((match = MATCH_HEX6.exec(color)) || (match = MATCH_HEX8.exec(color))) {
@@ -77,8 +77,8 @@ export const getRGBA = (color: string): ColorRGBA => {
 
 export const colorStringToOptions = (colorString: string) => {
   const color = colorString.trim().toLowerCase();
-  let rgba: ColorRGBA;
-  let hsb: ColorHSB;
+  let rgba: ColorRGBA | null;
+  let hsb: ColorHSB | null;
   if (color.startsWith('hsb')) {
     hsb = getHSB(color);
   } else {
