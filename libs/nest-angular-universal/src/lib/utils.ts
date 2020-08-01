@@ -1,10 +1,7 @@
 import { FastifyInstance } from 'fastify';
-import { nextCallback } from 'fastify-plugin';
 import fastifyStatic from 'fastify-static';
 import { existsSync } from 'fs';
 import { join } from 'path';
-
-import { ngFastilyEngine } from '@aiao/universal-fastify-engine';
 
 import { NestUniversalOptions } from './interface';
 
@@ -25,31 +22,10 @@ const promiseExistFile = (indexHtml: string) => {
 };
 
 export const setupUniversal = async (app: FastifyInstance, options: NestUniversalOptions) => {
-  const {
-    bootstrap,
-    defaultLocale,
-    distPath,
-    document,
-    documentFilePath,
-    locales,
-    providers,
-    production,
-    browserHost,
-    browserPort
-  } = options;
-
-  app.register(ngFastilyEngine, {
-    bootstrap,
-    defaultLocale,
-    distPath,
-    document,
-    documentFilePath,
-    locales,
-    providers
-  });
+  const { defaultLocale, distPath, locales, production, browserHost, browserPort } = options;
 
   if (!production) {
-    if (locales?.length > 0) {
+    if (locales && locales?.length > 0) {
       const proxy = require('fastify-http-proxy');
       locales.forEach(locale => {
         app.register(proxy, {
@@ -63,13 +39,11 @@ export const setupUniversal = async (app: FastifyInstance, options: NestUniversa
     }
   }
 
-  app.register((instance: FastifyInstance, opts: any, next: nextCallback) => {
+  app.register((instance: FastifyInstance, opts: any, next: () => void) => {
     instance.register(fastifyStatic, {
-      prefix: '/',
-      wildcard: '**/*',
       root: distPath,
+      wildcard: '**/*',
       redirect: true,
-      index: false,
       cacheControl: true,
       maxAge: '1y'
     });
