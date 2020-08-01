@@ -16,7 +16,7 @@ export class LazyModuleLoader extends LazyModuleLoaderBase {
     }
 
     if (this.toLoad.has(name)) {
-      const moduleLoader = this.toLoad.get(name);
+      const moduleLoader = this.toLoad.get(name)!;
       const loadedAndRegistered = (moduleLoader() as Promise<Type<any>>)
         .then(moduleOrFactory => {
           if (moduleOrFactory instanceof NgModuleFactory) {
