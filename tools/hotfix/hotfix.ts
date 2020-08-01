@@ -36,10 +36,16 @@ function fixFile(path: string, md5: string, fixStr: string, fixMd5: string) {
 }
 
 const fixFileRoot = join(cwd(), 'tools/hotfix/node_modules_files/');
-
+interface IFixFile {
+  md5: string;
+  path: string;
+  fixStr: string;
+  fixMd5: string;
+}
 async function fixFiles() {
   const globbyFiles = await globby(join(fixFileRoot, '**/*.*'));
-  const files = globbyFiles.map(d => {
+  const files: IFixFile[] = [];
+  globbyFiles.forEach(d => {
     let p = d.lastIndexOf('.');
     let md5 = d.slice(p + 1);
     let needUpdateFile = false;
@@ -59,26 +65,22 @@ async function fixFiles() {
         md5 = getFileMD5(path);
         writeFileSync(`${d}.${md5}`, fixStr);
         removeSync(d);
+        files.push({
+          md5,
+          path,
+          fixStr,
+          fixMd5
+        });
       } catch (error) {
         ora.fail(chalk.red(path + ' [路径不存在]'));
-        return null;
       }
     }
-
-    return {
-      md5,
-      path,
-      fixStr,
-      fixMd5
-    };
   });
 
-  files
-    .filter(d => !!d)
-    .forEach(d => {
-      const { md5, path, fixStr, fixMd5 } = d;
-      fixFile(path, md5, fixStr, fixMd5);
-    });
+  files.forEach(d => {
+    const { md5, path, fixStr, fixMd5 } = d;
+    fixFile(path, md5, fixStr, fixMd5);
+  });
   exit();
 }
 

@@ -10,7 +10,7 @@ import { NEED_CHECK_LIBS, NPM_SCOPE } from '../workspace';
  */
 export const checkLibBuild = async () => {
   const check = ora('build').start();
-  const needBuildLibs = [];
+  const needBuildLibs: string[] = [];
   const affectedLibs = getAffectedLibs();
   NEED_CHECK_LIBS.forEach(name => {
     // 文件不存在, 或是已经变化都重新构建

@@ -2,6 +2,7 @@ import chalk from 'chalk';
 import { env } from 'process';
 
 import { WORKSPACE_SCOPES, WORKSPACE_TYPES } from '../workspace';
+import { systemLang } from './get-current-lang';
 
 const message_en = {
   titile: '🐟🐟🐟 Validating git commit message 🐟🐟🐟',
@@ -30,7 +31,7 @@ const message_zh_cn = {
   例子: ${chalk.green('feat(elements): add some feature')}
   `
 };
-export const COMMIT_MESSAGES = env.LANG.includes('zh_CN') ? message_zh_cn : message_en;
+export const COMMIT_MESSAGES = systemLang.includes('zh_CN') ? message_zh_cn : message_en;
 
 export function logCommitErrorMessage(message: string) {
   const errorMsg =

@@ -21,8 +21,8 @@ export class ImageStorageAdapterAliyun implements IImageStorageAdapter {
       width: w,
       height: h,
       quality: q,
-      method,
-      format
+      method: method || 'lfit',
+      format: format || 'jpg'
     };
   }
 }

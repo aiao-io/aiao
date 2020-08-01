@@ -1,3 +1,4 @@
+import { systemLang } from '../util/get-current-lang';
 import { WORKSPACE_SCOPES } from '../workspace';
 
 /**
@@ -89,6 +90,6 @@ const zh_CN = {
   }
 };
 
-const config = process.env.LANG.includes('zh_CN') ? zh_CN : en;
+const config = systemLang.includes('zh_CN') ? zh_CN : en;
 
 module.exports = config;

@@ -29,14 +29,17 @@ function getHtmlCoverageInfo(html: string) {
   for (let i = 0; i < 4; i++) {
     const match = reg.exec(newHtml);
     newHtml = newHtml.replace(reg, '');
-    if (match.groups) {
+    if (match?.groups) {
       const { quiet, fraction } = match.groups;
-      const a = /(?<current>\d+)\/(?<total>\d+)/.exec(fraction);
-      const { current, total } = a.groups;
-      back[quiet.toLowerCase()] = {
-        current: +current,
-        total: +total
-      };
+      const matchCoverage = /(?<current>\d+)\/(?<total>\d+)/.exec(fraction);
+      if (matchCoverage?.groups) {
+        const { current, total } = matchCoverage.groups;
+        const key: keyof CoverageInfo = quiet.toLowerCase() as any;
+        back[key] = {
+          current: +current,
+          total: +total
+        };
+      }
     }
   }
   return back;
@@ -47,6 +50,9 @@ export async function getCoverageInfo() {
   const info = coverageIndexs
     .map(path => {
       const projectNameMatch = /coverage\/(?<type>.*)\/(?<name>.*)\//.exec(path);
+      if (!projectNameMatch) {
+        throw new Error('match failed');
+      }
       const type = projectNameMatch.groups?.type;
       const name = projectNameMatch.groups?.name;
       const html = readFileSync(path, { encoding: 'utf8' });

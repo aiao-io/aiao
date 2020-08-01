@@ -31,7 +31,7 @@ export async function gitLabSetEnv() {
   }
 
   // 是否支持 dotEnv
-  const isSupportDotEnv = compare(CI_SERVER_VERSION, '12.9', '>=');
+  const isSupportDotEnv = compare(CI_SERVER_VERSION!, '12.9', '>=');
 
   // 设置请求头
   let headers = {};

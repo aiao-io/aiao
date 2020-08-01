@@ -17,7 +17,7 @@ export function run(command: string, args: string[] = [], collect: boolean = fal
     const child: ChildProcess = spawn(`${command}`, args, options);
 
     if (collect) {
-      child.stdout.on('data', data => {
+      child.stdout?.on('data', data => {
         resolve(data.toString().replace(/\r\n|\n/, ''));
       });
     }
