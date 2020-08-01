@@ -1,6 +1,5 @@
-import isNumber from 'lodash/isNumber';
-
-import { ColorHSB, ColorRGBA, ColorRGBAKeys } from './interface';
+import { ColorHSB, ColorRGB, ColorRGBA } from './interface';
+import { RGBAToRGB } from './rgba-rgb';
 
 const CSS_INTEGER = '[-\\+]?\\d+%?';
 const CSS_NUMBER = '[-\\+]?\\d*\\.\\d+%?';
@@ -17,7 +16,7 @@ const MATCH_HEX6 = /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/;
 const MATCH_HEX4 = /^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/;
 const MATCH_HEX8 = /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/;
 
-const RGBA: ColorRGBAKeys[] = ['r', 'g', 'b', 'a'];
+const RGB: ('r' | 'g' | 'b')[] = ['r', 'g', 'b'];
 
 const bfb = (str: string) => {
   if (str.endsWith('%')) {
@@ -27,30 +26,32 @@ const bfb = (str: string) => {
   }
 };
 
-const matchToRgba = (opt: { radix: number; double?: boolean }, ...match: RegExpExecArray): ColorRGBA => {
+const matchToRgba = (opt: { radix: number; double?: boolean }, match: RegExpExecArray): ColorRGBA => {
   const { radix, double } = opt;
-  const back: ColorRGBA = { r: match[1], g: match[2], b: match[3], a: match[4] };
-  RGBA.forEach(key => {
-    let val = back[key];
+  const matchs = {
+    r: match[1],
+    g: match[2],
+    b: match[3]
+  };
+
+  const rgb: ColorRGB = {} as any;
+  RGB.forEach(key => {
+    let val = matchs[key];
     if (double) {
       val += val;
     }
-    if (key === 'a') {
-      let alpha: number;
-      if (radix === 16) {
-        alpha = parseInt(back.a, radix);
-        alpha = alpha / 255;
-      } else {
-        alpha = parseFloat(back.a);
-      }
-
-      alpha = isNumber(alpha) && alpha >= 0 ? alpha : 1;
-      back.a = alpha;
-    } else {
-      back[key] = parseInt(val, radix);
-    }
+    rgb[key] = parseInt(val, radix);
   });
-  return back;
+
+  let alpha = 1;
+  if (radix === 16) {
+    alpha = parseInt(match[4], radix);
+    alpha = alpha / 255;
+  } else {
+    alpha = parseFloat(match[4]);
+  }
+
+  return { ...rgb, a: alpha };
 };
 
 const matchToHsb = (...match: any[]) => ({ h: parseFloat(match[1]), s: bfb(match[2]), b: bfb(match[3]) });
@@ -65,28 +66,41 @@ export const getHSB = (color: string): ColorHSB | null => {
 
 export const getRGBA = (color: string): ColorRGBA | null => {
   let match: RegExpExecArray | null;
-  if ((match = MATCH_RGBA.exec(color)) || (match = MATCH_RGB.exec(color))) {
-    return matchToRgba({ radix: 10 }, ...match);
-  } else if ((match = MATCH_HEX6.exec(color)) || (match = MATCH_HEX8.exec(color))) {
-    return matchToRgba({ radix: 16 }, ...match);
-  } else if ((match = MATCH_HEX4.exec(color)) || (match = MATCH_HEX3.exec(color))) {
-    return matchToRgba({ radix: 16, double: true }, ...match);
+  let radix!: number;
+  let double!: boolean;
+  if ((match = MATCH_RGBA.exec(color) || MATCH_RGB.exec(color))) {
+    radix = 10;
+  } else if ((match = MATCH_HEX6.exec(color) || MATCH_HEX8.exec(color))) {
+    radix = 16;
+  } else if ((match = MATCH_HEX4.exec(color) || MATCH_HEX3.exec(color))) {
+    radix = 16;
+    double = true;
+  }
+  if (match) {
+    return matchToRgba({ radix, double }, match);
   }
   return null;
 };
 
 export const colorStringToOptions = (colorString: string) => {
   const color = colorString.trim().toLowerCase();
-  let rgba: ColorRGBA | null;
-  let hsb: ColorHSB | null;
+  let rgba!: ColorRGBA | null;
+  let hsb!: ColorHSB | null;
+  let rgb!: ColorRGB | null;
+  let opacity = 1;
   if (color.startsWith('hsb')) {
     hsb = getHSB(color);
   } else {
     rgba = getRGBA(color);
   }
+  if (rgba) {
+    rgb = RGBAToRGB(rgba);
+    opacity = isNaN(rgba.a) ? 1 : rgba.a;
+  }
+
   return {
-    rgb: rgba,
+    rgb,
     hsb,
-    opacity: rgba ? rgba.a : 1
+    opacity
   };
 };

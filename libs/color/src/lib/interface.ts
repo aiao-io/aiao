@@ -14,8 +14,6 @@ export interface ColorRGBA extends ColorRGB {
   a: number;
 }
 
-export type ColorRGBAKeys = keyof ColorRGBA;
-
 export type ColorType = 'hex' | 'rgb' | 'rgba' | 'hsb';
 
 export interface ColorOptions {

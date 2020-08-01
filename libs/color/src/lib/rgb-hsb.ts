@@ -2,9 +2,9 @@ import { ColorHSB, ColorRGB } from './interface';
 
 export const HSBToRGB = (hsb: ColorHSB): ColorRGB => {
   const { h, s, b: v } = hsb;
-  let r: number;
-  let g: number;
-  let b: number;
+  let r!: number;
+  let g!: number;
+  let b!: number;
   const i = Math.floor(h / 60);
   const f = hsb.h / 60 - i;
   const p = v * (1 - s);
@@ -58,8 +58,8 @@ export const RGBToHSB = (RGB: ColorRGB): ColorHSB => {
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
 
-  let h: number;
-  let s: number;
+  let h!: number;
+  let s!: number;
   const v = max;
 
   const d = max - min;
