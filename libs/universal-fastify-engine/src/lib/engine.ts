@@ -11,13 +11,13 @@ function fastifyAngularEngine(fastify: FastifyInstance, setupOptions: NgSetupOpt
   const defaultProviders = setupOptions.providers || [];
   const engine = new CommonEngine(bootstrap, defaultProviders);
 
-  // fastify.decorateReply('renderAngular', async function (opts?: RenderOptions) {
-  //   const html = await renderAngular(engine, setupOptions, this.request, opts);
-  //   if (opts?.disableSend !== true) {
-  //     this.type('text/html').send(html);
-  //   }
-  //   return html;
-  // });
+  fastify.decorateReply('renderAngular', async function (opts?: RenderOptions) {
+    const html = await renderAngular(engine, setupOptions, this.request, opts);
+    if (opts?.disableSend !== true) {
+      this.type('text/html').send(html);
+    }
+    return html;
+  });
 
   next();
 }

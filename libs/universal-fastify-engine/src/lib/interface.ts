@@ -16,3 +16,9 @@ export interface RenderOptions {
   providers?: StaticProvider[];
   disableSend?: boolean;
 }
+
+declare module 'fastify' {
+  interface FastifyReply {
+    renderAngular: (opts?: RenderOptions) => Promise<string>;
+  }
+}
