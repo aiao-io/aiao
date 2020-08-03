@@ -1,3 +1,5 @@
+import { env } from 'process';
+
 import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 
@@ -6,7 +8,7 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
   app.setGlobalPrefix('api');
-  await app.listen(+process.env.PORT || 4000);
+  await app.listen(+(env?.PORT || '4000'));
 }
 
 // Webpack will replace 'require' with '__webpack_require__'

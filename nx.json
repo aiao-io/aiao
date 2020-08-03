@@ -68,10 +68,10 @@
       "tags": ["all"]
     },
     "universal-fastify-engine": {
-      "tags": ["universal-lib"]
+      "tags": ["all"]
     },
     "nest-angular-universal": {
-      "tags": ["universal-lib"]
+      "tags": ["all"]
     },
     "dev-universal-fastify-engine": {
       "tags": ["angular-app", "nest-app"]

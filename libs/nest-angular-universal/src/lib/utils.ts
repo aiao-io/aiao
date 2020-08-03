@@ -41,8 +41,8 @@ export const setupUniversal = async (app: FastifyInstance, options: NestUniversa
 
   app.register((instance: FastifyInstance, opts: any, next: () => void) => {
     instance.register(fastifyStatic, {
+      prefix: '/',
       root: distPath,
-      wildcard: '**/*',
       redirect: true,
       cacheControl: true,
       maxAge: '1y'
@@ -50,3 +50,13 @@ export const setupUniversal = async (app: FastifyInstance, options: NestUniversa
     next();
   });
 };
+
+/**
+//  prefix: '/',
+//       wildcard: '**\/*',
+//       root: distPath,
+//       redirect: true,
+//       index: false,
+//       cacheControl: true,
+//       maxAge: '1y'
+// **/
