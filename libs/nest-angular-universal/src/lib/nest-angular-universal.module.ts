@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 
-import { FastifyReply, FastifyRequest } from 'fastify';
+import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 
 import { renderAngular } from '@aiao/universal-fastify-engine';
 import { DynamicModule, Inject, Module, OnModuleInit } from '@nestjs/common';
@@ -47,11 +47,11 @@ export class NestAngularUniversalModule implements OnModuleInit {
     }
 
     const { disableRender } = this.options;
-
     if (!disableRender) {
-      const app: any = httpAdapter.getInstance();
-      app.get('*', (req: FastifyRequest, replay: FastifyReply) => {
-        return renderAngular(this.engine, this.options, req);
+      const app = httpAdapter.getInstance<FastifyInstance>();
+      app.get('*', async (req: FastifyRequest, res: FastifyReply) => {
+        const html = await renderAngular(this.engine, this.options, req);
+        res.type('text/html').send(html);
       });
     }
   }

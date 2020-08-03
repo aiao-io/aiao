@@ -3,7 +3,7 @@ import { HttpAdapterHost } from '@nestjs/core';
 
 import { NEST_ANGULAR_UNIVERSAL_OPTIONS } from './constants';
 import { NestUniversalOptions } from './interface';
-import { setupUniversal } from './utils';
+import { setupUniversal } from './setup-universal';
 
 export const angularUniversalProviders: Provider[] = [
   {

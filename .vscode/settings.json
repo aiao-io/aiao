@@ -46,5 +46,7 @@
   "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 120,
   "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimit",
   "importSorter.importStringConfiguration.tabSize": 2,
-  "importSorter.generalConfiguration.exclude": ["proxies.ts"]
+  "importSorter.generalConfiguration.exclude": ["proxies.ts"],
+  // 去掉 experimentalDecorators 报错
+  "javascript.implicitProjectConfig.experimentalDecorators": true
 }
