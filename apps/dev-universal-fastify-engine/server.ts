@@ -13,11 +13,11 @@ export function createApp() {
   const distFolder = join(process.cwd(), 'dist/apps/dev-universal-fastify-engine/browser');
 
   app.register(fastifyStatic, {
-    prefix: '/',
-    wildcard: '**/*.*',
+    prefixAvoidTrailingSlash: true,
     root: distFolder,
-    redirect: true,
-    index: false
+    cacheControl: true,
+    wildcard: '**/*.*',
+    maxAge: '1y'
   });
 
   app.register(ngFastilyEngine, {
@@ -37,7 +37,7 @@ export function createApp() {
 }
 
 function run() {
-  const port = +process.env.PORT || 4000;
+  const port = +(process.env.PORT || 4000);
   const app = createApp();
   app.listen(port, () => {
     console.log(`Node server listening on http://localhost:${port}`);
