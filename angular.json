@@ -1732,6 +1732,43 @@
           }
         }
       }
+    },
+    "nest-angular-universal": {
+      "root": "libs/nest-angular-universal",
+      "sourceRoot": "libs/nest-angular-universal/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/nest-angular-universal/tsconfig.lib.json",
+              "libs/nest-angular-universal/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/nest-angular-universal/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/nest-angular-universal/jest.config.js",
+            "tsConfig": "libs/nest-angular-universal/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/nest-angular-universal",
+            "tsConfig": "libs/nest-angular-universal/tsconfig.lib.json",
+            "packageJson": "libs/nest-angular-universal/package.json",
+            "main": "libs/nest-angular-universal/src/index.ts",
+            "assets": ["libs/nest-angular-universal/*.md"]
+          }
+        }
+      }
     }
   },
   "cli": {
