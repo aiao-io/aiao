@@ -1,6 +1,6 @@
 {
   "name": "@aiao/universal-fastify-engine",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": " universal fastify engine",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -24,11 +24,11 @@
     "build": "cd ../../ && yarn build universal-fastify-engine --prod"
   },
   "peerDependencies": {
-    "@angular/core": "^9.0.0",
-    "@nguniversal/common": "^9.0.0",
-    "fastify": "^2.0.0",
-    "fastify-plugin": "^1.6.0",
-    "fastify-static": "^2.6.0"
+    "@angular/core": "^10.0.0",
+    "@nguniversal/common": "^10.0.0",
+    "fastify": "^3.0.0",
+    "fastify-plugin": "^2.0.3",
+    "fastify-static": "^3.2.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"
