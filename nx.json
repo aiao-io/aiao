@@ -71,7 +71,7 @@
       "tags": ["all"]
     },
     "nest-angular-universal": {
-      "tags": ["nest-lib"]
+      "tags": ["all"]
     },
     "dev-universal-fastify-engine": {
       "tags": ["angular-app", "nest-app"]

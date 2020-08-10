@@ -77,7 +77,6 @@
     "dayjs": "^1.8.23",
     "document-register-element": "1.14.3",
     "express": "^4.15.2",
-    "fastify": "^3.1.1",
     "fastify-http-proxy": "^4.0.2",
     "fastify-plugin": "^2.0.3",
     "fastify-static": "^3.2.0",

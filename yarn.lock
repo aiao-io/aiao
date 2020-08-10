@@ -9683,11 +9683,6 @@ fastify-error@^0.1.0:
   resolved "https://registry.yarnpkg.com/fastify-error/-/fastify-error-0.1.0.tgz#7ca9d3708a2b1a74aefed0e5dde1b96d0390f718"
   integrity sha512-jyCEc3VPEc8/PUwzDQAM2JlXLK2BG6L19mMJzbGij0TfdY1sHF9pCnnAn6Vcoi84TMTBOJynNDQUMUz6cjRmBw==
 
-fastify-error@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/fastify-error/-/fastify-error-0.2.0.tgz#9a1c28d4f42b6259e7a549671c8e5e2d85660634"
-  integrity sha512-zabxsBatj59ROG0fhP36zNdc5Q1/eYeH9oSF9uvfrurZf8/JKfrJbMcIGrLpLWcf89rS6L91RHWm20A/X85hcA==
-
 fastify-formbody@4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/fastify-formbody/-/fastify-formbody-4.0.3.tgz#59255a3aa2aec86625d25a33a1cd4add1e45dfe6"
@@ -9734,11 +9729,6 @@ fastify-static@^3.2.0:
     readable-stream "^3.4.0"
     send "^0.17.1"
 
-fastify-warning@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/fastify-warning/-/fastify-warning-0.2.0.tgz#e717776026a4493dc9a2befa44db6d17f618008f"
-  integrity sha512-s1EQguBw/9qtc1p/WTY4eq9WMRIACkj+HTcOIK1in4MV5aFaQC9ZCIt0dJ7pr5bIf4lPpHvAtP2ywpTNgs7hqw==
-
 fastify-websocket@^2.0.7:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/fastify-websocket/-/fastify-websocket-2.0.7.tgz#3e51415dfa1245cee630c633a21f78d55ed80b91"
@@ -9758,27 +9748,6 @@ fastify@3.1.1:
     avvio "^7.1.2"
     fast-json-stringify "^2.2.1"
     fastify-error "^0.1.0"
-    find-my-way "^3.0.0"
-    flatstr "^1.0.12"
-    light-my-request "^4.0.0"
-    pino "^6.2.1"
-    proxy-addr "^2.0.5"
-    readable-stream "^3.4.0"
-    rfdc "^1.1.4"
-    secure-json-parse "^2.0.0"
-    tiny-lru "^7.0.0"
-
-fastify@^3.1.1:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/fastify/-/fastify-3.2.0.tgz#acc009f86c06329a53515e303fc35f50d8f59527"
-  integrity sha512-+4gv8GiiblMtJf1z/sCQfEbndugmlpQu8wx4IgEpAstKY36fHIMBCSny9Wz6fHfq+FU/FTpYbrCFxzCMwiykFQ==
-  dependencies:
-    abstract-logging "^2.0.0"
-    ajv "^6.12.2"
-    avvio "^7.1.2"
-    fast-json-stringify "^2.2.1"
-    fastify-error "^0.2.0"
-    fastify-warning "^0.2.0"
     find-my-way "^3.0.0"
     flatstr "^1.0.12"
     light-my-request "^4.0.0"
