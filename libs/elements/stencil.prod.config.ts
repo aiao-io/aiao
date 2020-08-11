@@ -46,6 +46,14 @@ export const config: Config = {
     //   type: 'docs-readme'
     // }
   ],
+  extras: {
+    cssVarsShim: true,
+    dynamicImportShim: true,
+    initializeNextTick: true,
+    safari10: true,
+    scriptDataOpts: true,
+    shadowDomShim: true
+  },
   copy: [],
   bundles: [
     { components: ['aiao-code-editor', 'aiao-code-diff-editor'] },
@@ -57,5 +65,6 @@ export const config: Config = {
     { components: ['aiao-tree', 'aiao-tree-node'] }
   ],
   tsconfig: 'tsconfig.json',
-  globalScript: 'src/lib/global/global.ts'
+  globalScript: 'src/lib/global/global.ts',
+  enableCache: true
 };
