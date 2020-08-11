@@ -62,7 +62,6 @@ export const createReactComponent = <
         style,
       };
 
-      console.log(`React.createElement(tagName, newProps, children)`,React.createElement(tagName, newProps, children));
       return React.createElement(tagName, newProps, children);
     }
 
