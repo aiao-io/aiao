@@ -1,13 +1,12 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "module": "commonjs",
     "outDir": "../../dist/out-tsc",
-    "target": "es2015",
     "declaration": true,
-    "inlineSources": true,
-    "types": ["node"],
-    "lib": ["dom", "es2018"]
+    "rootDir": "./src",
+    "types": ["node"]
   },
-  "exclude": ["src/test-setup.ts", "**/*.spec.ts"],
+  "exclude": ["**/*.spec.ts"],
   "include": ["**/*.ts"]
 }

@@ -558,15 +558,13 @@
       "prefix": "aiao",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@nrwl/node:package",
           "options": {
+            "outputPath": "dist/libs/universal-fastify-engine",
             "tsConfig": "libs/universal-fastify-engine/tsconfig.lib.json",
-            "project": "libs/universal-fastify-engine/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/universal-fastify-engine/tsconfig.lib.prod.json"
-            }
+            "packageJson": "libs/universal-fastify-engine/package.json",
+            "main": "libs/universal-fastify-engine/src/index.ts",
+            "assets": ["libs/universal-fastify-engine/*.md"]
           }
         },
         "lint": {
@@ -583,43 +581,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/universal-fastify-engine/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "nest-angular-universal": {
-      "projectType": "library",
-      "root": "libs/nest-angular-universal",
-      "sourceRoot": "libs/nest-angular-universal/src",
-      "prefix": "aiao",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/nest-angular-universal/tsconfig.lib.json",
-            "project": "libs/nest-angular-universal/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/nest-angular-universal/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/nest-angular-universal/tsconfig.lib.json",
-              "libs/nest-angular-universal/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/nest-angular-universal/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/nest-angular-universal/jest.config.js",
+            "tsConfig": "libs/universal-fastify-engine/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }

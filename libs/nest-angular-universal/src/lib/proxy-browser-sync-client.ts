@@ -1,30 +1,36 @@
 import { FastifyInstance } from 'fastify';
+import proxy from 'fastify-http-proxy';
 import { existsSync } from 'fs';
 import { join } from 'path';
 
 import { NestUniversalOptions } from './interface';
 
 const promiseExistFile = (indexHtml: string) => {
+  let maxTryCount = 5;
   return new Promise(resolve => {
-    const pt = () => {
+    const browserIsBuild = () => {
       if (existsSync(indexHtml)) {
         resolve(true);
       } else {
         console.log(`waiting browser build`);
         setTimeout(() => {
-          pt();
+          if (maxTryCount) {
+            maxTryCount--;
+            browserIsBuild();
+          } else {
+            console.log(`browser not build`);
+          }
         }, 500);
       }
     };
-    pt();
+    browserIsBuild();
   });
 };
 
 export async function proxyBrowserSyncClient(app: FastifyInstance, options: NestUniversalOptions) {
-  const { defaultLocale, distPath, locales, production, browserHost, browserPort } = options;
+  const { defaultLocale, distPath, locales, browserHost, browserPort } = options;
 
   if (locales && locales?.length > 0) {
-    const proxy = require('fastify-http-proxy');
     locales.forEach(locale => {
       app.register(proxy, {
         upstream: `http://${browserHost || 'localhost'}:${browserPort || 4200}/browser-sync/browser-sync-client.js`,
