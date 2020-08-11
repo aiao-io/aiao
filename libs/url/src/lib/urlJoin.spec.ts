@@ -101,7 +101,8 @@ describe('urlJoin', () => {
       done();
     }
   });
-  fit('should fail with segments that are not string or number', done => {
+
+  it('should fail with segments that are not string or number', done => {
     try {
       const url = urlJoin('http://blabla.com/', null as any, 'test');
       done(url);
