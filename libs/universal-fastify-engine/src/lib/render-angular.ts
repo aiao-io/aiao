@@ -69,7 +69,7 @@ export const renderAngular = (
 
   if (!renderOptions.document) {
     let indexLocalePath!: string;
-    if (locales && locales?.length > 0) {
+    if (locales && locales.length > 0) {
       const locale = opts?.locale || locales.find(loc => url.startsWith(`/${loc}`)) || defaultLocale;
       if (locale) {
         indexLocalePath = join(distPath, locale);

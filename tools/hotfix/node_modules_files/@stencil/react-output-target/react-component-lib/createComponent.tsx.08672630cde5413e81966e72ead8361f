@@ -31,10 +31,6 @@ export const createReactComponent = <
       this.componentEl = element;
     };
 
-    constructor(props: StencilReactInternalProps<ElementType>) {
-      super(props);
-    }
-
     componentDidMount() {
       this.componentDidUpdate(this.props);
     }
@@ -62,7 +58,7 @@ export const createReactComponent = <
 
       const newProps: StencilReactInternalProps<ElementType> = {
         ...propsToPass,
-        ref: mergeRefs(forwardedRef!, this.setComponentElRef),
+        ref: mergeRefs(forwardedRef as any, this.setComponentElRef),
         style,
       };
 

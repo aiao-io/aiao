@@ -30,7 +30,7 @@ const promiseExistFile = (indexHtml: string) => {
 export async function proxyBrowserSyncClient(app: FastifyInstance, options: NestUniversalOptions) {
   const { defaultLocale, distPath, locales, browserHost, browserPort } = options;
 
-  if (locales && locales?.length > 0) {
+  if (locales && locales.length > 0) {
     locales.forEach(locale => {
       app.register(proxy, {
         upstream: `http://${browserHost || 'localhost'}:${browserPort || 4200}/browser-sync/browser-sync-client.js`,

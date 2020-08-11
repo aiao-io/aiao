@@ -43,7 +43,7 @@ const matchToRgba = (opt: { radix: number; double?: boolean }, match: RegExpExec
     rgb[key] = parseInt(val, radix);
   });
 
-  let alpha = 1;
+  let alpha: number;
   if (radix === 16) {
     alpha = parseInt(match[4], radix);
     alpha = alpha / 255;
