@@ -34,14 +34,14 @@ describe('one-to-many', () => {
     it('findOne/findByPk', async () => {
       const d1 = await postRepository.findOne(id);
       const d2 = await postSequelizeRepository.findByPk(id);
-      expect(d1.id).toEqual(d2.id);
-      expect(d1.name).toEqual(d2.name);
+      expect(d1!.id).toEqual(d2!.id);
+      expect(d1!.name).toEqual(d2!.name);
     });
 
     it('relation', async () => {
       const d1 = await postRepository.findOne({ where: { id }, relations: ['category'] });
       const d2 = await postSequelizeRepository.findOne({ where: { id }, include: ['category'] });
-      expect(d1.category.name).toEqual(d2.category.name);
+      expect(d1!.category.name).toEqual(d2!.category.name);
     });
   });
 });

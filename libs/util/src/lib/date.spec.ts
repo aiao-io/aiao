@@ -151,7 +151,7 @@ describe('formatPassTime', () => {
     // true
     expect(canBeDate(1)).toBeTruthy();
     expect(canBeDate(new Date())).toBeTruthy();
-    expect(canBeDate(new Date(null))).toBeTruthy();
+    expect(canBeDate(new Date(null as any))).toBeTruthy();
     expect(canBeDate(new Date().getTime())).toBeTruthy();
     expect(canBeDate(new Date().toISOString())).toBeTruthy();
   });
