@@ -59,7 +59,6 @@ async function fixFiles() {
     const fixStr = readFileSync(d, { encoding: 'utf8' });
     const fixMd5 = getFileMD5(d);
     const path = join(cwd(), 'node_modules', fixPath.replace(fixFileRoot, ''));
-
     if (needUpdateFile) {
       try {
         md5 = getFileMD5(path);
@@ -75,6 +74,12 @@ async function fixFiles() {
         ora.fail(chalk.red(path + ' [路径不存在]'));
       }
     }
+    files.push({
+      md5,
+      path,
+      fixStr,
+      fixMd5
+    });
   });
 
   files.forEach(d => {
