@@ -5,14 +5,14 @@ import { PostCategory } from './post-category.entity';
 @Entity('one_to_many_post')
 export class Post {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column()
-  name: string;
+  name!: string;
 
   @ManyToOne(() => PostCategory, _ => _.posts, { cascade: true })
   @JoinColumn()
-  category: PostCategory;
+  category?: PostCategory;
   @Column({ nullable: true })
-  categoryId: number;
+  categoryId?: number;
 }

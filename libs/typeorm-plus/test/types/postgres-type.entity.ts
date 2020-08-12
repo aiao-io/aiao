@@ -8,46 +8,46 @@ export enum SampleEnum {
 @Entity('postgres_type')
 export class PostgresType {
   @PrimaryGeneratedColumn('uuid')
-  uuid: string;
+  uuid!: string;
 
   @Column()
-  name: string;
+  name!: string;
 
   @Column()
-  boolean: Boolean;
+  boolean!: Boolean;
 
   @Column({ length: '32' })
-  shortText: string;
+  shortText!: string;
 
   @Column()
-  number: number;
+  number!: number;
 
   @Column('int')
-  int: number;
+  int!: number;
 
   @Column('smallint')
-  smallint: number;
+  smallint!: number;
 
   @Column('bigint')
-  bigint: number;
+  bigint!: number;
 
   @Column()
-  date: Date;
+  date!: Date;
 
   @Column('date')
-  date2: Date;
+  date2!: Date;
 
   @Column('timestamptz')
-  timestamptz: Date;
+  timestamptz!: Date;
 
   @Column('time')
-  time: Date;
+  time!: Date;
 
   @Column('boolean')
-  isBoolean: boolean;
+  isBoolean!: boolean;
 
   @Column('boolean')
-  isSecondBoolean: boolean;
+  isSecondBoolean!: boolean;
 
   @Column('jsonb')
   jsonb: any;
@@ -56,14 +56,14 @@ export class PostgresType {
   json: any;
 
   @Column('enum', { enum: SampleEnum })
-  enum: SampleEnum;
+  enum!: SampleEnum;
 
   @Column('character varying')
-  characterVarying: string[];
+  characterVarying!: string[];
 
   @CreateDateColumn()
-  createdDate: Date;
+  createdDate!: Date;
 
   @UpdateDateColumn()
-  updatedDate: Date;
+  updatedDate!: Date;
 }
