@@ -115,7 +115,7 @@ const addFiles = (options: NormalizedSchema): Rule => {
   );
 };
 
-export default function(schema: Schema): Rule {
+export default function (schema: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
     const options = normalizeOptions<Schema>(host, schema);
     const { isNx } = options;

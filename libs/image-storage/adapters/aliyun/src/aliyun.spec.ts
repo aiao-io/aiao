@@ -1,5 +1,5 @@
 import { ImageStorage } from '../../../src';
-import { ImageStorageAdapterAliyun } from '.';
+import { ImageStorageAdapterAliyun } from './';
 
 describe('ImageStorage', () => {
   it('ImageStorageAdapterAliyun', () => {
@@ -23,7 +23,7 @@ describe('ImageStorage', () => {
       width: 400,
       height: 560,
       quality: 0.9,
-      method: undefined,
+      method: 'lfit',
       format: 'src'
     });
   });

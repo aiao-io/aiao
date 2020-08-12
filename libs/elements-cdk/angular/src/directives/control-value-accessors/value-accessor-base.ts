@@ -1,4 +1,4 @@
-import { ElementRef, Directive } from '@angular/core';
+import { Directive, ElementRef } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 
 @Directive()

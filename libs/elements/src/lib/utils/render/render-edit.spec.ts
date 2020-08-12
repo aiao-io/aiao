@@ -1,5 +1,6 @@
-import { elementsPreviewHtmlData } from './render-edit';
 import { IElementConfig, IElementData } from '@aiao/elements-cdk';
+
+import { elementsPreviewHtmlData } from './render-edit';
 
 describe('render-editor', () => {
   it('elementsPreviewHtmlData', () => {

@@ -1,6 +1,6 @@
 {
   "name": "@aiao/typeorm-plus",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "typeorm support sequelize query",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -17,10 +17,13 @@
     "typeorm"
   ],
   "scripts": {
-    "build": "cd ../../ && ng build typeorm-plus --prod"
+    "build": "cd ../../ && yarn build typeorm-plus --prod"
   },
   "peerDependencies": {
-    "sequelize": "^5.21.3",
-    "typeorm": "^0.2.21"
+    "sequelize": "^6.3.3",
+    "typeorm": "^0.2.22"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

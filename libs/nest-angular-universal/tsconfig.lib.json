@@ -1,20 +1,12 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "module": "commonjs",
     "outDir": "../../dist/out-tsc",
-    "target": "es2015",
     "declaration": true,
-    "inlineSources": true,
-    "types": [],
-    "lib": ["dom", "es2018"],
-    "paths": {
-      "@aiao/universal-fastify-engine": ["dist/libs/universal-fastify-engine"]
-    }
+    "rootDir": "./src",
+    "types": ["node"]
   },
-  "angularCompilerOptions": {
-    "skipTemplateCodegen": true,
-    "strictMetadataEmit": true,
-    "enableResourceInlining": true
-  },
-  "exclude": ["src/test-setup.ts", "**/*.spec.ts"]
+  "exclude": ["**/*.spec.ts"],
+  "include": ["**/*.ts"]
 }

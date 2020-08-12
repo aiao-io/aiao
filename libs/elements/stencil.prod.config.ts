@@ -1,12 +1,10 @@
 import { resolve } from 'path';
 
-import { angularOutputTarget } from '@stencil/angular-output-target';
 import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
 
 const excludeComponents = ['aiao-text-editor-bar', 'aiao-tree-node', 'ion-icon'];
-
 export const config: Config = {
   namespace: 'aiao-elements',
   plugins: [sass()],
@@ -24,13 +22,21 @@ export const config: Config = {
       file: resolve(__dirname, 'lib/html.html-data.json'),
       sourceCodeBaseUrl: 'https://github.com/aiao-io/aiao/tree/master/libs/elements'
     },
-    angularOutputTarget({
+    // angularOutputTarget({
+    //   componentCorePackage: '@aiao/elements',
+    //   directivesProxyFile: '../elements-angular/src/lib/directives/proxies.ts',
+    //   directivesUtilsFile: '../elements-angular/src/lib/directives/proxies-utils.ts',
+    //   directivesArrayFile: '../elements-angular/src/lib/directives/proxies-list.txt',
+    //   excludeComponents
+    // }),
+    {
+      type: 'angular',
       componentCorePackage: '@aiao/elements',
-      directivesProxyFile: resolve(__dirname, '../elements-angular/src/lib/directives/proxies.ts'),
-      directivesUtilsFile: resolve(__dirname, '../elements-angular/src/lib/directives/proxies-utils.ts'),
-      directivesArrayFile: resolve(__dirname, '../elements-angular/src/lib/directives/proxies-list.txt'),
+      directivesProxyFile: '../elements-angular/src/lib/directives/proxies.ts',
+      directivesUtilsFile: '../elements-angular/src/lib/directives/proxies-utils.ts',
+      directivesArrayFile: '../elements-angular/src/lib/directives/proxies-list.txt',
       excludeComponents
-    }),
+    },
     reactOutputTarget({
       componentCorePackage: '@aiao/elements',
       proxiesFile: resolve(__dirname, '../elements-react/src/lib/proxies.ts'),
@@ -40,6 +46,14 @@ export const config: Config = {
     //   type: 'docs-readme'
     // }
   ],
+  extras: {
+    cssVarsShim: true,
+    dynamicImportShim: true,
+    initializeNextTick: true,
+    safari10: true,
+    scriptDataOpts: true,
+    shadowDomShim: true
+  },
   copy: [],
   bundles: [
     { components: ['aiao-code-editor', 'aiao-code-diff-editor'] },
@@ -51,5 +65,6 @@ export const config: Config = {
     { components: ['aiao-tree', 'aiao-tree-node'] }
   ],
   tsconfig: 'tsconfig.json',
-  globalScript: 'src/lib/global/global.ts'
+  globalScript: 'src/lib/global/global.ts',
+  enableCache: true
 };

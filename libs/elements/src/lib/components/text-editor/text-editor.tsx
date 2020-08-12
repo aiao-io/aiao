@@ -2,13 +2,14 @@ import { renderHiddenInput } from '@aiao/elements-cdk';
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { InputChangeEventDetail } from '../../interfaces/input.interface';
-import { getSelectionElements, restoreRange, saveRange } from '../../utils/selection';
+import { docGetSelection, getSelectionElements, restoreRange, saveRange } from '../../utils/selection';
 import { TextActionState } from '../text-editor-bar/text-editor-bar.interface';
 import { TextEditorAcitons as TA } from './text-editor.interface';
 
 const IGNORE_ACTIONS = [TA.heading, TA.undo, TA.redo, TA.createLink, TA.indent, TA.outdent, TA.quote];
-
+let richTextEditorInputId = 0;
 // https://developer.mozilla.org/zh-CN/docs/Web/API/Document/execCommand
+
 @Component({
   tag: 'aiao-text-editor',
   styleUrl: 'text-editor.scss',
@@ -16,16 +17,17 @@ const IGNORE_ACTIONS = [TA.heading, TA.undo, TA.redo, TA.createLink, TA.indent, 
 })
 export class RichTextEditor {
   @Element() el!: HTMLElement;
-  private range: Range;
-  private _lastElement: HTMLElement;
+  private range?: Range;
+  private _lastElement?: HTMLElement;
+  private inputId = `aiao-text-editor:${richTextEditorInputId++}`;
 
   // --------------------------------------------------------------[ Event ]
 
   /**
    * 值改变
    */
-  @Event() aiaoChange: EventEmitter<InputChangeEventDetail>;
-  @Event() aiaoStateChange: EventEmitter<TextActionState>;
+  @Event() aiaoChange!: EventEmitter<InputChangeEventDetail>;
+  @Event() aiaoStateChange!: EventEmitter<TextActionState>;
 
   // --------------------------------------------------------------[ State ]
 
@@ -49,11 +51,11 @@ export class RichTextEditor {
   /**
    * 绑定的 dom 元素
    */
-  @Prop() element: HTMLElement;
+  @Prop() element?: HTMLElement;
   /**
    * form name
    */
-  @Prop() name: string;
+  @Prop() name = this.inputId;
   /**
    * form value
    */
@@ -61,7 +63,7 @@ export class RichTextEditor {
 
   // --------------------------------------------------------------[ Watch ]
   @Watch('element')
-  elementChanged(value: HTMLElement) {
+  elementChanged(value?: HTMLElement) {
     if (this._lastElement !== value && value) {
       if (this._lastElement) {
         this._lastElement.removeEventListener('keyup', this.statChangeHander);
@@ -76,8 +78,8 @@ export class RichTextEditor {
       this._lastElement.addEventListener('input', this.onInput);
       this._lastElement.addEventListener('focus', this.onFocus);
       this._lastElement.addEventListener('blur', this.onBlur);
+      this._lastElement.contentEditable = 'true';
     }
-    this._lastElement.contentEditable = 'true';
   }
   //
 
@@ -191,7 +193,7 @@ export class RichTextEditor {
 
   onInput = () => {
     this.checkEle();
-    this.value = this._lastElement.innerHTML;
+    this.value = this._lastElement!.innerHTML;
     this.aiaoChange.emit({ value: this.value });
   };
 
@@ -233,15 +235,15 @@ export class RichTextEditor {
 
   // 检测元素, 保证文本使用 p 标签
   private checkEle() {
-    if (this._lastElement.firstChild && this._lastElement.firstChild.nodeType === 3) {
+    if (this._lastElement?.firstChild && this._lastElement.firstChild.nodeType === 3) {
       this.exec('formatBlock', this.paragraphSeparator);
     }
   }
 
   private getSelectionAttributeValue(attribute: string) {
-    let selection = document.getSelection();
+    let selection = docGetSelection(document);
     if (this._lastElement) {
-      selection = this._lastElement.ownerDocument.getSelection();
+      selection = docGetSelection(this._lastElement.ownerDocument);
     }
     if (selection.rangeCount < 1) {
       return '';
@@ -300,7 +302,7 @@ export class RichTextEditor {
   // --------------------------------------------------------------[ lifecycle ]
 
   componentDidLoad() {
-    const ele: HTMLElement = this.element || this._lastElement;
+    const ele = this.element || this._lastElement;
     if (ele) {
       this.elementChanged(ele);
       ele.innerHTML = this.value || '';

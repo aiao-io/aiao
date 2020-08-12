@@ -92,7 +92,7 @@ export function translateTypeOrmEntity(metadata: EntityMetadata): SeqModel {
 
   if (indices.length > 0) {
     options.indexes = indices.map(({ name, isFulltext, isUnique, givenColumnNames, isSpatial }) => {
-      let type: IndexType;
+      let type!: IndexType;
       if (isFulltext) {
         type = 'FULLTEXT';
       } else if (isUnique) {

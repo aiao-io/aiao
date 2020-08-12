@@ -23,6 +23,6 @@ function moveDependency(): Rule {
   });
 }
 
-export default function(schema: Schema) {
+export default function (schema: Schema) {
   return chain([addPackageWithInit('@nrwl/jest'), addDependencies(), moveDependency(), formatFiles(schema)]);
 }

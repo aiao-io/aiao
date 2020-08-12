@@ -1,4 +1,4 @@
-import { Connection, ConnectionOptions, Repository } from 'typeorm';
+import { ConnectionOptions } from 'typeorm';
 
 import { DynamicModule, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -9,28 +9,24 @@ import { AiaoNestTypeormPlusCoreModule } from './nest-typeorm-plus-core.module';
 
 @Module({
   providers: [],
-  exports: [],
+  exports: []
 })
 export class AiaoTypeormPlusModule {
-  static entities: Set<Repository<any>> = new Set();
-
   static forRoot(config: AiaoTypeormPlusModuleConfig): DynamicModule {
-    const entities = [...(config.entities || []), ...Array.from(AiaoNestTypeormPlusCoreModule.entities)];
-    config = { ...config, entities };
     return {
       module: AiaoTypeormPlusModule,
-      imports: [TypeOrmModule.forRoot(config), AiaoNestTypeormPlusCoreModule.forRoot(config)],
+      imports: [AiaoNestTypeormPlusCoreModule.forRoot(config)]
     };
   }
 
-  static forFeature(entities: any[] = [], connection?: Connection | ConnectionOptions | string): DynamicModule {
-    entities.forEach((d) => AiaoNestTypeormPlusCoreModule.entities.add(d));
+  static forFeature(entities: any[] = [], connection?: ConnectionOptions | string): DynamicModule {
+    AiaoNestTypeormPlusCoreModule.addEntities(entities, connection);
     const entityProvides = createSequelizeProviders(entities, connection);
     return {
       module: AiaoTypeormPlusModule,
       imports: [TypeOrmModule.forFeature(entities, connection)],
       providers: [...entityProvides],
-      exports: [TypeOrmModule, ...entityProvides],
+      exports: [TypeOrmModule, ...entityProvides]
     };
   }
 }

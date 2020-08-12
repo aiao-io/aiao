@@ -128,9 +128,9 @@ describe('LazyElementLoader', () => {
 class FakeCustomElementModule {}
 
 class FakeComponentFactory extends ComponentFactory<any> {
-  selector: string;
-  componentType: Type<any>;
-  ngContentSelectors: string[];
+  selector!: string;
+  componentType!: Type<any>;
+  ngContentSelectors!: string[];
   inputs = [{ propName: this.identifyingInput, templateName: this.identifyingInput }];
   outputs = [];
 
@@ -174,7 +174,7 @@ class FakeModuleRef extends NgModuleRef<any> {
 }
 
 class FakeModuleFactory extends NgModuleFactory<any> {
-  moduleType: Type<any>;
+  moduleType!: Type<any>;
   moduleRefToCreate = new FakeModuleRef(this.modulePath);
 
   constructor(private modulePath: string) {

@@ -13,3 +13,9 @@
 **/tsconfig.json
 **/tslint.json
 angular.json
+
+libs/elements/lib/**
+libs/elements/loader/**
+libs/elements/vendors/**
+libs/elements/hydrate/**
+*.d.ts

@@ -13,6 +13,9 @@
     "url": "https://github.com/aiao-io/aiao/issues"
   },
   "scripts": {
-    "build": "cd ../../ && ng build elements-cdk --prod"
+    "build": "cd ../../ && yarn build elements-cdk --prod"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

@@ -16,9 +16,12 @@
     "random"
   ],
   "scripts": {
-    "build": "cd ../../ && ng build random --prod"
+    "build": "cd ../../ && yarn build random --prod"
   },
   "peerDependencies": {
     "lodash": "^4.17.15"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

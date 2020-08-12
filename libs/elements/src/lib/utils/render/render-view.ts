@@ -8,7 +8,7 @@ import { IElementData } from '@aiao/elements-cdk';
  */
 export const elementDataStringify = (data: IElementData) => {
   const { tag, children, innerHTML, innerText, class: cls, attributes, slot, style } = data;
-  const childrenHtml = children?.length ? elementsDataStringify(children) : '';
+  const childrenHtml: string = children?.length ? elementsDataStringify(children) : '';
   const innerString = childrenHtml || innerText || innerHTML;
 
   const props: any = {

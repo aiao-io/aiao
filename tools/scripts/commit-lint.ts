@@ -2,8 +2,9 @@
 
 import chalk from 'chalk';
 import { execSync } from 'child_process';
-import { env, exit } from 'process';
+import { exit } from 'process';
 
+import { systemLang } from '../util/get-current-lang';
 import { WORKSPACE_SCOPES, WORKSPACE_TYPES } from '../workspace';
 
 /**
@@ -46,12 +47,10 @@ const message_zh_cn = {
   `
 };
 
-const message = env.LANG.includes('zh_CN') ? message_zh_cn : message_en;
+const message = systemLang.includes('zh') ? message_zh_cn : message_en;
 
 console.log(chalk.green(message.titile));
-const gitMessage = execSync('git log -1 --no-merges')
-  .toString()
-  .trim();
+const gitMessage = execSync('git log -1 --no-merges').toString().trim();
 
 const match = /(?<type>[a-z-]+)\((?<scope>[a-z-]+)\):/.exec(gitMessage);
 const type = match?.groups?.type;

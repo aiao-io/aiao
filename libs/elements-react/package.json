@@ -16,7 +16,7 @@
     "react"
   ],
   "scripts": {
-    "build": "cd ../../ && ng build elements-react"
+    "build": "cd ../../ && yarn build elements-react --prod"
   },
   "peerDependencies": {
     "@aiao/elements": "^0.5.1",
@@ -25,5 +25,8 @@
   },
   "devDependencies": {
     "@aiao/elements": "^0.7.0"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

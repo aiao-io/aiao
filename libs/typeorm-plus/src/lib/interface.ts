@@ -10,7 +10,7 @@ import {
 } from 'sequelize';
 
 // @ts-ignore
-export interface SequelizeRepository<M> extends ModelType {
+export interface SequelizeRepository<M> extends ModelType<M> {
   findAll(options?: FindOptions): Promise<M[]>;
   findByPk(identifier?: Identifier, options?: Omit<FindOptions | NonNullFindOptions, 'where'>): Promise<M | null>;
 
@@ -25,3 +25,5 @@ export interface SequelizeRepository<M> extends ModelType {
   increment(field: string | string[], options: IncrementDecrementOptionsWithBy): Promise<M>;
   increment(fields: { [key: string]: number }, options: IncrementDecrementOptions): Promise<M>;
 }
+
+export const a = 1;

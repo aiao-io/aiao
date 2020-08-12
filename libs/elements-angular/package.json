@@ -18,10 +18,11 @@
     "web components"
   ],
   "scripts": {
-    "build": "cd ../../ && ng build elements-angular --prod"
+    "build": "cd ../../ && yarn build elements-angular --prod"
   },
   "dependencies": {
-    "@aiao/elements": "^0.7.0"
+    "@aiao/elements": "^0.7.0",
+    "tslib": "^2.0.0"
   },
   "peerDependencies": {
     "@angular/common": "^9.0.0",

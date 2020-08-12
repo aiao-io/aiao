@@ -9,11 +9,12 @@ export const createSequelizeProviders = (
   entities: Function[] = [],
   connection?: Connection | ConnectionOptions | string
 ) => {
-  return entities.map((entity) => ({
-    provide: getSequelizeRepositoryToken(entity, connection),
-    useFactory: async (typeormPlus: TypeormPlus, typeormEntity: Repository<any>) => {
-      return typeormPlus.addMetadata(typeormEntity.metadata);
-    },
-    inject: [NEST_TYPEORM_PLUS, getRepositoryToken(entity, connection)],
-  }));
+  return entities.map(entity => {
+    return {
+      provide: getSequelizeRepositoryToken(entity, connection),
+      useFactory: async (typeormPlus: TypeormPlus, typeormEntity: Repository<any>) =>
+        typeormPlus.addMetadata(typeormEntity.metadata),
+      inject: [NEST_TYPEORM_PLUS, getRepositoryToken(entity, connection)]
+    };
+  });
 };

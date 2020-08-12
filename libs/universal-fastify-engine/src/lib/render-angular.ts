@@ -8,14 +8,14 @@ import { NgSetupOptions, RenderOptions } from './interface';
 
 const templateCache = new Map<string, string>();
 
-function getDocument(path: string): string {
+function getDocument(path: string): string | undefined {
   if (templateCache.has(path)) {
-    return templateCache.get(path);
+    return templateCache.get(path)!;
   }
   const indexOriginal = join(path, 'index.original.html');
   const index = join(path, 'index.html');
 
-  let file: string;
+  let file!: string;
   if (existsSync(indexOriginal)) {
     file = readFileSync(indexOriginal).toString();
   } else if (existsSync(index)) {
@@ -25,7 +25,7 @@ function getDocument(path: string): string {
     templateCache.set(path, file);
     return file;
   }
-  return null;
+  return undefined;
 }
 
 export const renderAngular = (
@@ -34,7 +34,7 @@ export const renderAngular = (
   request: FastifyRequest,
   opts?: RenderOptions
 ) => {
-  const { req, headers } = request;
+  const { url, headers } = request;
   const {
     bootstrap,
     defaultLocale,
@@ -53,7 +53,7 @@ export const renderAngular = (
   }
 
   const renderOptions: NgRenderOptions = {
-    url: req.url,
+    url,
     bootstrap,
     documentFilePath,
     document,
@@ -68,9 +68,9 @@ export const renderAngular = (
   };
 
   if (!renderOptions.document) {
-    let indexLocalePath: string;
-    if (locales?.length > 0) {
-      const locale = opts?.locale || locales.find(loc => req.url.startsWith(`/${loc}`)) || defaultLocale;
+    let indexLocalePath!: string;
+    if (locales && locales.length > 0) {
+      const locale = opts?.locale || locales.find(loc => url.startsWith(`/${loc}`)) || defaultLocale;
       if (locale) {
         indexLocalePath = join(distPath, locale);
       }

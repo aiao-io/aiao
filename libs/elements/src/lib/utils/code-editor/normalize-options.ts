@@ -6,10 +6,10 @@
  * @param value 值
  */
 export const normalizeMonacoEditorOptions = (
+  value: any,
   opts: monaco.editor.IStandaloneEditorConstructionOptions,
-  uri: monaco.Uri,
-  language: string,
-  value: any
+  uri?: monaco.Uri,
+  language?: string
 ) => {
   const options = { ...opts };
   const hasModel = uri || language || value;

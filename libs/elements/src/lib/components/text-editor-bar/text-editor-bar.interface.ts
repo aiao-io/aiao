@@ -24,6 +24,7 @@ export interface TextActionState {
   [TA.underline]?: boolean;
   [TA.undo]?: boolean;
   [TA.unlink]?: boolean;
+  [name: string]: any;
 }
 
 export interface TextEditorBarOptions {

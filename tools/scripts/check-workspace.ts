@@ -12,7 +12,12 @@ const config = yargs.option('lib', { type: 'boolean' }).argv;
 const checkWorkspace = async () => {
   await checkSylink();
   if (config.lib) {
-    await checkLibBuild();
+    try {
+      await checkLibBuild();
+    } catch (error) {
+      console.error(error);
+      exit(1);
+    }
   }
 };
 

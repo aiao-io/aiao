@@ -16,8 +16,7 @@
     "libs/elements/loader": true,
     "libs/elements/url": true,
     "libs/elements/util": true,
-    "libs/elements/vendors": true,
-    "tmp": true
+    "libs/elements/vendors": true
   },
   "gitlens.codeLens.authors.enabled": false,
   "gitlens.codeLens.recentChange.enabled": false,
@@ -39,5 +38,15 @@
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+
+  "editor.formatOnSave": true,
+  // importSorter 配置
+  "importSorter.generalConfiguration.sortOnBeforeSave": true,
+  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 120,
+  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimit",
+  "importSorter.importStringConfiguration.tabSize": 2,
+  "importSorter.generalConfiguration.exclude": ["proxies.ts"],
+  // 去掉 experimentalDecorators 报错
+  "javascript.implicitProjectConfig.experimentalDecorators": true
 }

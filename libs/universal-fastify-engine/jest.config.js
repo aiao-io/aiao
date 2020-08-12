@@ -1,11 +1,14 @@
 module.exports = {
   name: 'universal-fastify-engine',
   preset: '../../jest.config.js',
-  coverageDirectory: '../../coverage/libs/universal-fastify-engine',
-  collectCoverageFrom: ['./src/lib/**/*.ts'],
-  snapshotSerializers: [
-    'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
-    'jest-preset-angular/build/AngularSnapshotSerializer.js',
-    'jest-preset-angular/build/HTMLCommentSerializer.js'
-  ]
+  globals: {
+    'ts-jest': {
+      tsConfig: '<rootDir>/tsconfig.spec.json'
+    }
+  },
+  transform: {
+    '^.+\\.[tj]sx?$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
+  coverageDirectory: '../../coverage/libs/universal-fastify-engine'
 };

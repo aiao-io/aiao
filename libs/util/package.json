@@ -18,10 +18,13 @@
     "string"
   ],
   "scripts": {
-    "build": "cd ../../ && ng build util --prod"
+    "build": "cd ../../ && yarn build util --prod"
   },
   "peerDependencies": {
     "date-fns": "^2.9.0",
     "lodash": "^4.17.15"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

@@ -5,14 +5,11 @@ import { Post } from './post.entity';
 @Entity('many_to_many_image')
 export class PostImage {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column()
-  name: string;
+  name!: string;
 
-  @ManyToMany(
-    () => Post,
-    _ => _.images
-  )
-  posts: Post[];
+  @ManyToMany(() => Post, _ => _.images)
+  posts!: Post[];
 }

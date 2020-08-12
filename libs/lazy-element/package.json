@@ -18,7 +18,7 @@
     "module"
   ],
   "scripts": {
-    "build": "cd ../../ && ng build lazy-element --prod"
+    "build": "cd ../../ && yarn build lazy-element --prod"
   },
   "peerDependencies": {
     "@aiao/lazy-module": "^1.4.0",
@@ -28,5 +28,8 @@
   },
   "devDependencies": {
     "@aiao/lazy-module": "*"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

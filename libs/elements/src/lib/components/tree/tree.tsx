@@ -30,7 +30,7 @@ export class Tree implements ComponentInterface {
 
   refMap: Map<string, HTMLAiaoTreeNodeElement> = new Map();
   dataMap: Map<string, TreeNodeData> = new Map();
-  private dragNode: TreeNode;
+  private dragNode?: TreeNode;
   // private selectedKeys: Set<Id> = new Set();
   // private checkedKeys: Set<Id> = new Set();
   // private halfCheckedKeys: Set<Id> = new Set();
@@ -42,17 +42,17 @@ export class Tree implements ComponentInterface {
   /**
    * change
    */
-  @Event() aiaoChange: EventEmitter<void>;
+  @Event() aiaoChange!: EventEmitter<void>;
 
   /**
    * 改变的数据节点
    */
-  @Event() aiaoTreeNodeChange: EventEmitter<TreeNodeData[]>;
+  @Event() aiaoTreeNodeChange!: EventEmitter<TreeNodeData[]>;
 
   /**
    * tree drop
    */
-  @Event() aiaoTreeDrop: EventEmitter<any>;
+  @Event() aiaoTreeDrop!: EventEmitter<any>;
 
   // --------------------------------------------------------------[ State ]
   /**
@@ -134,7 +134,7 @@ export class Tree implements ComponentInterface {
   /**
    * 节点数据
    */
-  @Prop({ mutable: true }) data: TreeNodeData[];
+  @Prop({ mutable: true }) data?: TreeNodeData[];
   @Watch('data')
   dataChanged(data: TreeNodeData[] = []) {
     this.dataMap.clear();
@@ -153,6 +153,9 @@ export class Tree implements ComponentInterface {
     let allow = true;
     const dropNodeData = this.dataMap.get(`${dropNode.value}`);
 
+    if (!dropNodeData) {
+      throw new Error('dropNodeData');
+    }
     // 禁止拖入叶子节点
     // 禁止拖入自身
     if (dropNode.dropType === 'in' && (dropNodeData.isLeaf || dragNodeData === dropNodeData)) {
@@ -260,7 +263,7 @@ export class Tree implements ComponentInterface {
   async onNodeDrop(_: CustomEvent<TreeNodeEvent>) {
     const { node } = _.detail;
     const dropNodeData = this.dataMap.get(`${node.value}`);
-    const dragNodeData: TreeNodeData = this.dragNode && this.dataMap.get(`${this.dragNode.value}`);
+    const dragNodeData = this.dragNode && this.dataMap.get(`${this.dragNode.value}`);
 
     // 数据验证
     if (!dragNodeData) {
@@ -282,12 +285,12 @@ export class Tree implements ComponentInterface {
     // 根据 drop 类型操作数据
     switch (node.dropType) {
       case 'top':
-        dragNodeData.parentId = dropNodeData.parentId;
-        dragNodeData.sort = dropNodeData.sort - 0.5;
+        dragNodeData.parentId = dropNodeData!.parentId;
+        dragNodeData.sort = dropNodeData!.sort - 0.5;
         break;
       case 'bottom':
-        dragNodeData.parentId = dropNodeData.parentId;
-        dragNodeData.sort = dropNodeData.sort + 0.5;
+        dragNodeData.parentId = dropNodeData!.parentId;
+        dragNodeData.sort = dropNodeData!.sort + 0.5;
         break;
       case 'in':
         dragNodeData.parentId = node.value;
@@ -299,7 +302,7 @@ export class Tree implements ComponentInterface {
     if (dragOldParentId !== dragNodeData.parentId) {
       changeIds.add(`${dragNodeData.id}`);
       // 排序原始父级的 children 数据
-      const needSortNodes1 = this.data.filter(d => d.parentId === dragOldParentId);
+      const needSortNodes1 = this.data!.filter(d => d.parentId === dragOldParentId);
       sortBy(needSortNodes1, 'sort').forEach((d, i) => {
         if (d.sort !== i) {
           changeIds.add(`${d.id}`);
@@ -309,7 +312,7 @@ export class Tree implements ComponentInterface {
     }
 
     // 排序新父级数据
-    const needSortNodes = this.data.filter(d => d.parentId === dragNodeData.parentId);
+    const needSortNodes = this.data!.filter(d => d.parentId === dragNodeData.parentId);
     sortBy(needSortNodes, 'sort').forEach((d, i) => {
       if (d.id === dragNodeData.id) {
         if (dragOldOld !== i) {
@@ -322,8 +325,8 @@ export class Tree implements ComponentInterface {
     });
 
     if (changeIds.size > 0) {
-      this.data = [...this.data];
-      const changedData = Array.from(changeIds).map(id => this.dataMap.get(id));
+      this.data = [...this.data!];
+      const changedData = Array.from(changeIds).map(id => this.dataMap.get(id)) as TreeNodeData[];
       this.aiaoTreeNodeChange.emit(changedData);
       this.aiaoChange.emit();
     }
@@ -345,7 +348,7 @@ export class Tree implements ComponentInterface {
       }
     }
 
-    let childConfigIds: string[];
+    let childConfigIds: string[] | undefined;
     if (this.config) {
       const conf = this.config.find(d => d.id === configId);
       if (conf) {
@@ -367,7 +370,7 @@ export class Tree implements ComponentInterface {
     const hasChildren = !isLeaf;
     const nextLevel = level + 1;
 
-    let eleId: string;
+    let eleId: string | undefined;
     if (needId) {
       attrs.ref = (r: any) => this.refMap.set(`${id}`, r);
       attrs.value = id;

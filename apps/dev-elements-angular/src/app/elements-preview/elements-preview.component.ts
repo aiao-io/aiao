@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./elements-preview.component.scss']
 })
 export class ElementsPreviewComponent implements OnInit {
-  form: FormGroup;
+  form!: FormGroup;
   config = [
     {
       tag: 'h1',

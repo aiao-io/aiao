@@ -31,15 +31,15 @@ describe('one-to-one', () => {
     it('findOne/findByPk', async () => {
       const d1 = await userRepository.findOne(id);
       const d2 = await userSequelizeRepository.findByPk(id);
-      expect(d1.id).toEqual(d2.id);
-      expect(d1.name).toEqual(d2.name);
-      expect(d1.profileId).toEqual(d2.profileId);
+      expect(d1!.id).toEqual(d2!.id);
+      expect(d1!.name).toEqual(d2!.name);
+      expect(d1!.profileId).toEqual(d2!.profileId);
     });
 
     it('relation', async () => {
       const d1 = await userRepository.findOne({ where: { id }, relations: ['profile'] });
       const d2 = await userSequelizeRepository.findOne({ where: { id }, include: ['profile'] });
-      expect(d1.profile.gender).toEqual(d2.profile.gender);
+      expect(d1?.profile?.gender).toEqual(d2?.profile?.gender);
     });
   });
 });

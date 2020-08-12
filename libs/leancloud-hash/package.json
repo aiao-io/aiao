@@ -17,6 +17,9 @@
     "hash"
   ],
   "scripts": {
-    "build": "cd ../../ && ng build leancloud-hash --prod"
+    "build": "cd ../../ && yarn build leancloud-hash --prod"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

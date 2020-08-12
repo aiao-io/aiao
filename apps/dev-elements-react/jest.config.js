@@ -7,5 +7,6 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../coverage/apps/dev-elements-react'
+  coverageDirectory: '../../coverage/apps/dev-elements-react',
+  globals: { 'ts-jest': { tsConfig: '<rootDir>/tsconfig.spec.json' } }
 };

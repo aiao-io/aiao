@@ -6,7 +6,7 @@ import { IElementConfig, IElementData, IElementOptions } from '@aiao/elements-cd
 /**
  * 获取默认值
  */
-const getDefaultValue = (optionName: string, defaultOptions: IElementOptions, currentValue?: any) => {
+const getDefaultValue = (optionName: string, defaultOptions: IElementOptions = {}, currentValue?: any) => {
   // 字符串空值是允许的, input 删除后就是空值
   if (currentValue === '') {
     return currentValue;
@@ -22,7 +22,7 @@ const getDefaultValue = (optionName: string, defaultOptions: IElementOptions, cu
  */
 const getDefaultOptions = (
   optionName: 'class' | 'style' | 'attributes',
-  defaultOptions: IElementOptions,
+  defaultOptions: IElementOptions = {},
   current: any = {}
 ) => {
   return defaults(current, get(defaultOptions, optionName));
@@ -34,7 +34,7 @@ const getDefaultOptions = (
 const elementsDefaultOption = (configs: IElementConfig[], data: IElementData): IElementData => {
   const { tag, slot: dataSlot, class: cls, style, attributes, children } = data;
   let { innerText, innerHTML } = data;
-  const config: IElementConfig = configs.find(conf => conf.tag === tag);
+  const config = configs.find(conf => conf.tag === tag);
   if (!config) {
     return { ...data };
   }
@@ -47,8 +47,9 @@ const elementsDefaultOption = (configs: IElementConfig[], data: IElementData): I
     innerText = getDefaultValue('innerText', defaultOptions, innerText);
     innerHTML = undefined;
   }
-  let newChildren: IElementData[];
-  if (hasChildren && children?.length > 0) {
+
+  let newChildren: IElementData[] | undefined;
+  if (hasChildren && children && children.length > 0) {
     newChildren = elementsViewDefaultOptions(configs, children);
   }
 

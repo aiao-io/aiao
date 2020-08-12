@@ -2,8 +2,7 @@ module.exports = {
   name: 'elements-react',
   preset: '../../jest.config.js',
   transform: {
-    '^.+\\.[tj]sx?$': 'ts-jest',
-    '^(?!.*\\\\.(js|jsx|ts|tsx|css|json)$)': '@nrwl/react/plugins/jest'
+    '^.+\\.[tj]sx?$': ['babel-jest', { cwd: __dirname, configFile: './babel-jest.config.json' }]
   },
   collectCoverageFrom: ['./src/lib/**/*.ts'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],

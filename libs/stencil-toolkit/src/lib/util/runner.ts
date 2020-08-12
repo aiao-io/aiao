@@ -10,7 +10,7 @@ export function run(command: string, args: string[], collect: boolean = false) {
   return new Promise<null | string>((resolve, reject) => {
     const child: ChildProcess = spawn(`${command}`, args, options);
     if (collect) {
-      child.stdout.on('data', data => resolve(data.toString().replace(/\r\n|\n/, '')));
+      child.stdout?.on('data', data => resolve(data.toString().replace(/\r\n|\n/, '')));
     }
     child.on('close', code => {
       if (code === 0) {

@@ -63,9 +63,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Install
-        run: yarn install --frozen-lockfile --non-interactive
-
       - uses: actions/cache@v1
         id: dist-cache
         with:
@@ -88,6 +85,24 @@ jobs:
             fi
             echo "::set-env name=NX_BASE::$(cat dist/ci/last-deploy.txt)"
           fi
+
+      - name: Install
+        run: yarn --frozen-lockfile --non-interactive --ignore-scripts
+
+      - name: Cypress Install
+        run: yarn cypress install
+
+      - name: decorate-angular-cli
+        run: node ./decorate-angular-cli.js
+
+      - name: Build Tools
+        run: yarn build:tools
+
+      - name: Hotfix
+        run: yarn task:hotfix
+
+      - name: Check Workspace
+        run: yarn check:workspace --base=$NX_BASE
 
       - name: e2e
         shell: bash

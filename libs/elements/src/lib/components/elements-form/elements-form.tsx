@@ -12,36 +12,37 @@ import { ELEMENTS_FORM_ITEM } from '../../utils/render/render.interface';
   shadow: true
 })
 export class ElementsFrom implements ComponentInterface {
-  private _formInputElements: HTMLInputElement[];
-  private _formElements: Element[];
-  private viewRef: HTMLElement;
+  private _formInputElements?: HTMLInputElement[];
+  private _formElements?: Element[];
+  private viewRef?: HTMLElement;
   private domSanitizer = config.get('domSanitizer');
 
   @Element() el!: HTMLElement;
-  form: HTMLFormElement;
+
+  private form?: HTMLFormElement;
 
   // --------------------------------------------------------------[ State ]
   // --------------------------------------------------------------[ Event ]
   /**
    * 侦听值改变
    */
-  @Event() aiaoChange: EventEmitter<any>;
+  @Event() aiaoChange!: EventEmitter<any>;
   /**
    * 侦听输入改变
    */
-  @Event() aiaoInput: EventEmitter<any>;
+  @Event() aiaoInput!: EventEmitter<any>;
 
   // --------------------------------------------------------------[ Prop ]
 
   /**
    * form html
    */
-  @Prop() html: string;
+  @Prop() html?: string;
 
   /**
    * 值
    */
-  @Prop() value: any;
+  @Prop() value?: any;
 
   // --------------------------------------------------------------[ Watch ]
   // --------------------------------------------------------------[ Listen ]
@@ -150,7 +151,7 @@ export class ElementsFrom implements ComponentInterface {
 
   private get formInputElements() {
     if (!this._formInputElements) {
-      this._formInputElements = Array.from(this.form.elements).filter(
+      this._formInputElements = Array.from(this.form!.elements).filter(
         (d: any) => d?.name && d.name !== 'undefined'
       ) as HTMLInputElement[];
     }
@@ -159,7 +160,7 @@ export class ElementsFrom implements ComponentInterface {
 
   private get formElements() {
     if (!this._formElements) {
-      this._formElements = Array.from(this.viewRef.querySelectorAll(`.${ELEMENTS_FORM_ITEM}`));
+      this._formElements = Array.from(this.viewRef!.querySelectorAll(`.${ELEMENTS_FORM_ITEM}`));
     }
     return this._formElements;
   }

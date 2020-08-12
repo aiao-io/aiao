@@ -1,5 +1,6 @@
-import { randomFloat } from './randomFloat';
 import { isNumber } from 'lodash';
+
+import { randomFloat } from './randomFloat';
 
 describe('randomFloat', () => {
   it('randomFloat', () => {

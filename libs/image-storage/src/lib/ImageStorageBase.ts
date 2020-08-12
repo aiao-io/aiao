@@ -9,7 +9,12 @@ export abstract class ImageStorageBase implements IImageStorage {
   constructor(public config: IImageStorageConfig) {}
 
   protected adapter(name: string) {
-    return this.config.adapters.find(d => d.name === name);
+    const adapter = this.config.adapters.find(d => d.name === name);
+
+    if (!adapter) {
+      throw new Error(`[ImageStorageBase] Adapter ${name} 不存在`);
+    }
+    return adapter;
   }
 
   abstract requestOptions(url: string, options: IImageOptions): IImageRequestOptions;

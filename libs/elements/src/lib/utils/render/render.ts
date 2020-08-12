@@ -17,8 +17,8 @@ export const elementsViewRender = (config: IElementConfig[], data: IElementData[
  *  elements 预览渲染
  */
 export const elementsPreviewRender = (
-  config: IElementConfig[],
-  data: IElementEditorData[],
+  config: IElementConfig[] = [],
+  data: IElementEditorData[] = [],
   options?: ElementsEditOptions
 ): IElementEditorData[] => {
   return elementsPreviewHtmlData(config, elementsViewDefaultOptions(config, data), options) as any;
@@ -27,8 +27,8 @@ export const elementsPreviewRender = (
  *  elements 预览渲染 html 格式
  */
 export const elementsPreviewHtmlRender = (
-  config: IElementConfig[],
-  data: IElementData[],
+  config: IElementConfig[] = [],
+  data: IElementData[] = [],
   options?: ElementsEditOptions
 ) => elementsDataStringify(elementsPreviewHtmlData(config, elementsViewDefaultOptions(config, data), options));
 

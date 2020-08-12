@@ -43,16 +43,23 @@ set_env: &set_env
     fi
     source $BASH_ENV
     echo $AFFECTED_ARGS
+    echo $BASH_ENV
 
 # install
 install_yarn: &install_yarn
   name: yarn install
   command: yarn install --frozen-lockfile --non-interactive --ignore-scripts
 
+#
+
+decorate_angular_cli: &decorate_angular_cli
+  name: Decorate Angular Cli
+  command: node ./decorate-angular-cli.js
+
 # ngcc
 ngcc: &ngcc
   name: Ngcc
-  command: yarn run ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points
+  command: yarn run postngcc
 
 # build_tools
 build_tools: &build_tools
@@ -67,7 +74,7 @@ hotfix: &hotfix
 # check_workspace
 check_workspace: &check_workspace
   name: Check Workspace
-  command: node dist/tools/scripts/check-workspace --lib
+  command: node dist/tools/scripts/check-workspace --lib ${AFFECTED_ARGS}
 
 # Build
 build: &build
@@ -113,7 +120,7 @@ lint: &lint
 # check_lodash
 check_lodash: &check_lodash
   name: Check Lodash Import
-  command: node dist/tools/scripts/affected-lodash-optimize ${AFFECTED_ARGS}
+  command: node dist/tools/scripts/affected-lodash ${AFFECTED_ARGS} --check
 
 test: &test
   name: test
@@ -149,6 +156,7 @@ jobs:
       - restore_cache: *restore_dist
       - run: *set_env
       - run: *install_yarn
+      - run: *decorate_angular_cli
       - run: *ngcc
       - run: *build_tools
       - run: *hotfix

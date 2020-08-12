@@ -16,9 +16,12 @@
     "date"
   ],
   "scripts": {
-    "build": "cd ../../ && ng build date --prod"
+    "build": "cd ../../ && yarn build date --prod"
   },
   "peerDependencies": {
     "lodash": "^4.17.15"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

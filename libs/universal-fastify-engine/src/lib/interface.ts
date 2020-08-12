@@ -18,7 +18,7 @@ export interface RenderOptions {
 }
 
 declare module 'fastify' {
-  interface FastifyReply<HttpResponse> {
+  interface FastifyReply {
     renderAngular: (opts?: RenderOptions) => Promise<string>;
   }
 }

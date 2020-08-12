@@ -33,55 +33,55 @@ let loader: any;
   styleUrl: './code-diff-editor.scss',
   scoped: true
 })
-export class CodeEditor implements ComponentInterface {
+export class CodeDiffEditor implements ComponentInterface {
   @Element() el!: HTMLAiaoCodeEditorElement;
-
-  private editor: monaco.editor.IStandaloneDiffEditor;
+  private inputId = `aiao-code-diff-editor:${codeDiffEditorId++}`;
+  private editor?: monaco.editor.IStandaloneDiffEditor;
 
   // --------------------------------------------------------------[ State ]
   // --------------------------------------------------------------[ Event ]
   /**
    * 侦听值更改
    */
-  @Event() aiaoChange: EventEmitter<any>;
+  @Event() aiaoChange!: EventEmitter<{ value: any }>;
   // --------------------------------------------------------------[ Prop ]
 
   /**
    * 默认路径 monaco 资源路径
    * @example 'https://cdn.jsdelivr.net/npm/monaco-editor@0.20.0/min'
    */
-  @Prop() baseUrl: string;
+  @Prop() baseUrl?: string;
 
   /**
    * 禁用
    */
-  @Prop() disabled: boolean;
+  @Prop() disabled = false;
 
   /**
    * 语言
    * @example javascript, json
    */
-  @Prop() language: string;
+  @Prop() language?: string;
 
   /**
    * form 名
    */
-  @Prop() name: string;
+  @Prop() name = this.inputId;
 
   /**
    * 配置
    */
-  @Prop() options: monaco.editor.IEditorConstructionOptions;
+  @Prop() options?: monaco.editor.IEditorConstructionOptions;
 
   /**
    * 原始值
    */
-  @Prop() originalValue: string;
+  @Prop() originalValue?: string;
 
   /**
    * monaco uri
    */
-  @Prop() uri: monaco.Uri;
+  @Prop() uri?: monaco.Uri;
 
   /**
    * 当前值
@@ -92,7 +92,7 @@ export class CodeEditor implements ComponentInterface {
    * 显示语言，默认根据浏览器判断
    * @example  'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'ru' | 'zh-cn' | 'zh-tw'
    */
-  @Prop() localizeCode: string;
+  @Prop() localizeCode?: string;
 
   // --------------------------------------------------------------[ Watch ]
   @Watch('language')
@@ -105,9 +105,7 @@ export class CodeEditor implements ComponentInterface {
   // --------------------------------------------------------------[ Listen ]
   @Listen('resize', { target: 'window' })
   resize() {
-    if (this.editor) {
-      this.editor.layout();
-    }
+    this.getEditor().layout();
   }
   // --------------------------------------------------------------[ event hander ]
   // --------------------------------------------------------------[ public function ]
@@ -117,10 +115,7 @@ export class CodeEditor implements ComponentInterface {
    */
   @Method()
   async format() {
-    return this.editor
-      .getModifiedEditor()
-      .getAction('editor.action.formatDocument')
-      .run();
+    return this.getEditor().getModifiedEditor().getAction('editor.action.formatDocument').run();
   }
 
   /**
@@ -137,12 +132,18 @@ export class CodeEditor implements ComponentInterface {
   }
 
   // --------------------------------------------------------------[ private function ]
+  private getEditor() {
+    if (!this.editor) {
+      throw new Error('aiao-code-diff-editor 还未初始化');
+    }
+    return this.editor;
+  }
   private updateModel() {
     const originalValue = normalizeMonacoEditorValue(this.language, this.originalValue);
     const modifiedValue = normalizeMonacoEditorValue(this.language, this.value);
     const originalModel = monaco.editor.createModel(originalValue, this.language, this.uri);
     const modifiedModel = monaco.editor.createModel(modifiedValue, this.language, this.uri);
-    this.editor.setModel({
+    this.getEditor().setModel({
       original: originalModel,
       modified: modifiedModel
     });
@@ -181,3 +182,5 @@ export class CodeEditor implements ComponentInterface {
     return <Host></Host>;
   }
 }
+
+let codeDiffEditorId = 0;

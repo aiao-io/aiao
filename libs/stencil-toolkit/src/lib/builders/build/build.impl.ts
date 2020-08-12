@@ -12,8 +12,8 @@ import { run } from '../../util/runner';
 export interface StencilBuildOptions extends JsonObject {
   config: string;
   outputPath: string;
-  stats?: boolean;
-  docs?: boolean;
+  stats: boolean;
+  docs: boolean;
   assets: any[];
 }
 
@@ -21,12 +21,11 @@ export default createBuilder<StencilBuildOptions>(stencilBuild);
 
 function stencilBuild(options: StencilBuildOptions, context: BuilderContext): Observable<BuilderOutput> {
   const { config: config_path, docs, outputPath, stats, assets } = options;
-  const {
-    workspaceRoot,
-    target: { project }
-  } = context;
-
-  return from(context.getProjectMetadata(project)).pipe(
+  const { workspaceRoot, target } = context;
+  if (!target) {
+    throw new Error('项目不存在');
+  }
+  return from(context.getProjectMetadata(target.project)).pipe(
     map(projectConfig => {
       const { root } = projectConfig as any;
       const args = ['build', `--config ${join(workspaceRoot, config_path)}`];

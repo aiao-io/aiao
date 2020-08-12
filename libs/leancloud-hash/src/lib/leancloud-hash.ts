@@ -8,9 +8,7 @@ import { createHash } from 'crypto';
 export const leancloudHash = (pwd: string, salt: string) => {
   let result: Buffer = (salt + pwd) as any;
   for (let index = 0; index < 513; index++) {
-    result = createHash('sha512')
-      .update(result)
-      .digest();
+    result = createHash('sha512').update(result).digest();
   }
   return {
     salt,

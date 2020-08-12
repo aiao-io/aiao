@@ -50,7 +50,7 @@ class FakeComponentFactoryResolver extends ComponentFactoryResolver {
   }
 
   resolveComponentFactory(_component: Type<any>): ComponentFactory<any> {
-    return null;
+    return null as any;
   }
 }
 
@@ -69,7 +69,7 @@ class FakeModuleRef extends NgModuleRef<any> {
 }
 
 class FakeModuleFactory extends NgModuleFactory<any> {
-  moduleType: Type<any>;
+  moduleType!: Type<any>;
   moduleRefToCreate = new FakeModuleRef(this.modulePath);
 
   constructor(private modulePath: string) {

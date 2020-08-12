@@ -1,8 +1,12 @@
+import { Connection, ConnectionOptions } from 'typeorm';
+
 import { Inject } from '@nestjs/common';
 
-import { getSequelizeRepositoryToken, NEST_TYPEORM_PLUS } from './interface';
-import { EntityClassOrSchema } from '@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type';
+import { EntityClassOrSchema, getSequelizeRepositoryToken, NEST_TYPEORM_PLUS } from './interface';
 
-export const InjectSequlizeRepository = (entity: EntityClassOrSchema) => Inject(getSequelizeRepositoryToken(entity));
+export const InjectSequlizeRepository = (
+  entity: EntityClassOrSchema,
+  connection?: Connection | ConnectionOptions | string
+) => Inject(getSequelizeRepositoryToken(entity));
 
 export const InjectTypeormPlus = () => Inject(NEST_TYPEORM_PLUS);

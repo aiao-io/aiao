@@ -7,7 +7,7 @@ export interface IImgArea {
 }
 
 export interface IImg {
-  map: IImgArea[];
-  alt: string;
-  src: string;
+  map?: IImgArea[];
+  alt?: string;
+  src?: string;
 }

@@ -28,7 +28,7 @@
     "no-eval": true,
     "no-inferrable-types": [true, "ignore-params"],
     "no-misused-new": true,
-    "no-non-null-assertion": true,
+    "no-non-null-assertion": false,
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-string-throw": true,
@@ -52,16 +52,12 @@
             "onlyDependOnLibsWithTags": ["all"]
           },
           {
-            "sourceTag": "universal-lib",
-            "onlyDependOnLibsWithTags": ["*"]
-          },
-          {
             "sourceTag": "angular-lib",
             "onlyDependOnLibsWithTags": ["all", "angular-lib", "stencil-lib"]
           },
           {
             "sourceTag": "angular-app",
-            "onlyDependOnLibsWithTags": ["all", "angular-lib", "universal-lib"]
+            "onlyDependOnLibsWithTags": ["all", "angular-lib"]
           },
           {
             "sourceTag": "react-lib",
@@ -73,7 +69,7 @@
           },
           {
             "sourceTag": "nest-lib",
-            "onlyDependOnLibsWithTags": ["all", "nest-lib", "universal-lib"]
+            "onlyDependOnLibsWithTags": ["all", "nest-lib"]
           },
           {
             "sourceTag": "nest-app",
