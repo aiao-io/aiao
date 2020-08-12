@@ -5,10 +5,10 @@ import { Profile } from './profile.entity';
 @Entity('one_to_one_user')
 export class User {
   @PrimaryGeneratedColumn()
-  id?: number;
+  id!: number;
 
   @Column()
-  name?: string;
+  name!: string;
 
   @OneToOne(() => Profile, { cascade: true })
   @JoinColumn()

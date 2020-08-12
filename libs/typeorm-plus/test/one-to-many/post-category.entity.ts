@@ -5,11 +5,11 @@ import { Post } from './post.entity';
 @Entity('one_to_many_post_category')
 export class PostCategory {
   @PrimaryGeneratedColumn()
-  id?: number;
+  id!: number;
 
   @Column()
-  name?: string;
+  name!: string;
 
   @OneToMany(() => Post, _ => _.category)
-  posts?: Post[];
+  posts!: Post[];
 }

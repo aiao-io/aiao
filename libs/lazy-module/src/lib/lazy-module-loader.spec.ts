@@ -118,7 +118,7 @@ class FakeCustomElementModule {}
 
 class FakeModuleRef extends NgModuleRef<any> {
   instance: any;
-  componentFactoryResolver: ComponentFactoryResolver;
+  componentFactoryResolver!: ComponentFactoryResolver;
   injector: any;
 
   constructor(public modulePath: string) {
@@ -130,7 +130,7 @@ class FakeModuleRef extends NgModuleRef<any> {
   onDestroy(_callback: () => void) {}
 }
 class FakeModuleFactory extends NgModuleFactory<any> {
-  moduleType: Type<any>;
+  moduleType!: Type<any>;
   moduleRefToCreate = new FakeModuleRef(this.modulePath);
 
   constructor(private modulePath: string) {

@@ -77,7 +77,7 @@ describe('单库测试', () => {
       categoryId: postCat.id
     });
     const post = await testService.post.findOne({ include: ['category'] });
-    expect(post.name).toEqual('post');
-    expect(post.categoryId).toEqual(postCat.id);
+    expect(post!.name).toEqual('post');
+    expect(post!.categoryId).toEqual(postCat.id);
   });
 });

@@ -41,7 +41,7 @@ describe('one-to-many', () => {
     it('relation', async () => {
       const d1 = await postRepository.findOne({ where: { id }, relations: ['category'] });
       const d2 = await postSequelizeRepository.findOne({ where: { id }, include: ['category'] });
-      expect(d1!.category.name).toEqual(d2!.category.name);
+      expect(d1?.category?.name).toEqual(d2?.category?.name);
     });
   });
 });
