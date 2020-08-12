@@ -5,7 +5,7 @@ import { HTMLStencilElement } from '@stencil/core/internal/stencil-public-runtim
 import { attachProps, createForwardRef, dashToPascalCase, isCoveredByReact, mergeRefs } from './utils';
 
 interface StencilReactInternalProps<ElementType> extends React.HTMLAttributes<ElementType> {
-  forwardedRef?: React.RefObject<ElementType>;
+  forwardedRef: React.RefObject<ElementType>;
   ref?: React.Ref<any>;
 }
 
@@ -31,9 +31,6 @@ export const createReactComponent = <
       this.componentEl = element;
     };
 
-    constructor(props: StencilReactInternalProps<ElementType>) {
-      super(props);
-    }
 
     componentDidMount() {
       this.componentDidUpdate(this.props);
@@ -49,7 +46,7 @@ export const createReactComponent = <
       let propsToPass = Object.keys(cProps).reduce((acc, name) => {
         if (name.indexOf('on') === 0 && name[2] === name[2].toUpperCase()) {
           const eventName = name.substring(2).toLowerCase();
-          if (isCoveredByReact(eventName)) {
+          if (typeof document !== "undefined" && isCoveredByReact(eventName)) {
             (acc as any)[name] = (cProps as any)[name];
           }
         }
@@ -60,9 +57,9 @@ export const createReactComponent = <
         propsToPass = manipulatePropsFunction(this.props, propsToPass);
       }
 
-      const newProps: StencilReactInternalProps<ElementType> = {
+      const newProps: Omit<StencilReactInternalProps<ElementType>, 'forwardedRef'> = {
         ...propsToPass,
-        ref: mergeRefs(forwardedRef!, this.setComponentElRef),
+        ref: mergeRefs(forwardedRef, this.setComponentElRef),
         style,
       };
 

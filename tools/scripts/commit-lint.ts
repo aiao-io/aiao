@@ -2,7 +2,7 @@
 
 import chalk from 'chalk';
 import { execSync } from 'child_process';
-import { env, exit } from 'process';
+import { exit } from 'process';
 
 import { systemLang } from '../util/get-current-lang';
 import { WORKSPACE_SCOPES, WORKSPACE_TYPES } from '../workspace';

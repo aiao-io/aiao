@@ -34,7 +34,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "cd ../../ && yarn build elements"
+    "build": "cd ../../ && nx build elements --prod"
   },
   "dependencies": {
     "@aiao/elements-cdk": "^0.1.3",

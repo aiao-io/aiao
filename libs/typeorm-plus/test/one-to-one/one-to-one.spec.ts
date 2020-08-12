@@ -39,7 +39,7 @@ describe('one-to-one', () => {
     it('relation', async () => {
       const d1 = await userRepository.findOne({ where: { id }, relations: ['profile'] });
       const d2 = await userSequelizeRepository.findOne({ where: { id }, include: ['profile'] });
-      expect(d1!.profile.gender).toEqual(d2!.profile.gender);
+      expect(d1?.profile?.gender).toEqual(d2?.profile?.gender);
     });
   });
 });

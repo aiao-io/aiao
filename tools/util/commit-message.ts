@@ -1,5 +1,4 @@
 import chalk from 'chalk';
-import { env } from 'process';
 
 import { WORKSPACE_SCOPES, WORKSPACE_TYPES } from '../workspace';
 import { systemLang } from './get-current-lang';

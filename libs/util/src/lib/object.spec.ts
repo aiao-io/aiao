@@ -15,24 +15,6 @@ describe('object', () => {
   });
 
   it('a', () => {
-    function Foo() {
-      this.b = 2;
-    }
-    Foo.prototype.c = 3;
-    expect(toPlainObjectDeep(new Foo())).toEqual({ b: 2, c: 3 });
-  });
-
-  it('a', () => {
-    function Foo() {
-      this.b = 2;
-    }
-    function Bar() {
-      this.a = 3;
-    }
-    Foo.prototype.c = new Bar();
-    expect(toPlainObjectDeep(new Foo())).toEqual({ b: 2, c: { a: 3 } });
-  });
-  it('a', () => {
     class Bar {
       toJSON() {
         return { c: 2, a: 1 };
