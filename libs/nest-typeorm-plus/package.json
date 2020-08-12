@@ -1,6 +1,6 @@
 {
   "name": "@aiao/nest-typeorm-plus",
-  "version": "0.0.1",
+  "version": "0.0.2-alpha.0",
   "description": "nest typeorm plus",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -26,6 +26,6 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "@aiao/typeorm-plus": "*"
+    "@aiao/typeorm-plus": "^0.1.2-alpha.0"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@aiao/lazy-element",
-  "version": "1.6.0",
+  "version": "1.6.1-alpha.0",
   "description": "lazy angular element",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -27,7 +27,7 @@
     "@angular/elements": ">=9.0.0"
   },
   "devDependencies": {
-    "@aiao/lazy-module": "*"
+    "@aiao/lazy-module": "^1.4.1-alpha.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"

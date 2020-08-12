@@ -1,6 +1,6 @@
 {
   "name": "@aiao/lazy-module",
-  "version": "1.4.0",
+  "version": "1.4.1-alpha.0",
   "description": "lazy module for angular",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
