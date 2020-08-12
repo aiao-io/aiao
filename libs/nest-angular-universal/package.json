@@ -1,6 +1,6 @@
 {
   "name": "@aiao/nest-angular-universal",
-  "version": "0.1.1-alpha.2",
+  "version": "0.1.2",
   "description": "angular universal for nest",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -26,9 +26,9 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@aiao/universal-fastify-engine": "^0.1.1-alpha.1"
+    "@aiao/universal-fastify-engine": "^0.1.2"
   },
   "devDependencies": {
-    "@aiao/universal-fastify-engine": "^0.1.1-alpha.1"
+    "@aiao/universal-fastify-engine": "^0.1.2"
   }
 }
