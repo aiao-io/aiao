@@ -3,7 +3,7 @@
 /* auto-generated react proxies */
 import { createReactComponent } from './react-component-lib';
 
-import { JSX } from '@aiao/elements';
+import type { JSX } from '@aiao/elements';
 
 
 

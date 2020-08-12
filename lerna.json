@@ -3,6 +3,7 @@
   "packages": ["libs/*"],
   "version": "independent",
   "ignoreChanges": [
+    "**/.*",
     "**/*.e2e.ts",
     "**/*.md",
     "**/*.spec.ts",

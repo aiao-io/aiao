@@ -4191,10 +4191,10 @@
   dependencies:
     typescript "3.9.7"
 
-"@stencil/react-output-target@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@stencil/react-output-target/-/react-output-target-0.0.8.tgz#85d6cf57b76059f65a70dc40d98dd55c71667152"
-  integrity sha512-z9ey3uyHbjslqlrlfv6TzyvABzypbE9sBf6Cf2udTJJXmPiRAINm9RvfErlHwFvTX4gWwp9TyacNojoYSvs/VQ==
+"@stencil/react-output-target@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@stencil/react-output-target/-/react-output-target-0.0.9.tgz#b225611c5743f0285c37d92bb47d9369ba462c54"
+  integrity sha512-t2sSkm/VGftBqewK47eZonaHIXW7CYWlsDy6Ln4jqNVpr93CuPWkg7rsnPiZrJrU1NBuTgA0hC2xoRcAJVm7Sw==
 
 "@stencil/sass@^1.3.1":
   version "1.3.2"
