@@ -8,6 +8,7 @@
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
     "lib": ["es2017", "dom"],
     "module": "esnext",
