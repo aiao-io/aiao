@@ -34,6 +34,20 @@ export interface IImageOptions {
   format?: ImageFormatType;
 }
 
+export const IMAGE_OPTIONS_DEFAULT: {
+  quality: number;
+  pixelStep: number;
+  devicePixelRatio: number;
+  method: ImageMethodType;
+  format: ImageFormatType;
+} = {
+  quality: 0.9,
+  pixelStep: 1,
+  devicePixelRatio: 1,
+  method: 'lfit',
+  format: 'src'
+};
+
 /**
  * 请求配置
  */
