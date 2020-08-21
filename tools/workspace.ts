@@ -31,3 +31,6 @@ export const WORKSPACE_TYPES = ['feat', 'fix', 'docs', 'style', 'refactor', 'per
 
 // 需要预先编译的库
 export const NEED_CHECK_LIBS = ['stencil-toolkit', 'elements', 'image-storage'];
+
+// 需要检查提交的分支名
+export const NEED_CHECK_COMMIT_BRANCH_NAMES = ['master'];
