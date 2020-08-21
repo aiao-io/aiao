@@ -10,6 +10,7 @@ export function gitlabCheckPRTitle() {
   if (isGitlabMergeRequest()) {
     if (CI_MERGE_REQUEST_TITLE) {
       if (isCommitMessageAccepte(CI_MERGE_REQUEST_TITLE)) {
+        console.log('gitlab check pr title success');
       } else {
         logCommitErrorMessage(CI_MERGE_REQUEST_TITLE);
         exit(1);
