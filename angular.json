@@ -193,7 +193,8 @@
                 "output": "lib"
               },
               "LICENSE"
-            ]
+            ],
+            "srcRootForCompilationRoot": "libs/stencil-toolkit/src"
           },
           "configurations": {
             "production": {}
@@ -564,7 +565,8 @@
             "tsConfig": "libs/universal-fastify-engine/tsconfig.lib.json",
             "packageJson": "libs/universal-fastify-engine/package.json",
             "main": "libs/universal-fastify-engine/src/index.ts",
-            "assets": ["libs/universal-fastify-engine/*.md"]
+            "assets": ["libs/universal-fastify-engine/*.md"],
+            "srcRootForCompilationRoot": "libs/universal-fastify-engine/src"
           }
         },
         "lint": {
@@ -1520,7 +1522,8 @@
             "tsConfig": "libs/leancloud-hash/tsconfig.lib.json",
             "packageJson": "libs/leancloud-hash/package.json",
             "main": "libs/leancloud-hash/src/index.ts",
-            "assets": ["libs/leancloud-hash/README.md", "LICENSE"]
+            "assets": ["libs/leancloud-hash/README.md", "LICENSE"],
+            "srcRootForCompilationRoot": "libs/leancloud-hash/src"
           },
           "configurations": {
             "production": {}
@@ -1727,7 +1730,8 @@
             "tsConfig": "libs/nest-angular-universal/tsconfig.lib.json",
             "packageJson": "libs/nest-angular-universal/package.json",
             "main": "libs/nest-angular-universal/src/index.ts",
-            "assets": ["libs/nest-angular-universal/*.md"]
+            "assets": ["libs/nest-angular-universal/*.md"],
+            "srcRootForCompilationRoot": "libs/nest-angular-universal/src"
           }
         }
       }
