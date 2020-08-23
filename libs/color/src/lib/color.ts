@@ -2,6 +2,7 @@ import isString from 'lodash/isString';
 
 import { ColorHSB, ColorRGB, ColorRGBA, ColorType } from './interface';
 import { colorStringToOptions } from './matchers';
+import { RGBAToHEX, RGBToHEX } from './rgb-hex';
 import { HSBToRGB, RGBToHSB } from './rgb-hsb';
 import { formatDecimal } from './util';
 
@@ -144,15 +145,10 @@ export class Color {
   toString(type = 'hex', decimal?: boolean): string {
     switch (type) {
       case 'hex':
-        const rgb = [this._red, this._green, this._blue].map(val => val.toString(16).padStart(2, '0'));
         if (this._opacity >= 0 && this._opacity < 1) {
-          rgb.push(
-            Math.round(this._opacity * 255)
-              .toString(16)
-              .padStart(2, '0')
-          );
+          return RGBAToHEX(this.rgba);
         }
-        return '#' + rgb.join('');
+        return RGBToHEX(this.rgb);
       case 'rgb':
         return `rgb(${this._red}, ${this._green}, ${this._blue})`;
       case 'rgba':
