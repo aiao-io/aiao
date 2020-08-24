@@ -128,10 +128,18 @@ export class Color {
     return this._brightness;
   }
 
+  /**
+   * 是否是暗色
+   * @param m 阀值
+   */
   isDark(m = 128) {
     return this._bright() < m;
   }
 
+  /**
+   * 是否是亮色
+   * @param m 阀值
+   */
   isLight(m = 128) {
     return !this.isDark(m);
   }
@@ -142,7 +150,7 @@ export class Color {
    */
   toString(type?: ColorType): string;
   toString(type: 'hsb', decimal?: boolean): string;
-  toString(type = 'hex', decimal?: boolean): string {
+  toString(type = 'hex', decimal: boolean = false): string {
     switch (type) {
       case 'hex':
         if (this._opacity >= 0 && this._opacity < 1) {
