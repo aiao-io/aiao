@@ -2,6 +2,7 @@ import isString from 'lodash/isString';
 
 import { ColorHSB, ColorRGB, ColorRGBA, ColorType } from './interface';
 import { colorStringToOptions } from './matchers';
+import { RGBAToHEX, RGBToHEX } from './rgb-hex';
 import { HSBToRGB, RGBToHSB } from './rgb-hsb';
 import { formatDecimal } from './util';
 
@@ -127,10 +128,18 @@ export class Color {
     return this._brightness;
   }
 
+  /**
+   * 是否是暗色
+   * @param m 阀值
+   */
   isDark(m = 128) {
     return this._bright() < m;
   }
 
+  /**
+   * 是否是亮色
+   * @param m 阀值
+   */
   isLight(m = 128) {
     return !this.isDark(m);
   }
@@ -141,18 +150,13 @@ export class Color {
    */
   toString(type?: ColorType): string;
   toString(type: 'hsb', decimal?: boolean): string;
-  toString(type = 'hex', decimal?: boolean): string {
+  toString(type = 'hex', decimal: boolean = false): string {
     switch (type) {
       case 'hex':
-        const rgb = [this._red, this._green, this._blue].map(val => val.toString(16).padStart(2, '0'));
         if (this._opacity >= 0 && this._opacity < 1) {
-          rgb.push(
-            Math.round(this._opacity * 255)
-              .toString(16)
-              .padStart(2, '0')
-          );
+          return RGBAToHEX(this.rgba);
         }
-        return '#' + rgb.join('');
+        return RGBToHEX(this.rgb);
       case 'rgb':
         return `rgb(${this._red}, ${this._green}, ${this._blue})`;
       case 'rgba':
