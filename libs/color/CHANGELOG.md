@@ -5,14 +5,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [1.2.0-alpha.0](https://github.com/aiao-io/aiao/compare/@aiao/color@1.1.2-alpha.0...@aiao/color@1.2.0-alpha.0) (2020-08-24)
 
-
 ### Features
 
-* **color:** add colorMix ([#100](https://github.com/aiao-io/aiao/issues/100)) ([9a78791](https://github.com/aiao-io/aiao/commit/9a787914527a202520d1079af59d56fbff7b7bcd))
-
-
-
-
+- **color:** add colorMix ([#100](https://github.com/aiao-io/aiao/issues/100)) ([9a78791](https://github.com/aiao-io/aiao/commit/9a787914527a202520d1079af59d56fbff7b7bcd))
 
 ## [1.1.2-alpha.0](https://github.com/aiao-io/aiao/compare/@aiao/color@1.1.1...@aiao/color@1.1.2-alpha.0) (2020-08-12)
 

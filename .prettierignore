@@ -18,10 +18,12 @@ react-component-lib/
 
 /libs/elements-angular/src/lib/directives
 /libs/elements-react/src/lib/proxies*
-
+/libs/elements/elements-cdk
 /libs/elements/hydrate
-/libs/elements/lib
+/libs/elements/image-storage
 /libs/elements/loader
+/libs/elements/url
+/libs/elements/util
 /libs/elements/vendors
 
 createComponent.tsx
