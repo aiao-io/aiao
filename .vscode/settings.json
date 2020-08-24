@@ -48,5 +48,8 @@
   "importSorter.importStringConfiguration.tabSize": 2,
   "importSorter.generalConfiguration.exclude": ["proxies.ts", "createOverlayComponent.tsx", "createComponent.tsx"],
   // 去掉 experimentalDecorators 报错
-  "javascript.implicitProjectConfig.experimentalDecorators": true
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+
+  // markdownlint
+  "markdownlint.ignore": ["**/CHANGELOG.md"]
 }
