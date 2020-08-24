@@ -4,6 +4,7 @@ import { ColorHSB, ColorRGB, ColorRGBA, ColorType } from './interface';
 import { colorStringToOptions } from './matchers';
 import { RGBAToHEX, RGBToHEX } from './rgb-hex';
 import { HSBToRGB, RGBToHSB } from './rgb-hsb';
+import { RGBToYIQ } from './rgb-yiq';
 import { formatDecimal } from './util';
 
 export class Color {
@@ -12,10 +13,12 @@ export class Color {
   private _green = 0; // 绿色 (0-255)
   private _blue = 0; // 蓝色 (0-255)
 
-  // hsb
-  private _hue = 0; // hue 色调  (0-360)
-  private _saturation = 0; // saturation 饱和度 (0-1)
-  private _brightness = 0; //  亮度 (0-1)
+  // hsb, hsv
+  private _hue = 0; // 色相  (0-360)
+  private _saturation = 0; // 饱和度 (0-1)
+  private _brightness = 0; // 明度 (0-1)
+
+  // hsl
 
   // opacity
   private _opacity = 1; // 透明度 0-1
@@ -133,7 +136,7 @@ export class Color {
    * @param m 阀值
    */
   isDark(m = 128) {
-    return this._bright() < m;
+    return RGBToYIQ(this.rgb) < m;
   }
 
   /**
@@ -162,16 +165,13 @@ export class Color {
       case 'rgba':
         return `rgba(${this._red}, ${this._green}, ${this._blue}, ${this._opacity})`;
       case 'hsb':
+      case 'hsv':
         const saturate = decimal ? formatDecimal(this._saturation) : this._saturation;
         const brightness = decimal ? formatDecimal(this._brightness) : this._brightness;
         return `hsb(${this._hue}, ${saturate}, ${brightness})`;
       default:
         throw new Error(`type:${type} not support`);
     }
-  }
-
-  private _bright() {
-    return (this._red * 299 + this._green * 587 + this._blue * 114) / 1000;
   }
 
   private _updateRGB(rgb: ColorRGB = HSBToRGB(this.hsb)) {

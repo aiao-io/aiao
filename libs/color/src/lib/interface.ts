@@ -10,11 +10,17 @@ export interface ColorHSB {
   b: number;
 }
 
+export interface ColorHSL {
+  h: number;
+  s: number;
+  l: number;
+}
+
 export interface ColorRGBA extends ColorRGB {
   a: number;
 }
 
-export type ColorType = 'hex' | 'rgb' | 'rgba' | 'hsb';
+export type ColorType = 'hex' | 'rgb' | 'rgba' | 'hsb' | 'hsl' | 'hsv';
 
 export interface ColorOptions {
   rgb: ColorRGB;
