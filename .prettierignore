@@ -21,6 +21,7 @@ react-component-lib/
 /libs/elements/elements-cdk
 /libs/elements/hydrate
 /libs/elements/image-storage
+/libs/elements/lib
 /libs/elements/loader
 /libs/elements/url
 /libs/elements/util
