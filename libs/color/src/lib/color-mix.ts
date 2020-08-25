@@ -2,6 +2,9 @@ import { ColorRGBA } from './interface';
 import { colorStringToOptions } from './matchers';
 
 export const colorMix = (colorA: string, colorB: string, weight: number = 0.5): ColorRGBA => {
+  if (weight > 1 || weight < 0) {
+    throw new Error('weight is 0-1');
+  }
   const ca = colorStringToOptions(colorA);
   const cb = colorStringToOptions(colorB);
   const { opacity: o1 } = ca;
