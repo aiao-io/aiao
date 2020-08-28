@@ -1,6 +1,6 @@
 {
   "name": "@aiao/elements",
-  "version": "0.7.1-alpha.1",
+  "version": "0.7.1-alpha.2",
   "description": "web components",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -46,7 +46,7 @@
     "@aiao/image-storage": "^0.1.2-alpha.1",
     "@aiao/stencil-toolkit": "^0.2.1-alpha.0",
     "@aiao/url": "*",
-    "@aiao/util": "^0.8.1-alpha.0",
+    "@aiao/util": "^1.0.0-alpha.0",
     "@stencil/core": "*"
   }
 }
