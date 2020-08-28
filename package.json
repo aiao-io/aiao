@@ -73,7 +73,6 @@
     "class-transformer": "^0.3.1",
     "class-validator": "^0.12.2",
     "core-js": "^3.6.4",
-    "dayjs": "^1.8.23",
     "document-register-element": "^1.14.3",
     "express": "^4.15.2",
     "fastify-http-proxy": "^4.0.2",
