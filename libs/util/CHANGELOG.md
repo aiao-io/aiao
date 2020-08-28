@@ -5,19 +5,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [1.0.0-alpha.0](https://github.com/aiao-io/aiao/compare/@aiao/util@0.8.1-alpha.0...@aiao/util@1.0.0-alpha.0) (2020-08-28)
 
-
 ### Features
 
-* **util:** remove dayjs ([#101](https://github.com/aiao-io/aiao/issues/101)) ([fe18a06](https://github.com/aiao-io/aiao/commit/fe18a060ba8eb62140e7c8de44c5567044edbc95))
-
+- **util:** remove dayjs ([#101](https://github.com/aiao-io/aiao/issues/101)) ([fe18a06](https://github.com/aiao-io/aiao/commit/fe18a060ba8eb62140e7c8de44c5567044edbc95))
 
 ### BREAKING CHANGES
 
-* **util:** remove dayUTCFormat safeAddDate function
-
-
-
-
+- **util:** remove dayUTCFormat safeAddDate function
 
 ## [0.8.1-alpha.0](https://github.com/aiao-io/aiao/compare/@aiao/util@0.8.0...@aiao/util@0.8.1-alpha.0) (2020-08-12)
 
