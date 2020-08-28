@@ -104,8 +104,3 @@ export const canBeDate = (date?: unknown) => {
   }
   return new Date(date as any).getTime();
 };
-
-/**
- * 转换字符串日期
- */
-export const toDate = (date: any): Date => new Date(date);

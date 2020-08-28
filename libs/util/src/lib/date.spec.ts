@@ -5,7 +5,6 @@ import {
   formatCountdown,
   formatPassTime,
   isISODateString,
-  toDate,
   unixTimestamp
 } from './date';
 
@@ -149,9 +148,5 @@ describe('formatPassTime', () => {
     it('new Date().toISOString() can be date', () => {
       expect(canBeDate(new Date().toISOString())).toBeTruthy();
     });
-  });
-
-  it('toDate', () => {
-    expect(toDate('2019-09-10T00:00:00.000Z').toISOString()).toEqual('2019-09-10T00:00:00.000Z');
   });
 });
