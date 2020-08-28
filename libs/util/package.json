@@ -24,7 +24,6 @@
     "lodash": "^4.17.15"
   },
   "dependencies": {
-    "@aiao/date": "^1.0.0-alpha.0",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
