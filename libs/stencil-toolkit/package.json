@@ -28,8 +28,8 @@
     "build": " cd ../../ && yarn build stencil-toolkit --prod"
   },
   "dependencies": {
-    "@nrwl/jest": "^9.1.2",
-    "@nrwl/workspace": "^9.1.2",
+    "@nrwl/jest": "^10.1.0",
+    "@nrwl/workspace": "^10.1.0",
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
