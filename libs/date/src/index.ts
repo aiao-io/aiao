@@ -12,3 +12,4 @@ export { addYears } from './lib/addYears';
 export { getDaysInMonth } from './lib/getDaysInMonth';
 export { isISODateString } from './lib/isISODateString';
 export { isWeekend } from './lib/isWeekend';
+export { isDate } from './lib/isDate';
