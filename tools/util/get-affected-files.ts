@@ -9,15 +9,13 @@ import { getProjectRoots, parseFiles } from '@nrwl/workspace/src/command-line/sh
 import { NxArgs, splitArgsIntoNxArgsAndOverrides } from '@nrwl/workspace/src/command-line/utils';
 import { filterAffected } from '@nrwl/workspace/src/core/affected-project-graph';
 import { calculateFileChanges } from '@nrwl/workspace/src/core/file-utils';
-import { createProjectGraph } from '@nrwl/workspace/src/core/project-graph';
+import { createProjectGraph, onlyWorkspaceProjects } from '@nrwl/workspace/src/core/project-graph';
 
 const PRETTIER_EXTENSIONS = ['ts', 'js', 'tsx', 'jsx', 'scss', 'less', 'css', 'html', 'json', 'md', 'mdx'];
 
-/**
- * 文件是否存在
- * @param filePath 文件路径
- */
-function isFileExists(filePath: string): boolean {
+const MATCH_ALL_PATTERN = `**/*.{${PRETTIER_EXTENSIONS.join(',')}}`;
+
+function fileExists(filePath: string): boolean {
   try {
     return statSync(filePath).isFile();
   } catch (err) {
@@ -26,7 +24,7 @@ function isFileExists(filePath: string): boolean {
 }
 
 function getPatterns(args: NxArgs & { libsAndApps: boolean; _: string[] }) {
-  const allFilesPattern = [`"**/*.{${PRETTIER_EXTENSIONS.join(',')}}"`];
+  const allFilesPattern = [MATCH_ALL_PATTERN];
 
   try {
     if (args.all) {
@@ -35,21 +33,20 @@ function getPatterns(args: NxArgs & { libsAndApps: boolean; _: string[] }) {
 
     const p = parseFiles(args);
     const patterns = p.files
-      .filter(f => isFileExists(f))
+      .filter(f => fileExists(f))
       .filter(f => PRETTIER_EXTENSIONS.map(ext => '.' + ext).includes(path.extname(f)));
 
-    const libsAndApp = args.libsAndApps;
-    return libsAndApp ? getPatternsFromApps(patterns) : patterns.map(f => `"${f}"`);
+    return args.libsAndApps ? getPatternsFromApps(patterns) : patterns;
   } catch (e) {
     return allFilesPattern;
   }
 }
 
 function getPatternsFromApps(affectedFiles: string[]): string[] {
-  const graph = createProjectGraph();
+  const graph = onlyWorkspaceProjects(createProjectGraph());
   const affectedGraph = filterAffected(graph, calculateFileChanges(affectedFiles));
   const roots = getProjectRoots(Object.keys(affectedGraph.nodes));
-  return roots.map(root => `"${root}/**/*.{${PRETTIER_EXTENSIONS.join(',')}}"`);
+  return roots.map(root => `${root}/${MATCH_ALL_PATTERN}`);
 }
 
 function chunkify(target: string[], size: number): string[][] {
