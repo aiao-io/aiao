@@ -25,6 +25,7 @@ react-component-lib/
 /libs/elements/loader
 /libs/elements/url
 /libs/elements/util
+/libs/elements/date
 /libs/elements/vendors
 
 createComponent.tsx
