@@ -21,10 +21,13 @@
     "build": "cd ../../ && yarn build util --prod"
   },
   "peerDependencies": {
-    "date-fns": "^2.9.0",
     "lodash": "^4.17.15"
   },
   "dependencies": {
+    "@aiao/date": "^0.1.2-alpha.0",
     "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@aiao/date": "^0.1.2-alpha.0"
   }
 }
