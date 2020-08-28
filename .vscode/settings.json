@@ -9,6 +9,7 @@
     "**/node_modules": true,
     "bazel-out": true,
     "coverage": true,
+    "libs/elements/date": true,
     "libs/elements/elements-cdk": true,
     "libs/elements/hydrate": true,
     "libs/elements/image-storage": true,
