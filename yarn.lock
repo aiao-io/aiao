@@ -4196,9 +4196,9 @@
     "@sinonjs/commons" "^1.7.0"
 
 "@stencil/core@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-2.0.0.tgz#20ba97099d5349163bfd2b2baebbeca09ecb0494"
-  integrity sha512-G9TnVpJOmKB+wZuFr83EIK6E1JK721aWkT1jcygwuogWl3NZ6zogz+JmZG52DZol8SVRLP7M3ruKrbuadJ2JMw==
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-2.0.1.tgz#8f274de7b13499220866632dc4f4286c127b61c7"
+  integrity sha512-LJahm4BjP+6hD35MXyk7kiZWopBGCf3tCYtJELVejUOj7GEzTx3rRNeK2wZkn/D3D68du8SFnU0nD3FpaBzyZA==
 
 "@stencil/react-output-target@^0.0.9":
   version "0.0.9"
