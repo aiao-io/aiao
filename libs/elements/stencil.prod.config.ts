@@ -54,16 +54,6 @@ export const config: Config = {
     scriptDataOpts: true,
     shadowDomShim: true
   },
-  copy: [],
-  bundles: [
-    { components: ['aiao-code-editor', 'aiao-code-diff-editor'] },
-    { components: ['aiao-elements-editor', 'aiao-elements-preview'] },
-    { components: ['aiao-elements-form'] },
-    { components: ['aiao-elements-view'] },
-    { components: ['aiao-img'] },
-    { components: ['aiao-text-editor', 'aiao-text-editor-bar'] },
-    { components: ['aiao-tree', 'aiao-tree-node'] }
-  ],
   tsconfig: 'tsconfig.json',
   globalScript: 'src/lib/global/global.ts',
   enableCache: true

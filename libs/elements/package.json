@@ -15,10 +15,11 @@
   "keywords": [
     "stencil"
   ],
-  "main": "lib/index.js",
-  "module": "lib/index.mjs",
-  "es2015": "lib/esm/index.mjs",
-  "es2017": "lib/esm/index.mjs",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.js",
+  "es2015": "lib/esm/index.js",
+  "es2017": "lib/esm/index.js",
+  "jsnext:main": "lib/esm/index.js",
   "types": "lib/types/interface.d.ts",
   "collection": "lib/collection/collection-manifest.json",
   "collection:main": "lib/collection/index.js",

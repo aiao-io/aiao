@@ -8,7 +8,7 @@ import { TextActionState, TextEditorBarOptions } from './text-editor-bar.interfa
 @Component({
   tag: 'aiao-text-editor-bar',
   styleUrl: 'text-editor-bar.scss',
-  assetsDir: 'assets/text-editor-bar',
+  assetsDirs: ['assets/text-editor-bar'],
   shadow: true
 })
 export class TextEditorBar {
