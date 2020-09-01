@@ -7,8 +7,8 @@ interface Schema {
 
 function addDependencies(): Rule {
   const devDeps = {
-    '@stencil/core': '^1.11.0',
-    '@stencil/sass': '^1.1.1',
+    '@stencil/core': '^2.0.0',
+    '@stencil/sass': '^1.3.1',
     'tslint-ionic-rules': '^0.0.21',
     'tslint-react': '^4.2.0'
   };
