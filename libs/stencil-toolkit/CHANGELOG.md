@@ -7,10 +7,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @aiao/stencil-toolkit
 
-
-
-
-
 ## [0.2.1-alpha.0](https://github.com/aiao-io/aiao/compare/@aiao/stencil-toolkit@0.2.0...@aiao/stencil-toolkit@0.2.1-alpha.0) (2020-08-12)
 
 ### Features
