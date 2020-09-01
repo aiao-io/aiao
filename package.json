@@ -32,7 +32,7 @@
     "check:sylink": "node dist/tools/scripts/check-sylink.js",
     "check:workspace": "node dist/tools/scripts/check-workspace --lib",
     "clean": "git clean -dxf",
-    "commit": "./node_modules/cz-customizable/standalone.js",
+    "commit": "node node_modules/cz-customizable/standalone.js",
     "postinstall": "node ./decorate-angular-cli.js && yarn build:tools && yarn task:hotfix && yarn check:workspace && yarn postngcc",
     "postngcc": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "preinstall": "node tools/scripts/unlink",
