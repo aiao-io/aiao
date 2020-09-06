@@ -7,6 +7,7 @@ import { isGitlabMergeRequest } from './util';
 const { CI_MERGE_REQUEST_TITLE } = env;
 
 export function gitlabCheckPRTitle() {
+  console.log('check message:', CI_MERGE_REQUEST_TITLE);
   if (isGitlabMergeRequest()) {
     if (CI_MERGE_REQUEST_TITLE) {
       if (isCommitMessageAccepte(CI_MERGE_REQUEST_TITLE)) {
