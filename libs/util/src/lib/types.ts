@@ -9,3 +9,5 @@ export declare type DeepPartial<T> = {
 export interface PlainObject {
   [name: string]: any;
 }
+
+export type AnyFunction = (...args: any[]) => any;

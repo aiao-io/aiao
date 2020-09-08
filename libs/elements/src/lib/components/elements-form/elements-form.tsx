@@ -1,4 +1,4 @@
-import set from 'lodash/set';
+import { set } from 'lodash';
 
 import { plainObjectToFlattenPathObject } from '@aiao/util';
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';

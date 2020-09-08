@@ -1,12 +1,8 @@
-import isArray from 'lodash/isArray';
-import isDate from 'lodash/isDate';
-import isFunction from 'lodash/isFunction';
-import isObject from 'lodash/isObject';
-import isPlainObject from 'lodash/isPlainObject';
-import set from 'lodash/set';
-import setWith from 'lodash/setWith';
-import toPlainObject from 'lodash/toPlainObject';
+import { isObject, isPlainObject, set, setWith, toPlainObject } from 'lodash';
 
+import { isArray } from './array';
+import { isDate } from './date';
+import { isFunction } from './function';
 import { PlainObject } from './types';
 
 /**
@@ -90,4 +86,33 @@ export const flattenPathObjectTOplainObject = (value: PlainObject) => {
     }
   });
   return back;
+};
+
+const has = (obj: any, key: string): boolean => {
+  const keyParts = key.split('.');
+  return (
+    !!obj &&
+    (keyParts.length > 1
+      ? has(obj[key.split('.')[0]], keyParts.slice(1).join('.'))
+      : Object.hasOwnProperty.call(obj, key))
+  );
+};
+
+export const get = (obj: any, path: string, defaultValue?: string) => {
+  const travel = (regexp: RegExp) =>
+    String.prototype.split
+      .call(path, regexp)
+      .filter(Boolean)
+      .reduce((res, key) => (res !== null && res !== undefined ? res[key] : res), obj);
+  const result = travel(/[,[\]]+?/) || travel(/[,[\].]+?/);
+  return result === undefined || result === obj ? defaultValue : result;
+};
+
+export const pick = (object: any, keys: string[]) => {
+  return keys.reduce((obj: any, key) => {
+    if (object && object.hasOwnProperty(key)) {
+      obj[key] = object[key];
+    }
+    return obj;
+  }, {});
 };

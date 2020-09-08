@@ -1,4 +1,4 @@
-import get from 'lodash/get';
+import { get } from 'lodash';
 import sequelize, { Sequelize } from 'sequelize';
 import { EntityMetadata } from 'typeorm';
 
