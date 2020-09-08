@@ -3,7 +3,8 @@ import isNil from 'lodash/isNil';
 import isNumber from 'lodash/isNumber';
 import isString from 'lodash/isString';
 
-import { isDate } from '@aiao/date';
+export const isDate = (value: any) =>
+  value instanceof Date || (typeof value === 'object' && Object.prototype.toString.call(value) === '[object Date]');
 
 export const unixTimestamp = () => Math.floor(Date.now() / 1000);
 

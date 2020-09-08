@@ -19,9 +19,11 @@
     "build": "cd ../../ && yarn build color --prod"
   },
   "peerDependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "@aiao/util": "^1.0.0-alpha.1"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "@aiao/util": "^1.0.0-alpha.1"
   }
 }
