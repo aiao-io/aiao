@@ -1,9 +1,40 @@
-import { isObject, isPlainObject, set, setWith, toPlainObject } from 'lodash';
+import { set, setWith } from 'lodash';
 
 import { isArray } from './array';
 import { isDate } from './date';
 import { isFunction } from './function';
+import { getTag, isObjectLike } from './lodash';
 import { PlainObject } from './types';
+
+export const isObject = (value: any): value is object => {
+  const type = typeof value;
+  return value != null && (type === 'object' || type === 'function');
+};
+
+export const isPlainObject = (value: any) => {
+  if (!isObjectLike(value) || getTag(value) !== '[object Object]') {
+    return false;
+  }
+  if (Object.getPrototypeOf(value) === null) {
+    return true;
+  }
+  let proto = value;
+  while (Object.getPrototypeOf(proto) !== null) {
+    proto = Object.getPrototypeOf(proto);
+  }
+  return Object.getPrototypeOf(value) === proto;
+};
+
+export const toPlainObject = (value: any) => {
+  value = Object(value);
+  const result: any = {};
+  for (const key in value) {
+    if (value.hasOwnProperty(key)) {
+      result[key] = value[key];
+    }
+  }
+  return result;
+};
 
 /**
  * 简单的 object 深度排序
