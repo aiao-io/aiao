@@ -3,6 +3,7 @@ import { isNumber, isString } from '@aiao/util';
 const regPrefix = /^([^/:]+):\/*/;
 
 export const urlJoin = (...paths: Array<string | number>) => {
+  paths = paths.filter(d => d !== '');
   if (paths.length === 0) {
     return '';
   }
@@ -11,8 +12,6 @@ export const urlJoin = (...paths: Array<string | number>) => {
   if (findIndex >= 0) {
     throw new Error('paths must be a string or number');
   }
-
-  paths = paths.filter(d => d !== '');
 
   let prefix = '';
   const firstPath = `${paths[0]}`;
