@@ -25,7 +25,3 @@ export const chunk = (array: any[], size: number) =>
 export const difference = (...arrays: any[]) => arrays.reduce((a, b) => a.filter((c: any) => !b.includes(c)));
 
 export const intersection = (...arrays: any[]) => arrays.reduce((a, b) => a.filter((c: any) => b.includes(c)));
-
-export const min = (data: any[], prop: string) => data.reduce((a, b) => (a[prop] <= b[prop] ? a : b), {});
-
-export const max = (data: any[], prop: string) => data.reduce((a, b) => (a[prop] >= b[prop] ? a : b), {});
