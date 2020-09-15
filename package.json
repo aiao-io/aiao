@@ -48,12 +48,12 @@
     "@angular/common": "^10.0.4",
     "@angular/compiler": "^10.0.4",
     "@angular/core": "^10.0.4",
-    "@angular/elements": "~10.0.4",
+    "@angular/elements": "^10.0.4",
     "@angular/forms": "^10.0.4",
     "@angular/material": "^10.1.0",
     "@angular/platform-browser": "^10.0.4",
     "@angular/platform-browser-dynamic": "^10.0.4",
-    "@angular/platform-server": "~10.0.4",
+    "@angular/platform-server": "^10.0.4",
     "@angular/router": "^10.0.4",
     "@angular/service-worker": "^10.0.4",
     "@ionic/angular": "^5.0.0",
@@ -158,7 +158,7 @@
     "tslint-ionic-rules": "^0.0.21",
     "tslint-react": "^4.2.0",
     "typescript": "~3.9.7",
-    "yargs": "^15.3.1"
+    "yargs": "^16.0.3"
   },
   "husky": {
     "hooks": {
