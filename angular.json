@@ -583,7 +583,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/universal-fastify-engine/jest.config.js",
-            "tsConfig": "libs/universal-fastify-engine/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -1719,7 +1718,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/nest-angular-universal/jest.config.js",
-            "tsConfig": "libs/nest-angular-universal/tsconfig.spec.json",
             "passWithNoTests": true
           }
         },
