@@ -4,30 +4,19 @@ export const isFunction = (func: any): func is AnyFunction => func && typeof fun
 
 export const debounce = <Func extends AnyFunction>(
   func: Func,
-  waitMilliseconds = 50,
-  isImmediate = false
+  waitMilliseconds = 50
 ): ((this: ThisParameterType<Func>, ...args: Parameters<Func>) => void) => {
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
-
   return function (this: ThisParameterType<Func>, ...args: Parameters<Func>) {
     const context = this;
     const doLater = () => {
       timeoutId = undefined;
-      if (!isImmediate) {
-        func.apply(context, args);
-      }
+      func.apply(context, args);
     };
-
-    const shouldCallNow = isImmediate && timeoutId === undefined;
     if (timeoutId !== undefined) {
       clearTimeout(timeoutId);
     }
-
     timeoutId = setTimeout(doLater, waitMilliseconds);
-
-    if (shouldCallNow) {
-      func.apply(context, args);
-    }
   };
 };
 
