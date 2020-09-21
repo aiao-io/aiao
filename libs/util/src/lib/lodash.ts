@@ -1,6 +1,3 @@
-export const isEmpty = (obj: any) =>
-  [Object, Array].includes((obj || {}).constructor) && !Object.entries(obj || {}).length;
-
 export const isNil = (value: any) => value === null || value === undefined;
 
 export const getTag = (value: any) => {
