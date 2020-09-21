@@ -1,5 +1,4 @@
-import flatten from 'lodash/flatten';
-import isArray from 'lodash/isArray';
+import { flatten, isArray } from 'lodash';
 import { IndexType, ModelAttributeColumnOptions, ModelAttributes, ModelOptions } from 'sequelize';
 import { EntityMetadata } from 'typeorm';
 

@@ -1,4 +1,4 @@
-import toInteger from 'lodash/toInteger';
+import { toInteger } from 'lodash';
 
 import { addHours } from './addHours';
 

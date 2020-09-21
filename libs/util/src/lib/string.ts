@@ -1,6 +1,7 @@
-import get from 'lodash/get';
-
+import { get } from './object';
 import { PlainObject } from './types';
+
+export const isString = (value: any): value is string => value && typeof value.valueOf() === 'string';
 
 /**
  * 单行文本

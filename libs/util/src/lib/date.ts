@@ -1,9 +1,10 @@
-import isFunction from 'lodash/isFunction';
-import isNil from 'lodash/isNil';
-import isNumber from 'lodash/isNumber';
-import isString from 'lodash/isString';
+import { isFunction } from './function';
+import { isNil } from './lodash';
+import { isNumber } from './number';
+import { isString } from './string';
 
-import { isDate } from '@aiao/date';
+export const isDate = (value: any): value is Date =>
+  value instanceof Date || (typeof value === 'object' && Object.prototype.toString.call(value) === '[object Date]');
 
 export const unixTimestamp = () => Math.floor(Date.now() / 1000);
 
