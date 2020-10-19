@@ -80,17 +80,25 @@ export class CodeEditor implements ComponentInterface {
   /**
    * 当前值
    */
-  @Prop() value: string | any;
+  @Prop({ mutable: true, reflect: true }) value: string | any;
 
   // --------------------------------------------------------------[ Watch ]
+  @Watch('value')
+  valueChange(value: string | any) {
+    if (this.editor) {
+      this.editor.setValue(value);
+    }
+  }
+
   @Watch('language')
   @Watch('uri')
   setModel() {
+    // 不在第一时间执行
     if (this.setModelTimer) {
       clearTimeout(this.setModelTimer);
     }
     this.setModelTimer = setTimeout(() => {
-      const value = normalizeMonacoEditorValue(this.language, this.value);
+      const value = normalizeMonacoEditorValue(this.value, this.language);
       const model = monaco.editor.createModel(value, this.language, this.uri);
       this.getEditor().setModel(model);
     }, 0);
