@@ -3212,7 +3212,7 @@
     tslib "^1.9.0"
     ws "^7.0.1"
 
-"@ionic/angular@^5.0.0":
+"@ionic/angular@^5.4.0":
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/@ionic/angular/-/angular-5.4.0.tgz#f18b838e06d17574db0dbbb7869f61cd3ea48c28"
   integrity sha512-FpAdtPfN8TgXwkkk+zG1h1QZBkyVhOjlbyMXLO2G8Z67q7eKao0AAE22BjzhKO9STGDlzPViEpzG4QZMPYih8g==
@@ -3220,7 +3220,7 @@
     "@ionic/core" "5.4.0"
     tslib "^1.9.3"
 
-"@ionic/core@5.4.0", "@ionic/core@^5.0.0":
+"@ionic/core@5.4.0", "@ionic/core@^5.4.0":
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/@ionic/core/-/core-5.4.0.tgz#4749147ff2df9d957ec62c020309dd2c0f1c730c"
   integrity sha512-VmAqWWNozVDms2tA0I0fiqgu1tRdh58uhxwM8+xOVjIy8yoJmFxc5/glg4XIrbsYRfb347UICFx75Eh464zJJw==
@@ -3228,14 +3228,14 @@
     ionicons "^5.1.2"
     tslib "^1.10.0"
 
-"@ionic/react-router@^5.0.3":
+"@ionic/react-router@^5.4.0":
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/@ionic/react-router/-/react-router-5.4.0.tgz#f29304cfbf76f8fca6e59415da9ddc7a2f3ee84a"
   integrity sha512-w/NbukbBt1zmNZ+iTWGIgUI4JYFzB6UfOT8XhQPiznaLKJiTqkXukQ15/W3uV1YKxGMhcEjYdmSWUkiiFMuLng==
   dependencies:
     tslib "*"
 
-"@ionic/react@^5.0.3":
+"@ionic/react@^5.4.0":
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/@ionic/react/-/react-5.4.0.tgz#c52d17d1167d5f9ca156f6cc013c796b2c22b68d"
   integrity sha512-NnYYn8vGZe1CWmNT3tRwFStKZMCjyQkkTP/3zDK6fpFOLjIulzGXaTDD6vHF9Uob5bgLdnyWXyLQRhq360A+YQ==
@@ -3243,6 +3243,14 @@
     "@ionic/core" "5.4.0"
     ionicons "^5.1.2"
     tslib "*"
+
+"@ionic/vue@^5.4.0":
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/@ionic/vue/-/vue-5.4.0.tgz#b94b294497c454c42982a724e31f724f4fb58058"
+  integrity sha512-GlP9JuDUuLno7RIdDK/OYfTvVjGNYDF4KowfLz8NlxtlCv6VtRaNxMlKtev9mgrnhLwbmwTfwBipKv8ebRXqsw==
+  dependencies:
+    "@ionic/core" "5.4.0"
+    ionicons "^5.1.2"
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.0.0"
@@ -5576,30 +5584,6 @@
   dependencies:
     "@vue/compiler-dom" "3.0.1"
     "@vue/shared" "3.0.1"
-
-"@vue/reactivity@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.0.1.tgz#8bf6d88d0fe398e956dd8ea3df206c149ec6b92b"
-  integrity sha512-XWeqNTbvcAq8BmtR5M+XU6mfIhzi1NTcrQho7nI03I+Zf6QW1hHl/ri+iNfCNCasukQI/tzpkqJYPfyZxCRKyg==
-  dependencies:
-    "@vue/shared" "3.0.1"
-
-"@vue/runtime-core@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@vue/runtime-core/-/runtime-core-3.0.1.tgz#75ae586515aaa89e7be790ea0f2c09d436511e4d"
-  integrity sha512-HporlL3cbD0/79U0a7mDIMEn5XoxstVXrOx0TDTi2O2CUv6yjteUQdxhmMOa8m7pnqU4DL/ZuVntBWFaf4ccaw==
-  dependencies:
-    "@vue/reactivity" "3.0.1"
-    "@vue/shared" "3.0.1"
-
-"@vue/runtime-dom@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@vue/runtime-dom/-/runtime-dom-3.0.1.tgz#2cc74550a635f38eb5f61f35f374d5bdb55156b0"
-  integrity sha512-ijb2qTRU8OzllzYQ6BSymuu9KHFDyjzn4m6jcLGlNeazdk1/YA01lFtGkl6oAErdiWPglloUJzIz0ilv0laPwA==
-  dependencies:
-    "@vue/runtime-core" "3.0.1"
-    "@vue/shared" "3.0.1"
-    csstype "^2.6.8"
 
 "@vue/shared@3.0.1":
   version "3.0.1"
@@ -8763,11 +8747,6 @@ csstype@^2.2.0:
   version "2.6.8"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.8.tgz#0fb6fc2417ffd2816a418c9336da74d7f07db431"
   integrity sha512-msVS9qTuMT5zwAGCVm4mxfrZ18BNc6Csd0oJAtiFMZ1FAx1CCvy2+5MDmYoix63LM/6NDbNtodCiGYGmFgO0dA==
-
-csstype@^2.6.8:
-  version "2.6.13"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.13.tgz#a6893015b90e84dd6e85d0e3b442a1e84f2dbe0f"
-  integrity sha512-ul26pfSQTZW8dcOnD2iiJssfXw0gdNVX9IJDH/X3K5DGPfj+fUYe3kB+swUY6BF3oZDxaID3AJt+9/ojSAE05A==
 
 cuint@^0.2.2:
   version "0.2.2"
@@ -19875,29 +19854,6 @@ vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
-
-vue-loader@^16.0.0-alpha.3:
-  version "16.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-16.0.0-beta.8.tgz#1f523d9fea8e8c6e4f5bb99fd768165af5845879"
-  integrity sha512-oouKUQWWHbSihqSD7mhymGPX1OQ4hedzAHyvm8RdyHh6m3oIvoRF+NM45i/bhNOlo8jCnuJhaSUf/6oDjv978g==
-  dependencies:
-    chalk "^4.1.0"
-    hash-sum "^2.0.0"
-    loader-utils "^2.0.0"
-
-vue-router@^4.0.0-alpha.3:
-  version "4.0.0-beta.13"
-  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.0.0-beta.13.tgz#4611d09a9e44f231cc401ecc294a7f2dcb30e6a6"
-  integrity sha512-dYv9qpHPaojQlfujViiTkPkf1Bf5RCFzkCkdVFc1cENzWJYAGJanpIHiyjyKoM4u7IDFBZMItci+U4ieaEWA8A==
-
-vue@^3.0.0-alpha.10:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-3.0.1.tgz#dcdabf07da37e655e23d7d22eacc18c2da5f5a16"
-  integrity sha512-WBTgaQMJIWQuhlzMV6C0qvVrxyQSpx3gKwflYC0sqGKEZSxMIOYRnrIlHUN4ivUVvP7mUMxcnFTt7P+akdOkQA==
-  dependencies:
-    "@vue/compiler-dom" "3.0.1"
-    "@vue/runtime-dom" "3.0.1"
-    "@vue/shared" "3.0.1"
 
 w3c-hr-time@^1.0.2:
   version "1.0.2"
