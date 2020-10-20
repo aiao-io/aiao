@@ -69,7 +69,8 @@ function updateWorkspaceJson(options: Schema): Rule {
     project.architect.lint = generateProjectLint(
       normalize(project.root),
       join(normalize(project.root), 'tsconfig.lib.json'),
-      Linter.TsLint
+      Linter.TsLint,
+      []
     );
 
     workspaceJson.projects[options.name] = project;
