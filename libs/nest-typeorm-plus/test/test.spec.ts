@@ -10,9 +10,7 @@ import { InjectSequlizeRepository } from '../src/lib/decorators';
 import { PostCategory } from './post-category.entity';
 import { Post } from './post.entity';
 
-try {
-  require('dotenv').config();
-} catch {}
+require('dotenv').config();
 
 const {
   TYPEORM_PLUS_TEST_DB_TYPE,

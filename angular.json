@@ -1521,8 +1521,7 @@
             "tsConfig": "libs/leancloud-hash/tsconfig.lib.json",
             "packageJson": "libs/leancloud-hash/package.json",
             "main": "libs/leancloud-hash/src/index.ts",
-            "assets": ["libs/leancloud-hash/README.md", "LICENSE"],
-            "srcRootForCompilationRoot": "libs/leancloud-hash/src"
+            "assets": ["libs/leancloud-hash/README.md", "LICENSE"]
           },
           "configurations": {
             "production": {}

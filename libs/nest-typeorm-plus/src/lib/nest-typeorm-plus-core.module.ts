@@ -20,8 +20,8 @@ export class AiaoNestTypeormPlusCoreModule {
       this.connectionEntities.set(token, new Set());
     }
     const connectionEntities = this.connectionEntities.get(token);
-    entities.forEach(entity => connectionEntities!.add(entity));
-    return Array.from(connectionEntities!);
+    entities.forEach(entity => connectionEntities.add(entity));
+    return Array.from(connectionEntities);
   }
 
   static forRoot(config: TypeOrmModuleOptions): DynamicModule {

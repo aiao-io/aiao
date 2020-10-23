@@ -7,6 +7,12 @@ import { EntityClassOrSchema, getSequelizeRepositoryToken, NEST_TYPEORM_PLUS } f
 export const InjectSequlizeRepository = (
   entity: EntityClassOrSchema,
   connection?: Connection | ConnectionOptions | string
-) => Inject(getSequelizeRepositoryToken(entity));
+) => {
+  // TODO: featrue
+  if (connection) {
+    console.log(connection);
+  }
+  Inject(getSequelizeRepositoryToken(entity));
+};
 
 export const InjectTypeormPlus = () => Inject(NEST_TYPEORM_PLUS);
