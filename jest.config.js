@@ -5,5 +5,6 @@ module.exports = {
   },
   resolver: '@nrwl/jest/plugins/resolver',
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageReporters: ['html', 'json']
+  coverageReporters: ['html', 'json'],
+  projects: ['<rootDir>/libs/nest-angular-universal']
 };

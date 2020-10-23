@@ -1669,23 +1669,10 @@
       "projectType": "library",
       "schematics": {},
       "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/nest-typeorm-plus/tsconfig.lib.json",
-            "project": "libs/nest-typeorm-plus/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/nest-typeorm-plus/tsconfig.lib.prod.json"
-            }
-          }
-        },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["libs/nest-typeorm-plus/tsconfig.lib.json", "libs/nest-typeorm-plus/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/nest-typeorm-plus/**/*"]
+            "lintFilePatterns": ["libs/nest-typeorm-plus/**/*.ts"]
           }
         },
         "test": {
@@ -1693,6 +1680,16 @@
           "options": {
             "jestConfig": "libs/nest-typeorm-plus/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/nest-typeorm-plus",
+            "tsConfig": "libs/nest-typeorm-plus/tsconfig.lib.json",
+            "packageJson": "libs/nest-typeorm-plus/package.json",
+            "main": "libs/nest-typeorm-plus/src/index.ts",
+            "assets": ["libs/nest-typeorm-plus/*.md"]
           }
         }
       }
@@ -1704,14 +1701,9 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:lint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "libs/nest-angular-universal/tsconfig.lib.json",
-              "libs/nest-angular-universal/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/nest-angular-universal/**/*"]
+            "lintFilePatterns": ["libs/nest-angular-universal/**/*.ts"]
           }
         },
         "test": {
@@ -1728,8 +1720,7 @@
             "tsConfig": "libs/nest-angular-universal/tsconfig.lib.json",
             "packageJson": "libs/nest-angular-universal/package.json",
             "main": "libs/nest-angular-universal/src/index.ts",
-            "assets": ["libs/nest-angular-universal/*.md"],
-            "srcRootForCompilationRoot": "libs/nest-angular-universal/src"
+            "assets": ["libs/nest-angular-universal/*.md"]
           }
         }
       }
