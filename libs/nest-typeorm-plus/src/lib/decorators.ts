@@ -12,7 +12,7 @@ export const InjectSequlizeRepository = (
   if (connection) {
     console.log(connection);
   }
-  Inject(getSequelizeRepositoryToken(entity));
+  return Inject(getSequelizeRepositoryToken(entity));
 };
 
 export const InjectTypeormPlus = () => Inject(NEST_TYPEORM_PLUS);

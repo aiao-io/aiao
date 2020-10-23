@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import { env } from 'process';
 import { ConnectionOptions } from 'typeorm';
 
@@ -5,13 +7,11 @@ import { SequelizeRepository } from '@aiao/typeorm-plus';
 import { Controller, INestApplication, Module } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 
-import { AiaoTypeormPlusModule } from '../src';
-import { InjectSequlizeRepository } from '../src/lib/decorators';
+import { AiaoTypeormPlusModule, InjectSequlizeRepository } from '../src';
 import { PostCategory } from './post-category.entity';
 import { Post } from './post.entity';
 
 require('dotenv').config();
-
 const {
   TYPEORM_PLUS_TEST_DB_TYPE,
   TYPEORM_PLUS_TEST_USERNAME,
@@ -62,7 +62,6 @@ describe('单库测试', () => {
     }).compile();
 
     app = module.createNestApplication();
-    server = app.getHttpServer();
     testService = app.get(TestService);
     await app.init();
   });
@@ -74,7 +73,10 @@ describe('单库测试', () => {
       categoryId: postCat.id
     });
     const post = await testService.post.findOne({ include: ['category'] });
-    expect(post.name).toEqual('post');
-    expect(post.categoryId).toEqual(postCat.id);
+    expect(post).toBeTruthy();
+    if (post) {
+      expect(post.name).toEqual('post');
+      expect(post.categoryId).toEqual(postCat.id);
+    }
   });
 });
