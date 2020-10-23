@@ -26,4 +26,4 @@ yarn add @aiao/lazy-component
 
 ## Usage
 
-Integration: [integration/lazy-component](/integration/lazy-component)
+参考 [dev-lazy-component](../../apps/dev-lazy-component)
