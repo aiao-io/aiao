@@ -1,6 +1,6 @@
 module.exports = {
   name: 'random',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   coverageDirectory: '../../coverage/libs/random',
   collectCoverageFrom: ['./src/lib/**/*.ts'],
   snapshotSerializers: [

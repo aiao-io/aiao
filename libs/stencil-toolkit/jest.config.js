@@ -1,6 +1,6 @@
 module.exports = {
   name: 'stencil-toolkit',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   coverageDirectory: '../../coverage/libs/stencil-toolkit',
   collectCoverageFrom: ['./src/lib/**/*.ts'],
   snapshotSerializers: [

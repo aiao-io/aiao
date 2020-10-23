@@ -1,6 +1,6 @@
 module.exports = {
   name: 'date',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   coverageDirectory: '../../coverage/libs/date',
   collectCoverageFrom: ['./src/lib/**/*.ts'],
   snapshotSerializers: [

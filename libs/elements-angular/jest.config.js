@@ -1,6 +1,6 @@
 module.exports = {
   name: 'elements-angular',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   coverageDirectory: '../../coverage/libs/elements-angular',
   collectCoverageFrom: ['./src/lib/**/*.ts'],
   snapshotSerializers: [

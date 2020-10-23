@@ -70,9 +70,6 @@
     "universal-fastify-engine": {
       "tags": ["all"]
     },
-    "nest-angular-universal": {
-      "tags": ["all"]
-    },
     "dev-universal-fastify-engine": {
       "tags": ["angular-app", "nest-app"]
     },
@@ -133,6 +130,9 @@
       "implicitDependencies": ["dev-elements-vue"]
     },
     "nest-typeorm-plus": {
+      "tags": ["nest-app"]
+    },
+    "nest-angular-universal": {
       "tags": ["nest-lib"]
     }
   }

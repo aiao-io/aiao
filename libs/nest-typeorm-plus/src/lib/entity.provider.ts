@@ -9,6 +9,10 @@ export const createSequelizeProviders = (
   entities: Function[] = [],
   connection?: Connection | ConnectionOptions | string
 ) => {
+  // TODO: featrue
+  if (connection) {
+    console.log(connection);
+  }
   return entities.map(entity => {
     return {
       provide: getSequelizeRepositoryToken(entity, connection),

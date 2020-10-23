@@ -1,6 +1,6 @@
 module.exports = {
   name: 'dev-nest-angular-universal',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   coverageDirectory: '../../coverage/apps/dev-nest-angular-universal',
   collectCoverageFrom: [
     './src/**/*.ts',

@@ -1,6 +1,6 @@
 module.exports = {
   name: 'dev-universal-fastify-engine',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   coverageDirectory: '../../coverage/apps/dev-universal-fastify-engine',
   collectCoverageFrom: [
     './src/**/*.ts',

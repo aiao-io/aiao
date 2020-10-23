@@ -1,6 +1,6 @@
 module.exports = {
   name: 'url',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   coverageDirectory: '../../coverage/libs/url',
   collectCoverageFrom: ['./src/lib/**/*.ts'],
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],

@@ -1,6 +1,6 @@
 module.exports = {
   name: 'dev-lazy-component',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   coverageDirectory: '../../coverage/apps/dev-lazy-component',
   collectCoverageFrom: [
     './src/**/*.ts',
