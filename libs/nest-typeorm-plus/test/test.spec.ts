@@ -53,7 +53,6 @@ export class DBModule {}
 export class AppModule {}
 
 describe('单库测试', () => {
-  let server: any;
   let app: INestApplication;
   let testService: TestService;
 
