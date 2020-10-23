@@ -1,6 +1,6 @@
 module.exports = {
   name: 'lazy-component',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   coverageDirectory: '../../coverage/libs/lazy-component',
   collectCoverageFrom: ['./src/lib/**/*.ts'],
   snapshotSerializers: [
