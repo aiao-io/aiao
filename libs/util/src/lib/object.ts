@@ -119,7 +119,7 @@ export const flattenPathObjectTOplainObject = (value: PlainObject) => {
   return back;
 };
 
-const has = (obj: any, key: string): boolean => {
+export const has = (obj: any, key: string): boolean => {
   const keyParts = key.split('.');
   return (
     !!obj &&
@@ -129,7 +129,7 @@ const has = (obj: any, key: string): boolean => {
   );
 };
 
-export const get = (obj: any, path: string, defaultValue?: string) => {
+export const get = (obj: any, path: string, defaultValue?: any) => {
   const travel = (regexp: RegExp) =>
     String.prototype.split
       .call(path, regexp)
