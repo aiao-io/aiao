@@ -8,32 +8,34 @@ import {
   NgModuleRef,
   Type
 } from '@angular/core';
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 
 describe('LazyComponentModule', () => {
   let lazyComponentLoader: LazyComponentLoader;
 
-  beforeEach(async(() => {
-    const injector = TestBed.configureTestingModule({
-      imports: [
-        LazyModule.register([
-          {
-            name: 'a-module',
-            loadChildren: () => Promise.resolve(new FakeModuleFactory('a-module')),
-            matcher
-          },
-          {
-            name: 'b-module',
-            loadChildren: () => Promise.resolve(new FakeModuleFactory('b-module')),
-            matcher
-          }
-        ]),
-        LazyComponentModule.forRoot()
-      ]
-    });
-    lazyComponentLoader = injector.inject(LazyComponentLoader);
-    injector.compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      const injector = TestBed.configureTestingModule({
+        imports: [
+          LazyModule.register([
+            {
+              name: 'a-module',
+              loadChildren: () => Promise.resolve(new FakeModuleFactory('a-module')),
+              matcher
+            },
+            {
+              name: 'b-module',
+              loadChildren: () => Promise.resolve(new FakeModuleFactory('b-module')),
+              matcher
+            }
+          ]),
+          LazyComponentModule.forRoot()
+        ]
+      });
+      lazyComponentLoader = injector.inject(LazyComponentLoader);
+      injector.compileComponents();
+    })
+  );
 
   it('should create', async () => {
     expect(LazyComponentModule).toBeDefined();
