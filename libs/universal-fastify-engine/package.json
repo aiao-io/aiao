@@ -27,7 +27,7 @@
     "@angular/core": ">=9.0.0",
     "@nguniversal/common": "^>=9.0.0",
     "fastify": "^3.0.0",
-    "fastify-plugin": "^2.0.3",
+    "fastify-plugin": "^3.0.0",
     "fastify-static": "^3.2.0"
   },
   "dependencies": {
