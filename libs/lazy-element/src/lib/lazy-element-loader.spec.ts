@@ -10,37 +10,39 @@ import {
   NgModuleRef,
   Type
 } from '@angular/core';
-import { async, fakeAsync, flushMicrotasks, TestBed } from '@angular/core/testing';
+import { fakeAsync, flushMicrotasks, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { LazyElementLoader } from './lazy-element-loader';
 import { LazyElementModule } from './lazy-element.module';
 
 describe('LazyElementLoader', () => {
   let lazyElementLoader: LazyElementLoader;
-  beforeEach(async(() => {
-    const injector = TestBed.configureTestingModule({
-      imports: [
-        LazyElementModule.register([
-          {
-            name: 'element-a-selector',
-            loadChildren: () => Promise.resolve(new FakeModuleFactory('element-a-module')),
-            matcher
-          },
-          {
-            name: 'element-b-selector',
-            loadChildren: () => Promise.resolve(new FakeModuleFactory('element-a-module')),
-            matcher
-          },
-          {
-            name: 'element-c-selector',
-            loadChildren: () => Promise.resolve(FakeCustomElementModule),
-            matcher
-          }
-        ])
-      ]
-    });
-    lazyElementLoader = injector.inject(LazyElementLoader);
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      const injector = TestBed.configureTestingModule({
+        imports: [
+          LazyElementModule.register([
+            {
+              name: 'element-a-selector',
+              loadChildren: () => Promise.resolve(new FakeModuleFactory('element-a-module')),
+              matcher
+            },
+            {
+              name: 'element-b-selector',
+              loadChildren: () => Promise.resolve(new FakeModuleFactory('element-a-module')),
+              matcher
+            },
+            {
+              name: 'element-c-selector',
+              loadChildren: () => Promise.resolve(FakeCustomElementModule),
+              matcher
+            }
+          ])
+        ]
+      });
+      lazyElementLoader = injector.inject(LazyElementLoader);
+    })
+  );
 
   describe('loadFromHtmlElement()', () => {
     let loadCustomElementSpy: jasmine.Spy;

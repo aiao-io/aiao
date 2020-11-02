@@ -52,7 +52,7 @@ function stencilBuild(options: StencilBuildOptions, context: BuilderContext): Ob
           const stat = statSync(fp);
           const fileIsInProject = fp.includes(projectRoot);
           const input = fileIsInProject ? projectRoot : workspaceRoot;
-          const filePath = fp.replace(input + '/', '');
+          const filePath = fp.replace(input, '').replace(/^\//, '').replace(/^\\/, '');
           if (stat.isDirectory()) {
             assets.push({
               glob: join(filePath, '**/*'),

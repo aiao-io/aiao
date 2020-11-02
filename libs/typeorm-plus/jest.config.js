@@ -1,6 +1,6 @@
 module.exports = {
   name: 'typeorm-plus',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   coverageDirectory: '../../coverage/libs/typeorm-plus',
   collectCoverageFrom: ['./src/lib/**/*.ts'],
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],

@@ -1,6 +1,6 @@
 {
   "name": "@aiao/elements",
-  "version": "0.7.1-alpha.1",
+  "version": "0.7.1-alpha.3",
   "description": "web components",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -15,10 +15,11 @@
   "keywords": [
     "stencil"
   ],
-  "main": "lib/index.js",
-  "module": "lib/index.mjs",
-  "es2015": "lib/esm/index.mjs",
-  "es2017": "lib/esm/index.mjs",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.js",
+  "es2015": "lib/esm/index.js",
+  "es2017": "lib/esm/index.js",
+  "jsnext:main": "lib/esm/index.js",
   "types": "lib/types/interface.d.ts",
   "collection": "lib/collection/collection-manifest.json",
   "collection:main": "lib/collection/index.js",
@@ -43,10 +44,10 @@
   },
   "devDependencies": {
     "@aiao/elements-cdk": "*",
-    "@aiao/image-storage": "^0.1.2-alpha.1",
-    "@aiao/stencil-toolkit": "^0.2.1-alpha.0",
+    "@aiao/image-storage": "^0.1.2-alpha.2",
+    "@aiao/stencil-toolkit": "^0.2.1-alpha.2",
     "@aiao/url": "*",
-    "@aiao/util": "^0.8.1-alpha.0",
+    "@aiao/util": "^1.0.0-alpha.1",
     "@stencil/core": "*"
   }
 }

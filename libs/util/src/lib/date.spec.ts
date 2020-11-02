@@ -2,12 +2,9 @@ import {
   canBeDate,
   dateStringToDate,
   dateStringWithTimezone,
-  dayUTCFormat,
   formatCountdown,
   formatPassTime,
   isISODateString,
-  safeAddDate,
-  toDate,
   unixTimestamp
 } from './date';
 
@@ -109,11 +106,6 @@ describe('formatPassTime', () => {
     expect(isISODateString('2019-09-29T13:50:39.247Z')).toBeTruthy();
   });
 
-  it('dayUTCFormat', () => {
-    const date = dayUTCFormat('2019-09-10T00:00:00.000Z', 480, 'YYYY-MM-DD HH:mm');
-    expect(date).toEqual('2019-09-10 08:00');
-  });
-
   it('dateStringWithTimezone', () => {
     const date = dateStringWithTimezone('2018-12-04', '19:09:10', 480);
     expect(date).toEqual('2018-12-04T19:09:10+08:00');
@@ -126,37 +118,35 @@ describe('formatPassTime', () => {
     expect(date.toISOString()).toEqual('2018-12-04T11:09:10.000Z');
   });
 
-  it('safeAddDate', () => {
-    const date = safeAddDate(new Date('2019-09-10T00:00:00.000Z'), 10, 'day');
-    expect(date.toISOString()).toEqual('2019-09-20T00:00:00.000Z');
-  });
+  describe('canBeDate', () => {
+    it('null not date', () => {
+      expect(canBeDate(null)).toBeFalsy();
+    });
+    it('{} not date', () => {
+      expect(canBeDate({})).toBeFalsy();
+    });
+    it('abc not date', () => {
+      expect(canBeDate('abc')).toBeFalsy();
+    });
 
-  it('safeAddDate end', () => {
-    const date = safeAddDate(new Date('2019-09-10T00:00:00.000Z'), 10, 'day', new Date('2019-09-12T00:00:00.000Z'));
-    expect(date.toISOString()).toEqual('2019-09-12T00:00:00.000Z');
-  });
+    it('20 not date', () => {
+      expect(canBeDate('20')).toBeFalsy();
+    });
 
-  it('safeAddDate end2', () => {
-    const date = safeAddDate(new Date('2019-09-10T00:00:00.000Z'), 10, 'day', new Date('2019-10-12T00:00:00.000Z'));
-    expect(date.toISOString()).toEqual('2019-09-20T00:00:00.000Z');
-  });
-
-  it('canBeDate', () => {
-    // false
-    expect(canBeDate(null)).toBeFalsy();
-    expect(canBeDate(undefined)).toBeFalsy();
-    expect(canBeDate({})).toBeFalsy();
-    expect(canBeDate('adf')).toBeFalsy();
-    expect(canBeDate('20')).toBeFalsy();
-    // true
-    expect(canBeDate(1)).toBeTruthy();
-    expect(canBeDate(new Date())).toBeTruthy();
-    expect(canBeDate(new Date(null as any))).toBeTruthy();
-    expect(canBeDate(new Date().getTime())).toBeTruthy();
-    expect(canBeDate(new Date().toISOString())).toBeTruthy();
-  });
-
-  it('toDate', () => {
-    expect(toDate('2019-09-10T00:00:00.000Z').toISOString()).toEqual('2019-09-10T00:00:00.000Z');
+    it('1 can be date', () => {
+      expect(canBeDate(1)).toBeTruthy();
+    });
+    it('new Date() can be date', () => {
+      expect(canBeDate(new Date())).toBeTruthy();
+    });
+    it('new Date(null as any) can be date', () => {
+      expect(canBeDate(new Date(null as any))).toBeTruthy();
+    });
+    it('new Date().getTime() can be date', () => {
+      expect(canBeDate(new Date().getTime())).toBeTruthy();
+    });
+    it('new Date().toISOString() can be date', () => {
+      expect(canBeDate(new Date().toISOString())).toBeTruthy();
+    });
   });
 });

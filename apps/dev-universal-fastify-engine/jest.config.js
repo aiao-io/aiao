@@ -1,6 +1,6 @@
 module.exports = {
   name: 'dev-universal-fastify-engine',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   coverageDirectory: '../../coverage/apps/dev-universal-fastify-engine',
   collectCoverageFrom: [
     './src/**/*.ts',
@@ -21,10 +21,9 @@ module.exports = {
     'ts-jest': {
       tsConfig: '<rootDir>/tsconfig.spec.json',
       stringifyContentPathRegex: '\\.(html|svg)$',
-      astTransformers: [
-        'jest-preset-angular/build/InlineFilesTransformer',
-        'jest-preset-angular/build/StripStylesTransformer'
-      ]
+      astTransformers: {
+        before: ['jest-preset-angular/build/InlineFilesTransformer', 'jest-preset-angular/build/StripStylesTransformer']
+      }
     }
   }
 };

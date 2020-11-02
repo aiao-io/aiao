@@ -19,6 +19,6 @@ export function affectedProjects(parsedArgs: Arguments = argv) {
     affectedGraph = onlyWorkspaceProjects(withDeps(projectGraph, Object.values(affectedGraph.nodes)));
   }
   const projects = parsedArgs.all ? projectGraph.nodes : affectedGraph.nodes;
-  const env = readEnvironment(nxArgs.target!, projects);
+  const env = readEnvironment(nxArgs.target as string, projects);
   return Object.values(projects).filter(n => !parsedArgs.onlyFailed || !env.workspaceResults.getResult(n.name));
 }

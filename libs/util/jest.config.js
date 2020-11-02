@@ -1,6 +1,6 @@
 module.exports = {
   name: 'util',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   coverageDirectory: '../../coverage/libs/util',
   collectCoverageFrom: ['./src/lib/**/*.ts'],
   snapshotSerializers: [

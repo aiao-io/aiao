@@ -1,6 +1,6 @@
 module.exports = {
   name: 'dev-elements-react',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   collectCoverageFrom: ['./src/**/*.tsx', '!./src/environments/**', '!./src/main.tsx', '!./src/polyfills.ts'],
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nrwl/react/plugins/jest',

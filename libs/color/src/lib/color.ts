@@ -1,4 +1,4 @@
-import isString from 'lodash/isString';
+import { isString } from '@aiao/util';
 
 import { ColorHSB, ColorRGB, ColorRGBA, ColorType } from './interface';
 import { colorStringToOptions } from './matchers';

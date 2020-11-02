@@ -1,5 +1,6 @@
 import { existsSync } from 'fs';
 import ora from 'ora';
+import { resolve } from 'path';
 
 import { getAffectedLibs } from '../util/get-affected-libs';
 import { run } from '../util/runner';
@@ -19,7 +20,7 @@ export const checkLibBuild = async () => {
     }
   });
   if (needBuildLibs.length > 0) {
-    await run('node_modules/.bin/lerna', ['run', 'build', ...needBuildLibs, '--concurrency=1']);
+    await run(resolve('node_modules/.bin/lerna'), ['run', 'build', ...needBuildLibs, '--concurrency=1']);
   }
   check.succeed();
   return;

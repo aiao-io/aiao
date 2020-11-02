@@ -1,6 +1,6 @@
 {
   "name": "@aiao/color",
-  "version": "1.2.0-alpha.0",
+  "version": "1.2.0-alpha.1",
   "description": "color tool",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -19,9 +19,13 @@
     "build": "cd ../../ && yarn build color --prod"
   },
   "peerDependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "@aiao/util": "^1.0.0-alpha.1"
   },
   "dependencies": {
     "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@aiao/util": "^1.0.0-alpha.1"
   }
 }

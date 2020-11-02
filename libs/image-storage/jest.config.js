@@ -1,6 +1,6 @@
 module.exports = {
   name: 'image-storage',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   coverageDirectory: '../../coverage/libs/image-storage',
   collectCoverageFrom: ['./src/lib/**/*.ts', './adapters/*/src/lib/**/*.ts'],
   snapshotSerializers: [

@@ -1,6 +1,6 @@
 module.exports = {
   name: 'elements-cdk',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   coverageDirectory: '../../coverage/libs/elements-cdk',
   collectCoverageFrom: ['./src/lib/**/*.ts', './*/src/lib/**/*.ts'],
   snapshotSerializers: [

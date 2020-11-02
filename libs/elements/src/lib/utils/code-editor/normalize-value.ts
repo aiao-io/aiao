@@ -1,4 +1,4 @@
-import isString from 'lodash/isString';
+import { isString } from '@aiao/util';
 
 /**
  * 正常化 monaco 输入值，支持 json object

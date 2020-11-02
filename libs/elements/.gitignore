@@ -4,3 +4,12 @@ src/components.d.ts
 /vendors
 /lib
 /hydrate
+
+/date
+/elements-cdk
+/hydrate
+/image-storage
+/lib
+/loader
+/url
+/util

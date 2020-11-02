@@ -9,6 +9,7 @@
     "**/node_modules": true,
     "bazel-out": true,
     "coverage": true,
+    "libs/elements/date": true,
     "libs/elements/elements-cdk": true,
     "libs/elements/hydrate": true,
     "libs/elements/image-storage": true,
@@ -40,7 +41,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   // importSorter 配置
   "importSorter.generalConfiguration.sortOnBeforeSave": true,
   "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 120,
