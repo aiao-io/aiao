@@ -2,6 +2,7 @@ import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 
 export const config: Config = {
+  autoprefixCss: true,
   namespace: 'aiao-elements',
   plugins: [sass()],
   outputTargets: [
