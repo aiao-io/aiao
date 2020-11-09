@@ -6,6 +6,7 @@ import { sass } from '@stencil/sass';
 
 const excludeComponents = ['aiao-text-editor-bar', 'aiao-tree-node', 'ion-icon'];
 export const config: Config = {
+  autoprefixCss: true,
   namespace: 'aiao-elements',
   plugins: [sass()],
   outputTargets: [
