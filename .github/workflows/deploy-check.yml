@@ -77,7 +77,7 @@ jobs:
           if [[ -n $GITHUB_BASE_REF ]]
           then
             echo "Fetching Base Commit from GitHub"
-            echo "::set-env name=NX_BASE::remotes/origin/$GITHUB_BASE_REF"
+            echo "NX_BASE=remotes/origin/$GITHUB_BASE_REF" >> $GITHUB_ENV
           else
             if [[ ! -f dist/ci/last-deploy.txt ]]
             then
