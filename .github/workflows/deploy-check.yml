@@ -83,7 +83,7 @@ jobs:
             then
               mkdir -p dist/ci && git rev-parse HEAD~1 > dist/ci/last-deploy.txt
             fi
-            echo "::set-env name=NX_BASE::$(cat dist/ci/last-deploy.txt)"
+            echo "NX_BASE=$(cat dist/ci/last-deploy.txt)" >> $GITHUB_ENV
           fi
 
       - name: Install
