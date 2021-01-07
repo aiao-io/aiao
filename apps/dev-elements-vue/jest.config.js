@@ -1,7 +1,15 @@
 module.exports = {
-  name: 'dev-elements-vue',
+  displayName: 'dev-elements-vue',
   preset: '../../jest.preset.js',
-  coverageDirectory: '../../coverage/apps/dev-elements-vue',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  globals: { 'ts-jest': { tsConfig: '<rootDir>/tsconfig.spec.json' } }
+  globals: {
+    'ts-jest': {
+      tsConfig: '<rootDir>/tsconfig.spec.json'
+    }
+  },
+  transform: {
+    '^.+\\.[tj]s$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../coverage/apps/dev-elements-vue'
 };

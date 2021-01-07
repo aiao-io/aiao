@@ -1,8 +1,7 @@
-const getWebpackConfig = require('@nrwl/react/plugins/webpack');
 const { VueLoaderPlugin } = require('vue-loader');
 
 function getCustomWebpackConfig(webpackConfig) {
-  const config = getWebpackConfig(webpackConfig);
+  const config = webpackConfig;
 
   // Polyfill Node
   config.node = {

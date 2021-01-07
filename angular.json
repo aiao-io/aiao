@@ -1551,6 +1551,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/dev-elements-vue",
             "index": "apps/dev-elements-vue/src/index.html",
