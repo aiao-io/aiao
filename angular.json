@@ -1723,6 +1723,33 @@
           }
         }
       }
+    },
+    "asdfasdf": {
+      "projectType": "library",
+      "root": "libs/asdfasdf",
+      "sourceRoot": "libs/asdfasdf/src",
+      "prefix": "aiao",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/asdfasdf/tsconfig.lib.json", "libs/asdfasdf/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/asdfasdf/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/asdfasdf/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

@@ -134,6 +134,9 @@
     },
     "nest-angular-universal": {
       "tags": ["nest-lib"]
+    },
+    "asdfasdf": {
+      "tags": []
     }
   }
 }
