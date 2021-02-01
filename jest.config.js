@@ -33,7 +33,6 @@ module.exports = {
     '<rootDir>libs/typeorm-plus',
     '<rootDir>libs/universal-fastify-engine',
     '<rootDir>libs/url',
-    '<rootDir>libs/util',
-    '<rootDir>/libs/asdfasdf'
+    '<rootDir>libs/util'
   ]
 };
