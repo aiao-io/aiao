@@ -19,4 +19,3 @@ libs/elements/loader/**
 libs/elements/vendors/**
 libs/elements/hydrate/**
 *.d.ts
-/migrations.json
