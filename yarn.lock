@@ -3987,9 +3987,9 @@
     glob-to-regexp "^0.3.0"
 
 "@nestjs/common@^7.0.2":
-  version "7.6.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.6.7.tgz#471fba6fa1de49d4d9228a05fc21d1ba8663f250"
-  integrity sha512-aMoqSQQG3UKWyfLl8cYgd/+bgDNUvSobZm4B1Ne+1CvavnS8E3818ksxRjoZ7MPJJOSOSIQJUY0HYXVvbddt0w==
+  version "7.6.9"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.6.9.tgz#ce8c1dae23360468cb4af88631174b1756e59d57"
+  integrity sha512-6PU5JB6RbRTo3rdq+RFayoIVUcORg7G040RYvKv0JqEZIkTUIFV9rcob8ZeK9NjOWV8ozgiPkQZGJHPHVlpo5A==
   dependencies:
     axios "0.21.1"
     iterare "1.2.1"
@@ -3997,9 +3997,9 @@
     uuid "8.3.2"
 
 "@nestjs/core@^7.0.2":
-  version "7.6.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-7.6.7.tgz#972e94dae31ebc726df3fad4c181ad6b578ebdb5"
-  integrity sha512-1n4r0AqoD3Eg+nnqZyNSFEz1MQRf2GabQbxnJj3T6SLj2VwxKNEO1qIZyDABNXLFcj79AfjPq5gqEhCutCuE2Q==
+  version "7.6.9"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-7.6.9.tgz#78732bd8ef14e84678dfd1ad14770c292b632ee1"
+  integrity sha512-ihuSN4gFNvY5cdcDEoRiH0sQx985tIvc49I4+zxG4IFORtmGKP5O5dfNfc+HrpHKk0Nv1tjZdt2F1YqgBQr8iw==
   dependencies:
     "@nuxtjs/opencollective" "0.3.2"
     fast-safe-stringify "2.0.7"
@@ -4010,9 +4010,9 @@
     uuid "8.3.2"
 
 "@nestjs/platform-express@^7.0.2":
-  version "7.6.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.6.7.tgz#f8afbbd86cb27219943266f3bc11a6cea1e53056"
-  integrity sha512-QNVtsWCtHUmfuoX+JfE+Y5tyiJKMjNFHm0RHvNhTk33zIzkpLo9NsgFfL3T9z1C5Qs37A/xV6wFXTXx4l5r6eg==
+  version "7.6.9"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.6.9.tgz#72b96e38fb8eadb06bd961c764d23a46383d9e8f"
+  integrity sha512-Q38mE2YSrZjrVZnuFLFWKKty/gTRvvb+OkOwRs9Paxjt67G+ufCkWl6Z5fQuc1wUfCL/LoRvUb447kKE0zkaXQ==
   dependencies:
     body-parser "1.19.0"
     cors "2.8.5"
@@ -4021,9 +4021,9 @@
     tslib "2.1.0"
 
 "@nestjs/platform-fastify@^7.0.2":
-  version "7.6.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-7.6.7.tgz#040c318614670d3931f4bb1cde1bee9a13972944"
-  integrity sha512-f1aUZeug4Or7YP1KWwP28xXabVMureQ8KZQv2/4PPXMmHRz4X+LGQUMKU8ZR9B4zlOyjYhj8gSgIUGVcrRx+BA==
+  version "7.6.9"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-7.6.9.tgz#7b3cc88d99fbeca4698ec740f2c33b88dc11a3a5"
+  integrity sha512-/vfhDWMc7z8FkcL0uJcRhzh5DS58u2mHdEaIxIYpoQUPoAn07pq4w+ImT5bHOu0SGSthwdK1yfohKSVwCdzsdQ==
   dependencies:
     fastify "3.11.0"
     fastify-cors "5.2.0"
@@ -4044,9 +4044,9 @@
     pluralize "8.0.0"
 
 "@nestjs/testing@^7.2.0":
-  version "7.6.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.6.7.tgz#3818002538e8bc8cd5cf92740facd47ae38d52bf"
-  integrity sha512-DegNWF8P7m4aPvIDdPmR6dqT6DcEnbjig8c7BTcaNjV2Fc+YUlvss9PABBlOEUvNTU7BzUD7sqXB/HGfEp+KSw==
+  version "7.6.9"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.6.9.tgz#b69f87cbe3ee5af08fe5a46c8e09ebdff5714696"
+  integrity sha512-1nWuW7WHMXoiuhYPeL2+IWtR3742jYUMxduIpPLxjaeHxBmM161ylbPOkinCxgdKzVjFMblwTKXG4xIjEjrD+Q==
   dependencies:
     optional "0.1.4"
     tslib "2.1.0"
@@ -8070,9 +8070,9 @@ connect@3.6.6:
     utils-merge "1.0.1"
 
 consola@^2.15.0:
-  version "2.15.0"
-  resolved "https://registry.yarnpkg.com/consola/-/consola-2.15.0.tgz#40fc4eefa4d2f8ef2e2806147f056ea207fcc0e9"
-  integrity sha512-vlcSGgdYS26mPf7qNi+dCisbhiyDnrN1zaRbw3CSuc2wGOMEGGPsp46PdRG5gqXwgtJfjxDkxRNAgRPr1B77vQ==
+  version "2.15.1"
+  resolved "https://registry.yarnpkg.com/consola/-/consola-2.15.1.tgz#6c9141d97798537551e5b411a1423e39e4a7abd6"
+  integrity sha512-uNINF19d9f1/Pza5aNmQ/JlrmY4uPOW0BxID3Xvw5iOP6diJArUXp+JgcIQ4fR56qV+HB9o/ZRUnrnYd92LxZw==
 
 console-browserify@^1.1.0:
   version "1.2.0"
@@ -14239,9 +14239,9 @@ moment@^2.27.0:
   integrity sha512-al0MUK7cpIcglMv3YF13qSgdAIqxHTO7brRtaz3DlSULbqfazqkc5kEjNrLDOM7fsjshoFIihnU8snrP7zUvhQ==
 
 monaco-editor@^0.22.1:
-  version "0.22.1"
-  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.22.1.tgz#f8de346e573e5d63a9df01eab1179f15839b6e63"
-  integrity sha512-cq+P8EsIajYu25Ixz4CSgiYSiHZRX33WRXtSufPqfN1PGNAl18uK6W5QtA7k81acb/bxDh8LOQ2eEEU+MUtgQA==
+  version "0.22.3"
+  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.22.3.tgz#69b42451d3116c6c08d9b8e052007ff891fd85d7"
+  integrity sha512-RM559z2CJbczZ3k2b+ouacMINkAYWwRit4/vs0g2X/lkYefDiu0k2GmgWjAuiIpQi+AqASPOKvXNmYc8KUSvVQ==
 
 move-concurrently@^1.0.1:
   version "1.0.1"
