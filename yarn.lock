@@ -3987,9 +3987,9 @@
     glob-to-regexp "^0.3.0"
 
 "@nestjs/common@^7.0.2":
-  version "7.6.9"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.6.9.tgz#ce8c1dae23360468cb4af88631174b1756e59d57"
-  integrity sha512-6PU5JB6RbRTo3rdq+RFayoIVUcORg7G040RYvKv0JqEZIkTUIFV9rcob8ZeK9NjOWV8ozgiPkQZGJHPHVlpo5A==
+  version "7.6.11"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.6.11.tgz#56b98265a96217e5adad1f3a39cce198592e86cd"
+  integrity sha512-DPBqoORDJC9xO/c83ZXNdUk9rIOLZ1Joqt8hYVtGROMIt7+s4zdbiUOWbNLPhUwluIVczYt4bFjhoU6HWoePgA==
   dependencies:
     axios "0.21.1"
     iterare "1.2.1"
@@ -3997,9 +3997,9 @@
     uuid "8.3.2"
 
 "@nestjs/core@^7.0.2":
-  version "7.6.9"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-7.6.9.tgz#78732bd8ef14e84678dfd1ad14770c292b632ee1"
-  integrity sha512-ihuSN4gFNvY5cdcDEoRiH0sQx985tIvc49I4+zxG4IFORtmGKP5O5dfNfc+HrpHKk0Nv1tjZdt2F1YqgBQr8iw==
+  version "7.6.11"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-7.6.11.tgz#c0e708ea51cd53c270dcba5e836c3ca643aeb52b"
+  integrity sha512-Knjzy755Er2Nainv/kNqnfQVz8JnCFmqOZbMOZ4IYHzUcfM+Qt/w5rAQQRwRjmpqbyCte4FcVVbv0cU2jBOb/Q==
   dependencies:
     "@nuxtjs/opencollective" "0.3.2"
     fast-safe-stringify "2.0.7"
@@ -4010,9 +4010,9 @@
     uuid "8.3.2"
 
 "@nestjs/platform-express@^7.0.2":
-  version "7.6.9"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.6.9.tgz#72b96e38fb8eadb06bd961c764d23a46383d9e8f"
-  integrity sha512-Q38mE2YSrZjrVZnuFLFWKKty/gTRvvb+OkOwRs9Paxjt67G+ufCkWl6Z5fQuc1wUfCL/LoRvUb447kKE0zkaXQ==
+  version "7.6.11"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.6.11.tgz#4e12b179cd683f90d2fc91af1611edbafeab230d"
+  integrity sha512-YNlkhoNfu9QswnIQ0Syzzbxy7CKR3kp4+t8SDX4Pz5ZvJ/5NDQzUHTEg3QUoh8L4IG2/nXHC/gUICQP/fuovJw==
   dependencies:
     body-parser "1.19.0"
     cors "2.8.5"
@@ -4021,9 +4021,9 @@
     tslib "2.1.0"
 
 "@nestjs/platform-fastify@^7.0.2":
-  version "7.6.9"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-7.6.9.tgz#7b3cc88d99fbeca4698ec740f2c33b88dc11a3a5"
-  integrity sha512-/vfhDWMc7z8FkcL0uJcRhzh5DS58u2mHdEaIxIYpoQUPoAn07pq4w+ImT5bHOu0SGSthwdK1yfohKSVwCdzsdQ==
+  version "7.6.11"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-7.6.11.tgz#21a70383250d925091ae14d8a0e68342f54f229c"
+  integrity sha512-Wr9n7YYLgjWxSBTyPPtrKKYouIn69yMWfUrp4ibTUGvRg22u0gjutVLp3dsxbxGnUjPpNjTX82DQeYkX8raB+Q==
   dependencies:
     fastify "3.11.0"
     fastify-cors "5.2.0"
@@ -4044,9 +4044,9 @@
     pluralize "8.0.0"
 
 "@nestjs/testing@^7.2.0":
-  version "7.6.9"
-  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.6.9.tgz#b69f87cbe3ee5af08fe5a46c8e09ebdff5714696"
-  integrity sha512-1nWuW7WHMXoiuhYPeL2+IWtR3742jYUMxduIpPLxjaeHxBmM161ylbPOkinCxgdKzVjFMblwTKXG4xIjEjrD+Q==
+  version "7.6.11"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.6.11.tgz#877c4f676be72a8166e95328a995408d5882f37a"
+  integrity sha512-wSJcXo5dO5lf2PTYTw1gfT9C0aZhFJd9VfN4dsZYS8nRqDhwT0V3VF7FP6Rrjk2QCtw0PNprI3gozmNvx+oDfA==
   dependencies:
     optional "0.1.4"
     tslib "2.1.0"
@@ -5081,7 +5081,7 @@
   resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.0.tgz#69a23a3ad29caf0097f06eda59b361ee2f0639f6"
   integrity sha1-aaI6OtKcrwCX8G7aWbNh7i8GOfY=
 
-"@types/node@*", "@types/node@^14.0.0":
+"@types/node@*":
   version "14.14.22"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.22.tgz#0d29f382472c4ccf3bd96ff0ce47daf5b7b84b18"
   integrity sha512-g+f/qj/cNcqKkc3tFqlXOYjrmZA+jNBiDzbP3kH+B+otKFqAdPgVTGP1IeKRdMml/aE69as5S4FqtxAbl+LaMw==
@@ -5100,6 +5100,11 @@
   version "13.13.19"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.19.tgz#f4165496e66e3da37b9e136887db446795e00c5b"
   integrity sha512-IVsULCpTdafcHhBDLYEPnV5l15xV0q065zvOHC1ZmzFYaBCMzku078eXnazoSG8907vZjRgEN/EQjku7GwwFyQ==
+
+"@types/node@^14.0.0":
+  version "14.14.24"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.24.tgz#541c00e4f7c41c8f108bd5b045248b5224c62946"
+  integrity sha512-6BAlkS4seVjszhrwN0W1WabqWwuJwcYF36Z1rPPyQm80LGRKsIeUPdzI51TezXenjetFNy1gRTpuDn1NBg33LA==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -8070,9 +8075,9 @@ connect@3.6.6:
     utils-merge "1.0.1"
 
 consola@^2.15.0:
-  version "2.15.1"
-  resolved "https://registry.yarnpkg.com/consola/-/consola-2.15.1.tgz#6c9141d97798537551e5b411a1423e39e4a7abd6"
-  integrity sha512-uNINF19d9f1/Pza5aNmQ/JlrmY4uPOW0BxID3Xvw5iOP6diJArUXp+JgcIQ4fR56qV+HB9o/ZRUnrnYd92LxZw==
+  version "2.15.2"
+  resolved "https://registry.yarnpkg.com/consola/-/consola-2.15.2.tgz#c858f1fe36ab97d256c6ebc791905ee923495602"
+  integrity sha512-VxqWw5C8O/mQpZYtfaaSCDJcVK3AxyvQ26rhgvyAI4j/QJISh8DLwFS8GQU+9154u4ngyCsSlnyIAYJme9kQug==
 
 console-browserify@^1.1.0:
   version "1.2.0"
