@@ -1,6 +1,4 @@
-import isArray from 'lodash/isArray';
-import sortBy from 'lodash/sortBy';
-
+import { isArray, sortBy } from '@aiao/util';
 import {
   Component,
   ComponentInterface,
@@ -302,8 +300,8 @@ export class Tree implements ComponentInterface {
     if (dragOldParentId !== dragNodeData.parentId) {
       changeIds.add(`${dragNodeData.id}`);
       // 排序原始父级的 children 数据
-      const needSortNodes1 = this.data!.filter(d => d.parentId === dragOldParentId);
-      sortBy(needSortNodes1, 'sort').forEach((d, i) => {
+      const needSortNodes1 = this.data!.filter(d => d.parentId === dragOldParentId).sort(sortBy('sort'));
+      needSortNodes1.forEach((d, i) => {
         if (d.sort !== i) {
           changeIds.add(`${d.id}`);
           d.sort = i;
@@ -312,8 +310,8 @@ export class Tree implements ComponentInterface {
     }
 
     // 排序新父级数据
-    const needSortNodes = this.data!.filter(d => d.parentId === dragNodeData.parentId);
-    sortBy(needSortNodes, 'sort').forEach((d, i) => {
+    const needSortNodes = this.data!.filter(d => d.parentId === dragNodeData.parentId).sort(sortBy('sort'));
+    needSortNodes.forEach((d, i) => {
       if (d.id === dragNodeData.id) {
         if (dragOldOld !== i) {
           changeIds.add(`${d.id}`);
