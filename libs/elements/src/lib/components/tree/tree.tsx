@@ -379,7 +379,7 @@ export class Tree implements ComponentInterface {
       <aiao-tree-node id={eleId} {...attrs}>
         {hasChildren && (
           <div class="children">
-            {sortBy(children || [], 'sort').map(n => this.renderNode(n, needId, childConfigIds, nextLevel))}
+            {(children || []).sort(sortBy('sort')).map(n => this.renderNode(n, needId, childConfigIds, nextLevel))}
           </div>
         )}
       </aiao-tree-node>
@@ -407,6 +407,6 @@ export class Tree implements ComponentInterface {
   render() {
     this.refMap.clear();
     const needId = this.selectable || this.canDrag || this.checkable;
-    return this.dataState && sortBy(this.dataState, 'sort').map(node => this.renderNode(node, needId));
+    return this.dataState && this.dataState.sort(sortBy('sort')).map(node => this.renderNode(node, needId));
   }
 }
