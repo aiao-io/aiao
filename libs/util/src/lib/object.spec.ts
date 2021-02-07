@@ -1,5 +1,5 @@
 import {
-  flattenPathObjectTOplainObject,
+  flattenPathObjectToPlainObject,
   get,
   has,
   isPlainObject,
@@ -56,10 +56,10 @@ describe('object', () => {
     expect(plainObjectToFlattenPathObject({ a: { a: new Date(1) } })).toEqual({ 'a.a': new Date(1) });
   });
 
-  it('flattenPathObjectTOplainObject', () => {
-    expect(flattenPathObjectTOplainObject({ 'a.a': 1 })).toEqual({ a: { a: 1 } });
-    expect(flattenPathObjectTOplainObject({ 'a.a[0]': 0, 'a.a[1]': 1 })).toEqual({ a: { a: [0, 1] } });
-    expect(flattenPathObjectTOplainObject({ 'a.a.0': 0, 'a.a.1': 1 })).toEqual({ a: { a: { '0': 0, '1': 1 } } });
+  it('flattenPathObjectToPlainObject', () => {
+    expect(flattenPathObjectToPlainObject({ 'a.a': 1 })).toEqual({ a: { a: 1 } });
+    expect(flattenPathObjectToPlainObject({ 'a.a[0]': 0, 'a.a[1]': 1 })).toEqual({ a: { a: [0, 1] } });
+    expect(flattenPathObjectToPlainObject({ 'a.a.0': 0, 'a.a.1': 1 })).toEqual({ a: { a: { '0': 0, '1': 1 } } });
   });
 
   it('isPlainObject', () => {

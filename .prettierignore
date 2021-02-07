@@ -30,5 +30,5 @@ react-component-lib/
 
 createComponent.tsx
 createOverlayComponent.tsx
-decorate-angular-cli.js
-migrations.json
+/migrations.json
+/decorate-angular-cli.js

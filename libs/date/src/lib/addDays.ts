@@ -1,4 +1,4 @@
-import { toInteger } from 'lodash';
+import { toInteger } from '@aiao/util';
 
 import { addHours } from './addHours';
 

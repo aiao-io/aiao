@@ -106,7 +106,7 @@ export const plainObjectToFlattenPathObject = (object: PlainObject, prefix: stri
  * 转换 PathObject 到 plainObject
  * @param value
  */
-export const flattenPathObjectTOplainObject = (value: PlainObject) => {
+export const flattenPathObjectToPlainObject = (value: PlainObject) => {
   const back = {};
   Object.keys(value).forEach(path => {
     const match = path.match(/[^\]]*\[\d+\]/);
