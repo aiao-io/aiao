@@ -30,7 +30,7 @@ export const WORKSPACE_SCOPES = [
 export const WORKSPACE_TYPES = ['feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'chore'];
 
 // 需要预先编译的库
-export const NEED_CHECK_LIBS = ['stencil-toolkit', 'elements', 'image-storage'];
+export const NEED_CHECK_LIBS = ['stencil-toolkit', 'elements', 'image-storage', 'url', 'util'];
 
 // 需要检查提交的分支名
 export const NEED_CHECK_COMMIT_BRANCH_NAMES = ['master'];
