@@ -1,1 +1,2 @@
+echo "prepush"
 yarn prepush
