@@ -36,7 +36,7 @@
     "postinstall": "node ./decorate-angular-cli.js && yarn build:tools && yarn task:hotfix && yarn check:workspace && yarn postngcc",
     "postngcc": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "preinstall": "node tools/scripts/unlink",
-    "prepush": "yarn check:commit && yarn format:check",
+    "prepush": "echo 'prepush' && yarn check:commit && yarn format:check",
     "run:tools": "ts-node --project ./tools/tsconfig.tools.json -r tsconfig-paths/register",
     "task:lodash-optimize": "yarn node dist/tools/scripts/affected-lodash --write",
     "task:hotfix": "node dist/tools/hotfix/hotfix"
