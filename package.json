@@ -160,11 +160,6 @@
     "typescript": "~4.0.3",
     "yargs": "^16.0.3"
   },
-  "husky": {
-    "hooks": {
-      "pre-push": "yarn prepush"
-    }
-  },
   "engines": {
     "node": "14.x"
   },
