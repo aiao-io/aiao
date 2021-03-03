@@ -29,7 +29,7 @@ export const setupUniversal = async (app: FastifyInstance, options: NestUniversa
       prefixAvoidTrailingSlash: true,
       root: distPath,
       cacheControl: true,
-      wildcard: '**/*.*',
+      wildcard: true,
       maxAge: '1y'
     });
     next();
