@@ -6,5 +6,10 @@
     <h2><a routerLink="/home">Home Module</a></h2>
   </li>
 </ul>
-<button (click)="openDialog()">Open Dialog( with LazyComponentLoader )</button>
+
+<h1>只有 ivy 模式可以直接打开</h1>
+<button (click)="openDialogDirectly()">Open home Dialog ( without LazyComponentLoader )</button>
+<h1>都可以直接打开,会先加载对应的 module</h1>
+<button (click)="openDialog()">Open home Dialog( with LazyComponentLoader )</button>
+<button (click)="openAloneDialog()">Open Alone Dialog( with LazyComponentLoader )</button>
 <router-outlet></router-outlet>

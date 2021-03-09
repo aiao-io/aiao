@@ -1,11 +1,15 @@
-import { LazyComponentModule } from '@aiao/lazy-component';
-import { NgModule } from '@angular/core';
+import { LazyComponentModule, WithIvyLazyComponent } from '@aiao/lazy-component';
+import { NgModule, Type } from '@angular/core';
 
+import { HomeDialogComponent } from './dialog/dialog.component';
 import { HomeRouterModule } from './home-router.module';
 import { HomeComponent } from './home.component';
 
 @NgModule({
-  declarations: [HomeComponent],
-  imports: [HomeRouterModule, LazyComponentModule]
+  declarations: [HomeComponent, HomeDialogComponent],
+  imports: [HomeRouterModule, LazyComponentModule],
+  entryComponents: [HomeDialogComponent]
 })
-export class HomeModule {}
+export class HomeModule implements WithIvyLazyComponent {
+  customElementComponents: Type<any>[] = [HomeDialogComponent];
+}

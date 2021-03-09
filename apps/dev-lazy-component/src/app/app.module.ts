@@ -9,8 +9,13 @@ import { AppComponent } from './app.component';
 
 const lazyRoutes: LazyRoutes = [
   {
-    name: 'DialogModule',
-    loadChildren: () => import('./dialog/dialog.module').then(_ => _.DialogModule),
+    name: 'AloneDialogModule',
+    loadChildren: () => import('./alone-dialog/alone-dialog.module').then(_ => _.AloneDialogModule),
+    matcher
+  },
+  {
+    name: 'homeModule',
+    loadChildren: () => import('./home/home.module').then(_ => _.HomeModule),
     matcher
   }
 ];

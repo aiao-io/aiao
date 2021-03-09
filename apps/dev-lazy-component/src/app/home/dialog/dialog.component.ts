@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dialog',
+  selector: 'app-home-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss']
 })
-export class DialogComponent implements OnInit {
+export class HomeDialogComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}

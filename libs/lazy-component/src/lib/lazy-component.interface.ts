@@ -1,5 +1,5 @@
 import { Type } from '@angular/core';
 
-export interface WithLazyComponent {
+export interface WithIvyLazyComponent {
   customElementComponents: Type<any>[];
 }
