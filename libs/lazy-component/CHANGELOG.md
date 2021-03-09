@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/aiao-io/aiao/compare/@aiao/lazy-component@1.5.1-alpha.0...@aiao/lazy-component@1.6.0) (2021-03-09)
+
+
+### Features
+
+* **lazy-component:** support ivy ([#119](https://github.com/aiao-io/aiao/issues/119)) ([f9f5ef9](https://github.com/aiao-io/aiao/commit/f9f5ef94494aab36bd2f27e9f34ef5d0d35d4908))
+
+
+
+
+
 ## [1.5.1-alpha.0](https://github.com/aiao-io/aiao/compare/@aiao/lazy-component@1.5.0...@aiao/lazy-component@1.5.1-alpha.0) (2020-08-12)
 
 ### Features
