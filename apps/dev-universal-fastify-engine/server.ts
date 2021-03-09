@@ -17,7 +17,8 @@ export function createApp() {
   });
 
   app.register(fastifyStatic, {
-    root: distFolder
+    root: distFolder,
+    decorateReply: false
   });
 
   app.get('/api/hello', (req, reply) => {
