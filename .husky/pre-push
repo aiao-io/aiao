@@ -1,2 +1,2 @@
 echo "prepush"
-yarn prepush
+npm run prepush
