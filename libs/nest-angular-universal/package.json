@@ -26,9 +26,9 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@aiao/universal-fastify-engine": "^0.1.2"
+    "@aiao/universal-fastify-engine": "^1.0.0"
   },
   "devDependencies": {
-    "@aiao/universal-fastify-engine": "^0.1.3-alpha.0"
+    "@aiao/universal-fastify-engine": "*"
   }
 }
