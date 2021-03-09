@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.2](https://github.com/aiao-io/aiao/compare/@aiao/nest-typeorm-plus@0.0.2-alpha.0...@aiao/nest-typeorm-plus@0.0.2) (2021-03-09)
+
+**Note:** Version bump only for package @aiao/nest-typeorm-plus
+
 ## 0.0.2-alpha.0 (2020-08-12)
 
 ### Features
