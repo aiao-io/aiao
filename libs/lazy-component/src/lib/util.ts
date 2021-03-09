@@ -6,7 +6,7 @@ export const findComponentFromModuleRef = (moduleRef: NgModuleRef<any>, selector
   if (factories) {
     return Array.from(factories.keys()).find(type => factories.get(type)!.selector === selector);
   }
-  const customElementComponents: Type<any>[] = (moduleRef?.instance as any).customElementComponents as any;
+  const customElementComponents: Type<any>[] = (moduleRef.instance as any)?.customElementComponents as any;
   if (customElementComponents) {
     return customElementComponents.find((d: any) => {
       const selectorArrs: string[][] = d.ɵcmp.selectors;
