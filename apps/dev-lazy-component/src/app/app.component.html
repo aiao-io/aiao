@@ -8,8 +8,8 @@
 </ul>
 
 <h1>只有 ivy 模式可以直接打开</h1>
-<button (click)="openDialogDirectly()">Open home Dialog ( without LazyComponentLoader )</button>
+<button (click)="openDialogDirectly()">直接打开 home 模块的弹框</button>
 <h1>都可以直接打开,会先加载对应的 module</h1>
-<button (click)="openDialog()">Open home Dialog( with LazyComponentLoader )</button>
-<button (click)="openAloneDialog()">Open Alone Dialog( with LazyComponentLoader )</button>
+<button (click)="openDialog()">用 LazyComponentLoader 打开 HomeModule 模块的弹框</button>
+<button (click)="openAloneDialog()">用 LazyComponentLoader 打开 AloneDialogModule 模块的弹框</button>
 <router-outlet></router-outlet>
