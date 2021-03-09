@@ -9,8 +9,8 @@ import { AppComponent } from './app.component';
 
 const lazyRoutes: LazyRoutes = [
   {
-    name: 'homeModule',
-    loadChildren: () => import('./home/home.module').then(_ => _.HomeModule),
+    name: 'DialogModule',
+    loadChildren: () => import('./dialog/dialog.module').then(_ => _.DialogModule),
     matcher
   }
 ];
