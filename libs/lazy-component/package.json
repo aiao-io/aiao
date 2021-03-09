@@ -21,12 +21,10 @@
     "build": "cd ../../ && yarn build lazy-component --prod"
   },
   "peerDependencies": {
-    "@aiao/lazy-module": "^1.4.0",
-    "@angular/common": ">=9.0.0",
-    "@angular/core": ">=9.0.0"
+    "@aiao/lazy-module": "^1.4.0"
   },
   "devDependencies": {
-    "@aiao/lazy-module": "^1.4.1"
+    "@aiao/lazy-module": "*"
   },
   "dependencies": {
     "tslib": "^2.0.0"

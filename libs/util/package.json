@@ -27,6 +27,6 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "@aiao/date": "^0.1.2-alpha.0"
+    "@aiao/date": "*"
   }
 }

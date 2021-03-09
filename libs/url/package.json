@@ -19,7 +19,7 @@
     "build": "cd ../../ && yarn build url --prod"
   },
   "peerDependencies": {
-    "@aiao/util": "^1.0.0-alpha.1",
+    "@aiao/util": "^1.0.0",
     "lodash": "^4.17.15"
   },
   "dependencies": {

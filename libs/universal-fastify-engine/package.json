@@ -24,8 +24,8 @@
     "build": "cd ../../ && yarn build universal-fastify-engine --prod"
   },
   "peerDependencies": {
-    "@angular/core": ">=9.0.0",
-    "@nguniversal/common": "^>=9.0.0",
+    "@angular/core": ">=8.0.0",
+    "@nguniversal/common": "^>=8.0.0",
     "fastify": "^4.0.0",
     "fastify-plugin": "^3.0.0",
     "fastify-static": "^4.0.0"
