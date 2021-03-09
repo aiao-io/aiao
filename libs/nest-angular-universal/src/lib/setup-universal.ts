@@ -6,7 +6,17 @@ import { ngFastilyEngine } from '@aiao/universal-fastify-engine';
 import { NestUniversalOptions } from './interface';
 
 export const setupUniversal = async (app: FastifyInstance, options: NestUniversalOptions) => {
-  const { bootstrap, defaultLocale, distPath, document, documentFilePath, locales, providers, production } = options;
+  const {
+    bootstrap,
+    defaultLocale,
+    distPath,
+    document,
+    documentFilePath,
+    locales,
+    providers,
+    production,
+    fastifyStaticOptions
+  } = options;
 
   app.register(ngFastilyEngine, {
     bootstrap,
@@ -26,11 +36,10 @@ export const setupUniversal = async (app: FastifyInstance, options: NestUniversa
 
   app.register((instance: FastifyInstance, opts: any, next: () => void) => {
     instance.register(fastifyStatic, {
-      prefixAvoidTrailingSlash: true,
+      ...fastifyStaticOptions,
       root: distPath,
-      cacheControl: true,
       wildcard: true,
-      maxAge: '1y'
+      decorateReply: false
     });
     next();
   });

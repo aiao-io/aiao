@@ -36,20 +36,13 @@ export class NestAngularUniversalModule implements OnModuleInit {
   }
 
   async onModuleInit() {
-    if (!this.httpAdapterHost) {
-      return;
-    }
-
-    const httpAdapter = this.httpAdapterHost.httpAdapter;
-    if (!httpAdapter) {
-      return;
-    }
-
-    const { disableRender } = this.options;
-
-    if (!disableRender) {
-      const app: any = httpAdapter.getInstance();
-      app.get('*', (req: FastifyRequest, res: FastifyReply) => res.renderAngular());
+    if (this.httpAdapterHost?.httpAdapter && !this.options.disableRender) {
+      const renderAngular = (req: FastifyRequest, res: FastifyReply) => res.renderAngular();
+      const app: any = this.httpAdapterHost.httpAdapter.getInstance();
+      this.options.paths.forEach(path => {
+        console.log('[renderAngular] path:', path);
+        app.get(path, renderAngular);
+      });
     }
   }
 }
