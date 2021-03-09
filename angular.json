@@ -846,13 +846,22 @@
             "tsConfig": "apps/dev-nest-angular-universal/tsconfig.server.json",
             "showCircularDependencies": false,
             "externalDependencies": [
+              "@nestjs/common",
+              "@nestjs/core",
+              "@nestjs/mapped-types",
               "@nestjs/microservices",
               "@nestjs/microservices/microservices-module",
+              "@nestjs/platform-express",
+              "@nestjs/platform-fastify",
+              "@nestjs/platform-socket.io",
+              "@nestjs/swagger",
               "@nestjs/websockets",
               "@nestjs/websockets/socket-module",
               "cache-manager",
-              "@nestjs/platform-fastify",
-              "fast-json-stringify"
+              "ws",
+              "fast-json-stringify",
+              "fastify-helmet",
+              "swagger-ui-express"
             ]
           },
           "configurations": {

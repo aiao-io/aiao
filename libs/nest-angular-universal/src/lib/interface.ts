@@ -1,10 +1,13 @@
+import { FastifyStaticOptions } from 'fastify-static';
+
 import { NgSetupOptions } from '@aiao/universal-fastify-engine';
 
-// 配置文件
 export interface NestUniversalOptions extends NgSetupOptions {
   production: boolean;
+  paths: string[];
   disableRender?: boolean;
   // only production false
   browserHost?: string;
   browserPort?: number;
+  fastifyStaticOptions?: Omit<FastifyStaticOptions, 'root' | 'wildcard' | 'decorateReply'>;
 }
