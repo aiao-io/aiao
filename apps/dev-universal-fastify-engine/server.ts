@@ -11,18 +11,13 @@ import { AppServerModule } from './src/main.server';
 export function createApp() {
   const app = fastify();
   const distFolder = join(process.cwd(), 'dist/apps/dev-universal-fastify-engine/browser');
-
-  app.register(fastifyStatic, {
-    prefixAvoidTrailingSlash: true,
-    root: distFolder,
-    cacheControl: true,
-    wildcard: '**/*.*',
-    maxAge: '1y'
-  });
-
   app.register(ngFastilyEngine, {
     distPath: distFolder,
     bootstrap: AppServerModule
+  });
+
+  app.register(fastifyStatic, {
+    root: distFolder
   });
 
   app.get('/api/hello', (req, reply) => {
@@ -31,7 +26,7 @@ export function createApp() {
     });
   });
 
-  app.get('*', (req, reply) => reply.renderAngular());
+  app.setNotFoundHandler((request, reply) => reply.renderAngular());
 
   return app;
 }
