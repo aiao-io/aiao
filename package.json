@@ -94,8 +94,7 @@
     "vue": "^3.0.1",
     "vue-loader": "^16.0.0-alpha.3",
     "vue-router": "^4.0.0-alpha.3",
-    "zone.js": "^0.10.2",
-    "@ngrx/component-store": "11.0.0"
+    "zone.js": "^0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.1102.4",
