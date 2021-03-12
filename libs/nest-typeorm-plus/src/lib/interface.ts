@@ -16,4 +16,5 @@ export function getSequelizeRepositoryToken(
 ): string {
   return `${getRepositoryToken(entity, connection)}_SEQUELIZE_REPOSITORY`;
 }
-export type EntityClassOrSchema = Function | EntitySchema;
+
+export type EntityClassOrSchema = () => void | EntitySchema;
