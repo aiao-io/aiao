@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 
+import { config } from 'dotenv';
 import { env } from 'process';
 import { ConnectionOptions } from 'typeorm';
 
@@ -11,7 +12,8 @@ import { AiaoTypeormPlusModule, InjectSequlizeRepository } from '../src';
 import { PostCategory } from './post-category.entity';
 import { Post } from './post.entity';
 
-require('dotenv').config();
+config();
+
 const {
   TYPEORM_PLUS_TEST_DB_TYPE,
   TYPEORM_PLUS_TEST_USERNAME,

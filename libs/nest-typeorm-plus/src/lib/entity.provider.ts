@@ -3,10 +3,10 @@ import { Connection, ConnectionOptions, Repository } from 'typeorm';
 import { TypeormPlus } from '@aiao/typeorm-plus';
 import { getRepositoryToken } from '@nestjs/typeorm';
 
-import { getSequelizeRepositoryToken, NEST_TYPEORM_PLUS } from './interface';
+import { EntityClassOrSchema, getSequelizeRepositoryToken, NEST_TYPEORM_PLUS } from './interface';
 
 export const createSequelizeProviders = (
-  entities: Function[] = [],
+  entities: EntityClassOrSchema[] = [],
   connection?: Connection | ConnectionOptions | string
 ) => {
   // TODO: featrue

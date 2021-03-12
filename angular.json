@@ -31,7 +31,8 @@
           "options": {
             "jestConfig": "libs/util/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/util"]
         }
       }
     },
@@ -65,7 +66,8 @@
           "options": {
             "jestConfig": "libs/lazy-component/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/lazy-component"]
         }
       }
     },
@@ -99,7 +101,8 @@
           "options": {
             "jestConfig": "libs/lazy-module/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/lazy-module"]
         }
       }
     },
@@ -133,7 +136,8 @@
           "options": {
             "jestConfig": "libs/lazy-element/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/lazy-element"]
         }
       }
     },
@@ -166,7 +170,8 @@
           "options": {
             "jestConfig": "libs/color/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/color"]
         }
       }
     },
@@ -198,7 +203,8 @@
           },
           "configurations": {
             "production": {}
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -212,7 +218,8 @@
           "options": {
             "jestConfig": "libs/stencil-toolkit/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/stencil-toolkit"]
         }
       }
     },
@@ -266,7 +273,8 @@
           "options": {
             "jestConfig": "libs/elements/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/elements"]
         }
       }
     },
@@ -300,7 +308,8 @@
           "options": {
             "jestConfig": "libs/image-storage/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/image-storage"]
         }
       }
     },
@@ -334,7 +343,8 @@
           "options": {
             "jestConfig": "libs/elements-cdk/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/elements-cdk"]
         }
       }
     },
@@ -368,7 +378,8 @@
           "options": {
             "jestConfig": "libs/elements-angular/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/elements-angular"]
         }
       }
     },
@@ -402,7 +413,8 @@
           "options": {
             "jestConfig": "libs/typeorm-plus/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/typeorm-plus"]
         }
       }
     },
@@ -439,14 +451,16 @@
           },
           "configurations": {
             "production": {}
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/elements-react/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/elements-react"]
         }
       }
     },
@@ -480,7 +494,8 @@
           "options": {
             "jestConfig": "libs/date/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/date"]
         }
       }
     },
@@ -514,7 +529,8 @@
           "options": {
             "jestConfig": "libs/random/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/random"]
         }
       }
     },
@@ -548,7 +564,8 @@
           "options": {
             "jestConfig": "libs/url/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/url"]
         }
       }
     },
@@ -567,7 +584,8 @@
             "main": "libs/universal-fastify-engine/src/index.ts",
             "assets": ["libs/universal-fastify-engine/*.md"],
             "srcRootForCompilationRoot": "libs/universal-fastify-engine/src"
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -584,7 +602,8 @@
           "options": {
             "jestConfig": "libs/universal-fastify-engine/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/universal-fastify-engine"]
         }
       }
     },
@@ -621,7 +640,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -640,7 +658,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -675,7 +694,8 @@
           "options": {
             "jestConfig": "apps/dev-universal-fastify-engine/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/dev-universal-fastify-engine"]
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
@@ -782,7 +802,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -801,7 +820,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -836,7 +856,8 @@
           "options": {
             "jestConfig": "apps/dev-nest-angular-universal/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/dev-nest-angular-universal"]
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
@@ -967,7 +988,8 @@
             ],
             "styles": [
               {
-                "input": "apps/dev-elements-angular/src/theme/variables.scss"
+                "input": "apps/dev-elements-angular/src/theme/variables.scss",
+                "inject": true
               },
               "apps/dev-elements-angular/src/global.scss"
             ],
@@ -984,7 +1006,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -1003,7 +1024,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -1036,7 +1058,8 @@
           "options": {
             "jestConfig": "apps/dev-elements-angular/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/dev-elements-angular"]
         }
       }
     },
@@ -1097,7 +1120,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -1116,7 +1138,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -1148,7 +1171,8 @@
           "options": {
             "jestConfig": "apps/dev-lazy-element/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/dev-lazy-element"]
         }
       }
     },
@@ -1209,7 +1233,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -1228,7 +1251,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -1260,7 +1284,8 @@
           "options": {
             "jestConfig": "apps/dev-lazy-module/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/dev-lazy-module"]
         }
       }
     },
@@ -1321,7 +1346,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -1340,7 +1364,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -1372,7 +1397,8 @@
           "options": {
             "jestConfig": "apps/dev-lazy-component/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/dev-lazy-component"]
         }
       }
     },
@@ -1459,7 +1485,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@nrwl/web:dev-server",
@@ -1486,7 +1513,8 @@
           "options": {
             "jestConfig": "apps/dev-elements-react/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/dev-elements-react"]
         }
       }
     },
@@ -1534,7 +1562,8 @@
           },
           "configurations": {
             "production": {}
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -1548,7 +1577,8 @@
           "options": {
             "jestConfig": "libs/leancloud-hash/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/leancloud-hash"]
         }
       }
     },
@@ -1613,7 +1643,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@nrwl/web:dev-server",
@@ -1640,7 +1671,8 @@
           "options": {
             "jestConfig": "apps/dev-elements-vue/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/dev-elements-vue"]
         }
       }
     },
@@ -1688,7 +1720,8 @@
           "options": {
             "jestConfig": "libs/nest-typeorm-plus/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/nest-typeorm-plus"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -1698,7 +1731,8 @@
             "packageJson": "libs/nest-typeorm-plus/package.json",
             "main": "libs/nest-typeorm-plus/src/index.ts",
             "assets": ["libs/nest-typeorm-plus/*.md"]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -1719,7 +1753,8 @@
           "options": {
             "jestConfig": "libs/nest-angular-universal/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/nest-angular-universal"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -1729,7 +1764,8 @@
             "packageJson": "libs/nest-angular-universal/package.json",
             "main": "libs/nest-angular-universal/src/index.ts",
             "assets": ["libs/nest-angular-universal/*.md"]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     }
