@@ -17,4 +17,5 @@ export function getSequelizeRepositoryToken(
   return `${getRepositoryToken(entity, connection)}_SEQUELIZE_REPOSITORY`;
 }
 
-export type EntityClassOrSchema = () => void | EntitySchema;
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type EntityClassOrSchema = Function | EntitySchema;
