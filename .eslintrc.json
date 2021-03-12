@@ -11,7 +11,52 @@
           {
             "enforceBuildableLibDependency": true,
             "allow": [],
-            "depConstraints": [{ "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }]
+            "depConstraints": [
+              {
+                "sourceTag": "all",
+                "onlyDependOnLibsWithTags": ["all"]
+              },
+              {
+                "sourceTag": "angular-lib",
+                "onlyDependOnLibsWithTags": ["all", "angular-lib", "stencil-lib"]
+              },
+              {
+                "sourceTag": "angular-app",
+                "onlyDependOnLibsWithTags": ["all", "angular-lib"]
+              },
+              {
+                "sourceTag": "react-lib",
+                "onlyDependOnLibsWithTags": ["all", "react-lib", "stencil-lib"]
+              },
+              {
+                "sourceTag": "react-app",
+                "onlyDependOnLibsWithTags": ["all", "react-lib"]
+              },
+              {
+                "sourceTag": "nest-lib",
+                "onlyDependOnLibsWithTags": ["all", "nest-lib"]
+              },
+              {
+                "sourceTag": "nest-app",
+                "onlyDependOnLibsWithTags": ["all", "nest-lib"]
+              },
+              {
+                "sourceTag": "stencil-lib",
+                "onlyDependOnLibsWithTags": ["all", "stencil-lib"]
+              },
+              {
+                "sourceTag": "stencil-app",
+                "onlyDependOnLibsWithTags": ["all", "stencil-lib"]
+              },
+              {
+                "sourceTag": "angular-e2e",
+                "onlyDependOnLibsWithTags": ["all", "angular-app"]
+              },
+              {
+                "sourceTag": "vue-app",
+                "onlyDependOnLibsWithTags": ["all", "vue-lib", "stencil-lib"]
+              }
+            ]
           }
         ]
       }
