@@ -1,14 +1,9 @@
 {
   "npmScope": "aiao",
-  "affected": {
-    "defaultBase": "master"
-  },
+  "affected": { "defaultBase": "master" },
   "implicitDependencies": {
     "angular.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     "tslint.json": "*",
     "nx.json": "*",
     "tsconfig.base.json": "*"
@@ -16,124 +11,50 @@
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
     }
   },
   "projects": {
-    "util": {
-      "tags": ["all"]
-    },
-    "lazy-component": {
-      "tags": ["angular-lib"]
-    },
-    "lazy-module": {
-      "tags": ["angular-lib"]
-    },
-    "lazy-element": {
-      "tags": ["angular-lib"]
-    },
-    "color": {
-      "tags": ["all"]
-    },
-    "stencil-toolkit": {
-      "tags": ["stencil-tool"]
-    },
-    "elements": {
-      "tags": ["stencil-lib"]
-    },
-    "image-storage": {
-      "tags": ["all"]
-    },
-    "elements-cdk": {
-      "tags": ["all"]
-    },
-    "elements-angular": {
-      "tags": ["angular-lib"]
-    },
-    "typeorm-plus": {
-      "tags": ["nest-lib"]
-    },
-    "elements-react": {
-      "tags": ["react-lib"]
-    },
-    "date": {
-      "tags": ["all"]
-    },
-    "random": {
-      "tags": ["all"]
-    },
-    "url": {
-      "tags": ["all"]
-    },
-    "universal-fastify-engine": {
-      "tags": ["all"]
-    },
-    "dev-universal-fastify-engine": {
-      "tags": ["angular-app", "nest-app"]
-    },
+    "util": { "tags": ["all"] },
+    "lazy-component": { "tags": ["angular-lib"] },
+    "lazy-module": { "tags": ["angular-lib"] },
+    "lazy-element": { "tags": ["angular-lib"] },
+    "color": { "tags": ["all"] },
+    "stencil-toolkit": { "tags": ["stencil-tool"] },
+    "elements": { "tags": ["stencil-lib"] },
+    "image-storage": { "tags": ["all"] },
+    "elements-cdk": { "tags": ["all"] },
+    "elements-angular": { "tags": ["angular-lib"] },
+    "typeorm-plus": { "tags": ["nest-lib"] },
+    "elements-react": { "tags": ["react-lib"] },
+    "date": { "tags": ["all"] },
+    "random": { "tags": ["all"] },
+    "url": { "tags": ["all"] },
+    "universal-fastify-engine": { "tags": ["all"] },
+    "dev-universal-fastify-engine": { "tags": ["angular-app", "nest-app"] },
     "dev-universal-fastify-engine-e2e": {
       "tags": ["angular-e2e"],
       "implicitDependencies": ["dev-universal-fastify-engine"]
     },
-    "dev-nest-angular-universal": {
-      "tags": ["angular-app", "nest-app"]
-    },
+    "dev-nest-angular-universal": { "tags": ["angular-app", "nest-app"] },
     "dev-nest-angular-universal-e2e": {
       "tags": ["angular-e2e"],
       "implicitDependencies": ["dev-nest-angular-universal"]
     },
-    "dev-elements-angular": {
-      "tags": ["angular-app"]
-    },
-    "dev-elements-angular-e2e": {
-      "tags": ["angular-e2e"],
-      "implicitDependencies": ["dev-elements-angular"]
-    },
-    "dev-lazy-element": {
-      "tags": ["angular-app"]
-    },
-    "dev-lazy-element-e2e": {
-      "tags": ["angular-e2e"],
-      "implicitDependencies": ["dev-lazy-element"]
-    },
-    "dev-lazy-module": {
-      "tags": ["angular-app"]
-    },
-    "dev-lazy-module-e2e": {
-      "tags": ["angular-e2e"],
-      "implicitDependencies": ["dev-lazy-module"]
-    },
-    "dev-lazy-component": {
-      "tags": ["angular-app"]
-    },
-    "dev-lazy-component-e2e": {
-      "tags": ["angular-e2e"],
-      "implicitDependencies": ["dev-lazy-component"]
-    },
-    "dev-elements-react": {
-      "tags": ["react-app"]
-    },
-    "dev-elements-react-e2e": {
-      "tags": ["angular-e2e"],
-      "implicitDependencies": ["dev-elements-react"]
-    },
-    "leancloud-hash": {
-      "tags": ["node"]
-    },
-    "dev-elements-vue": {
-      "tags": ["vue-app"]
-    },
-    "dev-elements-vue-e2e": {
-      "tags": ["vue-e2e"],
-      "implicitDependencies": ["dev-elements-vue"]
-    },
-    "nest-typeorm-plus": {
-      "tags": ["nest-app"]
-    },
-    "nest-angular-universal": {
-      "tags": ["nest-lib"]
-    }
+    "dev-elements-angular": { "tags": ["angular-app"] },
+    "dev-elements-angular-e2e": { "tags": ["angular-e2e"], "implicitDependencies": ["dev-elements-angular"] },
+    "dev-lazy-element": { "tags": ["angular-app"] },
+    "dev-lazy-element-e2e": { "tags": ["angular-e2e"], "implicitDependencies": ["dev-lazy-element"] },
+    "dev-lazy-module": { "tags": ["angular-app"] },
+    "dev-lazy-module-e2e": { "tags": ["angular-e2e"], "implicitDependencies": ["dev-lazy-module"] },
+    "dev-lazy-component": { "tags": ["angular-app"] },
+    "dev-lazy-component-e2e": { "tags": ["angular-e2e"], "implicitDependencies": ["dev-lazy-component"] },
+    "dev-elements-react": { "tags": ["react-app"] },
+    "dev-elements-react-e2e": { "tags": ["angular-e2e"], "implicitDependencies": ["dev-elements-react"] },
+    "leancloud-hash": { "tags": ["node"] },
+    "dev-elements-vue": { "tags": ["vue-app"] },
+    "dev-elements-vue-e2e": { "tags": ["vue-e2e"], "implicitDependencies": ["dev-elements-vue"] },
+    "nest-typeorm-plus": { "tags": ["nest-app"] },
+    "nest-angular-universal": { "tags": ["nest-lib"] }
   }
 }
