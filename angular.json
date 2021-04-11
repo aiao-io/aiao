@@ -1729,6 +1729,9 @@
             "main": "libs/nest-typeorm-plus/src/index.ts",
             "assets": ["libs/nest-typeorm-plus/*.md"]
           },
+          "configurations": {
+            "production": {}
+          },
           "outputs": ["{options.outputPath}"]
         }
       }
@@ -1761,6 +1764,9 @@
             "packageJson": "libs/nest-angular-universal/package.json",
             "main": "libs/nest-angular-universal/src/index.ts",
             "assets": ["libs/nest-angular-universal/*.md"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }

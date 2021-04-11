@@ -9,7 +9,7 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "assumeChangesOnlyAffectDirectDependencies": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "jsxFactory": "h",
     "lib": ["dom", "es2017"],
     "module": "esnext",
