@@ -597,6 +597,9 @@
             "packageJson": "libs/universal-fastify-engine/package.json",
             "main": "libs/universal-fastify-engine/src/index.ts",
             "assets": ["libs/universal-fastify-engine/*.md"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
