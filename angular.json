@@ -108,10 +108,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["libs/util/tsconfig.lib.json", "libs/util/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/util/**/*"]
+            "lintFilePatterns": ["libs/util/src/**/*.ts", "libs/util/src/**/*.html"]
           }
         },
         "test": {
@@ -143,10 +142,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["libs/lazy-component/tsconfig.lib.json", "libs/lazy-component/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/lazy-component/**/*"]
+            "lintFilePatterns": ["libs/lazy-component/src/**/*.ts", "libs/lazy-component/src/**/*.html"]
           }
         },
         "test": {
@@ -178,10 +176,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["libs/lazy-module/tsconfig.lib.json", "libs/lazy-module/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/lazy-module/**/*"]
+            "lintFilePatterns": ["libs/lazy-module/src/**/*.ts", "libs/lazy-module/src/**/*.html"]
           }
         },
         "test": {
@@ -213,10 +210,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["libs/lazy-element/tsconfig.lib.json", "libs/lazy-element/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/lazy-element/**/*"]
+            "lintFilePatterns": ["libs/lazy-element/src/**/*.ts", "libs/lazy-element/src/**/*.html"]
           }
         },
         "test": {
@@ -294,10 +290,9 @@
           "outputs": ["{options.outputPath}"]
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["libs/stencil-toolkit/tsconfig.lib.json", "libs/stencil-toolkit/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/stencil-toolkit/**/*"]
+            "lintFilePatterns": ["libs/stencil-toolkit/src/**/*.ts", "libs/stencil-toolkit/src/**/*.html"]
           }
         },
         "test": {
@@ -384,10 +379,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["libs/image-storage/tsconfig.lib.json", "libs/image-storage/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/image-storage/**/*"]
+            "lintFilePatterns": ["libs/image-storage/src/**/*.ts", "libs/image-storage/src/**/*.html"]
           }
         },
         "test": {
@@ -419,10 +413,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["libs/elements-cdk/tsconfig.lib.json", "libs/elements-cdk/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/elements-cdk/**/*"]
+            "lintFilePatterns": ["libs/elements-cdk/src/**/*.ts", "libs/elements-cdk/src/**/*.html"]
           }
         },
         "test": {
@@ -454,10 +447,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["libs/elements-angular/tsconfig.lib.json", "libs/elements-angular/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/elements-angular/**/*"]
+            "lintFilePatterns": ["libs/elements-angular/src/**/*.ts", "libs/elements-angular/src/**/*.html"]
           }
         },
         "test": {
@@ -489,10 +481,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["libs/typeorm-plus/tsconfig.lib.json", "libs/typeorm-plus/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/typeorm-plus/**/*"]
+            "lintFilePatterns": ["libs/typeorm-plus/src/**/*.ts", "libs/typeorm-plus/src/**/*.html"]
           }
         },
         "test": {
@@ -604,10 +595,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["libs/random/tsconfig.lib.json", "libs/random/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/random/**/*"]
+            "lintFilePatterns": ["libs/random/src/**/*.ts", "libs/random/src/**/*.html"]
           }
         },
         "test": {
@@ -639,10 +629,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["libs/url/tsconfig.lib.json", "libs/url/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/url/**/*"]
+            "lintFilePatterns": ["libs/url/src/**/*.ts", "libs/url/src/**/*.html"]
           }
         },
         "test": {
@@ -1649,10 +1638,9 @@
           "outputs": ["{options.outputPath}"]
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["libs/leancloud-hash/tsconfig.lib.json", "libs/leancloud-hash/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/leancloud-hash/**/*"]
+            "lintFilePatterns": ["libs/leancloud-hash/src/**/*.ts", "libs/leancloud-hash/src/**/*.html"]
           }
         },
         "test": {
