@@ -18,6 +18,9 @@
     "@nrwl/cypress": {
       "cypress-project": {
         "linter": "eslint"
+      },
+      "convert-tslint-to-eslint": {
+        "removeTSLintIfNoMoreTSLintTargets": false
       }
     },
     "@nrwl/react": {
@@ -752,13 +755,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/dev-universal-fastify-engine/tsconfig.app.json",
-              "apps/dev-universal-fastify-engine/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/dev-universal-fastify-engine/**/*"]
+            "lintFilePatterns": [
+              "apps/dev-universal-fastify-engine/src/**/*.ts",
+              "apps/dev-universal-fastify-engine/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -836,10 +838,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["apps/dev-universal-fastify-engine-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/dev-universal-fastify-engine-e2e/**/*"]
+            "lintFilePatterns": ["apps/dev-universal-fastify-engine-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -914,13 +915,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/dev-nest-angular-universal/tsconfig.app.json",
-              "apps/dev-nest-angular-universal/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/dev-nest-angular-universal/**/*"]
+            "lintFilePatterns": [
+              "apps/dev-nest-angular-universal/src/**/*.ts",
+              "apps/dev-nest-angular-universal/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -1016,10 +1016,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["apps/dev-nest-angular-universal-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/dev-nest-angular-universal-e2e/**/*"]
+            "lintFilePatterns": ["apps/dev-nest-angular-universal-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -1119,10 +1118,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["apps/dev-elements-angular/tsconfig.app.json", "apps/dev-elements-angular/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!apps/dev-elements-angular/**/*"]
+            "lintFilePatterns": ["apps/dev-elements-angular/src/**/*.ts", "apps/dev-elements-angular/src/**/*.html"]
           }
         },
         "test": {
@@ -1154,10 +1152,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["apps/dev-elements-angular-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/dev-elements-angular-e2e/**/*"]
+            "lintFilePatterns": ["apps/dev-elements-angular-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -1232,10 +1229,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["apps/dev-lazy-element/tsconfig.app.json", "apps/dev-lazy-element/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!apps/dev-lazy-element/**/*"]
+            "lintFilePatterns": ["apps/dev-lazy-element/src/**/*.ts", "apps/dev-lazy-element/src/**/*.html"]
           }
         },
         "test": {
@@ -1267,10 +1263,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["apps/dev-lazy-element-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/dev-lazy-element-e2e/**/*"]
+            "lintFilePatterns": ["apps/dev-lazy-element-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -1345,10 +1340,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["apps/dev-lazy-module/tsconfig.app.json", "apps/dev-lazy-module/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!apps/dev-lazy-module/**/*"]
+            "lintFilePatterns": ["apps/dev-lazy-module/src/**/*.ts", "apps/dev-lazy-module/src/**/*.html"]
           }
         },
         "test": {
@@ -1380,10 +1374,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["apps/dev-lazy-module-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/dev-lazy-module-e2e/**/*"]
+            "lintFilePatterns": ["apps/dev-lazy-module-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -1458,10 +1451,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["apps/dev-lazy-component/tsconfig.app.json", "apps/dev-lazy-component/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!apps/dev-lazy-component/**/*"]
+            "lintFilePatterns": ["apps/dev-lazy-component/src/**/*.ts", "apps/dev-lazy-component/src/**/*.html"]
           }
         },
         "test": {
@@ -1493,10 +1485,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["apps/dev-lazy-component-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/dev-lazy-component-e2e/**/*"]
+            "lintFilePatterns": ["apps/dev-lazy-component-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -1574,10 +1565,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["apps/dev-elements-react/tsconfig.app.json", "apps/dev-elements-react/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!apps/dev-elements-react/**/*"]
+            "lintFilePatterns": ["apps/dev-elements-react/src/**/*.ts", "apps/dev-elements-react/src/**/*.html"]
           }
         },
         "test": {
@@ -1609,10 +1599,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["apps/dev-elements-react-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/dev-elements-react-e2e/**/*"]
+            "lintFilePatterns": ["apps/dev-elements-react-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -1731,10 +1720,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["apps/dev-elements-vue/tsconfig.app.json", "apps/dev-elements-vue/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!apps/dev-elements-vue/**/*"]
+            "lintFilePatterns": ["apps/dev-elements-vue/src/**/*.ts", "apps/dev-elements-vue/src/**/*.html"]
           }
         },
         "test": {
@@ -1766,10 +1754,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["apps/dev-elements-vue-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/dev-elements-vue-e2e/**/*"]
+            "lintFilePatterns": ["apps/dev-elements-vue-e2e/**/*.{js,ts}"]
           }
         }
       }
