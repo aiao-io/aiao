@@ -8,10 +8,9 @@ export const debounce = <Func extends AnyFunction>(
 ): ((this: ThisParameterType<Func>, ...args: Parameters<Func>) => void) => {
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
   return function (this: ThisParameterType<Func>, ...args: Parameters<Func>) {
-    const context = this;
     const doLater = () => {
       timeoutId = undefined;
-      func.apply(context, args);
+      func.apply(this, args);
     };
     if (timeoutId !== undefined) {
       clearTimeout(timeoutId);
@@ -23,10 +22,9 @@ export const debounce = <Func extends AnyFunction>(
 export const throttle = <Func extends AnyFunction>(func: Func, timeFrame: number) => {
   let lastTime = 0;
   return function (this: ThisParameterType<Func>, ...args: Parameters<Func>) {
-    const context = this;
     const now = new Date().getTime();
     if (now - lastTime >= timeFrame) {
-      func.apply(context, args);
+      func.apply(this, args);
       lastTime = now;
     }
   };

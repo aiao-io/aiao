@@ -5,7 +5,7 @@ interface IQuery {
 export const queryStringify = (query: IQuery) => {
   const params = new URLSearchParams();
   for (const key in query) {
-    if (query.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(query, key)) {
       const value = query[key];
       if (Array.isArray(value)) {
         value.forEach(val => params.append(key, `${val}`));

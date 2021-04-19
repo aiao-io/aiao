@@ -6,6 +6,7 @@ import { isFunction } from './function';
 import { getTag, isObjectLike } from './lodash';
 import { PlainObject } from './types';
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export const isObject = (value: any): value is object => {
   const type = typeof value;
   return value != null && (type === 'object' || type === 'function');
@@ -26,10 +27,9 @@ export const isPlainObject = (value: any) => {
 };
 
 export const toPlainObject = (value: any) => {
-  value = Object(value);
   const result: any = {};
   for (const key in value) {
-    if (value.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(value, key)) {
       result[key] = value[key];
     }
   }
@@ -139,11 +139,12 @@ export const get = (obj: any, path: string, defaultValue?: any) => {
   return result === undefined || result === obj ? defaultValue : result;
 };
 
-export const pick = (object: any, keys: string[]) => {
-  return keys.reduce((obj: any, key) => {
-    if (object && object.hasOwnProperty(key)) {
-      obj[key] = object[key];
+export const pick = <T, U extends keyof T>(obj: T, keys: U[]) => {
+  const back: any = {};
+  keys.forEach(key => {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      back[key] = obj[key];
     }
-    return obj;
-  }, {});
+  });
+  return back;
 };
