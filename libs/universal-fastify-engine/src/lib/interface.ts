@@ -1,7 +1,7 @@
 import { NgModuleFactory, StaticProvider, Type } from '@angular/core';
 
 export interface NgSetupOptions {
-  bootstrap: Type<{}> | NgModuleFactory<{}>;
+  bootstrap: Type<any> | NgModuleFactory<any>;
   distPath: string;
   defaultLocale?: string;
   document?: string;

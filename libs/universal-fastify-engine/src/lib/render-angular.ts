@@ -10,7 +10,7 @@ const templateCache = new Map<string, string>();
 
 function getDocument(path: string): string | undefined {
   if (templateCache.has(path)) {
-    return templateCache.get(path)!;
+    return templateCache.get(path);
   }
   const indexOriginal = join(path, 'index.original.html');
   const index = join(path, 'index.html');
