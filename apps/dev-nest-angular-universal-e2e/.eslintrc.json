@@ -16,7 +16,5 @@
         "no-undef": "off"
       }
     }
-  ],
-  "plugins": ["@typescript-eslint"],
-  "rules": {}
+  ]
 }
