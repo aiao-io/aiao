@@ -39,9 +39,9 @@ export class LazyElementLoader extends LazyModuleLoaderBase {
       .load(selector)
       .then(moduleRef => {
         const injector = moduleRef.injector;
-        const CustomElementComponent = moduleRef.instance.customElementComponent;
-        const CustomElement = createCustomElement(CustomElementComponent, { injector });
-        customElements.define(selector, CustomElement);
+        const customElementComponent = moduleRef.instance.customElementComponent;
+        const customElement = createCustomElement(customElementComponent, { injector });
+        customElements.define(selector, customElement);
         return customElements.whenDefined(selector);
       })
       .then(() => {

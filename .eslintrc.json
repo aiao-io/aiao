@@ -155,7 +155,9 @@
         "no-underscore-dangle": "off",
         "no-var": "error",
         "prefer-const": "error",
-        "radix": "error"
+        "radix": "error",
+        "no-case-declarations": "warn",
+        "no-unused-vars": "warn"
       },
       "plugins": ["eslint-plugin-import", "@typescript-eslint"]
     },
