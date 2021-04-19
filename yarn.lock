@@ -176,9 +176,9 @@
     tslib "^2.0.0"
 
 "@angular/cdk@^11.2.4":
-  version "11.2.8"
-  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-11.2.8.tgz#2cf8be9bbdbe651e655ef15b38f3ec6fc78517d4"
-  integrity sha512-RLJnL4U8FXoaUptVkuYjPA5eo+L0O34NEPZECKQMYZhFAD934bo8/nk+DEBZGyM77GxPUL1seaFNMm+y1wox2g==
+  version "11.2.9"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-11.2.9.tgz#30ba78a323a6dd19c03972ebf091056d75ba0ade"
+  integrity sha512-3gHobkgCQIJ4kJFkqexaKramI6k4OZ0/Vw5qvabGhpwWtICvrrfZyRejJzhecYKOcw+hiJNoDqP9TVNfkLme9g==
   dependencies:
     tslib "^2.0.0"
   optionalDependencies:
@@ -284,9 +284,9 @@
   integrity sha512-z7YgYawU2GmGCTUFbfceZY0WXZxSXInL615i+pKuY28zke2F2Z3lgfOOI/6fd75C8UBUqmVGmKz08GL8dDQT9A==
 
 "@angular/material@^11.2.4":
-  version "11.2.8"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-11.2.8.tgz#c0fb8c3b871bc2d477f6ad980918d47579f410fe"
-  integrity sha512-mCHOdJgWmlVF4suZFKKmmyprnPNBlCOYyHtQfjmcXRJp6WFX/nd11Mfrs9fY8pQJ2FWjOwxfABEPBGM/E7HxIg==
+  version "11.2.9"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-11.2.9.tgz#f74535029f5c246f33649706cda75d29ccd84cb9"
+  integrity sha512-Pe1aScSX8fMOSs5hfF/V7NCJn9pt/60rFmwYxgtFser4BcJrO0Moz4eqxhNcR0PjiCQgKJpjjPxBept2+o5N5A==
   dependencies:
     tslib "^2.0.0"
 
@@ -305,9 +305,9 @@
     tslib "^2.0.0"
 
 "@angular/platform-server@^11.2.5":
-  version "11.2.9"
-  resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-11.2.9.tgz#6db12471e21a93e76fcf565a95a1e4c72a28a0e7"
-  integrity sha512-kwyqEnXyMkxJqMDUta8cmKrp+mj/mrwCISyADV2Ar+oMcIdS2Y5z+D8pDO6NQ1MXgNW3U+j7tSxi71F2eIUfdQ==
+  version "11.2.10"
+  resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-11.2.10.tgz#c99a8bfb5bf905452647f5348d513b5919ee0f79"
+  integrity sha512-YbJ7DiqxNTR9SL/KmQWYtlmfFMtazFhVSGO0oun9O2t06/Cr8V4+cH4qeXS67rzoZCbT1c25JEW+MeuV8r9FEw==
   dependencies:
     domino "^2.1.2"
     tslib "^2.0.0"
@@ -5802,9 +5802,9 @@
     "@types/node" "*"
 
 "@types/fs-extra@^9.0.1":
-  version "9.0.10"
-  resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-9.0.10.tgz#8023a72e3d06cf54929ea47ec7634e47f33f4046"
-  integrity sha512-O9T2LLkRDiTlalOBdjEkcnT0MRdT2+wglCl7pJUJ3mkWkR8hX4K+5bg2raQNJcLv4V8zGuTXe7Ud3wSqkTyuyQ==
+  version "9.0.11"
+  resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-9.0.11.tgz#8cc99e103499eab9f347dbc6ca4e99fb8d2c2b87"
+  integrity sha512-mZsifGG4QeQ7hlkhO56u7zt/ycBgGxSVsFI/6lGTU34VtwkiqrrSDgw0+ygs8kFGWcXnFQWMrzF2h7TtDFNixA==
   dependencies:
     "@types/node" "*"
 
@@ -5928,9 +5928,9 @@
   integrity sha1-aaI6OtKcrwCX8G7aWbNh7i8GOfY=
 
 "@types/node@*":
-  version "14.14.37"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.37.tgz#a3dd8da4eb84a996c36e331df98d82abd76b516e"
-  integrity sha512-XYmBiy+ohOR4Lh5jE379fV2IU+6Jn4g5qASinhitfyO71b/sCo6MKsMLF5tc7Zf2CE8hViVQyYSobJNke8OvUw==
+  version "14.14.41"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.41.tgz#d0b939d94c1d7bd53d04824af45f1139b8c45615"
+  integrity sha512-dueRKfaJL4RTtSa7bWeTK1M+VH+Gns73oCgzvYfHZywRCoPSd8EkXBL0mZ9unPTveBn+D9phZBaxuzpwjWkW0g==
 
 "@types/node@14.14.33":
   version "14.14.33"
@@ -16656,25 +16656,25 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
-pg-connection-string@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/pg-connection-string/-/pg-connection-string-2.4.0.tgz#c979922eb47832999a204da5dbe1ebf2341b6a10"
-  integrity sha512-3iBXuv7XKvxeMrIgym7njT+HlZkwZqqGX4Bu9cci8xHZNT+Um1gWKqCsAzcC0d95rcKMU5WBg6YRUcHyV0HZKQ==
+pg-connection-string@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/pg-connection-string/-/pg-connection-string-2.5.0.tgz#538cadd0f7e603fc09a12590f3b8a452c2c0cf34"
+  integrity sha512-r5o/V/ORTA6TmUnyWZR9nCj1klXCO2CEKNRlVuJptZe85QuhFayC7WeMic7ndayT5IRIR0S0xFxFi2ousartlQ==
 
 pg-int8@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/pg-int8/-/pg-int8-1.0.1.tgz#943bd463bf5b71b4170115f80f8efc9a0c0eb78c"
   integrity sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==
 
-pg-pool@^3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-3.2.2.tgz#a560e433443ed4ad946b84d774b3f22452694dff"
-  integrity sha512-ORJoFxAlmmros8igi608iVEbQNNZlp89diFVx6yV5v+ehmpMY9sK6QgpmgoXbmkNaBAx8cOOZh9g80kJv1ooyA==
+pg-pool@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-3.3.0.tgz#12d5c7f65ea18a6e99ca9811bd18129071e562fc"
+  integrity sha512-0O5huCql8/D6PIRFAlmccjphLYWC+JIzvUhSzXSpGaf+tjTZc4nn+Lr7mLXBbFJfvwbP0ywDv73EiaBsxn7zdg==
 
-pg-protocol@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/pg-protocol/-/pg-protocol-1.4.0.tgz#43a71a92f6fe3ac559952555aa3335c8cb4908be"
-  integrity sha512-El+aXWcwG/8wuFICMQjM5ZSAm6OWiJicFdNYo+VY3QP+8vI4SvLIWVe51PppTzMhikUJR+PsyIFKqfdXPz/yxA==
+pg-protocol@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/pg-protocol/-/pg-protocol-1.5.0.tgz#b5dd452257314565e2d54ab3c132adc46565a6a0"
+  integrity sha512-muRttij7H8TqRNu/DxrAJQITO4Ac7RmX3Klyr/9mJEOBeIpgnF8f9jAfRz5d3XwQZl5qBjF9gLsUtMPJE0vezQ==
 
 pg-types@^2.1.0:
   version "2.2.0"
@@ -16688,15 +16688,15 @@ pg-types@^2.1.0:
     postgres-interval "^1.1.0"
 
 pg@^8.3.0:
-  version "8.5.1"
-  resolved "https://registry.yarnpkg.com/pg/-/pg-8.5.1.tgz#34dcb15f6db4a29c702bf5031ef2e1e25a06a120"
-  integrity sha512-9wm3yX9lCfjvA98ybCyw2pADUivyNWT/yIP4ZcDVpMN0og70BUWYEGXPCTAQdGTAqnytfRADb7NERrY1qxhIqw==
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/pg/-/pg-8.6.0.tgz#e222296b0b079b280cce106ea991703335487db2"
+  integrity sha512-qNS9u61lqljTDFvmk/N66EeGq3n6Ujzj0FFyNMGQr6XuEv4tgNTXvJQTfJdcvGit5p5/DWPu+wj920hAJFI+QQ==
   dependencies:
     buffer-writer "2.0.0"
     packet-reader "1.0.0"
-    pg-connection-string "^2.4.0"
-    pg-pool "^3.2.2"
-    pg-protocol "^1.4.0"
+    pg-connection-string "^2.5.0"
+    pg-pool "^3.3.0"
+    pg-protocol "^1.5.0"
     pg-types "^2.1.0"
     pgpass "1.x"
 
