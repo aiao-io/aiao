@@ -14,6 +14,8 @@ import { getTypeOrmPlusConnectionToken } from './utils';
 export class AiaoNestTypeormPlusCoreModule {
   static connectionEntities = new Map<string, Set<Repository<any>>>();
 
+  constructor(@InjectTypeormPlus() private typeormPlus: TypeormPlus) {}
+
   static addEntities(entities: any[] = [], connection?: ConnectionOptions | string) {
     const token = getTypeOrmPlusConnectionToken(connection) as string;
     if (!this.connectionEntities.has(token)) {
@@ -40,8 +42,6 @@ export class AiaoNestTypeormPlusCoreModule {
       exports: [connectionProvider]
     };
   }
-
-  constructor(@InjectTypeormPlus() private typeormPlus: TypeormPlus) {}
 
   async onModuleInit() {
     this.typeormPlus.init();

@@ -17,18 +17,16 @@ export interface StencilServeOptions extends JsonObject {
 export default createBuilder<StencilServeOptions>(stencilServe);
 
 function stencilServe(options: StencilServeOptions, context: BuilderContext): Observable<BuilderOutput> {
-  const { config: config_path, assets } = options;
+  const { config: configPath, assets } = options;
   const { workspaceRoot, target } = context;
   if (!target) {
     throw new Error('项目不存在');
   }
-  const args = ['build', `--config ${join(workspaceRoot, config_path)}`, '--dev', '--watch', '--serve'];
+  const args = ['build', `--config ${join(workspaceRoot, configPath)}`, '--dev', '--watch', '--serve'];
   const cmd = resolve(workspaceRoot, 'node_modules/.bin/stencil');
 
   return from(context.getProjectMetadata(target.project)).pipe(
-    switchMap(({ root }) => {
-      return copyAssets(assets, [join(workspaceRoot, `${root}`)], workspaceRoot);
-    }),
+    switchMap(({ root }) => copyAssets(assets, [join(workspaceRoot, `${root}`)], workspaceRoot)),
     switchMap(() => run(cmd, args)),
     map(() => ({ success: true }))
   );
