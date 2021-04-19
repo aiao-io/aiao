@@ -77,13 +77,19 @@
       }
     },
     "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
       "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
+      "e2eTestRunner": "cypress",
+      "prefix": "app",
+      "strict": true
     },
     "@nrwl/angular:component": {
       "style": "scss"
     },
     "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
       "unitTestRunner": "jest"
     },
     "@nrwl/angular": {
@@ -1080,7 +1086,6 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "progress": false,
               "budgets": [
                 {
                   "type": "initial",
@@ -1094,8 +1099,7 @@
                 }
               ]
             }
-          },
-          "outputs": ["{options.outputPath}"]
+          }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -1124,11 +1128,11 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/dev-elements-angular"],
           "options": {
             "jestConfig": "apps/dev-elements-angular/jest.config.js",
             "passWithNoTests": true
-          },
-          "outputs": ["coverage/apps/dev-elements-angular"]
+          }
         }
       }
     },
