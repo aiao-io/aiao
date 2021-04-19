@@ -14,6 +14,7 @@ import { ValueAccessor } from './value-accessor';
     }
   ]
 })
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export class TextValueAccessor extends ValueAccessor {
   constructor(el: ElementRef) {
     super(el);

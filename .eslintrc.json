@@ -156,7 +156,7 @@
         "no-var": "error",
         "prefer-const": "error",
         "radix": "error",
-        "no-case-declarations": "warn",
+        "no-case-declarations": "off",
         "no-unused-vars": "warn"
       },
       "plugins": ["eslint-plugin-import", "@typescript-eslint"]
