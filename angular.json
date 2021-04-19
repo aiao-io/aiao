@@ -1384,7 +1384,7 @@
       "projectType": "application",
       "root": "apps/dev-lazy-component",
       "sourceRoot": "apps/dev-lazy-component/src",
-      "prefix": "aiao",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -1414,7 +1414,6 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "progress": false,
               "budgets": [
                 {
                   "type": "initial",
@@ -1428,8 +1427,7 @@
                 }
               ]
             }
-          },
-          "outputs": ["{options.outputPath}"]
+          }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -1457,11 +1455,11 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/dev-lazy-component"],
           "options": {
             "jestConfig": "apps/dev-lazy-component/jest.config.js",
             "passWithNoTests": true
-          },
-          "outputs": ["coverage/apps/dev-lazy-component"]
+          }
         }
       }
     },
