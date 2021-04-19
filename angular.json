@@ -691,7 +691,7 @@
       "projectType": "application",
       "root": "apps/dev-universal-fastify-engine",
       "sourceRoot": "apps/dev-universal-fastify-engine/src",
-      "prefix": "aiao",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -724,7 +724,6 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "progress": false,
               "budgets": [
                 {
                   "type": "initial",
@@ -738,8 +737,7 @@
                 }
               ]
             }
-          },
-          "outputs": ["{options.outputPath}"]
+          }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -770,11 +768,11 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/dev-universal-fastify-engine"],
           "options": {
             "jestConfig": "apps/dev-universal-fastify-engine/jest.config.js",
             "passWithNoTests": true
-          },
-          "outputs": ["coverage/apps/dev-universal-fastify-engine"]
+          }
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
