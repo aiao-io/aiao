@@ -57,6 +57,6 @@ export class LazyElementLoader extends LazyModuleLoaderBase {
   }
 
   private async loadUnRegisteredSelectors(unregisteredSelectors: string[]) {
-    return Promise.all(unregisteredSelectors.map(s => this.load(s))).then(d => undefined);
+    return Promise.all(unregisteredSelectors.map(s => this.load(s))).then(() => undefined);
   }
 }
