@@ -1,7 +1,6 @@
 module.exports = {
   displayName: 'dev-elements-angular',
   preset: '../../jest.preset.js',
-  coverageDirectory: '../../coverage/apps/dev-elements-angular',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -12,15 +11,7 @@ module.exports = {
       }
     }
   },
-  collectCoverageFrom: [
-    './src/**/*.ts',
-    '!./src/environments/**',
-    '!./src/main.ts',
-    '!./src/main.server.ts',
-    '!./src/app/app.server.module.ts',
-    '!./src/zone-flsgs.ts',
-    '!./src/polyfills.ts'
-  ],
+  coverageDirectory: '../../coverage/apps/dev-elements-angular',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

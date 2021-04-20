@@ -10,7 +10,7 @@ export const unixTimestamp = () => Math.floor(Date.now() / 1000);
 
 export const isISODateString = (value: unknown): boolean =>
   isString(value) &&
-  /\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d(?:\.\d+)?(?:Z|\+[0-2]\d(?:\:[0-5]\d)?)?/g.test(value);
+  /\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d(?:\.\d+)?(?:Z|\+[0-2]\d(?:\\:[0-5]\d)?)?/g.test(value);
 
 interface ParseTime {
   year: number;
@@ -22,7 +22,7 @@ interface ParseTime {
 }
 
 type ParseTimeConfig = { [K in keyof ParseTime]: string };
-type fotmatPassFunction = (input: { key: keyof ParseTime; value: number }) => string;
+type FotmatPassFunction = (input: { key: keyof ParseTime; value: number }) => string;
 type FormatCountdownFunction = (input: ParseTime) => string;
 
 export const parseTime = (startDate: Date, endDate: Date): ParseTime => {
@@ -42,7 +42,7 @@ const stringTime = (key: keyof ParseTime, value: number, config?: ParseTimeConfi
   config ? `${value} ${(config as ParseTimeConfig)[key] || key}` : `${value} ${key}`;
 
 // 过去了多少时间
-export const formatPassTime = (startDate: Date, endDate: Date, config?: ParseTimeConfig | fotmatPassFunction) => {
+export const formatPassTime = (startDate: Date, endDate: Date, config?: ParseTimeConfig | FotmatPassFunction) => {
   const passTime = parseTime(startDate, endDate);
   const key = dateKeys.find(k => passTime[k] > 0) || 'second';
   const value = passTime[key];

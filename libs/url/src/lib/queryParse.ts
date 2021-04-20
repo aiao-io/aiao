@@ -2,7 +2,7 @@ export const queryParse = (query: string) => {
   const obj: any = {};
   const params = new URLSearchParams(query);
   params.forEach((value, key) => {
-    if (obj.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
       const val = obj[key];
       if (Array.isArray(val)) {
         val.push(value);

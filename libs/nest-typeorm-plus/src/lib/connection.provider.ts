@@ -9,9 +9,7 @@ import { AiaoTypeormPlusModuleConfig, NEST_TYPEORM_PLUS, NEST_TYPEORM_PLUS_MODUL
 export function createTypeormPlusConnection(connection?: Connection | ConnectionOptions): Provider {
   return {
     provide: NEST_TYPEORM_PLUS,
-    useFactory: async (options: AiaoTypeormPlusModuleConfig, conn: Connection) => {
-      return new TypeormPlus(options, conn);
-    },
+    useFactory: async (options: AiaoTypeormPlusModuleConfig, conn: Connection) => new TypeormPlus(options, conn),
     inject: [NEST_TYPEORM_PLUS_MODULE_CONFIG, getConnectionToken(connection)]
   };
 }

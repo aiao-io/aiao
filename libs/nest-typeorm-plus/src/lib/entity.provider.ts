@@ -14,8 +14,9 @@ export const createSequelizeProviders = (
     console.log(connection);
   }
   return entities.map(entity => {
+    const provide = getSequelizeRepositoryToken(entity, connection);
     return {
-      provide: getSequelizeRepositoryToken(entity, connection),
+      provide,
       useFactory: async (typeormPlus: TypeormPlus, typeormEntity: Repository<any>) =>
         typeormPlus.addMetadata(typeormEntity.metadata),
       inject: [NEST_TYPEORM_PLUS, getRepositoryToken(entity, connection)]

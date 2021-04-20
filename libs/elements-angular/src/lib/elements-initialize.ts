@@ -28,8 +28,8 @@ export function initialize(config: IAiaoElementsConfig, doc: Document, zone: NgZ
       const aelFn =
         '__zone_symbol__addEventListener' in (doc.body as any) ? '__zone_symbol__addEventListener' : 'addEventListener';
 
-      return applyPolyfills().then(() => {
-        return defineCustomElements(win, {
+      return applyPolyfills().then(() =>
+        defineCustomElements(win, {
           resourcesUrl,
           exclude: [],
           syncQueue: true,
@@ -41,8 +41,8 @@ export function initialize(config: IAiaoElementsConfig, doc: Document, zone: NgZ
           rel(elm, eventName, cb, opts) {
             elm.removeEventListener(eventName, cb, opts);
           }
-        });
-      });
+        })
+      );
     }
   };
 }

@@ -33,10 +33,11 @@ export class ImageStorage extends ImageStorageBase {
    * @param req 请求数据
    */
   cache(url: string, req: IImageRequestOptions) {
-    if (this.cacheMap.has(url)) {
+    const cache = this.cacheMap.get(url);
+    if (cache) {
       const hasBetter = this.findBetter(url, req);
       if (!hasBetter) {
-        this.cacheMap.get(url)!.push(req);
+        cache.push(req);
       }
     } else {
       this.cacheMap.set(url, [req]);

@@ -189,7 +189,7 @@ class FakeModuleFactory extends NgModuleFactory<any> {
 }
 
 interface Deferred {
-  resolve(): void;
+  resolve(value?: unknown): void;
   reject(err: any): void;
 }
 function returnPromisesFromSpy(spy: jasmine.Spy): Deferred[] {

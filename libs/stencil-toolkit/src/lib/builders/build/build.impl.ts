@@ -20,7 +20,7 @@ export interface StencilBuildOptions extends JsonObject {
 export default createBuilder<StencilBuildOptions>(stencilBuild);
 
 function stencilBuild(options: StencilBuildOptions, context: BuilderContext): Observable<BuilderOutput> {
-  const { config: config_path, docs, outputPath, stats, assets } = options;
+  const { config: configPath, docs, outputPath, stats, assets } = options;
   const { workspaceRoot, target } = context;
   if (!target) {
     throw new Error('项目不存在');
@@ -28,7 +28,7 @@ function stencilBuild(options: StencilBuildOptions, context: BuilderContext): Ob
   return from(context.getProjectMetadata(target.project)).pipe(
     map(projectConfig => {
       const { root } = projectConfig as any;
-      const args = ['build', `--config ${join(workspaceRoot, config_path)}`];
+      const args = ['build', `--config ${join(workspaceRoot, configPath)}`];
       if (docs) {
         args.push('--docs');
       }
@@ -73,6 +73,6 @@ function stencilBuild(options: StencilBuildOptions, context: BuilderContext): Ob
         return copyAssets(assets, [''], output);
       });
     }),
-    map(d => ({ success: true }))
+    map(() => ({ success: true }))
   );
 }

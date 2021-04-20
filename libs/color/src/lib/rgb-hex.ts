@@ -2,9 +2,7 @@ import { ColorRGB, ColorRGBA } from './interface';
 
 const expandHex = (hex: string): string => {
   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  hex = hex.replace(shorthandRegex, (_m, r, g, b) => {
-    return r + r + g + g + b + b;
-  });
+  hex = hex.replace(shorthandRegex, (_m, r, g, b) => r + r + g + g + b + b);
   return `#${hex.replace('#', '')}`;
 };
 
@@ -12,6 +10,7 @@ const expandHex = (hex: string): string => {
  * reb 转 hex
  * @param hex
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export const RGBToHEX = ({ r, g, b }: ColorRGB) =>
   '#' + [r, g, b].map(val => val.toString(16).padStart(2, '0')).join('');
 
@@ -19,6 +18,7 @@ export const RGBToHEX = ({ r, g, b }: ColorRGB) =>
  * reba 转 hex
  * @param hex
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export const RGBAToHEX = (rbga: ColorRGBA) =>
   RGBToHEX(rbga) +
   Math.round(rbga.a * 255)
@@ -29,6 +29,7 @@ export const RGBAToHEX = (rbga: ColorRGBA) =>
  * hex 转 rgb
  * @param hex
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export const HEXToRGB = (hex: string): ColorRGB => {
   hex = expandHex(hex);
   hex = hex.replace('#', '');

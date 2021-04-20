@@ -40,5 +40,5 @@ export interface IElementConfig {
   slots?: IElementConfigSlot[];
 
   // 属性验证的 schema 准备支持 ajv
-  schema?: object;
+  schema?: any;
 }

@@ -26,16 +26,13 @@ describe('function', () => {
   });
   describe('throttle', () => {
     it('ok', done => {
-      const start = new Date().getTime();
       let runTime = 0;
-      let end: number;
       const isDone = () => {
         expect(runTime).toEqual(2);
         done();
       };
 
       const throttleFun = throttle(() => {
-        end = new Date().getTime() - start;
         runTime++;
       }, 10);
       throttleFun();

@@ -37,8 +37,8 @@ describe('LazyModuleLoader', () => {
   });
 
   it('载入 NgModuleFactory', async () => {
-    const module_a = await lazyModuleLoader.load('AModule');
-    expect(module_a.instance).toEqual('a-module');
+    const moduleA = await lazyModuleLoader.load('AModule');
+    expect(moduleA.instance).toEqual('a-module');
   });
 
   it('载入 NgModuleFactory 2 次 只执行创建 1 次', async () => {
@@ -51,9 +51,9 @@ describe('LazyModuleLoader', () => {
     const compilerSpy = spyOn(compiler, 'compileModuleAsync').and.returnValue(
       Promise.resolve(new FakeModuleFactory('b-module'))
     );
-    const module_b = await lazyModuleLoader.load('BModule');
+    const moduleB = await lazyModuleLoader.load('BModule');
     expect(compilerSpy).toHaveBeenCalledTimes(1);
-    expect(module_b.instance).toEqual('b-module');
+    expect(moduleB.instance).toEqual('b-module');
   });
 
   it('加载模块后添加相同命名模块将会添加无效', async () => {
@@ -127,7 +127,7 @@ class FakeModuleRef extends NgModuleRef<any> {
   }
 
   destroy() {}
-  onDestroy(_callback: () => void) {}
+  onDestroy() {}
 }
 class FakeModuleFactory extends NgModuleFactory<any> {
   moduleType!: Type<any>;
@@ -137,6 +137,7 @@ class FakeModuleFactory extends NgModuleFactory<any> {
     super();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   create(_parentInjector: Injector | null): NgModuleRef<any> {
     return this.moduleRefToCreate;
   }

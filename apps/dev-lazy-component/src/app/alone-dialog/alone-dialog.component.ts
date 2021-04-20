@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-alone-dialog',
   templateUrl: './alone-dialog.component.html'
 })
-export class AloneDialogComponent implements OnInit {
+export class AloneDialogComponent {
   constructor() {}
-
-  ngOnInit() {}
 }
