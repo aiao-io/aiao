@@ -20,7 +20,7 @@ describe('function', () => {
       debounceFun();
       setTimeout(() => {
         debounceFun();
-      }, 2);
+      }, 9);
       setTimeout(isDone, 50);
     });
   });
