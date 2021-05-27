@@ -1,4 +1,4 @@
-import 'zone.js/dist/zone-node';
+import 'zone.js/node';
 
 import fastify from 'fastify';
 import fastifyStatic from 'fastify-static';

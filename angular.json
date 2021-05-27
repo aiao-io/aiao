@@ -119,7 +119,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/util/src/**/*.ts", "libs/util/src/**/*.html"]
+            "lintFilePatterns": [
+              "libs/util/src/**/*.ts",
+              "libs/util/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -128,7 +131,9 @@
             "jestConfig": "libs/util/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/util"]
+          "outputs": [
+            "coverage/libs/util"
+          ]
         }
       }
     },
@@ -153,7 +158,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/lazy-component/src/**/*.ts", "libs/lazy-component/src/**/*.html"]
+            "lintFilePatterns": [
+              "libs/lazy-component/src/**/*.ts",
+              "libs/lazy-component/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -162,7 +170,9 @@
             "jestConfig": "libs/lazy-component/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/lazy-component"]
+          "outputs": [
+            "coverage/libs/lazy-component"
+          ]
         }
       }
     },
@@ -187,7 +197,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/lazy-module/src/**/*.ts", "libs/lazy-module/src/**/*.html"]
+            "lintFilePatterns": [
+              "libs/lazy-module/src/**/*.ts",
+              "libs/lazy-module/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -196,7 +209,9 @@
             "jestConfig": "libs/lazy-module/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/lazy-module"]
+          "outputs": [
+            "coverage/libs/lazy-module"
+          ]
         }
       }
     },
@@ -221,7 +236,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/lazy-element/src/**/*.ts", "libs/lazy-element/src/**/*.html"]
+            "lintFilePatterns": [
+              "libs/lazy-element/src/**/*.ts",
+              "libs/lazy-element/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -230,7 +248,9 @@
             "jestConfig": "libs/lazy-element/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/lazy-element"]
+          "outputs": [
+            "coverage/libs/lazy-element"
+          ]
         }
       }
     },
@@ -242,12 +262,16 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/color/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/color/**/*.ts"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/color"],
+          "outputs": [
+            "coverage/libs/color"
+          ],
           "options": {
             "jestConfig": "libs/color/jest.config.js",
             "passWithNoTests": true
@@ -255,13 +279,17 @@
         },
         "build": {
           "builder": "@nrwl/node:package",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/color",
             "tsConfig": "libs/color/tsconfig.lib.json",
             "packageJson": "libs/color/package.json",
             "main": "libs/color/src/index.ts",
-            "assets": ["libs/color/*.md"]
+            "assets": [
+              "libs/color/*.md"
+            ]
           }
         }
       }
@@ -295,12 +323,17 @@
           "configurations": {
             "production": {}
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/stencil-toolkit/src/**/*.ts", "libs/stencil-toolkit/src/**/*.html"]
+            "lintFilePatterns": [
+              "libs/stencil-toolkit/src/**/*.ts",
+              "libs/stencil-toolkit/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -309,7 +342,9 @@
             "jestConfig": "libs/stencil-toolkit/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/stencil-toolkit"]
+          "outputs": [
+            "coverage/libs/stencil-toolkit"
+          ]
         }
       }
     },
@@ -354,8 +389,14 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/elements/tsconfig.lib.json", "libs/elements/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/elements/**/*"]
+            "tsConfig": [
+              "libs/elements/tsconfig.lib.json",
+              "libs/elements/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/elements/**/*"
+            ]
           }
         },
         "test": {
@@ -364,7 +405,9 @@
             "jestConfig": "libs/elements/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/elements"]
+          "outputs": [
+            "coverage/libs/elements"
+          ]
         }
       }
     },
@@ -389,7 +432,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/image-storage/src/**/*.ts", "libs/image-storage/src/**/*.html"]
+            "lintFilePatterns": [
+              "libs/image-storage/src/**/*.ts",
+              "libs/image-storage/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -398,7 +444,9 @@
             "jestConfig": "libs/image-storage/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/image-storage"]
+          "outputs": [
+            "coverage/libs/image-storage"
+          ]
         }
       }
     },
@@ -423,7 +471,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/elements-cdk/src/**/*.ts", "libs/elements-cdk/src/**/*.html"]
+            "lintFilePatterns": [
+              "libs/elements-cdk/src/**/*.ts",
+              "libs/elements-cdk/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -432,7 +483,9 @@
             "jestConfig": "libs/elements-cdk/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/elements-cdk"]
+          "outputs": [
+            "coverage/libs/elements-cdk"
+          ]
         }
       }
     },
@@ -457,7 +510,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/elements-angular/src/**/*.ts", "libs/elements-angular/src/**/*.html"]
+            "lintFilePatterns": [
+              "libs/elements-angular/src/**/*.ts",
+              "libs/elements-angular/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -466,7 +522,9 @@
             "jestConfig": "libs/elements-angular/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/elements-angular"]
+          "outputs": [
+            "coverage/libs/elements-angular"
+          ]
         }
       }
     },
@@ -491,7 +549,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/typeorm-plus/src/**/*.ts", "libs/typeorm-plus/src/**/*.html"]
+            "lintFilePatterns": [
+              "libs/typeorm-plus/src/**/*.ts",
+              "libs/typeorm-plus/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -500,7 +561,9 @@
             "jestConfig": "libs/typeorm-plus/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/typeorm-plus"]
+          "outputs": [
+            "coverage/libs/typeorm-plus"
+          ]
         }
       }
     },
@@ -513,8 +576,14 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": ["libs/elements-react/tsconfig.lib.json", "libs/elements-react/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/elements-react/**/*"]
+            "tsConfig": [
+              "libs/elements-react/tsconfig.lib.json",
+              "libs/elements-react/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/elements-react/**/*"
+            ]
           }
         },
         "build": {
@@ -524,7 +593,10 @@
             "tsConfig": "libs/elements-react/tsconfig.lib.json",
             "project": "libs/elements-react/package.json",
             "entryFile": "libs/elements-react/src/index.ts",
-            "external": ["react", "react-dom"],
+            "external": [
+              "react",
+              "react-dom"
+            ],
             "babelConfig": "@nrwl/react/plugins/bundle-babel",
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
@@ -538,7 +610,9 @@
           "configurations": {
             "production": {}
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -546,7 +620,9 @@
             "jestConfig": "libs/elements-react/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/elements-react"]
+          "outputs": [
+            "coverage/libs/elements-react"
+          ]
         }
       }
     },
@@ -571,7 +647,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/date/src/**/*.ts", "libs/date/src/**/*.html"]
+            "lintFilePatterns": [
+              "libs/date/src/**/*.ts",
+              "libs/date/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -580,7 +659,9 @@
             "jestConfig": "libs/date/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/date"]
+          "outputs": [
+            "coverage/libs/date"
+          ]
         }
       }
     },
@@ -605,7 +686,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/random/src/**/*.ts", "libs/random/src/**/*.html"]
+            "lintFilePatterns": [
+              "libs/random/src/**/*.ts",
+              "libs/random/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -614,7 +698,9 @@
             "jestConfig": "libs/random/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/random"]
+          "outputs": [
+            "coverage/libs/random"
+          ]
         }
       }
     },
@@ -639,7 +725,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/url/src/**/*.ts", "libs/url/src/**/*.html"]
+            "lintFilePatterns": [
+              "libs/url/src/**/*.ts",
+              "libs/url/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -648,7 +737,9 @@
             "jestConfig": "libs/url/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/url"]
+          "outputs": [
+            "coverage/libs/url"
+          ]
         }
       }
     },
@@ -660,12 +751,16 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/universal-fastify-engine/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/universal-fastify-engine/**/*.ts"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/universal-fastify-engine"],
+          "outputs": [
+            "coverage/libs/universal-fastify-engine"
+          ],
           "options": {
             "jestConfig": "libs/universal-fastify-engine/jest.config.js",
             "passWithNoTests": true
@@ -673,13 +768,17 @@
         },
         "build": {
           "builder": "@nrwl/node:package",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/universal-fastify-engine",
             "tsConfig": "libs/universal-fastify-engine/tsconfig.lib.json",
             "packageJson": "libs/universal-fastify-engine/package.json",
             "main": "libs/universal-fastify-engine/src/index.ts",
-            "assets": ["libs/universal-fastify-engine/*.md"]
+            "assets": [
+              "libs/universal-fastify-engine/*.md"
+            ]
           },
           "configurations": {
             "production": {}
@@ -701,13 +800,20 @@
             "main": "apps/dev-universal-fastify-engine/src/main.ts",
             "polyfills": "apps/dev-universal-fastify-engine/src/polyfills.ts",
             "tsConfig": "apps/dev-universal-fastify-engine/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "apps/dev-universal-fastify-engine/src/favicon.ico",
               "apps/dev-universal-fastify-engine/src/assets"
             ],
-            "styles": ["apps/dev-universal-fastify-engine/src/styles.scss"],
-            "scripts": []
+            "styles": [
+              "apps/dev-universal-fastify-engine/src/styles.scss"
+            ],
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -768,7 +874,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/dev-universal-fastify-engine"],
+          "outputs": [
+            "coverage/apps/dev-universal-fastify-engine"
+          ],
           "options": {
             "jestConfig": "apps/dev-universal-fastify-engine/jest.config.js",
             "passWithNoTests": true
@@ -780,7 +888,12 @@
             "outputPath": "dist/apps/dev-universal-fastify-engine/server",
             "main": "apps/dev-universal-fastify-engine/server.ts",
             "tsConfig": "apps/dev-universal-fastify-engine/tsconfig.server.json",
-            "externalDependencies": ["fast-json-stringify", "pino"]
+            "externalDependencies": [
+              "fast-json-stringify",
+              "pino"
+            ],
+            "sourceMap": true,
+            "optimization": false
           },
           "configurations": {
             "production": {
@@ -814,7 +927,9 @@
           "options": {
             "browserTarget": "dev-universal-fastify-engine:build:production",
             "serverTarget": "dev-universal-fastify-engine:server:production",
-            "routes": ["/"]
+            "routes": [
+              "/"
+            ]
           },
           "configurations": {
             "production": {}
@@ -843,7 +958,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/dev-universal-fastify-engine-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/dev-universal-fastify-engine-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -862,10 +979,20 @@
             "main": "apps/dev-nest-angular-universal/src/main.ts",
             "polyfills": "apps/dev-nest-angular-universal/src/polyfills.ts",
             "tsConfig": "apps/dev-nest-angular-universal/tsconfig.app.json",
-            "aot": true,
-            "assets": ["apps/dev-nest-angular-universal/src/favicon.ico", "apps/dev-nest-angular-universal/src/assets"],
-            "styles": ["apps/dev-nest-angular-universal/src/styles.scss"],
-            "scripts": []
+            "assets": [
+              "apps/dev-nest-angular-universal/src/favicon.ico",
+              "apps/dev-nest-angular-universal/src/assets"
+            ],
+            "styles": [
+              "apps/dev-nest-angular-universal/src/styles.scss"
+            ],
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -926,7 +1053,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/dev-nest-angular-universal"],
+          "outputs": [
+            "coverage/apps/dev-nest-angular-universal"
+          ],
           "options": {
             "jestConfig": "apps/dev-nest-angular-universal/jest.config.js",
             "passWithNoTests": true
@@ -956,7 +1085,9 @@
               "fast-json-stringify",
               "fastify-helmet",
               "swagger-ui-express"
-            ]
+            ],
+            "sourceMap": true,
+            "optimization": false
           },
           "configurations": {
             "production": {
@@ -967,8 +1098,7 @@
                   "with": "apps/dev-nest-angular-universal/src/environments/environment.prod.ts"
                 }
               ],
-              "sourceMap": false,
-              "optimization": false
+              "sourceMap": false
             }
           }
         },
@@ -990,7 +1120,9 @@
           "options": {
             "browserTarget": "dev-nest-angular-universal:build:production",
             "serverTarget": "dev-nest-angular-universal:server:production",
-            "routes": ["/"]
+            "routes": [
+              "/"
+            ]
           },
           "configurations": {
             "production": {}
@@ -1019,7 +1151,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/dev-nest-angular-universal-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/dev-nest-angular-universal-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -1038,7 +1172,6 @@
             "main": "apps/dev-elements-angular/src/main.ts",
             "polyfills": "apps/dev-elements-angular/src/polyfills.ts",
             "tsConfig": "apps/dev-elements-angular/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "apps/dev-elements-angular/src/favicon.ico",
               "apps/dev-elements-angular/src/assets",
@@ -1065,7 +1198,13 @@
               },
               "apps/dev-elements-angular/src/global.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -1119,12 +1258,17 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/dev-elements-angular/src/**/*.ts", "apps/dev-elements-angular/src/**/*.html"]
+            "lintFilePatterns": [
+              "apps/dev-elements-angular/src/**/*.ts",
+              "apps/dev-elements-angular/src/**/*.html"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/dev-elements-angular"],
+          "outputs": [
+            "coverage/apps/dev-elements-angular"
+          ],
           "options": {
             "jestConfig": "apps/dev-elements-angular/jest.config.js",
             "passWithNoTests": true
@@ -1153,7 +1297,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/dev-elements-angular-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/dev-elements-angular-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -1172,10 +1318,20 @@
             "main": "apps/dev-lazy-element/src/main.ts",
             "polyfills": "apps/dev-lazy-element/src/polyfills.ts",
             "tsConfig": "apps/dev-lazy-element/tsconfig.app.json",
-            "aot": true,
-            "assets": ["apps/dev-lazy-element/src/favicon.ico", "apps/dev-lazy-element/src/assets"],
-            "styles": ["apps/dev-lazy-element/src/styles.scss"],
-            "scripts": []
+            "assets": [
+              "apps/dev-lazy-element/src/favicon.ico",
+              "apps/dev-lazy-element/src/assets"
+            ],
+            "styles": [
+              "apps/dev-lazy-element/src/styles.scss"
+            ],
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -1228,12 +1384,17 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/dev-lazy-element/src/**/*.ts", "apps/dev-lazy-element/src/**/*.html"]
+            "lintFilePatterns": [
+              "apps/dev-lazy-element/src/**/*.ts",
+              "apps/dev-lazy-element/src/**/*.html"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/dev-lazy-element"],
+          "outputs": [
+            "coverage/apps/dev-lazy-element"
+          ],
           "options": {
             "jestConfig": "apps/dev-lazy-element/jest.config.js",
             "passWithNoTests": true
@@ -1262,7 +1423,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/dev-lazy-element-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/dev-lazy-element-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -1281,10 +1444,20 @@
             "main": "apps/dev-lazy-module/src/main.ts",
             "polyfills": "apps/dev-lazy-module/src/polyfills.ts",
             "tsConfig": "apps/dev-lazy-module/tsconfig.app.json",
-            "aot": true,
-            "assets": ["apps/dev-lazy-module/src/favicon.ico", "apps/dev-lazy-module/src/assets"],
-            "styles": ["apps/dev-lazy-module/src/styles.scss"],
-            "scripts": []
+            "assets": [
+              "apps/dev-lazy-module/src/favicon.ico",
+              "apps/dev-lazy-module/src/assets"
+            ],
+            "styles": [
+              "apps/dev-lazy-module/src/styles.scss"
+            ],
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -1337,12 +1510,17 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/dev-lazy-module/src/**/*.ts", "apps/dev-lazy-module/src/**/*.html"]
+            "lintFilePatterns": [
+              "apps/dev-lazy-module/src/**/*.ts",
+              "apps/dev-lazy-module/src/**/*.html"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/dev-lazy-module"],
+          "outputs": [
+            "coverage/apps/dev-lazy-module"
+          ],
           "options": {
             "jestConfig": "apps/dev-lazy-module/jest.config.js",
             "passWithNoTests": true
@@ -1371,7 +1549,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/dev-lazy-module-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/dev-lazy-module-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -1390,10 +1570,20 @@
             "main": "apps/dev-lazy-component/src/main.ts",
             "polyfills": "apps/dev-lazy-component/src/polyfills.ts",
             "tsConfig": "apps/dev-lazy-component/tsconfig.app.json",
-            "aot": true,
-            "assets": ["apps/dev-lazy-component/src/favicon.ico", "apps/dev-lazy-component/src/assets"],
-            "styles": ["apps/dev-lazy-component/src/styles.scss"],
-            "scripts": []
+            "assets": [
+              "apps/dev-lazy-component/src/favicon.ico",
+              "apps/dev-lazy-component/src/assets"
+            ],
+            "styles": [
+              "apps/dev-lazy-component/src/styles.scss"
+            ],
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -1446,12 +1636,17 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/dev-lazy-component/src/**/*.ts", "apps/dev-lazy-component/src/**/*.html"]
+            "lintFilePatterns": [
+              "apps/dev-lazy-component/src/**/*.ts",
+              "apps/dev-lazy-component/src/**/*.html"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/dev-lazy-component"],
+          "outputs": [
+            "coverage/apps/dev-lazy-component"
+          ],
           "options": {
             "jestConfig": "apps/dev-lazy-component/jest.config.js",
             "passWithNoTests": true
@@ -1480,7 +1675,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/dev-lazy-component-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/dev-lazy-component-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -1513,7 +1710,10 @@
                 "output": "./assets"
               }
             ],
-            "styles": ["apps/dev-elements-react/src/theme/variables.scss", "apps/dev-elements-react/src/global.scss"],
+            "styles": [
+              "apps/dev-elements-react/src/theme/variables.scss",
+              "apps/dev-elements-react/src/global.scss"
+            ],
             "scripts": [],
             "webpackConfig": "apps/dev-elements-react/webpack.config.js",
             "buildLibsFromSource": true
@@ -1542,7 +1742,9 @@
               ]
             }
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "serve": {
           "builder": "@nrwl/web:dev-server",
@@ -1560,7 +1762,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/dev-elements-react/src/**/*.ts", "apps/dev-elements-react/src/**/*.html"]
+            "lintFilePatterns": [
+              "apps/dev-elements-react/src/**/*.ts",
+              "apps/dev-elements-react/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -1569,7 +1774,9 @@
             "jestConfig": "apps/dev-elements-react/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/apps/dev-elements-react"]
+          "outputs": [
+            "coverage/apps/dev-elements-react"
+          ]
         }
       }
     },
@@ -1594,7 +1801,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/dev-elements-react-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/dev-elements-react-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -1612,17 +1821,25 @@
             "tsConfig": "libs/leancloud-hash/tsconfig.lib.json",
             "packageJson": "libs/leancloud-hash/package.json",
             "main": "libs/leancloud-hash/src/index.ts",
-            "assets": ["libs/leancloud-hash/README.md", "LICENSE"]
+            "assets": [
+              "libs/leancloud-hash/README.md",
+              "LICENSE"
+            ]
           },
           "configurations": {
             "production": {}
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/leancloud-hash/src/**/*.ts", "libs/leancloud-hash/src/**/*.html"]
+            "lintFilePatterns": [
+              "libs/leancloud-hash/src/**/*.ts",
+              "libs/leancloud-hash/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -1631,7 +1848,9 @@
             "jestConfig": "libs/leancloud-hash/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/leancloud-hash"]
+          "outputs": [
+            "coverage/libs/leancloud-hash"
+          ]
         }
       }
     },
@@ -1668,7 +1887,9 @@
                 "output": "./assets/monaco"
               }
             ],
-            "styles": ["apps/dev-elements-vue/src/styles.scss"],
+            "styles": [
+              "apps/dev-elements-vue/src/styles.scss"
+            ],
             "scripts": [],
             "webpackConfig": "apps/dev-elements-vue/webpack.config.js",
             "buildLibsFromSource": true
@@ -1697,7 +1918,9 @@
               ]
             }
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "serve": {
           "builder": "@nrwl/web:dev-server",
@@ -1715,7 +1938,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/dev-elements-vue/src/**/*.ts", "apps/dev-elements-vue/src/**/*.html"]
+            "lintFilePatterns": [
+              "apps/dev-elements-vue/src/**/*.ts",
+              "apps/dev-elements-vue/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -1724,7 +1950,9 @@
             "jestConfig": "apps/dev-elements-vue/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/apps/dev-elements-vue"]
+          "outputs": [
+            "coverage/apps/dev-elements-vue"
+          ]
         }
       }
     },
@@ -1749,7 +1977,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/dev-elements-vue-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/dev-elements-vue-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -1763,7 +1993,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/nest-typeorm-plus/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/nest-typeorm-plus/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1772,7 +2004,9 @@
             "jestConfig": "libs/nest-typeorm-plus/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/nest-typeorm-plus"]
+          "outputs": [
+            "coverage/libs/nest-typeorm-plus"
+          ]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -1781,12 +2015,16 @@
             "tsConfig": "libs/nest-typeorm-plus/tsconfig.lib.json",
             "packageJson": "libs/nest-typeorm-plus/package.json",
             "main": "libs/nest-typeorm-plus/src/index.ts",
-            "assets": ["libs/nest-typeorm-plus/*.md"]
+            "assets": [
+              "libs/nest-typeorm-plus/*.md"
+            ]
           },
           "configurations": {
             "production": {}
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         }
       }
     },
@@ -1798,12 +2036,16 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/nest-angular-universal/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/nest-angular-universal/**/*.ts"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/nest-angular-universal"],
+          "outputs": [
+            "coverage/libs/nest-angular-universal"
+          ],
           "options": {
             "jestConfig": "libs/nest-angular-universal/jest.config.js",
             "passWithNoTests": true
@@ -1811,13 +2053,17 @@
         },
         "build": {
           "builder": "@nrwl/node:package",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/nest-angular-universal",
             "tsConfig": "libs/nest-angular-universal/tsconfig.lib.json",
             "packageJson": "libs/nest-angular-universal/package.json",
             "main": "libs/nest-angular-universal/src/index.ts",
-            "assets": ["libs/nest-angular-universal/*.md"]
+            "assets": [
+              "libs/nest-angular-universal/*.md"
+            ]
           },
           "configurations": {
             "production": {}
