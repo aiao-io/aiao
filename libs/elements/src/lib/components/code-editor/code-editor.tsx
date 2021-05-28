@@ -40,6 +40,7 @@ export class CodeEditor implements ComponentInterface {
 
   private setModelTimer?: any;
   private editor?: monaco.editor.IStandaloneCodeEditor;
+  private skipNextValueUpdate: boolean = false;
 
   // --------------------------------------------------------------[ State ]
   // --------------------------------------------------------------[ Event ]
@@ -80,12 +81,12 @@ export class CodeEditor implements ComponentInterface {
   /**
    * 当前值
    */
-  @Prop({ mutable: true, reflect: true }) value: string | any;
+  @Prop({ mutable: true, reflect: true }) value?: string | any;
 
   // --------------------------------------------------------------[ Watch ]
   @Watch('value')
   valueChange(value: string | any) {
-    if (this.editor) {
+    if (this.editor && this.skipNextValueUpdate === false) {
       this.editor.setValue(value);
     }
   }
@@ -151,7 +152,9 @@ export class CodeEditor implements ComponentInterface {
     this.editor.onDidChangeModelContent(() => {
       try {
         const value = normalizeMonacoEditorValueOut(this.editor!.getValue(), this.language);
+        this.skipNextValueUpdate = true;
         this.value = value;
+        this.skipNextValueUpdate = false;
         this.aiaoChange.emit({ value });
       } catch {
         //
