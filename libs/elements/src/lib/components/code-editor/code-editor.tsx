@@ -36,11 +36,11 @@ let loader: LoadMonacoEditor;
 })
 export class CodeEditor implements ComponentInterface {
   @Element() el!: HTMLAiaoCodeEditorElement;
-  private inputId = `aiao-code-editor:${codeEditorId++}`;
+  #inputId = `aiao-code-editor:${codeEditorId++}`;
 
-  private setModelTimer?: any;
-  private editor?: monaco.editor.IStandaloneCodeEditor;
-  private skipNextValueUpdate: boolean = false;
+  #setModelTimer?: any;
+  #editor?: monaco.editor.IStandaloneCodeEditor;
+  #skipNextValueUpdate: boolean = false;
 
   // --------------------------------------------------------------[ State ]
   // --------------------------------------------------------------[ Event ]
@@ -69,7 +69,7 @@ export class CodeEditor implements ComponentInterface {
   /**
    * form 名
    */
-  @Prop() name: string = this.inputId;
+  @Prop() name: string = this.#inputId;
   /**
    * 配置
    */
@@ -86,8 +86,8 @@ export class CodeEditor implements ComponentInterface {
   // --------------------------------------------------------------[ Watch ]
   @Watch('value')
   valueChange(value: string | any) {
-    if (this.editor && this.skipNextValueUpdate === false) {
-      this.editor.setValue(value);
+    if (this.#editor && this.#skipNextValueUpdate === false) {
+      this.#editor.setValue(value);
     }
   }
 
@@ -95,10 +95,10 @@ export class CodeEditor implements ComponentInterface {
   @Watch('uri')
   setModel() {
     // 不在第一时间执行
-    if (this.setModelTimer) {
-      clearTimeout(this.setModelTimer);
+    if (this.#setModelTimer) {
+      clearTimeout(this.#setModelTimer);
     }
-    this.setModelTimer = setTimeout(() => {
+    this.#setModelTimer = setTimeout(() => {
       const value = normalizeMonacoEditorValue(this.value, this.language);
       const model = monaco.editor.createModel(value, this.language, this.uri);
       this.getEditor().setModel(model);
@@ -137,24 +137,24 @@ export class CodeEditor implements ComponentInterface {
 
   // --------------------------------------------------------------[ private function ]
   private getEditor() {
-    if (!this.editor) {
+    if (!this.#editor) {
       throw new Error('aiao-code-editor 还未初始化');
     }
-    return this.editor;
+    return this.#editor;
   }
   private createMonaco(options: monaco.editor.IStandaloneEditorConstructionOptions = defaultOptions) {
-    if (this.editor) {
-      this.editor.dispose();
+    if (this.#editor) {
+      this.#editor.dispose();
     }
     const val = normalizeMonacoEditorValue(this.value, this.language);
     options = normalizeMonacoEditorOptions(val, options, this.uri, this.language);
-    this.editor = monaco.editor.create(this.el, options);
-    this.editor.onDidChangeModelContent(() => {
+    this.#editor = monaco.editor.create(this.el, options);
+    this.#editor.onDidChangeModelContent(() => {
       try {
-        const value = normalizeMonacoEditorValueOut(this.editor!.getValue(), this.language);
-        this.skipNextValueUpdate = true;
+        const value = normalizeMonacoEditorValueOut(this.#editor!.getValue(), this.language);
+        this.#skipNextValueUpdate = true;
         this.value = value;
-        this.skipNextValueUpdate = false;
+        this.#skipNextValueUpdate = false;
         this.aiaoChange.emit({ value });
       } catch {
         //
