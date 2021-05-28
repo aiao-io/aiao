@@ -40,7 +40,7 @@ export class CodeEditor implements ComponentInterface {
 
   #setModelTimer?: any;
   #editor?: monaco.editor.IStandaloneCodeEditor;
-  #skipNextValueUpdate: boolean = false;
+  #skipNextValueUpdate = false;
 
   // --------------------------------------------------------------[ State ]
   // --------------------------------------------------------------[ Event ]

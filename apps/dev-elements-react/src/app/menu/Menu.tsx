@@ -19,8 +19,7 @@ import {
   IonToolbar
 } from '@ionic/react';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface MenuProps extends RouteComponentProps {}
+type MenuProps = RouteComponentProps;
 
 interface IMenu {
   url: string;
