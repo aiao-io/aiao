@@ -1,5 +1,3 @@
-import { isString } from '@aiao/util';
-
 /**
  * 正常化 monaco 输入值，支持 json object
  * @param language 语言
@@ -25,6 +23,5 @@ export const normalizeMonacoEditorValue = (value: any, language?: string) => {
  * @param language 语言
  * @param value 值
  */
-export const normalizeMonacoEditorValueOut = (value: any, language?: string) => {
-  return language === 'json' && value && isString(value) ? JSON.parse(value) : value;
-};
+
+export const normalizeMonacoEditorValueOut = (value: any, language?: string) => value;
