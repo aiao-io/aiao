@@ -24,4 +24,12 @@ export const normalizeMonacoEditorValue = (value: any, language?: string) => {
  * @param value 值
  */
 
-export const normalizeMonacoEditorValueOut = (value: any, language?: string) => value;
+export const normalizeMonacoEditorValueOut = (value: any, language?: string) => {
+  switch (language) {
+    case 'json':
+      break;
+    default:
+      break;
+  }
+  return value;
+};
