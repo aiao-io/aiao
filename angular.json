@@ -712,8 +712,7 @@
             "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true,
-            "aot": false
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -878,8 +877,7 @@
             "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true,
-            "aot": false
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -1085,8 +1083,7 @@
             "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true,
-            "aot": false
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -1201,8 +1198,7 @@
             "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true,
-            "aot": false
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -1316,8 +1312,7 @@
             "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true,
-            "aot": false
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -1431,8 +1426,7 @@
             "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true,
-            "aot": false
+            "namedChunks": true
           },
           "configurations": {
             "production": {
