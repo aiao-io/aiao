@@ -1,35 +1,36 @@
 {
   "migrations": [
     {
-      "version": "12.0.0-beta.0",
-      "description": "adjusts the ngcc postinstall command to just leave 'ngcc' in there. This fixes Ivy in Jest tests and Storybooks",
-      "factory": "./src/migrations/update-12-0-0/update-ngcc-postinstall",
-      "package": "@nrwl/angular",
-      "name": "update-ngcc-postinstall"
+      "version": "12.5.0-beta.1",
+      "description": "Rename the workspace-schematic script into workspace-generator script",
+      "factory": "./src/migrations/update-12-5-0/add-target-dependencies",
+      "cli": "nx",
+      "package": "@nrwl/workspace",
+      "name": "add-target-dependencies"
+    },
+    {
+      "version": "12.4.0-beta.1",
+      "cli": "nx",
+      "description": "Add testEnvironment: 'jsdom' in web apps + libraries",
+      "factory": "./src/migrations/update-12-4-0/add-test-environment-for-node",
+      "package": "@nrwl/jest",
+      "name": "support-jest-27"
+    },
+    {
+      "version": "12.4.0-beta.1",
+      "cli": "nx",
+      "description": "Support for Jest 27 via updating ts-jest + jest-preset-angular",
+      "factory": "./src/migrations/update-12-4-0/update-jest-preset-angular",
+      "package": "@nrwl/jest",
+      "name": "update-ts-jest-and-jest-preset-angular"
     },
     {
       "cli": "nx",
-      "version": "12.0.0-beta.0",
-      "description": "Migrate tsconfig.json to allow new jsx transform to be used. Removes the need for `import React from 'react'`",
-      "factory": "./src/migrations/update-12-0-0/use-react-jsx-in-tsconfig",
-      "package": "@nrwl/react",
-      "name": "use-react-jsx-in-tsconfig-12.0.0"
-    },
-    {
-      "cli": "nx",
-      "version": "12.0.0-beta.0",
-      "description": "Update workspace to use `@emotion/babel-plugin` instead of `@emotion/babel-preset-css-prop` to support new jsx transform",
-      "factory": "./src/migrations/update-12-0-0/update-emotion-setup",
-      "package": "@nrwl/react",
-      "name": "update-emotion-setup-12.0.0"
-    },
-    {
-      "cli": "nx",
-      "version": "12.0.0-beta.0",
-      "description": "Remove @types/react-redux from package.json since react-redux installs the package automatically now",
-      "factory": "./src/migrations/update-12-0-0/remove-react-redux-types-package",
-      "package": "@nrwl/react",
-      "name": "remove-react-redux-types-package-12.0.0"
+      "version": "12.4.0-beta.0",
+      "description": "Remove ESLint parserOptions.project config if no rules requiring type-checking are in use",
+      "factory": "./src/migrations/update-12-4-0/remove-eslint-project-config-if-no-type-checking-rules",
+      "package": "@nrwl/linter",
+      "name": "remove-eslint-project-config-if-no-type-checking-rules"
     }
   ]
 }
