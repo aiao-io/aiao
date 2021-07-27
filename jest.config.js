@@ -1,3 +1,5 @@
+const { getJestProjects } = require('@nrwl/jest');
+
 module.exports = {
   testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
   transform: {
@@ -7,6 +9,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageReporters: ['html', 'json'],
   projects: [
+    ...getJestProjects(),
     '<rootDir>apps/dev-elements-angular',
     '<rootDir>apps/dev-elements-react',
     '<rootDir>apps/dev-elements-vue',
