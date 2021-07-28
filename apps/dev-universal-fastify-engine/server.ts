@@ -27,7 +27,15 @@ export function createApp() {
     });
   });
 
-  app.setNotFoundHandler((request, reply) => reply.renderAngular());
+  app.setNotFoundHandler(async (request, reply) => {
+    try {
+      console.log('123', await reply.renderAngular());
+    } catch (error) {
+      console.log(error);
+    }
+    // reply.renderAngular();
+    reply.send('123');
+  });
 
   return app;
 }
@@ -43,9 +51,10 @@ function run() {
 // Webpack will replace 'require' with '__webpack_require__'
 // '__non_webpack_require__' is a proxy to Node 'require'
 // The below code is to ensure that the server is run only when not requiring the bundle.
+// eslint-disable-next-line @typescript-eslint/naming-convention
 declare const __non_webpack_require__: NodeRequire;
 const mainModule = __non_webpack_require__.main;
-const moduleFilename = mainModule?.filename || '';
+const moduleFilename = (mainModule && mainModule.filename) || '';
 if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
   run();
 }

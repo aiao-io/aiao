@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify';
 import fastifyPlugin from 'fastify-plugin';
 
-import { ɵCommonEngine as CommonEngine } from '@nguniversal/common/engine';
+import { CommonEngine } from '@nguniversal/common/engine';
 
 import { NgSetupOptions, RenderOptions } from './interface';
 import { renderAngular } from './render-angular';

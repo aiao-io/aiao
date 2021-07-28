@@ -4,7 +4,7 @@ import { FastifyReply, FastifyRequest } from 'fastify';
 
 import { DynamicModule, Inject, Module, OnModuleInit } from '@nestjs/common';
 import { HttpAdapterHost } from '@nestjs/core';
-import { ɵCommonEngine as CommonEngine } from '@nguniversal/common/engine';
+import { CommonEngine } from '@nguniversal/common/engine';
 
 import { NEST_ANGULAR_UNIVERSAL_OPTIONS } from './constants';
 import { NestUniversalOptions } from './interface';
