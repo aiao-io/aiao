@@ -1,5 +1,4 @@
 import { FastifyInstance } from 'fastify';
-import proxy from 'fastify-http-proxy';
 import { existsSync } from 'fs';
 import { join } from 'path';
 
@@ -32,7 +31,7 @@ export async function proxyBrowserSyncClient(app: FastifyInstance, options: Nest
 
   if (locales && locales.length > 0) {
     locales.forEach(locale => {
-      app.register(proxy, {
+      app.register(require('fastify-http-proxy'), {
         upstream: `http://${browserHost || 'localhost'}:${browserPort || 4200}/browser-sync/browser-sync-client.js`,
         prefix: `/${locale}/browser-sync/browser-sync-client.js`
       });
