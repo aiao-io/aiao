@@ -77,6 +77,7 @@ export const renderAngular = (
     }
     const doc = indexLocalePath || documentFilePath || distPath;
     renderOptions.document = getDocument(doc) || '<h1>404</h1>';
+    renderOptions.documentFilePath = doc;
   }
   return engine.render(renderOptions);
 };
