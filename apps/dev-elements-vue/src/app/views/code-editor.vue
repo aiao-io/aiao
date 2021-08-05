@@ -9,23 +9,57 @@
       </ion-toolbar>
     </ion-header>
     <ion-content fullscreen>
-      <aiao-code-editor base-url="assets/monaco" language="json"></aiao-code-editor>
+      <aiao-code-editor language="json" :value="state.data"></aiao-code-editor>
     </ion-content>
   </div>
 </template>
 
-<style scoped>
-aiao-code-editor.form {
-  width: 100%;
-  height: 100%;
-}
-aiao-code-editor {
-  height: 500px !important;
-}
-</style>
+<style scoped></style>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent, reactive } from 'vue';
+const data = [
+  {
+    tag: 'ion-button',
+    innerText: 'button',
+    class: {
+      a: true
+    },
+    attributes: {
+      mode: 'ios'
+    },
+    style: {
+      minWidth: '200px'
+    }
+  },
+  {
+    tag: 'h1'
+  },
+  {
+    tag: 'div',
+    children: [
+      {
+        tag: 'h1',
+        innerText: 'true'
+      }
+    ]
+  },
+  {
+    tag: 'aiao-img',
+    attributes: {
+      src: 'http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg'
+    }
+  }
+];
 
-export default defineComponent({});
+export default defineComponent({
+  setup() {
+    const state = reactive({
+      data
+    });
+    return {
+      state
+    };
+  }
+});
 </script>
