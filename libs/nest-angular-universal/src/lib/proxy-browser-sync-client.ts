@@ -30,8 +30,9 @@ export async function proxyBrowserSyncClient(app: FastifyInstance, options: Nest
   const { defaultLocale, distPath, locales, browserHost, browserPort } = options;
 
   if (locales && locales.length > 0) {
+    const fastifyHttpProxy = await import('fastify-http-proxy');
     locales.forEach(locale => {
-      app.register(require('fastify-http-proxy'), {
+      app.register(fastifyHttpProxy.default, {
         upstream: `http://${browserHost || 'localhost'}:${browserPort || 4200}/browser-sync/browser-sync-client.js`,
         prefix: `/${locale}/browser-sync/browser-sync-client.js`
       });
