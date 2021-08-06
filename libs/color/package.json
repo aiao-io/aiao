@@ -1,6 +1,6 @@
 {
   "name": "@aiao/color",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "color tool",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -22,6 +22,6 @@
     "@aiao/util": "^1.0.0"
   },
   "devDependencies": {
-    "@aiao/util": "*"
+    "@aiao/util": "^1.0.1"
   }
 }
