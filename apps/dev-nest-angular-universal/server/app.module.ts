@@ -1,5 +1,7 @@
 import { join } from 'path';
 
+/* eslint-disable */
+// tslint:disable-next-line: nx-enforce-module-boundaries
 import { NestAngularUniversalModule } from '@aiao/nest-angular-universal';
 import { Module } from '@nestjs/common';
 
@@ -19,3 +21,4 @@ import { AppController } from './app.controller';
   controllers: [AppController]
 })
 export class AppModule {}
+/* eslint-disable */

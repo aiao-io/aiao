@@ -2,7 +2,7 @@ import { FastifyRequest } from 'fastify';
 import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 
-import { ɵCommonEngine as CommonEngine, ɵRenderOptions as NgRenderOptions } from '@nguniversal/common/engine';
+import { CommonEngine, RenderOptions as NgRenderOptions } from '@nguniversal/common/engine';
 
 import { NgSetupOptions, RenderOptions } from './interface';
 
@@ -77,6 +77,7 @@ export const renderAngular = (
     }
     const doc = indexLocalePath || documentFilePath || distPath;
     renderOptions.document = getDocument(doc) || '<h1>404</h1>';
+    renderOptions.documentFilePath = doc;
   }
   return engine.render(renderOptions);
 };

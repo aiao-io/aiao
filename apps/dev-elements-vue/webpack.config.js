@@ -5,10 +5,10 @@ function getCustomWebpackConfig(webpackConfig) {
   const config = getWebpackConfig(webpackConfig);
 
   // Polyfill Node
-  config.node = {
-    global: true,
-    process: true
-  };
+  // config.node = {
+  //   global: true,
+  //   process: true
+  // };
 
   // add vue
   config.resolve.alias = {
