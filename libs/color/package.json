@@ -16,7 +16,7 @@
     "color"
   ],
   "scripts": {
-    "build": "cd ../../ && yarn build color --prod"
+    "build": "cd ../../ && yarn build color"
   },
   "peerDependencies": {
     "@aiao/util": "^1.0.0"
