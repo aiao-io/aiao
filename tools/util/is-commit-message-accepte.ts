@@ -8,6 +8,7 @@ export function isCommitMessageAccepte(message: string) {
   const matchRevert = /revert/gi.test(message);
   const matchRelease = /release/gi.test(message);
   const matchWIP = /WIP/gi.test(message);
+  const matchPublish = /Publish/gi.test(message);
 
-  return +!(matchRelease || matchRevert || matchWIP || matchCommit) === 0;
+  return +!(matchRelease || matchRevert || matchWIP || matchCommit || matchPublish) === 0;
 }
