@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.2](https://github.com/aiao-io/aiao/compare/@aiao/elements@0.7.1-alpha.3...@aiao/elements@0.7.2) (2021-08-06)
+
+**Note:** Version bump only for package @aiao/elements
+
+
+
+
+
 ## [0.7.1](https://github.com/aiao-io/aiao/compare/@aiao/elements@0.7.1-alpha.3...@aiao/elements@0.7.1) (2021-03-09)
 
 **Note:** Version bump only for package @aiao/elements
