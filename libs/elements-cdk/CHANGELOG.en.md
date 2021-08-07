@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/aiao-io/aiao/compare/@aiao/elements-cdk@0.1.4-alpha.0...@aiao/elements-cdk@0.1.5) (2021-08-06)
+
+**Note:** Version bump only for package @aiao/elements-cdk
+
+
+
+
+
 ## [0.1.4](https://github.com/aiao-io/aiao/compare/@aiao/elements-cdk@0.1.4-alpha.0...@aiao/elements-cdk@0.1.4) (2021-03-09)
 
 **Note:** Version bump only for package @aiao/elements-cdk
