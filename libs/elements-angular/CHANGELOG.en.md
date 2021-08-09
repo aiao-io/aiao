@@ -6,10 +6,6 @@ All notable changes to this project will be documented in this file. See [Conven
 
 **Note:** Version bump only for package @aiao/elements-angular
 
-
-
-
-
 ## [0.5.3](https://github.com/aiao-io/aiao/compare/@aiao/elements-angular@0.5.3-alpha.3...@aiao/elements-angular@0.5.3) (2021-03-09)
 
 **Note:** Version bump only for package @aiao/elements-angular
