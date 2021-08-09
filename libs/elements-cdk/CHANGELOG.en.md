@@ -6,10 +6,6 @@ All notable changes to this project will be documented in this file. See [Conven
 
 **Note:** Version bump only for package @aiao/elements-cdk
 
-
-
-
-
 ## [0.1.4](https://github.com/aiao-io/aiao/compare/@aiao/elements-cdk@0.1.4-alpha.0...@aiao/elements-cdk@0.1.4) (2021-03-09)
 
 **Note:** Version bump only for package @aiao/elements-cdk
