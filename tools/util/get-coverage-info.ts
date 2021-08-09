@@ -2,7 +2,8 @@ import { readFileSync } from 'fs-extra';
 import globby from 'globby';
 import { join } from 'path';
 
-const reg = /<span class="strong">(?<strong>.*)\s+<\/span>\s+<span class="quiet">(?<quiet>.*)<\/span>\s+<span class='fraction'>(?<fraction>.*)<\/span>/;
+const reg =
+  /<span class="strong">(?<strong>.*)\s+<\/span>\s+<span class="quiet">(?<quiet>.*)<\/span>\s+<span class='fraction'>(?<fraction>.*)<\/span>/;
 
 interface CoverageProcess {
   current: number;

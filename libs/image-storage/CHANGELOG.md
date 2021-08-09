@@ -7,10 +7,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @aiao/image-storage
 
-
-
-
-
 ## [0.1.2](https://github.com/aiao-io/aiao/compare/@aiao/image-storage@0.1.2-alpha.2...@aiao/image-storage@0.1.2) (2021-03-09)
 
 **Note:** Version bump only for package @aiao/image-storage

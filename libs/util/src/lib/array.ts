@@ -26,6 +26,6 @@ export const difference = (...arrays: any[]) => arrays.reduce((a, b) => a.filter
 
 export const intersection = (...arrays: any[]) => arrays.reduce((a, b) => a.filter((c: any) => b.includes(c)));
 
-export const sortBy = (key: string) => (a: any, b: any) => (a[key] > b[key] ? 1 : b[key] > a[key] ? -1 : 0);
+export const sortBy = (key: string) => (a: any, b: any) => a[key] > b[key] ? 1 : b[key] > a[key] ? -1 : 0;
 
 export const flatten = <T>(array: (T | T[])[]): T[] => Array.prototype.concat([], ...array);
