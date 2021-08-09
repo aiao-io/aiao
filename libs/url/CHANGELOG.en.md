@@ -6,10 +6,6 @@ All notable changes to this project will be documented in this file. See [Conven
 
 **Note:** Version bump only for package @aiao/url
 
-
-
-
-
 ## [0.0.5](https://github.com/aiao-io/aiao/compare/@aiao/url@0.0.5-alpha.0...@aiao/url@0.0.5) (2021-03-09)
 
 **Note:** Version bump only for package @aiao/url
