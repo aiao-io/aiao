@@ -144,7 +144,7 @@
     "copy-webpack-plugin": "^9.0.1",
     "cypress": "^7.6.0",
     "cz-customizable": "^6.2.0",
-    "dotenv": "10.0.0",
+    "dotenv": "8.2.0",
     "eslint": "7.22.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",
