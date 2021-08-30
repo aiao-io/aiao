@@ -1,6 +1,7 @@
 import Sequelize from 'sequelize';
+import { ColumnType } from 'typeorm';
 
-export function translateTypeormType(type: string | any) {
+export function translateTypeormType(type: ColumnType) {
   switch (type) {
     case Number:
       return Sequelize.NUMBER;
@@ -14,7 +15,9 @@ export function translateTypeormType(type: string | any) {
     case `int2`:
     case `int4`:
     case `int8`:
+      return Sequelize.TINYINT;
     case `smallint`:
+      return Sequelize.SMALLINT;
     case `integer`:
       return Sequelize.INTEGER;
     case `bigint`:
@@ -26,6 +29,7 @@ export function translateTypeormType(type: string | any) {
       return Sequelize.REAL;
     case `float`:
     case `float4`:
+      return Sequelize.REAL;
     case `float8`:
     case `double precision`:
       return Sequelize.DOUBLE;
@@ -46,6 +50,7 @@ export function translateTypeormType(type: string | any) {
     case `bit`:
     case `varbit`:
     case `bit varying`:
+      return Sequelize.TINYINT;
     case `timetz`:
     case `timestamptz`:
     case `timestamp`:

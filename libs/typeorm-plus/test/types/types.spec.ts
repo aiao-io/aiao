@@ -26,7 +26,6 @@ describe('one-to-one', () => {
       const data = await postgresTypeRepository.save({
         date: new Date(1980, 11, 1),
         name: 'max 255 chars name',
-        boolean: false,
         shortText: 'TJ',
         number: 1235,
         int: 1000000,
@@ -39,7 +38,7 @@ describe('one-to-one', () => {
         isSecondBoolean: false,
         simpleArray: ['hello', 'world', 'of', 'typescript'],
         json: [{ hello: 'olleh' }, { world: 'dlrow' }],
-        enum: SampleEnum.ONE,
+        enum: SampleEnum.one,
         jsonb: [{ a: 1 }],
         characterVarying: ['a', 'b', 'c']
       });

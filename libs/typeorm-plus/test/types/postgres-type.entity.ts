@@ -1,8 +1,8 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 export enum SampleEnum {
-  ONE = 'one',
-  TWO = 'two'
+  one = 'one',
+  two = 'two'
 }
 
 @Entity('postgres_type')
@@ -12,9 +12,6 @@ export class PostgresType {
 
   @Column()
   name!: string;
-
-  @Column()
-  boolean!: Boolean;
 
   @Column({ length: '32' })
   shortText!: string;
