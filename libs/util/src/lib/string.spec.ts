@@ -10,6 +10,19 @@ describe('string', () => {
     expect(str2).toEqual('name aiao');
     expect(str3).toEqual('name aiao');
   });
+  it('array', () => {
+    const str1 = stringTemplate('name ${ 0.name }', [{ name: 'aiao' }]);
+    expect(str1).toEqual('name aiao');
+  });
+  it('array 2', () => {
+    const str1 = stringTemplate('name ${ [0].name }', [{ name: 'aiao' }]);
+    expect(str1).toEqual('name aiao');
+  });
+  it('object array', () => {
+    const str1 = stringTemplate('name ${ 0 }', ['aiao']);
+    expect(str1).toEqual('name aiao');
+  });
+
   it('stringSingleline', () => {
     const str = stringSingleline(` hello       world
 
