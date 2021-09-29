@@ -1,10 +1,8 @@
-import { ConnectionOptions } from 'typeorm';
-
 import { DynamicModule, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { createSequelizeProviders } from './entity.provider';
-import { AiaoTypeormPlusModuleConfig } from './interface';
+import { AiaoTypeormPlusModuleConfig, ConnectionOptions, EntityClassOrSchema } from './interface';
 import { AiaoNestTypeormPlusCoreModule } from './nest-typeorm-plus-core.module';
 
 @Module({
@@ -19,7 +17,7 @@ export class AiaoTypeormPlusModule {
     };
   }
 
-  static forFeature(entities: any[] = [], connection?: ConnectionOptions | string): DynamicModule {
+  static forFeature(entities: EntityClassOrSchema[] = [], connection?: ConnectionOptions): DynamicModule {
     AiaoNestTypeormPlusCoreModule.addEntities(entities, connection);
     const entityProvides = createSequelizeProviders(entities, connection);
     return {
