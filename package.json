@@ -137,7 +137,7 @@
     "@types/react-router-dom": "5.1.7",
     "@typescript-eslint/eslint-plugin": "4.28.4",
     "@typescript-eslint/parser": "4.28.4",
-    "@vue/compiler-sfc": "3.2.4",
+    "@vue/compiler-sfc": "3.2.19",
     "codelyzer": "6.0.1",
     "compare-versions": "^3.6.0",
     "copy-webpack-plugin": "^9.0.1",
