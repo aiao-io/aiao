@@ -30,7 +30,7 @@
     "@nestjs/common": "^8.0.4",
     "@nestjs/core": "^8.0.4",
     "@nguniversal/common": "^12.0.0",
-    "fastify": "*",
+    "fastify": "^3.22.0",
     "fastify-static": "^4.0.0",
     "reflect-metadata": "^0.1.13"
   },

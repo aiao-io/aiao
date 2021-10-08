@@ -9,6 +9,11 @@ import { execCmdToPromise } from '../util/exec';
 const rootPkg = readJsonSync('package.json');
 const namespace = '@aiao';
 const ignoreList: string[] = ['child_process', 'fs', 'os', 'glob', 'path'];
+const dependenceMap: { [name: string]: string } = {
+  '@angular-devkit/architect': '^12.0.0',
+  '@angular-devkit/core': '^12.0.0',
+  '@angular-devkit/schematics': '^12.0.0'
+};
 const changes: string[] = [];
 
 function findLibPkgVersion(name: string) {
@@ -23,7 +28,7 @@ function findLibPkgVersion(name: string) {
 const errorVersion: string[] = [];
 
 function getVersion(d: string) {
-  let back = rootPkg.dependencies[d] || findLibPkgVersion(d) || '*';
+  let back = rootPkg.dependencies[d] || dependenceMap[d] || findLibPkgVersion(d) || '*';
   if (back === '*') {
     errorVersion.push(d);
   }
