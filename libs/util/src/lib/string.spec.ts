@@ -23,14 +23,31 @@ describe('string', () => {
     expect(str1).toEqual('name aiao');
   });
 
-  it('stringSingleline', () => {
-    const str = stringSingleline(` hello       world
+  it('stringSingleline1', () => {
+    const str = stringSingleline(` hello
+          world
 
 
       `);
     expect(str).toEqual('hello world');
   });
-  it('stringSingleline', () => {
+  it('stringSingleline2', () => {
+    const str = stringSingleline(`
+     hello
+        \n
+        \r
+        \f
+        \n
+        \r
+        \t
+        \v
+         world
+
+
+      `);
+    expect(str).toEqual('hello world');
+  });
+  it('stringSingleline3', () => {
     const str = stringSingleline(` hello       world    `);
     expect(str).toEqual('hello world');
   });
