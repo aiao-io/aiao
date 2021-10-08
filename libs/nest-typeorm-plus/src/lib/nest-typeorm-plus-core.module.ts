@@ -1,4 +1,4 @@
-import { ConnectionOptions, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 
 import { TypeormPlus } from '@aiao/typeorm-plus';
 import { DynamicModule, Global, Module } from '@nestjs/common';
@@ -6,7 +6,7 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 import { createTypeormPlusConnection } from './connection.provider';
 import { InjectTypeormPlus } from './decorators';
-import { NEST_TYPEORM_PLUS_MODULE_CONFIG } from './interface';
+import { ConnectionOptions, NEST_TYPEORM_PLUS_MODULE_CONFIG } from './interface';
 import { getTypeOrmPlusConnectionToken } from './utils';
 
 @Global()
@@ -16,7 +16,7 @@ export class AiaoNestTypeormPlusCoreModule {
 
   constructor(@InjectTypeormPlus() private typeormPlus: TypeormPlus) {}
 
-  static addEntities(entities: any[] = [], connection?: ConnectionOptions | string) {
+  static addEntities(entities: any[] = [], connection?: ConnectionOptions) {
     const token = getTypeOrmPlusConnectionToken(connection) as string;
     if (!this.connectionEntities.has(token)) {
       this.connectionEntities.set(token, new Set());

@@ -1,7 +1,8 @@
 import { isString } from 'lodash';
-import { ConnectionOptions } from 'typeorm';
 
-export function getTypeOrmPlusConnectionToken(connection?: ConnectionOptions | string) {
+import { ConnectionOptions } from './interface';
+
+export function getTypeOrmPlusConnectionToken(connection?: ConnectionOptions) {
   let connectionName = 'default';
   if (isString(connection)) {
     connectionName = connection;
