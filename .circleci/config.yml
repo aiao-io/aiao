@@ -206,7 +206,7 @@ commands:
           git config --global user.email "hero63418@gmail.com"
           git config --global user.name "Jimmy"
       - run: bash .circleci/heroku-setup.sh
-      - run: node dist/tools/heroku/deploy.js --project-name << parameters.project-name >> --branch-name << parameters.branch-name >> --pipeline-number << parameters.pipeline-number >>
+      - run: node dist/tools/deploy/heroku.js --project-name << parameters.project-name >> --branch-name << parameters.branch-name >> --pipeline-number << parameters.pipeline-number >>
 
 jobs:
   install:
@@ -260,7 +260,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout_and_cache
-      - deplay_to_heroku
+      # - deplay_to_heroku
       - run: *update_deploy
       - save_cache: *save_deploy_cache
 
