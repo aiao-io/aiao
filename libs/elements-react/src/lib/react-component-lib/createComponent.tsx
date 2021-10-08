@@ -4,6 +4,7 @@ import {
   attachProps,
   createForwardRef,
   dashToPascalCase,
+  defineCustomElement,
   isCoveredByReact,
   mergeRefs,
 } from './utils';
@@ -29,22 +30,21 @@ export const createReactComponent = <
     originalProps: StencilReactInternalProps<ElementType>,
     propsToPass: any,
   ) => ExpandedPropsTypes,
+  customElement?: any,
 ) => {
+  defineCustomElement(tagName, customElement);
+
   const displayName = dashToPascalCase(tagName);
-
   const ReactComponent = class extends React.Component<StencilReactInternalProps<ElementType>> {
-
-    static displayName = displayName;
-
-    constructor(props: StencilReactInternalProps<ElementType>) {
-      super(props);
-    }
-
     componentEl!: ElementType;
 
     setComponentElRef = (element: ElementType) => {
       this.componentEl = element;
     };
+
+    constructor(props: StencilReactInternalProps<ElementType>) {
+      super(props);
+    }
 
     componentDidMount() {
       this.componentDidUpdate(this.props);
@@ -60,7 +60,7 @@ export const createReactComponent = <
       let propsToPass = Object.keys(cProps).reduce((acc, name) => {
         if (name.indexOf('on') === 0 && name[2] === name[2].toUpperCase()) {
           const eventName = name.substring(2).toLowerCase();
-          if (typeof document !== 'undefined' && isCoveredByReact(eventName, document)) {
+          if (typeof document !== 'undefined' && isCoveredByReact(eventName)) {
             (acc as any)[name] = (cProps as any)[name];
           }
         } else {
@@ -80,6 +80,10 @@ export const createReactComponent = <
       };
 
       return React.createElement(tagName, newProps, children);
+    }
+
+    static get displayName() {
+      return displayName;
     }
   };
 
