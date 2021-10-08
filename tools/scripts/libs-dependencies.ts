@@ -1,5 +1,5 @@
 import { readdirSync, readJsonSync, writeJSONSync } from 'fs-extra';
-import { flattenDeep, isNumber, union } from 'lodash';
+import { flattenDeep, union } from 'lodash';
 import Ora from 'ora';
 import { join } from 'path';
 import { Project } from 'ts-morph';
