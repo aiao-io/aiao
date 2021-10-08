@@ -10,7 +10,8 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/aiao-io/aiao/badge)](https://www.codefactor.io/repository/github/aiao-io/aiao)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a4096c9731142de97d99/maintainability)](https://codeclimate.com/github/aiao-io/aiao/maintainability)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/aiao-io/aiao.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/aiao-io/aiao/context:javascript)
-
+[![codebeat badge](https://codebeat.co/badges/7b6231bc-ab0d-4ade-b991-907a94758176)](https://codebeat.co/projects/github-com-jimmysh-aiao-master)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/516bfcbd3ca74c8caa1780d20eb1f567)](https://www.codacy.com/gh/aiao-io/aiao/dashboard?utm_source=github.com&utm_medium=referral&utm_content=aiao-io/aiao&utm_campaign=Badge_Grade)
 用 `monorepo` 风格代码统一管理、发布一些 `npm` 库。
 
 ## Apps
