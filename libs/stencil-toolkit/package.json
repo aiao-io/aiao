@@ -33,6 +33,11 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular-devkit/schematics": "^10.0.0"
-  }
+    "@angular-devkit/architect": "*",
+    "@angular-devkit/core": "*",
+    "@angular-devkit/schematics": "*",
+    "chalk": "*",
+    "rxjs": "~6.5.5"
+  },
+  "devDependencies": {}
 }

@@ -20,10 +20,12 @@
     "build": "cd ../../ && yarn build typeorm-plus --prod"
   },
   "peerDependencies": {
+    "lodash": "^4.17.15",
     "sequelize": "^6.3.3",
     "typeorm": "^0.2.22"
   },
   "dependencies": {
     "tslib": "^2.0.0"
-  }
+  },
+  "devDependencies": {}
 }

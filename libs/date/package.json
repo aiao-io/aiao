@@ -19,8 +19,7 @@
     "build": "cd ../../ && yarn build date --prod"
   },
   "peerDependencies": {
-    "@aiao/util": "^1.0.0",
-    "lodash": "^4.17.15"
+    "@aiao/util": "^1.0.1"
   },
   "dependencies": {
     "tslib": "^2.0.0"
