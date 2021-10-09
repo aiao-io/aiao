@@ -85,7 +85,8 @@
       "implicitDependencies": ["dev-universal-fastify-engine"]
     },
     "elements": {
-      "tags": ["stencil-lib"]
+      "tags": ["stencil-lib"],
+      "implicitDependencies": ["stencil-toolkit"]
     },
     "elements-angular": {
       "tags": ["angular-lib"]

@@ -270,6 +270,7 @@ jobs:
       - checkout_and_cache
       - run: env
       - run: *yarn_install
+      - save_cache: *save_yarn_cache
       - run: *format_check
       - run: *lint
       - restore_cache: *test_cache
@@ -286,7 +287,6 @@ jobs:
       - store_artifacts: *store_artifacts_libs
       # - deplay_to_heroku:
       #     pipeline-number: << pipeline.number >>
-      - save_cache: *save_yarn_cache
       - save_cache: *save_build_cache
       - save_cache: *save_test_cache
       - save_cache: *save_e2e_cache
