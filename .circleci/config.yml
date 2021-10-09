@@ -139,7 +139,7 @@ affected_test: &affected_test
 
 affected_build: &affected_build
   name: Affected build
-  command: yarn affected:build ${AFFECTED_ARGS} --parallel --configuration production
+  command: yarn affected:build ${AFFECTED_ARGS} --configuration production --skip-nx-cache --verbose
 
 # e2e
 affected_e2e: &affected_e2e
