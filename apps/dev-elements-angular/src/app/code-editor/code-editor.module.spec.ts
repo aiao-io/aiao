@@ -1,3 +1,4 @@
+import { AiaoElementsModule } from '@aiao/elements-angular';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ElementsCodeEditorComponent } from './code-editor.component';

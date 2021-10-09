@@ -135,7 +135,7 @@ lint: &lint
 
 affected_test: &affected_test
   name: Afected test
-  command: yarn affected:test ${AFFECTED_ARGS} --parallel -- --ci --code-coverage
+  command: yarn affected:test ${AFFECTED_ARGS} --parallel --ci --code-coverage
 
 affected_build: &affected_build
   name: Affected build
@@ -268,12 +268,6 @@ jobs:
       # INSTALL
       - run: *yarn_install
       - save_cache: *save_yarn_cache
-      # BUILD
-      - restore_cache: *build_cache
-      - run: *affected_build
-      - store_artifacts: *store_artifacts_apps
-      - store_artifacts: *store_artifacts_libs
-      - save_cache: *save_build_cache
       # CHECK
       - run: *format_check
       - run: *lint
@@ -283,11 +277,18 @@ jobs:
       - codecov_upload
       - save_cache: *save_test_cache
       - store_artifacts: *store_artifacts_test
+      # 节约时间 去掉 build，e2e 任务
+      # BUILD
+      # - restore_cache: *build_cache
+      # - run: *affected_build
+      # - store_artifacts: *store_artifacts_apps
+      # - store_artifacts: *store_artifacts_libs
+      # - save_cache: *save_build_cache
       # E2E
-      - restore_cache: *e2e_cache
-      - run: *affected_e2e
-      - save_cache: *save_e2e_cache
-      - store_artifacts: *store_artifacts_e2e
+      # - restore_cache: *e2e_cache
+      # - run: *affected_e2e
+      # - save_cache: *save_e2e_cache
+      # - store_artifacts: *store_artifacts_e2e
       # deplay
       # - deplay_to_heroku:
       #     pipeline-number: << pipeline.number >>
