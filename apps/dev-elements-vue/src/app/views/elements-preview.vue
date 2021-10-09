@@ -55,7 +55,7 @@
 }
 </style>
 
-<script>
+<script lang="ts">
 const config = [
   {
     tag: 'h1',
@@ -119,7 +119,6 @@ export default defineComponent({
       setData,
       setConfig
     };
-  },
-  methods: {}
+  }
 });
 </script>

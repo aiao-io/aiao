@@ -24,8 +24,10 @@ aiao-code-editor {
 }
 </style>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 
-export default defineComponent({ data: () => ({ hello: '<p>hello world</p>' }) });
+export default defineComponent({
+  props: { hello: '<p>hello world</p>' }
+});
 </script>
