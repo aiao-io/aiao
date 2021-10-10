@@ -16,7 +16,7 @@
 
 <style scoped></style>
 
-<script>
+<script lang="ts">
 import { defineComponent, reactive } from 'vue';
 const data = [
   {

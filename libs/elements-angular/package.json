@@ -25,11 +25,15 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular/common": ">=8.0.0",
-    "@angular/core": ">=8.0.0"
+    "@aiao/elements": "^0.7.2",
+    "@aiao/elements-cdk": "^0.1.5",
+    "@angular/common": "^12.2.9",
+    "@angular/core": "^12.2.9",
+    "@angular/forms": "^12.2.9",
+    "rxjs": "~6.5.5"
   },
   "devDependencies": {
-    "@aiao/elements": "*",
-    "@aiao/url": "^0.0.6"
+    "@aiao/elements": "^0.7.2",
+    "@aiao/elements-cdk": "^0.1.5"
   }
 }

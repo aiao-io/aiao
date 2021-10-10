@@ -87,26 +87,15 @@ jobs:
           fi
 
       - name: Install
-        run: yarn --frozen-lockfile --non-interactive --ignore-scripts
+        run: yarn install --frozen-lockfile --non-interactive
 
-      - name: Cypress Install
-        run: yarn cypress install
-
-      - name: decorate-angular-cli
-        run: node ./decorate-angular-cli.js
-
-      - name: Build Tools
-        run: yarn build:tools
-
-      - name: Hotfix
-        run: yarn task:hotfix
-
-      - name: Check Workspace
-        run: yarn check:workspace --base=$NX_BASE
-
-      - name: e2e
+      - name: Affected e2e
         shell: bash
-        run: yarn affected:e2e --base=$NX_BASE --configuration production --headless --parallel --maxParallel=1
+        run: yarn affected:e2e --base=$NX_BASE --configuration production -- --headless
+
+      - name: Affected Build
+        shell: bash
+        run: yarn affected:build --base=$NX_BASE --configuration production --parallel
 
       - name: update last-deploy
         shell: bash

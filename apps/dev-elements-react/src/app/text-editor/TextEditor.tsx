@@ -6,7 +6,7 @@ import { AiaoTextEditor } from '@aiao/elements-react';
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 
 const TextEditorPage: React.FC = () => {
-  const [hello, setHello] = useState('hello world');
+  const [hello] = useState('hello world');
 
   return (
     <IonPage>

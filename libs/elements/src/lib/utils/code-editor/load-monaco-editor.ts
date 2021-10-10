@@ -17,13 +17,13 @@ export class LoadMonacoEditor {
 
   load() {
     if (!this._load) {
-      this._load = new Promise<void>((resolve: any) => {
+      this._load = new Promise<void>(resolve => {
         const win = window as any;
         if (typeof win.monaco === 'object') {
           resolve();
           return;
         }
-        const onGotAmdLoader: any = () => {
+        const onGotAmdLoader = () => {
           win.require.config({
             paths: { vs: urlJoin(this.baseUrl, '/vs') },
             'vs/nls': {

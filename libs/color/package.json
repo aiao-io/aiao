@@ -19,7 +19,7 @@
     "build": "cd ../../ && yarn build color"
   },
   "peerDependencies": {
-    "@aiao/util": "^1.0.0"
+    "@aiao/util": "^1.0.1"
   },
   "devDependencies": {
     "@aiao/util": "^1.0.1"

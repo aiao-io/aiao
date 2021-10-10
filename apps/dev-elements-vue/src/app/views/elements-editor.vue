@@ -26,8 +26,8 @@ aiao-code-editor {
 }
 </style>
 
-<script>
-import { defineComponent } from 'vue';
+<script lang="ts">
+import { defineComponent, reactive, toRefs } from 'vue';
 
 const config = [
   {
@@ -73,6 +73,14 @@ const data = [
 ];
 
 export default defineComponent({
-  data: () => ({ config, data })
+  setup() {
+    const state = reactive({
+      config,
+      data
+    });
+    return {
+      ...toRefs(state)
+    };
+  }
 });
 </script>
