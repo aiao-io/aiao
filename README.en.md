@@ -2,9 +2,7 @@
 
 # AIAO
 
-[![CircleCI](https://circleci.com/gh/aiao-io/aiao/tree/master.svg?style=svg)](https://circleci.com/gh/aiao-io/aiao/tree/master) [![codecov](https://codecov.io/gh/aiao-io/aiao/branch/master/graph/badge.svg)](https://codecov.io/gh/aiao-io/aiao) [![Crowdin](https://badges.crowdin.net/aiao-io/localized.svg)](https://crowdin.com/project/aiao-io) [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Faiao-io%2Faiao.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Faiao-io%2Faiao?ref=badge_shield) [![CodeFactor](https://www.codefactor.io/repository/github/aiao-io/aiao/badge)](https://www.codefactor.io/repository/github/aiao-io/aiao) [![Maintainability](https://api.codeclimate.com/v1/badges/a4096c9731142de97d99/maintainability)](https://codeclimate.com/github/aiao-io/aiao/maintainability) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/aiao-io/aiao.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/aiao-io/aiao/context:javascript)
-
-Use `monorepo` style for management some `npm` package。
+[![CircleCI](https://circleci.com/gh/aiao-io/aiao/tree/master.svg?style=svg)](https://circleci.com/gh/aiao-io/aiao/tree/master) [![codecov](https://codecov.io/gh/aiao-io/aiao/branch/master/graph/badge.svg)](https://codecov.io/gh/aiao-io/aiao) [![Crowdin](https://badges.crowdin.net/aiao-io/localized.svg)](https://crowdin.com/project/aiao-io) [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Faiao-io%2Faiao.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Faiao-io%2Faiao?ref=badge_shield) [![CodeFactor](https://www.codefactor.io/repository/github/aiao-io/aiao/badge)](https://www.codefactor.io/repository/github/aiao-io/aiao) [![Maintainability](https://api.codeclimate.com/v1/badges/a4096c9731142de97d99/maintainability)](https://codeclimate.com/github/aiao-io/aiao/maintainability) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/aiao-io/aiao.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/aiao-io/aiao/context:javascript) [![codebeat badge](https://codebeat.co/badges/7b6231bc-ab0d-4ade-b991-907a94758176)](https://codebeat.co/projects/github-com-jimmysh-aiao-master) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/516bfcbd3ca74c8caa1780d20eb1f567)](https://www.codacy.com/gh/aiao-io/aiao/dashboard?utm_source=github.com&utm_medium=referral&utm_content=aiao-io/aiao&utm_campaign=Badge_Grade) 用 `monorepo` 风格代码统一管理、发布一些 `npm` 库。
 
 ## Apps
 
@@ -21,7 +19,7 @@ Use `monorepo` style for management some `npm` package。
 
 ## Libs
 
-Versions less than ` 1 ` are internal beta versions, please use with caution
+版本小于 `1` 的为内测版本，请谨慎使用。
 
 ### Elements
 
@@ -68,7 +66,7 @@ Versions less than ` 1 ` are internal beta versions, please use with caution
 
 ## Project Structure
 
-The structure mostly follows the [ Nx ](https://github.com/nrwl/nx) rule
+结构大部分遵循 [Nx](https://github.com/nrwl/nx) 规则。
 
 - `apps` application directory
 - `libs` directory of libraries
@@ -169,7 +167,7 @@ yarn run build dev-elements-angular --prod
 
 ## Contribute
 
-Welcome all of you to contribute code, please check the [ Contribution Guide ](CONTRIBUTING.md)
+非常欢迎各位小伙伴一起贡献代码，请先查阅[贡献指南](CONTRIBUTING.md)
 
 ## License MIT
 
