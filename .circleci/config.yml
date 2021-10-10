@@ -130,11 +130,11 @@ format_check: &format_check
 # lint
 lint: &lint
   name: Lint
-  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS} --parallel
+  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS}
 
 affected_test: &affected_test
   name: Afected test
-  command: yarn affected:test ${AFFECTED_ARGS} --parallel --ci --code-coverage
+  command: yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage
 
 affected_build: &affected_build
   name: Affected build
