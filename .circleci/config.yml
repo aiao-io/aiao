@@ -130,20 +130,20 @@ format_check: &format_check
 # lint
 lint: &lint
   name: Lint
-  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS}
+  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS} --skip-nx-cache
 
 affected_test: &affected_test
   name: Afected test
-  command: yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage
+  command: yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage --skip-nx-cache
 
 affected_build: &affected_build
   name: Affected build
-  command: yarn affected:build ${AFFECTED_ARGS} --configuration production
+  command: yarn affected:build ${AFFECTED_ARGS} --configuration production --skip-nx-cache
 
 # e2e
 affected_e2e: &affected_e2e
   name: Affected e2e
-  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production -- --headless
+  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production -- --headless --skip-nx-cache
 
 update_deploy: &update_deploy
   name: Update Deploy
