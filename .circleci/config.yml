@@ -56,6 +56,20 @@ save_yarn_cache: &save_yarn_cache
   key: last-yarn-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}-{{ .Environment.CIRCLE_WORKFLOW_JOB_ID }}
   paths:
     - node_modules
+
+dist_cache: &dist_cache
+  name: Restore dist cache
+  keys:
+    - last-dist-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}-{{ .Environment.CIRCLE_WORKFLOW_JOB_ID }}
+    - last-dist-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+    - last-dist-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}
+    - last-dist-{{ checksum "yarn.lock" }}
+    - last-dist-
+
+save_dist_cache: &save_dist_cache
+  name: Save dist cache
+  key: last-dist-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}-{{ .Environment.CIRCLE_WORKFLOW_JOB_ID }}
+  paths:
     - dist/tools
     - dist/libs/elements
     - dist/libs/elements-cdk
@@ -63,6 +77,7 @@ save_yarn_cache: &save_yarn_cache
     - dist/libs/stencil-toolkit
     - dist/libs/url
     - dist/libs/util
+
 deploy_cache: &deploy_cache
   name: Restore deploy cache
   keys:
@@ -184,6 +199,7 @@ commands:
     steps:
       - checkout
       - restore_cache: *yarn_cache
+      - restore_cache: *dist_cache
       - restore_cache: *deploy_cache
       - run: *set_env
   codecov_upload:
@@ -218,8 +234,11 @@ jobs:
       - checkout
       - run: env
       - restore_cache: *yarn_cache
+      - restore_cache: *dist_cache
       - run: *yarn_install
+      - run: rm -rf node_modules/.cache
       - save_cache: *save_yarn_cache
+      - save_cache: *save_dist_cache
   check-formatting:
     <<: *defaults
     steps:
