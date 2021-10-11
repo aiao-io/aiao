@@ -253,7 +253,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout_and_cache
-      - yarn cypress install
+      - run: yarn cypress install
       - restore_cache: *e2e_cache
       - run: *affected_e2e
       - save_cache: *save_e2e_cache
