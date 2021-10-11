@@ -5,7 +5,7 @@
 version: 2.1
 
 orbs:
-  codecov: codecov/codecov@1.2.4
+  codecov: codecov/codecov@3.1.1
   heroku: circleci/heroku@1.2.6
 
 defaults: &defaults
@@ -185,8 +185,7 @@ commands:
       - run: *set_env
   codecov_upload:
     steps:
-      - codecov/upload:
-          file: coverage/**/lcov.info
+      - codecov/upload
   deplay_to_heroku:
     parameters:
       project-name:
