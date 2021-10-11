@@ -2,6 +2,14 @@ import { kebabCase } from 'lodash';
 
 import { IElementData } from '@aiao/elements-cdk';
 
+interface Props {
+  slot?: string;
+  class?: string;
+  style?: string;
+  // attributes
+  [name: string]: any;
+}
+
 /**
  * 转换单个 element 数据为 html 格式
  * @param data 数据
@@ -11,7 +19,7 @@ export const elementDataStringify = (data: IElementData) => {
   const childrenHtml: string = children?.length ? elementsDataStringify(children) : '';
   const innerString = childrenHtml || innerText || innerHTML;
 
-  const props: any = {
+  const props: Props = {
     slot
   };
 
