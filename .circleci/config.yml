@@ -55,7 +55,6 @@ save_yarn_cache: &save_yarn_cache
   name: Save yarn cache
   key: last-yarn-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}-{{ .Environment.CIRCLE_WORKFLOW_JOB_ID }}
   paths:
-    - ~/.cache
     - node_modules
     - dist/tools
     - dist/libs/elements
@@ -254,6 +253,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout_and_cache
+      - yarn cypress install
       - restore_cache: *e2e_cache
       - run: *affected_e2e
       - save_cache: *save_e2e_cache
