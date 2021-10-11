@@ -1,5 +1,4 @@
 import { IImg, IImgArea, imgGetAreas } from '@aiao/elements-cdk/components';
-import { IImageRequestOptions, ImageMethodType } from '@aiao/image-storage';
 import { IMAGE_MIN_BASE64_TRANSPARENT } from '@aiao/util';
 import {
   Component,
@@ -19,6 +18,7 @@ import {
 
 import { config } from '../../global/config';
 
+import type { IImageRequestOptions, ImageMethodType } from '@aiao/image-storage';
 let imageId = 0;
 
 @Component({
