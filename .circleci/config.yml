@@ -294,6 +294,7 @@ jobs:
       # INSTALL
       - run: *yarn_install
       - save_cache: *save_yarn_cache
+      - save_cache: *save_dist_cache
       # CHECK
       - run: *format_check
       - run: *lint
