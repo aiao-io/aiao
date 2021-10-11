@@ -1,4 +1,4 @@
-import { IElementConfig } from '@aiao/elements-cdk';
+import type { IElementConfig } from '@aiao/elements-cdk';
 import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core';
 
 import { IElementEditorData } from '../../interfaces/elements-editor.interface';

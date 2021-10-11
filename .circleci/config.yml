@@ -59,7 +59,12 @@ save_yarn_cache: &save_yarn_cache
     - ~/.cache
     - node_modules
     - dist/tools
-
+    - dist/libs/elements
+    - dist/libs/elements-cdk
+    - dist/libs/image-storage
+    - dist/libs/stencil-toolkit
+    - dist/libs/url
+    - dist/libs/util
 deploy_cache: &deploy_cache
   name: Restore deploy cache
   keys:

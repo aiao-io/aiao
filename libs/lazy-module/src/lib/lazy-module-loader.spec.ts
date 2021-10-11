@@ -42,15 +42,15 @@ describe('LazyModuleLoader', () => {
   });
 
   it('载入 NgModuleFactory 2 次 只执行创建 1 次', async () => {
-    const aModuleFactoryCreate = spyOn(aModuleFactory, 'create').and.returnValue(new FakeModuleRef(''));
+    const aModuleFactoryCreate = jest.spyOn(aModuleFactory, 'create');
     await Promise.all([lazyModuleLoader.load('AModule'), lazyModuleLoader.load('AModule')]);
     expect(aModuleFactoryCreate).toHaveBeenCalledTimes(1);
   });
 
   it('load module', async () => {
-    const compilerSpy = spyOn(compiler, 'compileModuleAsync').and.returnValue(
-      Promise.resolve(new FakeModuleFactory('b-module'))
-    );
+    const compilerSpy = jest
+      .spyOn(compiler, 'compileModuleAsync')
+      .mockReturnValue(Promise.resolve(new FakeModuleFactory('b-module')));
     const moduleB = await lazyModuleLoader.load('BModule');
     expect(compilerSpy).toHaveBeenCalledTimes(1);
     expect(moduleB.instance).toEqual('b-module');
@@ -88,15 +88,15 @@ describe('LazyModuleLoader', () => {
   });
 
   it('不会重复运行 compileModuleAsync', async () => {
-    const compilerSpy = spyOn(compiler, 'compileModuleAsync').and.returnValue(
-      Promise.resolve(new FakeModuleFactory('b-module'))
-    );
+    const compilerSpy = jest
+      .spyOn(compiler, 'compileModuleAsync')
+      .mockReturnValue(Promise.resolve(new FakeModuleFactory('b-module')));
     await Promise.all([lazyModuleLoader.load('BModule'), lazyModuleLoader.load('BModule')]);
     expect(compilerSpy).toHaveBeenCalledTimes(1);
   });
 
   it('加载模块时发生网络错误', async () => {
-    const compilerSpy = spyOn(compiler, 'compileModuleAsync').and.returnValue(Promise.reject('promise error'));
+    const compilerSpy = jest.spyOn(compiler, 'compileModuleAsync').mockReturnValue(Promise.reject('promise error'));
     try {
       await lazyModuleLoader.load('BModule');
     } catch (error) {

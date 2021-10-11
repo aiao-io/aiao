@@ -1,4 +1,4 @@
-import { IImageStorage } from '@aiao/image-storage';
+import type { IImageStorage } from '@aiao/image-storage';
 
 import { IDomSanitizer } from './context.interface';
 

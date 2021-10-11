@@ -1,12 +1,12 @@
-import { LazyModuleLoader, LazyModuleLoaderBase } from '@aiao/lazy-module';
-import { Injectable } from '@angular/core';
+import { LazyModuleLoaderBase } from '@aiao/lazy-module';
+import { Compiler, Injectable, NgModuleFactory, NgModuleRef, Type } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LazyElementLoader extends LazyModuleLoaderBase {
-  constructor(private lazyModuleLoader: LazyModuleLoader) {
+  constructor(private moduleRef: NgModuleRef<any>, private compiler: Compiler) {
     super();
   }
 
@@ -26,7 +26,7 @@ export class LazyElementLoader extends LazyModuleLoaderBase {
     return this.loadUnRegisteredSelectors(unregisteredSelectors);
   }
 
-  async load(selector: string): Promise<void> {
+  async load(selector: string) {
     if (customElements.get(selector)) {
       return;
     }
@@ -35,8 +35,23 @@ export class LazyElementLoader extends LazyModuleLoaderBase {
       return this.loading.get(selector);
     }
 
-    const loadedAndRegistered = this.lazyModuleLoader
-      .load(selector)
+    const moduleLoader = this.toLoad.get(selector);
+    if (!moduleLoader) {
+      throw new Error(`element not found:${selector}`);
+    }
+
+    const loadedAndRegistered = (moduleLoader() as Promise<Type<any>>)
+      .then(moduleOrFactory => {
+        if (moduleOrFactory instanceof NgModuleFactory) {
+          return moduleOrFactory;
+        } else {
+          return this.compiler.compileModuleAsync(moduleOrFactory);
+        }
+      })
+      .then(moduleFactory => {
+        this.toLoad.delete(selector);
+        return moduleFactory.create(this.moduleRef.injector);
+      })
       .then(moduleRef => {
         const injector = moduleRef.injector;
         const customElementComponent = moduleRef.instance.customElementComponent;
@@ -44,14 +59,10 @@ export class LazyElementLoader extends LazyModuleLoaderBase {
         customElements.define(selector, customElement);
         return customElements.whenDefined(selector);
       })
-      .then(() => {
-        this.toLoad.delete(selector);
-      })
       .catch(err => {
         this.loading.delete(selector);
         return Promise.reject(err);
       });
-
     this.loading.set(selector, loadedAndRegistered);
     return loadedAndRegistered;
   }
