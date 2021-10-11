@@ -5,7 +5,6 @@
 version: 2.1
 
 orbs:
-  codecov: codecov/codecov@3.1.1
   heroku: circleci/heroku@1.2.6
 
 defaults: &defaults
@@ -127,6 +126,11 @@ yarn_install: &yarn_install
   name: Install dependencies
   command: yarn install --frozen-lockfile --non-interactive
 
+# coverage
+send_coverage: &send_coverage
+  name: coverage
+  command: bash <(curl -s https://codecov.io/bash)
+
 # format
 format_check: &format_check
   name: Format check
@@ -185,7 +189,7 @@ commands:
       - run: *set_env
   codecov_upload:
     steps:
-      - codecov/upload
+      - send_coverage
   deplay_to_heroku:
     parameters:
       project-name:
