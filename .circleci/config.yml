@@ -189,7 +189,7 @@ commands:
       - run: *set_env
   codecov_upload:
     steps:
-      - send_coverage
+      - run: *send_coverage
   deplay_to_heroku:
     parameters:
       project-name:
