@@ -45,22 +45,18 @@ set_env: &set_env
 yarn_cache: &yarn_cache
   name: Restore yarn cache
   keys:
-    - last-yarn-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}-{{ .Environment.CIRCLE_WORKFLOW_JOB_ID }}
-    - last-yarn-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
-    - last-yarn-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}
     - last-yarn-{{ checksum "yarn.lock" }}
     - last-yarn-
 
 save_yarn_cache: &save_yarn_cache
   name: Save yarn cache
-  key: last-yarn-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}-{{ .Environment.CIRCLE_WORKFLOW_JOB_ID }}
+  key: last-yarn-{{ checksum "yarn.lock" }}
   paths:
     - node_modules
 
 dist_cache: &dist_cache
   name: Restore dist cache
   keys:
-    - last-dist-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}-{{ .Environment.CIRCLE_WORKFLOW_JOB_ID }}
     - last-dist-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
     - last-dist-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}
     - last-dist-{{ checksum "yarn.lock" }}
@@ -68,7 +64,7 @@ dist_cache: &dist_cache
 
 save_dist_cache: &save_dist_cache
   name: Save dist cache
-  key: last-dist-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}-{{ .Environment.CIRCLE_WORKFLOW_JOB_ID }}
+  key: last-dist-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
   paths:
     - dist/tools
     - dist/libs/elements
@@ -81,28 +77,26 @@ save_dist_cache: &save_dist_cache
 deploy_cache: &deploy_cache
   name: Restore deploy cache
   keys:
-    - last-deploy-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}-{{ .Environment.CIRCLE_WORKFLOW_JOB_ID }}
     - last-deploy-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
     - last-deploy-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}
     - last-deploy-{{ checksum "yarn.lock" }}
 
 save_deploy_cache: &save_deploy_cache
   name: Save deploy cache
-  key: last-deploy-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}-{{ .Environment.CIRCLE_WORKFLOW_JOB_ID }}
+  key: last-deploy-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
   paths:
     - dist/last-deploy.txt
 
 build_cache: &build_cache
   name: Restore build cache
   keys:
-    - last-build-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}-{{ .Environment.CIRCLE_WORKFLOW_JOB_ID }}
     - last-build-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
     - last-build-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}
     - last-build-{{ checksum "yarn.lock" }}
 
 save_build_cache: &save_build_cache
   name: Save build cache
-  key: last-build-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}-{{ .Environment.CIRCLE_WORKFLOW_JOB_ID }}
+  key: last-build-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
   paths:
     - dist/apps
     - dist/libs
@@ -110,28 +104,26 @@ save_build_cache: &save_build_cache
 test_cache: &test_cache
   name: Restore test cache
   keys:
-    - last-test-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}-{{ .Environment.CIRCLE_WORKFLOW_JOB_ID }}
     - last-test-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
     - last-test-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}
     - last-test-{{ checksum "yarn.lock" }}
 
 save_test_cache: &save_test_cache
   name: Save test cache
-  key: last-test-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}-{{ .Environment.CIRCLE_WORKFLOW_JOB_ID }}
+  key: last-test-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
   paths:
     - coverage
 
 e2e_cache: &e2e_cache
   name: Restore e2e cache
   keys:
-    - last-e2e-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}-{{ .Environment.CIRCLE_WORKFLOW_JOB_ID }}
     - last-e2e-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
     - last-e2e-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}
     - last-e2e-{{ checksum "yarn.lock" }}
 
 save_e2e_cache: &save_e2e_cache
   name: Save e2e cache
-  key: last-e2e-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}-{{ .Environment.CIRCLE_WORKFLOW_JOB_ID }}
+  key: last-e2e-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
   paths:
     - dist/cypress
 
