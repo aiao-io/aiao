@@ -95,7 +95,7 @@ jobs:
 
       - name: Affected Build
         shell: bash
-        run: yarn affected:build --base=$NX_BASE --configuration production --parallel
+        run: yarn affected:build --base=$NX_BASE --configuration production
 
       - name: update last-deploy
         shell: bash
