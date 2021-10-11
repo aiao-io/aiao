@@ -7,7 +7,7 @@ module.exports = {
   },
   resolver: '@nrwl/jest/plugins/resolver',
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageReporters: ['html', 'json'],
+  coverageReporters: ['html', 'json', 'clover', 'json', 'lcov', 'text'],
   projects: [
     ...getJestProjects(),
     '<rootDir>apps/dev-elements-angular',
