@@ -48,15 +48,13 @@ export class LazyElementLoader extends LazyModuleLoaderBase {
           return this.compiler.compileModuleAsync(moduleOrFactory);
         }
       })
-      .then(moduleFactory => {
-        this.toLoad.delete(selector);
-        return moduleFactory.create(this.moduleRef.injector);
-      })
+      .then(moduleFactory => moduleFactory.create(this.moduleRef.injector))
       .then(moduleRef => {
         const injector = moduleRef.injector;
         const customElementComponent = moduleRef.instance.customElementComponent;
         const customElement = createCustomElement(customElementComponent, { injector });
         customElements.define(selector, customElement);
+        this.toLoad.delete(selector);
         return customElements.whenDefined(selector);
       })
       .catch(err => {
@@ -68,6 +66,6 @@ export class LazyElementLoader extends LazyModuleLoaderBase {
   }
 
   private async loadUnRegisteredSelectors(unregisteredSelectors: string[]) {
-    return Promise.all(unregisteredSelectors.map(s => this.load(s))).then(() => undefined);
+    return Promise.all(unregisteredSelectors.map(s => this.load(s))).then(() => {});
   }
 }
