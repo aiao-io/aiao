@@ -18,6 +18,7 @@ describe('one-to-one', () => {
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
     postgresTypeSequelizeRepository = typeormPlus.sequelize.model('PostgresType') as any;
+    console.log('beforeAll');
   });
 
   describe('get', () => {
@@ -44,6 +45,7 @@ describe('one-to-one', () => {
         characterVarying: ['a', 'b', 'c']
       });
       uuid = data.uuid;
+      console.log('beforeAll', data);
     });
 
     it('findOne/findByPk', async () => {
