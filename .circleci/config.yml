@@ -265,17 +265,16 @@ jobs:
       - run: env
       # INSTALL
       - run: *yarn_install
-      - run: yarn nx run typeorm-plus:test --ci --codeCoverage
-      # - save_cache: *save_yarn_cache
-      # - save_cache: *save_dist_cache
-      # # CHECK
-      # - run: *format_check
-      # - run: *lint
-      # # TEST
-      # - restore_cache: *test_cache
-      # - run: *affected_test
-      # - codecov_upload
-      # - save_cache: *save_test_cache
+      - save_cache: *save_yarn_cache
+      - save_cache: *save_dist_cache
+      # CHECK
+      - run: *format_check
+      - run: *lint
+      # TEST
+      - restore_cache: *test_cache
+      - run: *affected_test
+      - codecov_upload
+      - save_cache: *save_test_cache
       # # BUILD
       # - restore_cache: *build_cache
       # - run: *affected_build
