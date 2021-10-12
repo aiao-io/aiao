@@ -12,17 +12,13 @@ describe('one-to-one', () => {
   let postgresTypeSequelizeRepository: SequelizeRepository<PostgresType>;
 
   beforeAll(async () => {
-    console.log('beforeAll');
-    try {
-      const options: ConnectionOptions = { ...baseOptions, entities: [PostgresType] };
-      connection = await createConnection(options);
-      postgresTypeRepository = connection.getRepository(PostgresType);
-      typeormPlus = new TypeormPlus(options, connection);
-      typeormPlus.init();
-      postgresTypeSequelizeRepository = typeormPlus.sequelize.model('PostgresType') as any;
-    } catch (error) {
-      console.log('beforeAll error', error);
-    }
+    const options: ConnectionOptions = { ...baseOptions, entities: [PostgresType] };
+    connection = await createConnection(options);
+    postgresTypeRepository = connection.getRepository(PostgresType);
+    typeormPlus = new TypeormPlus(options, connection);
+    typeormPlus.init();
+    postgresTypeSequelizeRepository = typeormPlus.sequelize.model('PostgresType') as any;
+    await new Promise(r => setTimeout(r, 2000));
   });
 
   describe('get', () => {
