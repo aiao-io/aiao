@@ -13,7 +13,7 @@ defaults: &defaults
     - image: circleci/node:14-browsers
       environment:
         NODE_OPTIONS: --max_old_space_size=3072
-    - image: circleci/postgres:12-alpine
+    - image: circleci/postgres:14-alpine
       environment:
         POSTGRES_USER: test
         POSTGRES_DB: test
