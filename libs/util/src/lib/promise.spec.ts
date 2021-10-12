@@ -5,7 +5,7 @@ describe('promise', () => {
     const t = Date.now();
     await sleep(100);
     const now = Date.now() - t;
-    expect(now).toBeGreaterThanOrEqual(1000);
-    expect(now).toBeLessThanOrEqual(1100);
+    expect(now).toBeGreaterThanOrEqual(100);
+    expect(now).toBeLessThanOrEqual(110);
   });
 });
