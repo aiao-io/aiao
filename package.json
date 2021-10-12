@@ -161,7 +161,7 @@
     "lerna": "^4.0.0",
     "mini-css-extract-plugin": "^2.1.0",
     "ng-packagr": "12.2.2",
-    "ora": "^6.0.1",
+    "ora": "5.4.1",
     "postcss": "^8.3.0",
     "prettier": "2.3.2",
     "react-refresh": "^0.10.0",
