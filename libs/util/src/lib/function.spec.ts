@@ -26,23 +26,36 @@ describe('function', () => {
   });
   describe('throttle', () => {
     it('ok', done => {
-      let runTime = 0;
+      const run = jest.fn();
       const isDone = () => {
-        expect(runTime).toEqual(2);
+        expect(run).toBeCalled();
+        expect(run).toBeCalledTimes(1);
         done();
       };
 
       const throttleFun = throttle(() => {
-        runTime++;
+        run();
       }, 10);
+      throttleFun();
+      throttleFun();
+      throttleFun();
       throttleFun();
       setTimeout(() => {
         throttleFun();
       });
       setTimeout(() => {
         throttleFun();
-      }, 10);
-      setTimeout(isDone, 50);
+      }, 1);
+      setTimeout(() => {
+        throttleFun();
+      }, 2);
+      setTimeout(() => {
+        throttleFun();
+      }, 3);
+      setTimeout(() => {
+        throttleFun();
+      }, 4);
+      setTimeout(isDone, 20);
     });
   });
 });
