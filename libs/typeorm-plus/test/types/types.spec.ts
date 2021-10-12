@@ -39,7 +39,7 @@ describe('one-to-one', () => {
         isSecondBoolean: false,
         simpleArray: ['hello', 'world', 'of', 'typescript'],
         json: [{ hello: 'olleh' }, { world: 'dlrow' }],
-        enum: SampleEnum.ONE,
+        enum: SampleEnum.one,
         jsonb: [{ a: 1 }],
         characterVarying: ['a', 'b', 'c']
       });

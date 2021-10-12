@@ -1,8 +1,9 @@
+import { config } from 'dotenv';
 import { env } from 'process';
 import { ConnectionOptions } from 'typeorm';
 
 try {
-  require('dotenv').config();
+  config();
 } catch {}
 
 const {
