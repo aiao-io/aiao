@@ -273,6 +273,7 @@ jobs:
       # TEST
       - restore_cache: *test_cache
       - run: *affected_test
+      - run: yarn nx run typeorm-plus:test --ci --codeCoverage
       - codecov_upload
       - save_cache: *save_test_cache
       # # BUILD
