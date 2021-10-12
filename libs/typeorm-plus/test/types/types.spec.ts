@@ -18,7 +18,7 @@ describe('one-to-one', () => {
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
     postgresTypeSequelizeRepository = typeormPlus.sequelize.model('PostgresType') as any;
-    await sleep(1000);
+    await sleep(10);
   });
 
   describe('get', () => {
