@@ -47,6 +47,7 @@ describe('one-to-one', () => {
     });
 
     it('findOne/findByPk', async () => {
+      expect(uuid).toBeTruthy();
       const d1 = await postgresTypeRepository.findOne(uuid);
       const d2 = await postgresTypeSequelizeRepository.findByPk(uuid);
       expect(d1!.uuid).toEqual(d2!.uuid);
