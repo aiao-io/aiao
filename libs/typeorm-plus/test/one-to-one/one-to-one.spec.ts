@@ -19,7 +19,7 @@ describe('one-to-one', () => {
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
     userSequelizeRepository = typeormPlus.sequelize.model('User') as any;
-    await sleep(10);
+    await sleep(100);
   });
 
   describe('get', () => {
@@ -27,7 +27,7 @@ describe('one-to-one', () => {
     beforeAll(async () => {
       const data = await userRepository.save({ name: '123', profile: { gender: 'male' } });
       id = data.id;
-      await sleep(10);
+      await sleep(100);
     });
 
     it('findOne/findByPk', async () => {

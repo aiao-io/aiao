@@ -19,7 +19,7 @@ describe('one-to-many', () => {
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
     postSequelizeRepository = typeormPlus.sequelize.model('Post') as any;
-    await sleep(10);
+    await sleep(100);
   });
 
   describe('get', () => {
@@ -30,7 +30,7 @@ describe('one-to-many', () => {
         category: { name: 'cat' }
       });
       id = data.id;
-      await sleep(10);
+      await sleep(100);
     });
 
     it('findOne/findByPk', async () => {
