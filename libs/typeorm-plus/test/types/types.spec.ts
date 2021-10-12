@@ -18,7 +18,6 @@ describe('one-to-one', () => {
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
     postgresTypeSequelizeRepository = typeormPlus.sequelize.model('PostgresType') as any;
-    console.log('one-to-one beforeAll');
   });
 
   describe('get', () => {
@@ -44,7 +43,6 @@ describe('one-to-one', () => {
         jsonb: [{ a: 1 }],
         characterVarying: ['a', 'b', 'c']
       });
-      console.log('data', data);
       uuid = data.uuid;
     });
 
