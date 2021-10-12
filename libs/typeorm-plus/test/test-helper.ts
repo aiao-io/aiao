@@ -21,3 +21,5 @@ export const baseOptions: ConnectionOptions = {
   synchronize: true,
   dropSchema: true
 };
+
+export const sleep = (time = 1000) => new Promise(_ => setTimeout(_, time));
