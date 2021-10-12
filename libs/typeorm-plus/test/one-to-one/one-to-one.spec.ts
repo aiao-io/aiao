@@ -27,6 +27,7 @@ describe('one-to-one', () => {
     beforeAll(async () => {
       const data = await userRepository.save({ name: '123', profile: { gender: 'male' } });
       id = data.id;
+      await sleep(1000);
     });
 
     it('findOne/findByPk', async () => {

@@ -30,6 +30,7 @@ describe('one-to-many', () => {
         category: { name: 'cat' }
       });
       id = data.id;
+      await sleep(1000);
     });
 
     it('findOne/findByPk', async () => {

@@ -30,6 +30,7 @@ describe('many-to-many', () => {
         images: [{ name: 'cat' }]
       });
       id = data.id;
+      await sleep(1000);
     });
 
     it('findOne/findByPk', async () => {
