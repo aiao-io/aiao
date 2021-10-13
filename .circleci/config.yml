@@ -295,7 +295,7 @@ workflows:
       and:
         - not:
             matches:
-              pattern: '^master$'
+              pattern: '^master'
               value: << pipeline.git.branch >>
     jobs:
       - check_pull_request
@@ -303,7 +303,7 @@ workflows:
   check_and_deploy:
     when:
       and:
-        - equal: [master, << pipeline.git.branch >>]
+        - equal: [master, 'master_test', << pipeline.git.branch >>]
     jobs:
       - install
       - lint:
@@ -312,15 +312,15 @@ workflows:
       - test:
           requires:
             - install
-      - check-formatting:
-          requires:
-            - install
-      - build:
-          requires:
-            - install
-      - e2e:
-          requires:
-            - install
+      # - check-formatting:
+      #     requires:
+      #       - install
+      # - build:
+      #     requires:
+      #       - install
+      # - e2e:
+      #     requires:
+      #       - install
       - deploy:
           filters:
             branches:
