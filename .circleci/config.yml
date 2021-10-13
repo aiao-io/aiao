@@ -266,6 +266,7 @@ jobs:
       # INSTALL
       - run: *yarn_install
       - run: yarn nx run nest-typeorm-plus:test --ci --codeCoverage
+      - run: yarn nx run typeorm-plus:test --ci --codeCoverage
 
       # - save_cache: *save_yarn_cache
       # - save_cache: *save_dist_cache
