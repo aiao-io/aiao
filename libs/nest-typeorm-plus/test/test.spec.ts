@@ -59,7 +59,7 @@ describe('单库测试', () => {
   let app: INestApplication;
   let testService: TestService;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const module = await Test.createTestingModule({
       imports: [AppModule]
     }).compile();
@@ -67,6 +67,10 @@ describe('单库测试', () => {
     app = module.createNestApplication();
     testService = app.get(TestService);
     await app.init();
+  });
+
+  afterAll(async () => {
+    await app.close();
   });
 
   it(`写入一对多关系`, async () => {
