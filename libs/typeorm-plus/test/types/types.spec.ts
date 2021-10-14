@@ -46,7 +46,6 @@ describe('one-to-one', () => {
         characterVarying: ['a', 'b', 'c']
       });
       uuid = data.uuid;
-      console.log('beforeAll', data);
     });
 
     it('findOne/findByPk', async () => {
