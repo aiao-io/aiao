@@ -1,0 +1,23 @@
+{
+  "root": "apps/dev-universal-fastify-engine-e2e",
+  "sourceRoot": "apps/dev-universal-fastify-engine-e2e/src",
+  "projectType": "application",
+  "architect": {
+    "e2e": {
+      "builder": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/dev-universal-fastify-engine-e2e/cypress.json",
+        "tsConfig": "apps/dev-universal-fastify-engine-e2e/tsconfig.e2e.json",
+        "devServerTarget": "dev-universal-fastify-engine:serve"
+      },
+      "configurations": { "production": { "devServerTarget": "dev-universal-fastify-engine:serve:production" } }
+    },
+    "lint": {
+      "builder": "@nrwl/linter:eslint",
+      "options": { "lintFilePatterns": ["apps/dev-universal-fastify-engine-e2e/**/*.{js,ts}"] },
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": ["angular-e2e"],
+  "implicitDependencies": ["dev-universal-fastify-engine"]
+}

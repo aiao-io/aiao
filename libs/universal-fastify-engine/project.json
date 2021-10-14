@@ -1,0 +1,30 @@
+{
+  "root": "libs/universal-fastify-engine",
+  "sourceRoot": "libs/universal-fastify-engine/src",
+  "projectType": "library",
+  "architect": {
+    "lint": {
+      "builder": "@nrwl/linter:eslint",
+      "options": { "lintFilePatterns": ["libs/universal-fastify-engine/**/*.ts"] },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "builder": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/universal-fastify-engine"],
+      "options": { "jestConfig": "libs/universal-fastify-engine/jest.config.js", "passWithNoTests": true }
+    },
+    "build": {
+      "builder": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/universal-fastify-engine",
+        "tsConfig": "libs/universal-fastify-engine/tsconfig.lib.json",
+        "packageJson": "libs/universal-fastify-engine/package.json",
+        "main": "libs/universal-fastify-engine/src/index.ts",
+        "assets": ["libs/universal-fastify-engine/*.md"]
+      },
+      "configurations": { "production": {} }
+    }
+  },
+  "tags": ["all"]
+}
