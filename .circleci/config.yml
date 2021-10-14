@@ -41,7 +41,6 @@ set_env: &set_env
     fi
     source $BASH_ENV
     echo $AFFECTED_ARGS
-
 yarn_cache: &yarn_cache
   name: Restore yarn cache
   keys:
@@ -168,7 +167,6 @@ update_deploy: &update_deploy
     git rev-parse HEAD
     git rev-parse HEAD > dist/last-deploy.txt
     cat dist/last-deploy.txt
-
 commands:
   checkout_and_cache:
     description: Checkout code and restore cache

@@ -1,7 +1,7 @@
 import { Connection, ConnectionOptions, createConnection, Repository } from 'typeorm';
 
 import { SequelizeRepository, TypeormPlus } from '../../src';
-import { baseOptions, sleep } from '../test-helper';
+import { baseOptions } from '../test-helper';
 import { PostImage } from './post-image.entity';
 import { Post } from './post.entity';
 
@@ -19,9 +19,10 @@ describe('many-to-many', () => {
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
     postSequelizeRepository = typeormPlus.sequelize.model('Post') as any;
-    await sleep(500);
   });
-
+  afterAll(async () => {
+    await connection.close();
+  });
   describe('get', () => {
     let id: number;
     beforeAll(async () => {
@@ -30,7 +31,6 @@ describe('many-to-many', () => {
         images: [{ name: 'cat' }]
       });
       id = data.id;
-      await sleep(500);
     });
 
     it('findOne/findByPk', async () => {

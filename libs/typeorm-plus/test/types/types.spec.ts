@@ -1,7 +1,7 @@
 import { Connection, ConnectionOptions, createConnection, Repository } from 'typeorm';
 
 import { SequelizeRepository, TypeormPlus } from '../../src';
-import { baseOptions, sleep } from '../test-helper';
+import { baseOptions } from '../test-helper';
 import { PostgresType, SampleEnum } from './postgres-type.entity';
 
 describe('one-to-one', () => {
@@ -18,9 +18,10 @@ describe('one-to-one', () => {
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
     postgresTypeSequelizeRepository = typeormPlus.sequelize.model('PostgresType') as any;
-    await sleep(500);
   });
-
+  afterAll(async () => {
+    await connection.close();
+  });
   describe('get', () => {
     let uuid: string;
     beforeAll(async () => {
@@ -45,7 +46,6 @@ describe('one-to-one', () => {
         characterVarying: ['a', 'b', 'c']
       });
       uuid = data.uuid;
-      console.log('beforeAll', data);
     });
 
     it('findOne/findByPk', async () => {
