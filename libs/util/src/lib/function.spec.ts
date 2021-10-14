@@ -4,24 +4,21 @@ describe('function', () => {
   describe('debounce', () => {
     it('should be call one', done => {
       const start = new Date().getTime();
-      let runTime = 0;
-      let end: number;
+      const runFn = jest.fn();
       const isDone = () => {
-        expect(runTime).toEqual(1);
-        expect(end).toBeGreaterThanOrEqual(19);
+        expect(runFn).toBeCalledTimes(1);
         done();
       };
 
       const debounceFun = debounce(() => {
-        end = new Date().getTime() - start;
-        runTime++;
+        runFn();
       }, 10);
       debounceFun();
       debounceFun();
       setTimeout(() => {
         debounceFun();
-      }, 9);
-      setTimeout(isDone, 50);
+      }, 3);
+      setTimeout(isDone, 20);
     });
   });
   describe('throttle', () => {
