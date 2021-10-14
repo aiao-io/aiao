@@ -5,7 +5,7 @@ export interface TreeNodeData {
   parentId?: string | number;
   configId?: string | number;
   name: string;
-  sort?: number;
+  sort: number;
   isLeaf?: boolean;
 }
 

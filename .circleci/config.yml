@@ -13,6 +13,14 @@ defaults: &defaults
     - image: circleci/node:14-browsers
       environment:
         NODE_OPTIONS: --max_old_space_size=3072
+
+withDatabase: &withDatabase
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:14-browsers
+      environment:
+        NODE_OPTIONS: --max_old_space_size=3072
+
     - image: circleci/postgres:12-alpine-postgis
       environment:
         POSTGRES_USER: test
@@ -232,7 +240,7 @@ jobs:
       - save_cache: *save_build_cache
 
   test:
-    <<: *defaults
+    <<: *withDatabase
     steps:
       - checkout_and_cache
       - restore_cache: *test_cache
