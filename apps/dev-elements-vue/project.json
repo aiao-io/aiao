@@ -1,0 +1,63 @@
+{
+  "root": "apps/dev-elements-vue",
+  "sourceRoot": "apps/dev-elements-vue/src",
+  "projectType": "application",
+  "schematics": {},
+  "architect": {
+    "build": {
+      "builder": "@nrwl/web:build",
+      "options": {
+        "outputPath": "dist/apps/dev-elements-vue",
+        "index": "apps/dev-elements-vue/src/index.html",
+        "main": "apps/dev-elements-vue/src/main.ts",
+        "polyfills": "apps/dev-elements-vue/src/polyfills.ts",
+        "tsConfig": "apps/dev-elements-vue/tsconfig.app.json",
+        "assets": [
+          "apps/dev-elements-vue/src/favicon.ico",
+          "apps/dev-elements-vue/src/assets",
+          { "glob": "**/*.svg", "input": "node_modules/ionicons/dist/ionicons/svg", "output": "./svg" },
+          { "glob": "**/*", "input": "node_modules/@aiao/elements/lib/aiao-elements/assets", "output": "./assets" },
+          { "glob": "**/*", "input": "node_modules/monaco-editor/min", "output": "./assets/monaco" }
+        ],
+        "styles": ["apps/dev-elements-vue/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "apps/dev-elements-vue/webpack.config.js",
+        "buildLibsFromSource": true
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/dev-elements-vue/src/environments/environment.ts",
+              "with": "apps/dev-elements-vue/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "budgets": [{ "type": "initial", "maximumWarning": "2mb", "maximumError": "5mb" }]
+        }
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "serve": {
+      "builder": "@nrwl/web:dev-server",
+      "options": { "buildTarget": "dev-elements-vue:build", "open": true },
+      "configurations": { "production": { "buildTarget": "dev-elements-vue:build:production", "port": 5207 } }
+    },
+    "lint": {
+      "builder": "@nrwl/linter:eslint",
+      "options": { "lintFilePatterns": ["apps/dev-elements-vue/src/**/*.ts", "apps/dev-elements-vue/src/**/*.html"] },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "builder": "@nrwl/jest:jest",
+      "options": { "jestConfig": "apps/dev-elements-vue/jest.config.js", "passWithNoTests": true },
+      "outputs": ["coverage/apps/dev-elements-vue"]
+    }
+  },
+  "tags": ["vue-app"]
+}

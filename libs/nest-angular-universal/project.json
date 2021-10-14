@@ -1,0 +1,30 @@
+{
+  "root": "libs/nest-angular-universal",
+  "sourceRoot": "libs/nest-angular-universal/src",
+  "projectType": "library",
+  "architect": {
+    "lint": {
+      "builder": "@nrwl/linter:eslint",
+      "options": { "lintFilePatterns": ["libs/nest-angular-universal/**/*.ts"] },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "builder": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/nest-angular-universal"],
+      "options": { "jestConfig": "libs/nest-angular-universal/jest.config.js", "passWithNoTests": true }
+    },
+    "build": {
+      "builder": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/nest-angular-universal",
+        "tsConfig": "libs/nest-angular-universal/tsconfig.lib.json",
+        "packageJson": "libs/nest-angular-universal/package.json",
+        "main": "libs/nest-angular-universal/src/index.ts",
+        "assets": ["libs/nest-angular-universal/*.md"]
+      },
+      "configurations": { "production": {} }
+    }
+  },
+  "tags": ["nest-lib"]
+}
