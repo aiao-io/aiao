@@ -244,7 +244,7 @@ jobs:
       - save_cache: *save_build_cache
 
   test:
-    <<: *database
+    <<: *withDatabase
     steps:
       - checkout_and_cache
       - restore_cache: *test_cache
