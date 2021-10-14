@@ -264,7 +264,10 @@ jobs:
       - checkout_and_cache
       - run: env
       # INSTALL
+      - restore_cache: *yarn_cache
+      - restore_cache: *dist_cache
       - run: *yarn_install
+      - run: rm -rf node_modules/.cache
       # - run: *affected_build
       - run: yarn nx affected:test --base 609e26f91ebccbd64ea4fec21e7f958b5fdf8dd3 --ci --code-coverage --skip-nx-cache
 
