@@ -41,6 +41,7 @@ set_env: &set_env
     fi
     source $BASH_ENV
     echo $AFFECTED_ARGS
+
 yarn_cache: &yarn_cache
   name: Restore yarn cache
   keys:
@@ -167,6 +168,7 @@ update_deploy: &update_deploy
     git rev-parse HEAD
     git rev-parse HEAD > dist/last-deploy.txt
     cat dist/last-deploy.txt
+
 commands:
   checkout_and_cache:
     description: Checkout code and restore cache
@@ -263,16 +265,19 @@ jobs:
       - run: env
       # INSTALL
       - run: *yarn_install
-      - save_cache: *save_yarn_cache
-      - save_cache: *save_dist_cache
-      # CHECK
-      - run: *format_check
-      - run: *lint
-      # TEST
-      - restore_cache: *test_cache
-      - run: *affected_test
-      - codecov_upload
-      - save_cache: *save_test_cache
+      # - run: *affected_build
+      - run: yarn nx affected:test --base 609e26f91ebccbd64ea4fec21e7f958b5fdf8dd3 --ci --code-coverage --skip-nx-cache
+
+      # - save_cache: *save_yarn_cache
+      # - save_cache: *save_dist_cache
+      # # CHECK
+      # - run: *format_check
+      # - run: *lint
+      # # TEST
+      # - restore_cache: *test_cache
+      # - run: *affected_test
+      # - codecov_upload
+      # - save_cache: *save_test_cache
       # # BUILD
       # - restore_cache: *build_cache
       # - run: *affected_build
@@ -293,7 +298,7 @@ workflows:
       and:
         - not:
             matches:
-              pattern: '^master$'
+              pattern: '^master'
               value: << pipeline.git.branch >>
     jobs:
       - check_pull_request
@@ -301,7 +306,7 @@ workflows:
   check_and_deploy:
     when:
       and:
-        - equal: [master, << pipeline.git.branch >>]
+        - equal: [master', << pipeline.git.branch >>]
     jobs:
       - install
       - lint:
