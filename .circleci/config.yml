@@ -14,7 +14,7 @@ defaults: &defaults
       environment:
         NODE_OPTIONS: --max_old_space_size=3072
 
-database: &database
+withDatabase: &withDatabase
   working_directory: ~/repo
   docker:
     - image: circleci/node:14-browsers
@@ -269,7 +269,7 @@ jobs:
       - save_cache: *save_deploy_cache
 
   check_pull_request:
-    <<: *defaults
+    <<: *withDatabase
     steps:
       - checkout_and_cache
       - run: env
