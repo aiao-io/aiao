@@ -25,11 +25,9 @@ withDatabase: &withDatabase
       environment:
         POSTGRES_USER: test
         POSTGRES_DB: test
-
   environment:
     TYPEORM_PLUS_TEST_USERNAME: test
     TYPEORM_PLUS_TEST_DATABASE: test
-
 set_env: &set_env
   name: Setup Environment Variables
   command: |
@@ -51,7 +49,6 @@ set_env: &set_env
     fi
     source $BASH_ENV
     echo $AFFECTED_ARGS
-
 yarn_cache: &yarn_cache
   name: Restore yarn cache
   keys:
@@ -178,7 +175,6 @@ update_deploy: &update_deploy
     git rev-parse HEAD
     git rev-parse HEAD > dist/last-deploy.txt
     cat dist/last-deploy.txt
-
 commands:
   checkout_and_cache:
     description: Checkout code and restore cache
@@ -269,28 +265,22 @@ jobs:
       - save_cache: *save_deploy_cache
 
   check_pull_request:
-    <<: *withDatabase
+    <<: *defaults
     steps:
       - checkout_and_cache
       - run: env
       # INSTALL
-      - restore_cache: *yarn_cache
-      - restore_cache: *dist_cache
       - run: *yarn_install
-      - run: rm -rf node_modules/.cache
-      # - run: *affected_build
-      - run: yarn nx affected:test --base 609e26f91ebccbd64ea4fec21e7f958b5fdf8dd3 --ci --code-coverage --skip-nx-cache --detectOpenHandles
-
-      # - save_cache: *save_yarn_cache
-      # - save_cache: *save_dist_cache
-      # # CHECK
-      # - run: *format_check
-      # - run: *lint
-      # # TEST
-      # - restore_cache: *test_cache
-      # - run: *affected_test
-      # - codecov_upload
-      # - save_cache: *save_test_cache
+      - save_cache: *save_yarn_cache
+      - save_cache: *save_dist_cache
+      # CHECK
+      - run: *format_check
+      - run: *lint
+      # TEST
+      - restore_cache: *test_cache
+      - run: *affected_test
+      - codecov_upload
+      - save_cache: *save_test_cache
       # # BUILD
       # - restore_cache: *build_cache
       # - run: *affected_build
@@ -314,38 +304,12 @@ workflows:
               pattern: '^master$'
               value: << pipeline.git.branch >>
     jobs:
-      - install
-      - lint:
-          requires:
-            - install
-      - test:
-          requires:
-            - install
-      - check-formatting:
-          requires:
-            - install
-      - build:
-          requires:
-            - install
-      - e2e:
-          requires:
-            - install
-      - deploy:
-          filters:
-            branches:
-              only:
-                - master
-          requires:
-            - check-formatting
-            - lint
-            - test
-            - build
-            - e2e
+      - check_pull_request
 
   check_and_deploy:
     when:
-      or:
-        - equal: [master', << pipeline.git.branch >>]
+      and:
+        - equal: [master, << pipeline.git.branch >>]
     jobs:
       - install
       - lint:
