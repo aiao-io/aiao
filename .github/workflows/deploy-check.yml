@@ -91,11 +91,11 @@ jobs:
 
       - name: Affected e2e
         shell: bash
-        run: yarn affected:e2e --base=$NX_BASE --configuration production -- --headless
+        run: yarn affected:e2e --base=$NX_BASE --parallel --configuration production -- --headless
 
       - name: Affected Build
         shell: bash
-        run: yarn affected:build --base=$NX_BASE --configuration production
+        run: yarn affected:build --base=$NX_BASE --parallel --configuration production
 
       - name: update last-deploy
         shell: bash
