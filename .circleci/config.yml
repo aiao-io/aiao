@@ -13,13 +13,23 @@ defaults: &defaults
     - image: circleci/node:14-browsers
       environment:
         NODE_OPTIONS: --max_old_space_size=3072
+
+database: &database
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:14-browsers
+      environment:
+        NODE_OPTIONS: --max_old_space_size=3072
+
     - image: circleci/postgres:12-alpine-postgis
       environment:
         POSTGRES_USER: test
         POSTGRES_DB: test
+
   environment:
     TYPEORM_PLUS_TEST_USERNAME: test
     TYPEORM_PLUS_TEST_DATABASE: test
+
 set_env: &set_env
   name: Setup Environment Variables
   command: |
@@ -234,7 +244,7 @@ jobs:
       - save_cache: *save_build_cache
 
   test:
-    <<: *defaults
+    <<: *database
     steps:
       - checkout_and_cache
       - restore_cache: *test_cache
@@ -269,7 +279,7 @@ jobs:
       - run: *yarn_install
       - run: rm -rf node_modules/.cache
       # - run: *affected_build
-      - run: yarn nx affected:test --base 609e26f91ebccbd64ea4fec21e7f958b5fdf8dd3 --ci --code-coverage --skip-nx-cache
+      - run: yarn nx affected:test --base 609e26f91ebccbd64ea4fec21e7f958b5fdf8dd3 --ci --code-coverage --skip-nx-cache --detectOpenHandles
 
       # - save_cache: *save_yarn_cache
       # - save_cache: *save_dist_cache
