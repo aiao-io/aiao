@@ -1,7 +1,7 @@
 import { Connection, ConnectionOptions, createConnection, Repository } from 'typeorm';
 
 import { SequelizeRepository, TypeormPlus } from '../../src';
-import { baseOptions, sleep } from '../test-helper';
+import { baseOptions } from '../test-helper';
 import { PostCategory } from './post-category.entity';
 import { Post } from './post.entity';
 
@@ -15,11 +15,15 @@ describe('one-to-many', () => {
   beforeAll(async () => {
     const options: ConnectionOptions = { ...baseOptions, entities: [Post, PostCategory] };
     connection = await createConnection(options);
+
     postRepository = connection.getRepository(Post);
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
     postSequelizeRepository = typeormPlus.sequelize.model('Post') as any;
-    await sleep(500);
+  });
+
+  afterAll(async () => {
+    await connection.close();
   });
 
   describe('get', () => {
@@ -30,7 +34,6 @@ describe('one-to-many', () => {
         category: { name: 'cat' }
       });
       id = data.id;
-      await sleep(500);
     });
 
     it('findOne/findByPk', async () => {
