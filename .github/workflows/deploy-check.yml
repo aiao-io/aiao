@@ -38,6 +38,7 @@ on:
 
 jobs:
   install:
+    name: Install dependencies
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -92,7 +93,17 @@ jobs:
     steps:
       - name: Affected e2e
         shell: bash
-        run: yarn affected:e2e --base=$NX_BASE --parallel --configuration production -- --headless
+        run: env && yarn affected:e2e --base=$NX_BASE --parallel --configuration production --headless
+
+  affected_test:
+    needs: [install]
+    runs-on: ubuntu-latest
+    services:
+      image: postgres
+    steps:
+      - name: Affected e2e
+        shell: bash
+        run: yarn affected:test --base=$NX_BASE --parallel --ci --code-coverage
 
   affected_build:
     needs: [install]
