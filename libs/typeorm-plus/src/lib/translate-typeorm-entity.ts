@@ -1,4 +1,4 @@
-import { flatten, isArray } from 'lodash';
+import { flatten, isArray, isFunction } from 'lodash';
 import { IndexType, ModelAttributeColumnOptions, ModelAttributes, ModelOptions } from 'sequelize';
 import { EntityMetadata } from 'typeorm';
 
@@ -13,7 +13,12 @@ interface SeqModel {
 export function translateTypeOrmEntity(metadata: EntityMetadata): SeqModel {
   const { name: modelName, columns, tableName, schema, createDateColumn, updateDateColumn, indices } = metadata;
 
-  const uniqueArrs: any[] = metadata.uniques.map(d => d.givenColumnNames);
+  const uniqueArrs = metadata.uniques.map(unique => {
+    if (isFunction(unique.givenColumnNames)) {
+      return unique.givenColumnNames();
+    }
+    return unique.givenColumnNames;
+  });
   const uniques = flatten(uniqueArrs);
 
   // ModelAttributes
