@@ -25,14 +25,11 @@ import type {
 import type { Col, Fn, Literal } from 'sequelize/types/lib/utils';
 
 export interface SequelizeRepository<Model> extends ModelType<Model> {
-  findAll<M extends Model>(options?: FindOptions<M>): Promise<M[]>;
-  findByPk<M extends Model>(
-    identifier?: Identifier,
-    options?: Omit<FindOptions | NonNullFindOptions, 'where'>
-  ): Promise<M | null>;
+  findAll<M extends Model>(options?: FindOptions<M>): Promise<Model[]>;
+  findByPk(identifier?: Identifier, options?: Omit<FindOptions | NonNullFindOptions, 'where'>): Promise<Model | null>;
 
-  findOne<M extends Model>(options?: FindOptions<Model>): Promise<M | null>;
-  findOne<M extends Model>(options: NonNullFindOptions<Model>): Promise<M>;
+  findOne(options?: FindOptions<Model>): Promise<Model | null>;
+  findOne(options: NonNullFindOptions<Model>): Promise<Model>;
 
   aggregate<T, M extends Model>(
     fileld: keyof Model | '*',
@@ -44,29 +41,32 @@ export interface SequelizeRepository<Model> extends ModelType<Model> {
 
   findAndCountAll<M extends Model>(
     options: FindAndCountOptions<M> & { group: GroupOption }
-  ): Promise<{ rows: M[]; count: number[] }>;
+  ): Promise<{ rows: Model[]; count: number[] }>;
 
-  findAndCountAll<M extends Model>(options: FindAndCountOptions<M>): Promise<{ rows: M[]; count: number }>;
+  findAndCountAll<M extends Model>(options: FindAndCountOptions<M>): Promise<{ rows: Model[]; count: number }>;
 
-  max<T extends DataType | unknown, M extends Model>(field: keyof M, options?: AggregateOptions<T, M>): Promise<T>;
-  min<T extends DataType | unknown, M extends Model>(field: keyof M, options?: AggregateOptions<T, M>): Promise<T>;
-  sum<T extends DataType | unknown, M extends Model>(field: keyof M, options?: AggregateOptions<T, M>): Promise<number>;
+  max<T extends DataType | unknown, M extends Model>(field: keyof M, options?: AggregateOptions<T, Model>): Promise<T>;
+  min<T extends DataType | unknown, M extends Model>(field: keyof M, options?: AggregateOptions<T, Model>): Promise<T>;
+  sum<T extends DataType | unknown, M extends Model>(
+    field: keyof M,
+    options?: AggregateOptions<T, Model>
+  ): Promise<number>;
 
-  build<M extends Model>(record?: M, options?: BuildOptions): M;
-  bulkBuild<M extends Model>(record?: ReadonlyArray<M>, options?: BuildOptions): M[];
+  build<M extends Model>(record?: M, options?: BuildOptions): Model;
+  bulkBuild<M extends Model>(record?: ReadonlyArray<M>, options?: BuildOptions): Model[];
 
   create<M extends Model, O extends CreateOptions<M> = CreateOptions<M>>(
     values?: M,
     options?: O
-  ): Promise<O extends { returning: false } | { ignoreDuplicates: true } ? void : M>;
+  ): Promise<O extends { returning: false } | { ignoreDuplicates: true } ? void : Model>;
 
-  findOrBuild<M extends Model>(options: FindOrCreateOptions<M>): Promise<[M, boolean]>;
-  findOrCreate<M extends Model>(options: FindOrCreateOptions<M>): Promise<[M, boolean]>;
-  findCreateFind<M extends Model>(options: FindOrCreateOptions<M>): Promise<[M, boolean]>;
+  findOrBuild<M extends Model>(options: FindOrCreateOptions<M>): Promise<[Model, boolean]>;
+  findOrCreate<M extends Model>(options: FindOrCreateOptions<M>): Promise<[Model, boolean]>;
+  findCreateFind<M extends Model>(options: FindOrCreateOptions<M>): Promise<[Model, boolean]>;
 
-  upsert<M extends Model>(values: M, options: UpsertOptions<M>): Promise<[M, boolean | null]>;
+  upsert<M extends Model>(values: M, options: UpsertOptions<M>): Promise<[Model, boolean | null]>;
 
-  bulkCreate<M extends Model>(records: ReadonlyArray<M>, options?: BulkCreateOptions<M>): Promise<M[]>;
+  bulkCreate<M extends Model>(records: ReadonlyArray<M>, options?: BulkCreateOptions<Model>): Promise<Model[]>;
   truncate<M extends Model>(options?: TruncateOptions<M>): Promise<void>;
 
   destroy<M extends Model>(options?: DestroyOptions<M>): Promise<number>;
@@ -77,14 +77,17 @@ export interface SequelizeRepository<Model> extends ModelType<Model> {
       [key in keyof M]?: M[key] | Fn | Col | Literal;
     },
     options: UpdateOptions<M>
-  ): Promise<[number, M[]]>;
+  ): Promise<[number, Model[]]>;
 
   increment<M extends Model>(
     field: keyof M | ReadonlyArray<keyof M>,
     options: IncrementDecrementOptionsWithBy<M>
-  ): Promise<M>;
+  ): Promise<Model>;
 
-  increment<M extends Model>(fields: { [key in keyof M]?: number }, options: IncrementDecrementOptions<M>): Promise<M>;
+  increment<M extends Model>(
+    fields: { [key in keyof M]?: number },
+    options: IncrementDecrementOptions<M>
+  ): Promise<Model>;
 
   describe(): Promise<Record<string, unknown>>;
 }
