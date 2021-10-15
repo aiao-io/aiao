@@ -87,7 +87,7 @@ jobs:
         run: yarn install --frozen-lockfile --non-interactive
 
   affected_e2e:
-    needs: [npm]
+    needs: [install]
     runs-on: ubuntu-latest
     steps:
       - name: Affected e2e
@@ -95,7 +95,7 @@ jobs:
         run: yarn affected:e2e --base=$NX_BASE --parallel --configuration production -- --headless
 
   affected_build:
-    needs: [npm]
+    needs: [install]
     runs-on: ubuntu-latest
     steps:
       - name: Affected Build
