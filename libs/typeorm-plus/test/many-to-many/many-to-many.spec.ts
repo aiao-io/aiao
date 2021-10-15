@@ -36,7 +36,7 @@ describe('many-to-many', () => {
     it('findOne/findByPk', async () => {
       const d1 = await postRepository.findOne(id);
       const d2 = await postSequelizeRepository.findByPk(id);
-      d2.expect(d1!.id).toEqual(d2.id);
+      expect(d1!.id).toEqual(d2!.id);
       expect(d1!.name).toEqual(d2!.name);
     });
 
