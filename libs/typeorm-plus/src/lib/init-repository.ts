@@ -13,16 +13,16 @@ export function initRepository(metadata: EntityMetadata, ormSequelize: Sequelize
   // }
 
   const { name: modelName, relations, schema } = metadata;
-  const model: any = ormSequelize.modelManager.getModel(modelName);
+  const model = ormSequelize.model(modelName);
   relations
     .filter(({ isTreeChildren, isTreeParent }) => isTreeChildren === false && isTreeParent === false)
     .forEach(relation => {
       const { relationType, propertyName, inverseRelation, foreignKeys, joinTableName } = relation;
       const fkName = get(foreignKeys, '[0].columnNames[0]');
       const inverseModelName = get(relation.inverseEntityMetadata, 'name');
-      const inverseModel: any = ormSequelize.modelManager.getModel(inverseModelName);
+      const inverseModel = ormSequelize.model(inverseModelName);
       const inverseModelForeignKey = get(inverseRelation, 'foreignKeys[0].columnNames[0]');
-      if (!model || !inverseModel) {
+      if (!inverseModel) {
         console.error('未找到', modelName, propertyName);
         return;
       }
