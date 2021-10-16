@@ -1,7 +1,9 @@
 name: deploy-check
 
-default:
-  shell: bash
+defaults:
+  run:
+    shell: bash
+    working-directory: scripts
 
 on:
   push:
