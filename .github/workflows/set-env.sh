@@ -1,5 +1,5 @@
 #!/bin/bash
-set -o errexit
+
 if [[ -n $GITHUB_BASE_REF ]]; then
   echo "Fetching Base Commit from GitHub"
   echo "NX_BASE=remotes/origin/$GITHUB_BASE_REF" >>$GITHUB_ENV
