@@ -42,10 +42,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Yarn Cache
-      - uses: actions/cache@v2
+        uses: actions/cache@v2
         id: yarn-cache
         with:
           path: ./node_modules
@@ -60,10 +61,11 @@ jobs:
     needs: [install]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Yarn Cache
-      - uses: actions/cache@v2
+        uses: actions/cache@v2
         id: yarn-cache
         with:
           path: ./node_modules
@@ -91,10 +93,11 @@ jobs:
     needs: [install]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Yarn Cache
-      - uses: actions/cache@v2
+        uses: actions/cache@v2
         id: yarn-cache
         with:
           path: ./node_modules
@@ -109,6 +112,10 @@ jobs:
           key: dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
           restore-keys: |
             dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-
+
+      - name: Setup Environment Variables
+        shell: bash
+        run: sh .github/workflows/set-env.sh
 
       - name: Affected Build
         shell: bash
@@ -118,10 +125,11 @@ jobs:
     needs: [affected_e2e, affected_build]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Yarn Cache
-      - uses: actions/cache@v2
+        uses: actions/cache@v2
         id: yarn-cache
         with:
           path: ./node_modules
@@ -136,6 +144,10 @@ jobs:
           key: dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
           restore-keys: |
             dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-
+
+      - name: Setup Environment Variables
+        shell: bash
+        run: sh .github/workflows/set-env.sh
 
       - name: update last-deploy
         shell: bash
