@@ -52,6 +52,7 @@ jobs:
           path: ./node_modules
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
           restore-keys: |
+            ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
             ${{ runner.os }}-yarn-
 
       - name: Install
@@ -71,6 +72,7 @@ jobs:
           path: ./node_modules
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
           restore-keys: |
+            ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
             ${{ runner.os }}-yarn-
 
       - uses: actions/cache@v2
@@ -79,6 +81,7 @@ jobs:
           path: dist/ci
           key: dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
           restore-keys: |
+            dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
             dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-
 
       - name: Setup Environment Variables
@@ -103,6 +106,7 @@ jobs:
           path: ./node_modules
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
           restore-keys: |
+            ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
             ${{ runner.os }}-yarn-
 
       - uses: actions/cache@v2
@@ -111,6 +115,7 @@ jobs:
           path: dist/ci
           key: dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
           restore-keys: |
+            dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
             dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-
 
       - name: Setup Environment Variables
@@ -135,6 +140,7 @@ jobs:
           path: ./node_modules
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
           restore-keys: |
+            ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
             ${{ runner.os }}-yarn-
 
       - uses: actions/cache@v2
@@ -143,6 +149,7 @@ jobs:
           path: dist/ci
           key: dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
           restore-keys: |
+            dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
             dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-
 
       - name: Setup Environment Variables
