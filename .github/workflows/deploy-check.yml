@@ -38,7 +38,7 @@ on:
 
 jobs:
   install:
-    name: Install dependencies
+    name: Install Dependencies
     runs-on: ubuntu-latest
 
     steps:
@@ -59,6 +59,7 @@ jobs:
         run: yarn install --frozen-lockfile --non-interactive
 
   affected_e2e:
+    name: Affected E2E
     needs: [install]
     runs-on: ubuntu-latest
     steps:
@@ -93,6 +94,7 @@ jobs:
         run: env && yarn affected:e2e --base=$NX_BASE --parallel --configuration production --headless
 
   affected_build:
+    name: Affected Build
     needs: [install]
     runs-on: ubuntu-latest
     steps:
@@ -127,6 +129,7 @@ jobs:
         run: yarn affected:build --base=$NX_BASE --parallel --configuration production
 
   deploy:
+    name: Deploy
     needs: [affected_e2e, affected_build]
     runs-on: ubuntu-latest
     steps:
