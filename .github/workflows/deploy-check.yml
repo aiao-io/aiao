@@ -1,10 +1,5 @@
 name: deploy-check
 
-defaults:
-  run:
-    shell: bash
-    working-directory: scripts
-
 on:
   push:
     branches:
@@ -91,9 +86,11 @@ jobs:
             dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-
 
       - name: Setup Environment Variables
+        shell: bash
         run: bash .github/workflows/set-env.sh
 
       - name: Affected e2e
+        shell: bash
         run: env && yarn affected:e2e --base=$NX_BASE --parallel --configuration production --headless
 
   affected_build:
@@ -124,9 +121,11 @@ jobs:
             dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-
 
       - name: Setup Environment Variables
+        shell: bash
         run: bash .github/workflows/set-env.sh
 
       - name: Affected Build
+        shell: bash
         run: yarn affected:build --base=$NX_BASE --parallel --configuration production
 
   deploy:
@@ -157,7 +156,9 @@ jobs:
             dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-
 
       - name: Setup Environment Variables
+        shell: bash
         run: bash .github/workflows/set-env.sh
 
       - name: update last-deploy
+        shell: bash
         run: mkdir -p dist/ci && git rev-parse HEAD~1 > dist/ci/last-deploy.txt
