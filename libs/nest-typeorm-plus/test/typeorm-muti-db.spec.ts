@@ -3,13 +3,13 @@ import './hotfix-nestjs-rxjs-7';
 
 import { config } from 'dotenv';
 import { env } from 'process';
-import { ConnectionOptions } from 'typeorm';
+import { ConnectionOptions, Repository } from 'typeorm';
 
-import { SequelizeRepository } from '@aiao/typeorm-plus';
 import { Controller, INestApplication, Module } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
+import { InjectRepository, TypeOrmModule } from '@nestjs/typeorm';
 
-import { AiaoTypeormPlusModule, InjectSequlizeRepository } from '../src';
+import { InjectSequlizeRepository } from '../src';
 import { PostCategory } from './post-category.entity';
 import { Post } from './post.entity';
 
@@ -31,25 +31,32 @@ export const baseOptions: ConnectionOptions = {
   dropSchema: true
 };
 
+export const connectOptions: ConnectionOptions = {
+  name: 'db2',
+  ...baseOptions,
+  database: 'test2'
+};
+
 @Controller()
 export class TestService {
-  constructor(
-    @InjectSequlizeRepository(Post) public post: SequelizeRepository<Post>,
-    @InjectSequlizeRepository(PostCategory) public postCategory: SequelizeRepository<PostCategory>
-  ) {}
+  constructor(@InjectRepository(Post) public post: Repository<Post>) {}
 }
 @Module({
-  imports: [AiaoTypeormPlusModule.forFeature([Post, PostCategory])],
+  imports: [TypeOrmModule.forFeature([Post, PostCategory]), TypeOrmModule.forFeature([ PostCategory], 'db2')],
   providers: [TestService]
 })
 export class DBModule {}
 
 @Module({
-  imports: [DBModule, AiaoTypeormPlusModule.forRoot({ ...baseOptions, entities: [] })]
+  imports: [
+    DBModule,
+    TypeOrmModule.forRoot({ ...baseOptions, entities: [Post, PostCategory] }),
+    TypeOrmModule.forRoot({ ...connectOptions, entities: [Post, PostCategory] })
+  ]
 })
 export class AppModule {}
 
-describe('单库测试', () => {
+describe('typeorm 多库测试', () => {
   let app: INestApplication;
   let testService: TestService;
 
@@ -68,16 +75,8 @@ describe('单库测试', () => {
   });
 
   it(`写入一对多关系`, async () => {
-    const postCat = await testService.postCategory.create({ name: 'cat' });
-    await testService.post.create({
-      name: 'post',
-      categoryId: postCat.id
-    });
-    const post = await testService.post.findOne({ include: ['category'] });
-    expect(post).toBeTruthy();
-    if (post) {
-      expect(post.name).toEqual('post');
-      expect(post.categoryId).toEqual(postCat.id);
-    }
+    const postCat = await testService.post.create({ name: 'cat' });
+    console.log(postCat);
+    expect(postCat).toBeTruthy();
   });
 });
