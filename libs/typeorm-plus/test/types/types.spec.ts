@@ -15,10 +15,9 @@ describe('one-to-one', () => {
     const options: ConnectionOptions = { ...baseOptions, entities: [PostgresType] };
     connection = await createConnection(options);
     postgresTypeRepository = connection.getRepository(PostgresType);
-    typeormPlus = new TypeormPlus();
-    typeormPlus.addConnection(options, connection);
+    typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
-    postgresTypeSequelizeRepository = typeormPlus.getSequelizeRepository(PostgresType, connection);
+    postgresTypeSequelizeRepository = typeormPlus.getSequelizeRepository(PostgresType);
     await sleep(500);
   });
   afterAll(async () => {

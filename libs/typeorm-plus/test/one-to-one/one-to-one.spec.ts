@@ -16,8 +16,7 @@ describe('one-to-one', () => {
     const options: ConnectionOptions = { ...baseOptions, entities: [User, Profile] };
     connection = await createConnection(options);
     userRepository = connection.getRepository(User);
-    typeormPlus = new TypeormPlus();
-    typeormPlus.addConnection(options, connection);
+    typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
     userSequelizeRepository = typeormPlus.getSequelizeRepository(User);
     await sleep(1000);

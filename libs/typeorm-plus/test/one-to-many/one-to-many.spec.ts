@@ -16,8 +16,7 @@ describe('one-to-many', () => {
     const options: ConnectionOptions = { ...baseOptions, entities: [Post, PostCategory] };
     connection = await createConnection(options);
     postRepository = connection.getRepository(Post);
-    typeormPlus = new TypeormPlus();
-    typeormPlus.addConnection(options, connection);
+    typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
     postSequelizeRepository = typeormPlus.getSequelizeRepository(Post);
     await sleep(1000);

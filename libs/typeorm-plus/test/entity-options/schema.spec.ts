@@ -31,8 +31,7 @@ describe('schema', () => {
     const options: ConnectionOptions = { ...baseOptions, entities: [SchemaEntity] };
     connection = await createConnection(options);
     entityRepository = connection.getRepository(SchemaEntity);
-    typeormPlus = new TypeormPlus();
-    typeormPlus.addConnection(options, connection);
+    typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
     entitySequelizeRepository = typeormPlus.getSequelizeRepository(SchemaEntity);
     await sleep(500);

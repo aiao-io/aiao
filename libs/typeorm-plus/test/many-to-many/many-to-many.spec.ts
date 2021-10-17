@@ -16,8 +16,7 @@ describe('many-to-many', () => {
     const options: ConnectionOptions = { ...baseOptions, entities: [Post, PostImage] };
     connection = await createConnection(options);
     postRepository = connection.getRepository(Post);
-    typeormPlus = new TypeormPlus();
-    typeormPlus.addConnection(options, connection);
+    typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
     postSequelizeRepository = typeormPlus.getSequelizeRepository(Post);
   });
