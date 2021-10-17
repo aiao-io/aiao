@@ -1,13 +1,13 @@
 import { Connection, ConnectionOptions, createConnection, Repository } from 'typeorm';
 
-import { SequelizeRepository, TypeormPlusNew } from '../../src';
+import { SequelizeRepository, TypeormPlus } from '../../src';
 import { baseOptions, sleep } from '../test-helper';
 import { PostImage } from './post-image.entity';
 import { Post } from './post.entity';
 
 describe('many-to-many', () => {
   let connection: Connection;
-  let typeormPlus: TypeormPlusNew;
+  let typeormPlus: TypeormPlus;
 
   let postRepository: Repository<Post>;
   let postSequelizeRepository: SequelizeRepository<Post>;
@@ -16,7 +16,7 @@ describe('many-to-many', () => {
     const options: ConnectionOptions = { ...baseOptions, entities: [Post, PostImage] };
     connection = await createConnection(options);
     postRepository = connection.getRepository(Post);
-    typeormPlus = new TypeormPlusNew();
+    typeormPlus = new TypeormPlus();
     typeormPlus.addConnection(options, connection);
     typeormPlus.init();
     postSequelizeRepository = typeormPlus.getSequelizeRepository(Post);

@@ -1,6 +1,6 @@
 import { Repository } from 'typeorm';
 
-import { TypeormPlusNew } from '@aiao/typeorm-plus';
+import { TypeormPlus } from '@aiao/typeorm-plus';
 import { DynamicModule, Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
@@ -14,7 +14,7 @@ import { getTypeOrmPlusConnectionToken } from './utils';
 export class AiaoNestTypeormPlusCoreModule {
   static connectionEntities = new Map<string, Set<Repository<any>>>();
 
-  constructor(@InjectTypeormPlus() private typeormPlus: TypeormPlusNew) {}
+  constructor(@InjectTypeormPlus() private typeormPlus: TypeormPlus) {}
 
   static addEntities(entities: any[] = [], connection?: ConnectionOptions) {
     const token = getTypeOrmPlusConnectionToken(connection) as string;

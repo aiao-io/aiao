@@ -1,12 +1,12 @@
 import { Connection, ConnectionOptions, createConnection, Repository } from 'typeorm';
 
-import { SequelizeRepository, TypeormPlusNew } from '../../src';
+import { SequelizeRepository, TypeormPlus } from '../../src';
 import { baseOptions, sleep } from '../test-helper';
 import { PostgresType, SampleEnum } from './postgres-type.entity';
 
 describe('one-to-one', () => {
   let connection: Connection;
-  let typeormPlus: TypeormPlusNew;
+  let typeormPlus: TypeormPlus;
 
   let postgresTypeRepository: Repository<PostgresType>;
   let postgresTypeSequelizeRepository: SequelizeRepository<PostgresType>;
@@ -15,7 +15,7 @@ describe('one-to-one', () => {
     const options: ConnectionOptions = { ...baseOptions, entities: [PostgresType] };
     connection = await createConnection(options);
     postgresTypeRepository = connection.getRepository(PostgresType);
-    typeormPlus = new TypeormPlusNew();
+    typeormPlus = new TypeormPlus();
     typeormPlus.addConnection(options, connection);
     typeormPlus.init();
     postgresTypeSequelizeRepository = typeormPlus.getSequelizeRepository(PostgresType, connection);

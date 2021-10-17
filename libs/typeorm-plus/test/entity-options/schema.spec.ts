@@ -8,7 +8,7 @@ import {
   Repository
 } from 'typeorm';
 
-import { SequelizeRepository, TypeormPlusNew } from '../../src';
+import { SequelizeRepository, TypeormPlus } from '../../src';
 import { baseOptions, sleep } from '../test-helper';
 
 @Entity({ schema: 'schema' })
@@ -22,7 +22,7 @@ class SchemaEntity {
 
 describe('schema', () => {
   let connection: Connection;
-  let typeormPlus: TypeormPlusNew;
+  let typeormPlus: TypeormPlus;
 
   let entityRepository: Repository<SchemaEntity>;
   let entitySequelizeRepository: SequelizeRepository<SchemaEntity>;
@@ -31,7 +31,7 @@ describe('schema', () => {
     const options: ConnectionOptions = { ...baseOptions, entities: [SchemaEntity] };
     connection = await createConnection(options);
     entityRepository = connection.getRepository(SchemaEntity);
-    typeormPlus = new TypeormPlusNew();
+    typeormPlus = new TypeormPlus();
     typeormPlus.addConnection(options, connection);
     typeormPlus.init();
     entitySequelizeRepository = typeormPlus.getSequelizeRepository(SchemaEntity);

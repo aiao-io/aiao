@@ -1,6 +1,6 @@
 import { Connection, ConnectionOptions } from 'typeorm';
 
-import { TypeormPlusNew } from '@aiao/typeorm-plus';
+import { TypeormPlus } from '@aiao/typeorm-plus';
 import { getConnectionToken } from '@nestjs/typeorm';
 
 import { EntityClassOrSchema, getSequelizeRepositoryToken, NEST_TYPEORM_PLUS } from './interface';
@@ -13,7 +13,7 @@ export const createSequelizeRepositoryProviders = (
     const provide = getSequelizeRepositoryToken(entity, connection);
     return {
       provide,
-      useFactory: async (typeormPlus: TypeormPlusNew, conn: Connection) =>
+      useFactory: async (typeormPlus: TypeormPlus, conn: Connection) =>
         typeormPlus.getSequelizeRepository(entity, conn),
       inject: [NEST_TYPEORM_PLUS, getConnectionToken(connection)]
     };

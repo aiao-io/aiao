@@ -4,7 +4,7 @@ import { Connection, ConnectionOptions, EntityMetadata } from 'typeorm';
 import { EntityType, SequelizeRepository } from './interface';
 import { TypeormSequelizeHelper } from './typeorm-sequelize.helper';
 
-export class TypeormPlusNew {
+export class TypeormPlus {
   #connectionMap: Map<Connection, TypeormSequelizeHelper> = new Map();
 
   addConnection(options: Partial<ConnectionOptions>, connection: Connection) {

@@ -1,6 +1,6 @@
 import { Connection } from 'typeorm';
 
-import { TypeormPlusNew } from '@aiao/typeorm-plus';
+import { TypeormPlus } from '@aiao/typeorm-plus';
 import { Provider } from '@nestjs/common';
 import { getConnectionToken } from '@nestjs/typeorm';
 
@@ -15,7 +15,7 @@ export function createTypeormPlusProvider(connection?: ConnectionOptions): Provi
   return {
     provide: NEST_TYPEORM_PLUS,
     useFactory: async (config: AiaoTypeormPlusModuleConfig, conn: Connection) => {
-      const typeormPlus = new TypeormPlusNew();
+      const typeormPlus = new TypeormPlus();
       typeormPlus.addConnection(config, conn);
       return typeormPlus;
     },
