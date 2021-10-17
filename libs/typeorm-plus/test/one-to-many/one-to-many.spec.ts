@@ -1,13 +1,13 @@
 import { Connection, ConnectionOptions, createConnection, Repository } from 'typeorm';
 
-import { SequelizeRepository, TypeormPlus } from '../../src';
-import { baseOptions } from '../test-helper';
+import { SequelizeRepository, TypeormPlusNew } from '../../src';
+import { baseOptions, sleep } from '../test-helper';
 import { PostCategory } from './post-category.entity';
 import { Post } from './post.entity';
 
 describe('one-to-many', () => {
   let connection: Connection;
-  let typeormPlus: TypeormPlus;
+  let typeormPlus: TypeormPlusNew;
 
   let postRepository: Repository<Post>;
   let postSequelizeRepository: SequelizeRepository<Post>;
@@ -15,11 +15,12 @@ describe('one-to-many', () => {
   beforeAll(async () => {
     const options: ConnectionOptions = { ...baseOptions, entities: [Post, PostCategory] };
     connection = await createConnection(options);
-
     postRepository = connection.getRepository(Post);
-    typeormPlus = new TypeormPlus(options, connection);
+    typeormPlus = new TypeormPlusNew();
+    typeormPlus.addConnection(options, connection);
     typeormPlus.init();
-    postSequelizeRepository = typeormPlus.sequelize.model('Post') as any;
+    postSequelizeRepository = typeormPlus.getRepository(Post);
+    await sleep(1000);
   });
 
   afterAll(async () => {

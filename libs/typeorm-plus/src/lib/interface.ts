@@ -23,6 +23,10 @@ import type {
 } from 'sequelize';
 
 import type { Col, Fn, Literal } from 'sequelize/types/lib/utils';
+import { DeepPartial, EntitySchema } from 'typeorm';
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type EntityType = Function | string | EntitySchema<any>;
 
 export interface SequelizeRepository<Model> extends ModelType<Model> {
   findAll<M extends Model>(options?: FindOptions<M>): Promise<Model[]>;
@@ -55,7 +59,7 @@ export interface SequelizeRepository<Model> extends ModelType<Model> {
   build<M extends Model>(record?: M, options?: BuildOptions): Model;
   bulkBuild<M extends Model>(record?: ReadonlyArray<M>, options?: BuildOptions): Model[];
 
-  create<M extends Model, O extends CreateOptions<M> = CreateOptions<M>>(
+  create<M extends DeepPartial<Model>, O extends CreateOptions<M> = CreateOptions<M>>(
     values?: M,
     options?: O
   ): Promise<O extends { returning: false } | { ignoreDuplicates: true } ? void : Model>;
