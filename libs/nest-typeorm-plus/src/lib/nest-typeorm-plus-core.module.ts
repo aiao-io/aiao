@@ -1,12 +1,12 @@
 import { Repository } from 'typeorm';
 
-import { TypeormPlus } from '@aiao/typeorm-plus';
+import { TypeormPlusNew } from '@aiao/typeorm-plus';
 import { DynamicModule, Global, Module } from '@nestjs/common';
-import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { createTypeormPlusConnection } from './connection.provider';
 import { InjectTypeormPlus } from './decorators';
-import { ConnectionOptions, NEST_TYPEORM_PLUS_MODULE_CONFIG } from './interface';
+import { AiaoTypeormPlusModuleConfig, ConnectionOptions, NEST_TYPEORM_PLUS_MODULE_CONFIG } from './interface';
+import { createTypeormPlusProvider } from './typeorm-plus.provider';
 import { getTypeOrmPlusConnectionToken } from './utils';
 
 @Global()
@@ -14,32 +14,29 @@ import { getTypeOrmPlusConnectionToken } from './utils';
 export class AiaoNestTypeormPlusCoreModule {
   static connectionEntities = new Map<string, Set<Repository<any>>>();
 
-  constructor(@InjectTypeormPlus() private typeormPlus: TypeormPlus) {}
+  constructor(@InjectTypeormPlus() private typeormPlus: TypeormPlusNew) {}
 
   static addEntities(entities: any[] = [], connection?: ConnectionOptions) {
     const token = getTypeOrmPlusConnectionToken(connection) as string;
     if (!this.connectionEntities.has(token)) {
       this.connectionEntities.set(token, new Set());
     }
-    const connectionEntities = this.connectionEntities.get(token);
-    if (!connectionEntities) {
-      throw new Error(`connection not find`);
-    }
-    entities.forEach(entity => connectionEntities.add(entity));
-    return Array.from(connectionEntities);
+    const set = this.connectionEntities.get(token)!;
+    entities.forEach(entity => set.add(entity));
+    return Array.from(set);
   }
 
-  static forRoot(config: TypeOrmModuleOptions): DynamicModule {
+  static forRoot(config: AiaoTypeormPlusModuleConfig): DynamicModule {
     const entities: any = this.addEntities(config.entities, config as ConnectionOptions);
     config = { ...config, entities };
-    const connectionProvider = createTypeormPlusConnection(config as ConnectionOptions);
     const configProvider = { provide: NEST_TYPEORM_PLUS_MODULE_CONFIG, useValue: config };
+    const typeormPlusProvider = createTypeormPlusProvider(config as any);
 
     return {
       module: AiaoNestTypeormPlusCoreModule,
       imports: [TypeOrmModule.forRoot(config)],
-      providers: [configProvider, connectionProvider],
-      exports: [connectionProvider]
+      providers: [configProvider, typeormPlusProvider],
+      exports: [typeormPlusProvider]
     };
   }
 

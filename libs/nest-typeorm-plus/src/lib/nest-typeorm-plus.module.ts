@@ -20,6 +20,7 @@ export class AiaoTypeormPlusModule {
   static forFeature(entities: EntityClassOrSchema[] = [], connection?: ConnectionOptions): DynamicModule {
     AiaoNestTypeormPlusCoreModule.addEntities(entities, connection);
     const entityProvides = createSequelizeProviders(entities, connection);
+
     return {
       module: AiaoTypeormPlusModule,
       imports: [TypeOrmModule.forFeature(entities, connection)],

@@ -1,4 +1,5 @@
-import { Connection, ConnectionOptions } from 'typeorm';
+import { ModelType } from 'sequelize/types';
+import { Connection, ConnectionOptions, EntityMetadata } from 'typeorm';
 
 import { EntityType, SequelizeRepository } from './interface';
 import { TypeormSequelizeHelper } from './typeorm-sequelize.helper';
@@ -36,6 +37,15 @@ export class TypeormPlusNew {
       throw new Error(`entity not found: ${entity}`);
     }
     return back;
+  }
+
+  addMetadata(meta: EntityMetadata, connection?: Connection): ModelType {
+    const connectionArr = Array.from(this.#connectionMap);
+    const find = connectionArr.find(([conn]) => conn === connection);
+    if (!find) {
+      throw new Error('');
+    }
+    return find[1].addMetadata(meta);
   }
 
   init() {
