@@ -14,7 +14,7 @@ export class TypeormPlusNew {
     }
   }
 
-  getRepository<Entity>(entity: EntityType, connection?: Connection): SequelizeRepository<Entity> {
+  getSequelizeRepository<Entity>(entity: EntityType, connection?: Connection): SequelizeRepository<Entity> {
     const connectionArr = Array.from(this.#connectionMap);
     let back: SequelizeRepository<Entity> | undefined;
 

@@ -19,7 +19,7 @@ describe('many-to-many', () => {
     typeormPlus = new TypeormPlusNew();
     typeormPlus.addConnection(options, connection);
     typeormPlus.init();
-    postSequelizeRepository = typeormPlus.getRepository(Post);
+    postSequelizeRepository = typeormPlus.getSequelizeRepository(Post);
   });
   afterAll(async () => {
     await connection.close();

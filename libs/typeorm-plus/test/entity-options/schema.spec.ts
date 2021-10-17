@@ -34,7 +34,7 @@ describe('schema', () => {
     typeormPlus = new TypeormPlusNew();
     typeormPlus.addConnection(options, connection);
     typeormPlus.init();
-    entitySequelizeRepository = typeormPlus.getRepository(SchemaEntity);
+    entitySequelizeRepository = typeormPlus.getSequelizeRepository(SchemaEntity);
     await sleep(500);
   });
   afterAll(async () => {

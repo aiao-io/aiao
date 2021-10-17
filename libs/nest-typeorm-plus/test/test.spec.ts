@@ -31,6 +31,12 @@ export const baseOptions: ConnectionOptions = {
   dropSchema: true
 };
 
+export const connectOptions: ConnectionOptions = {
+  name: 'db2',
+  ...baseOptions,
+  database: 'test2'
+};
+
 @Controller()
 export class TestService {
   constructor(
@@ -45,13 +51,7 @@ export class TestService {
 export class DBModule {}
 
 @Module({
-  imports: [
-    DBModule,
-    AiaoTypeormPlusModule.forRoot({
-      ...baseOptions,
-      entities: []
-    })
-  ]
+  imports: [DBModule, AiaoTypeormPlusModule.forRoot({ ...baseOptions, entities: [] })]
 })
 export class AppModule {}
 

@@ -1,4 +1,3 @@
-export { TypeormPlus } from './lib/TypeormPlus';
 export { TypeormPlusNew } from './lib/typeorm-plus';
 export { TypeormSequelizeHelper } from './lib/typeorm-sequelize.helper';
 export { SequelizeRepository } from './lib/interface';

@@ -10,5 +10,5 @@ export function getTypeOrmPlusConnectionToken(connection?: ConnectionOptions) {
     connectionName = connection.name;
   }
 
-  return `${connectionName}Connection_typeorm_plus`;
+  return `${connectionName}_connection_typeorm_plus`;
 }

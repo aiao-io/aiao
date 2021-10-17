@@ -18,6 +18,7 @@ export class AiaoNestTypeormPlusCoreModule {
 
   static addEntities(entities: any[] = [], connection?: ConnectionOptions) {
     const token = getTypeOrmPlusConnectionToken(connection) as string;
+    console.log('token', token);
     if (!this.connectionEntities.has(token)) {
       this.connectionEntities.set(token, new Set());
     }
