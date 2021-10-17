@@ -112,6 +112,10 @@ jobs:
             dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
             dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-
 
+      - name: Cypress Install
+        shell: bash
+        run: yarn cypress install
+
       - name: Setup Environment Variables
         shell: bash
         run: |
