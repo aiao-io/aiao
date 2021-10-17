@@ -1,4 +1,4 @@
-name: deploy-check
+name: ci
 
 on:
   push:
