@@ -42,7 +42,7 @@ export class TestService {
   constructor(@InjectRepository(Post) public post: Repository<Post>) {}
 }
 @Module({
-  imports: [TypeOrmModule.forFeature([Post, PostCategory]), TypeOrmModule.forFeature([ PostCategory], 'db2')],
+  imports: [TypeOrmModule.forFeature([Post, PostCategory]), TypeOrmModule.forFeature([PostCategory], 'db2')],
   providers: [TestService]
 })
 export class DBModule {}
