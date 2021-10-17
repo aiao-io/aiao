@@ -5,9 +5,10 @@ import { config } from 'dotenv';
 import { env } from 'process';
 import { ConnectionOptions, Repository } from 'typeorm';
 
+import { SequelizeRepository } from '@aiao/typeorm-plus';
 import { Controller, INestApplication, Module } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import { InjectRepository, TypeOrmModule } from '@nestjs/typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 
 import { AiaoTypeormPlusModule, InjectSequlizeRepository } from '../src';
 import { PostCategory } from './post-category.entity';
@@ -39,14 +40,25 @@ export const connectOptions: ConnectionOptions = {
 
 @Controller()
 export class TestService {
-  constructor(@InjectRepository(Post) public post: Repository<Post>) {}
+  constructor(
+    @InjectSequlizeRepository(Post) public post: SequelizeRepository<Post>,
+    @InjectSequlizeRepository(PostCategory) public postCategory: SequelizeRepository<PostCategory>
+  ) {}
 }
+@Controller()
+export class TestDB2Service {
+  constructor(
+    @InjectSequlizeRepository(Post, 'db2') public post: SequelizeRepository<Post>,
+    @InjectSequlizeRepository(PostCategory, 'db2') public postCategory: SequelizeRepository<PostCategory>
+  ) {}
+}
+
 @Module({
   imports: [
     AiaoTypeormPlusModule.forFeature([Post, PostCategory]),
     AiaoTypeormPlusModule.forFeature([Post, PostCategory], 'db2')
   ],
-  providers: [TestService]
+  providers: [TestService, TestDB2Service]
 })
 export class DBModule {}
 
@@ -62,6 +74,7 @@ export class AppModule {}
 fdescribe('typeormPlus 多库测试', () => {
   let app: INestApplication;
   let testService: TestService;
+  let testDB2Service: TestDB2Service;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -70,6 +83,7 @@ fdescribe('typeormPlus 多库测试', () => {
 
     app = module.createNestApplication();
     testService = app.get(TestService);
+    testDB2Service = app.get(TestDB2Service);
     await app.init();
   });
 
@@ -77,9 +91,27 @@ fdescribe('typeormPlus 多库测试', () => {
     await app.close();
   });
 
-  fit(`写入一对多关系`, async () => {
-    const postCat = await testService.post.create({ name: 'cat' });
-    console.log(postCat);
-    expect(postCat).toBeTruthy();
+  fit(`写入一对多关系 db default`, async () => {
+    const postCat = await testService.postCategory.create({ name: 'cat' });
+    await testService.post.create({
+      name: 'post',
+      categoryId: postCat.id
+    });
+    const post = await testService.post.findOne({ include: ['category'] });
+    expect(post).toBeTruthy();
+    expect(post!.name).toEqual('post');
+    expect(post!.categoryId).toEqual(postCat.id);
+  });
+
+  fit(`写入一对多关系 db2`, async () => {
+    const postCat = await testService.postCategory.create({ name: 'cat' });
+    await testService.post.create({
+      name: 'post',
+      categoryId: postCat.id
+    });
+    const post = await testService.post.findOne({ include: ['category'] });
+    expect(post).toBeTruthy();
+    expect(post!.name).toEqual('post');
+    expect(post!.categoryId).toEqual(postCat.id);
   });
 });
