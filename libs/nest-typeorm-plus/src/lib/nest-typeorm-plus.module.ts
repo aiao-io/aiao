@@ -23,11 +23,8 @@ export class AiaoTypeormPlusModule {
     entities: EntityClassOrSchema[] = [],
     connection?: Connection | ConnectionOptions | string
   ): DynamicModule {
-    if (!connection) {
-      AiaoNestTypeormPlusCoreModule.addEntities(entities, connection);
-    }
+    AiaoNestTypeormPlusCoreModule.addEntities(entities, connection);
     const sequelizeRepositories = createSequelizeRepositoryProviders(entities, connection);
-    // const feature = createTypeormPlusFeatureProvider(entities, connection);
     return {
       module: AiaoTypeormPlusModule,
       imports: [TypeOrmModule.forFeature(entities, connection)],
