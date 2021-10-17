@@ -27,9 +27,7 @@ export class AiaoTypeormPlusModule {
       AiaoNestTypeormPlusCoreModule.addEntities(entities, connection);
     }
     const sequelizeRepositories = createSequelizeRepositoryProviders(entities, connection);
-
     // const feature = createTypeormPlusFeatureProvider(entities, connection);
-
     return {
       module: AiaoTypeormPlusModule,
       imports: [TypeOrmModule.forFeature(entities, connection)],

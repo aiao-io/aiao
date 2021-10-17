@@ -1,7 +1,7 @@
 import { isString } from 'lodash';
 import { Connection, ConnectionOptions } from 'typeorm';
 
-import { getRepositoryToken, InjectConnection } from '@nestjs/typeorm';
+import { getConnectionToken, getRepositoryToken } from '@nestjs/typeorm';
 
 import { EntityClassOrSchema } from './interface';
 
@@ -23,5 +23,5 @@ export function getSequelizeRepositoryToken(
 }
 
 export function getTypeormPlusToken(connection?: Connection | ConnectionOptions | string): string {
-  return `${InjectConnection(connection)}_SEQUELIZE_CONNECTION`;
+  return `${getConnectionToken(connection)}_SEQUELIZE_CONNECTION`;
 }
