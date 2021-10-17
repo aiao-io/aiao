@@ -65,6 +65,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Yarn Cache
         uses: actions/cache@v2
@@ -111,6 +113,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Yarn Cache
         uses: actions/cache@v2
@@ -154,9 +158,12 @@ jobs:
     name: Deploy
     needs: [affected_e2e, affected_build]
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Yarn Cache
         uses: actions/cache@v2
