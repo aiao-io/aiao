@@ -8,13 +8,7 @@ import { EntityClassOrSchema, getSequelizeRepositoryToken, NEST_TYPEORM_PLUS } f
 export const InjectSequlizeRepository = (
   entity: EntityClassOrSchema,
   connection?: Connection | ConnectionOptions | string
-) => {
-  // TODO: featrue
-  if (connection) {
-    console.log(connection);
-  }
-  return Inject(getSequelizeRepositoryToken(entity));
-};
+) => Inject(getSequelizeRepositoryToken(entity, connection));
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const InjectTypeormPlus = () => Inject(NEST_TYPEORM_PLUS);

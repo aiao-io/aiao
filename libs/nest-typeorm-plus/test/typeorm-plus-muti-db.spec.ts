@@ -44,7 +44,7 @@ export class TestService {
 @Module({
   imports: [
     AiaoTypeormPlusModule.forFeature([Post, PostCategory]),
-    AiaoTypeormPlusModule.forFeature([PostCategory], 'db2')
+    AiaoTypeormPlusModule.forFeature([Post, PostCategory], 'db2')
   ],
   providers: [TestService]
 })
@@ -59,7 +59,7 @@ export class DBModule {}
 })
 export class AppModule {}
 
-describe('typeormPlus 多库测试', () => {
+fdescribe('typeormPlus 多库测试', () => {
   let app: INestApplication;
   let testService: TestService;
 

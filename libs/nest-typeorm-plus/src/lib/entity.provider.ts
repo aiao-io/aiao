@@ -14,7 +14,7 @@ export const createSequelizeRepositoryProviders = (
     return {
       provide,
       useFactory: async (typeormPlus: TypeormPlus, conn: Connection) =>
-        typeormPlus.getSequelizeRepository(entity, conn),
+        typeormPlus.getSequelizeRepository(entity),
       inject: [NEST_TYPEORM_PLUS, getConnectionToken(connection)]
     };
   });

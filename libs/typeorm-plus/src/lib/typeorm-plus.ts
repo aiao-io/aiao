@@ -1,54 +1,48 @@
-import { ModelType } from 'sequelize/types';
-import { Connection, ConnectionOptions, EntityMetadata } from 'typeorm';
+import { ModelType, Sequelize } from 'sequelize';
+import { Connection, ConnectionOptions, EntityMetadata, EntitySchema } from 'typeorm';
 
-import { EntityType, SequelizeRepository } from './interface';
-import { TypeormSequelizeHelper } from './typeorm-sequelize.helper';
+import { initRepository } from './init-repository';
+import { SequelizeRepository } from './interface';
+import { translateTypeOrmEntity } from './translate-typeorm-entity';
+import { translateTypeormOptions } from './translate-typeorm-options';
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+type EntityKeys = Function | string | EntitySchema<any>;
 
 export class TypeormPlus {
-  #connectionMap: Map<Connection, TypeormSequelizeHelper> = new Map();
+  isInit = false;
+  protected entitiyMetadatas = new Set<EntityMetadata>();
+  protected entitiyMap = new Map<EntityKeys, string>();
+  sequelize: Sequelize;
 
-  addConnection(options: Partial<ConnectionOptions>, connection: Connection) {
-    if (connection && !this.#connectionMap.has(connection)) {
-      const helper = new TypeormSequelizeHelper(options, connection);
-      this.#connectionMap.set(connection, helper);
-    }
+  constructor(options: Partial<ConnectionOptions>, connection: Connection) {
+    const opts = translateTypeormOptions(options);
+    this.sequelize = new Sequelize(opts);
+    connection.entityMetadatas.forEach(d => this.addMetadata(d));
   }
 
-  getSequelizeRepository<Entity>(entity: EntityType, connection?: Connection): SequelizeRepository<Entity> {
-    const connectionArr = Array.from(this.#connectionMap);
-    let back: SequelizeRepository<Entity> | undefined;
-
-    for (let i = 0; i < connectionArr.length; i++) {
-      const [conn, helper] = connectionArr[i];
-      if (connection) {
-        if (conn === connection) {
-          back = helper.getRepository(entity);
-          break;
-        }
-      } else {
-        back = helper.getRepository(entity);
-        if (back) {
-          break;
-        }
-      }
+  getSequelizeRepository<Entity>(entity: EntityKeys): SequelizeRepository<Entity> {
+    if (!this.isInit) {
+      this.init();
     }
-
-    if (!back) {
-      throw new Error(`entity not found: ${entity}`);
+    if (this.entitiyMap.has(entity)) {
+      const name = this.entitiyMap.get(entity)!;
+      return this.sequelize.model(name) as any;
     }
-    return back;
-  }
-
-  addMetadata(meta: EntityMetadata, connection?: Connection): ModelType {
-    const connectionArr = Array.from(this.#connectionMap);
-    const find = connectionArr.find(([conn]) => conn === connection);
-    if (!find) {
-      throw new Error('');
-    }
-    return find[1].addMetadata(meta);
+    throw new Error(`Model ${entity} not found`);
   }
 
   init() {
-    this.#connectionMap.forEach(helper => helper.init());
+    if (!this.isInit) {
+      this.isInit = true;
+      this.entitiyMetadatas.forEach(metadata => initRepository(metadata, this.sequelize));
+    }
+  }
+
+  addMetadata(meta: EntityMetadata): ModelType {
+    this.entitiyMetadatas.add(meta);
+    const { modelName, attributes, options } = translateTypeOrmEntity(meta);
+    this.entitiyMap.set(meta.target, modelName);
+    return this.sequelize.define(modelName, attributes, options);
   }
 }
