@@ -22,7 +22,6 @@ export class TypeormPlus {
   }
 
   getSequelizeRepository<Entity>(entity: EntityKeys): SequelizeRepository<Entity> {
-    console.log('getSequelizeRepository', entity);
     if (!this.isInit) {
       this.init();
     }

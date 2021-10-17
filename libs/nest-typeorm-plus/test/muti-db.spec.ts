@@ -3,12 +3,11 @@ import './hotfix-nestjs-rxjs-7';
 
 import { config } from 'dotenv';
 import { env } from 'process';
-import { ConnectionOptions, Repository } from 'typeorm';
+import { ConnectionOptions } from 'typeorm';
 
 import { SequelizeRepository } from '@aiao/typeorm-plus';
 import { Controller, INestApplication, Module } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import { InjectRepository } from '@nestjs/typeorm';
 
 import { AiaoTypeormPlusModule, InjectSequlizeRepository } from '../src';
 import { PostCategory } from './post-category.entity';
