@@ -183,7 +183,7 @@
     "yargs": "^17.0.1"
   },
   "engines": {
-    "node": "14.x"
+    "node": ">=14.x"
   },
   "config": {
     "commitizen": {
