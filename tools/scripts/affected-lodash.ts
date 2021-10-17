@@ -3,7 +3,7 @@ import { exit } from 'process';
 import { Project } from 'ts-morph';
 import yargs from 'yargs';
 
-import { getAffectedFiles } from '../util/get-affected-files';
+// import { getAffectedFiles } from '../util/get-affected-files';
 import { prettierSync } from '../util/pretter';
 
 /**
@@ -12,6 +12,7 @@ import { prettierSync } from '../util/pretter';
  * @param path ts 文件路径
  */
 // TODO: angular 9 ivy 已经可以正常树摇 lodash, 待进一步测试
+// TODO: getAffectedFiles 需要重构
 const fixLodash = (paths: string[], mode: 'check' | 'write' = 'check') => {
   const ora = Ora();
   const project = new Project();
@@ -51,7 +52,8 @@ const options = yargs.option('mode', { type: 'string', choices: ['check', 'write
 
 const autoFixLodash = async () => {
   const { mode } = options;
-  const files = await getAffectedFiles(options);
+  // const files = await getAffectedFiles(options);
+  const files: any[] = [];
   const needFiles = files.filter(
     d =>
       d.endsWith('.ts') &&
