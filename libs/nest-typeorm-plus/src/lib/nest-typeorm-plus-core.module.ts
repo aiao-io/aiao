@@ -30,13 +30,13 @@ export class AiaoNestTypeormPlusCoreModule {
     const entities: any = this.addEntities(config.entities, config as Connection | ConnectionOptions | string);
     config = { ...config, entities };
     const configProvider = { provide: NEST_TYPEORM_PLUS_MODULE_CONFIG, useValue: config };
-    const typeormPlusProvider = createTypeormPlusProvider(config as any);
+    const typeormPlusProvider = createTypeormPlusProvider(config as ConnectionOptions);
 
     return {
       module: AiaoNestTypeormPlusCoreModule,
       imports: [TypeOrmModule.forRoot(config)],
       providers: [configProvider, typeormPlusProvider],
-      exports: [typeormPlusProvider]
+      exports: [configProvider, typeormPlusProvider]
     };
   }
 

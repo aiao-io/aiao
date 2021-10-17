@@ -10,10 +10,7 @@ import { getTypeormPlusToken } from './utils';
 export function createTypeormPlusProvider(connection?: Connection | ConnectionOptions | string): Provider {
   return {
     provide: getTypeormPlusToken(connection),
-    useFactory: async (config: AiaoTypeormPlusModuleConfig, conn: Connection) => {
-      const typeormPlus = new TypeormPlus(config, conn);
-      return typeormPlus;
-    },
+    useFactory: async (config: AiaoTypeormPlusModuleConfig, conn: Connection) => new TypeormPlus(config, conn),
     inject: [NEST_TYPEORM_PLUS_MODULE_CONFIG, getConnectionToken(connection)]
   };
 }

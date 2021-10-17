@@ -24,7 +24,7 @@ export class AiaoTypeormPlusModule {
     connection?: Connection | ConnectionOptions | string
   ): DynamicModule {
     if (!connection) {
-      AiaoNestTypeormPlusCoreModule.addEntities(entities);
+      AiaoNestTypeormPlusCoreModule.addEntities(entities, connection);
     }
     const sequelizeRepositories = createSequelizeRepositoryProviders(entities, connection);
 

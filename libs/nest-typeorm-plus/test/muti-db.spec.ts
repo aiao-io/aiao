@@ -71,7 +71,7 @@ export class DBModule {}
 })
 export class AppModule {}
 
-fdescribe('typeormPlus 多库测试', () => {
+describe('typeormPlus 多库测试', () => {
   let app: INestApplication;
   let testService: TestService;
   let testDB2Service: TestDB2Service;
@@ -91,7 +91,7 @@ fdescribe('typeormPlus 多库测试', () => {
     await app.close();
   });
 
-  fit(`写入一对多关系 db default`, async () => {
+  it(`写入一对多关系 db default`, async () => {
     const postCat = await testService.postCategory.create({ name: 'cat' });
     await testService.post.create({
       name: 'post',
@@ -103,15 +103,8 @@ fdescribe('typeormPlus 多库测试', () => {
     expect(post!.categoryId).toEqual(postCat.id);
   });
 
-  fit(`写入一对多关系 db2`, async () => {
-    const postCat = await testService.postCategory.create({ name: 'cat' });
-    await testService.post.create({
-      name: 'post',
-      categoryId: postCat.id
-    });
-    const post = await testService.post.findOne({ include: ['category'] });
-    expect(post).toBeTruthy();
-    expect(post!.name).toEqual('post');
-    expect(post!.categoryId).toEqual(postCat.id);
+  it(`写入一对多关系 db2`, async () => {
+    const postCat = await testDB2Service.postCategory.create({ name: 'cat2' });
+    expect(postCat.name).toEqual('cat2');
   });
 });
