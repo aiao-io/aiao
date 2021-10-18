@@ -1,7 +1,7 @@
 import { Connection, ConnectionOptions, createConnection, Repository } from 'typeorm';
 
 import { SequelizeRepository, TypeormPlus } from '../../src';
-import { baseOptions, sleep } from '../test-helper';
+import { baseOptions } from '../test-helper';
 import { Profile } from './profile.entity';
 import { User } from './user.entity';
 
@@ -19,7 +19,6 @@ describe('one-to-one', () => {
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
     userSequelizeRepository = typeormPlus.getSequelizeRepository(User);
-    await sleep(1000);
   });
 
   afterAll(async () => {

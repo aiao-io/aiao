@@ -1,7 +1,7 @@
 import { Connection, ConnectionOptions, createConnection, Repository } from 'typeorm';
 
 import { SequelizeRepository, TypeormPlus } from '../../src';
-import { baseOptions, sleep } from '../test-helper';
+import { baseOptions } from '../test-helper';
 import { PostCategory } from './post-category.entity';
 import { Post } from './post.entity';
 
@@ -19,7 +19,6 @@ describe('one-to-many', () => {
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
     postSequelizeRepository = typeormPlus.getSequelizeRepository(Post);
-    await sleep(1000);
   });
 
   afterAll(async () => {
