@@ -155,7 +155,7 @@ lint: &lint
 
 affected_test: &affected_test
   name: Afected test
-  command: sh .circleci/init-test-db.sh && yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage --skip-nx-cache
+  command: yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage --skip-nx-cache
 
 affected_build: &affected_build
   name: Affected build
@@ -243,6 +243,8 @@ jobs:
     steps:
       - checkout_and_cache
       - restore_cache: *test_cache
+      - run: sudo apt install postgresql-client
+      - run: sh .circleci/init-test-db.sh
       - run: *affected_test
       - save_cache: *save_test_cache
       - codecov_upload
@@ -277,6 +279,8 @@ jobs:
       - run: *lint
       # TEST
       - restore_cache: *test_cache
+      - run: sudo apt install postgresql-client
+      - run: sh .circleci/init-test-db.sh
       - run: *affected_test
       - codecov_upload
       - save_cache: *save_test_cache
