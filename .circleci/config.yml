@@ -243,8 +243,6 @@ jobs:
     steps:
       - checkout_and_cache
       - restore_cache: *test_cache
-      - run: sudo apt install postgresql-client
-      - run: sh .circleci/init-test-db.sh
       - run: *affected_test
       - save_cache: *save_test_cache
       - codecov_upload
@@ -279,8 +277,6 @@ jobs:
       - run: *lint
       # TEST
       - restore_cache: *test_cache
-      - run: sudo apt install postgresql-client
-      - run: sh .circleci/init-test-db.sh
       - run: *affected_test
       - codecov_upload
       - save_cache: *save_test_cache

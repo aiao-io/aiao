@@ -34,7 +34,7 @@ console.log('baseOptions', baseOptions);
 export const connectOptions: ConnectionOptions = {
   name: 'db2',
   ...baseOptions,
-  database: 'test2'
+  database: 'test'
 };
 
 @Controller()
@@ -99,13 +99,15 @@ describe('typeormPlus 多库测试', () => {
 
   it(`写入一对多关系 db default`, async () => {
     const postCat = await testService.postCategory.create({ name: 'cat' });
-    await testService.post.create({
+    const postCreate = await testService.post.create({
       name: 'post',
       categoryId: postCat.id
     });
-    const post = await testService.post.findOne({ include: ['category'] });
+
+    const post = await testService.post.findOne({ where: { id: postCreate.id }, include: ['category'] });
     expect(post).toBeTruthy();
     expect(post!.name).toEqual('post');
+    console.log('post', post!.categoryId);
     expect(post!.categoryId).toEqual(postCat.id);
   });
 
