@@ -17,7 +17,7 @@ describe('one-to-one', () => {
     postgresTypeRepository = connection.getRepository(PostgresType);
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
-    postgresTypeSequelizeRepository = typeormPlus.sequelize.model('PostgresType') as any;
+    postgresTypeSequelizeRepository = typeormPlus.getSequelizeRepository(PostgresType);
   });
   afterAll(async () => {
     await connection.close();

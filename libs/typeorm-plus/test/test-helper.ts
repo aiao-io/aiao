@@ -18,6 +18,7 @@ export const baseOptions: ConnectionOptions = {
   username: TYPEORM_PLUS_TEST_USERNAME,
   password: TYPEORM_PLUS_TEST_PASSWORD,
   database: TYPEORM_PLUS_TEST_DATABASE || 'test',
-  synchronize: true,
-  dropSchema: true
+  synchronize: true
 };
+
+export const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
