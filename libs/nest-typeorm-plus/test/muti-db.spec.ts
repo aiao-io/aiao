@@ -27,10 +27,10 @@ export const baseOptions: ConnectionOptions = {
   username: TYPEORM_PLUS_TEST_USERNAME,
   password: TYPEORM_PLUS_TEST_PASSWORD,
   database: TYPEORM_PLUS_TEST_DATABASE || 'test',
-  synchronize: true,
-  dropSchema: true
+  synchronize: true
 };
 
+console.log('baseOptions', baseOptions);
 export const connectOptions: ConnectionOptions = {
   name: 'db2',
   ...baseOptions,
@@ -64,8 +64,15 @@ export class DBModule {}
 @Module({
   imports: [
     DBModule,
-    AiaoTypeormPlusModule.forRoot({ ...baseOptions, entities: [Post, PostCategory] }),
-    AiaoTypeormPlusModule.forRoot({ ...connectOptions, entities: [Post, PostCategory] })
+    AiaoTypeormPlusModule.forRoot({
+      ...baseOptions,
+      entities: [Post, PostCategory]
+    }),
+    AiaoTypeormPlusModule.forRoot({
+      ...connectOptions,
+
+      entities: [Post, PostCategory]
+    })
   ]
 })
 export class AppModule {}

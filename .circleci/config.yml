@@ -13,8 +13,6 @@ defaults: &defaults
     - image: circleci/node:14-browsers
       environment:
         NODE_OPTIONS: --max_old_space_size=3200
-      volumes:
-        - .circleci/init-test-db.sh:/docker-entrypoint-initdb.d/init-test-db.sh
 
 withDatabase: &withDatabase
   working_directory: ~/repo
@@ -157,7 +155,7 @@ lint: &lint
 
 affected_test: &affected_test
   name: Afected test
-  command: yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage --skip-nx-cache
+  command: sh .circleci/init-test-db.sh && yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage --skip-nx-cache
 
 affected_build: &affected_build
   name: Affected build
