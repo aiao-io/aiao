@@ -30,11 +30,9 @@ export const baseOptions: ConnectionOptions = {
   synchronize: true
 };
 
-console.log('baseOptions', baseOptions);
 export const connectOptions: ConnectionOptions = {
-  name: 'db2',
   ...baseOptions,
-  database: 'test'
+  name: 'db2'
 };
 
 @Controller()
@@ -107,7 +105,6 @@ describe('typeormPlus 多库测试', () => {
     const post = await testService.post.findOne({ where: { id: postCreate.id }, include: ['category'] });
     expect(post).toBeTruthy();
     expect(post!.name).toEqual('post');
-    console.log('post', post!.categoryId);
     expect(post!.categoryId).toEqual(postCat.id);
   });
 
