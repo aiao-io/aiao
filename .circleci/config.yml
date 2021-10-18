@@ -13,6 +13,8 @@ defaults: &defaults
     - image: circleci/node:14-browsers
       environment:
         NODE_OPTIONS: --max_old_space_size=3200
+      volumes:
+        - .circleci/init-test-db.sh:/docker-entrypoint-initdb.d/init-test-db.sh
 
 withDatabase: &withDatabase
   working_directory: ~/repo
@@ -20,7 +22,6 @@ withDatabase: &withDatabase
     - image: circleci/node:14-browsers
       environment:
         NODE_OPTIONS: --max_old_space_size=3200
-
     - image: circleci/postgres:12-alpine-postgis
       environment:
         POSTGRES_USER: test
