@@ -1,6 +1,6 @@
 import { FastifyStaticOptions } from 'fastify-static';
 
-import { NgSetupOptions } from '@aiao/universal-fastify-engine';
+import type { NgSetupOptions } from '@aiao/universal-fastify-engine';
 
 export interface NestUniversalOptions extends NgSetupOptions {
   production: boolean;

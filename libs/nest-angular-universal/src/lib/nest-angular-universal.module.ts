@@ -2,7 +2,7 @@ import 'reflect-metadata';
 
 import { FastifyReply, FastifyRequest } from 'fastify';
 
-import { DynamicModule, Inject, Module, OnModuleInit } from '@nestjs/common';
+import { DynamicModule, Inject, Logger, Module, OnModuleInit } from '@nestjs/common';
 import { HttpAdapterHost } from '@nestjs/core';
 import { CommonEngine } from '@nguniversal/common/engine';
 
@@ -40,7 +40,7 @@ export class NestAngularUniversalModule implements OnModuleInit {
       const renderAngular = (req: FastifyRequest, res: FastifyReply) => res.renderAngular();
       const app: any = this.httpAdapterHost.httpAdapter.getInstance();
       this.options.paths.forEach(path => {
-        console.log('[renderAngular] path:', path);
+        Logger.log(`path${path}`, 'nest-angular-universal');
         app.get(path, renderAngular);
       });
     }

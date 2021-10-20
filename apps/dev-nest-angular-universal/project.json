@@ -90,10 +90,12 @@
           "@nestjs/websockets",
           "@nestjs/websockets/socket-module",
           "cache-manager",
-          "ws",
+          "diagnostics_channel",
           "fast-json-stringify",
           "fastify-helmet",
-          "swagger-ui-express"
+          "stream/web",
+          "swagger-ui-express",
+          "ws"
         ],
         "sourceMap": true,
         "optimization": false

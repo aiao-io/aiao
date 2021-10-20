@@ -35,6 +35,7 @@ export const setupUniversal = async (app: FastifyInstance, options: NestUniversa
   }
 
   app.register((instance: FastifyInstance, opts: any, next: () => void) => {
+    console.log('123123', distPath);
     instance.register(fastifyStatic, {
       ...fastifyStaticOptions,
       root: distPath,
