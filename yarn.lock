@@ -3755,6 +3755,11 @@
   resolved "https://registry.yarnpkg.com/@stencil/sass/-/sass-1.5.2.tgz#861dffe90a8d911b6b2af4a36d8928b5264a8646"
   integrity sha512-nJ93pUSylsGsMX0eLmhxh1oEljcUjj5mYjhB9ziCdoaydAdjukrUoqDCC7tdVbOcBo2hKptQyWqCtETnBGYsXQ==
 
+"@stencil/vue-output-target@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@stencil/vue-output-target/-/vue-output-target-0.5.1.tgz#1c8550f30f36d13c856adc5c3b138861e3e81357"
+  integrity sha512-E9HeuUf4DjHO8VFd+faR6T+/JwLtU/2kIA000YTTv0ARPUXuxr/3+U3YMBRPCVFPC5n2jsFxU3E9rTmVH1MGyg==
+
 "@storybook/node-logger@6.1.20":
   version "6.1.20"
   resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-6.1.20.tgz#40ec44bfd36e799089c831ecb86588c730023e6c"

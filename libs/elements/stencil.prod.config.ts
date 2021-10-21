@@ -3,6 +3,7 @@ import { resolve } from 'path';
 import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
+import { vueOutputTarget } from '@stencil/vue-output-target';
 
 const excludeComponents = ['aiao-text-editor-bar', 'aiao-tree-node', 'ion-icon'];
 export const config: Config = {
@@ -42,6 +43,19 @@ export const config: Config = {
       componentCorePackage: '@aiao/elements',
       proxiesFile: resolve(__dirname, '../elements-react/src/lib/proxies.ts'),
       excludeComponents
+    }),
+    vueOutputTarget({
+      componentCorePackage: '@aiao/elements',
+      proxiesFile: resolve(__dirname, '../elements-vue/src/lib/proxies.ts'),
+      excludeComponents,
+      componentModels: [
+        {
+          elements: ['aiao-code-editor', 'aiao-code-diff-editor', 'aiao-elements-editor'],
+          event: '',
+          targetAttr: 'value',
+          externalEvent: 'aiaoChange'
+        }
+      ]
     })
     // {
     //   type: 'docs-readme'
