@@ -1,1 +1,1 @@
-export * from './lib/elements-vue';
+export * from './lib/proxies';

@@ -16,8 +16,10 @@ assets/
 
 react-component-lib/
 
-/libs/elements-angular/src/lib/directives
-/libs/elements-react/src/lib/proxies*
+/libs/elements-angular/src/lib/directives.ts
+/libs/elements-react/src/lib/proxies.ts
+libs/elements-vue/src/lib/vue-component-lib/utils.ts
+/libs/elements-vue/src/lib/proxies
 /libs/elements/elements-cdk
 /libs/elements/hydrate
 /libs/elements/image-storage

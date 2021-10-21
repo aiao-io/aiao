@@ -24,13 +24,6 @@ export const config: Config = {
       file: resolve(__dirname, 'lib/html.html-data.json'),
       sourceCodeBaseUrl: 'https://github.com/aiao-io/aiao/tree/master/libs/elements'
     },
-    // angularOutputTarget({
-    //   componentCorePackage: '@aiao/elements',
-    //   directivesProxyFile: '../elements-angular/src/lib/directives/proxies.ts',
-    //   directivesUtilsFile: '../elements-angular/src/lib/directives/proxies-utils.ts',
-    //   directivesArrayFile: '../elements-angular/src/lib/directives/proxies-list.txt',
-    //   excludeComponents
-    // }),
     {
       type: 'angular',
       componentCorePackage: '@aiao/elements',
