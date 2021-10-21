@@ -1,10 +1,15 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 
-import { ArgumentsHost, Catch, HttpException, Logger } from '@nestjs/common';
+import { ArgumentsHost, Catch, HttpException, Inject, Logger } from '@nestjs/common';
 import { BaseExceptionFilter } from '@nestjs/core';
 
 @Catch(HttpException)
 export class HttpException404Filter extends BaseExceptionFilter {
+  constructor(@Inject('NEST_ANGULAR_UNIVERSAL_OPTIONS') opt: any) {
+    super();
+    console.log(opt);
+  }
+
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const res = ctx.getResponse<FastifyReply>();

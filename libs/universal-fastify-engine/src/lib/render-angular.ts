@@ -1,33 +1,10 @@
 import { FastifyRequest } from 'fastify';
-import { existsSync, readFileSync } from 'fs';
-import { join } from 'path';
 
 import { Logger } from '@nestjs/common';
 import { CommonEngine, RenderOptions as NgRenderOptions } from '@nguniversal/common/engine';
 
+import { getDocument } from './get-document';
 import { NgSetupOptions, RenderOptions } from './interface';
-
-const templateCacheMap = new Map<string, string>();
-
-function getDocument(path: string): string | undefined {
-  if (templateCacheMap.has(path)) {
-    return templateCacheMap.get(path);
-  }
-  const indexOriginal = join(path, 'index.original.html');
-  const index = join(path, 'index.html');
-
-  let file!: string;
-  if (existsSync(indexOriginal)) {
-    file = readFileSync(indexOriginal).toString();
-  } else if (existsSync(index)) {
-    file = readFileSync(index).toString();
-  }
-  if (file) {
-    templateCacheMap.set(path, file);
-    return file;
-  }
-  return undefined;
-}
 
 export const renderAngular = (
   engine: CommonEngine,

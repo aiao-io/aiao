@@ -12,7 +12,6 @@ export const setupUniversal = async (app: FastifyInstance, options: NestUniversa
     document,
     documentFilePath,
     providers,
-    production,
     fastifyStaticOptions,
     inlineCriticalCss,
     baseHref
@@ -26,12 +25,6 @@ export const setupUniversal = async (app: FastifyInstance, options: NestUniversa
     providers,
     inlineCriticalCss
   });
-
-  //  保证测试环境下 index.html 页面存在
-  if (!production) {
-    const { proxyBrowserSyncClient } = await import('./proxy-browser-sync-client');
-    proxyBrowserSyncClient(app, options);
-  }
 
   app.register((instance: FastifyInstance, opts: any, next: () => void) => {
     instance.register(fastifyStatic, {
