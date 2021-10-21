@@ -27,7 +27,6 @@ yarn add @aiao/nest-angular-universal
 | 属性           | 类型    | 说明                          |
 | -------------- | ------- | ----------------------------- |
 | production     | boolean | 是否是生产环境                |
-| disableRender? | boolean | 禁止默认渲染                  |
 | browserHost?   | string  | 测试环境的 Angular app 的主机 |
 | browserPort?   | number  | 测试环境的 Angular app 的端口 |
 

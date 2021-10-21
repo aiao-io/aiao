@@ -2,6 +2,8 @@ import { FastifyInstance } from 'fastify';
 import { existsSync } from 'fs';
 import { join } from 'path';
 
+import { Logger } from '@nestjs/common';
+
 import { NestUniversalOptions } from './interface';
 
 const promiseExistFile = (indexHtml: string) => {
@@ -11,13 +13,13 @@ const promiseExistFile = (indexHtml: string) => {
       if (existsSync(indexHtml)) {
         resolve(true);
       } else {
-        console.log(`waiting browser build`);
+        Logger.log('waiting browser build', 'NestAngularUniversalModule');
         setTimeout(() => {
           if (maxTryCount) {
             maxTryCount--;
             browserIsBuild();
           } else {
-            console.log(`browser not build`);
+            Logger.log('browser not build', 'NestAngularUniversalModule');
           }
         }, 500);
       }

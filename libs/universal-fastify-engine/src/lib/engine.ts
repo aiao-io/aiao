@@ -10,23 +10,9 @@ function fastifyAngularEngine(fastify: FastifyInstance, setupOptions: NgSetupOpt
   const { bootstrap } = setupOptions;
   const defaultProviders = setupOptions.providers || [];
   const engine = new CommonEngine(bootstrap, defaultProviders);
-
   fastify.decorateReply('renderAngular', async function (opts?: RenderOptions) {
-    console.log('renderAngular');
-    try {
-      console.log(1);
-      const html = await renderAngular(engine, setupOptions, this.request, opts);
-      console.log('html', html);
-      return html;
-    } catch (error) {
-      console.log('---e', error);
-      return '123';
-    }
-    // if (opts?.disableSend !== true) {
-    //   this.type('text/html').send(html);
-    // }
+    return renderAngular(engine, setupOptions, this.request, opts);
   });
-
   next();
 }
 

@@ -15,7 +15,8 @@ export const setupUniversal = async (app: FastifyInstance, options: NestUniversa
     locales,
     providers,
     production,
-    fastifyStaticOptions
+    fastifyStaticOptions,
+    inlineCriticalCss
   } = options;
 
   app.register(ngFastilyEngine, {
@@ -25,7 +26,8 @@ export const setupUniversal = async (app: FastifyInstance, options: NestUniversa
     document,
     documentFilePath,
     locales,
-    providers
+    providers,
+    inlineCriticalCss
   });
 
   //  保证测试环境下 index.html 页面存在

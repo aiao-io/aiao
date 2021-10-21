@@ -1,42 +1,15 @@
-import 'reflect-metadata';
-
-import { FastifyReply } from 'fastify';
-
-import {
-  ArgumentsHost,
-  DynamicModule,
-  ExceptionFilter,
-  HttpException,
-  Inject,
-  Module,
-  OnModuleInit
-} from '@nestjs/common';
-import { APP_FILTER, HttpAdapterHost } from '@nestjs/core';
+import { DynamicModule, Module } from '@nestjs/common';
+import { APP_FILTER } from '@nestjs/core';
 
 import { NEST_ANGULAR_UNIVERSAL_OPTIONS } from './constants';
+import { HttpException404Filter } from './http-exception-404.filter';
 import { NestUniversalOptions } from './interface';
 import { angularUniversalProviders } from './providers';
 
-export class HttpExceptionFilter implements ExceptionFilter {
-  catch(exception: HttpException, host: ArgumentsHost) {
-    console.log('--asdf-asd-f');
-    const ctx = host.switchToHttp();
-    const res = ctx.getResponse<FastifyReply>();
-    res.renderAngular().then(html => {
-      res.type('tesxt/html').send(123123);
-    });
-  }
-}
 @Module({
   providers: [...angularUniversalProviders]
 })
-export class NestAngularUniversalModule implements OnModuleInit {
-  constructor(
-    @Inject(NEST_ANGULAR_UNIVERSAL_OPTIONS)
-    private readonly options: NestUniversalOptions,
-    private readonly httpAdapterHost: HttpAdapterHost
-  ) {}
-
+export class NestAngularUniversalModule {
   static forRoot(options: NestUniversalOptions): DynamicModule {
     return {
       module: NestAngularUniversalModule,
@@ -47,13 +20,9 @@ export class NestAngularUniversalModule implements OnModuleInit {
         },
         {
           provide: APP_FILTER,
-          useClass: HttpExceptionFilter
+          useClass: HttpException404Filter
         }
       ]
     };
-  }
-
-  async onModuleInit() {
-    // const app = this.httpAdapterHost.httpAdapter.getInstance<FastifyAdapter>();
   }
 }
