@@ -34,11 +34,11 @@ yarn add @aiao/universal-fastify-engine
 
 ### RenderOptions
 
-| 属性         | 类型             | 说明                                                     |
-| ------------ | ---------------- | -------------------------------------------------------- |
-| locale?      | string           | 指定渲染语言                                             |
-| document?    | string           | 指定渲染 index.html 的字符串                             |
-| providers?   | StaticProvider[] | 指定 `providers`                                         |
+| 属性          | 类型             | 说明                                                     |
+| ------------- | ---------------- | -------------------------------------------------------- |
+| locale?       | string           | 指定渲染语言                                             |
+| document?     | string           | 指定渲染 index.html 的字符串                             |
+| providers?    | StaticProvider[] | 指定 `providers`                                         |
 | disableSend? | boolean          | 关闭默认发送方法，可自定义渲染后的 `index.html` 内容返回 |
 
 [shields-universal-fastify-engine]: https://img.shields.io/npm/v/@aiao/universal-fastify-engine?style=flat-square

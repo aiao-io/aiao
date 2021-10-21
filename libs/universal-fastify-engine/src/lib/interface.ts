@@ -8,6 +8,11 @@ export interface NgSetupOptions {
   documentFilePath?: string;
   locales?: string[];
   providers?: StaticProvider[];
+  /**
+   * Reduce render blocking requests by inlining critical CSS.
+   * Defaults to true.
+   */
+  inlineCriticalCss?: boolean;
 }
 
 export interface RenderOptions {
