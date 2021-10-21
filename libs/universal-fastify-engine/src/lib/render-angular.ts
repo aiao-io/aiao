@@ -79,5 +79,13 @@ export const renderAngular = (
     renderOptions.document = getDocument(doc) || '<h1>404</h1>';
     renderOptions.documentFilePath = doc;
   }
-  return engine.render(renderOptions);
+  console.log(123);
+  try {
+    console.log(6);
+    return engine.render(renderOptions).then(html => html || renderOptions.document);
+  } catch (error) {
+    console.log(8);
+    return '';
+  }
+  console.log(9);
 };

@@ -1,27 +1,41 @@
 import 'reflect-metadata';
 
-import { FastifyReply, FastifyRequest } from 'fastify';
+import { FastifyReply } from 'fastify';
 
-import { DynamicModule, Inject, Logger, Module, OnModuleInit } from '@nestjs/common';
-import { HttpAdapterHost } from '@nestjs/core';
-import { CommonEngine } from '@nguniversal/common/engine';
+import {
+  ArgumentsHost,
+  DynamicModule,
+  ExceptionFilter,
+  HttpException,
+  Inject,
+  Module,
+  OnModuleInit
+} from '@nestjs/common';
+import { APP_FILTER, HttpAdapterHost } from '@nestjs/core';
 
 import { NEST_ANGULAR_UNIVERSAL_OPTIONS } from './constants';
 import { NestUniversalOptions } from './interface';
 import { angularUniversalProviders } from './providers';
 
+export class HttpExceptionFilter implements ExceptionFilter {
+  catch(exception: HttpException, host: ArgumentsHost) {
+    console.log('--asdf-asd-f');
+    const ctx = host.switchToHttp();
+    const res = ctx.getResponse<FastifyReply>();
+    res.renderAngular().then(html => {
+      res.type('tesxt/html').send(123123);
+    });
+  }
+}
 @Module({
   providers: [...angularUniversalProviders]
 })
 export class NestAngularUniversalModule implements OnModuleInit {
-  engine: CommonEngine;
   constructor(
     @Inject(NEST_ANGULAR_UNIVERSAL_OPTIONS)
     private readonly options: NestUniversalOptions,
     private readonly httpAdapterHost: HttpAdapterHost
-  ) {
-    this.engine = new CommonEngine(options.bootstrap, options.providers || []);
-  }
+  ) {}
 
   static forRoot(options: NestUniversalOptions): DynamicModule {
     return {
@@ -30,19 +44,16 @@ export class NestAngularUniversalModule implements OnModuleInit {
         {
           provide: NEST_ANGULAR_UNIVERSAL_OPTIONS,
           useValue: options
+        },
+        {
+          provide: APP_FILTER,
+          useClass: HttpExceptionFilter
         }
       ]
     };
   }
 
   async onModuleInit() {
-    if (this.httpAdapterHost?.httpAdapter && !this.options.disableRender) {
-      const renderAngular = (req: FastifyRequest, res: FastifyReply) => res.renderAngular();
-      const app: any = this.httpAdapterHost.httpAdapter.getInstance();
-      this.options.paths.forEach(path => {
-        Logger.log(`path${path}`, 'nest-angular-universal');
-        app.get(path, renderAngular);
-      });
-    }
+    // const app = this.httpAdapterHost.httpAdapter.getInstance<FastifyAdapter>();
   }
 }

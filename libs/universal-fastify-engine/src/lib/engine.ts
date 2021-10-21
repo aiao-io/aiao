@@ -12,11 +12,19 @@ function fastifyAngularEngine(fastify: FastifyInstance, setupOptions: NgSetupOpt
   const engine = new CommonEngine(bootstrap, defaultProviders);
 
   fastify.decorateReply('renderAngular', async function (opts?: RenderOptions) {
-    const html = await renderAngular(engine, setupOptions, this.request, opts);
-    if (opts?.disableSend !== true) {
-      this.type('text/html').send(html);
+    console.log('renderAngular');
+    try {
+      console.log(1);
+      const html = await renderAngular(engine, setupOptions, this.request, opts);
+      console.log('html', html);
+      return html;
+    } catch (error) {
+      console.log('---e', error);
+      return '123';
     }
-    return html;
+    // if (opts?.disableSend !== true) {
+    //   this.type('text/html').send(html);
+    // }
   });
 
   next();
