@@ -3,10 +3,10 @@ import { App, Plugin } from 'vue';
 import { IAiaoElementsConfig, setupConfig } from '@aiao/elements';
 import { applyPolyfills, defineCustomElements } from '@aiao/elements/loader';
 
-export const needsKebabCase = (version: string) =>
-  !['3.0.0', '3.0.1', '3.0.2', '3.0.3', '3.0.4', '3.0.5'].includes(version);
+const needsKebabCase = (version: string) => !['3.0.0', '3.0.1', '3.0.2', '3.0.3', '3.0.4', '3.0.5'].includes(version);
 
 const toLowerCase = (eventName: string) => (eventName === 'aiaoChange' ? 'v-aiaochange' : eventName.toLowerCase());
+
 const toKebabCase = (eventName: string) =>
   eventName === 'aiaoChange'
     ? 'v-aiao-change'
@@ -30,7 +30,6 @@ const getHelperFunctions = (needKebabCase: boolean = true) => {
     ce: (eventName: string, opts: any) => new CustomEvent(conversionFn(eventName), opts)
   };
 };
-
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const AiaoVue: Plugin = {
   async install(app: App, config: IAiaoElementsConfig = {}) {
