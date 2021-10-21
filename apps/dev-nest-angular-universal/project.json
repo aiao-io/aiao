@@ -14,6 +14,7 @@
         "tsConfig": "apps/dev-nest-angular-universal/tsconfig.app.json",
         "assets": ["apps/dev-nest-angular-universal/src/favicon.ico", "apps/dev-nest-angular-universal/src/assets"],
         "styles": ["apps/dev-nest-angular-universal/src/styles.scss"],
+        "baseHref": "/en/",
         "scripts": [],
         "vendorChunk": true,
         "extractLicenses": false,
@@ -90,10 +91,12 @@
           "@nestjs/websockets",
           "@nestjs/websockets/socket-module",
           "cache-manager",
-          "ws",
+          "diagnostics_channel",
           "fast-json-stringify",
           "fastify-helmet",
-          "swagger-ui-express"
+          "stream/web",
+          "swagger-ui-express",
+          "ws"
         ],
         "sourceMap": true,
         "optimization": false

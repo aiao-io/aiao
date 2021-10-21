@@ -1,32 +1,10 @@
 import { FastifyRequest } from 'fastify';
-import { existsSync, readFileSync } from 'fs';
-import { join } from 'path';
 
+import { Logger } from '@nestjs/common';
 import { CommonEngine, RenderOptions as NgRenderOptions } from '@nguniversal/common/engine';
 
+import { getDocument } from './get-document';
 import { NgSetupOptions, RenderOptions } from './interface';
-
-const templateCache = new Map<string, string>();
-
-function getDocument(path: string): string | undefined {
-  if (templateCache.has(path)) {
-    return templateCache.get(path);
-  }
-  const indexOriginal = join(path, 'index.original.html');
-  const index = join(path, 'index.html');
-
-  let file!: string;
-  if (existsSync(indexOriginal)) {
-    file = readFileSync(indexOriginal).toString();
-  } else if (existsSync(index)) {
-    file = readFileSync(index).toString();
-  }
-  if (file) {
-    templateCache.set(path, file);
-    return file;
-  }
-  return undefined;
-}
 
 export const renderAngular = (
   engine: CommonEngine,
@@ -35,16 +13,11 @@ export const renderAngular = (
   opts?: RenderOptions
 ) => {
   const { url, headers } = request;
-  const {
-    bootstrap,
-    defaultLocale,
-    distPath,
-    document,
-    documentFilePath,
-    locales,
-    providers: defaultProviders
-  } = setupOptions;
-  const proto = headers['x-forwarded-proto'];
+
+  const { bootstrap, outputPath, document, documentFilePath, providers: defaultProviders } = setupOptions;
+
+  const proto = headers['x-forwarded-proto'] || 'http';
+  const serverUrl = `${proto}://${request.hostname}`;
 
   // providers
   let providers = defaultProviders || [];
@@ -55,29 +28,27 @@ export const renderAngular = (
   const renderOptions: NgRenderOptions = {
     url,
     bootstrap,
-    documentFilePath,
     document,
+    inlineCriticalCss: false,
     ...opts,
     providers: [
       ...providers,
       {
         provide: 'serverUrl',
-        useValue: `${proto}://${request.hostname}`
+        useValue: serverUrl
+      },
+      {
+        provide: 'Logger',
+        useValue: Logger
       }
     ]
   };
 
   if (!renderOptions.document) {
-    let indexLocalePath!: string;
-    if (locales && locales.length > 0) {
-      const locale = opts?.locale || locales.find(loc => url.startsWith(`/${loc}`)) || defaultLocale;
-      if (locale) {
-        indexLocalePath = join(distPath, locale);
-      }
-    }
-    const doc = indexLocalePath || documentFilePath || distPath;
+    const doc = documentFilePath || outputPath;
     renderOptions.document = getDocument(doc) || '<h1>404</h1>';
     renderOptions.documentFilePath = doc;
   }
+
   return engine.render(renderOptions);
 };

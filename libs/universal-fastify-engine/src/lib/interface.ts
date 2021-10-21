@@ -2,19 +2,18 @@ import { NgModuleFactory, StaticProvider, Type } from '@angular/core';
 
 export interface NgSetupOptions {
   bootstrap: Type<any> | NgModuleFactory<any>;
-  distPath: string;
-  defaultLocale?: string;
+  outputPath: string;
+  baseHref?: string;
   document?: string;
   documentFilePath?: string;
-  locales?: string[];
   providers?: StaticProvider[];
+  inlineCriticalCss?: boolean;
 }
 
 export interface RenderOptions {
-  locale?: string;
   document?: string;
   providers?: StaticProvider[];
-  disableSend?: boolean;
+  inlineCriticalCss?: boolean;
 }
 
 declare module 'fastify' {
