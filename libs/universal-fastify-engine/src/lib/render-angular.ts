@@ -29,6 +29,7 @@ export const renderAngular = (
     url,
     bootstrap,
     document,
+    inlineCriticalCss: false,
     ...opts,
     providers: [
       ...providers,
