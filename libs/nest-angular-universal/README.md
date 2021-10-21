@@ -24,9 +24,9 @@ yarn add @aiao/nest-angular-universal
 
 继承 [NgSetupOptions](/libs/universal-fastify-engine#setup-options) 的所有配置
 
-| 属性       | 类型    | 说明           |
-| ---------- | ------- | -------------- |
-| production | boolean | 是否是生产环境 |
+| 属性                 | 类型                 | 说明         |
+| -------------------- | -------------------- | ------------ |
+| fastifyStaticOptions | FastifyStaticOptions | 静态资源配置 |
 
 [shields-nest-angular-universal]: https://img.shields.io/npm/v/@aiao/nest-angular-universal?style=flat-square
 [npm-nest-angular-universal]: https://www.npmjs.com/@aiao/nest-angular-universal
