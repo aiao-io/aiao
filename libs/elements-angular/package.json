@@ -1,6 +1,6 @@
 {
   "name": "@aiao/elements-angular",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "elements for angular",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -21,7 +21,7 @@
     "build": "cd ../../ && yarn build elements-angular --prod"
   },
   "dependencies": {
-    "@aiao/elements": "^0.7.2",
+    "@aiao/elements": "^0.7.3",
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
@@ -34,6 +34,6 @@
   },
   "devDependencies": {
     "@aiao/elements": "^0.7.2",
-    "@aiao/elements-cdk": "^0.1.5"
+    "@aiao/elements-cdk": "^0.1.6"
   }
 }
