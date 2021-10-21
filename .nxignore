@@ -1,14 +1,11 @@
 nx.json
-**/angular.json
-**/package.json
 **/*.md
 **/jest.config.js
 **/ng-package.json
-**/package.json
-**/scripts/**
+apps/*/package.json
+libs/*/package.json
 **/stencil.*.config.ts
 **/tsconfig.*.json
 **/tsconfig.json
 **/tslint.json
-
 *.d.ts
