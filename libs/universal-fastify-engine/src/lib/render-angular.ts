@@ -13,8 +13,11 @@ export const renderAngular = (
   opts?: RenderOptions
 ) => {
   const { url, headers } = request;
+
   const { bootstrap, distPath, document, documentFilePath, providers: defaultProviders } = setupOptions;
-  const proto = headers['x-forwarded-proto'];
+
+  const proto = headers['x-forwarded-proto'] || 'http';
+  const serverUrl = `${proto}://${request.hostname}`;
 
   // providers
   let providers = defaultProviders || [];
@@ -32,7 +35,7 @@ export const renderAngular = (
       ...providers,
       {
         provide: 'serverUrl',
-        useValue: `${proto}://${request.hostname}`
+        useValue: serverUrl
       },
       {
         provide: 'Logger',
