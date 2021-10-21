@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/aiao-io/aiao/compare/@aiao/nest-angular-universal@0.1.3...@aiao/nest-angular-universal@0.2.0) (2021-10-21)
+
+### Features
+
+- **nest-angular-universal:** 重构了部分代码 ([#143](https://github.com/aiao-io/aiao/issues/143)) ([e86e082](https://github.com/aiao-io/aiao/commit/e86e08218c114468138376916325ddebdf3f6ec9))
+
 ## [0.1.4](https://github.com/aiao-io/aiao/compare/@aiao/nest-angular-universal@0.1.3-alpha.0...@aiao/nest-angular-universal@0.1.4) (2021-08-06)
 
 **Note:** Version bump only for package @aiao/nest-angular-universal
