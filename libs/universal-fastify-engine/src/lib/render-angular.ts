@@ -36,15 +36,7 @@ export const renderAngular = (
   opts?: RenderOptions
 ) => {
   const { url, headers } = request;
-  const {
-    bootstrap,
-    defaultLocale,
-    distPath,
-    document,
-    documentFilePath,
-    locales,
-    providers: defaultProviders
-  } = setupOptions;
+  const { bootstrap, distPath, document, documentFilePath, providers: defaultProviders } = setupOptions;
   const proto = headers['x-forwarded-proto'];
 
   // providers
@@ -73,14 +65,7 @@ export const renderAngular = (
   };
 
   if (!renderOptions.document) {
-    let indexLocalePath!: string;
-    if (locales && locales.length > 0) {
-      const locale = opts?.locale || locales.find(loc => url.startsWith(`/${loc}`)) || defaultLocale;
-      if (locale) {
-        indexLocalePath = join(distPath, locale);
-      }
-    }
-    const doc = indexLocalePath || documentFilePath || distPath;
+    const doc = documentFilePath || distPath;
     renderOptions.document = getDocument(doc) || '<h1>404</h1>';
     renderOptions.documentFilePath = doc;
   }

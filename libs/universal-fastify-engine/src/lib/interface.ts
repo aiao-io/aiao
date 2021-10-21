@@ -3,10 +3,9 @@ import { NgModuleFactory, StaticProvider, Type } from '@angular/core';
 export interface NgSetupOptions {
   bootstrap: Type<any> | NgModuleFactory<any>;
   distPath: string;
-  defaultLocale?: string;
+  baseHref?: string;
   document?: string;
   documentFilePath?: string;
-  locales?: string[];
   providers?: StaticProvider[];
   /**
    * Reduce render blocking requests by inlining critical CSS.

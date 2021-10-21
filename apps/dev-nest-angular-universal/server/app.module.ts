@@ -14,6 +14,7 @@ import { AppController } from './app.controller';
     NestAngularUniversalModule.forRoot({
       production: environment.production,
       bootstrap: AppServerModule,
+      baseHref: '/en/',
       distPath: join(process.cwd(), 'dist/apps/dev-nest-angular-universal/browser')
     })
   ],

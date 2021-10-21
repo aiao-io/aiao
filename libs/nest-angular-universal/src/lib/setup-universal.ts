@@ -8,24 +8,21 @@ import { NestUniversalOptions } from './interface';
 export const setupUniversal = async (app: FastifyInstance, options: NestUniversalOptions) => {
   const {
     bootstrap,
-    defaultLocale,
     distPath,
     document,
     documentFilePath,
-    locales,
     providers,
     production,
     fastifyStaticOptions,
-    inlineCriticalCss
+    inlineCriticalCss,
+    baseHref
   } = options;
 
   app.register(ngFastilyEngine, {
     bootstrap,
-    defaultLocale,
     distPath,
     document,
     documentFilePath,
-    locales,
     providers,
     inlineCriticalCss
   });
@@ -40,8 +37,7 @@ export const setupUniversal = async (app: FastifyInstance, options: NestUniversa
     instance.register(fastifyStatic, {
       ...fastifyStaticOptions,
       root: distPath,
-      wildcard: true,
-      decorateReply: false
+      prefix: baseHref
     });
     next();
   });
