@@ -5,14 +5,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [1.1.0](https://github.com/aiao-io/aiao/compare/@aiao/universal-fastify-engine@1.0.1...@aiao/universal-fastify-engine@1.1.0) (2021-10-21)
 
-
 ### Features
 
-* **nest-angular-universal:** 重构了部分代码 ([#143](https://github.com/aiao-io/aiao/issues/143)) ([e86e082](https://github.com/aiao-io/aiao/commit/e86e08218c114468138376916325ddebdf3f6ec9))
-
-
-
-
+- **nest-angular-universal:** 重构了部分代码 ([#143](https://github.com/aiao-io/aiao/issues/143)) ([e86e082](https://github.com/aiao-io/aiao/commit/e86e08218c114468138376916325ddebdf3f6ec9))
 
 ## [1.0.2](https://github.com/aiao-io/aiao/compare/@aiao/universal-fastify-engine@0.1.3-alpha.0...@aiao/universal-fastify-engine@1.0.2) (2021-08-06)
 
