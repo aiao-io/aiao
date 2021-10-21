@@ -1,2 +1,2 @@
 export * from './lib/proxies';
-export { AiaoVue } from './lib/aiao-vue';
+export { AiaoElementsVue } from './lib/aiao-vue';

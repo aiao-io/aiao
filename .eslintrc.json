@@ -48,11 +48,11 @@
                 "onlyDependOnLibsWithTags": ["all", "stencil-lib"]
               },
               {
-                "sourceTag": "angular-e2e",
-                "onlyDependOnLibsWithTags": ["all", "angular-app"]
+                "sourceTag": "vue-app",
+                "onlyDependOnLibsWithTags": ["all", "vue-lib", "stencil-lib"]
               },
               {
-                "sourceTag": "vue-app",
+                "sourceTag": "vue-lib",
                 "onlyDependOnLibsWithTags": ["all", "vue-lib", "stencil-lib"]
               }
             ],

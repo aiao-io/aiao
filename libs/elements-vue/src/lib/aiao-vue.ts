@@ -31,7 +31,7 @@ const getHelperFunctions = (needKebabCase: boolean = true) => {
   };
 };
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const AiaoVue: Plugin = {
+export const AiaoElementsVue: Plugin = {
   async install(app: App, config: IAiaoElementsConfig = {}) {
     if (typeof (window as any) !== 'undefined') {
       const { ael, rel, ce } = getHelperFunctions(needsKebabCase(app.version));

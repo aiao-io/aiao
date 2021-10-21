@@ -1,7 +1,9 @@
-import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import Home from '../views/Home.vue';
+
+import { createRouter, createWebHistory } from '@ionic/vue-router';
+
 import About from '../views/About.vue';
+import CodeEditor from '../views/code-editor.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -10,7 +12,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/home',
-    component: Home
+    component: CodeEditor
   },
   {
     path: '/about',

@@ -58,7 +58,7 @@ export const defineContainer = <Props>(
   name: string,
   customElement: any,
   componentProps: string[] = [],
-  modelProp: string,
+  modelProp?: string,
   modelUpdateEvent?: string,
   externalModelUpdateEvent?: string
 ) => {
@@ -73,6 +73,9 @@ export const defineContainer = <Props>(
   }
 
   const Container = defineComponent<Props & InputProps>((props: any, { attrs, slots, emit }) => {
+    if (!modelProp) {
+      throw new Error('modelProp not found');
+    }
     let modelPropValue = props[modelProp];
     const containerRef = ref<HTMLElement>();
     const classes = new Set(getComponentClasses(attrs.class));
