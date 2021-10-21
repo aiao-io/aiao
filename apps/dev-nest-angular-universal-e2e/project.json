@@ -8,9 +8,9 @@
       "options": {
         "cypressConfig": "apps/dev-nest-angular-universal-e2e/cypress.json",
         "tsConfig": "apps/dev-nest-angular-universal-e2e/tsconfig.e2e.json",
-        "devServerTarget": "dev-nest-angular-universal:serve"
+        "devServerTarget": "dev-nest-angular-universal:serve-ssr"
       },
-      "configurations": { "production": { "devServerTarget": "dev-nest-angular-universal:serve:production" } }
+      "configurations": { "production": { "devServerTarget": "dev-nest-angular-universal:serve-ssr:production" } }
     },
     "lint": {
       "builder": "@nrwl/linter:eslint",
