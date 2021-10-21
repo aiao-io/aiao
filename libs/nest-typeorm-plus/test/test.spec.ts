@@ -1,6 +1,3 @@
-import 'reflect-metadata';
-import './hotfix-nestjs-rxjs-7';
-
 import { config } from 'dotenv';
 import { env } from 'process';
 import { ConnectionOptions } from 'typeorm';
