@@ -14,7 +14,7 @@ export const renderAngular = (
 ) => {
   const { url, headers } = request;
 
-  const { bootstrap, distPath, document, documentFilePath, providers: defaultProviders } = setupOptions;
+  const { bootstrap, outputPath, document, documentFilePath, providers: defaultProviders } = setupOptions;
 
   const proto = headers['x-forwarded-proto'] || 'http';
   const serverUrl = `${proto}://${request.hostname}`;
@@ -45,7 +45,7 @@ export const renderAngular = (
   };
 
   if (!renderOptions.document) {
-    const doc = documentFilePath || distPath;
+    const doc = documentFilePath || outputPath;
     renderOptions.document = getDocument(doc) || '<h1>404</h1>';
     renderOptions.documentFilePath = doc;
   }
