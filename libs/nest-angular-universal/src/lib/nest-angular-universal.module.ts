@@ -10,7 +10,7 @@ import { angularUniversalProviders } from './providers';
   providers: [...angularUniversalProviders]
 })
 export class NestAngularUniversalModule {
-  static forRoot(options: NestUniversalOptions | NestUniversalOptions[]): DynamicModule {
+  static forRoot(...options: NestUniversalOptions[]): DynamicModule {
     return {
       module: NestAngularUniversalModule,
       providers: [

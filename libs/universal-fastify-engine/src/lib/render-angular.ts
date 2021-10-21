@@ -1,5 +1,6 @@
 import { FastifyRequest } from 'fastify';
 
+import { APP_BASE_HREF } from '@angular/common';
 import { Logger } from '@nestjs/common';
 import { CommonEngine, RenderOptions as NgRenderOptions } from '@nguniversal/common/engine';
 

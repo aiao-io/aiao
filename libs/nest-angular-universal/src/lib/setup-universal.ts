@@ -5,33 +5,41 @@ import { ngFastilyEngine } from '@aiao/universal-fastify-engine';
 
 import { NestUniversalOptions } from './interface';
 
-export const setupUniversal = async (app: FastifyInstance, options: NestUniversalOptions) => {
-  const {
-    bootstrap,
-    distPath,
-    document,
-    documentFilePath,
-    providers,
-    fastifyStaticOptions,
-    inlineCriticalCss,
-    baseHref
-  } = options;
+export const setupUniversal = async (app: FastifyInstance, ops: NestUniversalOptions[]) => {
+  ops.forEach(options => {
+    const {
+      bootstrap,
+      distPath,
+      document,
+      documentFilePath,
+      providers,
+      fastifyStaticOptions,
+      inlineCriticalCss,
+      baseHref
+    } = options;
 
-  app.register(ngFastilyEngine, {
-    bootstrap,
-    distPath,
-    document,
-    documentFilePath,
-    providers,
-    inlineCriticalCss
-  });
+    app.register(
+      (instance: FastifyInstance, opts: any, next: () => void) => {
+        instance.register(fastifyStatic, {
+          ...fastifyStaticOptions,
+          root: distPath
+        });
 
-  app.register((instance: FastifyInstance, opts: any, next: () => void) => {
-    instance.register(fastifyStatic, {
-      ...fastifyStaticOptions,
-      root: distPath,
-      prefix: baseHref
-    });
-    next();
+        instance.register(ngFastilyEngine, {
+          bootstrap,
+          distPath,
+          document,
+          documentFilePath,
+          providers,
+          inlineCriticalCss,
+          baseHref
+        });
+
+        next();
+      },
+      {
+        prefix: baseHref
+      }
+    );
   });
 };

@@ -13,6 +13,7 @@ function fastifyAngularEngine(fastify: FastifyInstance, setupOptions: NgSetupOpt
   fastify.decorateReply('renderAngular', async function (opts?: RenderOptions) {
     return renderAngular(engine, setupOptions, this.request, opts);
   });
+
   next();
 }
 
