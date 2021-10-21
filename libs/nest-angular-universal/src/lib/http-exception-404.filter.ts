@@ -3,13 +3,17 @@ import { FastifyReply, FastifyRequest } from 'fastify';
 import { ArgumentsHost, Catch, HttpException, Inject, Logger } from '@nestjs/common';
 import { BaseExceptionFilter } from '@nestjs/core';
 
+import { NestUniversalOptions } from './interface';
+
 @Catch(HttpException)
 export class HttpException404Filter extends BaseExceptionFilter {
-  constructor(@Inject('NEST_ANGULAR_UNIVERSAL_OPTIONS') opt: any) {
+  baseHrefs!: string[];
+  constructor(@Inject('NEST_ANGULAR_UNIVERSAL_OPTIONS') opts: NestUniversalOptions[]) {
     super();
-    console.log(opt);
+    const baseHrefSet = new Set<string>();
+    opts.forEach(d => baseHrefSet.add(d.baseHref || '/'));
+    this.baseHrefs = Array.from(baseHrefSet);
   }
-
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const res = ctx.getResponse<FastifyReply>();
@@ -17,7 +21,7 @@ export class HttpException404Filter extends BaseExceptionFilter {
     const status = exception.getStatus();
     const { accept } = req.headers;
     const userAgent = req.headers['user-agent'];
-    if (status === 404 && userAgent && accept?.includes('text/html')) {
+    if (status === 404 && userAgent && accept?.includes('text/html') && this.isAllowUrl(req.url)) {
       res
         .renderAngular()
         .then(html => {
@@ -32,5 +36,8 @@ export class HttpException404Filter extends BaseExceptionFilter {
     } else {
       super.catch(exception, host);
     }
+  }
+  private isAllowUrl(url: string) {
+    return this.baseHrefs.some(href => url.startsWith(href));
   }
 }

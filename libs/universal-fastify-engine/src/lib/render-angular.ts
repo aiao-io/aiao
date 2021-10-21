@@ -1,6 +1,5 @@
 import { FastifyRequest } from 'fastify';
 
-import { APP_BASE_HREF } from '@angular/common';
 import { Logger } from '@nestjs/common';
 import { CommonEngine, RenderOptions as NgRenderOptions } from '@nguniversal/common/engine';
 
@@ -47,5 +46,6 @@ export const renderAngular = (
     renderOptions.document = getDocument(doc) || '<h1>404</h1>';
     renderOptions.documentFilePath = doc;
   }
+
   return engine.render(renderOptions);
 };

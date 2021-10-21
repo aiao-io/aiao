@@ -15,12 +15,12 @@ import { AppController } from './app.controller';
         bootstrap: AppServerModule,
         baseHref: '/en/',
         distPath: join(process.cwd(), 'dist/apps/dev-nest-angular-universal/browser')
+      },
+      {
+        bootstrap: AppServerModule,
+        baseHref: '/cn/',
+        distPath: join(process.cwd(), 'dist/apps/dev-nest-angular-universal/browser')
       }
-      // {
-      //   bootstrap: AppServerModule,
-      //   baseHref: '/cn/',
-      //   distPath: join(process.cwd(), 'dist/apps/dev-nest-angular-universal/browser')
-      // }
     )
   ],
   controllers: [AppController]
