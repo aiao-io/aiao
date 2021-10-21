@@ -1,0 +1,33 @@
+{
+  "root": "libs/elements-vue",
+  "sourceRoot": "libs/elements-vue/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/workspace:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/elements-vue",
+        "main": "libs/elements-vue/src/index.ts",
+        "tsConfig": "libs/elements-vue/tsconfig.lib.json",
+        "assets": ["libs/elements-vue/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/elements-vue/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/elements-vue"],
+      "options": {
+        "jestConfig": "libs/elements-vue/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

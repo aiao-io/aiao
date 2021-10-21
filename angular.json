@@ -24,6 +24,7 @@
     "elements-angular": "libs/elements-angular",
     "elements-cdk": "libs/elements-cdk",
     "elements-react": "libs/elements-react",
+    "elements-vue": "libs/elements-vue",
     "image-storage": "libs/image-storage",
     "lazy-component": "libs/lazy-component",
     "lazy-element": "libs/lazy-element",
