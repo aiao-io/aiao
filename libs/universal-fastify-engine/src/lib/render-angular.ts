@@ -28,7 +28,6 @@ export const renderAngular = (
   const renderOptions: NgRenderOptions = {
     url,
     bootstrap,
-    documentFilePath,
     document,
     ...opts,
     providers: [

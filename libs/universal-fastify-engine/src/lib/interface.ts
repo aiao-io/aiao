@@ -15,10 +15,11 @@ export interface NgSetupOptions {
 }
 
 export interface RenderOptions {
-  locale?: string;
+  baseHref?: string;
   document?: string;
+  documentFilePath?: string;
   providers?: StaticProvider[];
-  disableSend?: boolean;
+  inlineCriticalCss?: boolean;
 }
 
 declare module 'fastify' {
