@@ -24,9 +24,6 @@ yarn add @aiao/nest-angular-universal
 
 继承 [NgSetupOptions](/libs/universal-fastify-engine#setup-options) 的所有配置
 
-| 属性             | 类型      | 说明                    |
-| -------------- | ------- | --------------------- |
-| production     | boolean | 是否是生产环境               |
-| disableRender? | boolean | 禁止默认渲染                |
-| browserHost?   | string  | 测试环境的 Angular app 的主机 |
-| browserPort?   | number  | 测试环境的 Angular app 的端口 |
+| 属性                   | 类型                   | 说明     |
+| -------------------- | -------------------- | ------ |
+| fastifyStaticOptions | FastifyStaticOptions | 静态资源配置 |
