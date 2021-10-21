@@ -1,0 +1,34 @@
+{
+  "root": "apps/dev-elements-vue-new",
+  "projectType": "application",
+  "sourceRoot": "apps/dev-elements-vue-new/src",
+  "tags": ["vue-app"],
+  "targets": {
+    "serve": {
+      "executor": "nx-plugin-vite:serve",
+      "options": {
+        "configFile": "apps/dev-elements-vue-new/vite.config.ts",
+        "port": 3000,
+        "host": false,
+        "https": false
+      }
+    },
+    "preview": {
+      "executor": "nx-plugin-vite:preview",
+      "options": {
+        "configFile": "apps/dev-elements-vue-new/vite.config.ts"
+      }
+    },
+    "build": {
+      "executor": "nx-plugin-vite:build",
+      "options": {
+        "outDir": "dist",
+        "configFile": "apps/dev-elements-vue-new/vite.config.ts",
+        "watch": false,
+        "write": true,
+        "emitAtRootLevel": false,
+        "manifest": true
+      }
+    }
+  }
+}
