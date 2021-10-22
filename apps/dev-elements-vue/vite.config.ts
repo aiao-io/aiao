@@ -1,7 +1,5 @@
 import path from 'path';
-import Components from 'unplugin-vue-components/vite';
 import { defineConfig } from 'vite';
-import ViteImages from 'vite-plugin-vue-images';
 
 import Vue from '@vitejs/plugin-vue';
 
@@ -15,11 +13,5 @@ export default defineConfig({
     }
   },
   publicDir: path.resolve(__dirname, './src/public'),
-  plugins: [
-    Vue(),
-    Components({
-      dirs: ['src/app/components']
-    }),
-    ViteImages()
-  ]
+  plugins: [Vue()]
 });

@@ -11,9 +11,9 @@ node_modules
 **/*.en.md
 
 /decorate-angular-cli.js
-/libs/elements-angular/src/lib/directives
-/libs/elements-react/src/lib/proxies
-/libs/elements-vue/src/lib/proxies
+/libs/elements-angular/src/lib/directives/proxies*
+/libs/elements-react/src/lib/proxies.ts
+/libs/elements-vue/src/lib/proxies.ts
 /libs/elements-vue/src/lib/vue-component-lib/utils.ts
 /libs/elements/date
 /libs/elements/elements-cdk
