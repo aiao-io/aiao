@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "module": "commonjs",
-    "types": ["vue-i18n", "jest", "node"],
+    "types": ["jest", "node"],
     "composite": true
   },
   "include": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.d.ts"]
