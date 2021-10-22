@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <ion-page>
     <ion-header translucent>
       <ion-toolbar>
         <ion-buttons slot="start">
@@ -13,7 +13,7 @@
         <aiao-elements-editor :value="data" :config="config"></aiao-elements-editor>
       </form>
     </ion-content>
-  </div>
+  </ion-page>
 </template>
 
 <style scoped>
@@ -27,7 +27,7 @@ aiao-code-editor {
 </style>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from 'vue';
+import { defineComponent } from 'vue';
 
 const config = [
   {
@@ -74,13 +74,7 @@ const data = [
 
 export default defineComponent({
   setup() {
-    const state = reactive({
-      config,
-      data
-    });
-    return {
-      ...toRefs(state)
-    };
+    return { config, data };
   }
 });
 </script>

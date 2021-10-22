@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <ion-page>
     <ion-header translucent>
       <ion-toolbar>
         <ion-buttons slot="start">
@@ -9,15 +9,14 @@
       </ion-toolbar>
     </ion-header>
     <ion-content fullscreen>
-      <aiao-code-editor language="json" :value="state.data"></aiao-code-editor>
+      <aiao-code-editor language="json" :value="data"></aiao-code-editor>
     </ion-content>
-  </div>
+  </ion-page>
 </template>
-
-<style scoped></style>
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
+import { AiaoCodeEditor } from '@aiao/elements-vue';
 const data = [
   {
     tag: 'ion-button',
@@ -51,15 +50,20 @@ const data = [
     }
   }
 ];
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 
 export default defineComponent({
+  components: {
+    AiaoCodeEditor,
+    IonButtons,
+    IonContent,
+    IonHeader,
+    IonPage,
+    IonToolbar
+  },
   setup() {
-    const state = reactive({
-      data
-    });
-    return {
-      state
-    };
+    return { data };
   }
 });
 </script>
+<style scoped></style>

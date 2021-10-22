@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'dev-elements-vue-new2',
+  displayName: 'dev-elements-vue',
   preset: '../../jest.preset.js',
   transform: {
     '^.+\\.vue$': './deps/vue3-jest',

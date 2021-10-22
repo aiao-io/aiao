@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <ion-page>
     <ion-header translucent>
       <ion-toolbar>
         <ion-buttons slot="start">
@@ -29,7 +29,7 @@
         <aiao-elements-preview id="preview" :value="state.data" :config="state.config"></aiao-elements-preview>
       </div>
     </ion-content>
-  </div>
+  </ion-page>
 </template>
 
 <style scoped>
