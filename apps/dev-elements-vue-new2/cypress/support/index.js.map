@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "index.js",
+  "sourceRoot": "",
+  "sources": [
+    "../../../../../../../../../packages/vue3-vite/src/generators/vue3-vite/files/cypress/support/index.ts"
+  ],
+  "names": [],
+  "mappings": ";;AAAA,0CAAwC"
+}

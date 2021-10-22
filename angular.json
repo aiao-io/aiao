@@ -10,6 +10,7 @@
     "dev-elements-vue": "apps/dev-elements-vue",
     "dev-elements-vue-e2e": "apps/dev-elements-vue-e2e",
     "dev-elements-vue-new": "apps/dev-elements-vue-new",
+    "dev-elements-vue-new2": "apps/dev-elements-vue-new2",
     "dev-lazy-component": "apps/dev-lazy-component",
     "dev-lazy-component-e2e": "apps/dev-lazy-component-e2e",
     "dev-lazy-element": "apps/dev-lazy-element",
