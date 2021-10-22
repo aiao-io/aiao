@@ -63,6 +63,7 @@ jobs:
             dist/tools
             dist/libs/elements
             dist/libs/elements-cdk
+            dist/libs/elements-vue
             dist/libs/image-storage
             dist/libs/stencil-toolkit
             dist/libs/url
@@ -103,6 +104,7 @@ jobs:
             dist/tools
             dist/libs/elements
             dist/libs/elements-cdk
+            dist/libs/elements-vue
             dist/libs/image-storage
             dist/libs/stencil-toolkit
             dist/libs/url
@@ -163,6 +165,7 @@ jobs:
             dist/tools
             dist/libs/elements
             dist/libs/elements-cdk
+            dist/libs/elements-vue
             dist/libs/image-storage
             dist/libs/stencil-toolkit
             dist/libs/url
@@ -220,6 +223,7 @@ jobs:
             dist/tools
             dist/libs/elements
             dist/libs/elements-cdk
+            dist/libs/elements-vue
             dist/libs/image-storage
             dist/libs/stencil-toolkit
             dist/libs/url
