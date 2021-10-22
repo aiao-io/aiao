@@ -16,16 +16,6 @@
   </ion-page>
 </template>
 
-<style scoped>
-aiao-code-editor.form {
-  width: 100%;
-  height: 100%;
-}
-aiao-code-editor {
-  height: 500px !important;
-}
-</style>
-
 <script lang="ts">
 import { defineComponent } from 'vue';
 
@@ -78,3 +68,13 @@ export default defineComponent({
   }
 });
 </script>
+
+<style scoped>
+aiao-code-editor.form {
+  width: 100%;
+  height: 100%;
+}
+aiao-code-editor {
+  height: 500px !important;
+}
+</style>

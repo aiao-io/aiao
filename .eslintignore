@@ -33,3 +33,4 @@ createOverlayComponent.tsx
 dist/
 react-component-lib/
 vendors/
+.eslintrc.js

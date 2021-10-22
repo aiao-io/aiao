@@ -1,7 +1,7 @@
 <template>
   <ion-app>
-    <ion-split-pane content-id="main-content">
-      <ion-menu content-id="main-content" type="overlay">
+    <ion-split-pane contentId="mainContent">
+      <ion-menu contentId="mainContent" type="overlay">
         <ion-header>
           <ion-toolbar>
             <ion-buttons slot="start">
@@ -12,37 +12,22 @@
         </ion-header>
         <ion-content>
           <ion-list>
-            <ion-item v-for="(p, i) in menus" :key="i" router-direction="root" :router-link="p.url">
+            <ion-item v-for="(p, i) in menus" :key="i" routerDirection="root" :routerLink="p.url">
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-list>
         </ion-content>
       </ion-menu>
-      <!-- <ion-router-outlet id="main-content"></ion-router-outlet> -->
-      <div id="main-content" style="flex: 1">
+      <!-- <ion-router-outlet id="mainContent"></ion-router-outlet> -->
+      <div id="mainContent" style="flex: 1">
         <router-view />
       </div>
     </ion-split-pane>
   </ion-app>
 </template>
 <script lang="ts">
-import {
-  IonApp,
-  IonContent,
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonListHeader,
-  IonMenu,
-  IonMenuToggle,
-  IonNote,
-  IonRouterOutlet,
-  IonSplitPane
-} from '@ionic/vue';
-import { defineComponent, ref } from 'vue';
-
-const selectedIndex = ref(0);
+import { IonApp, IonContent, IonItem, IonLabel, IonList, IonMenu, IonSplitPane } from '@ionic/vue';
+import { defineComponent } from 'vue';
 
 const menus = [
   {
@@ -72,13 +57,10 @@ export default defineComponent({
   components: {
     IonApp,
     IonContent,
-    IonIcon,
     IonItem,
     IonLabel,
     IonList,
     IonMenu,
-    IonMenuToggle,
-    IonRouterOutlet,
     IonSplitPane
   },
   setup() {

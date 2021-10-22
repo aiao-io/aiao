@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent } from 'vue';
 import { AiaoCodeEditor } from '@aiao/elements-vue';
 const data = [
   {
@@ -50,7 +50,7 @@ const data = [
     }
   }
 ];
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import { IonButtons, IonContent, IonHeader, IonPage, IonToolbar } from '@ionic/vue';
 
 export default defineComponent({
   components: {

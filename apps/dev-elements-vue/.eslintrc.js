@@ -3,12 +3,7 @@ module.exports = {
   env: {
     node: true
   },
-  extends: [
-    'plugin:vue/vue3-recommended',
-    'plugin:@intlify/vue-i18n/recommended',
-    '@vue/typescript/recommended',
-    'prettier'
-  ],
+  extends: ['plugin:vue/vue3-recommended', '@vue/typescript/recommended', 'prettier'],
   plugins: ['import'],
   parser: 'vue-eslint-parser',
   parserOptions: { ecmaVersion: 2020 },
@@ -22,7 +17,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     'no-multiple-empty-lines': ['error', { max: 1 }],
     'keyword-spacing': ['error', { after: true }],
-    'max-len': ['error', { code: 100, ignorePattern: '^\\s*<path' }],
+    'max-len': ['error', { code: 1000000, ignorePattern: '^\\s*<path' }],
     'no-param-reassign': [2, { props: false }],
     'object-curly-newline': [
       'error',
@@ -56,27 +51,11 @@ module.exports = {
         ignoreWhenEmpty: true
       }
     ],
-    'vue/max-attributes-per-line': [
-      'error',
-      {
-        singleline: 3
-      }
-    ],
+    'vue/max-attributes-per-line': 'off',
     'vue/no-v-html': 'off',
-    '@intlify/vue-i18n/no-v-html': 'off',
-    '@intlify/vue-i18n/no-unused-keys': [
-      'error',
-      {
-        src: './src',
-        extensions: ['.js', '.vue']
-      }
-    ],
-    '@intlify/vue-i18n/no-raw-text': 'error'
+    'vue/no-deprecated-slot-attribute': 'off'
   },
   settings: {
-    'vue-i18n': {
-      localeDir: './src/app/translations/*.json'
-    },
     'import/resolver': {
       node: {
         extensions: ['.js', '.ts', '.vue', '.json']
