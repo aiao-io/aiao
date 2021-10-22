@@ -192,7 +192,7 @@ jobs:
 
       - name: Affected Build
         shell: bash
-        run: yarn affected:build --base=$NX_BASE --parallel --configuration production
+        run: yarn affected:build --base=$NX_BASE --configuration production
 
   deploy:
     name: Deploy
