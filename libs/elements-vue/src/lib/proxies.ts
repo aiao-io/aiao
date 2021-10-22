@@ -5,48 +5,32 @@ import { defineContainer } from './vue-component-lib/utils';
 
 import type { JSX } from '@aiao/elements';
 
-
-
-
-export const AiaoCodeDiffEditor = /*@__PURE__*/ defineContainer<JSX.AiaoCodeDiffEditor>('aiao-code-diff-editor', undefined, [
-  'baseUrl',
-  'disabled',
-  'language',
-  'name',
-  'options',
-  'originalValue',
-  'uri',
+export const AiaoCodeDiffEditor = /*@__PURE__*/ defineContainer<JSX.AiaoCodeDiffEditor>(
+  'aiao-code-diff-editor',
+  undefined,
+  ['baseUrl', 'disabled', 'language', 'name', 'options', 'originalValue', 'uri', 'value', 'localizeCode', 'aiaoChange'],
   'value',
-  'localizeCode',
+  '',
   'aiaoChange'
-],
-'value', '', 'aiaoChange');
+);
 
-
-export const AiaoCodeEditor = /*@__PURE__*/ defineContainer<JSX.AiaoCodeEditor>('aiao-code-editor', undefined, [
-  'baseUrl',
-  'disabled',
-  'language',
-  'localizeCode',
-  'name',
-  'options',
-  'uri',
+export const AiaoCodeEditor = /*@__PURE__*/ defineContainer<JSX.AiaoCodeEditor>(
+  'aiao-code-editor',
+  undefined,
+  ['baseUrl', 'disabled', 'language', 'localizeCode', 'name', 'options', 'uri', 'value', 'aiaoChange'],
   'value',
+  '',
   'aiaoChange'
-],
-'value', '', 'aiaoChange');
+);
 
-
-export const AiaoElementsEditor = /*@__PURE__*/ defineContainer<JSX.AiaoElementsEditor>('aiao-elements-editor', undefined, [
-  'config',
-  'disabled',
-  'editMode',
-  'name',
+export const AiaoElementsEditor = /*@__PURE__*/ defineContainer<JSX.AiaoElementsEditor>(
+  'aiao-elements-editor',
+  undefined,
+  ['config', 'disabled', 'editMode', 'name', 'value', 'view'],
   'value',
-  'view'
-],
-'value', '', 'aiaoChange');
-
+  '',
+  'aiaoChange'
+);
 
 export const AiaoElementsForm = /*@__PURE__*/ defineContainer<JSX.AiaoElementsForm>('aiao-elements-form', undefined, [
   'html',
@@ -55,20 +39,17 @@ export const AiaoElementsForm = /*@__PURE__*/ defineContainer<JSX.AiaoElementsFo
   'aiaoInput'
 ]);
 
-
-export const AiaoElementsPreview = /*@__PURE__*/ defineContainer<JSX.AiaoElementsPreview>('aiao-elements-preview', undefined, [
-  'config',
-  'value',
-  'editMode'
-]);
-
+export const AiaoElementsPreview = /*@__PURE__*/ defineContainer<JSX.AiaoElementsPreview>(
+  'aiao-elements-preview',
+  undefined,
+  ['config', 'value', 'editMode']
+);
 
 export const AiaoElementsView = /*@__PURE__*/ defineContainer<JSX.AiaoElementsView>('aiao-elements-view', undefined, [
   'html',
   'css',
   'js'
 ]);
-
 
 export const AiaoImg = /*@__PURE__*/ defineContainer<JSX.AiaoImg>('aiao-img', undefined, [
   'map',
@@ -81,7 +62,6 @@ export const AiaoImg = /*@__PURE__*/ defineContainer<JSX.AiaoImg>('aiao-img', un
   'aiaoError'
 ]);
 
-
 export const AiaoTextEditor = /*@__PURE__*/ defineContainer<JSX.AiaoTextEditor>('aiao-text-editor', undefined, [
   'showActionBar',
   'defaultParagraphSeparator',
@@ -92,7 +72,6 @@ export const AiaoTextEditor = /*@__PURE__*/ defineContainer<JSX.AiaoTextEditor>(
   'aiaoChange',
   'aiaoStateChange'
 ]);
-
 
 export const AiaoTree = /*@__PURE__*/ defineContainer<JSX.AiaoTree>('aiao-tree', undefined, [
   'showMode',
@@ -114,4 +93,3 @@ export const AiaoTree = /*@__PURE__*/ defineContainer<JSX.AiaoTree>('aiao-tree',
   'aiaoTreeNodeChange',
   'aiaoTreeDrop'
 ]);
-
