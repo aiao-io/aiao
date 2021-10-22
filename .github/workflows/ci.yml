@@ -133,7 +133,7 @@ jobs:
 
       - name: Affected e2e
         shell: bash
-        run: env && yarn affected:e2e --base=$NX_BASE --parallel --configuration production --headless
+        run: env && yarn affected:e2e --base=$NX_BASE --configuration production --headless
 
   affected_build:
     name: Affected Build

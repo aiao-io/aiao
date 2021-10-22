@@ -6,7 +6,9 @@ import Vue from '@vitejs/plugin-vue';
 export default defineConfig({
   assetsInclude: /\.(pdf|jpg|png|svg)$/,
   server: {
-    port: 4230
+    host: '0.0.0.0',
+    port: 4230,
+    open: true
   },
   resolve: {
     alias: {
