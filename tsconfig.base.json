@@ -32,6 +32,7 @@
       "@aiao/elements-cdk/angular": ["libs/elements-cdk/angular/src/index.ts"],
       "@aiao/elements-cdk/components": ["libs/elements-cdk/components/src/index.ts"],
       "@aiao/elements-react": ["libs/elements-react/src/index.ts"],
+      "@aiao/elements-vue": ["libs/elements-vue/src/index.ts"],
       "@aiao/elements/loader": ["dist/libs/elements/loader"],
       "@aiao/image-storage": ["libs/image-storage/src/index.ts"],
       "@aiao/image-storage/adapters/aliyun": ["libs/image-storage/aliyun/src/index.ts"],

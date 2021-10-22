@@ -75,6 +75,7 @@ save_dist_cache: &save_dist_cache
     - dist/tools
     - dist/libs/elements
     - dist/libs/elements-cdk
+    - dist/libs/elements-vue
     - dist/libs/image-storage
     - dist/libs/stencil-toolkit
     - dist/libs/url
