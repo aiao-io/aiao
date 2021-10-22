@@ -2,21 +2,26 @@ import { RouteRecordRaw } from 'vue-router';
 
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 
-import About from '../views/About.vue';
-import CodeEditor from '../views/code-editor.vue';
-
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    redirect: '/home'
+    path: '',
+    redirect: '/code-editor'
   },
   {
-    path: '/home',
-    component: CodeEditor
+    path: '/code-editor',
+    component: import('../views/code-editor.vue')
   },
   {
-    path: '/about',
-    component: About
+    path: '/elements-editor',
+    component: import('../views/elements-editor.vue')
+  },
+  {
+    path: '/elements-preview',
+    component: import('../views/elements-preview.vue')
+  },
+  {
+    path: '/text-editor',
+    component: import('../views/text-editor.vue')
   }
 ];
 

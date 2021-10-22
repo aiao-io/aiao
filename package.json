@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "ng": "node_modules/.bin/nx",
-    "nx": "node_modules/.bin/nx",
+    "ng": "nx",
+    "nx": "nx",
     "start": "node_modules/.bin/nx serve",
     "build": "node_modules/.bin/nx build",
     "test": "ng test --code-coverage",

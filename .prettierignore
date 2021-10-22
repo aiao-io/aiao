@@ -10,14 +10,12 @@ node_modules
 *.d.ts
 **/*.en.md
 
-dist/
-vendors/
-assets/
-
-react-component-lib/
-
+/decorate-angular-cli.js
 /libs/elements-angular/src/lib/directives
-/libs/elements-react/src/lib/proxies*
+/libs/elements-react/src/lib/proxies
+/libs/elements-vue/src/lib/proxies
+/libs/elements-vue/src/lib/vue-component-lib/utils.ts
+/libs/elements/date
 /libs/elements/elements-cdk
 /libs/elements/hydrate
 /libs/elements/image-storage
@@ -25,10 +23,11 @@ react-component-lib/
 /libs/elements/loader
 /libs/elements/url
 /libs/elements/util
-/libs/elements/date
 /libs/elements/vendors
-
+/migrations.json
+assets/
 createComponent.tsx
 createOverlayComponent.tsx
-/migrations.json
-/decorate-angular-cli.js
+dist/
+react-component-lib/
+vendors/

@@ -8,5 +8,8 @@
   },
   "dependencies": {
     "vue": "^3.2.16"
+  },
+  "devDependencies": {
+    "@aiao/elements-vue": "*"
   }
 }
