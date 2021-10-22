@@ -1,8 +1,9 @@
 import path from 'path';
-import { defineConfig } from 'vite';
-import Vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
+import { defineConfig } from 'vite';
 import ViteImages from 'vite-plugin-vue-images';
+
+import Vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
   assetsInclude: /\.(pdf|jpg|png|svg)$/,

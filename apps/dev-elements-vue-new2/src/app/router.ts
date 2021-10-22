@@ -1,44 +1,32 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import Home from '@app/views/Home.vue';
+import { RouteRecordRaw } from 'vue-router';
 
-declare module 'vue-router' {
-  interface RouteMeta {
-    title?: string;
-  }
-}
+import { createRouter, createWebHistory } from '@ionic/vue-router';
 
-const router = createRouter({
-  history: createWebHistory(),
-  scrollBehavior(to, from, savedPosition) {
-    if (to.hash) {
-      return new Promise((resolve, _reject) => {
-        setTimeout(() => {
-          resolve({ el: to.hash });
-        }, 500);
-      });
-    }
-    if (savedPosition) {
-      return savedPosition;
-    }
-    if (to.meta.noScroll && from.meta.noScroll) {
-      return {};
-    }
-    return { top: 0 };
+const routes: Array<RouteRecordRaw> = [
+  {
+    path: '',
+    redirect: '/code-editor'
   },
-  routes: [
-    {
-      path: '/',
-      name: 'Home',
-      component: Home,
-      meta: { title: 'dev-elements-vue-new2' }
-    }
-  ]
-});
-
-router.afterEach((to, _from) => {
-  const parent = to.matched.find(record => record.meta.title);
-  const parentTitle = parent ? parent.meta.title : null;
-  document.title = to.meta.title || parentTitle || 'dev-elements-vue-new2';
+  {
+    path: '/code-editor',
+    component: import('./views/code-editor.vue')
+  },
+  {
+    path: '/elements-editor',
+    component: import('./views/elements-editor.vue')
+  },
+  {
+    path: '/elements-preview',
+    component: import('./views/elements-preview.vue')
+  },
+  {
+    path: '/text-editor',
+    component: import('./views/text-editor.vue')
+  }
+];
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes
 });
 
 export default router;
