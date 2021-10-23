@@ -7,7 +7,9 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const fastifyAdapter = new FastifyAdapter();
+
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, fastifyAdapter);
+
   await app.listen(+(env?.PORT || '4000'));
 }
 

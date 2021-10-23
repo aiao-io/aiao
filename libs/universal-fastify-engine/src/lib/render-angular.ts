@@ -6,18 +6,39 @@ import { CommonEngine, RenderOptions as NgRenderOptions } from '@nguniversal/com
 import { getDocument } from './get-document';
 import { NgSetupOptions, RenderOptions } from './interface';
 
+const findOpts = (url: string, options: NgSetupOptions[]) => {
+  const back = options[0];
+  if (options.length > 0) {
+    const find = options.find(opt => url.startsWith(opt.baseHref || '/'));
+    return find || back;
+  }
+  return back;
+};
+
+const engineMap = new Map<any, any>();
+
 export const renderAngular = (
-  engine: CommonEngine,
-  setupOptions: NgSetupOptions,
+  setupOptions: NgSetupOptions | NgSetupOptions[],
   request: FastifyRequest,
   opts?: RenderOptions
 ) => {
   const { url, headers } = request;
+  let needOpts: NgSetupOptions;
+  if (Array.isArray(setupOptions)) {
+    needOpts = findOpts(url, setupOptions);
+  } else {
+    needOpts = setupOptions;
+  }
 
-  const { bootstrap, outputPath, document, documentFilePath, providers: defaultProviders } = setupOptions;
+  const { bootstrap, outputPath, document, documentFilePath, providers: defaultProviders } = needOpts;
+  let engine: CommonEngine = engineMap.get(bootstrap);
+  if (!engine) {
+    engine = new CommonEngine(bootstrap);
+    engineMap.set(bootstrap, engine);
+  }
 
-  const proto = headers['x-forwarded-proto'] || 'http';
-  const serverUrl = `${proto}://${request.hostname}`;
+  const serveProto = headers['x-forwarded-proto'] || 'http';
+  const serverUrl = `${serveProto}://${request.hostname}`;
 
   // providers
   let providers = defaultProviders || [];

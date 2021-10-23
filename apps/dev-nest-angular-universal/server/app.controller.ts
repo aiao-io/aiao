@@ -1,13 +1,23 @@
 import { FastifyReply } from 'fastify';
 
-import { Controller, Get, Res } from '@nestjs/common';
+import { Controller, Get, Res, UseGuards } from '@nestjs/common';
+
+import { AppGuard } from './app.guard';
 
 let index = 0;
 @Controller()
+@UseGuards(AppGuard)
 export class AppController {
   @Get()
-  root(@Res() res: FastifyReply) {
-    res.redirect(302, '/home');
+  async root(@Res() res: FastifyReply) {
+    const a = await res.renderAngular();
+    res.type('text/html').send(a);
+  }
+
+  @Get('home')
+  async home(@Res() res: FastifyReply) {
+    const a = await res.renderAngular();
+    res.type('text/html').send(a);
   }
 
   @Get('api/hello')

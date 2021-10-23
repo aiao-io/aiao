@@ -7,6 +7,7 @@ import { Module } from '@nestjs/common';
 
 import { AppServerModule } from '../src/main.server';
 import { AppController } from './app.controller';
+import { AppGuard } from './app.guard';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { AppController } from './app.controller';
       outputPath: join(process.cwd(), 'dist/apps/dev-nest-angular-universal/browser')
     })
   ],
+  providers: [AppGuard],
   controllers: [AppController]
 })
 export class AppModule {}
