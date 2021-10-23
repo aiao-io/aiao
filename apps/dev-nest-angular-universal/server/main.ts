@@ -1,3 +1,5 @@
+import fastifyAccepts from 'fastify-accepts';
+import fastifyCookie from 'fastify-cookie';
 import { env } from 'process';
 
 import { NestFactory } from '@nestjs/core';
@@ -7,7 +9,13 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const fastifyAdapter = new FastifyAdapter();
+
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, fastifyAdapter);
+  app.register(fastifyCookie as any, {
+    secret: '2013'
+  });
+  app.register(fastifyAccepts as any);
+
   await app.listen(+(env?.PORT || '4000'));
 }
 

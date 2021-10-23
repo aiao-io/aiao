@@ -5,8 +5,9 @@ import { ngFastilyEngine } from '@aiao/universal-fastify-engine';
 
 import { NestUniversalOptions } from './interface';
 
-export const setupUniversal = async (app: FastifyInstance, ops: NestUniversalOptions[]) =>
-  ops.forEach(options => {
+export const setupUniversal = async (app: FastifyInstance, nestUniversalOptions: NestUniversalOptions[]) => {
+  app.register(ngFastilyEngine, nestUniversalOptions);
+  nestUniversalOptions.forEach(options => {
     const { fastifyStaticOptions, baseHref: prefix, ...fastilyEngineOpts } = options;
     app.register(
       (instance: FastifyInstance, opts: any, next: () => void) => {
@@ -14,9 +15,9 @@ export const setupUniversal = async (app: FastifyInstance, ops: NestUniversalOpt
           ...fastifyStaticOptions,
           root: fastilyEngineOpts.outputPath
         });
-        instance.register(ngFastilyEngine, fastilyEngineOpts);
         next();
       },
       { prefix }
     );
   });
+};
