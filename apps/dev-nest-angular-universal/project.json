@@ -14,7 +14,6 @@
         "tsConfig": "apps/dev-nest-angular-universal/tsconfig.app.json",
         "assets": ["apps/dev-nest-angular-universal/src/favicon.ico", "apps/dev-nest-angular-universal/src/assets"],
         "styles": ["apps/dev-nest-angular-universal/src/styles.scss"],
-        "baseHref": "/en/",
         "scripts": [],
         "vendorChunk": true,
         "extractLicenses": false,

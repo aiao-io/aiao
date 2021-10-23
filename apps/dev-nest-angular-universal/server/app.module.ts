@@ -10,18 +10,10 @@ import { AppController } from './app.controller';
 
 @Module({
   imports: [
-    NestAngularUniversalModule.forRoot(
-      {
-        bootstrap: AppServerModule,
-        baseHref: '/en/',
-        outputPath: join(process.cwd(), 'dist/apps/dev-nest-angular-universal/browser')
-      },
-      {
-        bootstrap: AppServerModule,
-        baseHref: '/cn/',
-        outputPath: join(process.cwd(), 'dist/apps/dev-nest-angular-universal/browser')
-      }
-    )
+    NestAngularUniversalModule.forRoot({
+      bootstrap: AppServerModule,
+      outputPath: join(process.cwd(), 'dist/apps/dev-nest-angular-universal/browser')
+    })
   ],
   controllers: [AppController]
 })
