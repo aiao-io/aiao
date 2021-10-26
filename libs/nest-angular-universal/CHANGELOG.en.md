@@ -6,10 +6,6 @@ All notable changes to this project will be documented in this file. See [Conven
 
 **Note:** Version bump only for package @aiao/nest-angular-universal
 
-
-
-
-
 # [0.2.0](https://github.com/aiao-io/aiao/compare/@aiao/nest-angular-universal@0.1.3...@aiao/nest-angular-universal@0.2.0) (2021-10-21)
 
 ### Features
