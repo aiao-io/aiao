@@ -17,8 +17,8 @@ describe('function', () => {
       debounceFun();
       setTimeout(() => {
         debounceFun();
-      }, 3);
-      setTimeout(isDone, 20);
+      }, 0);
+      setTimeout(isDone, 30);
     });
   });
   describe('throttle', () => {
