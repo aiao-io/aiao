@@ -6,6 +6,6 @@ describe('promise', () => {
     await sleep(100);
     const now = Date.now() - t;
     expect(now).toBeGreaterThanOrEqual(100);
-    expect(now).toBeLessThanOrEqual(110);
+    expect(now).toBeLessThanOrEqual(200);
   });
 });
