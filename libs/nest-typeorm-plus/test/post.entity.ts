@@ -2,7 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 't
 
 import { PostCategory } from './post-category.entity';
 
-@Entity('one_to_many_post')
+@Entity()
 export class Post {
   @PrimaryGeneratedColumn()
   id?: number;

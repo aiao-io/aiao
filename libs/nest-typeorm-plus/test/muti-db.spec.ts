@@ -1,5 +1,4 @@
 import { config } from 'dotenv';
-import { env } from 'process';
 import { ConnectionOptions } from 'typeorm';
 
 import { SequelizeRepository } from '@aiao/typeorm-plus';
@@ -9,23 +8,9 @@ import { Test } from '@nestjs/testing';
 import { AiaoTypeormPlusModule, InjectSequlizeRepository } from '../src';
 import { PostCategory } from './post-category.entity';
 import { Post } from './post.entity';
+import { baseOptions } from './test-helper';
 
 config();
-
-const {
-  TYPEORM_PLUS_TEST_DB_TYPE,
-  TYPEORM_PLUS_TEST_USERNAME,
-  TYPEORM_PLUS_TEST_PASSWORD,
-  TYPEORM_PLUS_TEST_DATABASE
-} = env;
-
-export const baseOptions: ConnectionOptions = {
-  type: (TYPEORM_PLUS_TEST_DB_TYPE as any) || 'postgres',
-  username: TYPEORM_PLUS_TEST_USERNAME,
-  password: TYPEORM_PLUS_TEST_PASSWORD,
-  database: TYPEORM_PLUS_TEST_DATABASE || 'test',
-  synchronize: true
-};
 
 export const connectOptions: ConnectionOptions = {
   ...baseOptions,
