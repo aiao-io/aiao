@@ -20,7 +20,6 @@
         "passWithNoTests": true
       }
     },
-
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {

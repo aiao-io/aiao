@@ -3,20 +3,32 @@
   "root": "libs/date",
   "sourceRoot": "libs/date/src",
   "prefix": "aiao",
-  "architect": {
+  "targets": {
     "build": {
-      "builder": "@nrwl/angular:package",
-      "options": { "tsConfig": "libs/date/tsconfig.lib.json", "project": "libs/date/ng-package.json" },
-      "configurations": { "production": { "tsConfig": "libs/date/tsconfig.lib.prod.json" } }
+      "executor": "@nrwl/angular:package",
+      "options": {
+        "tsConfig": "libs/date/tsconfig.lib.json",
+        "project": "libs/date/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/date/tsconfig.lib.prod.json"
+        }
+      }
     },
     "lint": {
-      "builder": "@nrwl/linter:eslint",
-      "options": { "lintFilePatterns": ["libs/date/src/**/*.ts", "libs/date/src/**/*.html"] },
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/date/src/**/*.ts", "libs/date/src/**/*.html"]
+      },
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "builder": "@nrwl/jest:jest",
-      "options": { "jestConfig": "libs/date/jest.config.js", "passWithNoTests": true },
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/date/jest.config.js",
+        "passWithNoTests": true
+      },
       "outputs": ["coverage/libs/date"]
     }
   },

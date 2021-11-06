@@ -2,19 +2,24 @@
   "root": "libs/color",
   "sourceRoot": "libs/color/src",
   "projectType": "library",
-  "architect": {
+  "targets": {
     "lint": {
-      "builder": "@nrwl/linter:eslint",
-      "options": { "lintFilePatterns": ["libs/color/**/*.ts"] },
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/color/**/*.ts"]
+      },
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "builder": "@nrwl/jest:jest",
+      "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/color"],
-      "options": { "jestConfig": "libs/color/jest.config.js", "passWithNoTests": true }
+      "options": {
+        "jestConfig": "libs/color/jest.config.js",
+        "passWithNoTests": true
+      }
     },
     "build": {
-      "builder": "@nrwl/node:package",
+      "executor": "@nrwl/node:package",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/color",

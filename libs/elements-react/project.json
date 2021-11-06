@@ -2,9 +2,9 @@
   "root": "libs/elements-react",
   "sourceRoot": "libs/elements-react/src",
   "projectType": "library",
-  "architect": {
+  "targets": {
     "lint": {
-      "builder": "@nrwl/linter:lint",
+      "executor": "@nrwl/linter:lint",
       "options": {
         "linter": "eslint",
         "tsConfig": ["libs/elements-react/tsconfig.lib.json", "libs/elements-react/tsconfig.spec.json"],
@@ -12,7 +12,7 @@
       }
     },
     "build": {
-      "builder": "@nrwl/web:package",
+      "executor": "@nrwl/web:package",
       "options": {
         "outputPath": "dist/libs/elements-react",
         "tsConfig": "libs/elements-react/tsconfig.lib.json",
@@ -21,14 +21,25 @@
         "external": ["react", "react-dom"],
         "babelConfig": "@nrwl/react/plugins/bundle-babel",
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
-        "assets": [{ "glob": "README.md", "input": ".", "output": "." }]
+        "assets": [
+          {
+            "glob": "README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
       },
-      "configurations": { "production": {} },
+      "configurations": {
+        "production": {}
+      },
       "outputs": ["{options.outputPath}"]
     },
     "test": {
-      "builder": "@nrwl/jest:jest",
-      "options": { "jestConfig": "libs/elements-react/jest.config.js", "passWithNoTests": true },
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/elements-react/jest.config.js",
+        "passWithNoTests": true
+      },
       "outputs": ["coverage/libs/elements-react"]
     }
   },
