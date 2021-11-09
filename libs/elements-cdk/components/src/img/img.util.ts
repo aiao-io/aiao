@@ -6,11 +6,7 @@ export const imgGetAreas = (areas: IImgArea[], width: number, height: number) =>
   }
   return areas.map(area => {
     const { href, alt, target, coordRatios, shape } = area;
-    const coords = coordRatios
-      .map((c, index) => {
-        return index % 2 === 0 ? c * width : c * height;
-      })
-      .join();
+    const coords = coordRatios.map((c, index) => (index % 2 === 0 ? c * width : c * height)).join();
     return {
       shape,
       href,
