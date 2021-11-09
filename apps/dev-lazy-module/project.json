@@ -3,9 +3,9 @@
   "root": "apps/dev-lazy-module",
   "sourceRoot": "apps/dev-lazy-module/src",
   "prefix": "app",
-  "architect": {
+  "targets": {
     "build": {
-      "builder": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-devkit/build-angular:browser",
       "options": {
         "outputPath": "dist/apps/dev-lazy-module",
         "index": "apps/dev-lazy-module/src/index.html",
@@ -38,30 +38,52 @@
           "vendorChunk": false,
           "buildOptimizer": true,
           "budgets": [
-            { "type": "initial", "maximumWarning": "2mb", "maximumError": "5mb" },
-            { "type": "anyComponentStyle", "maximumWarning": "6kb", "maximumError": "10kb" }
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
           ]
         }
       }
     },
     "serve": {
-      "builder": "@angular-devkit/build-angular:dev-server",
-      "options": { "browserTarget": "dev-lazy-module:build" },
-      "configurations": { "production": { "browserTarget": "dev-lazy-module:build:production", "port": 5205 } }
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "dev-lazy-module:build"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "dev-lazy-module:build:production",
+          "port": 5205
+        }
+      }
     },
     "extract-i18n": {
-      "builder": "@angular-devkit/build-angular:extract-i18n",
-      "options": { "browserTarget": "dev-lazy-module:build" }
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "dev-lazy-module:build"
+      }
     },
     "lint": {
-      "builder": "@nrwl/linter:eslint",
-      "options": { "lintFilePatterns": ["apps/dev-lazy-module/src/**/*.ts", "apps/dev-lazy-module/src/**/*.html"] },
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/dev-lazy-module/src/**/*.ts", "apps/dev-lazy-module/src/**/*.html"]
+      },
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "builder": "@nrwl/jest:jest",
+      "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/dev-lazy-module"],
-      "options": { "jestConfig": "apps/dev-lazy-module/jest.config.js", "passWithNoTests": true }
+      "options": {
+        "jestConfig": "apps/dev-lazy-module/jest.config.js",
+        "passWithNoTests": true
+      }
     }
   },
   "tags": ["angular-app"]

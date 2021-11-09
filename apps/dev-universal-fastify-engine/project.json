@@ -3,9 +3,9 @@
   "root": "apps/dev-universal-fastify-engine",
   "sourceRoot": "apps/dev-universal-fastify-engine/src",
   "prefix": "app",
-  "architect": {
+  "targets": {
     "build": {
-      "builder": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-devkit/build-angular:browser",
       "options": {
         "outputPath": "dist/apps/dev-universal-fastify-engine/browser",
         "index": "apps/dev-universal-fastify-engine/src/index.html",
@@ -38,25 +38,40 @@
           "vendorChunk": false,
           "buildOptimizer": true,
           "budgets": [
-            { "type": "initial", "maximumWarning": "2mb", "maximumError": "5mb" },
-            { "type": "anyComponentStyle", "maximumWarning": "6kb", "maximumError": "10kb" }
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
           ]
         }
       }
     },
     "serve": {
-      "builder": "@angular-devkit/build-angular:dev-server",
-      "options": { "browserTarget": "dev-universal-fastify-engine:build" },
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "dev-universal-fastify-engine:build"
+      },
       "configurations": {
-        "production": { "browserTarget": "dev-universal-fastify-engine:build:production", "port": 5201 }
+        "production": {
+          "browserTarget": "dev-universal-fastify-engine:build:production",
+          "port": 5201
+        }
       }
     },
     "extract-i18n": {
-      "builder": "@angular-devkit/build-angular:extract-i18n",
-      "options": { "browserTarget": "dev-universal-fastify-engine:build" }
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "dev-universal-fastify-engine:build"
+      }
     },
     "lint": {
-      "builder": "@nrwl/linter:eslint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "apps/dev-universal-fastify-engine/src/**/*.ts",
@@ -66,12 +81,15 @@
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "builder": "@nrwl/jest:jest",
+      "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/dev-universal-fastify-engine"],
-      "options": { "jestConfig": "apps/dev-universal-fastify-engine/jest.config.js", "passWithNoTests": true }
+      "options": {
+        "jestConfig": "apps/dev-universal-fastify-engine/jest.config.js",
+        "passWithNoTests": true
+      }
     },
     "server": {
-      "builder": "@angular-devkit/build-angular:server",
+      "executor": "@angular-devkit/build-angular:server",
       "options": {
         "outputPath": "dist/apps/dev-universal-fastify-engine/server",
         "main": "apps/dev-universal-fastify-engine/server.ts",
@@ -95,7 +113,7 @@
       }
     },
     "serve-ssr": {
-      "builder": "@nguniversal/builders:ssr-dev-server",
+      "executor": "@nguniversal/builders:ssr-dev-server",
       "options": {
         "browserTarget": "dev-universal-fastify-engine:build",
         "serverTarget": "dev-universal-fastify-engine:server"
@@ -108,13 +126,15 @@
       }
     },
     "prerender": {
-      "builder": "@nguniversal/builders:prerender",
+      "executor": "@nguniversal/builders:prerender",
       "options": {
         "browserTarget": "dev-universal-fastify-engine:build:production",
         "serverTarget": "dev-universal-fastify-engine:server:production",
         "routes": ["/"]
       },
-      "configurations": { "production": {} }
+      "configurations": {
+        "production": {}
+      }
     }
   },
   "tags": ["angular-app", "nest-app"]

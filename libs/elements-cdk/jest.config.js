@@ -1,11 +1,17 @@
 module.exports = {
-  name: 'elements-cdk',
+  displayName: 'elements-cdk',
   preset: '../../jest.preset.js',
-  coverageDirectory: '../../coverage/libs/elements-cdk',
-  collectCoverageFrom: ['./src/lib/**/*.ts', './*/src/lib/**/*.ts'],
-
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  globals: { 'ts-jest': { tsconfig: '<rootDir>/tsconfig.spec.json' } },
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+      stringifyContentPathRegex: '\\.(html|svg)$'
+    }
+  },
+  coverageDirectory: '../../coverage/libs/elements-cdk',
+  transform: {
+    '^.+\\.(ts|js|html)$': 'jest-preset-angular'
+  },
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

@@ -3,9 +3,9 @@
   "root": "apps/dev-elements-angular",
   "sourceRoot": "apps/dev-elements-angular/src",
   "prefix": "app",
-  "architect": {
+  "targets": {
     "build": {
-      "builder": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-devkit/build-angular:browser",
       "options": {
         "outputPath": "dist/apps/dev-elements-angular",
         "index": "apps/dev-elements-angular/src/index.html",
@@ -15,12 +15,27 @@
         "assets": [
           "apps/dev-elements-angular/src/favicon.ico",
           "apps/dev-elements-angular/src/assets",
-          { "glob": "**/*.svg", "input": "node_modules/ionicons/dist/ionicons/svg", "output": "./svg" },
-          { "glob": "**/*", "input": "node_modules/monaco-editor/min", "output": "./assets/monaco" },
-          { "glob": "**/*", "input": "node_modules/@aiao/elements/lib/aiao-elements/assets", "output": "./assets" }
+          {
+            "glob": "**/*.svg",
+            "input": "node_modules/ionicons/dist/ionicons/svg",
+            "output": "./svg"
+          },
+          {
+            "glob": "**/*",
+            "input": "node_modules/monaco-editor/min",
+            "output": "./assets/monaco"
+          },
+          {
+            "glob": "**/*",
+            "input": "node_modules/@aiao/elements/lib/aiao-elements/assets",
+            "output": "./assets"
+          }
         ],
         "styles": [
-          { "input": "apps/dev-elements-angular/src/theme/variables.scss", "inject": true },
+          {
+            "input": "apps/dev-elements-angular/src/theme/variables.scss",
+            "inject": true
+          },
           "apps/dev-elements-angular/src/global.scss"
         ],
         "scripts": [],
@@ -47,32 +62,53 @@
           "vendorChunk": false,
           "buildOptimizer": true,
           "budgets": [
-            { "type": "initial", "maximumWarning": "2mb", "maximumError": "5mb" },
-            { "type": "anyComponentStyle", "maximumWarning": "6kb", "maximumError": "10kb" }
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
           ]
         }
       }
     },
     "serve": {
-      "builder": "@angular-devkit/build-angular:dev-server",
-      "options": { "browserTarget": "dev-elements-angular:build", "open": true },
-      "configurations": { "production": { "browserTarget": "dev-elements-angular:build:production", "port": 5203 } }
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "dev-elements-angular:build",
+        "open": true
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "dev-elements-angular:build:production",
+          "port": 5203
+        }
+      }
     },
     "extract-i18n": {
-      "builder": "@angular-devkit/build-angular:extract-i18n",
-      "options": { "browserTarget": "dev-elements-angular:build" }
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "dev-elements-angular:build"
+      }
     },
     "lint": {
-      "builder": "@nrwl/linter:eslint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": ["apps/dev-elements-angular/src/**/*.ts", "apps/dev-elements-angular/src/**/*.html"]
       },
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "builder": "@nrwl/jest:jest",
+      "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/dev-elements-angular"],
-      "options": { "jestConfig": "apps/dev-elements-angular/jest.config.js", "passWithNoTests": true }
+      "options": {
+        "jestConfig": "apps/dev-elements-angular/jest.config.js",
+        "passWithNoTests": true
+      }
     }
   },
   "tags": ["angular-app"]

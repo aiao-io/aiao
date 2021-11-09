@@ -3,23 +3,32 @@
   "root": "libs/lazy-component",
   "sourceRoot": "libs/lazy-component/src",
   "prefix": "aiao",
-  "architect": {
+  "targets": {
     "build": {
-      "builder": "@nrwl/angular:package",
+      "executor": "@nrwl/angular:package",
       "options": {
         "tsConfig": "libs/lazy-component/tsconfig.lib.json",
         "project": "libs/lazy-component/ng-package.json"
       },
-      "configurations": { "production": { "tsConfig": "libs/lazy-component/tsconfig.lib.prod.json" } }
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/lazy-component/tsconfig.lib.prod.json"
+        }
+      }
     },
     "lint": {
-      "builder": "@nrwl/linter:eslint",
-      "options": { "lintFilePatterns": ["libs/lazy-component/src/**/*.ts", "libs/lazy-component/src/**/*.html"] },
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/lazy-component/src/**/*.ts", "libs/lazy-component/src/**/*.html"]
+      },
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "builder": "@nrwl/jest:jest",
-      "options": { "jestConfig": "libs/lazy-component/jest.config.js", "passWithNoTests": true },
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/lazy-component/jest.config.js",
+        "passWithNoTests": true
+      },
       "outputs": ["coverage/libs/lazy-component"]
     }
   },

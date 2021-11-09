@@ -3,9 +3,9 @@
   "root": "apps/dev-nest-angular-universal",
   "sourceRoot": "apps/dev-nest-angular-universal/src",
   "prefix": "app",
-  "architect": {
+  "targets": {
     "build": {
-      "builder": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-devkit/build-angular:browser",
       "options": {
         "outputPath": "dist/apps/dev-nest-angular-universal/browser",
         "index": "apps/dev-nest-angular-universal/src/index.html",
@@ -38,25 +38,40 @@
           "vendorChunk": false,
           "buildOptimizer": true,
           "budgets": [
-            { "type": "initial", "maximumWarning": "2mb", "maximumError": "5mb" },
-            { "type": "anyComponentStyle", "maximumWarning": "6kb", "maximumError": "10kb" }
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
           ]
         }
       }
     },
     "serve": {
-      "builder": "@angular-devkit/build-angular:dev-server",
-      "options": { "browserTarget": "dev-nest-angular-universal:build" },
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "dev-nest-angular-universal:build"
+      },
       "configurations": {
-        "production": { "browserTarget": "dev-nest-angular-universal:build:production", "port": 5202 }
+        "production": {
+          "browserTarget": "dev-nest-angular-universal:build:production",
+          "port": 5202
+        }
       }
     },
     "extract-i18n": {
-      "builder": "@angular-devkit/build-angular:extract-i18n",
-      "options": { "browserTarget": "dev-nest-angular-universal:build" }
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "dev-nest-angular-universal:build"
+      }
     },
     "lint": {
-      "builder": "@nrwl/linter:eslint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "apps/dev-nest-angular-universal/src/**/*.ts",
@@ -66,12 +81,15 @@
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "builder": "@nrwl/jest:jest",
+      "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/dev-nest-angular-universal"],
-      "options": { "jestConfig": "apps/dev-nest-angular-universal/jest.config.js", "passWithNoTests": true }
+      "options": {
+        "jestConfig": "apps/dev-nest-angular-universal/jest.config.js",
+        "passWithNoTests": true
+      }
     },
     "server": {
-      "builder": "@angular-devkit/build-angular:server",
+      "executor": "@angular-devkit/build-angular:server",
       "options": {
         "outputPath": "dist/apps/dev-nest-angular-universal/server",
         "main": "apps/dev-nest-angular-universal/server.ts",
@@ -114,7 +132,7 @@
       }
     },
     "serve-ssr": {
-      "builder": "@nguniversal/builders:ssr-dev-server",
+      "executor": "@nguniversal/builders:ssr-dev-server",
       "options": {
         "browserTarget": "dev-nest-angular-universal:build",
         "serverTarget": "dev-nest-angular-universal:server"
@@ -127,13 +145,15 @@
       }
     },
     "prerender": {
-      "builder": "@nguniversal/builders:prerender",
+      "executor": "@nguniversal/builders:prerender",
       "options": {
         "browserTarget": "dev-nest-angular-universal:build:production",
         "serverTarget": "dev-nest-angular-universal:server:production",
         "routes": ["/"]
       },
-      "configurations": { "production": {} }
+      "configurations": {
+        "production": {}
+      }
     }
   },
   "tags": ["angular-app", "nest-app"]

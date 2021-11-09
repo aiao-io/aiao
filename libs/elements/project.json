@@ -2,33 +2,53 @@
   "root": "libs/elements",
   "sourceRoot": "libs/elements/src",
   "projectType": "library",
-  "architect": {
+  "targets": {
     "build": {
-      "builder": "@aiao/stencil-toolkit:build",
-      "options": { "outputPath": "dist/libs/elements", "config": "libs/elements/stencil.prod.config.ts" },
-      "configurations": { "production": {} }
+      "executor": "@aiao/stencil-toolkit:build",
+      "options": {
+        "outputPath": "dist/libs/elements",
+        "config": "libs/elements/stencil.prod.config.ts"
+      },
+      "configurations": {
+        "production": {}
+      }
     },
     "serve": {
-      "builder": "@aiao/stencil-toolkit:serve",
+      "executor": "@aiao/stencil-toolkit:serve",
       "options": {
         "config": "libs/elements/stencil.dev.config.ts",
         "assets": [
-          { "glob": "**/*", "input": "node_modules/monaco-editor/min", "output": "./vendors/monaco-editor" },
-          { "glob": "**/*", "input": "node_modules/@ionic/core", "output": "./vendors/ionic" },
-          { "glob": "**/*", "input": "dist/libs/image-storage", "output": "./vendors/image-storage" }
+          {
+            "glob": "**/*",
+            "input": "node_modules/monaco-editor/min",
+            "output": "./vendors/monaco-editor"
+          },
+          {
+            "glob": "**/*",
+            "input": "node_modules/@ionic/core",
+            "output": "./vendors/ionic"
+          },
+          {
+            "glob": "**/*",
+            "input": "dist/libs/image-storage",
+            "output": "./vendors/image-storage"
+          }
         ]
       }
     },
     "lint": {
-      "builder": "@angular-devkit/build-angular:tslint",
+      "executor": "@angular-devkit/build-angular:tslint",
       "options": {
         "tsConfig": ["libs/elements/tsconfig.lib.json", "libs/elements/tsconfig.spec.json"],
         "exclude": ["**/node_modules/**", "!libs/elements/**/*"]
       }
     },
     "test": {
-      "builder": "@nrwl/jest:jest",
-      "options": { "jestConfig": "libs/elements/jest.config.js", "passWithNoTests": true },
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/elements/jest.config.js",
+        "passWithNoTests": true
+      },
       "outputs": ["coverage/libs/elements"]
     }
   },

@@ -3,9 +3,9 @@
   "root": "libs/stencil-toolkit",
   "sourceRoot": "libs/stencil-toolkit/src",
   "prefix": "aiao",
-  "architect": {
+  "targets": {
     "build": {
-      "builder": "@nrwl/node:package",
+      "executor": "@nrwl/node:package",
       "options": {
         "outputPath": "dist/libs/stencil-toolkit",
         "tsConfig": "libs/stencil-toolkit/tsconfig.lib.json",
@@ -15,22 +15,33 @@
           "libs/stencil-toolkit/README.md",
           "libs/stencil-toolkit/builders.json",
           "libs/stencil-toolkit/collection.json",
-          { "glob": "**/*.json", "input": "libs/stencil-toolkit/src/lib", "output": "lib" },
+          {
+            "glob": "**/*.json",
+            "input": "libs/stencil-toolkit/src/lib",
+            "output": "lib"
+          },
           "LICENSE"
         ],
         "srcRootForCompilationRoot": "libs/stencil-toolkit/src"
       },
-      "configurations": { "production": {} },
+      "configurations": {
+        "production": {}
+      },
       "outputs": ["{options.outputPath}"]
     },
     "lint": {
-      "builder": "@nrwl/linter:eslint",
-      "options": { "lintFilePatterns": ["libs/stencil-toolkit/src/**/*.ts", "libs/stencil-toolkit/src/**/*.html"] },
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/stencil-toolkit/src/**/*.ts", "libs/stencil-toolkit/src/**/*.html"]
+      },
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "builder": "@nrwl/jest:jest",
-      "options": { "jestConfig": "libs/stencil-toolkit/jest.config.js", "passWithNoTests": true },
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/stencil-toolkit/jest.config.js",
+        "passWithNoTests": true
+      },
       "outputs": ["coverage/libs/stencil-toolkit"]
     }
   },

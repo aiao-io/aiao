@@ -2,19 +2,25 @@
   "root": "apps/dev-nest-angular-universal-e2e",
   "sourceRoot": "apps/dev-nest-angular-universal-e2e/src",
   "projectType": "application",
-  "architect": {
+  "targets": {
     "e2e": {
-      "builder": "@nrwl/cypress:cypress",
+      "executor": "@nrwl/cypress:cypress",
       "options": {
         "cypressConfig": "apps/dev-nest-angular-universal-e2e/cypress.json",
         "tsConfig": "apps/dev-nest-angular-universal-e2e/tsconfig.e2e.json",
         "devServerTarget": "dev-nest-angular-universal:serve-ssr"
       },
-      "configurations": { "production": { "devServerTarget": "dev-nest-angular-universal:serve-ssr:production" } }
+      "configurations": {
+        "production": {
+          "devServerTarget": "dev-nest-angular-universal:serve-ssr:production"
+        }
+      }
     },
     "lint": {
-      "builder": "@nrwl/linter:eslint",
-      "options": { "lintFilePatterns": ["apps/dev-nest-angular-universal-e2e/**/*.{js,ts}"] },
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/dev-nest-angular-universal-e2e/**/*.{js,ts}"]
+      },
       "outputs": ["{options.outputFile}"]
     }
   },
