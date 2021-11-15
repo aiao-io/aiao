@@ -16,7 +16,7 @@ export const CodeEditor: React.FC = () => {
           <IonTitle>Code Editor</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent fullscreen scroll-events="false" scroll-x="false" scroll-y="false">
         <AiaoCodeEditor baseUrl="assets/monaco" language="typescript" value="const a = 'react';"></AiaoCodeEditor>
       </IonContent>
     </IonPage>
