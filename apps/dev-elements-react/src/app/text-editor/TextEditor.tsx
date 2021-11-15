@@ -18,7 +18,7 @@ const TextEditorPage: React.FC = () => {
           <IonTitle>elements editor</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent fullscreen scroll-events="false" scroll-x="false" scroll-y="false">
         <AiaoTextEditor value={hello}></AiaoTextEditor>
       </IonContent>
     </IonPage>

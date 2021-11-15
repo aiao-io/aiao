@@ -8,7 +8,7 @@
         <ion-title>Code Editor</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content fullscreen>
+    <ion-content fullscreen scrollEvents="false" scrollX="false" scrollY="false">
       <aiao-code-editor language="json" :value="data"></aiao-code-editor>
     </ion-content>
   </ion-page>

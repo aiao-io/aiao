@@ -12,7 +12,12 @@
       "@assets/*": ["./src/assets/*"],
       "@app/*": ["./src/app/*"],
       "@public/*": ["./src/public/*"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "ts-vue-plugin"
+      }
+    ]
   },
   "references": [
     {

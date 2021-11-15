@@ -6,7 +6,7 @@
     <ion-title>Code Editor</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content fullscreen>
+<ion-content fullscreen [scrollEvents]="false" [scrollX]="false" [scrollY]="false">
   <form [formGroup]="form">
     <aiao-code-editor base-url="assets/monaco" formControlName="json" language="json"></aiao-code-editor>
   </form>

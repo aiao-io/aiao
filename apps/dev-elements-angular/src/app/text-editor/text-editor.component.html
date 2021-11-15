@@ -6,6 +6,6 @@
     <ion-title>Elements Preview</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content fullscreen>
+<ion-content fullscreen [scrollEvents]="false" [scrollX]="false" [scrollY]="false">
   <aiao-text-editor [value]="hello"></aiao-text-editor>
 </ion-content>
