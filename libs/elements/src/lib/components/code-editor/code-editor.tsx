@@ -49,7 +49,6 @@ export class CodeEditor implements ComponentInterface {
 
   /**
    * 默认路径 monaco 资源路径
-   * @example 'https://cdn.jsdelivr.net/npm/monaco-editor@0.30.0/min'
    */
   @Prop() baseUrl?: string;
   /**
