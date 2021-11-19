@@ -1,7 +1,7 @@
-import { NgModuleFactory, StaticProvider, Type } from '@angular/core';
+import { StaticProvider, Type } from '@angular/core';
 
 export interface NgSetupOptions {
-  bootstrap: Type<any> | NgModuleFactory<any>;
+  bootstrap: Type<any>;
   outputPath: string;
   baseHref?: string;
   document?: string;
