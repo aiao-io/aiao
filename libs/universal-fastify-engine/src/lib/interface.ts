@@ -21,3 +21,6 @@ declare module 'fastify' {
     renderAngular: (opts?: RenderOptions) => Promise<string>;
   }
 }
+export const SERVER_URL_TOKEN = 'UNIVERSAL_SERVER_URL_TOKEN';
+export const SERVER_LOGGER_TOKEN = 'UNIVERSAL_SERVER_LOGGER_TOKEN';
+export const SERVER_REQUEST_TOKEN = 'UNIVERSAL_SERVER_REQUEST_TOKEN';
