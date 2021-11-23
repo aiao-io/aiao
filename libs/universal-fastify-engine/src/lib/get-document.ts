@@ -7,8 +7,14 @@ export function getDocument(path: string): string | undefined {
   if (templateCacheMap.has(path)) {
     return templateCacheMap.get(path);
   }
-  const indexOriginal = join(path, 'index.original.html');
-  const index = join(path, 'index.html');
+
+  // path 支持路径和直接 html
+  let indexOriginal = path;
+  let index = path;
+  if (!path.endsWith('.html')) {
+    indexOriginal = join(path, 'index.original.html');
+    index = join(path, 'index.html');
+  }
 
   let file!: string;
   if (existsSync(indexOriginal)) {
