@@ -12,14 +12,14 @@ defaults: &defaults
   docker:
     - image: circleci/node:14-browsers
       environment:
-        NODE_OPTIONS: --max_old_space_size=3200
+        NODE_OPTIONS: --max_old_space_size=1024
 
 withDatabase: &withDatabase
   working_directory: ~/repo
   docker:
     - image: circleci/node:14-browsers
       environment:
-        NODE_OPTIONS: --max_old_space_size=3200
+        NODE_OPTIONS: --max_old_space_size=1024
     - image: circleci/postgres:12-alpine-postgis
       environment:
         POSTGRES_USER: test

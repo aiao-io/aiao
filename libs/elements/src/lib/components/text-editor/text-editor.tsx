@@ -90,7 +90,7 @@ export class RichTextEditor {
    */
   @Method()
   async getSelectionElements() {
-    return getSelectionElements(this.el.shadowRoot || document);
+    return getSelectionElements(document);
   }
 
   /**

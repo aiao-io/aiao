@@ -13,7 +13,6 @@ export const initialize = (elementsConfig: IAiaoElementsConfig = {}) => {
   Aiao.elements.Context = Context;
 
   const conf: IAiaoElementsConfig = {
-    resourcesUrl: './',
     ...Aiao.elements.config,
     ...elementsConfig
   };

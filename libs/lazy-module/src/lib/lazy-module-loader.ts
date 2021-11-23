@@ -1,4 +1,4 @@
-import { Injectable, NgModuleRef } from '@angular/core';
+import { Compiler, Injectable, NgModuleFactory, NgModuleRef, Type } from '@angular/core';
 
 import { LazyModuleLoaderBase } from './LazyModuleLoaderBase';
 
@@ -6,6 +6,10 @@ import { LazyModuleLoaderBase } from './LazyModuleLoaderBase';
   providedIn: 'root'
 })
 export class LazyModuleLoader extends LazyModuleLoaderBase {
+  constructor(private moduleRef: NgModuleRef<any>, private compiler: Compiler) {
+    super();
+  }
+
   async load(name: string): Promise<NgModuleRef<any>> {
     if (this.loading.has(name)) {
       return this.loading.get(name);
@@ -14,10 +18,22 @@ export class LazyModuleLoader extends LazyModuleLoaderBase {
     if (!moduleLoader) {
       throw new Error(`module not found:${name}`);
     }
-    const loadedAndRegistered = (moduleLoader() as Promise<NgModuleRef<any>>).catch(err => {
-      this.loading.delete(name);
-      return Promise.reject(err);
-    });
+    const loadedAndRegistered = (moduleLoader() as Promise<Type<any>>)
+      .then(moduleOrFactory => {
+        if (moduleOrFactory instanceof NgModuleFactory) {
+          return moduleOrFactory;
+        } else {
+          return this.compiler.compileModuleAsync(moduleOrFactory);
+        }
+      })
+      .then(moduleFactory => {
+        this.toLoad.delete(name);
+        return moduleFactory.create(this.moduleRef.injector);
+      })
+      .catch(err => {
+        this.loading.delete(name);
+        return Promise.reject(err);
+      });
     this.loading.set(name, loadedAndRegistered);
     return loadedAndRegistered;
   }
