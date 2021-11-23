@@ -36,6 +36,7 @@
     "@angular-devkit/architect": "^12.0.0",
     "@angular-devkit/core": "^12.0.0",
     "@angular-devkit/schematics": "^12.0.0",
-    "rxjs": "~6.5.5"
-  }
+    "rxjs": "~7.4.0"
+  },
+  "devDependencies": {}
 }
