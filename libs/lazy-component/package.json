@@ -21,7 +21,7 @@
     "build": "cd ../../ && yarn build lazy-component --prod"
   },
   "peerDependencies": {
-    "@aiao/lazy-module": "^1.4.2",
+    "@aiao/lazy-module": "^1.4.3",
     "@angular/core": "^12.2.9"
   },
   "devDependencies": {

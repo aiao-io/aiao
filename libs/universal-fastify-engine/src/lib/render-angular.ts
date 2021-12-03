@@ -4,7 +4,13 @@ import { Logger } from '@nestjs/common';
 import { CommonEngine, RenderOptions as NgRenderOptions } from '@nguniversal/common/engine';
 
 import { getDocument } from './get-document';
-import { NgSetupOptions, RenderOptions } from './interface';
+import {
+  NgSetupOptions,
+  RenderOptions,
+  SERVER_LOGGER_TOKEN,
+  SERVER_REQUEST_TOKEN,
+  SERVER_URL_TOKEN
+} from './interface';
 
 const findOpts = (url: string, options: NgSetupOptions[]) => {
   const back = options[0];
@@ -15,7 +21,7 @@ const findOpts = (url: string, options: NgSetupOptions[]) => {
   return back;
 };
 
-const engineMap = new Map<any, any>();
+const engineMap = new Map<any, CommonEngine>();
 
 export const renderAngular = (
   setupOptions: NgSetupOptions | NgSetupOptions[],
@@ -31,7 +37,7 @@ export const renderAngular = (
   }
 
   const { bootstrap, outputPath, document, documentFilePath, providers: defaultProviders } = needOpts;
-  let engine: CommonEngine = engineMap.get(bootstrap);
+  let engine = engineMap.get(bootstrap);
   if (!engine) {
     engine = new CommonEngine(bootstrap);
     engineMap.set(bootstrap, engine);
@@ -55,12 +61,16 @@ export const renderAngular = (
     providers: [
       ...providers,
       {
-        provide: 'serverUrl',
+        provide: SERVER_URL_TOKEN,
         useValue: serverUrl
       },
       {
-        provide: 'Logger',
+        provide: SERVER_LOGGER_TOKEN,
         useValue: Logger
+      },
+      {
+        provide: SERVER_REQUEST_TOKEN,
+        useValue: request
       }
     ]
   };
