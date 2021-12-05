@@ -10,14 +10,14 @@ orbs:
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: circleci/node:14-browsers
+    - image: circleci/node:16-browsers
       environment:
         NODE_OPTIONS: --max_old_space_size=4000
 
 withDatabase: &withDatabase
   working_directory: ~/repo
   docker:
-    - image: circleci/node:14-browsers
+    - image: circleci/node:16-browsers
       environment:
         NODE_OPTIONS: --max_old_space_size=4000
     - image: circleci/postgres:12-alpine-postgis
