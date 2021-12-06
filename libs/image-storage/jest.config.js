@@ -1,11 +1,18 @@
 module.exports = {
-  name: 'image-storage',
+  displayName: 'image-storage',
   preset: '../../jest.preset.js',
-  coverageDirectory: '../../coverage/libs/image-storage',
-  collectCoverageFrom: ['./src/lib/**/*.ts', './adapters/*/src/lib/**/*.ts'],
-
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  globals: { 'ts-jest': { tsconfig: '<rootDir>/tsconfig.spec.json' } },
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+      stringifyContentPathRegex: '\\.(html|svg)$'
+    }
+  },
+  coverageDirectory: '../../coverage/libs/image-storage',
+  transform: {
+    '^.+.(ts|mjs|js|html)$': 'jest-preset-angular'
+  },
+  transformIgnorePatterns: ['node_modules/(?!.*.mjs$)'],
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

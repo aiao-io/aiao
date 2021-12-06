@@ -49,6 +49,8 @@ export class TextEditorBar {
             needIconSrc = iconSrc.startsWith('http')
               ? iconSrc
               : this.resourcesUrl && urlJoin(this.resourcesUrl, iconSrc);
+
+            console.log('this.resourcesUrl', this.resourcesUrl);
           } else if (iconName) {
             needIconName = iconName;
           }

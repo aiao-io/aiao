@@ -2,14 +2,14 @@
  * 获取选中的元素
  * @param doc 文档
  */
-export const docGetSelection = (doc: Document | ShadowRoot) => {
+export const docGetSelection = (doc: Document) => {
   const selection = doc.getSelection();
   if (!selection) {
     throw new Error('selection Not found');
   }
   return selection;
 };
-export const getSelectionElements = (doc: Document | ShadowRoot): HTMLElement[] => {
+export const getSelectionElements = (doc: Document): HTMLElement[] => {
   const selection = docGetSelection(doc);
 
   const selectElement: any[] = [];
@@ -38,7 +38,7 @@ export const getSelectionElements = (doc: Document | ShadowRoot): HTMLElement[] 
 };
 
 // 记录指针位置
-export const saveRange = (doc: Document | ShadowRoot) => {
+export const saveRange = (doc: Document) => {
   const selection = docGetSelection(doc);
   const range = selection.getRangeAt(0);
   range.detach();
@@ -46,7 +46,7 @@ export const saveRange = (doc: Document | ShadowRoot) => {
 };
 
 // 恢复指针
-export const restoreRange = (doc: Document | ShadowRoot, range: Range) => {
+export const restoreRange = (doc: Document, range: Range) => {
   const selection = docGetSelection(doc);
   selection.removeAllRanges();
   selection.addRange(range);
@@ -56,4 +56,4 @@ export const restoreRange = (doc: Document | ShadowRoot, range: Range) => {
  * 用户是否选中
  * @param doc 文档
  */
-export const hasRange = (doc: Document | ShadowRoot) => docGetSelection(doc).focusOffset > 0;
+export const hasRange = (doc: Document) => docGetSelection(doc).focusOffset > 0;

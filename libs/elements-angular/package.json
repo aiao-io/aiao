@@ -21,12 +21,11 @@
     "build": "cd ../../ && yarn build elements-angular --prod"
   },
   "dependencies": {
-    "@aiao/elements": "^0.7.4",
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
     "@aiao/elements": "^0.7.4",
-    "@aiao/elements-cdk": "^0.1.6",
+    "@aiao/elements-cdk": "^0.1.5",
     "@angular/common": "^12.2.9",
     "@angular/core": "^12.2.9",
     "@angular/forms": "^12.2.9",

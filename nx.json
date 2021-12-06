@@ -19,7 +19,8 @@
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
         "cacheableOperations": [],
-        "runtimeCacheInputs": ["node -v", "git hash-object yarn.lock", "git hash-object package.json"]
+        "runtimeCacheInputs": ["node -v", "git hash-object yarn.lock", "git hash-object package.json"],
+        "parallel": 3
       }
     }
   },
