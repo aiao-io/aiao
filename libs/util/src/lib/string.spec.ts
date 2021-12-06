@@ -10,14 +10,44 @@ describe('string', () => {
     expect(str2).toEqual('name aiao');
     expect(str3).toEqual('name aiao');
   });
-  it('stringSingleline', () => {
-    const str = stringSingleline(` hello       world
+  it('array', () => {
+    const str1 = stringTemplate('name ${ 0.name }', [{ name: 'aiao' }]);
+    expect(str1).toEqual('name aiao');
+  });
+  it('array 2', () => {
+    const str1 = stringTemplate('name ${ [0].name }', [{ name: 'aiao' }]);
+    expect(str1).toEqual('name aiao');
+  });
+  it('object array', () => {
+    const str1 = stringTemplate('name ${ 0 }', ['aiao']);
+    expect(str1).toEqual('name aiao');
+  });
+
+  it('stringSingleline1', () => {
+    const str = stringSingleline(` hello
+          world
 
 
       `);
     expect(str).toEqual('hello world');
   });
-  it('stringSingleline', () => {
+  it('stringSingleline2', () => {
+    const str = stringSingleline(`
+     hello
+        \n
+        \r
+        \f
+        \n
+        \r
+        \t
+        \v
+         world
+
+
+      `);
+    expect(str).toEqual('hello world');
+  });
+  it('stringSingleline3', () => {
     const str = stringSingleline(` hello       world    `);
     expect(str).toEqual('hello world');
   });

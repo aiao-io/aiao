@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <ion-page>
     <ion-header translucent>
       <ion-toolbar>
         <ion-buttons slot="start">
@@ -29,33 +29,10 @@
         <aiao-elements-preview id="preview" :value="state.data" :config="state.config"></aiao-elements-preview>
       </div>
     </ion-content>
-  </div>
+  </ion-page>
 </template>
 
-<style scoped>
-.editor {
-  width: 50%;
-  height: 100%;
-}
-
-.editor-item {
-  width: 100%;
-  height: 50%;
-}
-
-#preview {
-  flex: 1;
-  margin-left: 20px;
-}
-
-.container {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-</style>
-
-<script>
+<script lang="ts">
 const config = [
   {
     tag: 'h1',
@@ -107,11 +84,11 @@ export default defineComponent({
       data
     });
 
-    const setConfig = e => {
-      state.config = JSON.parse(e.target.value);
+    const setConfig = event => {
+      state.config = JSON.parse(event.target.value);
     };
-    const setData = e => {
-      // state.data = JSON.parse(e.target.value);
+    const setData = event => {
+      state.data = JSON.parse(event.target.value);
     };
 
     return {
@@ -119,7 +96,29 @@ export default defineComponent({
       setData,
       setConfig
     };
-  },
-  methods: {}
+  }
 });
 </script>
+
+<style scoped>
+.editor {
+  width: 50%;
+  height: 100%;
+}
+
+.editor-item {
+  width: 100%;
+  height: 50%;
+}
+
+#preview {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+</style>

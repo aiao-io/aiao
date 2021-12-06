@@ -2,17 +2,13 @@ import { Connection, ConnectionOptions } from 'typeorm';
 
 import { Inject } from '@nestjs/common';
 
-import { EntityClassOrSchema, getSequelizeRepositoryToken, NEST_TYPEORM_PLUS } from './interface';
+import { EntityClassOrSchema } from './interface';
+import { getSequelizeRepositoryToken, getTypeormPlusToken } from './utils';
 
-export const InjectSequlizeRepository = (
-  entity: EntityClassOrSchema,
-  connection?: Connection | ConnectionOptions | string
-) => {
-  // TODO: featrue
-  if (connection) {
-    console.log(connection);
-  }
-  return Inject(getSequelizeRepositoryToken(entity));
-};
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const InjectSequlizeRepository = (entity: EntityClassOrSchema, connection?: string) =>
+  Inject(getSequelizeRepositoryToken(entity, connection));
 
-export const InjectTypeormPlus = () => Inject(NEST_TYPEORM_PLUS);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const InjectTypeormPlus = (connection?: Connection | ConnectionOptions | string) =>
+  Inject(getTypeormPlusToken(connection));

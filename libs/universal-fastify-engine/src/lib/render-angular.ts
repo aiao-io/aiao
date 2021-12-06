@@ -1,50 +1,50 @@
 import { FastifyRequest } from 'fastify';
-import { existsSync, readFileSync } from 'fs';
-import { join } from 'path';
 
-import { ɵCommonEngine as CommonEngine, ɵRenderOptions as NgRenderOptions } from '@nguniversal/common/engine';
+import { Logger } from '@nestjs/common';
+import { CommonEngine, RenderOptions as NgRenderOptions } from '@nguniversal/common/engine';
 
-import { NgSetupOptions, RenderOptions } from './interface';
+import { getDocument } from './get-document';
+import {
+  NgSetupOptions,
+  RenderOptions,
+  SERVER_LOGGER_TOKEN,
+  SERVER_REQUEST_TOKEN,
+  SERVER_URL_TOKEN
+} from './interface';
 
-const templateCache = new Map<string, string>();
-
-function getDocument(path: string): string | undefined {
-  if (templateCache.has(path)) {
-    return templateCache.get(path)!;
+const findOpts = (url: string, options: NgSetupOptions[]) => {
+  const back = options[0];
+  if (options.length > 0) {
+    const find = options.find(opt => url.startsWith(opt.baseHref || '/'));
+    return find || back;
   }
-  const indexOriginal = join(path, 'index.original.html');
-  const index = join(path, 'index.html');
+  return back;
+};
 
-  let file!: string;
-  if (existsSync(indexOriginal)) {
-    file = readFileSync(indexOriginal).toString();
-  } else if (existsSync(index)) {
-    file = readFileSync(index).toString();
-  }
-  if (file) {
-    templateCache.set(path, file);
-    return file;
-  }
-  return undefined;
-}
+const engineMap = new Map<any, CommonEngine>();
 
 export const renderAngular = (
-  engine: CommonEngine,
-  setupOptions: NgSetupOptions,
+  setupOptions: NgSetupOptions | NgSetupOptions[],
   request: FastifyRequest,
   opts?: RenderOptions
 ) => {
   const { url, headers } = request;
-  const {
-    bootstrap,
-    defaultLocale,
-    distPath,
-    document,
-    documentFilePath,
-    locales,
-    providers: defaultProviders
-  } = setupOptions;
-  const proto = headers['x-forwarded-proto'];
+  let needOpts: NgSetupOptions;
+  if (Array.isArray(setupOptions)) {
+    needOpts = findOpts(url, setupOptions);
+  } else {
+    needOpts = setupOptions;
+  }
+
+  const { bootstrap, outputPath, document, documentFilePath, providers: defaultProviders } = needOpts;
+  let engine = engineMap.get(bootstrap);
+  if (!engine) {
+    engine = new CommonEngine(bootstrap);
+    engineMap.set(bootstrap, engine);
+  }
+
+  const serveProto = headers['x-forwarded-proto'] || 'http';
+  const serverUrl = `${serveProto}://${request.hostname}`;
 
   // providers
   let providers = defaultProviders || [];
@@ -55,28 +55,31 @@ export const renderAngular = (
   const renderOptions: NgRenderOptions = {
     url,
     bootstrap,
-    documentFilePath,
     document,
+    inlineCriticalCss: false,
     ...opts,
     providers: [
       ...providers,
       {
-        provide: 'serverUrl',
-        useValue: `${proto}://${request.hostname}`
+        provide: SERVER_URL_TOKEN,
+        useValue: serverUrl
+      },
+      {
+        provide: SERVER_LOGGER_TOKEN,
+        useValue: Logger
+      },
+      {
+        provide: SERVER_REQUEST_TOKEN,
+        useValue: request
       }
     ]
   };
 
   if (!renderOptions.document) {
-    let indexLocalePath!: string;
-    if (locales && locales.length > 0) {
-      const locale = opts?.locale || locales.find(loc => url.startsWith(`/${loc}`)) || defaultLocale;
-      if (locale) {
-        indexLocalePath = join(distPath, locale);
-      }
-    }
-    const doc = indexLocalePath || documentFilePath || distPath;
+    const doc = documentFilePath || outputPath;
     renderOptions.document = getDocument(doc) || '<h1>404</h1>';
+    renderOptions.documentFilePath = doc;
   }
+
   return engine.render(renderOptions);
 };

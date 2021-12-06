@@ -1,4 +1,4 @@
-import 'zone.js/dist/zone-node';
+import 'zone.js/node';
 
 import fastify from 'fastify';
 import fastifyStatic from 'fastify-static';
@@ -13,11 +13,8 @@ export function createApp() {
   const distFolder = join(process.cwd(), 'dist/apps/dev-universal-fastify-engine/browser');
 
   app.register(fastifyStatic, {
-    prefixAvoidTrailingSlash: true,
     root: distFolder,
-    cacheControl: true,
-    wildcard: '**/*.*',
-    maxAge: '1y'
+    decorateReply: false
   });
 
   app.register(ngFastilyEngine, {
@@ -31,7 +28,7 @@ export function createApp() {
     });
   });
 
-  app.get('*', (req, reply) => reply.renderAngular());
+  app.setNotFoundHandler((request, reply) => reply.renderAngular());
 
   return app;
 }
@@ -47,9 +44,10 @@ function run() {
 // Webpack will replace 'require' with '__webpack_require__'
 // '__non_webpack_require__' is a proxy to Node 'require'
 // The below code is to ensure that the server is run only when not requiring the bundle.
+// eslint-disable-next-line @typescript-eslint/naming-convention
 declare const __non_webpack_require__: NodeRequire;
 const mainModule = __non_webpack_require__.main;
-const moduleFilename = mainModule?.filename || '';
+const moduleFilename = (mainModule && mainModule.filename) || '';
 if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
   run();
 }

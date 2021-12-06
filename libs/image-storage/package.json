@@ -1,6 +1,6 @@
 {
   "name": "@aiao/image-storage",
-  "version": "0.1.2-alpha.2",
+  "version": "0.1.4",
   "description": "image storage",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -18,5 +18,7 @@
   },
   "dependencies": {
     "tslib": "^2.0.0"
-  }
+  },
+  "peerDependencies": {},
+  "devDependencies": {}
 }

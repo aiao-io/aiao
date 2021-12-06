@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/aiao-io/aiao/compare/@aiao/universal-fastify-engine@1.1.0...@aiao/universal-fastify-engine@1.1.1) (2021-10-25)
+
+**Note:** Version bump only for package @aiao/universal-fastify-engine
+
+# [1.1.0](https://github.com/aiao-io/aiao/compare/@aiao/universal-fastify-engine@1.0.1...@aiao/universal-fastify-engine@1.1.0) (2021-10-21)
+
+### Features
+
+- **nest-angular-universal:** 重构了部分代码 ([#143](https://github.com/aiao-io/aiao/issues/143)) ([e86e082](https://github.com/aiao-io/aiao/commit/e86e08218c114468138376916325ddebdf3f6ec9))
+
+## [1.0.2](https://github.com/aiao-io/aiao/compare/@aiao/universal-fastify-engine@0.1.3-alpha.0...@aiao/universal-fastify-engine@1.0.2) (2021-08-06)
+
+**Note:** Version bump only for package @aiao/universal-fastify-engine
+
+## [1.0.1](https://github.com/aiao-io/aiao/compare/@aiao/universal-fastify-engine@0.1.3-alpha.0...@aiao/universal-fastify-engine@1.0.1) (2021-03-09)
+
+**Note:** Version bump only for package @aiao/universal-fastify-engine
+
 ## [0.1.3-alpha.0](https://github.com/aiao-io/aiao/compare/@aiao/universal-fastify-engine@0.1.0...@aiao/universal-fastify-engine@0.1.3-alpha.0) (2020-08-12)
 
 ### Features

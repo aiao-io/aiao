@@ -31,6 +31,7 @@ export const setAiaoClasses = (element: ElementRef) => {
 };
 
 @Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class ValueAccessor extends ValueAccessorBase {
   constructor(el: ElementRef) {
     super(el);

@@ -3,6 +3,7 @@ import { resolve } from 'path';
 import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
+import { vueOutputTarget } from '@stencil/vue-output-target';
 
 const excludeComponents = ['aiao-text-editor-bar', 'aiao-tree-node', 'ion-icon'];
 export const config: Config = {
@@ -23,13 +24,6 @@ export const config: Config = {
       file: resolve(__dirname, 'lib/html.html-data.json'),
       sourceCodeBaseUrl: 'https://github.com/aiao-io/aiao/tree/master/libs/elements'
     },
-    // angularOutputTarget({
-    //   componentCorePackage: '@aiao/elements',
-    //   directivesProxyFile: '../elements-angular/src/lib/directives/proxies.ts',
-    //   directivesUtilsFile: '../elements-angular/src/lib/directives/proxies-utils.ts',
-    //   directivesArrayFile: '../elements-angular/src/lib/directives/proxies-list.txt',
-    //   excludeComponents
-    // }),
     {
       type: 'angular',
       componentCorePackage: '@aiao/elements',
@@ -42,6 +36,19 @@ export const config: Config = {
       componentCorePackage: '@aiao/elements',
       proxiesFile: resolve(__dirname, '../elements-react/src/lib/proxies.ts'),
       excludeComponents
+    }),
+    vueOutputTarget({
+      componentCorePackage: '@aiao/elements',
+      proxiesFile: resolve(__dirname, '../elements-vue/src/lib/proxies.ts'),
+      excludeComponents,
+      componentModels: [
+        {
+          elements: ['aiao-code-editor', 'aiao-code-diff-editor', 'aiao-elements-editor'],
+          event: '',
+          targetAttr: 'value',
+          externalEvent: 'aiaoChange'
+        }
+      ]
     })
     // {
     //   type: 'docs-readme'

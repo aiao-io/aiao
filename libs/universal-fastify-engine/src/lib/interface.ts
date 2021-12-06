@@ -1,20 +1,19 @@
-import { NgModuleFactory, StaticProvider, Type } from '@angular/core';
+import { StaticProvider, Type } from '@angular/core';
 
 export interface NgSetupOptions {
-  bootstrap: Type<{}> | NgModuleFactory<{}>;
-  distPath: string;
-  defaultLocale?: string;
+  bootstrap: Type<any>;
+  outputPath: string;
+  baseHref?: string;
   document?: string;
   documentFilePath?: string;
-  locales?: string[];
   providers?: StaticProvider[];
+  inlineCriticalCss?: boolean;
 }
 
 export interface RenderOptions {
-  locale?: string;
   document?: string;
   providers?: StaticProvider[];
-  disableSend?: boolean;
+  inlineCriticalCss?: boolean;
 }
 
 declare module 'fastify' {
@@ -22,3 +21,6 @@ declare module 'fastify' {
     renderAngular: (opts?: RenderOptions) => Promise<string>;
   }
 }
+export const SERVER_URL_TOKEN = 'UNIVERSAL_SERVER_URL_TOKEN';
+export const SERVER_LOGGER_TOKEN = 'UNIVERSAL_SERVER_LOGGER_TOKEN';
+export const SERVER_REQUEST_TOKEN = 'UNIVERSAL_SERVER_REQUEST_TOKEN';

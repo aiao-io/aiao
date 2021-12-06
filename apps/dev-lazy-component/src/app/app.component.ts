@@ -2,7 +2,7 @@ import { LazyComponentLoader } from '@aiao/lazy-component';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { DialogComponent } from './home/dialog/dialog.component';
+import { HomeDialogComponent } from './home/dialog/dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +12,15 @@ import { DialogComponent } from './home/dialog/dialog.component';
 export class AppComponent {
   constructor(public lazyComponentLoader: LazyComponentLoader, public dialog: MatDialog) {}
 
-  async openDialog() {
-    this.dialog.open(await this.lazyComponentLoader.load('homeModule', 'app-dialog'));
+  openDialogDirectly() {
+    this.dialog.open(HomeDialogComponent);
   }
 
-  openDialogDirectly() {
-    this.dialog.open(DialogComponent);
+  async openDialog() {
+    this.dialog.open(await this.lazyComponentLoader.load('homeModule', 'app-home-dialog'));
+  }
+
+  async openAloneDialog() {
+    this.dialog.open(await this.lazyComponentLoader.load('AloneDialogModule', 'app-alone-dialog'));
   }
 }

@@ -1,11 +1,17 @@
 module.exports = {
-  name: 'color',
+  displayName: 'color',
   preset: '../../jest.preset.js',
-  transform: {
-    '^.+\\.[tj]sx?$': 'ts-jest'
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json'
+    }
   },
-  collectCoverageFrom: ['./src/lib/**/*.ts'],
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../coverage/libs/color',
-  globals: { 'ts-jest': { tsConfig: '<rootDir>/tsconfig.spec.json' } }
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\.[tj]sx?$': 'ts-jest',
+    '^.+.(mjs)$': 'jest-preset-angular'
+  },
+  transformIgnorePatterns: ['node_modules/(?!.*.mjs$)'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/libs/color'
 };

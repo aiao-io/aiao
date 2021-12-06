@@ -1,6 +1,6 @@
-describe('dev-elements-react', () => {
+describe('dev-elements-vue', () => {
   it('code-editor', () => {
     cy.visit('/code-editor');
-    cy.get('aiao-code-editor').get('.monaco-editor').should('exist');
+    cy.get('ion-title').contains('Elements Vue');
   });
 });

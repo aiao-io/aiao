@@ -27,12 +27,11 @@ interface Schema extends NormalizedSchema {
 
 function updateLibPackageNpmScope(options: Schema): Rule {
   const { projectRoot, name, scope } = options;
-  return () => {
-    return updateJsonInTree(`${projectRoot}/package.json`, json => {
+  return () =>
+    updateJsonInTree(`${projectRoot}/package.json`, json => {
       json.name = options.scope ? `@${scope}/${name}` : name;
       return json;
     });
-  };
 }
 
 function getBuildConfig(options: Schema) {
@@ -80,15 +79,13 @@ function updateWorkspaceJson(options: Schema): Rule {
 }
 
 function updateNxJson(options: Schema): Rule {
-  return updateJsonInTree(`/nx.json`, json => {
-    return {
-      ...json,
-      projects: {
-        ...json.projects,
-        [options.name]: { tags: options.parsedTags }
-      }
-    };
-  });
+  return updateJsonInTree(`/nx.json`, json => ({
+    ...json,
+    projects: {
+      ...json.projects,
+      [options.name]: { tags: options.parsedTags }
+    }
+  }));
 }
 
 function addTest(options: Schema): Rule {

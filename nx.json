@@ -1,8 +1,4 @@
 {
-  "npmScope": "aiao",
-  "affected": {
-    "defaultBase": "master"
-  },
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": {
@@ -11,129 +7,127 @@
     },
     "tslint.json": "*",
     "nx.json": "*",
-    "tsconfig.base.json": "*"
+    "tsconfig.base.json": "*",
+    ".eslintrc.json": "*"
   },
+  "affected": {
+    "defaultBase": "master"
+  },
+  "npmScope": "aiao",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [],
+        "runtimeCacheInputs": ["node -v", "git hash-object yarn.lock", "git hash-object package.json"],
+        "parallel": 3
       }
     }
   },
-  "projects": {
-    "util": {
-      "tags": ["all"]
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "cli": {
+    "warnings": {
+      "versionMismatch": false
     },
-    "lazy-component": {
-      "tags": ["angular-lib"]
+    "defaultCollection": "@nrwl/angular",
+    "packageManager": "yarn",
+    "analytics": false
+  },
+  "generators": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "eslint"
+      }
     },
-    "lazy-module": {
-      "tags": ["angular-lib"]
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "eslint"
+      },
+      "convert-tslint-to-eslint": {
+        "removeTSLintIfNoMoreTSLintTargets": false
+      }
     },
-    "lazy-element": {
-      "tags": ["angular-lib"]
+    "@nrwl/react": {
+      "application": {
+        "style": "scss",
+        "linter": "eslint",
+        "babel": true
+      },
+      "library": {
+        "style": "scss",
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      },
+      "component": {
+        "style": "scss"
+      }
     },
-    "color": {
-      "tags": ["all"]
+    "@nrwl/next": {
+      "application": {
+        "linter": "eslint"
+      }
     },
-    "stencil-toolkit": {
-      "tags": ["stencil-tool"]
+    "@nrwl/web": {
+      "application": {
+        "linter": "eslint"
+      }
     },
-    "elements": {
-      "tags": ["stencil-lib"]
+    "@nrwl/node": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
     },
-    "image-storage": {
-      "tags": ["all"]
+    "@nrwl/nx-plugin": {
+      "plugin": {
+        "linter": "eslint"
+      }
     },
-    "elements-cdk": {
-      "tags": ["all"]
+    "@nrwl/nest": {
+      "application": {
+        "linter": "eslint"
+      }
     },
-    "elements-angular": {
-      "tags": ["angular-lib"]
+    "@nrwl/express": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
     },
-    "typeorm-plus": {
-      "tags": ["nest-lib"]
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress",
+      "prefix": "app",
+      "strict": true
     },
-    "elements-react": {
-      "tags": ["react-lib"]
+    "@nrwl/angular:component": {
+      "style": "scss"
     },
-    "date": {
-      "tags": ["all"]
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
     },
-    "random": {
-      "tags": ["all"]
-    },
-    "url": {
-      "tags": ["all"]
-    },
-    "universal-fastify-engine": {
-      "tags": ["all"]
-    },
-    "dev-universal-fastify-engine": {
-      "tags": ["angular-app", "nest-app"]
-    },
-    "dev-universal-fastify-engine-e2e": {
-      "tags": ["angular-e2e"],
-      "implicitDependencies": ["dev-universal-fastify-engine"]
-    },
-    "dev-nest-angular-universal": {
-      "tags": ["angular-app", "nest-app"]
-    },
-    "dev-nest-angular-universal-e2e": {
-      "tags": ["angular-e2e"],
-      "implicitDependencies": ["dev-nest-angular-universal"]
-    },
-    "dev-elements-angular": {
-      "tags": ["angular-app"]
-    },
-    "dev-elements-angular-e2e": {
-      "tags": ["angular-e2e"],
-      "implicitDependencies": ["dev-elements-angular"]
-    },
-    "dev-lazy-element": {
-      "tags": ["angular-app"]
-    },
-    "dev-lazy-element-e2e": {
-      "tags": ["angular-e2e"],
-      "implicitDependencies": ["dev-lazy-element"]
-    },
-    "dev-lazy-module": {
-      "tags": ["angular-app"]
-    },
-    "dev-lazy-module-e2e": {
-      "tags": ["angular-e2e"],
-      "implicitDependencies": ["dev-lazy-module"]
-    },
-    "dev-lazy-component": {
-      "tags": ["angular-app"]
-    },
-    "dev-lazy-component-e2e": {
-      "tags": ["angular-e2e"],
-      "implicitDependencies": ["dev-lazy-component"]
-    },
-    "dev-elements-react": {
-      "tags": ["react-app"]
-    },
-    "dev-elements-react-e2e": {
-      "tags": ["angular-e2e"],
-      "implicitDependencies": ["dev-elements-react"]
-    },
-    "leancloud-hash": {
-      "tags": ["node"]
-    },
-    "dev-elements-vue": {
-      "tags": ["vue-app"]
-    },
-    "dev-elements-vue-e2e": {
-      "tags": ["vue-e2e"],
-      "implicitDependencies": ["dev-elements-vue"]
-    },
-    "nest-typeorm-plus": {
-      "tags": ["nest-app"]
-    },
-    "nest-angular-universal": {
-      "tags": ["nest-lib"]
+    "@nrwl/angular": {
+      "convert-tslint-to-eslint": {
+        "removeTSLintIfNoMoreTSLintTargets": true
+      }
     }
-  }
+  },
+  "defaultProject": "dev-nest-angular-universal"
 }

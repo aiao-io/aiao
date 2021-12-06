@@ -1,4 +1,4 @@
-import { isString } from 'lodash';
+import { isString } from '@aiao/util';
 
 import { randomString } from './randomString';
 

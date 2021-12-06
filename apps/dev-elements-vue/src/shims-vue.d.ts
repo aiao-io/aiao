@@ -1,6 +1,10 @@
 declare module '*.vue' {
-import { ComponentOptions } from 'vue';
+  import type { DefineComponent } from 'vue';
+  // eslint-disable-next-line
+  const component: DefineComponent<{}, {}, any>;
+  export default component;
+}
 
-  var component: ComponentOptions
-  export default component
+interface ImportMeta {
+  env: Record<string, string | undefined>;
 }

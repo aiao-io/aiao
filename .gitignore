@@ -26,6 +26,7 @@ node_modules
 !.vscode/extensions.json
 
 # misc
+/.angular/cache
 .sass-cache
 connect.lock
 coverage
@@ -45,3 +46,6 @@ Thumbs.db
 
 !tools/hotfix/node_modules_files/**/dist/
 package-lock.json
+libs/elements-vue/src/lib/proxies.ts
+libs/elements-vue/src/lib/vue-component-lib/utils.ts
+.angulardoc.json

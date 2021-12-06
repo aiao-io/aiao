@@ -6,7 +6,7 @@ import { AiaoTextEditor } from '@aiao/elements-react';
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 
 const TextEditorPage: React.FC = () => {
-  const [hello, setHello] = useState('hello world');
+  const [hello] = useState('hello world');
 
   return (
     <IonPage>
@@ -18,7 +18,7 @@ const TextEditorPage: React.FC = () => {
           <IonTitle>elements editor</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent fullscreen scroll-events="false" scroll-x="false" scroll-y="false">
         <AiaoTextEditor value={hello}></AiaoTextEditor>
       </IonContent>
     </IonPage>

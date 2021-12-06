@@ -1,0 +1,36 @@
+{
+  "projectType": "library",
+  "root": "libs/typeorm-plus",
+  "sourceRoot": "libs/typeorm-plus/src",
+  "prefix": "aiao",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "options": {
+        "tsConfig": "libs/typeorm-plus/tsconfig.lib.json",
+        "project": "libs/typeorm-plus/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/typeorm-plus/tsconfig.lib.prod.json"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/typeorm-plus/src/**/*.ts", "libs/typeorm-plus/src/**/*.html"]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/typeorm-plus/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/typeorm-plus"]
+    }
+  },
+  "tags": ["nest-lib"]
+}

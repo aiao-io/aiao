@@ -1,0 +1,89 @@
+{
+  "root": "apps/dev-elements-react",
+  "sourceRoot": "apps/dev-elements-react/src",
+  "projectType": "application",
+  "generators": {},
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:build",
+      "options": {
+        "outputPath": "dist/apps/dev-elements-react",
+        "index": "apps/dev-elements-react/src/index.html",
+        "main": "apps/dev-elements-react/src/main.tsx",
+        "polyfills": "apps/dev-elements-react/src/polyfills.ts",
+        "tsConfig": "apps/dev-elements-react/tsconfig.app.json",
+        "assets": [
+          "apps/dev-elements-react/src/favicon.ico",
+          "apps/dev-elements-react/src/assets",
+          {
+            "glob": "**/*",
+            "input": "node_modules/monaco-editor/min",
+            "output": "./assets/monaco"
+          },
+          {
+            "glob": "**/*",
+            "input": "node_modules/@aiao/elements/lib/aiao-elements/assets",
+            "output": "./assets"
+          }
+        ],
+        "styles": ["apps/dev-elements-react/src/theme/variables.scss", "apps/dev-elements-react/src/global.scss"],
+        "scripts": [],
+        "webpackConfig": "apps/dev-elements-react/webpack.config.js",
+        "buildLibsFromSource": true
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/dev-elements-react/src/environments/environment.ts",
+              "with": "apps/dev-elements-react/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            }
+          ]
+        }
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "dev-elements-react:build",
+        "open": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "dev-elements-react:build:production",
+          "port": 5208
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/dev-elements-react/src/**/*.ts", "apps/dev-elements-react/src/**/*.html"]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "apps/dev-elements-react/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/apps/dev-elements-react"]
+    }
+  },
+  "tags": ["react-app"]
+}

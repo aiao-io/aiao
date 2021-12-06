@@ -1,11 +1,5 @@
 {
   "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "types": ["node", "jest"]
-  },
-  "angularCompilerOptions": {
-    "enableIvy": false
-  },
   "files": [],
   "include": [],
   "references": [
@@ -14,6 +8,19 @@
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./tsconfig.editor.json"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "angularCompilerOptions": {
+    "strictInjectionParameters": true,
+    "strictTemplates": true
+  }
 }

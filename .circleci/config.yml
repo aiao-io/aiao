@@ -2,27 +2,35 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
+version: 2.1
 
-# defaults
+orbs:
+  heroku: circleci/heroku@1.2.6
+
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: circleci/node:12-browsers
+    - image: circleci/node:16-browsers
       environment:
-        NODE_OPTIONS: --max_old_space_size=4096
-    - image: circleci/postgres:12-alpine
+        NODE_OPTIONS: --max_old_space_size=4000
+
+withDatabase: &withDatabase
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:16-browsers
+      environment:
+        NODE_OPTIONS: --max_old_space_size=4000
+    - image: circleci/postgres:12-alpine-postgis
       environment:
         POSTGRES_USER: test
         POSTGRES_DB: test
   environment:
     TYPEORM_PLUS_TEST_USERNAME: test
     TYPEORM_PLUS_TEST_DATABASE: test
-
-# env
 set_env: &set_env
   name: Setup Environment Variables
   command: |
+    env
     if [[ $CIRCLE_PULL_REQUEST ]]
     then
       echo 'Fetching Base Commit from GitHub'
@@ -34,151 +42,299 @@ set_env: &set_env
       echo 'Fetching Base Commit from Deploy Cache'
       if [[ ! -f dist/last-deploy.txt ]]
       then
-        mkdir -p dist && git rev-parse HEAD~1 > dist/last-deploy.txt
-      else
-        echo "find last deploy"
-        cat dist/last-deploy.txt
+        mkdir -p dist && git rev-list --max-parents=0 HEAD > dist/last-deploy.txt
       fi
       echo 'export AFFECTED_ARGS="--base $(cat dist/last-deploy.txt)"' >> $BASH_ENV
     fi
     source $BASH_ENV
     echo $AFFECTED_ARGS
-    echo $BASH_ENV
-
-# install
-install_yarn: &install_yarn
-  name: yarn install
-  command: yarn install --frozen-lockfile --non-interactive --ignore-scripts
-
-#
-
-decorate_angular_cli: &decorate_angular_cli
-  name: Decorate Angular Cli
-  command: node ./decorate-angular-cli.js
-
-# ngcc
-ngcc: &ngcc
-  name: Ngcc
-  command: yarn run postngcc
-
-# build_tools
-build_tools: &build_tools
-  name: Build Tools
-  command: yarn build:tools
-
-# hotfix
-hotfix: &hotfix
-  name: Hotfix
-  command: yarn task:hotfix
-
-# check_workspace
-check_workspace: &check_workspace
-  name: Check Workspace
-  command: node dist/tools/scripts/check-workspace --lib ${AFFECTED_ARGS}
-
-# Build
-build: &build
-  name: Build
-  command: yarn affected:build ${AFFECTED_ARGS} --with-deps --prod
-
-# cache
-restore_yarn_cache: &restore_yarn_cache
-  name: Restore Yarn Cache
+yarn_cache: &yarn_cache
+  name: Restore yarn cache
   keys:
-    - node-deps-node12-{{ checksum "yarn.lock" }}
+    - last-yarn-{{ checksum "yarn.lock" }}
+    - last-yarn-
 
 save_yarn_cache: &save_yarn_cache
-  name: Save Yarn Cache
-  key: node-deps-node12-{{ checksum "yarn.lock" }}
+  name: Save yarn cache
+  key: last-yarn-{{ checksum "yarn.lock" }}
   paths:
-    - ~/.cache
+    - node_modules
 
-# dist
-restore_dist: &restore_dist
-  name: Restore Dist
+dist_cache: &dist_cache
+  name: Restore dist cache
   keys:
-    - aiao-dist-001-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_PREVIOUS_BUILD_NUM }}
-    - aiao-dist-001-{{ .Environment.CIRCLE_BRANCH }}
+    - last-dist-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+    - last-dist-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}
+    - last-dist-{{ checksum "yarn.lock" }}
+    - last-dist-
 
-save_dist: &save_dist
-  name: Save Dist
-  key: aiao-dist-001-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_BUILD_NUM }}
+save_dist_cache: &save_dist_cache
+  name: Save dist cache
+  key: last-dist-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
   paths:
-    - coverage
+    - dist/tools
+    - dist/libs/elements
+    - dist/libs/elements-cdk
+    - dist/libs/elements-vue
+    - dist/libs/image-storage
+    - dist/libs/stencil-toolkit
+    - dist/libs/url
+    - dist/libs/util
+
+deploy_cache: &deploy_cache
+  name: Restore deploy cache
+  keys:
+    - last-deploy-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+    - last-deploy-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}
+    - last-deploy-{{ checksum "yarn.lock" }}
+
+save_deploy_cache: &save_deploy_cache
+  name: Save deploy cache
+  key: last-deploy-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+  paths:
     - dist/last-deploy.txt
 
+build_cache: &build_cache
+  name: Restore build cache
+  keys:
+    - last-build-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+    - last-build-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}
+    - last-build-{{ checksum "yarn.lock" }}
+
+save_build_cache: &save_build_cache
+  name: Save build cache
+  key: last-build-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+  paths:
+    - dist/apps
+    - dist/libs
+
+test_cache: &test_cache
+  name: Restore test cache
+  keys:
+    - last-test-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+    - last-test-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}
+    - last-test-{{ checksum "yarn.lock" }}
+
+save_test_cache: &save_test_cache
+  name: Save test cache
+  key: last-test-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+  paths:
+    - coverage
+
+e2e_cache: &e2e_cache
+  name: Restore e2e cache
+  keys:
+    - last-e2e-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+    - last-e2e-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}
+    - last-e2e-{{ checksum "yarn.lock" }}
+
+save_e2e_cache: &save_e2e_cache
+  name: Save e2e cache
+  key: last-e2e-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+  paths:
+    - dist/cypress
+
+# install
+yarn_install: &yarn_install
+  name: Install dependencies
+  command: yarn install --frozen-lockfile --non-interactive
+
+# coverage
+send_coverage: &send_coverage
+  name: coverage
+  command: bash <(curl -s https://codecov.io/bash)
+
 # format
-format: &format
-  name: format
+format_check: &format_check
+  name: Format check
   command: yarn format:check ${AFFECTED_ARGS}
 
 # lint
 lint: &lint
-  name: lint
-  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS} --parallel
+  name: Lint
+  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS}
 
-# check_lodash
-check_lodash: &check_lodash
-  name: Check Lodash Import
-  command: node dist/tools/scripts/affected-lodash ${AFFECTED_ARGS} --check
+affected_test: &affected_test
+  name: Afected test
+  command: yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage --maxParallel=1
 
-test: &test
-  name: test
-  command: yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage
+affected_build: &affected_build
+  name: Affected build
+  command: yarn affected:build ${AFFECTED_ARGS} --configuration production
 
 # e2e
-e2e: &e2e
-  name: e2e
-  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production --headless
-
-# coverage
-coverage: &coverage
-  name: coverage
-  command: bash <(curl -s https://codecov.io/bash)
-
-# artifacts
-store_artifacts_coverage: &store_artifacts_coverage
-  name: Artifacts coverage
-  prefix: coverage
-  path: coverage
+affected_e2e: &affected_e2e
+  name: Affected e2e
+  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production -- --headless
 
 update_deploy: &update_deploy
   name: Update Deploy
-  command: git rev-parse HEAD > dist/last-deploy.txt
+  command: |
+    echo $AFFECTED_ARGS
+    cat dist/last-deploy.txt
+    git rev-parse HEAD
+    git rev-parse HEAD > dist/last-deploy.txt
+    cat dist/last-deploy.txt
+commands:
+  checkout_and_cache:
+    description: Checkout code and restore cache
+    steps:
+      - checkout
+      - restore_cache: *yarn_cache
+      - restore_cache: *dist_cache
+      - restore_cache: *deploy_cache
+      - run: *set_env
+  codecov_upload:
+    steps:
+      - run: *send_coverage
+  deplay_to_heroku:
+    parameters:
+      project-name:
+        type: string
+        default: ${CIRCLE_PROJECT_REPONAME}
+      branch-name:
+        type: string
+        default: << pipeline.git.branch >>
+      pipeline-number:
+        type: integer
+        default: 0
+    steps:
+      - heroku/install
+      - run: npm run build:ssr -- --prod
+      - heroku/check-authentication:
+          print-whoami: true
+      - run: |
+          git config --global user.email "hero63418@gmail.com"
+          git config --global user.name "Jimmy"
+      - run: bash .circleci/heroku-setup.sh
+      - run: node dist/tools/deploy/heroku.js --project-name << parameters.project-name >> --branch-name << parameters.branch-name >> --pipeline-number << parameters.pipeline-number >>
 
-# jobs
 jobs:
-  check_pr:
+  install:
     <<: *defaults
     steps:
       - checkout
-      - restore_cache: *restore_yarn_cache
-      - restore_cache: *restore_dist
-      - run: *set_env
-      - run: *install_yarn
-      - run: *decorate_angular_cli
-      - run: *ngcc
-      - run: *build_tools
-      - run: *hotfix
-      - run: *check_workspace
-      - run: *format
-      - run: *lint
-      # - run: *check_lodash
-      # - run: *build
-      - run: *test
-      # - run: *e2e
-      - run: *coverage
-      - run: *update_deploy
-      - save_cache: *save_dist
+      - run: env
+      - restore_cache: *yarn_cache
+      - restore_cache: *dist_cache
+      - run: *yarn_install
+      - run: rm -rf node_modules/.cache
       - save_cache: *save_yarn_cache
-      # - store_artifacts: *store_artifacts_coverage
+      - save_cache: *save_dist_cache
+  check-formatting:
+    <<: *defaults
+    steps:
+      - checkout_and_cache
+      - run: *format_check
+  lint:
+    <<: *defaults
+    steps:
+      - checkout_and_cache
+      - run: *lint
+  build:
+    <<: *defaults
+    steps:
+      - checkout_and_cache
+      - restore_cache: *build_cache
+      - run: *affected_build
+      - save_cache: *save_build_cache
+
+  test:
+    <<: *withDatabase
+    steps:
+      - checkout_and_cache
+      - restore_cache: *test_cache
+      - run: *affected_test
+      - save_cache: *save_test_cache
+      - codecov_upload
+  e2e:
+    <<: *defaults
+    steps:
+      - checkout_and_cache
+      - run: yarn cypress install
+      - restore_cache: *e2e_cache
+      - run: *affected_e2e
+      - save_cache: *save_e2e_cache
+
+  deploy:
+    <<: *defaults
+    steps:
+      - checkout_and_cache
+      # - deplay_to_heroku
+      - run: *update_deploy
+      - save_cache: *save_deploy_cache
+
+  check_pull_request:
+    <<: *withDatabase
+    steps:
+      - checkout_and_cache
+      - run: env
+      # INSTALL
+      - run: *yarn_install
+      - save_cache: *save_yarn_cache
+      - save_cache: *save_dist_cache
+      # CHECK
+      - run: *format_check
+      - run: *lint
+      # TEST
+      - restore_cache: *test_cache
+      - run: *affected_test
+      - codecov_upload
+      - save_cache: *save_test_cache
+      # # BUILD
+      # - restore_cache: *build_cache
+      # - run: *affected_build
+      # - save_cache: *save_build_cache
+      # # E2E
+      # - restore_cache: *e2e_cache
+      # - run: *affected_e2e
+      # - save_cache: *save_e2e_cache
+      # deplay
+      # - deplay_to_heroku:
+      #     pipeline-number: << pipeline.number >>
+      # - save_cache: *save_deploy_cache
 
 workflows:
   version: 2
-  check:
+  check_pull_request:
+    when:
+      and:
+        - not:
+            matches:
+              pattern: '^master$'
+              value: << pipeline.git.branch >>
     jobs:
-      - check_pr:
+      - check_pull_request
+
+  check_and_deploy:
+    when:
+      and:
+        - equal: [master, << pipeline.git.branch >>]
+    jobs:
+      - install
+      - lint:
+          requires:
+            - install
+      - test:
+          requires:
+            - install
+      - check-formatting:
+          requires:
+            - install
+      - build:
+          requires:
+            - install
+      - e2e:
+          requires:
+            - install
+      - deploy:
           filters:
             branches:
-              ignore:
-                - i10n
+              only:
+                - master
+          requires:
+            - check-formatting
+            - lint
+            - test
+            - build
+            - e2e

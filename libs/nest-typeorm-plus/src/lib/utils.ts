@@ -1,13 +1,16 @@
-import { isString } from 'lodash';
-import { ConnectionOptions } from 'typeorm';
+import { Connection, ConnectionOptions } from 'typeorm';
 
-export function getTypeOrmPlusConnectionToken(connection?: ConnectionOptions | string) {
-  let connectionName = 'default';
-  if (isString(connection)) {
-    connectionName = connection;
-  } else if (connection && connection.name) {
-    connectionName = connection.name;
-  }
+import { getConnectionToken, getRepositoryToken } from '@nestjs/typeorm';
 
-  return `${connectionName}Connection_typeorm_plus`;
+import { EntityClassOrSchema } from './interface';
+
+export function getSequelizeRepositoryToken(
+  entity: EntityClassOrSchema,
+  connection?: Connection | ConnectionOptions | string
+): string {
+  return `${getRepositoryToken(entity, connection)}_SEQUELIZE_REPOSITORY`;
+}
+
+export function getTypeormPlusToken(connection?: Connection | ConnectionOptions | string): string {
+  return `${getConnectionToken(connection)}_SEQUELIZE_CONNECTION`;
 }

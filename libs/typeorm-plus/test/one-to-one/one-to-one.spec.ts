@@ -18,7 +18,11 @@ describe('one-to-one', () => {
     userRepository = connection.getRepository(User);
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
-    userSequelizeRepository = typeormPlus.sequelize.model('User') as any;
+    userSequelizeRepository = typeormPlus.getSequelizeRepository(User);
+  });
+
+  afterAll(async () => {
+    await connection.close();
   });
 
   describe('get', () => {

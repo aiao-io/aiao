@@ -1,0 +1,39 @@
+{
+  "projectType": "library",
+  "root": "libs/elements-cdk",
+  "sourceRoot": "libs/elements-cdk/src",
+  "prefix": "aiao",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/elements-cdk"],
+      "options": {
+        "project": "libs/elements-cdk/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/elements-cdk/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/elements-cdk/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/elements-cdk"],
+      "options": {
+        "jestConfig": "libs/elements-cdk/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/elements-cdk/src/**/*.ts", "libs/elements-cdk/src/**/*.html"]
+      }
+    }
+  },
+  "tags": ["all"]
+}

@@ -1,6 +1,4 @@
-import isArray from 'lodash/isArray';
-import sortBy from 'lodash/sortBy';
-
+import { isArray, sortBy } from '@aiao/util';
 import {
   Component,
   ComponentInterface,
@@ -262,7 +260,7 @@ export class Tree implements ComponentInterface {
   @Listen('aiaoTreeNodeDrop')
   async onNodeDrop(_: CustomEvent<TreeNodeEvent>) {
     const { node } = _.detail;
-    const dropNodeData = this.dataMap.get(`${node.value}`);
+    const dropNodeData = this.dataMap.get(`${node.value}`)!;
     const dragNodeData = this.dragNode && this.dataMap.get(`${this.dragNode.value}`);
 
     // 数据验证
@@ -286,11 +284,11 @@ export class Tree implements ComponentInterface {
     switch (node.dropType) {
       case 'top':
         dragNodeData.parentId = dropNodeData!.parentId;
-        dragNodeData.sort = dropNodeData!.sort - 0.5;
+        dragNodeData.sort = dropNodeData.sort - 0.5;
         break;
       case 'bottom':
         dragNodeData.parentId = dropNodeData!.parentId;
-        dragNodeData.sort = dropNodeData!.sort + 0.5;
+        dragNodeData.sort = dropNodeData.sort + 0.5;
         break;
       case 'in':
         dragNodeData.parentId = node.value;
@@ -302,27 +300,29 @@ export class Tree implements ComponentInterface {
     if (dragOldParentId !== dragNodeData.parentId) {
       changeIds.add(`${dragNodeData.id}`);
       // 排序原始父级的 children 数据
-      const needSortNodes1 = this.data!.filter(d => d.parentId === dragOldParentId);
-      sortBy(needSortNodes1, 'sort').forEach((d, i) => {
-        if (d.sort !== i) {
-          changeIds.add(`${d.id}`);
-          d.sort = i;
-        }
-      });
+      this.data!.filter(d => d.parentId === dragOldParentId)
+        .sort(sortBy('sort'))
+        .forEach((d, i) => {
+          if (d.sort !== i) {
+            changeIds.add(`${d.id}`);
+            d.sort = i;
+          }
+        });
     }
 
     // 排序新父级数据
-    const needSortNodes = this.data!.filter(d => d.parentId === dragNodeData.parentId);
-    sortBy(needSortNodes, 'sort').forEach((d, i) => {
-      if (d.id === dragNodeData.id) {
-        if (dragOldOld !== i) {
+    this.data!.filter(d => d.parentId === dragNodeData.parentId)
+      .sort(sortBy('sort'))
+      .forEach((d, i) => {
+        if (d.id === dragNodeData.id) {
+          if (dragOldOld !== i) {
+            changeIds.add(`${d.id}`);
+          }
+        } else if (d.sort !== i) {
           changeIds.add(`${d.id}`);
         }
-      } else if (d.sort !== i) {
-        changeIds.add(`${d.id}`);
-      }
-      d.sort = i;
-    });
+        d.sort = i;
+      });
 
     if (changeIds.size > 0) {
       this.data = [...this.data!];
@@ -381,7 +381,7 @@ export class Tree implements ComponentInterface {
       <aiao-tree-node id={eleId} {...attrs}>
         {hasChildren && (
           <div class="children">
-            {sortBy(children || [], 'sort').map(n => this.renderNode(n, needId, childConfigIds, nextLevel))}
+            {(children || []).sort(sortBy('sort')).map(n => this.renderNode(n, needId, childConfigIds, nextLevel))}
           </div>
         )}
       </aiao-tree-node>
@@ -409,6 +409,6 @@ export class Tree implements ComponentInterface {
   render() {
     this.refMap.clear();
     const needId = this.selectable || this.canDrag || this.checkable;
-    return this.dataState && sortBy(this.dataState, 'sort').map(node => this.renderNode(node, needId));
+    return this.dataState && this.dataState.sort(sortBy('sort')).map(node => this.renderNode(node, needId));
   }
 }

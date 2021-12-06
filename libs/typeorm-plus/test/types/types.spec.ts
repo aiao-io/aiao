@@ -17,9 +17,11 @@ describe('one-to-one', () => {
     postgresTypeRepository = connection.getRepository(PostgresType);
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
-    postgresTypeSequelizeRepository = typeormPlus.sequelize.model('PostgresType') as any;
+    postgresTypeSequelizeRepository = typeormPlus.getSequelizeRepository(PostgresType);
   });
-
+  afterAll(async () => {
+    await connection.close();
+  });
   describe('get', () => {
     let uuid: string;
     beforeAll(async () => {
@@ -39,7 +41,7 @@ describe('one-to-one', () => {
         isSecondBoolean: false,
         simpleArray: ['hello', 'world', 'of', 'typescript'],
         json: [{ hello: 'olleh' }, { world: 'dlrow' }],
-        enum: SampleEnum.ONE,
+        enum: SampleEnum.one,
         jsonb: [{ a: 1 }],
         characterVarying: ['a', 'b', 'c']
       });
@@ -47,6 +49,7 @@ describe('one-to-one', () => {
     });
 
     it('findOne/findByPk', async () => {
+      expect(uuid).toBeTruthy();
       const d1 = await postgresTypeRepository.findOne(uuid);
       const d2 = await postgresTypeSequelizeRepository.findByPk(uuid);
       expect(d1!.uuid).toEqual(d2!.uuid);

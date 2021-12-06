@@ -4,7 +4,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ValueAccessor } from './value-accessor';
 
 @Directive({
-  /* tslint:disable-next-line:directive-selector */
+  /* eslint-disable-next-line @angular-eslint/directive-selector */
   selector: 'aiao-code-editor,aiao-code-diff-editor,aiao-elements-editor',
   providers: [
     {
@@ -14,6 +14,7 @@ import { ValueAccessor } from './value-accessor';
     }
   ]
 })
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export class TextValueAccessor extends ValueAccessor {
   constructor(el: ElementRef) {
     super(el);

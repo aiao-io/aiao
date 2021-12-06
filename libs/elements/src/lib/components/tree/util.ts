@@ -1,3 +1,5 @@
+import { sortBy } from '@aiao/util';
+
 import { TreeDataState, TreeNodeData } from '../tree-node/tree-node.interface';
 
 export const findTreeNodeElement = (el: Element): Element | undefined => {
@@ -14,8 +16,8 @@ export const getDataFromDataTransfer = (dataTransfer: DataTransfer, key: string)
   return data && JSON.parse(data);
 };
 
-export const treeNodeDateToTreeState = (value: TreeNodeData[] = []): TreeDataState[] => {
-  const cloneData: TreeDataState[] = value.map(d => ({ ...d }));
+export const treeNodeDateToTreeState = (value: TreeNodeData[]): TreeDataState[] => {
+  const cloneData: TreeDataState[] = [...value].map(d => ({ ...d }));
   cloneData.forEach(d => {
     const { parentId } = d;
     if (parentId) {
@@ -26,5 +28,13 @@ export const treeNodeDateToTreeState = (value: TreeNodeData[] = []): TreeDataSta
       }
     }
   });
-  return cloneData.filter(d => !d.parentId);
+  return cloneData
+    .map(d => {
+      if (d.children) {
+        d.children.sort(sortBy('sort'));
+      }
+      return d;
+    })
+    .filter(d => !d.parentId)
+    .sort(sortBy('sort'));
 };

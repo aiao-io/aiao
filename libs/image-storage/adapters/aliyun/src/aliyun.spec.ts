@@ -18,8 +18,7 @@ describe('ImageStorage', () => {
     });
 
     expect(newLink).toEqual({
-      url:
-        'http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image%2Fresize%2Cm_lfit%2Cw_400%2Ch_500%2Fquality%2Cq_90%2Fformat%2Csrc',
+      url: 'http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image%2Fresize%2Cm_lfit%2Cw_400%2Ch_500%2Fquality%2Cq_90%2Fformat%2Csrc',
       width: 400,
       height: 500,
       quality: 0.9,

@@ -5,8 +5,12 @@
     "outDir": "../../dist/out-tsc",
     "declaration": true,
     "types": ["node"],
-    "target": "es6"
+    "target": "es2020",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
   },
-  "exclude": ["**/*.spec.ts"],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts"],
   "include": ["**/*.ts"]
 }

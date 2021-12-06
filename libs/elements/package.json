@@ -1,6 +1,6 @@
 {
   "name": "@aiao/elements",
-  "version": "0.7.1-alpha.3",
+  "version": "0.7.4",
   "description": "web components",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -35,19 +35,24 @@
     "access": "public"
   },
   "scripts": {
-    "build": "cd ../../ && nx build elements --prod"
+    "build": "cd ../../ && yarn build elements --prod"
   },
   "dependencies": {
-    "@aiao/elements-cdk": "^0.1.4-alpha.0",
+    "@aiao/elements-cdk": "^0.1.6",
     "@aiao/url": "^0.0.1",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "@aiao/elements-cdk": "*",
-    "@aiao/image-storage": "^0.1.2-alpha.2",
-    "@aiao/stencil-toolkit": "^0.2.1-alpha.2",
-    "@aiao/url": "*",
-    "@aiao/util": "^1.0.0-alpha.1",
-    "@stencil/core": "*"
+    "@aiao/elements-cdk": "^0.1.6",
+    "@aiao/image-storage": "^0.1.4",
+    "@aiao/url": "^0.0.7",
+    "@aiao/util": "^1.0.2"
+  },
+  "peerDependencies": {
+    "@aiao/elements-cdk": "^0.1.6",
+    "@aiao/image-storage": "^0.1.4",
+    "@aiao/url": "^0.0.7",
+    "@aiao/util": "^1.0.2",
+    "lodash": "^4.17.15"
   }
 }

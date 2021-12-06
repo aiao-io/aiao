@@ -12,7 +12,7 @@ import {
   AiaoTextEditor,
   AiaoTree
 } from './directives/proxies';
-import { initialize } from './elements-initialize';
+import { appInitialize } from './elements-initialize';
 import { AiaoElementsOptions } from './interface';
 import { TextValueAccessor } from './providers/control-value-accessors/text-value-accessor';
 import { AIAO_ELEMENTS_CONFIG } from './util/config';
@@ -48,7 +48,7 @@ export class AiaoElementsModule {
         },
         {
           provide: APP_INITIALIZER,
-          useFactory: initialize,
+          useFactory: appInitialize,
           multi: true,
           deps: [AIAO_ELEMENTS_CONFIG, DOCUMENT, NgZone]
         }

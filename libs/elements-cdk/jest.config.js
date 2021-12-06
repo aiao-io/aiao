@@ -1,13 +1,21 @@
 module.exports = {
-  name: 'elements-cdk',
+  displayName: 'elements-cdk',
   preset: '../../jest.preset.js',
-  coverageDirectory: '../../coverage/libs/elements-cdk',
-  collectCoverageFrom: ['./src/lib/**/*.ts', './*/src/lib/**/*.ts'],
-  snapshotSerializers: [
-    'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
-    'jest-preset-angular/build/AngularSnapshotSerializer.js',
-    'jest-preset-angular/build/HTMLCommentSerializer.js'
-  ],
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  globals: { 'ts-jest': { tsConfig: '<rootDir>/tsconfig.spec.json' } }
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+      stringifyContentPathRegex: '\\.(html|svg)$'
+    }
+  },
+  coverageDirectory: '../../coverage/libs/elements-cdk',
+  transform: {
+    '^.+.(ts|mjs|js|html)$': 'jest-preset-angular'
+  },
+  transformIgnorePatterns: ['node_modules/(?!.*.mjs$)'],
+  snapshotSerializers: [
+    'jest-preset-angular/build/serializers/no-ng-attributes',
+    'jest-preset-angular/build/serializers/ng-snapshot',
+    'jest-preset-angular/build/serializers/html-comment'
+  ]
 };

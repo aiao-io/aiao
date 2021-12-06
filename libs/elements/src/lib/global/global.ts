@@ -3,15 +3,21 @@ import { config } from './config';
 
 declare const Context: any;
 
-export default () => {
+export const initialize = (elementsConfig: IAiaoElementsConfig = {}) => {
+  if (typeof (window as any) === 'undefined') {
+    return;
+  }
   const win: any = window;
-  const aiao = (win.aiao = win.aiao || {});
-  const elements: any = (aiao['elements'] = aiao['elements'] || {});
-  elements.Context = Context;
+  const Aiao = (win.Aiao = win.Aiao || {});
+  Aiao.elements = Aiao.elements || {};
+  Aiao.elements.Context = Context;
+
   const conf: IAiaoElementsConfig = {
-    resourcesUrl: './',
-    ...elements.config
+    ...Aiao.elements.config,
+    ...elementsConfig
   };
   config.reset(conf);
-  elements.config = config;
+  Aiao.elements.config = config;
 };
+
+export default initialize;

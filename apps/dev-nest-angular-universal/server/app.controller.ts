@@ -1,16 +1,27 @@
-import { Controller, Get } from '@nestjs/common';
+import { FastifyReply } from 'fastify';
 
+import { Controller, Get, Res, UseGuards } from '@nestjs/common';
+
+import { AppGuard } from './app.guard';
+
+let index = 0;
 @Controller()
+@UseGuards(AppGuard)
 export class AppController {
-  @Get('api/hello')
-  hello() {
-    return { name: 'aiao' };
+  @Get()
+  async root(@Res() res: FastifyReply) {
+    const a = await res.renderAngular();
+    res.type('text/html').send(a);
   }
 
-  // @Get('*')
-  // async index(@Req() req: FastifyRequest, @Res() res: FastifyReply) {
-  //   // const html = await res.renderAngular({ disableSend: true });
-  //   // res.type('text/html').send(html);
-  //   res.type('text/html').send(`<h1>111</h1>`);
-  // }
+  @Get('home')
+  async home(@Res() res: FastifyReply) {
+    const a = await res.renderAngular();
+    res.type('text/html').send(a);
+  }
+
+  @Get('api/hello')
+  hello() {
+    return { name: `hello ${index++}` };
+  }
 }

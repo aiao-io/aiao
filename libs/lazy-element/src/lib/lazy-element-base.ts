@@ -6,6 +6,7 @@ import { Directive, ElementRef, EventEmitter, OnDestroy } from '@angular/core';
 import { LazyElementLoader } from './lazy-element-loader';
 
 @Directive()
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class LazyElementBase implements OnDestroy {
   docReady: EventEmitter<void>;
 

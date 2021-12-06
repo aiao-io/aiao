@@ -1,6 +1,6 @@
 {
   "name": "@aiao/util",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.2",
   "description": "util",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -26,7 +26,5 @@
   "dependencies": {
     "tslib": "^2.0.0"
   },
-  "devDependencies": {
-    "@aiao/date": "^0.1.2-alpha.0"
-  }
+  "devDependencies": {}
 }
