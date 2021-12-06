@@ -19,7 +19,7 @@
     "build": "cd ../../ && yarn build elements-react --prod"
   },
   "peerDependencies": {
-    "@aiao/elements": "^0.7.2"
+    "@aiao/elements": "^0.7.4"
   },
   "devDependencies": {
     "@aiao/elements": "^0.7.4"

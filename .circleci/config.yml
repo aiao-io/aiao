@@ -10,14 +10,14 @@ orbs:
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: circleci/node:14-browsers
+    - image: circleci/node:16-browsers
       environment:
         NODE_OPTIONS: --max_old_space_size=4000
 
 withDatabase: &withDatabase
   working_directory: ~/repo
   docker:
-    - image: circleci/node:14-browsers
+    - image: circleci/node:16-browsers
       environment:
         NODE_OPTIONS: --max_old_space_size=4000
     - image: circleci/postgres:12-alpine-postgis
@@ -152,20 +152,20 @@ format_check: &format_check
 # lint
 lint: &lint
   name: Lint
-  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS} --skip-nx-cache
+  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS}
 
 affected_test: &affected_test
   name: Afected test
-  command: yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage --skip-nx-cache
+  command: yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage --maxParallel=1
 
 affected_build: &affected_build
   name: Affected build
-  command: yarn affected:build ${AFFECTED_ARGS} --configuration production --skip-nx-cache
+  command: yarn affected:build ${AFFECTED_ARGS} --configuration production
 
 # e2e
 affected_e2e: &affected_e2e
   name: Affected e2e
-  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production -- --headless --skip-nx-cache
+  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production -- --headless
 
 update_deploy: &update_deploy
   name: Update Deploy
