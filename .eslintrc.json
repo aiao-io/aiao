@@ -1,0 +1,170 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "plugins": ["@nrwl/nx"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nrwl/nx/enforce-module-boundaries": [
+          "error",
+          {
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "all",
+                "onlyDependOnLibsWithTags": ["all"]
+              },
+              {
+                "sourceTag": "angular-lib",
+                "onlyDependOnLibsWithTags": ["all", "angular-lib", "stencil-lib"]
+              },
+              {
+                "sourceTag": "angular-app",
+                "onlyDependOnLibsWithTags": ["all", "angular-lib"]
+              },
+              {
+                "sourceTag": "react-lib",
+                "onlyDependOnLibsWithTags": ["all", "react-lib", "stencil-lib"]
+              },
+              {
+                "sourceTag": "react-app",
+                "onlyDependOnLibsWithTags": ["all", "react-lib"]
+              },
+              {
+                "sourceTag": "nest-lib",
+                "onlyDependOnLibsWithTags": ["all", "nest-lib"]
+              },
+              {
+                "sourceTag": "nest-app",
+                "onlyDependOnLibsWithTags": ["all", "nest-lib"]
+              },
+              {
+                "sourceTag": "stencil-lib",
+                "onlyDependOnLibsWithTags": ["all", "stencil-lib"]
+              },
+              {
+                "sourceTag": "stencil-app",
+                "onlyDependOnLibsWithTags": ["all", "stencil-lib"]
+              },
+              {
+                "sourceTag": "vue-app",
+                "onlyDependOnLibsWithTags": ["all", "vue-lib", "stencil-lib"]
+              },
+              {
+                "sourceTag": "vue-lib",
+                "onlyDependOnLibsWithTags": ["all", "vue-lib", "stencil-lib"]
+              }
+            ],
+            "enforceBuildableLibDependency": true
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nrwl/nx/typescript"],
+      "rules": {
+        "@typescript-eslint/explicit-member-accessibility": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-parameter-properties": "off",
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nrwl/nx/javascript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "@typescript-eslint/consistent-type-definitions": "error",
+        "@typescript-eslint/dot-notation": "off",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "off",
+          {
+            "accessibility": "explicit"
+          }
+        ],
+        "@typescript-eslint/member-ordering": "error",
+        "@typescript-eslint/naming-convention": "error",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-empty-interface": "error",
+        "@typescript-eslint/no-inferrable-types": [
+          "error",
+          {
+            "ignoreParameters": true
+          }
+        ],
+        "@typescript-eslint/no-misused-new": "error",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-shadow": "off",
+        "@typescript-eslint/no-shadow-variable": "off",
+        "@typescript-eslint/no-unused-expressions": "error",
+        "@typescript-eslint/prefer-function-type": "error",
+        "@typescript-eslint/unified-signatures": "error",
+        "arrow-body-style": "error",
+        "constructor-super": "error",
+        "eqeqeq": ["error", "smart"],
+        "guard-for-in": "error",
+        "id-blacklist": "off",
+        "id-match": "off",
+        "import/no-deprecated": "warn",
+        "no-bitwise": "off",
+        "no-caller": "error",
+        "no-console": [
+          "error",
+          {
+            "allow": [
+              "log",
+              "warn",
+              "dir",
+              "timeLog",
+              "assert",
+              "clear",
+              "count",
+              "countReset",
+              "group",
+              "groupEnd",
+              "table",
+              "dirxml",
+              "error",
+              "groupCollapsed",
+              "Console",
+              "profile",
+              "profileEnd",
+              "timeStamp",
+              "context"
+            ]
+          }
+        ],
+        "no-debugger": "error",
+        "no-empty": "off",
+        "no-eval": "error",
+        "no-fallthrough": "error",
+        "no-new-wrappers": "error",
+        "no-restricted-imports": ["error", "rxjs/Rx"],
+        "no-throw-literal": "error",
+        "no-undef-init": "error",
+        "no-underscore-dangle": "off",
+        "no-var": "error",
+        "prefer-const": "error",
+        "radix": "error",
+        "no-case-declarations": "off",
+        "no-unused-vars": "warn"
+      },
+      "plugins": ["eslint-plugin-import", "@typescript-eslint"]
+    },
+    {
+      "files": ["*.html"],
+      "rules": {
+        "@angular-eslint/template/banana-in-box": "error",
+        "@angular-eslint/template/no-negated-async": "error",
+        "@angular-eslint/template/eqeqeq": "error"
+      },
+      "plugins": ["@angular-eslint/eslint-plugin-template"]
+    }
+  ]
+}

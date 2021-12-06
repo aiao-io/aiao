@@ -1,0 +1,253 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - 'master'
+    paths-ignore:
+      - '**.md'
+      - '**/*.md'
+      - '**/jest.config.js'
+      - '**/ng-package.json'
+      - '**/package.json'
+      - '**/scripts/**'
+      - '**/stencil.*.config.ts'
+      - '**/test-setup.ts'
+      - '**/test/**'
+      - '**/tsconfig.*.json'
+      - '**/tsconfig.json'
+      - '**/tslint.json'
+
+  pull_request:
+    branches:
+      - '**'
+      - '!*i10n*'
+    paths-ignore:
+      - '**.md'
+      - '**/*.md'
+      - '**/jest.config.js'
+      - '**/ng-package.json'
+      - '**/package.json'
+      - '**/scripts/**'
+      - '**/stencil.*.config.ts'
+      - '**/test-setup.ts'
+      - '**/test/**'
+      - '**/tsconfig.*.json'
+      - '**/tsconfig.json'
+      - '**/tslint.json'
+
+jobs:
+  install:
+    name: Install Dependencies
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Yarn Cache
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+            ${{ runner.os }}-yarn-
+
+      - uses: actions/cache@v2
+        id: dist-cache
+        with:
+          path: |
+            dist/ci
+            dist/tools
+            dist/libs/elements
+            dist/libs/elements-cdk
+            dist/libs/elements-vue
+            dist/libs/image-storage
+            dist/libs/stencil-toolkit
+            dist/libs/url
+            dist/libs/util
+          key: dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
+          restore-keys: |
+            dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
+            dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-
+
+      - name: Install
+        run: yarn install --frozen-lockfile --non-interactive
+
+  affected_e2e:
+    name: Affected E2E
+    needs: [install]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Yarn Cache
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+            ${{ runner.os }}-yarn-
+
+      - uses: actions/cache@v2
+        id: dist-cache
+        with:
+          path: |
+            dist/ci
+            dist/tools
+            dist/libs/elements
+            dist/libs/elements-cdk
+            dist/libs/elements-vue
+            dist/libs/image-storage
+            dist/libs/stencil-toolkit
+            dist/libs/url
+            dist/libs/util
+          key: dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
+          restore-keys: |
+            dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
+            dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-
+
+      - name: Cypress Install
+        shell: bash
+        run: yarn cypress install
+
+      - name: Setup Environment Variables
+        shell: bash
+        run: |
+          if [[ -n $GITHUB_BASE_REF ]]
+          then
+            echo "Fetching Base Commit from GitHub"
+            echo "NX_BASE=remotes/origin/$GITHUB_BASE_REF" >> $GITHUB_ENV
+          else
+            if [[ ! -f dist/ci/last-deploy.txt ]]
+            then
+              mkdir -p dist/ci && git rev-list --max-parents=0 HEAD > dist/ci/last-deploy.txt
+            fi
+            echo "NX_BASE=$(cat dist/ci/last-deploy.txt)" >> $GITHUB_ENV
+          fi
+
+      - name: Affected e2e
+        shell: bash
+        run: env && yarn affected:e2e --base=$NX_BASE --parallel --configuration production --headless
+
+  affected_build:
+    name: Affected Build
+    needs: [install]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Yarn Cache
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+            ${{ runner.os }}-yarn-
+
+      - uses: actions/cache@v2
+        id: dist-cache
+        with:
+          path: |
+            dist/ci
+            dist/tools
+            dist/libs/elements
+            dist/libs/elements-cdk
+            dist/libs/elements-vue
+            dist/libs/image-storage
+            dist/libs/stencil-toolkit
+            dist/libs/url
+            dist/libs/util
+          key: dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
+          restore-keys: |
+            dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
+            dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-
+
+      - name: Setup Environment Variables
+        shell: bash
+        run: |
+          if [[ -n $GITHUB_BASE_REF ]]
+          then
+            echo "Fetching Base Commit from GitHub"
+            echo "NX_BASE=remotes/origin/$GITHUB_BASE_REF" >> $GITHUB_ENV
+          else
+            if [[ ! -f dist/ci/last-deploy.txt ]]
+            then
+              mkdir -p dist/ci && git rev-list --max-parents=0 HEAD > dist/ci/last-deploy.txt
+            fi
+            echo "NX_BASE=$(cat dist/ci/last-deploy.txt)" >> $GITHUB_ENV
+          fi
+
+      - name: Affected Build
+        shell: bash
+        run: yarn affected:build --base=$NX_BASE --configuration production
+
+  deploy:
+    name: Deploy
+    needs: [affected_e2e, affected_build]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Yarn Cache
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+            ${{ runner.os }}-yarn-
+
+      - uses: actions/cache@v2
+        id: dist-cache
+        with:
+          path: |
+            dist/ci
+            dist/tools
+            dist/libs/elements
+            dist/libs/elements-cdk
+            dist/libs/elements-vue
+            dist/libs/image-storage
+            dist/libs/stencil-toolkit
+            dist/libs/url
+            dist/libs/util
+          key: dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
+          restore-keys: |
+            dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
+            dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-
+
+      - name: Setup Environment Variables
+        shell: bash
+        run: |
+          if [[ -n $GITHUB_BASE_REF ]]
+          then
+            echo "Fetching Base Commit from GitHub"
+            echo "NX_BASE=remotes/origin/$GITHUB_BASE_REF" >> $GITHUB_ENV
+          else
+            if [[ ! -f dist/ci/last-deploy.txt ]]
+            then
+              mkdir -p dist/ci && git rev-list --max-parents=0 HEAD > dist/ci/last-deploy.txt
+            fi
+            echo "NX_BASE=$(cat dist/ci/last-deploy.txt)" >> $GITHUB_ENV
+          fi
+
+      - name: update last-deploy
+        shell: bash
+        run: mkdir -p dist/ci && git rev-parse HEAD~1 > dist/ci/last-deploy.txt

@@ -1,6 +1,6 @@
 {
   "name": "@aiao/elements",
-  "version": "0.5.3",
+  "version": "0.7.4",
   "description": "web components",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -15,10 +15,11 @@
   "keywords": [
     "stencil"
   ],
-  "main": "lib/index.js",
-  "module": "lib/index.mjs",
-  "es2015": "lib/esm/index.mjs",
-  "es2017": "lib/esm/index.mjs",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.js",
+  "es2015": "lib/esm/index.js",
+  "es2017": "lib/esm/index.js",
+  "jsnext:main": "lib/esm/index.js",
   "types": "lib/types/interface.d.ts",
   "collection": "lib/collection/collection-manifest.json",
   "collection:main": "lib/collection/index.js",
@@ -34,18 +35,24 @@
     "access": "public"
   },
   "scripts": {
-    "build": "cd ../../ && ng build elements"
+    "build": "cd ../../ && yarn build elements --prod"
   },
   "dependencies": {
-    "@aiao/elements-cdk": "^0.1.0",
-    "@aiao/url": "^0.0.1"
+    "@aiao/elements-cdk": "^0.1.6",
+    "@aiao/url": "^0.0.1",
+    "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "@aiao/elements-cdk": "*",
-    "@aiao/image-storage": "*",
-    "@aiao/stencil-toolkit": "*",
-    "@aiao/url": "*",
-    "@aiao/util": "^0.7.0",
-    "@stencil/core": "*"
+    "@aiao/elements-cdk": "^0.1.6",
+    "@aiao/image-storage": "^0.1.4",
+    "@aiao/url": "^0.0.7",
+    "@aiao/util": "^1.0.2"
+  },
+  "peerDependencies": {
+    "@aiao/elements-cdk": "^0.1.6",
+    "@aiao/image-storage": "^0.1.4",
+    "@aiao/url": "^0.0.7",
+    "@aiao/util": "^1.0.2",
+    "lodash": "^4.17.15"
   }
 }

@@ -18,7 +18,7 @@
       }
     ],
     "no-arg": true,
-    "no-bitwise": true,
+    "no-bitwise": false,
     "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
     "no-construct": true,
     "no-debugger": true,
@@ -28,7 +28,7 @@
     "no-eval": true,
     "no-inferrable-types": [true, "ignore-params"],
     "no-misused-new": true,
-    "no-non-null-assertion": true,
+    "no-non-null-assertion": false,
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-string-throw": true,
@@ -43,13 +43,53 @@
     "unified-signatures": true,
     "variable-name": false,
     "nx-enforce-module-boundaries": [
-      false,
+      true,
       {
         "allow": [],
         "depConstraints": [
           {
-            "sourceTag": "*",
-            "onlyDependOnLibsWithTags": ["*"]
+            "sourceTag": "all",
+            "onlyDependOnLibsWithTags": ["all"]
+          },
+          {
+            "sourceTag": "angular-lib",
+            "onlyDependOnLibsWithTags": ["all", "angular-lib", "stencil-lib"]
+          },
+          {
+            "sourceTag": "angular-app",
+            "onlyDependOnLibsWithTags": ["all", "angular-lib"]
+          },
+          {
+            "sourceTag": "react-lib",
+            "onlyDependOnLibsWithTags": ["all", "react-lib", "stencil-lib"]
+          },
+          {
+            "sourceTag": "react-app",
+            "onlyDependOnLibsWithTags": ["all", "react-lib"]
+          },
+          {
+            "sourceTag": "nest-lib",
+            "onlyDependOnLibsWithTags": ["all", "nest-lib"]
+          },
+          {
+            "sourceTag": "nest-app",
+            "onlyDependOnLibsWithTags": ["all", "nest-lib"]
+          },
+          {
+            "sourceTag": "stencil-lib",
+            "onlyDependOnLibsWithTags": ["all", "stencil-lib"]
+          },
+          {
+            "sourceTag": "stencil-app",
+            "onlyDependOnLibsWithTags": ["all", "stencil-lib"]
+          },
+          {
+            "sourceTag": "angular-e2e",
+            "onlyDependOnLibsWithTags": ["all", "angular-app"]
+          },
+          {
+            "sourceTag": "vue-app",
+            "onlyDependOnLibsWithTags": ["all", "vue-lib", "stencil-lib"]
           }
         ],
         "enforceBuildableLibDependency": true

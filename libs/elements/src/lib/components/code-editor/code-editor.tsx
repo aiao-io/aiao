@@ -13,7 +13,8 @@ import {
   Watch
 } from '@stencil/core';
 
-import { getBaseUrl } from '../../utils/code-editor/base-url';
+import { CodeEditorAcitons } from '../../utils/code-editor/actions';
+import { getBaseMonacoUrl } from '../../utils/code-editor/base-url';
 import { LoadMonacoEditor } from '../../utils/code-editor/load-monaco-editor';
 import { normalizeMonacoEditorOptions } from '../../utils/code-editor/normalize-options';
 import { normalizeMonacoEditorValue, normalizeMonacoEditorValueOut } from '../../utils/code-editor/normalize-value';
@@ -26,7 +27,7 @@ const defaultOptions: monaco.editor.IStandaloneEditorConstructionOptions = {
 };
 
 // 只加载一次
-let loader: any;
+let loader: LoadMonacoEditor;
 
 @Component({
   tag: 'aiao-code-editor',
@@ -35,39 +36,72 @@ let loader: any;
 })
 export class CodeEditor implements ComponentInterface {
   @Element() el!: HTMLAiaoCodeEditorElement;
+  #inputId = `aiao-code-editor:${codeEditorId++}`;
 
-  private editor: monaco.editor.IStandaloneCodeEditor;
+  #setModelTimer?: any;
+  #editor?: monaco.editor.IStandaloneCodeEditor;
+  #skipNextValueUpdate = false;
 
   // --------------------------------------------------------------[ State ]
   // --------------------------------------------------------------[ Event ]
-  @Event() aiaoChange: EventEmitter<any>;
+  @Event() aiaoChange!: EventEmitter<any>;
   // --------------------------------------------------------------[ Prop ]
 
-  @Prop() name: string;
-  @Prop() disabled: boolean;
-
-  @Prop() options: monaco.editor.IEditorConstructionOptions;
-  @Prop() value: string;
-  @Prop() language: string;
-  @Prop() uri: monaco.Uri;
-
-  // 'https://cdn.bootcss.com/monaco-editor/0.18.0/min/';
-  @Prop() baseUrl: string;
-
-  // 'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'ru' | 'zh-cn' | 'zh-tw'
-  @Prop() localizeCode: string;
+  /**
+   * 默认路径 monaco 资源路径
+   */
+  @Prop() baseUrl?: string;
+  /**
+   * 禁用
+   */
+  @Prop() disabled = false;
+  /**
+   * 语言
+   * @example javascript, json
+   */
+  @Prop() language?: string;
+  /**
+   * 显示语言，默认根据浏览器判断
+   * @example  'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'ru' | 'zh-cn' | 'zh-tw'
+   */
+  @Prop() localizeCode?: string;
+  /**
+   * form 名
+   */
+  @Prop() name: string = this.#inputId;
+  /**
+   * 配置
+   */
+  @Prop() options?: monaco.editor.IEditorConstructionOptions;
+  /**
+   * monaco uri
+   */
+  @Prop() uri?: monaco.Uri;
+  /**
+   * 当前值
+   */
+  @Prop({ mutable: true, reflect: true }) value?: string | any;
 
   // --------------------------------------------------------------[ Watch ]
+  @Watch('value')
+  valueChange(value: string | any) {
+    if (this.#editor && this.#skipNextValueUpdate === false) {
+      this.#editor.setValue(value);
+    }
+  }
+
   @Watch('language')
   @Watch('uri')
   setModel() {
-    if (this.editor) {
-      setTimeout(() => {
-        const value = normalizeMonacoEditorValue(this.language, this.value);
-        const model = monaco.editor.createModel(value, this.language, this.uri);
-        this.editor.setModel(model);
-      }, 0);
+    // 不在第一时间执行
+    if (this.#setModelTimer) {
+      clearTimeout(this.#setModelTimer);
     }
+    this.#setModelTimer = setTimeout(() => {
+      const value = normalizeMonacoEditorValue(this.value, this.language);
+      const model = monaco.editor.createModel(value, this.language, this.uri);
+      this.getEditor().setModel(model);
+    }, 0);
   }
 
   // --------------------------------------------------------------[ Listen ]
@@ -75,31 +109,51 @@ export class CodeEditor implements ComponentInterface {
     target: 'window'
   })
   resize() {
-    if (this.editor) {
-      this.editor.layout();
-    }
+    this.getEditor().layout();
   }
   // --------------------------------------------------------------[ event hander ]
   // --------------------------------------------------------------[ public function ]
-
+  /**
+   * 格式化
+   */
   @Method()
   async format() {
-    return this.editor.getAction('editor.action.formatDocument').run();
+    return this.getEditor().getAction('editor.action.formatDocument').run();
+  }
+
+  /**
+   * action
+   */
+  @Method()
+  async action(action: CodeEditorAcitons) {
+    switch (action) {
+      case CodeEditorAcitons.format:
+        return this.format();
+      default:
+        break;
+    }
   }
 
   // --------------------------------------------------------------[ private function ]
-  private createMonaco(options: monaco.editor.IStandaloneEditorConstructionOptions = defaultOptions) {
-    if (this.editor) {
-      this.editor.dispose();
+  private getEditor() {
+    if (!this.#editor) {
+      throw new Error('aiao-code-editor 还未初始化');
     }
-
-    const val = normalizeMonacoEditorValue(this.language, this.value);
-    options = normalizeMonacoEditorOptions(options, this.uri, this.language, val);
-    this.editor = monaco.editor.create(this.el, options);
-    this.editor.onDidChangeModelContent(() => {
+    return this.#editor;
+  }
+  private createMonaco(options: monaco.editor.IStandaloneEditorConstructionOptions = defaultOptions) {
+    if (this.#editor) {
+      this.#editor.dispose();
+    }
+    const val = normalizeMonacoEditorValue(this.value, this.language);
+    options = normalizeMonacoEditorOptions(val, options, this.uri, this.language);
+    this.#editor = monaco.editor.create(this.el, options);
+    this.#editor.onDidChangeModelContent(() => {
       try {
-        const value = normalizeMonacoEditorValueOut(this.language, this.editor.getValue());
+        const value = normalizeMonacoEditorValueOut(this.#editor!.getValue(), this.language);
+        this.#skipNextValueUpdate = true;
         this.value = value;
+        this.#skipNextValueUpdate = false;
         this.aiaoChange.emit({ value });
       } catch {
         //
@@ -110,7 +164,7 @@ export class CodeEditor implements ComponentInterface {
   // --------------------------------------------------------------[ lifecycle ]
 
   async componentDidLoad() {
-    const baseUrl = getBaseUrl(this.baseUrl);
+    const baseUrl = getBaseMonacoUrl(this.baseUrl);
     if (!loader) {
       loader = new LoadMonacoEditor(baseUrl, this.localizeCode);
     }
@@ -123,3 +177,4 @@ export class CodeEditor implements ComponentInterface {
     return <Host></Host>;
   }
 }
+let codeEditorId = 0;

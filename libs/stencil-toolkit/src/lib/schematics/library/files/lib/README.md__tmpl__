@@ -1,0 +1,8 @@
+# Stencil Component Starter
+
+## start
+
+```console
+ng serve <%= name %>
+http://localhost:3333/src/lib/components/my-component/test/basic
+```

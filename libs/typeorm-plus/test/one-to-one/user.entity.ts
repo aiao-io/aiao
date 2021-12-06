@@ -1,17 +1,18 @@
-import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+
 import { Profile } from './profile.entity';
 
-@Entity()
+@Entity('one_to_one_user')
 export class User {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column()
-  name: string;
+  name!: string;
 
   @OneToOne(() => Profile, { cascade: true })
   @JoinColumn()
-  profile: Profile;
+  profile?: Profile;
   @Column({ nullable: true })
-  profileId: number;
+  profileId?: number;
 }

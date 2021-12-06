@@ -1,5 +1,25 @@
 {
   "editor.wordWrap": "on",
+  "files.eol": "\n",
+  "files.exclude": {
+    "*.log": true,
+    "tmp": true,
+    "**/.*": true,
+    "**/*.en.md": true,
+    "**/dist": true,
+    "**/node_modules": true,
+    "bazel-out": true,
+    "coverage": true,
+    "libs/elements/date": true,
+    "libs/elements/elements-cdk": true,
+    "libs/elements/hydrate": true,
+    "libs/elements/image-storage": true,
+    "libs/elements/lib": true,
+    "libs/elements/loader": true,
+    "libs/elements/url": true,
+    "libs/elements/util": true,
+    "libs/elements/vendors": true
+  },
   "gitlens.codeLens.authors.enabled": false,
   "gitlens.codeLens.recentChange.enabled": false,
   "typescript.tsdk": "node_modules/typescript/lib",
@@ -20,5 +40,18 @@
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+
+  "editor.formatOnSave": false,
+  // importSorter 配置
+  "importSorter.generalConfiguration.sortOnBeforeSave": true,
+  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 120,
+  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimit",
+  "importSorter.importStringConfiguration.tabSize": 2,
+  "importSorter.generalConfiguration.exclude": ["proxies.ts", "createOverlayComponent.tsx", "createComponent.tsx"],
+  // 去掉 experimentalDecorators 报错
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+
+  // markdownlint
+  "markdownlint.ignore": ["**/CHANGELOG.md"]
 }

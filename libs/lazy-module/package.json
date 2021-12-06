@@ -1,6 +1,6 @@
 {
   "name": "@aiao/lazy-module",
-  "version": "1.4.0",
+  "version": "1.4.3",
   "description": "lazy module for angular",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -18,10 +18,14 @@
     "module"
   ],
   "scripts": {
-    "build": "cd ../../ && ng build lazy-module --prod"
+    "build": "cd ../../ && yarn build lazy-module --prod"
   },
   "peerDependencies": {
-    "@angular/common": "^9.0.0",
-    "@angular/core": "^9.0.0"
-  }
+    "@angular/core": "^12.2.9",
+    "@angular/router": "^12.2.9"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {}
 }

@@ -1,0 +1,39 @@
+{
+  "projectType": "library",
+  "root": "libs/elements-angular",
+  "sourceRoot": "libs/elements-angular/src",
+  "prefix": "aiao",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/elements-angular"],
+      "options": {
+        "project": "libs/elements-angular/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/elements-angular/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/elements-angular/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/elements-angular"],
+      "options": {
+        "jestConfig": "libs/elements-angular/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/elements-angular/src/**/*.ts", "libs/elements-angular/src/**/*.html"]
+      }
+    }
+  },
+  "tags": ["angular-lib"]
+}

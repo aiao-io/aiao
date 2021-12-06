@@ -1,9 +1,11 @@
 import { IElementOptions } from './element-data.interface';
 
+// 元素插槽
 export interface IElementConfigSlot {
   name: string;
 }
 
+// 元素配置
 export interface IElementConfig {
   // 元素的标签
   tag: string;
@@ -38,5 +40,5 @@ export interface IElementConfig {
   slots?: IElementConfigSlot[];
 
   // 属性验证的 schema 准备支持 ajv
-  schema?: object;
+  schema?: any;
 }

@@ -1,6 +1,6 @@
 {
   "name": "@aiao/util",
-  "version": "0.7.0",
+  "version": "1.0.2",
   "description": "util",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -18,10 +18,13 @@
     "string"
   ],
   "scripts": {
-    "build": "cd ../../ && ng build util --prod"
+    "build": "cd ../../ && yarn build util --prod"
   },
   "peerDependencies": {
-    "date-fns": "^2.9.0",
     "lodash": "^4.17.15"
-  }
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {}
 }

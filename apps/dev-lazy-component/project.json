@@ -1,0 +1,90 @@
+{
+  "projectType": "application",
+  "root": "apps/dev-lazy-component",
+  "sourceRoot": "apps/dev-lazy-component/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/dev-lazy-component",
+        "index": "apps/dev-lazy-component/src/index.html",
+        "main": "apps/dev-lazy-component/src/main.ts",
+        "polyfills": "apps/dev-lazy-component/src/polyfills.ts",
+        "tsConfig": "apps/dev-lazy-component/tsconfig.app.json",
+        "assets": ["apps/dev-lazy-component/src/favicon.ico", "apps/dev-lazy-component/src/assets"],
+        "styles": ["apps/dev-lazy-component/src/styles.scss"],
+        "scripts": [],
+        "vendorChunk": true,
+        "extractLicenses": false,
+        "buildOptimizer": false,
+        "sourceMap": true,
+        "optimization": false,
+        "namedChunks": true
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/dev-lazy-component/src/environments/environment.ts",
+              "with": "apps/dev-lazy-component/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "dev-lazy-component:build"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "dev-lazy-component:build:production",
+          "port": 5206
+        }
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "dev-lazy-component:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/dev-lazy-component/src/**/*.ts", "apps/dev-lazy-component/src/**/*.html"]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/dev-lazy-component"],
+      "options": {
+        "jestConfig": "apps/dev-lazy-component/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["angular-app"]
+}

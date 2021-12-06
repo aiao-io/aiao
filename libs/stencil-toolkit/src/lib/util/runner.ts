@@ -10,7 +10,7 @@ export function run(command: string, args: string[], collect: boolean = false) {
   return new Promise<null | string>((resolve, reject) => {
     const child: ChildProcess = spawn(`${command}`, args, options);
     if (collect) {
-      child.stdout.on('data', data => resolve(data.toString().replace(/\r\n|\n/, '')));
+      child.stdout?.on('data', data => resolve(data.toString().replace(/\r\n|\n/, '')));
     }
     child.on('close', code => {
       if (code === 0) {
@@ -27,9 +27,9 @@ export function runCommandAsync(command: string): Promise<{ stdout: string; stde
   return new Promise((resolve, reject) => {
     exec(command, (err, stdout, stderr) => {
       if (err) {
-        reject(err);
+        return reject(err);
       }
-      resolve({ stdout, stderr });
+      return resolve({ stdout, stderr });
     });
   });
 }

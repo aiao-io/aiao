@@ -1,0 +1,17 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Elements Preview</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <div class="container">
+    <form class="editor" [formGroup]="form">
+      <aiao-code-editor class="item" language="json" formControlName="elements"></aiao-code-editor>
+      <aiao-code-editor class="item" language="json" formControlName="config"></aiao-code-editor>
+    </form>
+    <aiao-elements-preview id="preview" [value]="form.value.elements" [config]="form.value.config"></aiao-elements-preview>
+  </div>
+</ion-content>

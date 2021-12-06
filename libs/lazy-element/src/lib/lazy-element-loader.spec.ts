@@ -1,5 +1,3 @@
-import { from } from 'rxjs';
-
 import { matcher } from '@aiao/lazy-module';
 import {
   ComponentFactory,
@@ -10,42 +8,44 @@ import {
   NgModuleRef,
   Type
 } from '@angular/core';
-import { async, fakeAsync, flushMicrotasks, TestBed } from '@angular/core/testing';
+import { fakeAsync, flushMicrotasks, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { LazyElementLoader } from './lazy-element-loader';
 import { LazyElementModule } from './lazy-element.module';
 
 describe('LazyElementLoader', () => {
   let lazyElementLoader: LazyElementLoader;
-  beforeEach(async(() => {
-    const injector = TestBed.configureTestingModule({
-      imports: [
-        LazyElementModule.register([
-          {
-            name: 'element-a-selector',
-            loadChildren: () => Promise.resolve(new FakeModuleFactory('element-a-module')),
-            matcher
-          },
-          {
-            name: 'element-b-selector',
-            loadChildren: () => Promise.resolve(new FakeModuleFactory('element-a-module')),
-            matcher
-          },
-          {
-            name: 'element-c-selector',
-            loadChildren: () => Promise.resolve(FakeCustomElementModule),
-            matcher
-          }
-        ])
-      ]
-    });
-    lazyElementLoader = injector.inject(LazyElementLoader);
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      const injector = TestBed.configureTestingModule({
+        imports: [
+          LazyElementModule.register([
+            {
+              name: 'element-a-selector',
+              loadChildren: () => Promise.resolve(new FakeModuleFactory('element-a-module')),
+              matcher
+            },
+            {
+              name: 'element-b-selector',
+              loadChildren: () => Promise.resolve(new FakeModuleFactory('element-a-module')),
+              matcher
+            },
+            {
+              name: 'element-c-selector',
+              loadChildren: () => Promise.resolve(FakeCustomElementModule),
+              matcher
+            }
+          ])
+        ]
+      });
+      lazyElementLoader = injector.inject(LazyElementLoader);
+    })
+  );
 
   describe('loadFromHtmlElement()', () => {
-    let loadCustomElementSpy: jasmine.Spy;
+    let loadCustomElementSpy: jest.SpyInstance;
 
-    beforeEach(() => (loadCustomElementSpy = spyOn(lazyElementLoader, 'load')));
+    beforeEach(() => (loadCustomElementSpy = jest.spyOn(lazyElementLoader, 'load')));
 
     it('should create', fakeAsync(() => {
       expect(loadCustomElementSpy).not.toHaveBeenCalled();
@@ -68,69 +68,15 @@ describe('LazyElementLoader', () => {
       expect(loadCustomElementSpy).toHaveBeenCalledTimes(1);
       expect(loadCustomElementSpy).toHaveBeenCalledWith('element-b-selector');
     }));
-
-    it('should wait for all contained elements to load and register', fakeAsync(() => {
-      const deferreds = returnPromisesFromSpy(loadCustomElementSpy);
-      const hostEl = document.createElement('div');
-      hostEl.innerHTML = `
-        <element-a-selector></element-a-selector>
-        <element-b-selector></element-b-selector>
-      `;
-      const log: any[] = [];
-      from(lazyElementLoader.loadFromHtmlElement(hostEl)).subscribe(
-        v => log.push(`emitted: ${v}`),
-        e => log.push(`errored: ${e}`),
-        () => log.push('completed')
-      );
-
-      flushMicrotasks();
-      expect(log).toEqual([]);
-
-      deferreds[0].resolve();
-      flushMicrotasks();
-      expect(log).toEqual([]);
-
-      deferreds[1].resolve();
-      flushMicrotasks();
-      expect(log).toEqual(['emitted: undefined', 'completed']);
-    }));
-
-    it('should fail if any of the contained elements fails to load and register', fakeAsync(() => {
-      const deferreds = returnPromisesFromSpy(loadCustomElementSpy);
-
-      const hostEl = document.createElement('div');
-      hostEl.innerHTML = `
-        <element-a-selector></element-a-selector>
-        <element-b-selector></element-b-selector>
-      `;
-
-      const log: any[] = [];
-      from(lazyElementLoader.loadFromHtmlElement(hostEl)).subscribe(
-        v => log.push(`emitted: ${v}`),
-        e => log.push(`errored: ${e}`),
-        () => log.push('completed')
-      );
-
-      flushMicrotasks();
-      expect(log).toEqual([]);
-
-      deferreds[0].resolve();
-      flushMicrotasks();
-      expect(log).toEqual([]);
-
-      deferreds[1].reject('foo');
-      flushMicrotasks();
-      expect(log).toEqual(['errored: foo']);
-    }));
   });
 });
 
 class FakeCustomElementModule {}
 
 class FakeComponentFactory extends ComponentFactory<any> {
-  selector: string;
-  componentType: Type<any>;
-  ngContentSelectors: string[];
+  selector!: string;
+  componentType!: Type<any>;
+  ngContentSelectors!: string[];
   inputs = [{ propName: this.identifyingInput, templateName: this.identifyingInput }];
   outputs = [];
 
@@ -174,7 +120,7 @@ class FakeModuleRef extends NgModuleRef<any> {
 }
 
 class FakeModuleFactory extends NgModuleFactory<any> {
-  moduleType: Type<any>;
+  moduleType!: Type<any>;
   moduleRefToCreate = new FakeModuleRef(this.modulePath);
 
   constructor(private modulePath: string) {
@@ -184,14 +130,4 @@ class FakeModuleFactory extends NgModuleFactory<any> {
   create(_parentInjector: Injector | null): NgModuleRef<any> {
     return this.moduleRefToCreate;
   }
-}
-
-interface Deferred {
-  resolve(): void;
-  reject(err: any): void;
-}
-function returnPromisesFromSpy(spy: jasmine.Spy): Deferred[] {
-  const deferreds: Deferred[] = [];
-  spy.and.callFake(() => new Promise((resolve, reject) => deferreds.push({ resolve, reject })));
-  return deferreds;
 }

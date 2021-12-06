@@ -1,10 +1,11 @@
 import { ColorHSB, ColorRGB } from './interface';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export const HSBToRGB = (hsb: ColorHSB): ColorRGB => {
   const { h, s, b: v } = hsb;
-  let r: number;
-  let g: number;
-  let b: number;
+  let r!: number;
+  let g!: number;
+  let b!: number;
   const i = Math.floor(h / 60);
   const f = hsb.h / 60 - i;
   const p = v * (1 - s);
@@ -49,6 +50,7 @@ export const HSBToRGB = (hsb: ColorHSB): ColorRGB => {
   };
 };
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export const RGBToHSB = (RGB: ColorRGB): ColorHSB => {
   let { r, g, b } = RGB;
   r /= 255;
@@ -57,13 +59,10 @@ export const RGBToHSB = (RGB: ColorRGB): ColorHSB => {
 
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
-
-  let h: number;
-  let s: number;
-  const v = max;
-
   const d = max - min;
-  s = max === 0 ? 0 : d / max;
+  let h!: number;
+  const s = max === 0 ? 0 : d / max;
+  const v = max;
 
   if (max === min) {
     h = 0;
@@ -79,7 +78,6 @@ export const RGBToHSB = (RGB: ColorRGB): ColorHSB => {
         h = (r - g) / d + 4;
         break;
     }
-
     h /= 6;
   }
   return { h: h * 360, s, b: v };

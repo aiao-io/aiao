@@ -1,20 +1,16 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "module": "commonjs",
     "outDir": "../../dist/out-tsc",
-    "target": "es2015",
     "declaration": true,
-    "inlineSources": true,
-    "types": [],
-    "lib": ["dom", "es2018"],
-    "paths": {
-      "@aiao/universal-fastify-engine": ["dist/libs/universal-fastify-engine"]
-    }
+    "types": ["node"],
+    "target": "es2020",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
   },
-  "angularCompilerOptions": {
-    "skipTemplateCodegen": true,
-    "strictMetadataEmit": true,
-    "enableResourceInlining": true
-  },
-  "exclude": ["src/test-setup.ts", "**/*.spec.ts"]
+  "exclude": ["**/*.spec.ts", "**/*.test.ts"],
+  "include": ["**/*.ts"]
 }

@@ -1,16 +1,16 @@
-import dayJs, { ConfigType, OpUnitType } from 'dayjs';
+import { isFunction } from './function';
+import { isNil } from './lodash';
+import { isNumber } from './number';
+import { isString } from './string';
 
-import isDate from 'lodash/isDate';
-import isFunction from 'lodash/isFunction';
-import isNil from 'lodash/isNil';
-import isNumber from 'lodash/isNumber';
-import isString from 'lodash/isString';
+export const isDate = (value: any): value is Date =>
+  value instanceof Date || (typeof value === 'object' && Object.prototype.toString.call(value) === '[object Date]');
 
 export const unixTimestamp = () => Math.floor(Date.now() / 1000);
 
 export const isISODateString = (value: unknown): boolean =>
   isString(value) &&
-  /\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d(?:\.\d+)?(?:Z|\+[0-2]\d(?:\:[0-5]\d)?)?/g.test(value);
+  /\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d(?:\.\d+)?(?:Z|\+[0-2]\d(?:\\:[0-5]\d)?)?/g.test(value);
 
 interface ParseTime {
   year: number;
@@ -22,7 +22,7 @@ interface ParseTime {
 }
 
 type ParseTimeConfig = { [K in keyof ParseTime]: string };
-type fotmatPassFunction = (input: { key: keyof ParseTime; value: number }) => string;
+type FotmatPassFunction = (input: { key: keyof ParseTime; value: number }) => string;
 type FormatCountdownFunction = (input: ParseTime) => string;
 
 export const parseTime = (startDate: Date, endDate: Date): ParseTime => {
@@ -42,9 +42,9 @@ const stringTime = (key: keyof ParseTime, value: number, config?: ParseTimeConfi
   config ? `${value} ${(config as ParseTimeConfig)[key] || key}` : `${value} ${key}`;
 
 // 过去了多少时间
-export const formatPassTime = (startDate: Date, endDate: Date, config?: ParseTimeConfig | fotmatPassFunction) => {
+export const formatPassTime = (startDate: Date, endDate: Date, config?: ParseTimeConfig | FotmatPassFunction) => {
   const passTime = parseTime(startDate, endDate);
-  const key = dateKeys.find(k => passTime[k] > 0);
+  const key = dateKeys.find(k => passTime[k] > 0) || 'second';
   const value = passTime[key];
   return isFunction(config) ? config({ key, value }) : stringTime(key, value, config as ParseTimeConfig);
 };
@@ -58,15 +58,6 @@ export const formatCountdown = (startDate: Date, endDate: Date, config?: ParseTi
         .filter(d => d)
         .map(key => stringTime(key, passTime[key], config as ParseTimeConfig))
         .join(' ');
-};
-
-/**
- *  UTC 时间转换, 不同时区显示指定时区时间
- *  offset 分钟
- */
-export const dayUTCFormat = (data: ConfigType, offset: number, format?: string): string => {
-  const d: any = dayJs(data);
-  return dayJs(d.valueOf() + (offset - d.utcOffset()) * 60 * 1000).format(format);
 };
 
 const offsetFn = (offset: number) => {
@@ -103,21 +94,6 @@ export const dateStringToDate = (date: string, time: string, offset: number) =>
   new Date(dateStringWithTimezone(date, time, offset));
 
 /**
- * 安全添加时间
- */
-export const safeAddDate = (start: ConfigType, value: number, unit: OpUnitType, end?: ConfigType): Date => {
-  const _dateStart = dayJs(start);
-  if (end) {
-    const _dateEnd = dayJs(end);
-    const ex = _dateEnd.diff(_dateStart, unit);
-    if (ex <= value) {
-      return _dateEnd.toDate();
-    }
-  }
-  return _dateStart.add(value, unit).toDate();
-};
-
-/**
  * 判断是否可以转换成日期
  */
 export const canBeDate = (date?: unknown) => {
@@ -127,13 +103,5 @@ export const canBeDate = (date?: unknown) => {
   if (isNil(date)) {
     return false;
   }
-  if (isString(date)) {
-    return dayJs(date).isValid();
-  }
-  return false;
+  return new Date(date as any).getTime();
 };
-
-/**
- * 转换字符串日期
- */
-export const toDate = (date: ConfigType): Date => dayJs(date).toDate();

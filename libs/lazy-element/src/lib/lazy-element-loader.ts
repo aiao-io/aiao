@@ -1,17 +1,17 @@
-import { LazyModuleLoader, LazyModuleLoaderBase } from '@aiao/lazy-module';
-import { Injectable } from '@angular/core';
+import { LazyModuleLoaderBase } from '@aiao/lazy-module';
+import { Compiler, Injectable, NgModuleFactory, NgModuleRef, Type } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LazyElementLoader extends LazyModuleLoaderBase {
-  constructor(private lazyModuleLoader: LazyModuleLoader) {
+  constructor(private moduleRef: NgModuleRef<any>, private compiler: Compiler) {
     super();
   }
 
   async loadFromHtmlString(htmlString: string): Promise<void> {
-    const unregisteredSelectors = Array.from(this.toLoad.keys()).filter(s => htmlString.includes(s));
+    const unregisteredSelectors = this.toLoadKeys().filter(s => htmlString.includes(s));
     if (!unregisteredSelectors.length) {
       return;
     }
@@ -19,14 +19,14 @@ export class LazyElementLoader extends LazyModuleLoaderBase {
   }
 
   async loadFromHtmlElement(element: HTMLElement): Promise<void> {
-    const unregisteredSelectors = Array.from(this.toLoad.keys()).filter(s => element.querySelector(s));
+    const unregisteredSelectors = this.toLoadKeys().filter(s => element.querySelector(s));
     if (!unregisteredSelectors.length) {
       return;
     }
     return this.loadUnRegisteredSelectors(unregisteredSelectors);
   }
 
-  async load(selector: string): Promise<void> {
+  async load(selector: string) {
     if (customElements.get(selector)) {
       return;
     }
@@ -35,28 +35,37 @@ export class LazyElementLoader extends LazyModuleLoaderBase {
       return this.loading.get(selector);
     }
 
-    const loadedAndRegistered = this.lazyModuleLoader
-      .load(selector)
+    const moduleLoader = this.toLoad.get(selector);
+    if (!moduleLoader) {
+      throw new Error(`element not found:${selector}`);
+    }
+
+    const loadedAndRegistered = (moduleLoader() as Promise<Type<any>>)
+      .then(moduleOrFactory => {
+        if (moduleOrFactory instanceof NgModuleFactory) {
+          return moduleOrFactory;
+        } else {
+          return this.compiler.compileModuleAsync(moduleOrFactory);
+        }
+      })
+      .then(moduleFactory => moduleFactory.create(this.moduleRef.injector))
       .then(moduleRef => {
         const injector = moduleRef.injector;
-        const CustomElementComponent = moduleRef.instance.customElementComponent;
-        const CustomElement = createCustomElement(CustomElementComponent, { injector });
-        customElements.define(selector, CustomElement);
-        return customElements.whenDefined(selector);
-      })
-      .then(() => {
+        const customElementComponent = moduleRef.instance.customElementComponent;
+        const customElement = createCustomElement(customElementComponent, { injector });
+        customElements.define(selector, customElement);
         this.toLoad.delete(selector);
+        return customElements.whenDefined(selector);
       })
       .catch(err => {
         this.loading.delete(selector);
         return Promise.reject(err);
       });
-
     this.loading.set(selector, loadedAndRegistered);
     return loadedAndRegistered;
   }
 
   private async loadUnRegisteredSelectors(unregisteredSelectors: string[]) {
-    return Promise.all(unregisteredSelectors.map(s => this.load(s))).then(d => undefined);
+    return Promise.all(unregisteredSelectors.map(s => this.load(s))).then(() => {});
   }
 }

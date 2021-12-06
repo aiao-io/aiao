@@ -3,6 +3,7 @@
   "packages": ["libs/*"],
   "version": "independent",
   "ignoreChanges": [
+    "**/.*",
     "**/*.e2e.ts",
     "**/*.md",
     "**/*.spec.ts",
@@ -15,7 +16,8 @@
     "**/test/**",
     "**/tsconfig.*.json",
     "**/tsconfig.json",
-    "**/tslint.json"
+    "**/tslint.json",
+    "libs/elements/index.html"
   ],
   "command": {
     "version": {

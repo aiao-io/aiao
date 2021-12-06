@@ -1,0 +1,11 @@
+nx.json
+**/*.md
+**/jest.config.js
+**/ng-package.json
+apps/*/package.json
+libs/*/package.json
+**/stencil.*.config.ts
+**/tsconfig.*.json
+**/tsconfig.json
+**/tslint.json
+*.d.ts

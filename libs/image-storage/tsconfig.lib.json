@@ -6,8 +6,8 @@
     "declaration": true,
     "inlineSources": true,
     "types": [],
-    "lib": ["dom", "es2018"],
-    "paths": {}
+    "lib": ["dom", "es2018"]
   },
-  "exclude": ["src/test-setup.ts", "**/*.spec.ts"]
+  "exclude": ["src/test-setup.ts", "**/*.spec.ts", "**/*.test.ts"],
+  "include": ["**/*.ts"]
 }

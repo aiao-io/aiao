@@ -8,9 +8,9 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  html1: string;
-  html2: string;
-  html3: SafeHtml;
+  html1 = '';
+  html2 = '';
+  html3: SafeHtml = '';
 
   constructor(private dom: DomSanitizer, protected readonly elementsLoader: LazyElementLoader) {}
 

@@ -1,31 +1,42 @@
 import { urlJoin } from '@aiao/url';
 
+/**
+ * moaco 加载器
+ */
 export class LoadMonacoEditor {
-  protected _load: Promise<void>;
+  #load?: Promise<void>;
   protected supportLanguages = ['de', 'es', 'fr', 'it', 'ja', 'ko', 'ru', 'zh-cn', 'zh-tw'];
 
   constructor(private baseUrl: string, private localizeCode?: string) {}
 
-  protected getLanguage() {
-    const lang = navigator.language.toLocaleLowerCase();
-    const findLang = this.supportLanguages.find(l => lang === l);
-    return findLang || '';
+  protected currentLanguage() {
+    try {
+      const lang = navigator.language.toLocaleLowerCase();
+      const findLang = this.supportLanguages.find(l => lang === l) || '';
+      if (lang && !findLang) {
+        console.error(`not support language ${lang}`);
+      }
+      return findLang;
+    } catch (error) {
+      console.error(error);
+      return '';
+    }
   }
 
   load() {
-    if (!this._load) {
-      this._load = new Promise<void>((resolve: any) => {
+    if (!this.#load) {
+      this.#load = new Promise<void>(resolve => {
         const win = window as any;
         if (typeof win.monaco === 'object') {
           resolve();
           return;
         }
-        const onGotAmdLoader: any = () => {
+        const onGotAMDLoader = () => {
           win.require.config({
             paths: { vs: urlJoin(this.baseUrl, '/vs') },
             'vs/nls': {
               availableLanguages: {
-                '*': this.localizeCode || this.getLanguage()
+                '*': this.localizeCode || this.currentLanguage()
               }
             }
           });
@@ -36,13 +47,13 @@ export class LoadMonacoEditor {
           loaderScript.id = 'aiao-load-monaco-script';
           loaderScript.type = 'text/javascript';
           loaderScript.src = urlJoin(this.baseUrl, '/vs/loader.js');
-          loaderScript.addEventListener('load', onGotAmdLoader);
+          loaderScript.addEventListener('load', onGotAMDLoader);
           document.body.appendChild(loaderScript);
         } else {
-          onGotAmdLoader();
+          onGotAMDLoader();
         }
       });
     }
-    return this._load;
+    return this.#load;
   }
 }

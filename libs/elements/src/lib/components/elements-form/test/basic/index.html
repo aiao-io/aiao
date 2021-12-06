@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
+    <title>Elements Form</title>
 
     <!-- ionic -->
     <link href="/vendors/ionic/css/ionic.bundle.css" rel="stylesheet" />
@@ -39,24 +39,29 @@
     const input = document.querySelector('#input');
     const change = document.querySelector('#change');
     form.html = `
-    <ion-input class='elements-form_item' name="name" value="name"></ion-input>
     <div>
-      <ion-input class='elements-form_item' name="car[0]" value="BMW"></ion-input>
-      <ion-input class='elements-form_item' name="car[1]" value="Honda"></ion-input>
+      <label>name:</label>
+      <input class="elements-form_item" name="name" value="name" />
+    </div>
+    <div>
+      <label>car 0</label>
+      <input class="elements-form_item" name="car[0]" value="BMW" />
+    </div>
+    <div>
+      <label>car 1</label>
+      <input class="elements-form_item" name="car[1]" value="Honda" />
     </div>
     `;
 
     form.value = {
-      name: 'jim',
-      car: ['bmw', 'honda']
+      name: 'Jimmy',
+      car: ['BMW', 'Honda']
     };
     form.addEventListener('aiaoChange', e => {
-      console.log('change', e);
       change.textContent = JSON.stringify(e.detail.value, { spece: 2 });
     });
 
     form.addEventListener('aiaoInput', e => {
-      console.log('input', e);
       input.textContent = JSON.stringify(e.detail.value, { spece: 2 });
     });
 

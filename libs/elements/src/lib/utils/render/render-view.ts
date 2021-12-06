@@ -1,12 +1,25 @@
-import kebabCase from 'lodash/kebabCase';
+import { kebabCase } from 'lodash';
 
 import { IElementData } from '@aiao/elements-cdk';
 
+interface Props {
+  slot?: string;
+  class?: string;
+  style?: string;
+  // attributes
+  [name: string]: any;
+}
+
+/**
+ * 转换单个 element 数据为 html 格式
+ * @param data 数据
+ */
 export const elementDataStringify = (data: IElementData) => {
   const { tag, children, innerHTML, innerText, class: cls, attributes, slot, style } = data;
-  const innerString = innerText || innerHTML || (children && children.length ? elementsDataStringify(children) : '');
+  const childrenHtml: string = children?.length ? elementsDataStringify(children) : '';
+  const innerString = childrenHtml || innerText || innerHTML;
 
-  const props: any = {
+  const props: Props = {
     slot
   };
 
@@ -38,7 +51,12 @@ export const elementDataStringify = (data: IElementData) => {
     propStr = ' ' + propStr;
   }
 
-  return `<${tag}${propStr}>${innerString}</${tag}>`;
+  return `<${tag}${propStr}>${innerString || ''}</${tag}>`;
 };
 
-export const elementsDataStringify = (data: IElementData[] = []) => data.map(d => elementDataStringify(d)).join('');
+/**
+ * 转换多个 elements 数据为 html 格式
+ * @param dataArray 数据
+ */
+export const elementsDataStringify = (dataArray: IElementData[]) =>
+  dataArray.map(d => elementDataStringify(d)).join('');

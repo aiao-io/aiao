@@ -4,7 +4,7 @@ import { ComponentFactory, ComponentFactoryResolver, Injectable, Type } from '@a
   providedIn: 'root'
 })
 export class LazyComponentFactoryResolver extends ComponentFactoryResolver {
-  private rootResolve: (component: Type<any>) => ComponentFactory<any>;
+  private rootResolve!: (component: Type<any>) => ComponentFactory<any>;
 
   private inCall = false;
 
@@ -16,7 +16,9 @@ export class LazyComponentFactoryResolver extends ComponentFactoryResolver {
 
   init() {
     this.rootResolve = this.rootResolver.resolveComponentFactory;
-    this.rootResolver.resolveComponentFactory = this.resolveComponentFactory;
+    if (this.resolveComponentFactory) {
+      this.rootResolver.resolveComponentFactory = this.resolveComponentFactory;
+    }
   }
 
   public registerResolver(resolver: ComponentFactoryResolver) {
@@ -30,7 +32,7 @@ export class LazyComponentFactoryResolver extends ComponentFactoryResolver {
   public resolveComponentFactory = <T>(component: Type<T>): ComponentFactory<T> => {
     // Prevents cyclic calls.
     if (this.inCall) {
-      return null;
+      return null as any;
     }
 
     this.inCall = true;

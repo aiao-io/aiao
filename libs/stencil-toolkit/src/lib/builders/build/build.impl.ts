@@ -1,4 +1,4 @@
-import { readJson, readJSONSync, removeSync, statSync } from 'fs-extra';
+import { readJSONSync, removeSync, statSync } from 'fs-extra';
 import { join, resolve } from 'path';
 import { from, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -12,23 +12,23 @@ import { run } from '../../util/runner';
 export interface StencilBuildOptions extends JsonObject {
   config: string;
   outputPath: string;
-  stats?: boolean;
-  docs?: boolean;
+  stats: boolean;
+  docs: boolean;
+  assets: any[];
 }
 
 export default createBuilder<StencilBuildOptions>(stencilBuild);
 
 function stencilBuild(options: StencilBuildOptions, context: BuilderContext): Observable<BuilderOutput> {
-  const { config: config_path, docs, outputPath, stats } = options;
-  const {
-    workspaceRoot,
-    target: { project }
-  } = context;
-
-  return from(readJson(join(workspaceRoot, 'angular.json'))).pipe(
-    map(c => c.projects[project]),
-    switchMap(projectConfig => {
-      const args = ['build', `--config ${join(workspaceRoot, config_path)}`];
+  const { config: configPath, docs, outputPath, stats, assets } = options;
+  const { workspaceRoot, target } = context;
+  if (!target) {
+    throw new Error('项目不存在');
+  }
+  return from(context.getProjectMetadata(target.project)).pipe(
+    map(projectConfig => {
+      const { root } = projectConfig as any;
+      const args = ['build', `--config ${join(workspaceRoot, configPath)}`];
       if (docs) {
         args.push('--docs');
       }
@@ -36,22 +36,23 @@ function stencilBuild(options: StencilBuildOptions, context: BuilderContext): Ob
         args.push('--stats');
       }
       const cmd = resolve(workspaceRoot, 'node_modules/.bin/stencil');
-
+      return { cmd, args, root };
+    }),
+    switchMap(({ cmd, args, root }) => {
       const runPromise = run(cmd, args);
       return runPromise.then(() => {
         if (!outputPath) {
           return;
         }
-        const projectRoot = resolve(workspaceRoot, projectConfig.root);
+        const projectRoot = resolve(workspaceRoot, root);
         const projectPkg = readJSONSync(resolve(projectRoot, 'package.json'));
         const output = resolve(workspaceRoot, outputPath);
-        const assets = [];
         projectPkg.files.forEach((file: string) => {
           const fp = resolve(projectRoot, file);
           const stat = statSync(fp);
           const fileIsInProject = fp.includes(projectRoot);
           const input = fileIsInProject ? projectRoot : workspaceRoot;
-          const filePath = fp.replace(input + '/', '');
+          const filePath = fp.replace(input, '').replace(/^\//, '').replace(/^\\/, '');
           if (stat.isDirectory()) {
             assets.push({
               glob: join(filePath, '**/*'),
@@ -72,6 +73,6 @@ function stencilBuild(options: StencilBuildOptions, context: BuilderContext): Ob
         return copyAssets(assets, [''], output);
       });
     }),
-    map(d => ({ success: true }))
+    map(() => ({ success: true }))
   );
 }

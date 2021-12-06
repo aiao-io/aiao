@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "outDir": "../../dist/out-tsc", "types": ["node"], "composite": true },
+  "exclude": [
+    "**/*.spec.js",
+    "**/*.test.js",
+    "**/*.spec.jsx",
+    "**/*.test.jsx",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.spec.tsx",
+    "**/*.test.tsx"
+  ],
+  "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx", "**/*.vue", "**/*.json"]
+}

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
+    <title>Code Editor</title>
 
     <!-- ionic -->
     <link href="/vendors/ionic/css/ionic.bundle.css" rel="stylesheet" />
@@ -23,11 +23,17 @@
     <script src="/scripts/testing/scripts.js"></script>
   </head>
   <body>
-    <ion-button type="button" onclick="css()">css</ion-button>
-    <ion-button type="button" onclick="ts()">typescript</ion-button>
-    <ion-button type="button" onclick="format()">format</ion-button>
-
+    <button type="button" onclick="css()">css</button>
+    <button type="button" onclick="ts()">typescript</button>
+    <button type="button" onclick="format()">format</button>
     <aiao-code-editor id="editor" language="typescript" value="const a=123;"></aiao-code-editor>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
   </body>
 
   <script>
@@ -39,8 +45,7 @@
     console.log({ editor });
     function css() {
       editor.language = 'css';
-      editor.value = ` body{  width:200px;}
-      `;
+      editor.value = ` body{  width:200px;}`;
     }
 
     function ts() {

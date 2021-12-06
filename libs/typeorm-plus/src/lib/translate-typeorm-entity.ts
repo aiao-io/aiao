@@ -1,6 +1,6 @@
-import flatten from 'lodash/flatten';
-import isArray from 'lodash/isArray';
+import { flatten, isArray, isFunction } from 'lodash';
 import { IndexType, ModelAttributeColumnOptions, ModelAttributes, ModelOptions } from 'sequelize';
+import { EntityMetadata } from 'typeorm';
 
 import { translateTypeormType } from './translate-typeorm-type';
 
@@ -10,17 +10,21 @@ interface SeqModel {
   options: ModelOptions;
 }
 
-export function translateTypeOrmEntity(metadata: any): SeqModel {
+export function translateTypeOrmEntity(metadata: EntityMetadata): SeqModel {
   const { name: modelName, columns, tableName, schema, createDateColumn, updateDateColumn, indices } = metadata;
 
-  const uniqueArrs: any[] = metadata.uniques.map(d => d.givenColumnNames);
+  const uniqueArrs = metadata.uniques.map(unique => {
+    if (isFunction(unique.givenColumnNames)) {
+      return unique.givenColumnNames();
+    }
+    return unique.givenColumnNames;
+  });
   const uniques = flatten(uniqueArrs);
 
   // ModelAttributes
   const attributes: { [name: string]: ModelAttributeColumnOptions } = {};
   columns.forEach(col => {
-    const _type = col.type as any;
-    const type = _type.name || _type;
+    const type = col.type;
     const {
       propertyName,
       databaseName,
@@ -92,7 +96,7 @@ export function translateTypeOrmEntity(metadata: any): SeqModel {
 
   if (indices.length > 0) {
     options.indexes = indices.map(({ name, isFulltext, isUnique, givenColumnNames, isSpatial }) => {
-      let type: IndexType;
+      let type!: IndexType;
       if (isFulltext) {
         type = 'FULLTEXT';
       } else if (isUnique) {

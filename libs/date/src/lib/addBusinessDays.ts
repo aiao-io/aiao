@@ -1,4 +1,4 @@
-import toInteger from 'lodash/toInteger';
+import { toInteger } from '@aiao/util';
 
 import { isWeekend } from './isWeekend';
 

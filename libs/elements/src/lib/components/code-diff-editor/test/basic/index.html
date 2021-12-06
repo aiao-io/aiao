@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
+    <title>Code Diff Editor</title>
 
     <!-- ionic -->
     <link href="/vendors/ionic/css/ionic.bundle.css" rel="stylesheet" />
@@ -21,6 +21,13 @@
     <!-- test -->
     <link href="/scripts/testing/styles.css" rel="stylesheet" />
     <script src="/scripts/testing/scripts.js"></script>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
   </head>
   <body>
     <aiao-code-diff-editor id="editor" language="json"></aiao-code-diff-editor>

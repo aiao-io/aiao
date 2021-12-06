@@ -1,12 +1,23 @@
+import { IAiaoElementsConfig } from '../interfaces/elements.interface';
 import { config } from './config';
 
 declare const Context: any;
 
-export default () => {
+export const initialize = (elementsConfig: IAiaoElementsConfig = {}) => {
+  if (typeof (window as any) === 'undefined') {
+    return;
+  }
   const win: any = window;
-  const aiao = (win.aiao = win.aiao || {});
-  const elements: any = (aiao['elements'] = aiao['elements'] || {});
-  elements.Context = Context;
-  config.reset(elements.config || {});
-  elements.config = config;
+  const Aiao = (win.Aiao = win.Aiao || {});
+  Aiao.elements = Aiao.elements || {};
+  Aiao.elements.Context = Context;
+
+  const conf: IAiaoElementsConfig = {
+    ...Aiao.elements.config,
+    ...elementsConfig
+  };
+  config.reset(conf);
+  Aiao.elements.config = config;
 };
+
+export default initialize;

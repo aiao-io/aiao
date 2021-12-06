@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 import { APIService } from './api.service';
 
 @Component({
@@ -6,9 +7,8 @@ import { APIService } from './api.service';
   templateUrl: './hello.component.html',
   styleUrls: ['./hello.component.scss']
 })
-export class HelloComponent implements OnInit {
+export class HelloComponent {
   hello$ = this.api.hello();
 
   constructor(private api: APIService) {}
-  ngOnInit(): void {}
 }

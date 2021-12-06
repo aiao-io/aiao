@@ -1,2 +1,4 @@
-import 'zone.js/dist/zone-node';
+import 'zone.js/node';
 import './server/main';
+
+export * from './src/main.server';

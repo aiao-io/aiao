@@ -1,8 +1,12 @@
-import { Options, Dialect } from 'sequelize';
+import { Dialect, Options } from 'sequelize';
 import { ConnectionOptions } from 'typeorm';
 import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions';
 
-export function translateTypeormOptions(options: ConnectionOptions): Options {
+/**
+ * 转换 typeorm 配置
+ * @param options
+ */
+export function translateTypeormOptions(options: Partial<ConnectionOptions>): Options {
   const { type } = options;
   const { host, port, username, password, database, ssl } = options as MysqlConnectionOptions;
 

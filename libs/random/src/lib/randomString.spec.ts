@@ -1,5 +1,6 @@
+import { isString } from '@aiao/util';
+
 import { randomString } from './randomString';
-import { isString } from 'lodash';
 
 describe('randomString', () => {
   it('randomString', () => {

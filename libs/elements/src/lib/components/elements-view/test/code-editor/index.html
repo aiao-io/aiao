@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
+    <title>Elements View</title>
 
     <!-- ionic -->
     <link href="/vendors/ionic/css/ionic.bundle.css" rel="stylesheet" />
@@ -22,6 +22,11 @@
     <link href="/scripts/testing/styles.css" rel="stylesheet" />
     <script src="/scripts/testing/scripts.js"></script>
     <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
       body {
         display: flex;
       }
@@ -40,44 +45,16 @@
   <script>
     const editor = document.querySelector('#editor');
     const view = document.querySelector('#view');
-
-    const html = `<ion-list>
-  <ion-list-header>Single Selection</ion-list-header>
-
-  <ion-item>
-    <ion-label>Gender</ion-label>
-    <ion-select placeholder="Select One">
-      <ion-select-option value="f">Female</ion-select-option>
-      <ion-select-option value="m">Male</ion-select-option>
-    </ion-select>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>Hair Color</ion-label>
-    <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-      <ion-select-option value="brown">Brown</ion-select-option>
-      <ion-select-option value="blonde">Blonde</ion-select-option>
-      <ion-select-option value="black">Black</ion-select-option>
-      <ion-select-option value="red">Red</ion-select-option>
-    </ion-select>
-  </ion-item>
-
-</ion-list>`;
+    view.js = `function ff() { alert('success') }`;
+    view.css = `button { background: red; }`;
+    const html = `<button onclick="ff()">javascript</button>`;
 
     editor.value = html;
     view.html = html;
 
-    editor.addEventListener('aiaoInput', e => {
+    editor.addEventListener('aiaoChange', e => {
       view.html = e.detail.value;
     });
-    editor.config = [
-      {
-        tag: 'h1',
-        innerText: true,
-        defaultOptions: {
-          innerText: 'h1h1h1h1'
-        }
-      }
-    ];
+    editor.config = [];
   </script>
 </html>

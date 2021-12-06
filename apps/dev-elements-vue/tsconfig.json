@@ -1,0 +1,30 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    // Enables stricter inference for data properties on `this`
+    "strict": true,
+    "allowJs": true,
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@assets/*": ["./src/assets/*"],
+      "@app/*": ["./src/app/*"],
+      "@public/*": ["./src/public/*"]
+    },
+    "plugins": [
+      {
+        "name": "ts-vue-plugin"
+      }
+    ]
+  },
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}

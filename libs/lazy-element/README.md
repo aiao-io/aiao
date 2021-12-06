@@ -10,19 +10,13 @@
 
 ## 安装
 
-### Angular 8
-
-```console
-yarn add @aiao/lazy-elements@^1.4
-```
-
-### Angular 9+
-
 ```console
 yarn add @aiao/lazy-elements
 ```
 
 ## 使用
+
+参考 [dev-lazy-elements](../../apps/dev-lazy-elements)
 
 [shields-lazy-element]: https://img.shields.io/npm/v/@aiao/lazy-element?style=flat-square
 [npm-lazy-element]: https://www.npmjs.com/@aiao/lazy-element

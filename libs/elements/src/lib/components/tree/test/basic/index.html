@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Tree</title>
+
+    <!-- ionic -->
+    <link href="/vendors/ionic/css/ionic.bundle.css" rel="stylesheet" />
+    <script type="module" src="/vendors/ionic/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="/vendors/ionic/dist/ionic/ionic.js"></script>
+
+    <!-- image-storage -->
+    <script src="/vendors/image-storage/bundles/aiao-image-storage.umd.js"></script>
+    <script src="/vendors/image-storage/bundles/aiao-image-storage-adapters-aliyun.umd.js"></script>
+
+    <!-- aiao-elements -->
+    <script type="module" src="/dist/aiao-elements/aiao-elements.esm.js"></script>
+    <script nomodule src="/dist/aiao-elements/aiao-elements.js"></script>
+
+    <!-- test -->
+    <link href="/scripts/testing/styles.css" rel="stylesheet" />
+    <script src="/scripts/testing/scripts.js"></script>
+  </head>
+  <body>
+    <aiao-tree id="tree"></aiao-tree>
+  </body>
+
+  <script>
+    const tree = document.getElementById('tree');
+    console.log('tree', tree);
+    tree.data = [
+      {
+        id: 1,
+        name: 'root'
+      },
+      {
+        id: 2,
+        parentId: 1,
+        name: 'children',
+        isLeaf: true
+      },
+      {
+        id: 3,
+        name: 'root2'
+      },
+      {
+        id: 4,
+        parentId: 3,
+        name: 'children2',
+        isLeaf: true
+      }
+    ];
+  </script>
+</html>

@@ -1,0 +1,31 @@
+:host {
+  display: block;
+}
+
+:host(.action-bar) {
+  background: #fff;
+}
+
+.action-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  font-size: medium;
+  vertical-align: bottom;
+  outline: 0;
+
+  &:hover {
+    background: rgb(224, 224, 224);
+  }
+
+  &:active,
+  &.selected {
+    color: #fff;
+    background: #000;
+  }
+  ion-icon {
+    margin-top: 3px;
+  }
+}

@@ -1,8 +1,17 @@
 import { EventDispatcher } from './event';
 
+interface MyCustomEvent {
+  customEvent1: {
+    a: string;
+  };
+  customEvent2: {
+    a: string;
+  };
+}
+
 describe('event', () => {
   it('addEventListener', done => {
-    class BaseEvent extends EventDispatcher<any> {}
+    class BaseEvent extends EventDispatcher<MyCustomEvent> {}
     const be = new BaseEvent();
     const listener = () => {
       done();
@@ -12,7 +21,7 @@ describe('event', () => {
     be.dispatchEvent('customEvent1');
   });
   it('removeEventListener', () => {
-    class BaseEvent extends EventDispatcher<any> {}
+    class BaseEvent extends EventDispatcher<MyCustomEvent> {}
     const be = new BaseEvent();
     const listener = () => {};
     be.addEventListener('customEvent1', listener);
@@ -21,7 +30,7 @@ describe('event', () => {
     expect(be.hasEventListener('customEvent1', listener)).toBeFalsy();
   });
   it('removeAllEventListener', () => {
-    class BaseEvent extends EventDispatcher<any> {}
+    class BaseEvent extends EventDispatcher<MyCustomEvent> {}
     const be = new BaseEvent();
     const listener = () => {};
     be.addEventListener('customEvent1', listener);

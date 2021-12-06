@@ -95,15 +95,16 @@ describe('urlJoin', () => {
   });
   it('should fail with segments that are not string or number', done => {
     try {
-      const url = urlJoin('http://blabla.com/', undefined, 'test');
+      const url = urlJoin('http://blabla.com/', undefined as any, 'test');
       done(url);
     } catch (error) {
       done();
     }
   });
+
   it('should fail with segments that are not string or number', done => {
     try {
-      const url = urlJoin('http://blabla.com/', null, 'test');
+      const url = urlJoin('http://blabla.com/', null as any, 'test');
       done(url);
     } catch (error) {
       done();

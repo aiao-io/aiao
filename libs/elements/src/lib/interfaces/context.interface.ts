@@ -1,4 +1,6 @@
-// 安全 dom
+/**
+ * 安全 dom
+ */
 export interface IDomSanitizer {
   bypassSecurityTrustHtml(value: string): any;
   bypassSecurityTrustStyle(value: string): any;

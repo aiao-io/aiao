@@ -18,7 +18,7 @@ const lazyRoutes: LazyRoutes = [
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([], { relativeLinkResolution: 'legacy' }),
     LazyElementModule.register(lazyRoutes),
     LazyModule.register(lazyRoutes)
   ],
