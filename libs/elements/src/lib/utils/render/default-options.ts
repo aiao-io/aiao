@@ -1,4 +1,5 @@
-import { defaults, get } from 'lodash';
+import defaults from 'lodash/defaults';
+import get from 'lodash/get';
 
 import { IElementConfig, IElementData, IElementOptions } from '@aiao/elements-cdk';
 
