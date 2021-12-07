@@ -2,7 +2,7 @@
   "projectType": "library",
   "root": "libs/stencil-toolkit",
   "sourceRoot": "libs/stencil-toolkit/src",
-  "prefix": "aiao",
+  "tags": ["stencil-tool"],
   "targets": {
     "build": {
       "executor": "@nrwl/node:package",
@@ -24,9 +24,6 @@
         ],
         "srcRootForCompilationRoot": "libs/stencil-toolkit/src"
       },
-      "configurations": {
-        "production": {}
-      },
       "outputs": ["{options.outputPath}"]
     },
     "lint": {
@@ -44,6 +41,5 @@
       },
       "outputs": ["coverage/libs/stencil-toolkit"]
     }
-  },
-  "tags": ["stencil-tool"]
+  }
 }
