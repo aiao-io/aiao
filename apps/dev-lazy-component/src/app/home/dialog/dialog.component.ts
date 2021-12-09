@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss']
 })
-export class HomeDialogComponent {
-  constructor() {}
-}
+export class HomeDialogComponent {}

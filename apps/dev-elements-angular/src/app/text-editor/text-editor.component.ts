@@ -7,6 +7,4 @@ import { Component } from '@angular/core';
 })
 export class TextEditorComponent {
   hello = '<p>hello world</p>';
-
-  constructor() {}
 }

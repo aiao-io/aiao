@@ -23,7 +23,10 @@ export class ConfigBase<T> {
 
   getNumber(key: keyof T, fallback?: number): number {
     const val = parseFloat(this.m.get(key));
-    return isNaN(val) ? (fallback !== undefined ? fallback : NaN) : val;
+    if (isNaN(val)) {
+      return fallback !== undefined ? fallback : NaN;
+    }
+    return val;
   }
 
   set(key: keyof T, value: any) {

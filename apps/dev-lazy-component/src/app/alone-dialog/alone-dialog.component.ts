@@ -4,6 +4,4 @@ import { Component } from '@angular/core';
   selector: 'app-alone-dialog',
   templateUrl: './alone-dialog.component.html'
 })
-export class AloneDialogComponent {
-  constructor() {}
-}
+export class AloneDialogComponent {}
