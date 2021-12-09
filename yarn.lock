@@ -1984,59 +1984,51 @@
     tslib "^2.0.3"
     ws "^7.0.1"
 
-"@ionic/angular@^5.4.0":
-  version "5.9.2"
-  resolved "https://registry.yarnpkg.com/@ionic/angular/-/angular-5.9.2.tgz#7423971b6462c07657927a75af3ec89c597b1d88"
-  integrity sha512-5GzKg+l4au3xFECky2v/USlRsmTAXgvNO5Zalt7NUXc//VJIL2lQvswojE6FBWuM/xR5W0CWbJdFth19TaZWVQ==
+"@ionic/angular@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@ionic/angular/-/angular-6.0.0.tgz#c96cd17b100b0a2b8b9ca7e5594bcad763e138ff"
+  integrity sha512-BCbPMLHsZCGxNij/b6JDFDWXZNKi47VWK3XEH72nkE8xGJ47RXGjDXeVrtc+2TM1TxSm+J8tL+P3hnSgoBgyMQ==
   dependencies:
-    "@ionic/core" "5.9.2"
-    tslib "^1.9.3"
+    "@ionic/core" "6.0.0"
+    jsonc-parser "^3.0.0"
+    tslib "^2.0.0"
 
-"@ionic/core@5.9.2", "@ionic/core@^5.4.0":
-  version "5.9.2"
-  resolved "https://registry.yarnpkg.com/@ionic/core/-/core-5.9.2.tgz#2dc8168e771bcd1587511efe0ff76a80b8353ddc"
-  integrity sha512-1ZqSBS8R6tGQsc+LsLxIRv0q3Ww6jwgJXLvdn6FmVWfpPbBvT+CjCuU9hqJ5qwM+atErblUMYSexvvpws8lGAA==
-  dependencies:
-    "@stencil/core" "^2.4.0"
-    ionicons "^5.5.3"
-    tslib "^2.1.0"
-
-"@ionic/core@6.0.0-rc.4":
-  version "6.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/@ionic/core/-/core-6.0.0-rc.4.tgz#4ebe0a09e2d455f1f7db7355b978abdc32366946"
-  integrity sha512-bQmF2U07/HwN9x6xquNeXQyRDWDUfLmkDV5F/foOxdQk0qd78v9x4xdX3Yr9ypsn2sxlu6U83wALYqmw6fF8Fg==
+"@ionic/core@6.0.0", "@ionic/core@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@ionic/core/-/core-6.0.0.tgz#9c95513fc7fff79a0113f540da754b4a16910f99"
+  integrity sha512-3e5EJhDebK4pCiFREpNB95o2kBSAdhRb3eMsBDOCYWYuFlcZEOGOpiGx+kYF/klYVQnB45UXAmR8nCX1indmHQ==
   dependencies:
     "@stencil/core" "~2.11.0-0"
     ionicons "^6.0.0"
     tslib "^2.1.0"
 
-"@ionic/react-router@^5.4.0":
-  version "5.9.2"
-  resolved "https://registry.yarnpkg.com/@ionic/react-router/-/react-router-5.9.2.tgz#8614b0b9cb40862cbeb694f54a76f797149a30c7"
-  integrity sha512-yZxxmR21Tk+EcYQ5bLngIty7+dBVQlyiDURKj3BeKJo7pfy7w9nEq2tTxRM4bv+Qy0fLF74tJ8InE9dnfzpw3w==
+"@ionic/react-router@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@ionic/react-router/-/react-router-6.0.0.tgz#5b266f725619000e8429157bb395f141c630ba3b"
+  integrity sha512-N0OqHSpBUDoHZuWz02K4k5itEpBcX3u355uulN58yPqb6BLkF1KeKT5IcRGiGwSbmRU9R/y+j+ahP82Zzy1TNg==
   dependencies:
     tslib "*"
 
-"@ionic/react@^5.4.0":
-  version "5.9.2"
-  resolved "https://registry.yarnpkg.com/@ionic/react/-/react-5.9.2.tgz#f6ad6f301c012ae11d4a6aa63e62de6a4d399c51"
-  integrity sha512-4NYj7UwDzS4Ts1/3k8nAwxE9L+vEkvO4PdL27g3994dIsCc2TOt90jHmLb1SmVqLIhrkRX04wkWL6PVYaMRObw==
+"@ionic/react@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@ionic/react/-/react-6.0.0.tgz#d34d65ecd14c3e511b5792506952716a1cb58d6e"
+  integrity sha512-PX66J43AExnxw+7ib71G/uMs//5ZH7Rui8dYJ+fO4F08Dq6IpSnvPBs3Fik4szKlmeFSjkDmKsD7+V2HhbOJvw==
   dependencies:
-    "@ionic/core" "5.9.2"
-    ionicons "^5.1.2"
+    "@ionic/core" "6.0.0"
+    ionicons "^6.0.0"
     tslib "*"
 
-"@ionic/vue-router@^6.0.0-beta.1":
-  version "6.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/@ionic/vue-router/-/vue-router-6.0.0-rc.4.tgz#477f1d76a12fe3b83cd6413df4a813b5ced71dc4"
-  integrity sha512-ZZd8ViZQGBczAMDl8Wxh2A2+9X6JQfZBXUULMeIn3Pgou9YU+RynsqrNBJDmjd1Uc111BTPdjkhlNGWNnCHIWQ==
+"@ionic/vue-router@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@ionic/vue-router/-/vue-router-6.0.0.tgz#3fb59607c583645b441edec816b81c47047fa178"
+  integrity sha512-VtnJz1jAXlEzaXLJVtsZTifpTIR81msYAZJsAt1nkTTaAK0tJ6sITzfAs2a5lSM18l4TX2EEYXOcv3eihDoYvg==
 
-"@ionic/vue@^6.0.0-beta.1":
-  version "6.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/@ionic/vue/-/vue-6.0.0-rc.4.tgz#dca5c8e3ace07c4797d43feb641871eeef51ef36"
-  integrity sha512-zIJaDBvZimu09rFBIH1Fp6PLEDv6yQILcX4+XPehMC/SX8PeK/C0jqIRXeyHtso8j1WPUjKWIP//ba5hxPxRZA==
+"@ionic/vue@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@ionic/vue/-/vue-6.0.0.tgz#a7f4b83f39be5b9bca7a75fe47fbdc79a83aba69"
+  integrity sha512-xgSRnSaZReUcMt9SCopDI3y7QICKWbL09lcVOH+Mm7F374ZhS7uMyYyt62MCI2R98Ca95KTI2AA6hDm3YBCIRA==
   dependencies:
-    "@ionic/core" "6.0.0-rc.4"
+    "@ionic/core" "6.0.0"
     ionicons "^6.0.0"
 
 "@istanbuljs/load-nyc-config@^1.0.0":
@@ -3774,7 +3766,7 @@
   resolved "https://registry.yarnpkg.com/@sqltools/formatter/-/formatter-1.2.3.tgz#1185726610acc37317ddab11c3c7f9066966bd20"
   integrity sha512-O3uyB/JbkAEMZaP3YqyHH7TMnex7tWyCbCI4EfJdOCoN6HIhqdJBWTM6aCCiWQ/5f5wxjgU735QAIpJbjDvmzg==
 
-"@stencil/core@^2.0.0", "@stencil/core@^2.4.0", "@stencil/core@~2.11.0-0":
+"@stencil/core@^2.0.0", "@stencil/core@~2.11.0-0":
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/@stencil/core/-/core-2.11.0.tgz#8accc2791e2c34cce2d2aa8b40864dd40be4e10c"
   integrity sha512-/IubCWhVXCguyMUp/3zGrg3c882+RJNg/zpiKfyfJL3kRCOwe+/MD8OoAXVGdd+xAohZKIi1Ik+EHFlsptsjLg==
@@ -10730,13 +10722,6 @@ interpret@^1.0.0:
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.4.0.tgz#665ab8bc4da27a774a40584e812e3e0fa45b1a1e"
   integrity sha512-agE4QfB2Lkp9uICn7BAqoscw4SZP9kTE2hxiFI3jBPmXJfdqiahTbUuKGsMoN2GtqL9AxhYioAcVvgsb1HvRbA==
 
-ionicons@^5.1.2, ionicons@^5.5.3:
-  version "5.5.4"
-  resolved "https://registry.yarnpkg.com/ionicons/-/ionicons-5.5.4.tgz#5fef0c44038a630f5bb5f9a7dc83ec158bab95b1"
-  integrity sha512-3ph8X9my3inhabWEZ7N0XRA0MnnNQ1v9a602mLNgWsIXnxE9G5BybIZ/pws/OZZ/hoNlvSjk801N03yL9/FNgQ==
-  dependencies:
-    "@stencil/core" "~2.10.0"
-
 ionicons@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/ionicons/-/ionicons-6.0.0.tgz#c7c0d253d62b33ba3fa47568ff58586a5d8bdcd1"
@@ -13529,10 +13514,10 @@ nx-plugin-vite@^1.1.0:
     rxjs "6.6.7"
     rxjs-for-await "^0.0.2"
 
-nx-vue3-vite@^0.12.1:
-  version "0.12.4"
-  resolved "https://registry.yarnpkg.com/nx-vue3-vite/-/nx-vue3-vite-0.12.4.tgz#1f8b1b64b3cfa32816412648736e5563970aed4f"
-  integrity sha512-Krs1Kk7vpuEFmgE0hcvUwSSD6dncU9eer6cofVaMhyGSkWh8tIVF/KFfRIrkerQDdReRBzp6xToKgV+ZOz3F4g==
+nx-vue3-vite@^0.13.2:
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/nx-vue3-vite/-/nx-vue3-vite-0.13.2.tgz#01130b65849e6fa7211bf186e826f64a02737bdf"
+  integrity sha512-S4c9LFpaxNVhF0PVHX28g4uMgKo+PJOGvlbWk0Vz0VLlXGGH8vjLa1lR4ZtKyMOx6xLDQZGZXsy0oPzL7imh3g==
 
 nx@13.2.3:
   version "13.2.3"
@@ -17792,7 +17777,7 @@ tslib@2.3.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.0.tgz#803b8cdab3e12ba581a4ca41c8839bbb0dacb09e"
   integrity sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==
 
-tslib@^1.10.0, tslib@^1.13.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
+tslib@^1.10.0, tslib@^1.13.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
