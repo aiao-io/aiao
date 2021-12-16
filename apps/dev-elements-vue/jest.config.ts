@@ -2,6 +2,7 @@ module.exports = {
   displayName: 'dev-elements-vue',
   preset: '../../jest.preset.js',
   transform: {
+    '^.+\\.vue$': './deps/vue3-jest',
     '^.+\\.[jt]sx?$': 'ts-jest'
   },
   testEnvironment: 'jsdom',
