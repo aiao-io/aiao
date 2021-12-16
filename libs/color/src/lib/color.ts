@@ -1,6 +1,5 @@
-import { isString } from '@aiao/util';
-
 import { ColorHSB, ColorRGB, ColorRGBA, ColorType } from './interface';
+import { isString } from './is-string';
 import { colorStringToOptions } from './matchers';
 import { RGBAToHEX, RGBToHEX } from './rgb-hex';
 import { HSBToRGB, RGBToHSB } from './rgb-hsb';
