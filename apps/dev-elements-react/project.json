@@ -19,7 +19,7 @@
           "apps/dev-elements-react/src/assets",
           {
             "glob": "**/*",
-            "input": "node_modules/monaco-editor/min",
+            "input": "node_modules/monaco-editor/dev",
             "output": "./assets/monaco"
           },
           {

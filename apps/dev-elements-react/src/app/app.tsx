@@ -3,7 +3,7 @@ import './app.scss';
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
-import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
+import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
 import CodeEditorPage from './code-editor/code-editor';
@@ -11,6 +11,8 @@ import ElementsEditorPage from './elements-editor/ElementsEditor';
 import ElementsPreviewPage from './elements-preview/ElementsPreview';
 import Menu from './menu/Menu';
 import TextEditorPage from './text-editor/TextEditor';
+
+setupIonicReact();
 
 export const App: React.FunctionComponent = () => {
   return (
