@@ -14238,6 +14238,11 @@ nwsapi@^2.2.0:
   resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.2.0.tgz#204879a9e3d068ff2a55139c2c772780681a38b7"
   integrity sha512-h2AatdwYH+JHiZpv7pt/gSX1XoRGb7L/qSIeuqA6GwYoF9w1vP1cw42TO0aI2pNyshRK5893hNSl+1//vHK7hQ==
 
+nx-vue3-vite@^0.13.2:
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/nx-vue3-vite/-/nx-vue3-vite-0.13.2.tgz#01130b65849e6fa7211bf186e826f64a02737bdf"
+  integrity sha512-S4c9LFpaxNVhF0PVHX28g4uMgKo+PJOGvlbWk0Vz0VLlXGGH8vjLa1lR4ZtKyMOx6xLDQZGZXsy0oPzL7imh3g==
+
 nx@13.3.6:
   version "13.3.6"
   resolved "https://registry.yarnpkg.com/nx/-/nx-13.3.6.tgz#063176e6bdfdb251e750b017e2181f12c747d351"
