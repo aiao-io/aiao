@@ -4,12 +4,13 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nrwl/node:package",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/elements-vue",
-        "main": "libs/elements-vue/src/index.ts",
         "tsConfig": "libs/elements-vue/tsconfig.lib.json",
+        "packageJson": "libs/elements-vue/package.json",
+        "main": "libs/elements-vue/src/index.ts",
         "assets": ["libs/elements-vue/*.md"]
       }
     },

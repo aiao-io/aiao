@@ -3860,18 +3860,6 @@
     rxjs "^6.5.4"
     tslib "^2.3.0"
 
-"@nrwl/js@13.3.6":
-  version "13.3.6"
-  resolved "https://registry.yarnpkg.com/@nrwl/js/-/js-13.3.6.tgz#cea004441ccd27fe6988ef381c58d69b76fd7bb5"
-  integrity sha512-2dE18Z9Uf3kVWNeeB3ytWqfnJQOE6ynR7sWv44ZCZJuhtYIIBr7A2lOSCzQacGhJAlXIDUSii/gjWfzKU5ERJg==
-  dependencies:
-    "@nrwl/devkit" "13.3.6"
-    "@nrwl/jest" "13.3.6"
-    "@nrwl/linter" "13.3.6"
-    "@nrwl/workspace" "13.3.6"
-    chalk "4.1.0"
-    js-tokens "^4.0.0"
-
 "@nrwl/linter@13.3.6":
   version "13.3.6"
   resolved "https://registry.yarnpkg.com/@nrwl/linter/-/linter-13.3.6.tgz#cf54a45a1464cece54d3af14d5138a7598628878"
