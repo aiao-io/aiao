@@ -8,8 +8,8 @@ import { NEED_CHECK_LIBS } from '../workspace';
  */
 export const checkLibBuild = async () => {
   const check = ora('build').start();
-  for (let index = 0; index < NEED_CHECK_LIBS.length; index++) {
-    await run('yarn', ['nx build', NEED_CHECK_LIBS[index]]);
+  if (NEED_CHECK_LIBS.length) {
+    await run('yarn', [`nx run-many --target=build --projects=${NEED_CHECK_LIBS.join(',')}`]);
   }
   check.succeed();
   return;

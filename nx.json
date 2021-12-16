@@ -33,12 +33,8 @@
     ]
   },
   "cli": {
-    "warnings": {
-      "versionMismatch": false
-    },
     "defaultCollection": "@nrwl/angular",
-    "packageManager": "yarn",
-    "analytics": false
+    "packageManager": "yarn"
   },
   "generators": {
     "@nrwl/workspace": {
