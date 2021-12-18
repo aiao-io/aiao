@@ -8,6 +8,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
+        "compiler": "babel",
         "outputPath": "dist/apps/dev-elements-react",
         "index": "apps/dev-elements-react/src/index.html",
         "baseHref": "/",
