@@ -4222,6 +4222,24 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
+"@samatech/postcss-basics@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@samatech/postcss-basics/-/postcss-basics-0.4.2.tgz#16ba0d70d408a27d4becfd05d79b81c2b4d7d20e"
+  integrity sha512-4STpe5X03K6icWEuT8eplA0apfAGerPWQoVOox3Q4vKO78PAlxgkAoFDC8t6FGjttFtodwSbB5LsCTctWFUDfA==
+  dependencies:
+    "@samatech/postcss-colors" "^0.2.0"
+    autoprefixer "^10.3.1"
+    postcss-mixins "^8.1.0"
+    postcss-nested "^5.0.6"
+    postcss-simple-vars "^6.0.3"
+
+"@samatech/postcss-colors@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@samatech/postcss-colors/-/postcss-colors-0.2.0.tgz#302eda5cd9e42cc163a5ac75283d876dbf72035b"
+  integrity sha512-GDuPm+V7SBqsfGwjhBArxIjI58KY+46EoD+tHEuzJh0lMe1iB/kzkvwoWiRn0ImiRqA2OOnrsAOiekBy7zJCig==
+  dependencies:
+    postcss-value-parser "^4.1.0"
+
 "@schematics/angular@13.1.2", "@schematics/angular@~13.1.0":
   version "13.1.2"
   resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-13.1.2.tgz#bd3fd2fd1bb225bffb24fedad1409b64b1d08323"
@@ -5927,7 +5945,7 @@ atomic-sleep@^1.0.0:
   resolved "https://registry.yarnpkg.com/atomic-sleep/-/atomic-sleep-1.0.0.tgz#eb85b77a601fc932cfe432c5acd364a9e2c9075b"
   integrity sha512-kNOjDqAh7px0XWNI+4QbzoiR/nTkHAWNud2uvnJquD1/x5a7EQZMJT0AczqK0Qn67oY/TTQ1LbUKajZpp3I9tQ==
 
-autoprefixer@^10.2.5:
+autoprefixer@^10.2.5, autoprefixer@^10.3.1:
   version "10.4.0"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.4.0.tgz#c3577eb32a1079a440ec253e404eaf1eb21388c8"
   integrity sha512-7FdJ1ONtwzV1G43GDD0kpVMn/qbiNqyOPMFTX5nRffI+7vgWoFEc6DcXOxHJxrWNDXrZh18eDsZjvZGUljSRGA==
@@ -6655,6 +6673,11 @@ callsites@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/callsites/-/callsites-3.1.0.tgz#b3630abd8943432f54b3f0519238e33cd7df2f73"
   integrity sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==
+
+camelcase-css@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/camelcase-css/-/camelcase-css-2.0.1.tgz#ee978f6947914cc30c6b44741b6ed1df7f043fd5"
+  integrity sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==
 
 camelcase-keys@^6.2.2:
   version "6.2.2"
@@ -15313,6 +15336,14 @@ postcss-initial@^3.0.0:
   dependencies:
     postcss "^7.0.2"
 
+postcss-js@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/postcss-js/-/postcss-js-3.0.3.tgz#2f0bd370a2e8599d45439f6970403b5873abda33"
+  integrity sha512-gWnoWQXKFw65Hk/mi2+WTQTHdPD5UJdDXZmX073EY/B3BWnYjO4F4t0VneTCnCGQ5E5GsCdMkzPaTXwl3r5dJw==
+  dependencies:
+    camelcase-css "^2.0.1"
+    postcss "^8.1.6"
+
 postcss-lab-function@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/postcss-lab-function/-/postcss-lab-function-2.0.1.tgz#bb51a6856cd12289ab4ae20db1e3821ef13d7d2e"
@@ -15415,6 +15446,16 @@ postcss-minify-selectors@^5.1.0:
     alphanum-sort "^1.0.2"
     postcss-selector-parser "^6.0.5"
 
+postcss-mixins@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/postcss-mixins/-/postcss-mixins-8.1.0.tgz#bbb46f017ca6b0b6ec88b5814b106cdf2fea2817"
+  integrity sha512-c8zHQm0QtiGUe5fpn8jAjZauQwCg2BsKyJDynamJ6cxVakBQFFh0qpo0FPnrb0/diz7tt/emUhOq+fo48rp5Cw==
+  dependencies:
+    globby "^11.0.3"
+    postcss-js "^3.0.3"
+    postcss-simple-vars "^6.0.3"
+    sugarss "^3.0.3"
+
 postcss-modules-extract-imports@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/postcss-modules-extract-imports/-/postcss-modules-extract-imports-3.0.0.tgz#cda1f047c0ae80c97dbe28c3e76a43b88025741d"
@@ -15456,6 +15497,13 @@ postcss-modules@^4.0.0:
     postcss-modules-scope "^3.0.0"
     postcss-modules-values "^4.0.0"
     string-hash "^1.1.1"
+
+postcss-nested@^5.0.6:
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/postcss-nested/-/postcss-nested-5.0.6.tgz#466343f7fc8d3d46af3e7dba3fcd47d052a945bc"
+  integrity sha512-rKqm2Fk0KbA8Vt3AdGN0FB9OBOMDVajMG6ZCf/GoHgdxUJ4sBFp0A/uMIRm+MJUdo33YXEtjqIz8u7DAp8B7DA==
+  dependencies:
+    postcss-selector-parser "^6.0.6"
 
 postcss-nesting@^7.0.0:
   version "7.0.1"
@@ -15668,6 +15716,19 @@ postcss-selector-parser@^6.0.2, postcss-selector-parser@^6.0.4, postcss-selector
     cssesc "^3.0.0"
     util-deprecate "^1.0.2"
 
+postcss-selector-parser@^6.0.6:
+  version "6.0.7"
+  resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-6.0.7.tgz#48404830a635113a71fd79397de8209ed05a66fc"
+  integrity sha512-U+b/Deoi4I/UmE6KOVPpnhS7I7AYdKbhGcat+qTQ27gycvaACvNEw11ba6RrkwVmDVRW7sigWgLj4/KbbJjeDA==
+  dependencies:
+    cssesc "^3.0.0"
+    util-deprecate "^1.0.2"
+
+postcss-simple-vars@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/postcss-simple-vars/-/postcss-simple-vars-6.0.3.tgz#e66516c7fe980da3498f4a8ad400b9c53861806c"
+  integrity sha512-fkNn4Zio8vN4vIig9IFdb8lVlxWnYR769RgvxCM6YWlFKie/nQaOcaMMMFz/s4gsfHW4/5bJW+i57zD67mQU7g==
+
 postcss-svgo@^5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/postcss-svgo/-/postcss-svgo-5.0.3.tgz#d945185756e5dfaae07f9edb0d3cae7ff79f9b30"
@@ -15743,7 +15804,7 @@ postcss@8.4.4, postcss@^8.1.10, postcss@^8.2.15, postcss@^8.2.4, postcss@^8.3.5,
     picocolors "^1.0.0"
     source-map-js "^1.0.1"
 
-postcss@^8.3.11, postcss@^8.3.6:
+postcss@^8.1.6, postcss@^8.3.11, postcss@^8.3.6:
   version "8.4.5"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.5.tgz#bae665764dfd4c6fcc24dc0fdf7e7aa00cc77f95"
   integrity sha512-jBDboWM8qpaqwkMwItqTQTiFikhs/67OYVvblFFTM7MrZjt6yMKd6r2kgXizEbTTljacm4NldIlZnhbjr84QYg==
@@ -17972,6 +18033,13 @@ stylus@0.55.0, stylus@^0.55.0:
     sax "~1.2.4"
     semver "^6.3.0"
     source-map "^0.7.3"
+
+sugarss@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/sugarss/-/sugarss-3.0.3.tgz#bb2489961b98fbd15e4e35d6b9f4f2ee5547a6cb"
+  integrity sha512-uxa2bbuc+w7ov7DyYIhF6bM0qZF3UkFT5/nE8AJgboiVnKsBDbwxs++dehEIe1JNhpMaGJc37wGQ2QrrWey2Sg==
+  dependencies:
+    postcss "^8.1.6"
 
 supports-color@^2.0.0:
   version "2.0.0"
