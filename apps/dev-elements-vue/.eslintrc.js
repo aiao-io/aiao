@@ -17,7 +17,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     'no-multiple-empty-lines': ['error', { max: 1 }],
     'keyword-spacing': ['error', { after: true }],
-    'max-len': ['error', { code: 1000000, ignorePattern: '^\\s*<path' }],
+    'max-len': ['error', { code: 100, ignorePattern: '^\\s*<path' }],
     'no-param-reassign': [2, { props: false }],
     'object-curly-newline': [
       'error',
@@ -51,9 +51,13 @@ module.exports = {
         ignoreWhenEmpty: true
       }
     ],
-    'vue/max-attributes-per-line': 'off',
-    'vue/no-v-html': 'off',
-    'vue/no-deprecated-slot-attribute': 'off'
+    'vue/max-attributes-per-line': [
+      'error',
+      {
+        singleline: 3
+      }
+    ],
+    'vue/no-v-html': 'off'
   },
   settings: {
     'import/resolver': {

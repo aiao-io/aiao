@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    // Enables stricter inference for data properties on `this`
     "strict": true,
     "allowJs": true,
     "jsx": "preserve",
@@ -12,16 +11,14 @@
       "@assets/*": ["./src/assets/*"],
       "@app/*": ["./src/app/*"],
       "@public/*": ["./src/public/*"]
-    },
-    "plugins": [
-      {
-        "name": "ts-vue-plugin"
-      }
-    ]
+    }
   },
   "references": [
     {
       "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
     },
     {
       "path": "./tsconfig.spec.json"
