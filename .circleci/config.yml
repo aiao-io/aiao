@@ -152,7 +152,7 @@ format_check: &format_check
 # lint
 lint: &lint
   name: Lint
-  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS} --maxParallel=1
+  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS} --maxParallel=5
 
 affected_test: &affected_test
   name: Afected test
@@ -160,7 +160,7 @@ affected_test: &affected_test
 
 affected_build: &affected_build
   name: Affected build
-  command: yarn affected:build ${AFFECTED_ARGS} --configuration production --maxParallel=1
+  command: yarn affected:build ${AFFECTED_ARGS} --configuration production --maxParallel=3
 
 # e2e
 affected_e2e: &affected_e2e
