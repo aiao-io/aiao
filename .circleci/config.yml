@@ -12,14 +12,14 @@ defaults: &defaults
   docker:
     - image: circleci/node:16-browsers
       environment:
-        NODE_OPTIONS: --max_old_space_size=3096
+        NODE_OPTIONS: --max_old_space_size=2048
 
 withDatabase: &withDatabase
   working_directory: ~/repo
   docker:
     - image: circleci/node:16-browsers
       environment:
-        NODE_OPTIONS: --max_old_space_size=2048
+        NODE_OPTIONS: --max_old_space_size=6000
     - image: circleci/postgres:12-alpine-postgis
       environment:
         POSTGRES_USER: test
@@ -156,7 +156,7 @@ lint: &lint
 
 affected_test: &affected_test
   name: Afected test
-  command: yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage --maxParallel=1 --exclude dev-elements-react
+  command: yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage --maxParallel=3 --exclude dev-elements-react
 
 affected_build: &affected_build
   name: Affected build
@@ -165,7 +165,7 @@ affected_build: &affected_build
 # e2e
 affected_e2e: &affected_e2e
   name: Affected e2e
-  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production --maxParallel=1
+  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production --maxParallel=3
 
 update_deploy: &update_deploy
   name: Update Deploy
