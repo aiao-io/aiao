@@ -156,7 +156,7 @@ lint: &lint
 
 affected_test: &affected_test
   name: Afected test
-  command: yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage --maxParallel=1
+  command: yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage --maxParallel=1 --exclude dev-elements-react
 
 affected_build: &affected_build
   name: Affected build
