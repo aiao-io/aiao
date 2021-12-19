@@ -235,6 +235,7 @@ jobs:
       - run: *lint
   build:
     <<: *defaults
+    resource_class: medium+
     steps:
       - checkout_and_cache
       - restore_cache: *build_cache
@@ -251,6 +252,7 @@ jobs:
       - codecov_upload
   e2e:
     <<: *defaults
+    resource_class: medium+
     steps:
       - checkout_and_cache
       - run: yarn cypress install
