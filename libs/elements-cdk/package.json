@@ -23,5 +23,9 @@
     "@angular/forms": "^12.2.9",
     "rxjs": "~7.4.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "publishConfig": {
+    "access": "public",
+    "directory": "../../dist/libs/elements-cdk"
+  }
 }

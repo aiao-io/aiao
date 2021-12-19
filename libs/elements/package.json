@@ -31,9 +31,6 @@
     "package.json",
     "README.md"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "build": "cd ../../ && yarn build elements --prod"
   },
@@ -54,5 +51,9 @@
     "@aiao/url": "^0.0.7",
     "@aiao/util": "^1.0.2",
     "lodash": "^4.17.15"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "../../dist/libs/elements"
   }
 }

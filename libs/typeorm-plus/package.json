@@ -27,5 +27,9 @@
   "dependencies": {
     "tslib": "^2.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "publishConfig": {
+    "access": "public",
+    "directory": "../../dist/libs/typeorm-plus"
+  }
 }

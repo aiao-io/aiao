@@ -7,5 +7,9 @@
   },
   "devDependencies": {
     "@aiao/elements": "^0.7.4"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "../../dist/libs/elemens-vue"
   }
 }

@@ -26,5 +26,9 @@
   },
   "devDependencies": {
     "@aiao/util": "^1.0.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "../../dist/libs/date"
   }
 }
