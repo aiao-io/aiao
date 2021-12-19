@@ -1,6 +1,6 @@
 {
   "name": "@aiao/elements-angular",
-  "version": "0.5.7-alpha.0",
+  "version": "0.5.6",
   "description": "elements for angular",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -32,8 +32,8 @@
     "rxjs": "~7.4.0"
   },
   "devDependencies": {
-    "@aiao/elements": "^0.7.5-alpha.0",
-    "@aiao/elements-cdk": "^0.1.7-alpha.0"
+    "@aiao/elements": "^0.7.4",
+    "@aiao/elements-cdk": "^0.1.6"
   },
   "publishConfig": {
     "access": "public",

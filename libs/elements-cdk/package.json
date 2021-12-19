@@ -1,6 +1,6 @@
 {
   "name": "@aiao/elements-cdk",
-  "version": "0.1.7-alpha.0",
+  "version": "0.1.6",
   "description": "elements component Dev Kit",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -23,6 +23,7 @@
     "@angular/forms": "^12.2.9",
     "rxjs": "~7.4.0"
   },
+  "devDependencies": {},
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org",

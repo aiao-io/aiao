@@ -1,6 +1,6 @@
 {
   "name": "@aiao/typeorm-plus",
-  "version": "0.2.1-alpha.0",
+  "version": "0.2.0",
   "description": "typeorm support sequelize query",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -27,6 +27,7 @@
   "dependencies": {
     "tslib": "^2.0.0"
   },
+  "devDependencies": {},
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org",

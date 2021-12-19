@@ -1,6 +1,6 @@
 {
   "name": "@aiao/universal-fastify-engine",
-  "version": "1.2.4-alpha.0",
+  "version": "1.2.3",
   "description": " universal fastify engine",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -33,6 +33,7 @@
   "dependencies": {
     "tslib": "^2.0.0"
   },
+  "devDependencies": {},
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org",

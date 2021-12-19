@@ -3,14 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.1.5-alpha.0](https://github.com/aiao-io/aiao/compare/@aiao/image-storage@0.1.2-alpha.2...@aiao/image-storage@0.1.5-alpha.0) (2021-12-19)
-
-**Note:** Version bump only for package @aiao/image-storage
-
-
-
-
-
 ## [0.1.4](https://github.com/aiao-io/aiao/compare/@aiao/image-storage@0.1.2...@aiao/image-storage@0.1.4) (2021-10-21)
 
 **Note:** Version bump only for package @aiao/image-storage
