@@ -9,17 +9,19 @@ orbs:
 
 defaults: &defaults
   working_directory: ~/repo
-  docker:
-    - image: circleci/node:16-browsers
-      environment:
-        NODE_OPTIONS: --max_old_space_size=3096
-
-withDatabase: &withDatabase
-  working_directory: ~/repo
+  resource_class: small
   docker:
     - image: circleci/node:16-browsers
       environment:
         NODE_OPTIONS: --max_old_space_size=2048
+
+withDatabase: &withDatabase
+  working_directory: ~/repo
+  resource_class: medium+
+  docker:
+    - image: circleci/node:16-browsers
+      environment:
+        NODE_OPTIONS: --max_old_space_size=6000
     - image: circleci/postgres:12-alpine-postgis
       environment:
         POSTGRES_USER: test
@@ -152,20 +154,20 @@ format_check: &format_check
 # lint
 lint: &lint
   name: Lint
-  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS}
+  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS} --maxParallel=5
 
 affected_test: &affected_test
   name: Afected test
-  command: yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage --maxParallel=1
+  command: yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage --maxParallel=3 --exclude dev-elements-react
 
 affected_build: &affected_build
   name: Affected build
-  command: yarn affected:build ${AFFECTED_ARGS} --configuration production
+  command: yarn affected:build ${AFFECTED_ARGS} --configuration production --maxParallel=3
 
 # e2e
 affected_e2e: &affected_e2e
   name: Affected e2e
-  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production -- --headless
+  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production --maxParallel=3
 
 update_deploy: &update_deploy
   name: Update Deploy
@@ -218,7 +220,7 @@ jobs:
       - restore_cache: *yarn_cache
       - restore_cache: *dist_cache
       - run: *yarn_install
-      - run: rm -rf node_modules/.cache
+      # - run: rm -rf node_modules/.cache
       - save_cache: *save_yarn_cache
       - save_cache: *save_dist_cache
   check-formatting:
@@ -260,6 +262,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout_and_cache
+      # - run: echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > /home/circleci/repo/.npmrc
       # - deplay_to_heroku
       - run: *update_deploy
       - save_cache: *save_deploy_cache
@@ -270,6 +273,7 @@ jobs:
       - checkout_and_cache
       - run: env
       # INSTALL
+      # - run: rm -rf node_modules
       - run: *yarn_install
       - save_cache: *save_yarn_cache
       - save_cache: *save_dist_cache

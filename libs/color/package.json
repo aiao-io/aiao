@@ -23,5 +23,10 @@
   },
   "devDependencies": {
     "@aiao/util": "^1.0.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "directory": "../../dist/libs/color"
   }
 }

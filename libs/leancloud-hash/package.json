@@ -23,5 +23,10 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {},
-  "devDependencies": {}
+  "devDependencies": {},
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "directory": "../../dist/libs/leancloud-hash"
+  }
 }

@@ -12,11 +12,12 @@
     "serve": {
       "executor": "nx-vue3-vite:dev-server"
     },
+
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/dev-elements-vue"],
       "options": {
-        "jestConfig": "apps/dev-elements-vue/jest.config.ts",
+        "jestConfig": "apps/dev-elements-vue/jest.config.js",
         "passWithNoTests": true
       }
     },

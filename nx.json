@@ -16,11 +16,12 @@
   "npmScope": "aiao",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "@nrwl/nx-cloud",
       "options": {
         "cacheableOperations": [],
         "runtimeCacheInputs": ["node -v", "git hash-object yarn.lock", "git hash-object package.json"],
-        "parallel": 3
+        "parallel": 1,
+        "accessToken": "NGQ2NjlmYjEtZjA3NC00YzA4LTgyMmMtZjgzYmZmMzhiN2VhfHJlYWQtd3JpdGU="
       }
     }
   },
@@ -33,12 +34,8 @@
     ]
   },
   "cli": {
-    "warnings": {
-      "versionMismatch": false
-    },
     "defaultCollection": "@nrwl/angular",
-    "packageManager": "yarn",
-    "analytics": false
+    "packageManager": "yarn"
   },
   "generators": {
     "@nrwl/workspace": {

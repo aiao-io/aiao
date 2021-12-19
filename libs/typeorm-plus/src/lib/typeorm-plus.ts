@@ -11,9 +11,11 @@ type EntityKeys = Function | string | EntitySchema<any>;
 
 export class TypeormPlus {
   isInit = false;
+
+  readonly sequelize!: Sequelize;
+
   protected entitiyMetadatas = new Set<EntityMetadata>();
   protected entitiyMap = new Map<EntityKeys, string>();
-  sequelize: Sequelize;
 
   constructor(options: Partial<ConnectionOptions>, connection: Connection) {
     const opts = translateTypeormOptions(options);

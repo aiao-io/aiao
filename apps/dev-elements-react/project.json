@@ -2,13 +2,16 @@
   "root": "apps/dev-elements-react",
   "sourceRoot": "apps/dev-elements-react/src",
   "projectType": "application",
-  "generators": {},
   "targets": {
     "build": {
-      "executor": "@nrwl/web:build",
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
       "options": {
+        "compiler": "babel",
         "outputPath": "dist/apps/dev-elements-react",
         "index": "apps/dev-elements-react/src/index.html",
+        "baseHref": "/",
         "main": "apps/dev-elements-react/src/main.tsx",
         "polyfills": "apps/dev-elements-react/src/polyfills.ts",
         "tsConfig": "apps/dev-elements-react/tsconfig.app.json",
@@ -17,7 +20,7 @@
           "apps/dev-elements-react/src/assets",
           {
             "glob": "**/*",
-            "input": "node_modules/monaco-editor/min",
+            "input": "node_modules/monaco-editor/dev",
             "output": "./assets/monaco"
           },
           {
@@ -28,8 +31,7 @@
         ],
         "styles": ["apps/dev-elements-react/src/theme/variables.scss", "apps/dev-elements-react/src/global.scss"],
         "scripts": [],
-        "webpackConfig": "apps/dev-elements-react/webpack.config.js",
-        "buildLibsFromSource": true
+        "webpackConfig": "@nrwl/react/plugins/webpack"
       },
       "configurations": {
         "production": {
@@ -44,45 +46,37 @@
           "sourceMap": false,
           "namedChunks": false,
           "extractLicenses": true,
-          "vendorChunk": false,
-          "budgets": [
-            {
-              "type": "initial",
-              "maximumWarning": "2mb",
-              "maximumError": "5mb"
-            }
-          ]
+          "vendorChunk": false
         }
-      },
-      "outputs": ["{options.outputPath}"]
+      }
     },
     "serve": {
       "executor": "@nrwl/web:dev-server",
       "options": {
         "buildTarget": "dev-elements-react:build",
-        "open": true
+        "hmr": true
       },
       "configurations": {
         "production": {
           "buildTarget": "dev-elements-react:build:production",
-          "port": 5208
+          "hmr": false
         }
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/dev-elements-react/src/**/*.ts", "apps/dev-elements-react/src/**/*.html"]
-      },
-      "outputs": ["{options.outputFile}"]
+        "lintFilePatterns": ["apps/dev-elements-react/**/*.{ts,tsx,js,jsx}"]
+      }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/dev-elements-react"],
       "options": {
         "jestConfig": "apps/dev-elements-react/jest.config.js",
         "passWithNoTests": true
-      },
-      "outputs": ["coverage/apps/dev-elements-react"]
+      }
     }
   },
   "tags": ["react-app"]

@@ -1,6 +1,5 @@
-import { isString } from '@aiao/util';
-
 import { ColorHSB, ColorRGB, ColorRGBA, ColorType } from './interface';
+import { isString } from './is-string';
 import { colorStringToOptions } from './matchers';
 import { RGBAToHEX, RGBToHEX } from './rgb-hex';
 import { HSBToRGB, RGBToHSB } from './rgb-hsb';
@@ -37,13 +36,14 @@ export class Color {
   }
 
   // hsb
-  set hsb(hsb: ColorHSB) {
-    this._updateHSB(hsb);
-    this._updateRGB();
-  }
 
   get hsb(): ColorHSB {
     return { h: this._hue, s: this._saturation, b: this._brightness };
+  }
+
+  set hsb(hsb: ColorHSB) {
+    this._updateHSB(hsb);
+    this._updateRGB();
   }
 
   // rgb
@@ -52,6 +52,7 @@ export class Color {
     this._updateHSB();
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   get rgb(): ColorRGB {
     return { r: this._red, g: this._green, b: this._blue };
   }
@@ -62,6 +63,7 @@ export class Color {
     this.rgb = rgba;
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   get rgba(): ColorRGBA {
     return { ...this.rgb, a: this._opacity };
   }
@@ -70,6 +72,8 @@ export class Color {
   set opacity(val: number) {
     this._opacity = val;
   }
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   get opacity() {
     return this._opacity;
   }
@@ -79,6 +83,8 @@ export class Color {
     this._red = val;
     this._updateHSB();
   }
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   get red() {
     return this._red;
   }
@@ -88,6 +94,8 @@ export class Color {
     this._green = val;
     this._updateHSB();
   }
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   get green() {
     return this._green;
   }
@@ -97,6 +105,7 @@ export class Color {
     this._blue = val;
     this._updateHSB();
   }
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   get blue() {
     return this._blue;
   }
@@ -106,6 +115,8 @@ export class Color {
     this._hue = val;
     this._updateRGB();
   }
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   get hue() {
     return this._hue;
   }
@@ -115,6 +126,8 @@ export class Color {
     this._saturation = val;
     this._updateRGB();
   }
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   get saturation() {
     return this._saturation;
   }
@@ -124,6 +137,7 @@ export class Color {
     this._brightness = val;
     this._updateRGB();
   }
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   get brightness() {
     return this._brightness;
   }

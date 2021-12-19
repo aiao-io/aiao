@@ -34,5 +34,10 @@
   "devDependencies": {
     "@aiao/elements": "^0.7.4",
     "@aiao/elements-cdk": "^0.1.6"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "directory": "../../dist/libs/elements-angular"
   }
 }

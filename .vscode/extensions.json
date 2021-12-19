@@ -13,6 +13,8 @@
     "mike-co.import-sorter",
     "mrmlnc.vscode-scss",
     "ms-vscode.vscode-typescript-tslint-plugin",
-    "nrwl.angular-console"
+    "nrwl.angular-console",
+    "johnsoncodehk.volar",
+    "samatech.postcss-vue"
   ]
 }

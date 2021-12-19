@@ -7,7 +7,6 @@
       "executor": "@nrwl/cypress:cypress",
       "options": {
         "cypressConfig": "apps/dev-elements-react-e2e/cypress.json",
-        "tsConfig": "apps/dev-elements-react-e2e/tsconfig.e2e.json",
         "devServerTarget": "dev-elements-react:serve"
       },
       "configurations": {
@@ -18,12 +17,12 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["apps/dev-elements-react-e2e/**/*.{js,ts}"]
-      },
-      "outputs": ["{options.outputFile}"]
+      }
     }
   },
-  "tags": ["angular-e2e"],
+  "tags": [],
   "implicitDependencies": ["dev-elements-react"]
 }

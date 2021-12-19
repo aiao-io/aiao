@@ -1,4 +1,5 @@
-import { set, setWith } from 'lodash';
+import set from 'lodash/set';
+import setWith from 'lodash/setWith';
 
 import { isArray } from './array';
 import { isDate } from './date';

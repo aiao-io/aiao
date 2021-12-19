@@ -30,5 +30,10 @@
   },
   "devDependencies": {
     "@aiao/typeorm-plus": "^0.2.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "directory": "../../dist/libs/nest-typeorm-plus"
   }
 }

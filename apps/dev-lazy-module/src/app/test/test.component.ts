@@ -4,6 +4,4 @@ import { Component } from '@angular/core';
   selector: 'app-test',
   templateUrl: './test.component.html'
 })
-export class TestComponent {
-  constructor() {}
-}
+export class TestComponent {}

@@ -8,10 +8,8 @@ module.exports = {
   },
   testEnvironment: 'node',
   transform: {
-    '^.+\\.[tj]sx?$': 'ts-jest',
-    '^.+.(mjs)$': 'jest-preset-angular'
+    '^.+\\.[tj]sx?$': 'ts-jest'
   },
-  transformIgnorePatterns: ['node_modules/(?!.*.mjs$)'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../coverage/libs/color'
 };

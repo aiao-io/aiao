@@ -34,5 +34,10 @@
   },
   "devDependencies": {
     "@aiao/universal-fastify-engine": "^1.2.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "directory": "../../dist/libs/nest-angular-universal"
   }
 }
