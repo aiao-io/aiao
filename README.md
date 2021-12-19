@@ -1,5 +1,3 @@
-[English](./README.en.md)
-
 # AIAO
 
 [![CircleCI](https://circleci.com/gh/aiao-io/aiao/tree/master.svg?style=svg)](https://circleci.com/gh/aiao-io/aiao/tree/master)
@@ -13,7 +11,10 @@
 [![codebeat badge](https://codebeat.co/badges/7b6231bc-ab0d-4ade-b991-907a94758176)](https://codebeat.co/projects/github-com-jimmysh-aiao-master)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/516bfcbd3ca74c8caa1780d20eb1f567)](https://www.codacy.com/gh/aiao-io/aiao/dashboard?utm_source=github.com&utm_medium=referral&utm_content=aiao-io/aiao&utm_campaign=Badge_Grade)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=aiao-io_aiao&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=aiao-io_aiao)
+
 用 `monorepo` 风格代码统一管理、发布一些 `npm` 库。
+
+<!-- [English](./README.en.md) -->
 
 ## Apps
 
