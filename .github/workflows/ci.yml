@@ -73,8 +73,8 @@ jobs:
             dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
             dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-
 
-      - name: clean node_modules
-        run: rm -rf node_modules
+      # - name: clean node_modules
+      #   run: rm -rf node_modules
 
       - name: Install
         run: yarn install --frozen-lockfile --non-interactive

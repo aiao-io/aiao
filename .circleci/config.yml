@@ -218,7 +218,7 @@ jobs:
       - restore_cache: *yarn_cache
       - restore_cache: *dist_cache
       - run: *yarn_install
-      - run: rm -rf node_modules/.cache
+      # - run: rm -rf node_modules/.cache
       - save_cache: *save_yarn_cache
       - save_cache: *save_dist_cache
   check-formatting:
@@ -271,7 +271,7 @@ jobs:
       - checkout_and_cache
       - run: env
       # INSTALL
-      - run: rm -rf node_modules
+      # - run: rm -rf node_modules
       - run: *yarn_install
       - save_cache: *save_yarn_cache
       - save_cache: *save_dist_cache
