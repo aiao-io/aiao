@@ -33,11 +33,11 @@
               },
               {
                 "sourceTag": "nest-lib",
-                "onlyDependOnLibsWithTags": ["all", "nest-lib"]
+                "onlyDependOnLibsWithTags": ["all", "nest-lib", "node-lib"]
               },
               {
                 "sourceTag": "nest-app",
-                "onlyDependOnLibsWithTags": ["all", "nest-lib"]
+                "onlyDependOnLibsWithTags": ["all", "nest-lib", "node-lib"]
               },
               {
                 "sourceTag": "stencil-lib",
