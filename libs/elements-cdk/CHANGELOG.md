@@ -7,10 +7,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @aiao/elements-cdk
 
-
-
-
-
 ## [0.1.6](https://github.com/aiao-io/aiao/compare/@aiao/elements-cdk@0.1.4...@aiao/elements-cdk@0.1.6) (2021-10-21)
 
 **Note:** Version bump only for package @aiao/elements-cdk

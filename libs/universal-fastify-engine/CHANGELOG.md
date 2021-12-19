@@ -5,17 +5,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [1.2.4-alpha.0](https://github.com/aiao-io/aiao/compare/@aiao/universal-fastify-engine@0.1.3-alpha.0...@aiao/universal-fastify-engine@1.2.4-alpha.0) (2021-12-19)
 
-
 ### Features
 
-* **nest-angular-universal:** 更新版本 ([f37493f](https://github.com/aiao-io/aiao/commit/f37493f1c6903bf64579e0db6ac14a6dabe52a22))
-* **nest-angular-universal:** 重构了部分代码 ([#143](https://github.com/aiao-io/aiao/issues/143)) ([e86e082](https://github.com/aiao-io/aiao/commit/e86e08218c114468138376916325ddebdf3f6ec9))
-* **universal-fastify-engine:** add request token ([8e8cff5](https://github.com/aiao-io/aiao/commit/8e8cff58af64fe9e53cc61346533cec6eb413461))
-* **universal-fastify-engine:** documentFilePath 支持文件和文件夹两种写法 ([a68a084](https://github.com/aiao-io/aiao/commit/a68a084943fe7c4064a1d45290229571b74266ab))
-
-
-
-
+- **nest-angular-universal:** 更新版本 ([f37493f](https://github.com/aiao-io/aiao/commit/f37493f1c6903bf64579e0db6ac14a6dabe52a22))
+- **nest-angular-universal:** 重构了部分代码 ([#143](https://github.com/aiao-io/aiao/issues/143)) ([e86e082](https://github.com/aiao-io/aiao/commit/e86e08218c114468138376916325ddebdf3f6ec9))
+- **universal-fastify-engine:** add request token ([8e8cff5](https://github.com/aiao-io/aiao/commit/8e8cff58af64fe9e53cc61346533cec6eb413461))
+- **universal-fastify-engine:** documentFilePath 支持文件和文件夹两种写法 ([a68a084](https://github.com/aiao-io/aiao/commit/a68a084943fe7c4064a1d45290229571b74266ab))
 
 ## [1.1.1](https://github.com/aiao-io/aiao/compare/@aiao/universal-fastify-engine@1.1.0...@aiao/universal-fastify-engine@1.1.1) (2021-10-25)
 
