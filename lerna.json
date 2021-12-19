@@ -21,7 +21,6 @@
   ],
   "command": {
     "version": {
-      "message": "chore(release): publish %v [skip travis]",
       "conventionalCommits": true,
       "allowBranch": ["master", "update-deps"],
       "push": false
