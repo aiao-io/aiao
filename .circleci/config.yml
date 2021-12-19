@@ -9,6 +9,7 @@ orbs:
 
 defaults: &defaults
   working_directory: ~/repo
+  resource_class: small
   docker:
     - image: circleci/node:16-browsers
       environment:
@@ -16,6 +17,7 @@ defaults: &defaults
 
 withDatabase: &withDatabase
   working_directory: ~/repo
+  resource_class: medium+
   docker:
     - image: circleci/node:16-browsers
       environment:
