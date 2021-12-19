@@ -1,6 +1,6 @@
 {
   "name": "@aiao/image-storage",
-  "version": "0.1.4",
+  "version": "0.1.5-alpha.0",
   "description": "image storage",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -19,8 +19,6 @@
   "dependencies": {
     "tslib": "^2.0.0"
   },
-  "peerDependencies": {},
-  "devDependencies": {},
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org",

@@ -1,6 +1,6 @@
 {
   "name": "@aiao/color",
-  "version": "1.2.2",
+  "version": "1.2.3-alpha.0",
   "description": "color tool",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -22,7 +22,7 @@
     "@aiao/util": "^1.0.2"
   },
   "devDependencies": {
-    "@aiao/util": "^1.0.2"
+    "@aiao/util": "^1.0.3-alpha.0"
   },
   "publishConfig": {
     "access": "public",
