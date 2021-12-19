@@ -24,6 +24,9 @@
       "conventionalCommits": true,
       "allowBranch": ["master", "update-deps"],
       "push": false
+    },
+    "public": {
+      "gitHead": false
     }
   }
 }

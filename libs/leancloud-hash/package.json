@@ -26,5 +26,7 @@
     "access": "public",
     "registry": "https://registry.npmjs.org",
     "directory": "../../dist/libs/leancloud-hash"
-  }
+  },
+  "peerDependencies": {},
+  "devDependencies": {}
 }

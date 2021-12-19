@@ -19,13 +19,14 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular/core": "^12.2.9",
-    "@angular/forms": "^12.2.9",
+    "@angular/core": "~13.1.0",
+    "@angular/forms": "~13.1.0",
     "rxjs": "~7.4.0"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org",
     "directory": "../../dist/libs/elements-cdk"
-  }
+  },
+  "devDependencies": {}
 }

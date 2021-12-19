@@ -17,7 +17,7 @@
     "typeorm"
   ],
   "scripts": {
-    "build": "cd ../../ && yarn build typeorm-plus --prod"
+    "build": "cd ../../ && yarn build typeorm-plus"
   },
   "peerDependencies": {
     "lodash": "^4.17.15",
@@ -31,5 +31,6 @@
     "access": "public",
     "registry": "https://registry.npmjs.org",
     "directory": "../../dist/libs/typeorm-plus"
-  }
+  },
+  "devDependencies": {}
 }

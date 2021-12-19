@@ -23,5 +23,7 @@
     "access": "public",
     "registry": "https://registry.npmjs.org",
     "directory": "../../dist/libs/image-storage"
-  }
+  },
+  "peerDependencies": {},
+  "devDependencies": {}
 }

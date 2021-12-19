@@ -21,9 +21,9 @@
     "build": "cd ../../ && yarn build lazy-element --prod"
   },
   "peerDependencies": {
-    "@aiao/lazy-module": "^1.4.3",
-    "@angular/core": "^12.2.9",
-    "@angular/elements": "^12.2.9",
+    "@aiao/lazy-module": "^1.4.4-alpha.0",
+    "@angular/core": "~13.1.0",
+    "@angular/elements": "~13.1.0",
     "rxjs": "~7.4.0"
   },
   "devDependencies": {
