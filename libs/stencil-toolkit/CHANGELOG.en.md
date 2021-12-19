@@ -6,10 +6,6 @@ All notable changes to this project will be documented in this file. See [Conven
 
 **Note:** Version bump only for package @aiao/stencil-toolkit
 
-
-
-
-
 ## [0.2.3](https://github.com/aiao-io/aiao/compare/@aiao/stencil-toolkit@0.2.1...@aiao/stencil-toolkit@0.2.3) (2021-10-21)
 
 **Note:** Version bump only for package @aiao/stencil-toolkit
