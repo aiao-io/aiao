@@ -4,14 +4,9 @@ All notable changes to this project will be documented in this file. See [Conven
 
 ## [0.2.1-alpha.0](https://github.com/aiao-io/aiao/compare/@aiao/typeorm-plus@0.1.2-alpha.0...@aiao/typeorm-plus@0.2.1-alpha.0) (2021-12-19)
 
-
 ### Features
 
-* **typeorm-plus:** 支持多数据库配置 ([#142](https://github.com/aiao-io/aiao/issues/142)) ([79896a1](https://github.com/aiao-io/aiao/commit/79896a1fd48254711a355d4e596f9a815c64ae70))
-
-
-
-
+- **typeorm-plus:** 支持多数据库配置 ([#142](https://github.com/aiao-io/aiao/issues/142)) ([79896a1](https://github.com/aiao-io/aiao/commit/79896a1fd48254711a355d4e596f9a815c64ae70))
 
 # [0.2.0](https://github.com/aiao-io/aiao/compare/@aiao/typeorm-plus@0.1.2...@aiao/typeorm-plus@0.2.0) (2021-10-21)
 
