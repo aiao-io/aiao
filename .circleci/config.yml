@@ -271,6 +271,7 @@ jobs:
       - checkout_and_cache
       - run: env
       # INSTALL
+      - run: rm -rf node_modules
       - run: *yarn_install
       - save_cache: *save_yarn_cache
       - save_cache: *save_dist_cache
