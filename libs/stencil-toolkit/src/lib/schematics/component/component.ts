@@ -15,18 +15,11 @@ import {
 import { getNpmScope, readJsonInTree } from '@nrwl/workspace';
 
 import { isNxWorkspace } from '../../util/is-nx';
-import { NormalizedSchema } from '../../util/normalize-options';
+import { NormalizedSchema, toFileName } from '../../util/normalize-options';
 
 interface Schema extends NormalizedSchema {
   name: string;
   project: string;
-}
-
-function toFileName(s: string): string {
-  return s
-    .replace(/([a-z\d])([A-Z])/g, '$1_$2')
-    .toLowerCase()
-    .replace(/[ _]/g, '-');
 }
 
 export default function (schema: Schema): Rule {
