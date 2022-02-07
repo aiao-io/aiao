@@ -1,5 +1,6 @@
 import { Directive, ElementRef } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+
+import type { ControlValueAccessor } from '@angular/forms';
 
 @Directive()
 export abstract class ValueAccessorBase implements ControlValueAccessor {
