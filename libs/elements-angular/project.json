@@ -35,5 +35,6 @@
       }
     }
   },
-  "tags": ["angular-lib"]
+  "tags": ["angular-lib"],
+  "implicitDependencies": ["elements"]
 }
