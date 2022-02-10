@@ -1,4 +1,4 @@
-import { raf, ValueAccessorBase } from '@aiao/elements-cdk/angular';
+import { raf, ValueAccessorBase } from '@aiao/elements-cdk';
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
 const getClasses = (element: HTMLElement) => {

@@ -1,24 +1,25 @@
 {
-  "projectType": "library",
   "root": "libs/elements-cdk",
   "sourceRoot": "libs/elements-cdk/src",
-  "prefix": "aiao",
+  "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/elements-cdk"],
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "project": "libs/elements-cdk/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "libs/elements-cdk/tsconfig.lib.prod.json"
-        },
-        "development": {
-          "tsConfig": "libs/elements-cdk/tsconfig.lib.json"
-        }
-      },
-      "defaultConfiguration": "production"
+        "outputPath": "dist/libs/elements-cdk",
+        "tsConfig": "libs/elements-cdk/tsconfig.lib.json",
+        "packageJson": "libs/elements-cdk/package.json",
+        "main": "libs/elements-cdk/src/index.ts",
+        "assets": ["libs/elements-cdk/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/elements-cdk/**/*.ts"]
+      }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
@@ -26,12 +27,6 @@
       "options": {
         "jestConfig": "libs/elements-cdk/jest.config.js",
         "passWithNoTests": true
-      }
-    },
-    "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "options": {
-        "lintFilePatterns": ["libs/elements-cdk/src/**/*.ts", "libs/elements-cdk/src/**/*.html"]
       }
     }
   },

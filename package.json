@@ -57,7 +57,7 @@
     "@angular/router": "13.2.1",
     "@angular/service-worker": "13.2.1",
     "@ionic/angular": "^6.0.0",
-    "@ionic/angular-toolkit": "^5.0.0",
+    "@ionic/angular-toolkit": "^6.0.0",
     "@ionic/core": "^6.0.0",
     "@ionic/react": "^6.0.0",
     "@ionic/react-router": "^6.0.0",
@@ -137,7 +137,7 @@
     "@nrwl/workspace": "13.8.0",
     "@samatech/postcss-basics": "^0.4.2",
     "@stencil/core": "^2.0.0",
-    "@stencil/react-output-target": "^0.2.0",
+    "@stencil/react-output-target": "^0.3.1",
     "@stencil/sass": "^1.3.1",
     "@stencil/vue-output-target": "^0.6.0",
     "@testing-library/react": "12.1.2",
@@ -213,4 +213,3 @@
     }
   }
 }
-

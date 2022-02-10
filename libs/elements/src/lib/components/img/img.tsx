@@ -1,4 +1,4 @@
-import { IImg, IImgArea, imgGetAreas } from '@aiao/elements-cdk/components';
+import { IImg, IImgArea, imgGetAreas } from '@aiao/elements-cdk';
 import { IMAGE_MIN_BASE64_TRANSPARENT } from '@aiao/util';
 import {
   Component,

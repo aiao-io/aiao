@@ -1,5 +1,5 @@
 import { IAiaoElementsConfig, initialize } from '@aiao/elements';
-import { raf } from '@aiao/elements-cdk/angular';
+import { raf } from '@aiao/elements-cdk';
 import { applyPolyfills, defineCustomElements } from '@aiao/elements/loader';
 import { NgZone } from '@angular/core';
 
