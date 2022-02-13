@@ -14,7 +14,6 @@ import type {
   Identifier,
   IncrementDecrementOptions,
   IncrementDecrementOptionsWithBy,
-  ModelType,
   NonNullFindOptions,
   RestoreOptions,
   TruncateOptions,
@@ -22,13 +21,13 @@ import type {
   UpsertOptions
 } from 'sequelize';
 
-import type { Col, Fn, Literal } from 'sequelize/types/lib/utils';
+import type { Col, Fn, Literal } from 'sequelize/types/utils';
 import { DeepPartial, EntitySchema } from 'typeorm';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type EntityType = Function | string | EntitySchema<any>;
 
-export interface SequelizeRepository<Model> extends ModelType<Model> {
+export interface SequelizeRepository<Model> {
   findAll<M extends DeepPartial<Model>>(options?: FindOptions<M>): Promise<Model[]>;
   findByPk(identifier?: Identifier, options?: Omit<FindOptions | NonNullFindOptions, 'where'>): Promise<Model | null>;
 
