@@ -86,7 +86,7 @@
     "ionicons": "^6.0.0",
     "ismobilejs": "^1.1.1",
     "lodash": "^4.17.15",
-    "monaco-editor": "^0.31.1",
+    "monaco-editor": "^0.32.1",
     "pg": "^8.3.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
