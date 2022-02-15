@@ -14,6 +14,7 @@ import type {
   Identifier,
   IncrementDecrementOptions,
   IncrementDecrementOptionsWithBy,
+  ModelType,
   NonNullFindOptions,
   RestoreOptions,
   TruncateOptions,
@@ -27,7 +28,7 @@ import { DeepPartial, EntitySchema } from 'typeorm';
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type EntityType = Function | string | EntitySchema<any>;
 
-export interface SequelizeRepository<Model> {
+export interface SequelizeRepository<Model> extends ModelType<Model> {
   findAll<M extends DeepPartial<Model>>(options?: FindOptions<M>): Promise<Model[]>;
   findByPk(identifier?: Identifier, options?: Omit<FindOptions | NonNullFindOptions, 'where'>): Promise<Model | null>;
 
