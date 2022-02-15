@@ -7,10 +7,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @aiao/util
 
-
-
-
-
 ## [1.0.3-alpha.0](https://github.com/aiao-io/aiao/compare/@aiao/util@1.0.0-alpha.1...@aiao/util@1.0.3-alpha.0) (2021-12-19)
 
 **Note:** Version bump only for package @aiao/util

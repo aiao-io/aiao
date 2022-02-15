@@ -16,7 +16,7 @@
     "random"
   ],
   "scripts": {
-    "build": "cd ../../ && yarn build random --prod"
+    "build": "cd ../../ && yarn build random"
   },
   "peerDependencies": {
     "@aiao/util": "^1.0.3-alpha.0"

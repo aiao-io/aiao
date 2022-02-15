@@ -16,7 +16,7 @@
     "date"
   ],
   "scripts": {
-    "build": "cd ../../ && yarn build date --prod"
+    "build": "cd ../../ && yarn build date"
   },
   "peerDependencies": {
     "@aiao/util": "^1.0.3-alpha.0"

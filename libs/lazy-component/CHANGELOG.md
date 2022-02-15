@@ -7,10 +7,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @aiao/lazy-component
 
-
-
-
-
 ## [1.7.2-alpha.0](https://github.com/aiao-io/aiao/compare/@aiao/lazy-component@1.5.1-alpha.0...@aiao/lazy-component@1.7.2-alpha.0) (2021-12-19)
 
 ### Features
