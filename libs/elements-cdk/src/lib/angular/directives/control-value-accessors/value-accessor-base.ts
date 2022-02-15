@@ -1,12 +1,10 @@
-import { Directive, ElementRef } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import type { ElementRef } from '@angular/core';
 
-@Directive()
+import type { ControlValueAccessor } from '@angular/forms';
+
 export abstract class ValueAccessorBase implements ControlValueAccessor {
   protected lastValue: any;
 
-  private onChange: (value: any) => void = () => {};
-  private onTouched: () => void = () => {};
   constructor(protected el: ElementRef) {}
 
   writeValue(value: any) {
@@ -39,4 +37,7 @@ export abstract class ValueAccessorBase implements ControlValueAccessor {
       this.onTouched();
     }
   }
+
+  private onChange: (value: any) => void = () => {};
+  private onTouched: () => void = () => {};
 }

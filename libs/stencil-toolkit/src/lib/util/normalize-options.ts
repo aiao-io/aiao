@@ -3,7 +3,7 @@ import { getNpmScope, readJsonInTree } from '@nrwl/workspace';
 
 import { isNxWorkspace } from './is-nx';
 
-function toFileName(s: string): string {
+export function toFileName(s: string): string {
   return s
     .replace(/([a-z\d])([A-Z])/g, '$1_$2')
     .toLowerCase()

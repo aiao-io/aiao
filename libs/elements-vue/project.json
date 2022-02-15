@@ -30,5 +30,6 @@
       }
     }
   },
-  "tags": ["vue-lib"]
+  "tags": ["vue-lib"],
+  "implicitDependencies": ["elements"]
 }

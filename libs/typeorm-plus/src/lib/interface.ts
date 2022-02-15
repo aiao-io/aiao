@@ -22,7 +22,7 @@ import type {
   UpsertOptions
 } from 'sequelize';
 
-import type { Col, Fn, Literal } from 'sequelize/types/lib/utils';
+import type { Col, Fn, Literal } from 'sequelize/types/utils';
 import { DeepPartial, EntitySchema } from 'typeorm';
 
 // eslint-disable-next-line @typescript-eslint/ban-types

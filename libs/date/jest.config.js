@@ -1,24 +1,15 @@
 module.exports = {
-  name: 'date',
+  displayName: 'date',
   preset: '../../jest.preset.js',
-  coverageDirectory: '../../coverage/libs/date',
-  collectCoverageFrom: ['./src/lib/**/*.ts'],
-
-  setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
-      stringifyContentPathRegex: '\\.(html|svg)$',
-
       tsconfig: '<rootDir>/tsconfig.spec.json'
     }
   },
-  snapshotSerializers: [
-    'jest-preset-angular/build/serializers/no-ng-attributes',
-    'jest-preset-angular/build/serializers/ng-snapshot',
-    'jest-preset-angular/build/serializers/html-comment'
-  ],
+  testEnvironment: 'node',
   transform: {
-    '^.+.(ts|mjs|js|html)$': 'jest-preset-angular'
+    '^.+\\.[tj]sx?$': 'ts-jest'
   },
-  transformIgnorePatterns: ['node_modules/(?!.*.mjs$)']
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/libs/date'
 };

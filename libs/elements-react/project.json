@@ -38,5 +38,6 @@
         "passWithNoTests": true
       }
     }
-  }
+  },
+  "implicitDependencies": ["elements"]
 }

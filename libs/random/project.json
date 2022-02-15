@@ -1,35 +1,33 @@
 {
-  "projectType": "library",
   "root": "libs/random",
   "sourceRoot": "libs/random/src",
-  "prefix": "aiao",
+  "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:package",
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
       "options": {
+        "outputPath": "dist/libs/random",
         "tsConfig": "libs/random/tsconfig.lib.json",
-        "project": "libs/random/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "libs/random/tsconfig.lib.prod.json"
-        }
+        "packageJson": "libs/random/package.json",
+        "main": "libs/random/src/index.ts",
+        "assets": ["libs/random/*.md"]
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/random/src/**/*.ts", "libs/random/src/**/*.html"]
-      },
-      "outputs": ["{options.outputFile}"]
+        "lintFilePatterns": ["libs/random/**/*.ts"]
+      }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/random"],
       "options": {
         "jestConfig": "libs/random/jest.config.js",
         "passWithNoTests": true
-      },
-      "outputs": ["coverage/libs/random"]
+      }
     }
   },
   "tags": ["all"]
