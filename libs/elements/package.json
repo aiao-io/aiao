@@ -1,6 +1,6 @@
 {
   "name": "@aiao/elements",
-  "version": "0.7.5-alpha.0",
+  "version": "0.7.5-alpha.1",
   "description": "web components",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -35,15 +35,15 @@
     "build": "cd ../../ && yarn build elements --prod"
   },
   "dependencies": {
-    "@aiao/elements-cdk": "^0.1.7-alpha.0",
-    "@aiao/url": "^0.0.1",
+    "@aiao/elements-cdk": "^0.1.7-alpha.1",
+    "@aiao/url": "^0.0.2",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
     "@aiao/elements-cdk": "^0.1.7-alpha.0",
-    "@aiao/image-storage": "^0.1.5-alpha.0",
+    "@aiao/image-storage": "^0.1.5-alpha.1",
     "@aiao/url": "^0.0.8-alpha.0",
-    "@aiao/util": "^1.0.3-alpha.0"
+    "@aiao/util": "^1.0.3-alpha.1"
   },
   "peerDependencies": {
     "@aiao/elements-cdk": "^0.1.7-alpha.0",

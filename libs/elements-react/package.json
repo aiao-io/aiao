@@ -1,6 +1,6 @@
 {
   "name": "@aiao/elements-react",
-  "version": "0.1.7-alpha.0",
+  "version": "0.1.7-alpha.1",
   "description": "elements react",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -22,7 +22,7 @@
     "@aiao/elements": "^0.7.5-alpha.0"
   },
   "devDependencies": {
-    "@aiao/elements": "^0.7.5-alpha.0"
+    "@aiao/elements": "^0.7.5-alpha.1"
   },
   "dependencies": {
     "tslib": "^2.0.0"

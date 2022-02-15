@@ -1,6 +1,6 @@
 {
   "name": "@aiao/color",
-  "version": "1.2.3-alpha.0",
+  "version": "1.2.3-alpha.1",
   "description": "color tool",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -18,8 +18,6 @@
   "scripts": {
     "build": "cd ../../ && yarn build color"
   },
-  "peerDependencies": {},
-  "devDependencies": {},
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org",

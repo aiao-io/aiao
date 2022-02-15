@@ -1,6 +1,6 @@
 {
   "name": "@aiao/lazy-module",
-  "version": "1.4.4-alpha.0",
+  "version": "1.4.4-alpha.1",
   "description": "lazy module for angular",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -31,6 +31,5 @@
     "access": "public",
     "registry": "https://registry.npmjs.org",
     "directory": "../../dist/libs/lazy-module"
-  },
-  "devDependencies": {}
+  }
 }
