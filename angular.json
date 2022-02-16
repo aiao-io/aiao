@@ -31,6 +31,8 @@
     "leancloud-hash": "libs/leancloud-hash",
     "nest-angular-universal": "libs/nest-angular-universal",
     "nest-typeorm-plus": "libs/nest-typeorm-plus",
+    "nx-tsup": "libs/nx-tsup",
+    "nx-tsup-e2e": "apps/nx-tsup-e2e",
     "random": "libs/random",
     "stencil-toolkit": "libs/stencil-toolkit",
     "typeorm-plus": "libs/typeorm-plus",

@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "nx-tsup",
+  "version": "0.0.1",
+  "generators": {
+    "nx-tsup": {
+      "factory": "./src/generators/nx-tsup/generator",
+      "schema": "./src/generators/nx-tsup/schema.json",
+      "description": "nx-tsup generator"
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "root": "libs/nx-tsup",
+  "sourceRoot": "libs/nx-tsup/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/nx-tsup/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/nx-tsup"],
+      "options": {
+        "jestConfig": "libs/nx-tsup/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/nx-tsup",
+        "tsConfig": "libs/nx-tsup/tsconfig.lib.json",
+        "packageJson": "libs/nx-tsup/package.json",
+        "main": "libs/nx-tsup/src/index.ts",
+        "assets": [
+          "libs/nx-tsup/*.md",
+          {
+            "input": "./libs/nx-tsup/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./libs/nx-tsup/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./libs/nx-tsup",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./libs/nx-tsup",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    }
+  },
+  "tags": []
+}
