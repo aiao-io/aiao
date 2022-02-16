@@ -43,6 +43,7 @@
       "@aiao/nest-angular-universal": ["libs/nest-angular-universal/src/index.ts"],
       "@aiao/nest-typeorm-plus": ["libs/nest-typeorm-plus/src/index.ts"],
       "@aiao/random": ["libs/random/src/index.ts"],
+      "@aiao/stencil-toolkit2": ["libs/stencil-toolkit2/src/index.ts"],
       "@aiao/typeorm-plus": ["libs/typeorm-plus/src/index.ts"],
       "@aiao/universal-fastify-engine": ["libs/universal-fastify-engine/src/index.ts"],
       "@aiao/url": ["libs/url/src/index.ts"],

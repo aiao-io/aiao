@@ -1,0 +1,16 @@
+{
+  "root": "apps/stencil-toolkit2-e2e",
+  "projectType": "application",
+  "sourceRoot": "apps/stencil-toolkit2-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/nx-plugin:e2e",
+      "options": {
+        "target": "stencil-toolkit2:build",
+        "jestConfig": "apps/stencil-toolkit2-e2e/jest.config.js"
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["stencil-toolkit2"]
+}

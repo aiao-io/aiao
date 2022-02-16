@@ -33,6 +33,8 @@
     "nest-typeorm-plus": "libs/nest-typeorm-plus",
     "random": "libs/random",
     "stencil-toolkit": "libs/stencil-toolkit",
+    "stencil-toolkit2": "libs/stencil-toolkit2",
+    "stencil-toolkit2-e2e": "apps/stencil-toolkit2-e2e",
     "typeorm-plus": "libs/typeorm-plus",
     "universal-fastify-engine": "libs/universal-fastify-engine",
     "url": "libs/url",

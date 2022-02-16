@@ -1,0 +1,56 @@
+{
+  "root": "libs/stencil-toolkit2",
+  "sourceRoot": "libs/stencil-toolkit2/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/stencil-toolkit2/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/stencil-toolkit2"],
+      "options": {
+        "jestConfig": "libs/stencil-toolkit2/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/stencil-toolkit2",
+        "tsConfig": "libs/stencil-toolkit2/tsconfig.lib.json",
+        "packageJson": "libs/stencil-toolkit2/package.json",
+        "main": "libs/stencil-toolkit2/src/index.ts",
+        "assets": [
+          "libs/stencil-toolkit2/*.md",
+          {
+            "input": "./libs/stencil-toolkit2/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./libs/stencil-toolkit2/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./libs/stencil-toolkit2",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./libs/stencil-toolkit2",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    }
+  },
+  "tags": []
+}
