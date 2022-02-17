@@ -38,19 +38,6 @@ export function translateTypeOrmEntity(metadata: EntityMetadata): SeqModel {
       enum: enumValues
     } = col;
 
-    if (databaseName !== propertyName) {
-      /*
-          外键设置 一个 column 可以保持一致性
-          @OneToOne(() => Profile, { cascade: true })
-          @JoinColumn()
-          profile: Profile;
-          // fk
-          @Column({ nullable: true })
-          profileId: number;
-      */
-      console.error('未设置 fk', modelName, propertyName, databaseName);
-    }
-
     const columnOptions: ModelAttributeColumnOptions = {
       field: databaseName,
       allowNull: isNullable,
