@@ -1,3 +1,3 @@
 import type { Model as SequelizeModel, ModelStatic } from 'sequelize';
 
-export type SequelizeRepository<Model = any> = ModelStatic<SequelizeModel<Model>>;
+export type SequelizeRepository<Model, CreateModel = Model> = ModelStatic<SequelizeModel<Model, CreateModel> & Model>;
