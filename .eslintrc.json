@@ -12,48 +12,48 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "all",
-                "onlyDependOnLibsWithTags": ["all"]
+                "sourceTag": "js",
+                "onlyDependOnLibsWithTags": ["js"]
               },
               {
                 "sourceTag": "angular-lib",
-                "onlyDependOnLibsWithTags": ["all", "angular-lib", "stencil-lib"]
+                "onlyDependOnLibsWithTags": ["js", "angular-lib", "stencil-lib"]
               },
               {
                 "sourceTag": "angular-app",
-                "onlyDependOnLibsWithTags": ["all", "angular-lib"]
+                "onlyDependOnLibsWithTags": ["js", "angular-lib"]
               },
               {
                 "sourceTag": "react-lib",
-                "onlyDependOnLibsWithTags": ["all", "react-lib", "stencil-lib"]
+                "onlyDependOnLibsWithTags": ["js", "react-lib", "stencil-lib"]
               },
               {
                 "sourceTag": "react-app",
-                "onlyDependOnLibsWithTags": ["all", "react-lib"]
+                "onlyDependOnLibsWithTags": ["js", "react-lib"]
               },
               {
                 "sourceTag": "nest-lib",
-                "onlyDependOnLibsWithTags": ["all", "nest-lib", "node-lib"]
+                "onlyDependOnLibsWithTags": ["js", "nest-lib", "node-lib"]
               },
               {
                 "sourceTag": "nest-app",
-                "onlyDependOnLibsWithTags": ["all", "nest-lib", "node-lib"]
+                "onlyDependOnLibsWithTags": ["js", "nest-lib", "node-lib"]
               },
               {
                 "sourceTag": "stencil-lib",
-                "onlyDependOnLibsWithTags": ["all", "stencil-lib"]
+                "onlyDependOnLibsWithTags": ["js", "stencil-lib"]
               },
               {
                 "sourceTag": "stencil-app",
-                "onlyDependOnLibsWithTags": ["all", "stencil-lib"]
+                "onlyDependOnLibsWithTags": ["js", "stencil-lib"]
               },
               {
                 "sourceTag": "vue-app",
-                "onlyDependOnLibsWithTags": ["all", "vue-lib", "stencil-lib"]
+                "onlyDependOnLibsWithTags": ["js", "vue-lib", "stencil-lib"]
               },
               {
                 "sourceTag": "vue-lib",
-                "onlyDependOnLibsWithTags": ["all", "vue-lib", "stencil-lib"]
+                "onlyDependOnLibsWithTags": ["js", "vue-lib", "stencil-lib"]
               }
             ],
             "enforceBuildableLibDependency": true
