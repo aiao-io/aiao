@@ -2,9 +2,9 @@ import {
   IImageOptions,
   IImageRequestOptions,
   IImageStorageAdapter,
-  IMAGE_OPTIONS_DEFAULT,
-  numberStepScreenSize
-} from '@aiao/image-storage';
+  IMAGE_OPTIONS_DEFAULT
+} from '../image-storage.interface';
+import { numberStepScreenSize } from '../util';
 
 export class ImageStorageAdapterAliyun implements IImageStorageAdapter {
   name = 'aliyun';
