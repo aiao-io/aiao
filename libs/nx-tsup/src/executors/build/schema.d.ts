@@ -5,3 +5,11 @@ export interface BuildExecutorSchema {
   packageJson: string;
   assets?: any[];
 }
+
+
+export interface NormalizedBuildExecutorSchema  extends BuildExecutorSchema {
+  root: string;
+  sourceRoot: string;
+  projectRoot: string;
+
+}
