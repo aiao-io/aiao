@@ -4,7 +4,7 @@ import { run } from '../util/runner';
 export const buildLibs = async () => {
   const libs = affectedLibs();
   if (libs.length) {
-    await run('yarn', [`nx run-many --target=build --with-deps --projects=${libs.join(',')}`]);
+    await run('yarn', [`nx run-many --target=build --projects=${libs.join(',')}`]);
   }
 };
 
