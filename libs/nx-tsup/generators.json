@@ -8,7 +8,7 @@
       "schema": "./src/generators/library/schema.json",
       "aliases": ["lib"],
       "x-type": "library",
-      "description": "create library"
+      "description": "create js library"
     }
   }
 }
