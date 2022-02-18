@@ -21,16 +21,12 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@aiao/elements": "^0.7.5-alpha.0",
-    "@aiao/elements-cdk": "^0.1.7-alpha.0",
-    "@angular/common": "~13.1.0",
-    "@angular/core": "~13.1.0",
-    "@angular/forms": "~13.1.0",
-    "rxjs": "~7.4.0"
-  },
-  "devDependencies": {
     "@aiao/elements": "^0.7.5-alpha.1",
-    "@aiao/elements-cdk": "^0.1.7-alpha.1"
+    "@aiao/elements-cdk": "^0.1.7-alpha.1",
+    "@angular/common": "^13.2.1",
+    "@angular/core": "^13.2.1",
+    "@angular/forms": "^13.2.1",
+    "rxjs": "~7.4.0"
   },
   "publishConfig": {
     "access": "public",

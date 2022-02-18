@@ -2,8 +2,8 @@
   "name": "@aiao/lazy-component",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^13.2.0",
-    "@angular/core": "^13.2.0"
+    "@aiao/lazy-module": "^0.0.1",
+    "@angular/core": "^13.2.1"
   },
   "dependencies": {
     "tslib": "^2.3.0"

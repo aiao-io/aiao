@@ -16,9 +16,6 @@
     "react"
   ],
   "peerDependencies": {
-    "@aiao/elements": "^0.7.5-alpha.0"
-  },
-  "devDependencies": {
     "@aiao/elements": "^0.7.5-alpha.1"
   },
   "dependencies": {

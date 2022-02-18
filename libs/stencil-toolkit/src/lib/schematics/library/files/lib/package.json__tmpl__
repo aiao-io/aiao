@@ -19,8 +19,5 @@
   "scripts": {
     "build": "ng build <%= name %>"
   },
-  "devDependencies": {
-    "@stencil/core": "^1.8.1"
-  },
   "license": "MIT"
 }

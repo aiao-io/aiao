@@ -1,5 +1,5 @@
 import { readdirSync, readJsonSync, writeJSONSync } from 'fs-extra';
-import { flattenDeep, union } from 'lodash';
+import { flattenDeep, isEmpty, union } from 'lodash';
 import Ora from 'ora';
 import { join } from 'path';
 import { Project } from 'ts-morph';
@@ -98,6 +98,13 @@ function buildDependecies(name: string) {
 
   pkg.peerDependencies = peerDependencies;
   pkg.devDependencies = devDependencies;
+
+  if (isEmpty(peerDependencies)) {
+    delete pkg.peerDependencies;
+  }
+  if (isEmpty(devDependencies)) {
+    delete pkg.devDependencies;
+  }
 
   changes.push(`libs/${name}/package.json`);
   writeJSONSync(`libs/${name}/package.json`, pkg, { spaces: 2 });

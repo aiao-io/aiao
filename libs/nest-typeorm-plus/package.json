@@ -17,16 +17,13 @@
     "typeorm"
   ],
   "peerDependencies": {
-    "@aiao/typeorm-plus": "^0.2.1-alpha.0",
+    "@aiao/typeorm-plus": "^0.2.1-alpha.1",
     "@nestjs/common": "^8.0.0",
     "@nestjs/typeorm": "^8.0.1",
     "typeorm": "^0.2.22"
   },
   "dependencies": {
     "tslib": "^2.0.0"
-  },
-  "devDependencies": {
-    "@aiao/typeorm-plus": "^0.2.1-alpha.1"
   },
   "publishConfig": {
     "access": "public",
