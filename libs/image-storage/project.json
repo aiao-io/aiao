@@ -30,5 +30,6 @@
       }
     }
   },
-  "tags": ["js"]
+  "tags": ["js"],
+  "implicitDependencies": ["nx-tsup"]
 }
