@@ -1,1 +1,7 @@
-export interface BuildExecutorSchema {} // eslint-disable-line
+export interface BuildExecutorSchema {
+  main: string;
+  outputPath: string;
+  tsConfig: string;
+  packageJson: string;
+  assets?: any[];
+}
