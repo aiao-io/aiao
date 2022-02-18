@@ -12,7 +12,6 @@
     "serve": {
       "executor": "nx-vue3-vite:dev-server"
     },
-
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/dev-elements-vue"],

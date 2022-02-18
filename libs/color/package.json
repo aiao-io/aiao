@@ -15,9 +15,6 @@
   "keywords": [
     "color"
   ],
-  "scripts": {
-    "build": "cd ../../ && yarn build color"
-  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org",

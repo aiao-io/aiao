@@ -33,7 +33,7 @@ export const normalizeOptions = <Schema extends BaseSchema>(host: Tree, options:
   const angularConfig = readJsonInTree(host, '/angular.json');
   const libs = isNx ? 'libs' : angularConfig.newProjectRoot;
   const projectDirectory = options.directory ? `${toFileName(options.directory)}/${name}` : name;
-  const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
+  const projectName = projectDirectory.replace(/\//g, '-');
   const projectRoot = `${libs}/${projectDirectory}`;
 
   const parsedTags = options.tags ? options.tags.split(',').map(s => s.trim()) : [];

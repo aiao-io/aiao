@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
 
-export function translateTypeormType(type: string | any) {
+export function translateTypeormType(type: any) {
   switch (type) {
     case Number:
       return Sequelize.NUMBER;

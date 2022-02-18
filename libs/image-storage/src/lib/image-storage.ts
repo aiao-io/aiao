@@ -6,28 +6,6 @@ import { ImageStorageBase } from './ImageStorageBase';
  */
 export class ImageStorage extends ImageStorageBase {
   /**
-   * 从结果中找出最好的
-   * @param url url
-   * @param req 请求数据
-   */
-  private findBetter(url: string, req: IImageRequestOptions) {
-    const imgs = this.cacheMap.get(url) || [];
-    // 找出同样配置像素更宽的图片结果
-    const find = imgs
-      .filter(
-        d =>
-          d.method === req.method &&
-          d.format === req.format &&
-          d.quality === req.quality &&
-          d.width >= req.width &&
-          d.height >= req.height
-      )
-      .sort((a, b) => b.width - a.width);
-    if (find?.length > 0) return find[0];
-    return undefined;
-  }
-
-  /**
    *
    * @param url url
    * @param req 请求数据
@@ -60,5 +38,27 @@ export class ImageStorage extends ImageStorageBase {
       if (hasBetter) return hasBetter;
     }
     return result;
+  }
+
+  /**
+   * 从结果中找出最好的
+   * @param url url
+   * @param req 请求数据
+   */
+  private findBetter(url: string, req: IImageRequestOptions) {
+    const imgs = this.cacheMap.get(url) || [];
+    // 找出同样配置像素更宽的图片结果
+    const find = imgs
+      .filter(
+        d =>
+          d.method === req.method &&
+          d.format === req.format &&
+          d.quality === req.quality &&
+          d.width >= req.width &&
+          d.height >= req.height
+      )
+      .sort((a, b) => b.width - a.width);
+    if (find?.length > 0) return find[0];
+    return undefined;
   }
 }

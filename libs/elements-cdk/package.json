@@ -12,16 +12,12 @@
   "bugs": {
     "url": "https://github.com/aiao-io/aiao/issues"
   },
-  "scripts": {
-    "build": "cd ../../ && yarn build elements-cdk"
-  },
   "dependencies": {
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular/core": "~13.1.0",
-    "@angular/forms": "~13.1.0",
-    "rxjs": "~7.4.0"
+    "@angular/core": "^13.2.1",
+    "@angular/forms": "^13.2.1"
   },
   "publishConfig": {
     "access": "public",
