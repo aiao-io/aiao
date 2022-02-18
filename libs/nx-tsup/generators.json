@@ -1,12 +1,14 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "name": "nx-tsup",
+  "name": "aiao/nx-tsup",
   "version": "0.0.1",
   "generators": {
-    "nx-tsup": {
+    "library": {
       "factory": "./src/generators/library/generator",
       "schema": "./src/generators/library/schema.json",
-      "description": "library generator"
+      "aliases": ["lib"],
+      "x-type": "library",
+      "description": "create library"
     }
   }
 }
