@@ -99,12 +99,14 @@ export async function buildExecutor(options: BuildExecutorSchema, context: Execu
   const projGraph = readCachedProjectGraph();
 
   // 清空 outputPath
-  const stat = fs.statSync(opt.outputPath);
-  if (stat.isDirectory()) {
-    fs.rmdirSync(opt.outputPath, { recursive: true });
-  } else {
-    fs.unlinkSync(opt.outputPath);
-  }
+  try {
+    const stat = fs.statSync(opt.outputPath);
+    if (stat.isDirectory()) {
+      fs.rmdirSync(opt.outputPath, { recursive: true });
+    } else {
+      fs.unlinkSync(opt.outputPath);
+    }
+  } catch (error) {}
 
   await build({
     entry: [main],
