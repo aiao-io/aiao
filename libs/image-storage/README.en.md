@@ -13,7 +13,7 @@ const imageStorage = new ImageStorage({
   adapters: [new ImageStorageAdapterAliyun()]
 });
 
-const img = 'http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg';
+const img = 'https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg';
 const newLink = imageStorage.requestOptions(img, {
   width: 400,
   height: 500
