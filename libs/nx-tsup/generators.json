@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "generators": {
     "library": {
-      "factory": "./src/generators/library/generator",
+      "factory": "./src/generators/library/compat",
       "schema": "./src/generators/library/schema.json",
       "aliases": ["lib"],
       "x-type": "library",

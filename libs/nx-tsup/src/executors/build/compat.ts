@@ -1,5 +1,5 @@
 import { convertNxExecutor } from '@nrwl/devkit';
 
-import tsupRunExecutor from './executor';
+import buildExecutor from './executor';
 
-export default convertNxExecutor(tsupRunExecutor);
+export default convertNxExecutor(buildExecutor);

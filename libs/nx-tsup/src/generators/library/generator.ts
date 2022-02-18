@@ -1,7 +1,6 @@
 import { join } from 'path';
 
 import {
-  convertNxGenerator,
   formatFiles,
   generateFiles,
   getWorkspaceLayout,
@@ -26,39 +25,6 @@ export interface NormalizedSchema extends Schema {
   projectDirectory: string;
   parsedTags: string[];
 }
-
-export async function libraryGenerator(tree: Tree, schema: Schema) {
-  const options = normalizeOptions(tree, schema);
-
-  if (options.publishable === true && !schema.importPath) {
-    throw new Error(
-      `For publishable libs you have to provide a proper "--importPath" which needs to be a valid npm package name (e.g. my-awesome-lib or @myorg/my-lib)`
-    );
-  }
-
-  const libraryInstall = await workspaceLibraryGenerator(tree, {
-    ...schema,
-    importPath: options.importPath,
-    testEnvironment: 'node',
-    skipFormat: true,
-    setParserOptionsProject: options.setParserOptionsProject
-  });
-  createFiles(tree, options);
-
-  if (options.js) {
-    updateTsConfigsToJs(tree, options);
-  }
-  updateProject(tree, options);
-
-  if (!schema.skipFormat) {
-    await formatFiles(tree);
-  }
-
-  return libraryInstall;
-}
-
-export default libraryGenerator;
-export const librarySchematic = convertNxGenerator(libraryGenerator);
 
 function normalizeOptions(tree: Tree, options: Schema): NormalizedSchema {
   const { npmScope, libsDir } = getWorkspaceLayout(tree);
@@ -128,7 +94,7 @@ function updateProject(tree: Tree, options: NormalizedSchema) {
 
   project.targets = project.targets || {};
   project.targets.build = {
-    executor: '@nrwl/node:package',
+    executor: '@aiao/nx-tsup:build',
     outputs: ['{options.outputPath}'],
     options: {
       outputPath: `dist/${libsDir}/${options.projectDirectory}`,
@@ -145,3 +111,35 @@ function updateProject(tree: Tree, options: NormalizedSchema) {
 
   updateProjectConfiguration(tree, options.name, project);
 }
+
+export async function libraryGenerator(tree: Tree, schema: Schema) {
+  const options = normalizeOptions(tree, schema);
+
+  if (options.publishable === true && !schema.importPath) {
+    throw new Error(
+      `For publishable libs you have to provide a proper "--importPath" which needs to be a valid npm package name (e.g. my-awesome-lib or @myorg/my-lib)`
+    );
+  }
+
+  const libraryInstall = await workspaceLibraryGenerator(tree, {
+    ...schema,
+    importPath: options.importPath,
+    testEnvironment: 'node',
+    skipFormat: true,
+    setParserOptionsProject: options.setParserOptionsProject
+  });
+  createFiles(tree, options);
+
+  if (options.js) {
+    updateTsConfigsToJs(tree, options);
+  }
+  updateProject(tree, options);
+
+  if (!schema.skipFormat) {
+    await formatFiles(tree);
+  }
+
+  return libraryInstall;
+}
+
+export default libraryGenerator;
