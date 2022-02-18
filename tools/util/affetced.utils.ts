@@ -7,24 +7,24 @@ const needBase = (base: string): string => {
   return base!;
 };
 
-export const affectedApps = (base: string = '') => {
-  const info = shell.exec(`yarn nx affected:apps --base ${needBase(base)}`);
-  const apps = info
+const clean = (info: string) => {
+  return info
     .split('\n')
     .map(d => d.trim())
     .filter(d => !!d && d.startsWith('-'))
     .map(d => d.replace('- ', ''));
+};
+
+export const affectedApps = (base: string = '') => {
+  const info = shell.exec(`yarn nx affected:apps --base ${needBase(base)}`);
+  const apps = clean(info);
   return apps;
 };
 
 export const affectedLibs = (base: string = '') => {
   base = needBase(base);
   const info = shell.exec(`yarn nx affected:libs --base ${needBase(base)}`);
-  const libs = info
-    .split('\n')
-    .map(d => d.trim())
-    .filter(d => !!d && d.startsWith('-'))
-    .map(d => d.replace('- ', ''));
+  const libs = clean(info);
   return libs;
 };
 
