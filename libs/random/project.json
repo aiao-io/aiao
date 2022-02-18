@@ -30,5 +30,6 @@
       }
     }
   },
-  "tags": ["all"]
+  "tags": ["all"],
+  "implicitDependencies": ["nx-tsup"]
 }
