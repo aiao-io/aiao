@@ -37,12 +37,12 @@ export abstract class ValueAccessor extends ValueAccessorBase {
     super(el);
   }
 
-  writeValue(value: any) {
+  override writeValue(value: any) {
     super.writeValue(value);
     setAiaoClasses(this.el);
   }
 
-  handleChangeEvent(el: HTMLElement, value: any) {
+  override handleChangeEvent(el: HTMLElement, value: any) {
     super.handleChangeEvent(el, value);
     if (el === this.el.nativeElement) {
       setAiaoClasses(this.el);
@@ -50,7 +50,7 @@ export abstract class ValueAccessor extends ValueAccessorBase {
   }
 
   @HostListener('aiaoBlur', ['$event.target'])
-  handleBlurEvent(el: any) {
+  override handleBlurEvent(el: any) {
     super.handleBlurEvent(el);
     if (el === this.el.nativeElement) {
       setAiaoClasses(this.el);

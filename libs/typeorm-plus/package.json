@@ -16,9 +16,6 @@
     "nestjs",
     "typeorm"
   ],
-  "scripts": {
-    "build": "cd ../../ && yarn build typeorm-plus"
-  },
   "peerDependencies": {
     "lodash": "^4.17.15",
     "sequelize": "^6.3.3",

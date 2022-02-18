@@ -17,9 +17,6 @@
     "stencil",
     "web components"
   ],
-  "scripts": {
-    "build": "cd ../../ && yarn build elements-angular --prod"
-  },
   "dependencies": {
     "tslib": "^2.0.0"
   },

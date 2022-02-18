@@ -15,9 +15,6 @@
   "keywords": [
     "react"
   ],
-  "scripts": {
-    "build": "cd ../../ && yarn build elements-react"
-  },
   "peerDependencies": {
     "@aiao/elements": "^0.7.5-alpha.0"
   },

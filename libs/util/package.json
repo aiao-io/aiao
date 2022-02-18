@@ -17,9 +17,6 @@
     "number",
     "string"
   ],
-  "scripts": {
-    "build": "cd ../../ && yarn build util"
-  },
   "peerDependencies": {
     "lodash": "^4.17.15"
   },

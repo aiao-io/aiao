@@ -1,4 +1,4 @@
-import { ImageStorage } from '../../../src';
+import { ImageStorage } from '../..';
 import { ImageStorageAdapterAliyun } from './';
 
 describe('ImageStorage', () => {

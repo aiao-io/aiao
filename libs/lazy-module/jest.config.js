@@ -1,24 +1,21 @@
 module.exports = {
-  name: 'lazy-module',
+  displayName: 'lazy-module',
   preset: '../../jest.preset.js',
-  coverageDirectory: '../../coverage/libs/lazy-module',
-  collectCoverageFrom: ['./src/lib/**/*.ts'],
-
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
-      stringifyContentPathRegex: '\\.(html|svg)$',
-
-      tsconfig: '<rootDir>/tsconfig.spec.json'
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+      stringifyContentPathRegex: '\\.(html|svg)$'
     }
   },
+  coverageDirectory: '../../coverage/libs/lazy-module',
+  transform: {
+    '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular'
+  },
+  transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',
     'jest-preset-angular/build/serializers/html-comment'
-  ],
-  transform: {
-    '^.+.(ts|mjs|js|html)$': 'jest-preset-angular'
-  },
-  transformIgnorePatterns: ['node_modules/(?!.*.mjs$)']
+  ]
 };

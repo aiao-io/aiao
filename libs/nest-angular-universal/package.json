@@ -19,9 +19,6 @@
     "ssr",
     "fastify"
   ],
-  "scripts": {
-    "build": "cd ../../ && yarn build nest-angular-universal --prod"
-  },
   "dependencies": {
     "tslib": "^2.0.0"
   },

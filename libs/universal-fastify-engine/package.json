@@ -20,9 +20,6 @@
     "fastify",
     "engine"
   ],
-  "scripts": {
-    "build": "cd ../../ && yarn build universal-fastify-engine --prod"
-  },
   "peerDependencies": {
     "@angular/core": "~13.1.0",
     "@nestjs/common": "^8.0.0",

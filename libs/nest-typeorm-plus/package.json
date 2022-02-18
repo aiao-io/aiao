@@ -16,9 +16,6 @@
     "nestjs",
     "typeorm"
   ],
-  "scripts": {
-    "build": "cd ../../ && yarn build nest-typeorm-plus --prod"
-  },
   "peerDependencies": {
     "@aiao/typeorm-plus": "^0.2.1-alpha.0",
     "@nestjs/common": "^8.0.0",

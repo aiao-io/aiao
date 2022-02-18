@@ -49,3 +49,5 @@ package-lock.json
 libs/elements-vue/src/lib/proxies.ts
 libs/elements-vue/src/lib/vue-component-lib/utils.ts
 .angulardoc.json
+
+.angular
