@@ -46,7 +46,7 @@ const data = [
   {
     tag: 'aiao-img',
     attributes: {
-      src: 'http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg'
+      src: 'https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg'
     }
   }
 ];
