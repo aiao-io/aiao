@@ -30,6 +30,6 @@
       }
     }
   },
-  "tags": ["all"],
+  "tags": ["js"],
   "implicitDependencies": ["nx-tsup"]
 }
