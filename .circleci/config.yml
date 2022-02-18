@@ -162,7 +162,7 @@ affected_test: &affected_test
 
 affected_build: &affected_build
   name: Affected build
-  command: yarn affected:build ${AFFECTED_ARGS} --configuration production --maxParallel=3
+  command: yarn affected:build --with-deps ${AFFECTED_ARGS} --configuration production --maxParallel=3
 
 # e2e
 affected_e2e: &affected_e2e
