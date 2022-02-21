@@ -225,11 +225,13 @@ jobs:
       - save_cache: *save_dist_cache
   check-formatting:
     <<: *defaults
+    resource_class: medium+
     steps:
       - checkout_and_cache
       - run: *format_check
   lint:
     <<: *defaults
+    resource_class: medium+
     steps:
       - checkout_and_cache
       - run: *lint
