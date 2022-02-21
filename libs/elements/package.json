@@ -37,15 +37,21 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@aiao/elements-cdk": "^0.1.7-alpha.1",
-    "@aiao/image-storage": "^0.1.5-alpha.1",
-    "@aiao/url": "^0.0.8-alpha.1",
-    "@aiao/util": "^1.0.3-alpha.1",
+    "@aiao/elements-cdk": "^0.1.7",
+    "@aiao/image-storage": "^0.1.5",
+    "@aiao/url": "^0.0.8",
+    "@aiao/util": "^1.0.3",
     "lodash": "^4.17.15"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org",
     "directory": "../../dist/libs/elements"
+  },
+  "devDependencies": {
+    "@aiao/elements-cdk": "^0.1.7",
+    "@aiao/image-storage": "^0.1.5",
+    "@aiao/url": "^0.0.8",
+    "@aiao/util": "^1.0.3"
   }
 }

@@ -21,8 +21,8 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@aiao/elements": "^0.7.5-alpha.1",
-    "@aiao/elements-cdk": "^0.1.7-alpha.1",
+    "@aiao/elements": "^0.7.5",
+    "@aiao/elements-cdk": "^0.1.7",
     "@angular/common": "^13.2.1",
     "@angular/core": "^13.2.1",
     "@angular/forms": "^13.2.1",
@@ -32,5 +32,9 @@
     "access": "public",
     "registry": "https://registry.npmjs.org",
     "directory": "../../dist/libs/elements-angular"
+  },
+  "devDependencies": {
+    "@aiao/elements": "^0.7.5",
+    "@aiao/elements-cdk": "^0.1.7"
   }
 }

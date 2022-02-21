@@ -1,6 +1,6 @@
 {
   "name": "@aiao/nest-typeorm-plus",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "nest typeorm plus",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -17,7 +17,7 @@
     "typeorm"
   ],
   "peerDependencies": {
-    "@aiao/typeorm-plus": "^0.2.1-alpha.1",
+    "@aiao/typeorm-plus": "^0.2.1",
     "@nestjs/common": "^8.0.0",
     "@nestjs/typeorm": "^8.0.1",
     "typeorm": "^0.2.22"
@@ -29,5 +29,8 @@
     "access": "public",
     "registry": "https://registry.npmjs.org",
     "directory": "../../dist/libs/nest-typeorm-plus"
+  },
+  "devDependencies": {
+    "@aiao/typeorm-plus": "^0.2.1"
   }
 }

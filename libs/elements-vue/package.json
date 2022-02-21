@@ -2,12 +2,15 @@
   "name": "@aiao/elements-vue",
   "version": "0.0.3",
   "peerDependencies": {
-    "@aiao/elements": "^0.7.5-alpha.1",
+    "@aiao/elements": "^0.7.5",
     "vue": "^3.2.29"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org",
     "directory": "../../dist/libs/elements-vue"
+  },
+  "devDependencies": {
+    "@aiao/elements": "^0.7.5"
   }
 }
