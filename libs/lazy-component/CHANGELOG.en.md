@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.2](https://github.com/aiao-io/aiao/compare/@aiao/lazy-component@1.5.0...@aiao/lazy-component@1.7.2) (2022-02-21)
+
+### Features
+
+- **aiao:** 修复 build lib 错误 ([f9376fe](https://github.com/aiao-io/aiao/commit/f9376fe1a4823cf18965187a50bc8eaad16eadfd))
+- **aiao:** add nx-tsup ([#156](https://github.com/aiao-io/aiao/issues/156)) ([b673dc6](https://github.com/aiao-io/aiao/commit/b673dc6e8c618f68d27a21928f60c6abd15d1e7d))
+- **lazy-component:** support ivy ([#119](https://github.com/aiao-io/aiao/issues/119)) ([f9f5ef9](https://github.com/aiao-io/aiao/commit/f9f5ef94494aab36bd2f27e9f34ef5d0d35d4908))
+- **nest-typeorm-plus:** add nest-typeorm-plus ([#97](https://github.com/aiao-io/aiao/issues/97)) ([58de4d9](https://github.com/aiao-io/aiao/commit/58de4d9f6595824d86f59d4018ea4065c84f58fa))
+
 ## [1.7.2-alpha.1](https://github.com/aiao-io/aiao/compare/@aiao/lazy-component@1.7.1...@aiao/lazy-component@1.7.2-alpha.1) (2022-02-15)
 
 **Note:** Version bump only for package @aiao/lazy-component
