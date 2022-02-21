@@ -5,16 +5,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [1.4.4](https://github.com/aiao-io/aiao/compare/@aiao/lazy-module@1.4.0...@aiao/lazy-module@1.4.4) (2022-02-21)
 
-
 ### Features
 
-* **aiao:** 修复 build lib 错误 ([f9376fe](https://github.com/aiao-io/aiao/commit/f9376fe1a4823cf18965187a50bc8eaad16eadfd))
-* **aiao:** add nx-tsup ([#156](https://github.com/aiao-io/aiao/issues/156)) ([b673dc6](https://github.com/aiao-io/aiao/commit/b673dc6e8c618f68d27a21928f60c6abd15d1e7d))
-* **nest-typeorm-plus:** add nest-typeorm-plus ([#97](https://github.com/aiao-io/aiao/issues/97)) ([58de4d9](https://github.com/aiao-io/aiao/commit/58de4d9f6595824d86f59d4018ea4065c84f58fa))
-
-
-
-
+- **aiao:** 修复 build lib 错误 ([f9376fe](https://github.com/aiao-io/aiao/commit/f9376fe1a4823cf18965187a50bc8eaad16eadfd))
+- **aiao:** add nx-tsup ([#156](https://github.com/aiao-io/aiao/issues/156)) ([b673dc6](https://github.com/aiao-io/aiao/commit/b673dc6e8c618f68d27a21928f60c6abd15d1e7d))
+- **nest-typeorm-plus:** add nest-typeorm-plus ([#97](https://github.com/aiao-io/aiao/issues/97)) ([58de4d9](https://github.com/aiao-io/aiao/commit/58de4d9f6595824d86f59d4018ea4065c84f58fa))
 
 ## [1.4.4-alpha.1](https://github.com/aiao-io/aiao/compare/@aiao/lazy-module@1.4.3...@aiao/lazy-module@1.4.4-alpha.1) (2022-02-15)
 

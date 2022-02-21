@@ -5,19 +5,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [1.3.0](https://github.com/aiao-io/aiao/compare/@aiao/universal-fastify-engine@0.1.0...@aiao/universal-fastify-engine@1.3.0) (2022-02-21)
 
-
 ### Features
 
-* **aiao:** add nx-tsup ([#156](https://github.com/aiao-io/aiao/issues/156)) ([b673dc6](https://github.com/aiao-io/aiao/commit/b673dc6e8c618f68d27a21928f60c6abd15d1e7d))
-* **nest-angular-universal:** 更新版本 ([f37493f](https://github.com/aiao-io/aiao/commit/f37493f1c6903bf64579e0db6ac14a6dabe52a22))
-* **nest-angular-universal:** 重构了部分代码 ([#143](https://github.com/aiao-io/aiao/issues/143)) ([e86e082](https://github.com/aiao-io/aiao/commit/e86e08218c114468138376916325ddebdf3f6ec9))
-* **nest-typeorm-plus:** add nest-typeorm-plus ([#97](https://github.com/aiao-io/aiao/issues/97)) ([58de4d9](https://github.com/aiao-io/aiao/commit/58de4d9f6595824d86f59d4018ea4065c84f58fa))
-* **universal-fastify-engine:** add request token ([8e8cff5](https://github.com/aiao-io/aiao/commit/8e8cff58af64fe9e53cc61346533cec6eb413461))
-* **universal-fastify-engine:** documentFilePath 支持文件和文件夹两种写法 ([a68a084](https://github.com/aiao-io/aiao/commit/a68a084943fe7c4064a1d45290229571b74266ab))
-
-
-
-
+- **aiao:** add nx-tsup ([#156](https://github.com/aiao-io/aiao/issues/156)) ([b673dc6](https://github.com/aiao-io/aiao/commit/b673dc6e8c618f68d27a21928f60c6abd15d1e7d))
+- **nest-angular-universal:** 更新版本 ([f37493f](https://github.com/aiao-io/aiao/commit/f37493f1c6903bf64579e0db6ac14a6dabe52a22))
+- **nest-angular-universal:** 重构了部分代码 ([#143](https://github.com/aiao-io/aiao/issues/143)) ([e86e082](https://github.com/aiao-io/aiao/commit/e86e08218c114468138376916325ddebdf3f6ec9))
+- **nest-typeorm-plus:** add nest-typeorm-plus ([#97](https://github.com/aiao-io/aiao/issues/97)) ([58de4d9](https://github.com/aiao-io/aiao/commit/58de4d9f6595824d86f59d4018ea4065c84f58fa))
+- **universal-fastify-engine:** add request token ([8e8cff5](https://github.com/aiao-io/aiao/commit/8e8cff58af64fe9e53cc61346533cec6eb413461))
+- **universal-fastify-engine:** documentFilePath 支持文件和文件夹两种写法 ([a68a084](https://github.com/aiao-io/aiao/commit/a68a084943fe7c4064a1d45290229571b74266ab))
 
 # [1.3.0-alpha.0](https://github.com/aiao-io/aiao/compare/@aiao/universal-fastify-engine@1.1.1...@aiao/universal-fastify-engine@1.3.0-alpha.0) (2022-02-15)
 
