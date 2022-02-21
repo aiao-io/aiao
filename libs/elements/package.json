@@ -1,6 +1,6 @@
 {
   "name": "@aiao/elements",
-  "version": "0.7.5-alpha.1",
+  "version": "0.7.5",
   "description": "web components",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -32,7 +32,7 @@
     "README.md"
   ],
   "dependencies": {
-    "@aiao/elements-cdk": "^0.1.7-alpha.1",
+    "@aiao/elements-cdk": "^0.1.7",
     "@aiao/url": "^0.0.2",
     "tslib": "^2.0.0"
   },

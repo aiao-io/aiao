@@ -1,6 +1,6 @@
 {
   "name": "@aiao/typeorm-plus",
-  "version": "0.2.1-alpha.2",
+  "version": "0.2.1",
   "description": "typeorm support sequelize query",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
