@@ -22,18 +22,26 @@ export function initRepository(metadata: EntityMetadata, ormSequelize: Sequelize
       const inverseModelName = get(relation.inverseEntityMetadata, 'name');
       const inverseModel = ormSequelize.model(inverseModelName);
       const inverseModelForeignKey = get(inverseRelation, 'foreignKeys[0].columnNames[0]');
+      const inverseModelColumnPropertyNames = relation.inverseEntityMetadata.columns.map(column => column.propertyName);
       if (!inverseModel) {
         console.error('未找到', modelName, propertyName);
         return;
       }
 
+      console.log('relationType', relationType);
       // 配置关系
       switch (relationType) {
         case 'one-to-many':
           model.hasMany(inverseModel, { as: propertyName, foreignKey: { name: inverseModelForeignKey } });
           break;
         case 'many-to-one':
+          if (inverseModelColumnPropertyNames.includes(propertyName)) {
+            model.belongsTo(inverseModel, { as: propertyName, foreignKey: { name: fkName } });
+          } else {
+            model.belongsTo(inverseModel, { foreignKey: { name: fkName } });
+          }
           model.belongsTo(inverseModel, { as: propertyName, foreignKey: { name: fkName } });
+
           break;
         case 'one-to-one':
           const inverseJoinColumns = relation.inverseRelation?.joinColumns || [];
