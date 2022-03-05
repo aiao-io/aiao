@@ -21,7 +21,7 @@ export class AppController {
   }
 
   @Get('api/hello')
-  hello() {
+  helloApi() {
     return { name: `hello ${index++}` };
   }
 }
