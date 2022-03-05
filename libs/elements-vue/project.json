@@ -4,7 +4,7 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@aiao/nx-tsup:build",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/elements-vue",
@@ -31,5 +31,5 @@
     }
   },
   "tags": ["vue-lib"],
-  "implicitDependencies": ["elements"]
+  "implicitDependencies": ["elements", "nx-tsup"]
 }

@@ -5,7 +5,7 @@
   "generators": {},
   "targets": {
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nrwl/js:tsc",
       "options": {
         "outputPath": "dist/libs/leancloud-hash",
         "tsConfig": "libs/leancloud-hash/tsconfig.lib.json",
@@ -34,5 +34,5 @@
       "outputs": ["coverage/libs/leancloud-hash"]
     }
   },
-  "tags": ["node"]
+  "tags": ["node-lib"]
 }

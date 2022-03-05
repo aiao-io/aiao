@@ -20,7 +20,7 @@
       "outputs": ["coverage/libs/nest-typeorm-plus"]
     },
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nrwl/js:tsc",
       "options": {
         "outputPath": "dist/libs/nest-typeorm-plus",
         "tsConfig": "libs/nest-typeorm-plus/tsconfig.lib.json",
@@ -34,5 +34,5 @@
       "outputs": ["{options.outputPath}"]
     }
   },
-  "tags": ["nest-app"]
+  "tags": ["nest-lib"]
 }

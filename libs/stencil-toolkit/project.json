@@ -5,7 +5,7 @@
   "tags": ["stencil-tool"],
   "targets": {
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nrwl/js:tsc",
       "options": {
         "outputPath": "dist/libs/stencil-toolkit",
         "tsConfig": "libs/stencil-toolkit/tsconfig.lib.json",
