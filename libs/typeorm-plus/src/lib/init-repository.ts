@@ -14,6 +14,8 @@ export function initRepository(metadata: EntityMetadata, ormSequelize: Sequelize
 
   const { name: modelName, relations, schema } = metadata;
   const model = ormSequelize.model(modelName);
+  const columnPropertyNames = metadata.columns.map(column => column.propertyName);
+
   relations
     .filter(({ isTreeChildren, isTreeParent }) => isTreeChildren === false && isTreeParent === false)
     .forEach(relation => {
@@ -33,7 +35,12 @@ export function initRepository(metadata: EntityMetadata, ormSequelize: Sequelize
           model.hasMany(inverseModel, { as: propertyName, foreignKey: { name: inverseModelForeignKey } });
           break;
         case 'many-to-one':
-          model.belongsTo(inverseModel, { as: propertyName, foreignKey: { name: fkName } });
+          if (columnPropertyNames.includes(fkName)) {
+            model.belongsTo(inverseModel, { as: propertyName, foreignKey: { name: fkName } });
+          } else {
+            model.belongsTo(inverseModel, { foreignKey: { name: fkName } });
+          }
+
           break;
         case 'one-to-one':
           const inverseJoinColumns = relation.inverseRelation?.joinColumns || [];
