@@ -12,16 +12,16 @@ import { getTypeormPlusToken } from './utils';
 @Global()
 @Module({})
 export class AiaoNestTypeormPlusCoreModule {
-  static connectionEntities = new Map<string, Set<EntityClassOrSchema>>();
+  static dataSourceEntities = new Map<string, Set<EntityClassOrSchema>>();
 
   constructor(@InjectTypeormPlus() private typeormPlus: TypeormPlus) {}
 
-  static addEntities(entities: EntityClassOrSchema[] = [], connection?: DataSource | DataSourceOptions | string) {
-    const token = getTypeormPlusToken(connection);
-    if (!this.connectionEntities.has(token)) {
-      this.connectionEntities.set(token, new Set());
+  static addEntities(entities: EntityClassOrSchema[] = [], dataSource?: DataSource | DataSourceOptions | string) {
+    const token = getTypeormPlusToken(dataSource);
+    if (!this.dataSourceEntities.has(token)) {
+      this.dataSourceEntities.set(token, new Set());
     }
-    const set = this.connectionEntities.get(token)!;
+    const set = this.dataSourceEntities.get(token)!;
     entities.forEach(entity => set.add(entity));
     return Array.from(set);
   }

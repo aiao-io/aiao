@@ -6,11 +6,11 @@ import { EntityClassOrSchema } from './interface';
 
 export function getSequelizeRepositoryToken(
   entity: EntityClassOrSchema,
-  connection?: DataSource | DataSourceOptions | string
+  dataSource?: DataSource | DataSourceOptions | string
 ): string {
-  return `${getRepositoryToken(entity, connection)}_SEQUELIZE_REPOSITORY`;
+  return `${getRepositoryToken(entity, dataSource)}_SEQUELIZE_REPOSITORY`;
 }
 
-export function getTypeormPlusToken(connection?: DataSource | DataSourceOptions | string): string {
-  return `${getConnectionToken(connection)}_SEQUELIZE_CONNECTION`;
+export function getTypeormPlusToken(dataSource?: DataSource | DataSourceOptions | string): string {
+  return `${getConnectionToken(dataSource)}_SEQUELIZE_CONNECTION`;
 }

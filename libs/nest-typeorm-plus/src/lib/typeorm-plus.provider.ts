@@ -7,10 +7,10 @@ import { getConnectionToken } from '@nestjs/typeorm';
 import { AiaoTypeormPlusModuleConfig, NEST_TYPEORM_PLUS_MODULE_CONFIG } from './interface';
 import { getTypeormPlusToken } from './utils';
 
-export function createTypeormPlusProvider(connection?: DataSource | DataSourceOptions | string): Provider {
+export function createTypeormPlusProvider(dataSource?: DataSource | DataSourceOptions | string): Provider {
   return {
-    provide: getTypeormPlusToken(connection),
+    provide: getTypeormPlusToken(dataSource),
     useFactory: async (config: AiaoTypeormPlusModuleConfig, conn: DataSource) => new TypeormPlus(config, conn),
-    inject: [NEST_TYPEORM_PLUS_MODULE_CONFIG, getConnectionToken(connection)]
+    inject: [NEST_TYPEORM_PLUS_MODULE_CONFIG, getConnectionToken(dataSource)]
   };
 }

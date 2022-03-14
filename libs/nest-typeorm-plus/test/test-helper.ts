@@ -1,6 +1,6 @@
 import { config } from 'dotenv';
 import { env } from 'process';
-import { ConnectionOptions } from 'typeorm';
+import { DataSourceOptions } from 'typeorm';
 
 try {
   config();
@@ -13,7 +13,7 @@ const {
   TYPEORM_PLUS_TEST_DATABASE
 } = env;
 
-export const baseOptions: ConnectionOptions = {
+export const baseOptions: DataSourceOptions = {
   type: (TYPEORM_PLUS_TEST_DB_TYPE as any) || 'postgres',
   username: TYPEORM_PLUS_TEST_USERNAME || 'test',
   password: TYPEORM_PLUS_TEST_PASSWORD || 'test',
