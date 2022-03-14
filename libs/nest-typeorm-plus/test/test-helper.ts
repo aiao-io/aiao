@@ -15,8 +15,8 @@ const {
 
 export const baseOptions: ConnectionOptions = {
   type: (TYPEORM_PLUS_TEST_DB_TYPE as any) || 'postgres',
-  username: TYPEORM_PLUS_TEST_USERNAME,
-  password: TYPEORM_PLUS_TEST_PASSWORD,
+  username: TYPEORM_PLUS_TEST_USERNAME || 'test',
+  password: TYPEORM_PLUS_TEST_PASSWORD || 'test',
   database: TYPEORM_PLUS_TEST_DATABASE || 'test',
   synchronize: true
 };

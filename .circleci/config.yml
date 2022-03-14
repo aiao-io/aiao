@@ -25,10 +25,12 @@ withDatabase: &withDatabase
     - image: circleci/postgres:12-alpine-postgis
       environment:
         POSTGRES_USER: test
+        POSTGRES_PASSWORD: test
         POSTGRES_DB: test
   environment:
     TYPEORM_PLUS_TEST_USERNAME: test
     TYPEORM_PLUS_TEST_DATABASE: test
+    TYPEORM_PLUS_TEST_PASSWORD: test
 set_env: &set_env
   name: Setup Environment Variables
   command: |
