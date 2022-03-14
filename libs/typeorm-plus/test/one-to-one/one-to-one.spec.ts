@@ -6,7 +6,7 @@ import { Profile } from './profile.entity';
 import { User } from './user.entity';
 
 describe('one-to-one', () => {
-  let connection: DataSource;
+  let dataSource: DataSource;
   let typeormPlus: TypeormPlus;
 
   let userRepository: Repository<User>;
@@ -14,18 +14,19 @@ describe('one-to-one', () => {
 
   beforeAll(async () => {
     const options: DataSourceOptions = { ...baseOptions, entities: [User, Profile] };
-    connection = new DataSource(options);
-    userRepository = connection.getRepository(User);
-    typeormPlus = new TypeormPlus(options, connection);
+    dataSource = new DataSource(options);
+    await dataSource.initialize();
+    userRepository = dataSource.getRepository(User);
+    typeormPlus = new TypeormPlus(options, dataSource);
     typeormPlus.init();
     userSequelizeRepository = typeormPlus.getSequelizeRepository(User);
   });
 
   afterAll(async () => {
-    await connection.destroy();
+    await dataSource.destroy();
   });
 
-  fdescribe('get', () => {
+  describe('get', () => {
     let id: number;
     beforeAll(async () => {
       const data = await userRepository.save({ name: '123', profile: { gender: 'male' } });

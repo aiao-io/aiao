@@ -5,7 +5,7 @@ import { baseOptions } from '../test-helper';
 import { PostgresType, SampleEnum } from './postgres-type.entity';
 
 describe('one-to-one', () => {
-  let connection: DataSource;
+  let dataSource: DataSource;
   let typeormPlus: TypeormPlus;
 
   let postgresTypeRepository: Repository<PostgresType>;
@@ -13,14 +13,15 @@ describe('one-to-one', () => {
 
   beforeAll(async () => {
     const options: DataSourceOptions = { ...baseOptions, entities: [PostgresType] };
-    connection = new DataSource(options);
-    postgresTypeRepository = connection.getRepository(PostgresType);
-    typeormPlus = new TypeormPlus(options, connection);
+    dataSource = new DataSource(options);
+    await dataSource.initialize();
+    postgresTypeRepository = dataSource.getRepository(PostgresType);
+    typeormPlus = new TypeormPlus(options, dataSource);
     typeormPlus.init();
     postgresTypeSequelizeRepository = typeormPlus.getSequelizeRepository(PostgresType);
   });
   afterAll(async () => {
-    await connection.destroy();
+    await dataSource.destroy();
   });
   describe('get', () => {
     let uuid: string;

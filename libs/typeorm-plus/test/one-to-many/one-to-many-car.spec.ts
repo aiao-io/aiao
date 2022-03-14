@@ -5,7 +5,7 @@ import { baseOptions } from '../test-helper';
 import { Car, People } from './car';
 
 describe('one-to-many', () => {
-  let connection: DataSource;
+  let dataSource: DataSource;
   let typeormPlus: TypeormPlus;
 
   let peopleRepository: Repository<People>;
@@ -13,22 +13,23 @@ describe('one-to-many', () => {
 
   beforeAll(async () => {
     const options: DataSourceOptions = { ...baseOptions, entities: [People, Car] };
-    connection = new DataSource(options);
-    peopleRepository = connection.getRepository(People);
-    carRepository = connection.getRepository(Car);
-    typeormPlus = new TypeormPlus(options, connection);
+    dataSource = new DataSource(options);
+    await dataSource.initialize();
+    peopleRepository = dataSource.getRepository(People);
+    carRepository = dataSource.getRepository(Car);
+    typeormPlus = new TypeormPlus(options, dataSource);
     typeormPlus.init();
     // postSequelizeRepository = typeormPlus.getSequelizeRepository(Post);
   });
 
   afterAll(async () => {
-    await connection.destroy();
+    await dataSource.destroy();
   });
 
   describe('get', () => {
     let id: number;
     beforeAll(async () => {
-      const data = await peopleRepository.save({});
+      const data = await peopleRepository.save({ id: 1 });
       id = data.id;
       await carRepository.save({ name: 'honda', people: data });
     });

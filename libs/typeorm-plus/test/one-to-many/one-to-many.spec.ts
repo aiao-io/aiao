@@ -6,7 +6,7 @@ import { PostCategory } from './post-category.entity';
 import { Post } from './post.entity';
 
 describe('one-to-many', () => {
-  let connection: DataSource;
+  let dataSource: DataSource;
   let typeormPlus: TypeormPlus;
 
   let postRepository: Repository<Post>;
@@ -14,15 +14,16 @@ describe('one-to-many', () => {
 
   beforeAll(async () => {
     const options: DataSourceOptions = { ...baseOptions, entities: [Post, PostCategory] };
-    connection = await new DataSource(options);
-    postRepository = connection.getRepository(Post);
-    typeormPlus = new TypeormPlus(options, connection);
+    dataSource = new DataSource(options);
+    await dataSource.initialize();
+    postRepository = dataSource.getRepository(Post);
+    typeormPlus = new TypeormPlus(options, dataSource);
     typeormPlus.init();
     postSequelizeRepository = typeormPlus.getSequelizeRepository(Post);
   });
 
   afterAll(async () => {
-    await connection.destroy();
+    await dataSource.destroy();
   });
 
   describe('get', () => {
