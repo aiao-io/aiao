@@ -22,10 +22,10 @@ describe('one-to-one', () => {
   });
 
   afterAll(async () => {
-    await connection.close();
+    await connection.destroy();
   });
 
-  describe('get', () => {
+  fdescribe('get', () => {
     let id: number;
     beforeAll(async () => {
       const data = await userRepository.save({ name: '123', profile: { gender: 'male' } });

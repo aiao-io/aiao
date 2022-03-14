@@ -21,7 +21,7 @@ describe('many-to-many', () => {
     postSequelizeRepository = typeormPlus.getSequelizeRepository(Post);
   });
   afterAll(async () => {
-    await connection.close();
+    await connection.destroy();
   });
   describe('get', () => {
     let id: number;

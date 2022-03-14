@@ -22,7 +22,7 @@ describe('one-to-many', () => {
   });
 
   afterAll(async () => {
-    await connection.close();
+    await connection.destroy();
   });
 
   describe('get', () => {

@@ -12,6 +12,7 @@ export function initRepository(metadata: EntityMetadata, ormSequelize: Sequelize
   // console.log('');
   // }
 
+  console.log('----,metadata', metadata);
   const { name: modelName, relations, schema } = metadata;
   const model = ormSequelize.model(modelName);
   const columnPropertyNames = metadata.columns.map(column => column.propertyName);

@@ -20,7 +20,7 @@ describe('one-to-one', () => {
     postgresTypeSequelizeRepository = typeormPlus.getSequelizeRepository(PostgresType);
   });
   afterAll(async () => {
-    await connection.close();
+    await connection.destroy();
   });
   describe('get', () => {
     let uuid: string;
