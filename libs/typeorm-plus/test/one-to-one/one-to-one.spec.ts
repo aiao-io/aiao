@@ -1,4 +1,4 @@
-import { Connection, ConnectionOptions, createConnection, Repository } from 'typeorm';
+import { DataSource, DataSourceOptions, Repository } from 'typeorm';
 
 import { SequelizeRepository, TypeormPlus } from '../../src';
 import { baseOptions } from '../test-helper';
@@ -6,15 +6,15 @@ import { Profile } from './profile.entity';
 import { User } from './user.entity';
 
 describe('one-to-one', () => {
-  let connection: Connection;
+  let connection: DataSource;
   let typeormPlus: TypeormPlus;
 
   let userRepository: Repository<User>;
   let userSequelizeRepository: SequelizeRepository<User>;
 
   beforeAll(async () => {
-    const options: ConnectionOptions = { ...baseOptions, entities: [User, Profile] };
-    connection = await createConnection(options);
+    const options: DataSourceOptions = { ...baseOptions, entities: [User, Profile] };
+    connection = new DataSource(options);
     userRepository = connection.getRepository(User);
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
@@ -33,7 +33,7 @@ describe('one-to-one', () => {
     });
 
     it('findOne/findByPk', async () => {
-      const d1 = await userRepository.findOne(id);
+      const d1 = await userRepository.findOne({ where: { id } });
       const d2 = await userSequelizeRepository.findByPk(id);
       expect(d1!.id).toEqual(d2!.id);
       expect(d1!.name).toEqual(d2!.name);

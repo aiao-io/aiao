@@ -1,4 +1,4 @@
-import { Connection, ConnectionOptions } from 'typeorm';
+import type { DataSource, DataSourceOptions } from 'typeorm';
 
 import { TypeormPlus } from '@aiao/typeorm-plus';
 
@@ -7,7 +7,7 @@ import { getSequelizeRepositoryToken, getTypeormPlusToken } from './utils';
 
 export const createSequelizeRepositoryProviders = (
   entities: EntityClassOrSchema[] = [],
-  connection?: Connection | ConnectionOptions | string
+  connection?: DataSource | DataSourceOptions | string
 ) =>
   entities.map(entity => {
     const provide = getSequelizeRepositoryToken(entity, connection);

@@ -1,4 +1,4 @@
-import { Connection, ConnectionOptions } from 'typeorm';
+import type { DataSource, DataSourceOptions } from 'typeorm';
 
 import { Inject } from '@nestjs/common';
 
@@ -10,5 +10,5 @@ export const InjectSequlizeRepository = (entity: EntityClassOrSchema, connection
   Inject(getSequelizeRepositoryToken(entity, connection));
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const InjectTypeormPlus = (connection?: Connection | ConnectionOptions | string) =>
+export const InjectTypeormPlus = (connection?: DataSource | DataSourceOptions | string) =>
   Inject(getTypeormPlusToken(connection));

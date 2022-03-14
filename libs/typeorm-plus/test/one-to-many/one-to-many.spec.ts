@@ -1,4 +1,4 @@
-import { Connection, ConnectionOptions, createConnection, Repository } from 'typeorm';
+import { DataSource, DataSourceOptions, Repository } from 'typeorm';
 
 import { SequelizeRepository, TypeormPlus } from '../../src';
 import { baseOptions } from '../test-helper';
@@ -6,15 +6,15 @@ import { PostCategory } from './post-category.entity';
 import { Post } from './post.entity';
 
 describe('one-to-many', () => {
-  let connection: Connection;
+  let connection: DataSource;
   let typeormPlus: TypeormPlus;
 
   let postRepository: Repository<Post>;
   let postSequelizeRepository: SequelizeRepository<Post>;
 
   beforeAll(async () => {
-    const options: ConnectionOptions = { ...baseOptions, entities: [Post, PostCategory] };
-    connection = await createConnection(options);
+    const options: DataSourceOptions = { ...baseOptions, entities: [Post, PostCategory] };
+    connection = await new DataSource(options);
     postRepository = connection.getRepository(Post);
     typeormPlus = new TypeormPlus(options, connection);
     typeormPlus.init();
@@ -36,7 +36,7 @@ describe('one-to-many', () => {
     });
 
     it('findOne/findByPk', async () => {
-      const d1 = await postRepository.findOne(id);
+      const d1 = await postRepository.findOne({ where: { id } });
       const d2 = await postSequelizeRepository.findByPk(id);
       expect(d1!.id).toEqual(d2!.id);
       expect(d1!.name).toEqual(d2!.name);

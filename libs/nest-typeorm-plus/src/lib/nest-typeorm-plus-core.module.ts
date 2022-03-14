@@ -1,4 +1,4 @@
-import { Connection, ConnectionOptions } from 'typeorm';
+import type { DataSource, DataSourceOptions } from 'typeorm';
 
 import { TypeormPlus } from '@aiao/typeorm-plus';
 import { DynamicModule, Global, Module } from '@nestjs/common';
@@ -16,7 +16,7 @@ export class AiaoNestTypeormPlusCoreModule {
 
   constructor(@InjectTypeormPlus() private typeormPlus: TypeormPlus) {}
 
-  static addEntities(entities: EntityClassOrSchema[] = [], connection?: Connection | ConnectionOptions | string) {
+  static addEntities(entities: EntityClassOrSchema[] = [], connection?: DataSource | DataSourceOptions | string) {
     const token = getTypeormPlusToken(connection);
     if (!this.connectionEntities.has(token)) {
       this.connectionEntities.set(token, new Set());
@@ -27,10 +27,10 @@ export class AiaoNestTypeormPlusCoreModule {
   }
 
   static forRoot(config: AiaoTypeormPlusModuleConfig): DynamicModule {
-    const entities: any = this.addEntities(config.entities, config as Connection | ConnectionOptions | string);
+    const entities: any = this.addEntities(config.entities, config as DataSource | DataSourceOptions | string);
     config = { ...config, entities };
     const configProvider = { provide: NEST_TYPEORM_PLUS_MODULE_CONFIG, useValue: config };
-    const typeormPlusProvider = createTypeormPlusProvider(config as ConnectionOptions);
+    const typeormPlusProvider = createTypeormPlusProvider(config as DataSourceOptions);
 
     return {
       module: AiaoNestTypeormPlusCoreModule,
