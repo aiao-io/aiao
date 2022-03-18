@@ -5,6 +5,5 @@ export const baseOptions: DataSourceOptions = {
   username: 'test',
   password: 'test',
   database: 'test',
-  port: 3210,
   synchronize: true
 };
