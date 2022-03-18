@@ -14,8 +14,7 @@ defaults: &defaults
     - image: circleci/node:16-browsers
       environment:
         NODE_OPTIONS: --max_old_space_size=2048
-      ports:
-        - '3210:5432'
+
 withDatabase: &withDatabase
   working_directory: ~/repo
   resource_class: medium+
@@ -24,14 +23,13 @@ withDatabase: &withDatabase
       environment:
         NODE_OPTIONS: --max_old_space_size=6000
     - image: circleci/postgres:12-alpine-postgis
+      ports:
+        - '3210:5432'
       environment:
         POSTGRES_USER: test
         POSTGRES_PASSWORD: test
         POSTGRES_DB: test
-  environment:
-    TYPEORM_PLUS_TEST_USERNAME: test
-    TYPEORM_PLUS_TEST_DATABASE: test
-    TYPEORM_PLUS_TEST_PASSWORD: test
+
 set_env: &set_env
   name: Setup Environment Variables
   command: |
