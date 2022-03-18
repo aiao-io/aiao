@@ -1,4 +1,4 @@
-import { createConnection, DataSource, DataSourceOptions, Repository } from 'typeorm';
+import { DataSource, DataSourceOptions, Repository } from 'typeorm';
 
 import { SequelizeRepository, TypeormPlus } from '../../src';
 import { baseOptions } from '../test-helper';
