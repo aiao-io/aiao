@@ -22,7 +22,7 @@ withDatabase: &withDatabase
     - image: circleci/node:16-browsers
       environment:
         NODE_OPTIONS: --max_old_space_size=6000
-    - image: circleci/postgres:14-alpine-postgis
+    - image: circleci/postgres:12-alpine-postgis
       environment:
         POSTGRES_USER: test
         POSTGRES_PASSWORD: test
