@@ -14,7 +14,8 @@ defaults: &defaults
     - image: circleci/node:16-browsers
       environment:
         NODE_OPTIONS: --max_old_space_size=2048
-
+      ports:
+        - '3210:5432'
 withDatabase: &withDatabase
   working_directory: ~/repo
   resource_class: medium+
