@@ -115,7 +115,7 @@ jobs:
 
       - name: Cypress Install
         shell: bash
-        run: yarn install --frozen-lockfile --non-interactive
+        run: yarn install --frozen-lockfile --non-interactive && yarn cypress install
 
       - name: Setup Environment Variables
         shell: bash
