@@ -111,12 +111,11 @@ jobs:
             dist/libs/util
           key: dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
           restore-keys: |
-            dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-${{ env.RUNNER_TRACKING_ID }}
             dist-${{ runner.os }}-${{ env.GITHUB_HEAD_REF }}-
 
       - name: Cypress Install
         shell: bash
-        run: yarn cypress install
+        run: yarn install --frozen-lockfile --non-interactive
 
       - name: Setup Environment Variables
         shell: bash
