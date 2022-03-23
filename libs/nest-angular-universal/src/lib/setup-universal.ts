@@ -12,6 +12,7 @@ export const setupUniversal = async (app: FastifyInstance, nestUniversalOptions:
     app.register(
       (instance: FastifyInstance, opts: any, next: () => void) => {
         instance.register(fastifyStatic, {
+          wildcard: false,
           ...fastifyStaticOptions,
           root: fastilyEngineOpts.outputPath
         });
