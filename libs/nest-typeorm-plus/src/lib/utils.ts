@@ -1,6 +1,6 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
 
-import { getConnectionToken, getRepositoryToken } from '@nestjs/typeorm';
+import { getDataSourceToken, getRepositoryToken } from '@nestjs/typeorm';
 
 import { EntityClassOrSchema } from './interface';
 
@@ -12,5 +12,5 @@ export function getSequelizeRepositoryToken(
 }
 
 export function getTypeormPlusToken(dataSource?: DataSource | DataSourceOptions | string): string {
-  return `${getConnectionToken(dataSource)}_SEQUELIZE_CONNECTION`;
+  return `${getDataSourceToken(dataSource)}_SEQUELIZE_CONNECTION`;
 }
