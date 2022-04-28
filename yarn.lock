@@ -3283,9 +3283,9 @@
     tslib "2.3.1"
 
 "@nestjs/typeorm@^9.0.0-next.1":
-  version "9.0.0-next.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/typeorm/-/typeorm-9.0.0-next.1.tgz#70384656fc270e17d41c38805f62eecdb3a17d9e"
-  integrity sha512-0Uy5ygrSkcd3Bb5+GRG76FBh4CVFiSB7Hyzgrpm4OxDS1pPQR09JYw1ndyEVvCtMoSx57l7rOLWTFQzFelW7XQ==
+  version "9.0.0-next.2"
+  resolved "https://registry.yarnpkg.com/@nestjs/typeorm/-/typeorm-9.0.0-next.2.tgz#657cdb908200656541e7e8089e1640ac049ab79c"
+  integrity sha512-2sb4fHH21SBCOrwvv9hyamUCgAc23eXA+/uyAeu7/VhOUnce8Iw7apNJQKK5PxbBWOCC4vXoIc5P8sDML5yNGA==
   dependencies:
     uuid "8.3.2"
 
@@ -17771,10 +17771,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typeorm@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.3.0.tgz#82ea586f1b8a8f7b24835710423edfd5dabba2ef"
-  integrity sha512-fGhJql31DRyxT0bxcjD5kAf9hz+aUppp90M93GmlRlCfHq+qKhY70eCEreAgjrlAYmZkfEgDcyMHpcAfrtCe7A==
+typeorm@^0.3.6:
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.3.6.tgz#65203443a1b684bb746785913fe2b0877aa991c0"
+  integrity sha512-DRqgfqcelMiGgWSMbBmVoJNFN2nPNA3EeY2gC324ndr2DZoGRTb9ILtp2oGVGnlA+cu5zgQ6it5oqKFNkte7Aw==
   dependencies:
     "@sqltools/formatter" "^1.2.2"
     app-root-path "^3.0.0"

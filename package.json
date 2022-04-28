@@ -97,7 +97,7 @@
     "sequelize": "^6.3.3",
     "tslib": "^2.0.0",
     "tsup": "^5.11.13",
-    "typeorm": "^0.3.0",
+    "typeorm": "^0.3.6",
     "ua-parser-js": "^1.0.1",
     "validator": "^13.6.0",
     "vue": "^3.2.29",
