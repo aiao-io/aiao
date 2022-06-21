@@ -1,26 +1,27 @@
-import { Connection, ConnectionOptions, createConnection, Repository } from 'typeorm';
+import { DataSource, DataSourceOptions, Repository } from 'typeorm';
 
 import { SequelizeRepository, TypeormPlus } from '../../src';
 import { baseOptions } from '../test-helper';
 import { PostgresType, SampleEnum } from './postgres-type.entity';
 
 describe('one-to-one', () => {
-  let connection: Connection;
+  let dataSource: DataSource;
   let typeormPlus: TypeormPlus;
 
   let postgresTypeRepository: Repository<PostgresType>;
   let postgresTypeSequelizeRepository: SequelizeRepository<PostgresType>;
 
   beforeAll(async () => {
-    const options: ConnectionOptions = { ...baseOptions, entities: [PostgresType] };
-    connection = await createConnection(options);
-    postgresTypeRepository = connection.getRepository(PostgresType);
-    typeormPlus = new TypeormPlus(options, connection);
+    const options: DataSourceOptions = { ...baseOptions, entities: [PostgresType] };
+    dataSource = new DataSource(options);
+    await dataSource.initialize();
+    postgresTypeRepository = dataSource.getRepository(PostgresType);
+    typeormPlus = new TypeormPlus(options, dataSource);
     typeormPlus.init();
     postgresTypeSequelizeRepository = typeormPlus.getSequelizeRepository(PostgresType);
   });
   afterAll(async () => {
-    await connection.close();
+    await dataSource.destroy();
   });
   describe('get', () => {
     let uuid: string;
@@ -50,7 +51,7 @@ describe('one-to-one', () => {
 
     it('findOne/findByPk', async () => {
       expect(uuid).toBeTruthy();
-      const d1 = await postgresTypeRepository.findOne(uuid);
+      const d1 = await postgresTypeRepository.findOne({ where: { uuid } });
       const d2 = await postgresTypeSequelizeRepository.findByPk(uuid);
       expect(d1!.uuid).toEqual(d2!.uuid);
     });

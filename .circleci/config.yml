@@ -27,10 +27,7 @@ withDatabase: &withDatabase
         POSTGRES_USER: test
         POSTGRES_PASSWORD: test
         POSTGRES_DB: test
-  environment:
-    TYPEORM_PLUS_TEST_USERNAME: test
-    TYPEORM_PLUS_TEST_DATABASE: test
-    TYPEORM_PLUS_TEST_PASSWORD: test
+
 set_env: &set_env
   name: Setup Environment Variables
   command: |
@@ -291,11 +288,11 @@ jobs:
       - run: *affected_test
       - codecov_upload
       - save_cache: *save_test_cache
-      # # BUILD
+      # BUILD
       # - restore_cache: *build_cache
       # - run: *affected_build
       # - save_cache: *save_build_cache
-      # # E2E
+      # E2E
       # - restore_cache: *e2e_cache
       # - run: *affected_e2e
       # - save_cache: *save_e2e_cache

@@ -1,4 +1,4 @@
-import { Connection, ConnectionOptions } from 'typeorm';
+import type { DataSource, DataSourceOptions } from 'typeorm';
 
 import { DynamicModule, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -21,13 +21,13 @@ export class AiaoTypeormPlusModule {
 
   static forFeature(
     entities: EntityClassOrSchema[] = [],
-    connection?: Connection | ConnectionOptions | string
+    dataSource?: DataSource | DataSourceOptions | string
   ): DynamicModule {
-    AiaoNestTypeormPlusCoreModule.addEntities(entities, connection);
-    const sequelizeRepositories = createSequelizeRepositoryProviders(entities, connection);
+    AiaoNestTypeormPlusCoreModule.addEntities(entities, dataSource);
+    const sequelizeRepositories = createSequelizeRepositoryProviders(entities, dataSource);
     return {
       module: AiaoTypeormPlusModule,
-      imports: [TypeOrmModule.forFeature(entities, connection)],
+      imports: [TypeOrmModule.forFeature(entities, dataSource)],
       providers: [...sequelizeRepositories],
       exports: [TypeOrmModule, ...sequelizeRepositories]
     };

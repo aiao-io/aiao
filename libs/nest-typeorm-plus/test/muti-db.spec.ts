@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import { ConnectionOptions } from 'typeorm';
+import { DataSourceOptions } from 'typeorm';
 
 import { SequelizeRepository } from '@aiao/typeorm-plus';
 import { Controller, INestApplication, Module } from '@nestjs/common';
@@ -12,7 +12,7 @@ import { baseOptions } from './test-helper';
 
 config();
 
-export const connectOptions: ConnectionOptions = {
+export const connectOptions: DataSourceOptions = {
   ...baseOptions,
   name: 'db2'
 };

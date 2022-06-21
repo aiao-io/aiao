@@ -10,7 +10,7 @@ export class Car {
   @Column()
   name!: string;
 
-  @ManyToOne(() => People, { primary: true })
+  @ManyToOne(() => People)
   people?: PostCategory;
 }
 

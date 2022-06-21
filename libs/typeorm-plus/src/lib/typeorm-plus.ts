@@ -1,5 +1,5 @@
-import { ModelType, Sequelize } from 'sequelize';
-import { Connection, ConnectionOptions, EntityMetadata, EntitySchema } from 'typeorm';
+import { Model, ModelStatic, Sequelize } from 'sequelize';
+import { DataSource, DataSourceOptions, EntityMetadata, EntitySchema } from 'typeorm';
 
 import { initRepository } from './init-repository';
 import { SequelizeRepository } from './interface';
@@ -17,7 +17,7 @@ export class TypeormPlus {
   protected entitiyMetadatas = new Set<EntityMetadata>();
   protected entitiyMap = new Map<EntityKeys, string>();
 
-  constructor(options: Partial<ConnectionOptions>, connection: Connection) {
+  constructor(options: Partial<DataSourceOptions>, connection: DataSource) {
     const opts = translateTypeormOptions(options);
     this.sequelize = new Sequelize(opts);
     connection.entityMetadatas.forEach(d => this.addMetadata(d));
@@ -41,7 +41,7 @@ export class TypeormPlus {
     }
   }
 
-  addMetadata(meta: EntityMetadata): ModelType {
+  addMetadata(meta: EntityMetadata): ModelStatic<Model> {
     this.entitiyMetadatas.add(meta);
     const { modelName, attributes, options } = translateTypeOrmEntity(meta);
     this.entitiyMap.set(meta.target, modelName);
