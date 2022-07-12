@@ -81,6 +81,7 @@
     "@nguniversal/express-engine": "^14.0.3",
     "@nrwl/angular": "14.4.2",
     "@webcomponents/custom-elements": "^1.4.1",
+    "cache-manager": "^4.1.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.1",
     "core-js": "^3.6.5",

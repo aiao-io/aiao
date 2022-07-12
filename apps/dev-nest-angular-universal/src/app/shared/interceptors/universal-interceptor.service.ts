@@ -3,7 +3,6 @@ import { Inject, Injectable, Optional } from '@angular/core';
 
 import type { Logger } from '@nestjs/common';
 import type { FastifyRequest } from 'fastify';
-
 @Injectable()
 export class UniversalInterceptorService implements HttpInterceptor {
   constructor(
@@ -16,12 +15,12 @@ export class UniversalInterceptorService implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    this.logger.log(req.url, 'UniversalInterceptorService');
-    const serverReq = !this.serverUrl
-      ? req
-      : req.clone({
+    this.logger.log(`${this.serverUrl}${req.url}`, 'UniversalInterceptorService');
+    const serverReq = this.serverUrl
+      ? req.clone({
           url: `${this.serverUrl}${req.url}`
-        });
+        })
+      : req;
     return next.handle(serverReq);
   }
 }

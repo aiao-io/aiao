@@ -20,6 +20,12 @@ export class AppController {
     res.type('text/html').send(a);
   }
 
+  @Get('hello')
+  async hello(@Res() res: FastifyReply) {
+    const a = await res.renderAngular();
+    res.type('text/html').send(a);
+  }
+
   @Get('api/hello')
   helloApi() {
     return { name: `hello ${index++}` };
