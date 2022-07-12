@@ -22,8 +22,8 @@
   },
   "peerDependencies": {
     "@aiao/lazy-module": "^1.4.4",
-    "@angular/core": "^13.2.1",
-    "@angular/elements": "^13.2.1",
+    "@angular/core": "^14.0.5",
+    "@angular/elements": "^14.0.5",
     "rxjs": "~7.4.0"
   },
   "devDependencies": {

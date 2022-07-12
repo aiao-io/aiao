@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify';
-import fastifyStatic from 'fastify-static';
 
 import { ngFastilyEngine } from '@aiao/universal-fastify-engine';
+import fastifyStatic from '@fastify/static';
 
 import { NestUniversalOptions } from './interface';
 

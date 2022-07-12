@@ -19,7 +19,7 @@
   "peerDependencies": {
     "lodash": "^4.17.15",
     "sequelize": "^6.3.3",
-    "typeorm": "^0.2.22"
+    "typeorm": "^0.3.6"
   },
   "dependencies": {
     "tslib": "^2.0.0"

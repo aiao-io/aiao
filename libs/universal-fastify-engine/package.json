@@ -21,11 +21,11 @@
     "engine"
   ],
   "peerDependencies": {
-    "@angular/core": "^13.2.1",
-    "@nestjs/common": "^8.0.0",
-    "@nguniversal/common": "^13.0.1",
-    "fastify": "*",
-    "fastify-plugin": "^3.0.0"
+    "@angular/core": "^14.0.5",
+    "@nestjs/common": "^9.0.2",
+    "@nguniversal/common": "^14.0.3",
+    "fastify": "^4.2.0",
+    "fastify-plugin": "^4.0.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"

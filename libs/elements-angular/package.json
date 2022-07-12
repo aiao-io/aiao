@@ -23,9 +23,9 @@
   "peerDependencies": {
     "@aiao/elements": "^0.7.5",
     "@aiao/elements-cdk": "^0.1.7",
-    "@angular/common": "^13.2.1",
-    "@angular/core": "^13.2.1",
-    "@angular/forms": "^13.2.1",
+    "@angular/common": "^14.0.5",
+    "@angular/core": "^14.0.5",
+    "@angular/forms": "^14.0.5",
     "rxjs": "~7.4.0"
   },
   "publishConfig": {
