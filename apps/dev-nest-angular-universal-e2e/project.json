@@ -1,5 +1,5 @@
 {
-  "root": "apps/dev-nest-angular-universal-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/dev-nest-angular-universal-e2e/src",
   "projectType": "application",
   "targets": {

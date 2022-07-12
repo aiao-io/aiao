@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'stencil-toolkit',
+/* eslint-disable */
+export default {
+  displayName: 'elements-vue',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +12,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/stencil-toolkit'
+  coverageDirectory: '../../coverage/libs/elements-vue'
 };

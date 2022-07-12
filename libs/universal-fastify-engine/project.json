@@ -1,5 +1,5 @@
 {
-  "root": "libs/universal-fastify-engine",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/universal-fastify-engine/src",
   "projectType": "library",
   "targets": {
@@ -14,12 +14,12 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/universal-fastify-engine"],
       "options": {
-        "jestConfig": "libs/universal-fastify-engine/jest.config.js",
+        "jestConfig": "libs/universal-fastify-engine/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/universal-fastify-engine",

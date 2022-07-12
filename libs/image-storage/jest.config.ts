@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'url',
+/* eslint-disable */
+export default {
+  displayName: 'image-storage',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +12,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/url'
+  coverageDirectory: '../../coverage/libs/image-storage'
 };

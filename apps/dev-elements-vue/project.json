@@ -1,5 +1,5 @@
 {
-  "root": "apps/dev-elements-vue",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/dev-elements-vue/src",
   "targets": {
@@ -16,7 +16,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/dev-elements-vue"],
       "options": {
-        "jestConfig": "apps/dev-elements-vue/jest.config.js",
+        "jestConfig": "apps/dev-elements-vue/jest.config.ts",
         "passWithNoTests": true
       }
     },

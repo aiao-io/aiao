@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'universal-fastify-engine',
+/* eslint-disable */
+export default {
+  displayName: 'nest-angular-universal',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': { tsconfig: '<rootDir>/tsconfig.spec.json' }
@@ -9,5 +10,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/universal-fastify-engine'
+  coverageDirectory: '../../coverage/libs/nest-angular-universal'
 };

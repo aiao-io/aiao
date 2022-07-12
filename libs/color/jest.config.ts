@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'date',
+/* eslint-disable */
+export default {
+  displayName: 'color',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +12,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/date'
+  coverageDirectory: '../../coverage/libs/color'
 };

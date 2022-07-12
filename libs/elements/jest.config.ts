@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   name: 'elements',
   preset: '../../jest.preset.js',
   coverageDirectory: '../../coverage/libs/elements',

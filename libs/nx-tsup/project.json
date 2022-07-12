@@ -1,5 +1,5 @@
 {
-  "root": "libs/nx-tsup",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/nx-tsup/src",
   "projectType": "library",
   "targets": {
@@ -14,12 +14,12 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/nx-tsup"],
       "options": {
-        "jestConfig": "libs/nx-tsup/jest.config.js",
+        "jestConfig": "libs/nx-tsup/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/nx-tsup",

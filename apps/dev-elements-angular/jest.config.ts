@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'dev-nest-angular-universal',
+/* eslint-disable */
+export default {
+  displayName: 'dev-elements-angular',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +10,7 @@ module.exports = {
       tsconfig: '<rootDir>/tsconfig.spec.json'
     }
   },
-  coverageDirectory: '../../coverage/apps/dev-nest-angular-universal',
+  coverageDirectory: '../../coverage/apps/dev-elements-angular',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-elements-code-editor',
@@ -7,8 +7,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./code-editor.component.scss']
 })
 export class ElementsCodeEditorComponent implements OnInit {
-  form: FormGroup;
-  constructor(private formBuilder: FormBuilder) {
+  form: UntypedFormGroup;
+  constructor(private formBuilder: UntypedFormBuilder) {
     this.form = this.formBuilder.group({
       json: {
         b: 1

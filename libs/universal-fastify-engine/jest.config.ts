@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'nest-typeorm-plus',
+/* eslint-disable */
+export default {
+  displayName: 'universal-fastify-engine',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': { tsconfig: '<rootDir>/tsconfig.spec.json' }
@@ -9,5 +10,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/nest-typeorm-plus'
+  coverageDirectory: '../../coverage/libs/universal-fastify-engine'
 };

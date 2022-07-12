@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-elements-preview',
@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./elements-preview.component.scss']
 })
 export class ElementsPreviewComponent implements OnInit {
-  form!: FormGroup;
+  form!: UntypedFormGroup;
   config = [
     {
       tag: 'h1',
@@ -51,7 +51,7 @@ export class ElementsPreviewComponent implements OnInit {
     }
   ];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: UntypedFormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({

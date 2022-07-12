@@ -1,11 +1,11 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "root": "libs/stencil-toolkit",
   "sourceRoot": "libs/stencil-toolkit/src",
   "tags": ["stencil-tool"],
   "targets": {
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nrwl/js:tsc",
       "options": {
         "outputPath": "dist/libs/stencil-toolkit",
         "tsConfig": "libs/stencil-toolkit/tsconfig.lib.json",
@@ -36,7 +36,7 @@
     "test": {
       "executor": "@nrwl/jest:jest",
       "options": {
-        "jestConfig": "libs/stencil-toolkit/jest.config.js",
+        "jestConfig": "libs/stencil-toolkit/jest.config.ts",
         "passWithNoTests": true
       },
       "outputs": ["coverage/libs/stencil-toolkit"]

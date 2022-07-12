@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-elements-editor',
@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./elements-editor.component.scss']
 })
 export class ElementsEditorComponent implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
   config = [
     {
       tag: 'h1',
@@ -50,7 +50,7 @@ export class ElementsEditorComponent implements OnInit {
       }
     }
   ];
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: UntypedFormBuilder) {
     this.form = this.formBuilder.group({
       elements: [this.data]
     });

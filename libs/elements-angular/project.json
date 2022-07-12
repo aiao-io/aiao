@@ -1,6 +1,6 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "root": "libs/elements-angular",
   "sourceRoot": "libs/elements-angular/src",
   "prefix": "aiao",
   "targets": {
@@ -24,7 +24,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/elements-angular"],
       "options": {
-        "jestConfig": "libs/elements-angular/jest.config.js",
+        "jestConfig": "libs/elements-angular/jest.config.ts",
         "passWithNoTests": true
       }
     },

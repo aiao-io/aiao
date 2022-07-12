@@ -1,5 +1,5 @@
 {
-  "root": "libs/nest-angular-universal",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/nest-angular-universal/src",
   "projectType": "library",
   "targets": {
@@ -14,12 +14,12 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/nest-angular-universal"],
       "options": {
-        "jestConfig": "libs/nest-angular-universal/jest.config.js",
+        "jestConfig": "libs/nest-angular-universal/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/nest-angular-universal",

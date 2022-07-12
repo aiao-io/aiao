@@ -1,6 +1,6 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "root": "apps/dev-nest-angular-universal",
   "sourceRoot": "apps/dev-nest-angular-universal/src",
   "prefix": "app",
   "targets": {
@@ -84,7 +84,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/dev-nest-angular-universal"],
       "options": {
-        "jestConfig": "apps/dev-nest-angular-universal/jest.config.js",
+        "jestConfig": "apps/dev-nest-angular-universal/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -94,7 +94,6 @@
         "outputPath": "dist/apps/dev-nest-angular-universal/server",
         "main": "apps/dev-nest-angular-universal/server.ts",
         "tsConfig": "apps/dev-nest-angular-universal/tsconfig.server.json",
-        "showCircularDependencies": false,
         "externalDependencies": [
           "@nestjs/common",
           "@nestjs/core",

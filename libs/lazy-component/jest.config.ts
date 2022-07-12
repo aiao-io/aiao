@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'lazy-element',
+/* eslint-disable */
+export default {
+  displayName: 'lazy-component',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +9,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$'
     }
   },
-  coverageDirectory: '../../coverage/libs/lazy-element',
+  coverageDirectory: '../../coverage/libs/lazy-component',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular'
   },

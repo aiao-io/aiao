@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   displayName: 'dev-elements-react',
   preset: '../../jest.preset.js',
   collectCoverageFrom: ['./src/**/*.tsx', '!./src/environments/**', '!./src/main.tsx', '!./src/polyfills.ts'],

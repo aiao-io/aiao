@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'elements-cdk',
+/* eslint-disable */
+export default {
+  displayName: 'random',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +12,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/elements-cdk'
+  coverageDirectory: '../../coverage/libs/random'
 };

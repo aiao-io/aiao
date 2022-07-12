@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   displayName: 'dev-elements-vue',
   preset: '../../jest.preset.js',
   transform: {

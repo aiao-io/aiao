@@ -1,5 +1,5 @@
 {
-  "root": "libs/image-storage",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/image-storage/src",
   "projectType": "library",
   "targets": {
@@ -25,7 +25,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/image-storage"],
       "options": {
-        "jestConfig": "libs/image-storage/jest.config.js",
+        "jestConfig": "libs/image-storage/jest.config.ts",
         "passWithNoTests": true
       }
     }

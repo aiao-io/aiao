@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'elements-vue',
+/* eslint-disable */
+export default {
+  displayName: 'util',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +12,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/elements-vue'
+  coverageDirectory: '../../coverage/libs/util'
 };

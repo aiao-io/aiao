@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'random',
+/* eslint-disable */
+export default {
+  displayName: 'url',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +12,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/random'
+  coverageDirectory: '../../coverage/libs/url'
 };

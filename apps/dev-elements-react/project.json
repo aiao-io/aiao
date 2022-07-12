@@ -1,5 +1,5 @@
 {
-  "root": "apps/dev-elements-react",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/dev-elements-react/src",
   "projectType": "application",
   "targets": {
@@ -47,6 +47,12 @@
           "namedChunks": false,
           "extractLicenses": true,
           "vendorChunk": false
+        },
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
         }
       }
     },
@@ -60,8 +66,12 @@
         "production": {
           "buildTarget": "dev-elements-react:build:production",
           "hmr": false
+        },
+        "development": {
+          "buildTarget": "dev-elements-react:build:development"
         }
-      }
+      },
+      "defaultConfiguration": "development"
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
@@ -74,7 +84,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/dev-elements-react"],
       "options": {
-        "jestConfig": "apps/dev-elements-react/jest.config.js",
+        "jestConfig": "apps/dev-elements-react/jest.config.ts",
         "passWithNoTests": true
       }
     }

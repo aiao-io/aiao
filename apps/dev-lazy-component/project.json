@@ -1,6 +1,6 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "root": "apps/dev-lazy-component",
   "sourceRoot": "apps/dev-lazy-component/src",
   "prefix": "app",
   "targets": {
@@ -81,7 +81,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/dev-lazy-component"],
       "options": {
-        "jestConfig": "apps/dev-lazy-component/jest.config.js",
+        "jestConfig": "apps/dev-lazy-component/jest.config.ts",
         "passWithNoTests": true
       }
     }
