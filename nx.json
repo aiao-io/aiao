@@ -19,11 +19,7 @@
       "runner": "@nrwl/nx-cloud",
       "options": {
         "cacheableOperations": [],
-        "runtimeCacheInputs": [
-          "node -v",
-          "git hash-object yarn.lock",
-          "git hash-object package.json"
-        ],
+        "runtimeCacheInputs": ["node -v", "git hash-object yarn.lock", "git hash-object package.json"],
         "parallel": 1,
         "accessToken": "NGQ2NjlmYjEtZjA3NC00YzA4LTgyMmMtZjgzYmZmMzhiN2VhfHJlYWQtd3JpdGU="
       }
@@ -124,9 +120,7 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ]
+      "dependsOn": ["^build"]
     }
   }
 }
