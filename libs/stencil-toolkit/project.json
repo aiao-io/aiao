@@ -18,7 +18,12 @@
           {
             "glob": "**/*.json",
             "input": "libs/stencil-toolkit/src/lib",
-            "output": "lib"
+            "output": "src/lib"
+          },
+          {
+            "glob": "**/*.json",
+            "input": "libs/stencil-toolkit/src/lib",
+            "output": "src/lib"
           },
           "LICENSE"
         ],

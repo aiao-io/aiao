@@ -99,7 +99,7 @@
     "react-dom": "18.2.0",
     "react-is": "18.0.0",
     "react-router": "^5.0.1",
-    "react-router-dom": "6.3.0",
+    "react-router-dom": "^5.0.1",
     "reflect-metadata": "^0.1.13",
     "regenerator-runtime": "^0.13.7",
     "rxjs": "~7.4.0",
