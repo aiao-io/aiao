@@ -6,9 +6,10 @@
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/dev-universal-fastify-engine-e2e/cypress.json",
+        "cypressConfig": "apps/dev-universal-fastify-engine-e2e/cypress.config.ts",
         "tsConfig": "apps/dev-universal-fastify-engine-e2e/tsconfig.e2e.json",
-        "devServerTarget": "dev-universal-fastify-engine:serve"
+        "devServerTarget": "dev-universal-fastify-engine:serve",
+        "testingType": "e2e"
       },
       "configurations": {
         "production": {

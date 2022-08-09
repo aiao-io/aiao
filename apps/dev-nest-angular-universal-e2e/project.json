@@ -6,9 +6,10 @@
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/dev-nest-angular-universal-e2e/cypress.json",
+        "cypressConfig": "apps/dev-nest-angular-universal-e2e/cypress.config.ts",
         "tsConfig": "apps/dev-nest-angular-universal-e2e/tsconfig.e2e.json",
-        "devServerTarget": "dev-nest-angular-universal:serve-ssr"
+        "devServerTarget": "dev-nest-angular-universal:serve-ssr",
+        "testingType": "e2e"
       },
       "configurations": {
         "production": {

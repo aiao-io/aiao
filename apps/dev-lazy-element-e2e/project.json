@@ -6,9 +6,10 @@
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/dev-lazy-element-e2e/cypress.json",
+        "cypressConfig": "apps/dev-lazy-element-e2e/cypress.config.ts",
         "tsConfig": "apps/dev-lazy-element-e2e/tsconfig.e2e.json",
-        "devServerTarget": "dev-lazy-element:serve"
+        "devServerTarget": "dev-lazy-element:serve",
+        "testingType": "e2e"
       },
       "configurations": {
         "production": {

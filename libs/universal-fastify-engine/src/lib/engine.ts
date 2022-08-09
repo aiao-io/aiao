@@ -17,6 +17,5 @@ function fastifyAngularEngine(
 
 // plugin
 export const ngFastilyEngine = fastifyPlugin(fastifyAngularEngine, {
-  fastify: '4.x',
   name: '@aiao/universal-fastify-engine'
 });

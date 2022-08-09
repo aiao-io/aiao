@@ -31,7 +31,7 @@ export const WORKSPACE_SCOPES = [
 export const WORKSPACE_TYPES = ['feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'chore'];
 
 // 需要预先编译的库
-export const NEED_CHECK_LIBS = ['elements', 'elements-vue'];
+export const NEED_CHECK_LIBS = [];
 // export const NEED_CHECK_LIBS = ['elements', 'elements-vue', 'elements-react'];
 
 // 需要检查提交的分支名

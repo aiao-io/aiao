@@ -6,9 +6,10 @@
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/dev-elements-vue-e2e/cypress.json",
+        "cypressConfig": "apps/dev-elements-vue-e2e/cypress.config.ts",
         "tsConfig": "apps/dev-elements-vue-e2e/tsconfig.e2e.json",
-        "devServerTarget": "dev-elements-vue:serve"
+        "devServerTarget": "dev-elements-vue:serve",
+        "testingType": "e2e"
       },
       "configurations": {
         "production": {

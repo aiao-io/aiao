@@ -18,7 +18,7 @@
   ],
   "peerDependencies": {
     "@aiao/typeorm-plus": "^0.2.5-alpha.1",
-    "@nestjs/common": "^9.0.2",
+    "@nestjs/common": "^9.0.7",
     "@nestjs/typeorm": "^9.0.0-next.1",
     "typeorm": "^0.3.6"
   },
