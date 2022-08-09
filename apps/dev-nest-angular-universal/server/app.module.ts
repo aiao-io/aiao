@@ -21,6 +21,7 @@ if (environment.production) {
   imports: [
     NestAngularUniversalModule.forRoot({
       bootstrap: AppServerModule,
+      baseHref: '/d/',
       outputPath,
       documentFilePath
     })

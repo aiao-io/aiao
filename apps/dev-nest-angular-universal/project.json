@@ -1,67 +1,65 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "prefix": "app",
   "projectType": "application",
   "sourceRoot": "apps/dev-nest-angular-universal/src",
-  "prefix": "app",
+  "tags": [
+    "angular-app",
+    "nest-app"
+  ],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
-      "options": {
-        "outputPath": "dist/apps/dev-nest-angular-universal/browser",
-        "index": "apps/dev-nest-angular-universal/src/index.html",
-        "main": "apps/dev-nest-angular-universal/src/main.ts",
-        "polyfills": "apps/dev-nest-angular-universal/src/polyfills.ts",
-        "tsConfig": "apps/dev-nest-angular-universal/tsconfig.app.json",
-        "assets": ["apps/dev-nest-angular-universal/src/favicon.ico", "apps/dev-nest-angular-universal/src/assets"],
-        "styles": ["apps/dev-nest-angular-universal/src/styles.scss"],
-        "scripts": [],
-        "vendorChunk": true,
-        "extractLicenses": false,
-        "buildOptimizer": false,
-        "sourceMap": true,
-        "optimization": false,
-        "namedChunks": true
-      },
       "configurations": {
         "production": {
+          "budgets": [
+            {
+              "maximumError": "5mb",
+              "maximumWarning": "2mb",
+              "type": "initial"
+            },
+            {
+              "maximumError": "10kb",
+              "maximumWarning": "6kb",
+              "type": "anyComponentStyle"
+            }
+          ],
+          "buildOptimizer": true,
+          "extractLicenses": true,
           "fileReplacements": [
             {
               "replace": "apps/dev-nest-angular-universal/src/environments/environment.ts",
               "with": "apps/dev-nest-angular-universal/src/environments/environment.prod.ts"
             }
           ],
+          "namedChunks": false,
           "optimization": true,
           "outputHashing": "all",
           "sourceMap": false,
-          "namedChunks": false,
-          "extractLicenses": true,
-          "vendorChunk": false,
-          "buildOptimizer": true,
-          "budgets": [
-            {
-              "type": "initial",
-              "maximumWarning": "2mb",
-              "maximumError": "5mb"
-            },
-            {
-              "type": "anyComponentStyle",
-              "maximumWarning": "6kb",
-              "maximumError": "10kb"
-            }
-          ]
+          "vendorChunk": false
         }
-      }
-    },
-    "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
-      "options": {
-        "browserTarget": "dev-nest-angular-universal:build"
       },
-      "configurations": {
-        "production": {
-          "browserTarget": "dev-nest-angular-universal:build:production",
-          "port": 5202
-        }
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "assets": [
+          "apps/dev-nest-angular-universal/src/favicon.ico",
+          "apps/dev-nest-angular-universal/src/assets"
+        ],
+        "baseHref": "/d/",
+        "buildOptimizer": false,
+        "extractLicenses": false,
+        "index": "apps/dev-nest-angular-universal/src/index.html",
+        "main": "apps/dev-nest-angular-universal/src/main.ts",
+        "namedChunks": true,
+        "optimization": false,
+        "outputPath": "dist/apps/dev-nest-angular-universal/browser",
+        "polyfills": "apps/dev-nest-angular-universal/src/polyfills.ts",
+        "scripts": [],
+        "sourceMap": true,
+        "styles": [
+          "apps/dev-nest-angular-universal/src/styles.scss"
+        ],
+        "tsConfig": "apps/dev-nest-angular-universal/tsconfig.app.json",
+        "vendorChunk": true
       }
     },
     "extract-i18n": {
@@ -78,22 +76,63 @@
           "apps/dev-nest-angular-universal/src/**/*.html"
         ]
       },
-      "outputs": ["{options.outputFile}"]
+      "outputs": [
+        "{options.outputFile}"
+      ]
     },
-    "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/dev-nest-angular-universal"],
+    "prerender": {
+      "configurations": {
+        "production": {}
+      },
+      "executor": "@nguniversal/builders:prerender",
       "options": {
-        "jestConfig": "apps/dev-nest-angular-universal/jest.config.ts",
-        "passWithNoTests": true
+        "browserTarget": "dev-nest-angular-universal:build:production",
+        "routes": [
+          "/"
+        ],
+        "serverTarget": "dev-nest-angular-universal:server:production"
+      }
+    },
+    "serve": {
+      "configurations": {
+        "production": {
+          "browserTarget": "dev-nest-angular-universal:build:production",
+          "port": 5202
+        }
+      },
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "dev-nest-angular-universal:build"
+      }
+    },
+    "serve-ssr": {
+      "configurations": {
+        "production": {
+          "browserTarget": "dev-nest-angular-universal:build:production",
+          "serverTarget": "dev-nest-angular-universal:server:production"
+        }
+      },
+      "executor": "@nguniversal/builders:ssr-dev-server",
+      "options": {
+        "browserTarget": "dev-nest-angular-universal:build",
+        "serverTarget": "dev-nest-angular-universal:server"
       }
     },
     "server": {
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/dev-nest-angular-universal/src/environments/environment.ts",
+              "with": "apps/dev-nest-angular-universal/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "media",
+          "sourceMap": false
+        }
+      },
       "executor": "@angular-devkit/build-angular:server",
       "options": {
-        "outputPath": "dist/apps/dev-nest-angular-universal/server",
-        "main": "apps/dev-nest-angular-universal/server.ts",
-        "tsConfig": "apps/dev-nest-angular-universal/tsconfig.server.json",
         "externalDependencies": [
           "@nestjs/common",
           "@nestjs/core",
@@ -114,46 +153,22 @@
           "swagger-ui-express",
           "ws"
         ],
+        "main": "apps/dev-nest-angular-universal/server.ts",
+        "optimization": false,
+        "outputPath": "dist/apps/dev-nest-angular-universal/server",
         "sourceMap": true,
-        "optimization": false
-      },
-      "configurations": {
-        "production": {
-          "outputHashing": "media",
-          "fileReplacements": [
-            {
-              "replace": "apps/dev-nest-angular-universal/src/environments/environment.ts",
-              "with": "apps/dev-nest-angular-universal/src/environments/environment.prod.ts"
-            }
-          ],
-          "sourceMap": false
-        }
+        "tsConfig": "apps/dev-nest-angular-universal/tsconfig.server.json"
       }
     },
-    "serve-ssr": {
-      "executor": "@nguniversal/builders:ssr-dev-server",
+    "test": {
+      "executor": "@nrwl/jest:jest",
       "options": {
-        "browserTarget": "dev-nest-angular-universal:build",
-        "serverTarget": "dev-nest-angular-universal:server"
+        "jestConfig": "apps/dev-nest-angular-universal/jest.config.ts",
+        "passWithNoTests": true
       },
-      "configurations": {
-        "production": {
-          "browserTarget": "dev-nest-angular-universal:build:production",
-          "serverTarget": "dev-nest-angular-universal:server:production"
-        }
-      }
-    },
-    "prerender": {
-      "executor": "@nguniversal/builders:prerender",
-      "options": {
-        "browserTarget": "dev-nest-angular-universal:build:production",
-        "serverTarget": "dev-nest-angular-universal:server:production",
-        "routes": ["/"]
-      },
-      "configurations": {
-        "production": {}
-      }
+      "outputs": [
+        "coverage/apps/dev-nest-angular-universal"
+      ]
     }
-  },
-  "tags": ["angular-app", "nest-app"]
+  }
 }

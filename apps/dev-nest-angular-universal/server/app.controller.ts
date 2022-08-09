@@ -14,6 +14,11 @@ export class AppController {
     res.type('text/html').send(a);
   }
 
+  @Get('/d/*')
+  fd() {
+    return { a: 1 };
+  }
+
   @Get('home')
   async home(@Res() res: FastifyReply) {
     const a = await res.renderAngular();
