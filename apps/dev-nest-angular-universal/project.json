@@ -3,10 +3,7 @@
   "prefix": "app",
   "projectType": "application",
   "sourceRoot": "apps/dev-nest-angular-universal/src",
-  "tags": [
-    "angular-app",
-    "nest-app"
-  ],
+  "tags": ["angular-app", "nest-app"],
   "targets": {
     "build": {
       "configurations": {
@@ -40,10 +37,7 @@
       },
       "executor": "@angular-devkit/build-angular:browser",
       "options": {
-        "assets": [
-          "apps/dev-nest-angular-universal/src/favicon.ico",
-          "apps/dev-nest-angular-universal/src/assets"
-        ],
+        "assets": ["apps/dev-nest-angular-universal/src/favicon.ico", "apps/dev-nest-angular-universal/src/assets"],
         "baseHref": "/d/",
         "buildOptimizer": false,
         "extractLicenses": false,
@@ -55,9 +49,7 @@
         "polyfills": "apps/dev-nest-angular-universal/src/polyfills.ts",
         "scripts": [],
         "sourceMap": true,
-        "styles": [
-          "apps/dev-nest-angular-universal/src/styles.scss"
-        ],
+        "styles": ["apps/dev-nest-angular-universal/src/styles.scss"],
         "tsConfig": "apps/dev-nest-angular-universal/tsconfig.app.json",
         "vendorChunk": true
       }
@@ -76,9 +68,7 @@
           "apps/dev-nest-angular-universal/src/**/*.html"
         ]
       },
-      "outputs": [
-        "{options.outputFile}"
-      ]
+      "outputs": ["{options.outputFile}"]
     },
     "prerender": {
       "configurations": {
@@ -87,9 +77,7 @@
       "executor": "@nguniversal/builders:prerender",
       "options": {
         "browserTarget": "dev-nest-angular-universal:build:production",
-        "routes": [
-          "/"
-        ],
+        "routes": ["/"],
         "serverTarget": "dev-nest-angular-universal:server:production"
       }
     },
@@ -166,9 +154,7 @@
         "jestConfig": "apps/dev-nest-angular-universal/jest.config.ts",
         "passWithNoTests": true
       },
-      "outputs": [
-        "coverage/apps/dev-nest-angular-universal"
-      ]
+      "outputs": ["coverage/apps/dev-nest-angular-universal"]
     }
   }
 }
