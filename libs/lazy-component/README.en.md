@@ -2,13 +2,34 @@
 
 [![npm](https://img.shields.io/npm/v/@aiao/lazy-component?label=&style=flat-square)](https://www.npmjs.com/@aiao/lazy-component)
 
-lazy load any `module`'s `component`. https://github.com/angular/angular/issues/14324 issue's solution
+按需加载 任意 `module` 的 `component`.
 
-> 此方法只适用 angular 8 或是 angular 9 非 ivy
+> 此方法适用 angular 8 或是 angular 9 非 `ivy` 模式中非常有用，`ivy` 模式可直接使用组件引用
 
 ## Use Case
 
-Present any module's component by modal, most used in the backend to manipulate data frequently.
+弹框弹出任意组件, 在后台页面操作数据时使用非常频繁，可以隔离模块依赖
+
+### ivy 中使用
+
+`ivy` 中也可以使用这种模式，弹框的内容会按 `module` 来分割代码延迟加载
+
+> 需要继承 WithIvyLazyComponent 接口，实现 customElementComponents 属性
+
+```ts
+import { LazyComponentModule, WithIvyLazyComponent } from '@aiao/lazy-component';
+import { NgModule, Type } from '@angular/core';
+
+import { AloneDialogComponent } from './alone-dialog.component';
+
+@NgModule({
+  declarations: [AloneDialogComponent],
+  imports: [LazyComponentModule]
+})
+export class AloneDialogModule implements WithIvyLazyComponent {
+  customElementComponents: Type<any>[] = [AloneDialogComponent];
+}
+```
 
 ## Install
 
@@ -26,4 +47,4 @@ yarn add @aiao/lazy-component
 
 ## Usage
 
-Integration: [integration/lazy-component](/integration/lazy-component)
+参考 [dev-lazy-component](../../apps/dev-lazy-component)

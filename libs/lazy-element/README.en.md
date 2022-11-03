@@ -10,18 +10,10 @@ lazy load `angular element`
 
 ## Install
 
-### Angular 8
-
-```console
-yarn add @aiao/lazy-elements@^1.4
-```
-
-### Angular 9+
-
 ```console
 yarn add @aiao/lazy-elements
 ```
 
 ## Usage
 
-Integration: [integration/lazy-element](/integration/lazy-element)
+参考 [dev-lazy-elements](../../apps/dev-lazy-elements)
