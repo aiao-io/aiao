@@ -1,5 +1,5 @@
 {
-  "root": "libs/elements-react",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/elements-react/src",
   "projectType": "library",
   "tags": ["react-lib"],
@@ -34,7 +34,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/elements-react"],
       "options": {
-        "jestConfig": "libs/elements-react/jest.config.js",
+        "jestConfig": "libs/elements-react/jest.config.ts",
         "passWithNoTests": true
       }
     }

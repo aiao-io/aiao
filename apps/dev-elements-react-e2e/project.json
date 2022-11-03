@@ -1,13 +1,14 @@
 {
-  "root": "apps/dev-elements-react-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/dev-elements-react-e2e/src",
   "projectType": "application",
   "targets": {
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/dev-elements-react-e2e/cypress.json",
-        "devServerTarget": "dev-elements-react:serve"
+        "cypressConfig": "apps/dev-elements-react-e2e/cypress.config.ts",
+        "devServerTarget": "dev-elements-react:serve",
+        "testingType": "e2e"
       },
       "configurations": {
         "production": {

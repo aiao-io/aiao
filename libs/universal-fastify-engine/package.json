@@ -1,6 +1,6 @@
 {
   "name": "@aiao/universal-fastify-engine",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": " universal fastify engine",
   "homepage": "https://github.com/aiao-io/aiao",
   "author": "Jimmy<hero63418@gmail.com>",
@@ -21,11 +21,11 @@
     "engine"
   ],
   "peerDependencies": {
-    "@angular/core": "^13.2.1",
-    "@nestjs/common": "^8.0.0",
-    "@nguniversal/common": "^13.0.1",
-    "fastify": "*",
-    "fastify-plugin": "^3.0.0"
+    "@angular/core": "^14.1.1",
+    "@nestjs/common": "^9.0.7",
+    "@nguniversal/common": "^14.0.3",
+    "fastify": "^4.2.0",
+    "fastify-plugin": "^4.0.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"

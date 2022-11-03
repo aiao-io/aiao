@@ -1,10 +1,10 @@
 {
-  "root": "libs/elements-cdk",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/elements-cdk/src",
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/elements-cdk",
@@ -25,7 +25,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/elements-cdk"],
       "options": {
-        "jestConfig": "libs/elements-cdk/jest.config.js",
+        "jestConfig": "libs/elements-cdk/jest.config.ts",
         "passWithNoTests": true
       }
     }

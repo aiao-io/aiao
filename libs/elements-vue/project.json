@@ -1,10 +1,10 @@
 {
-  "root": "libs/elements-vue",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/elements-vue/src",
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/elements-vue",
@@ -25,7 +25,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/elements-vue"],
       "options": {
-        "jestConfig": "libs/elements-vue/jest.config.js",
+        "jestConfig": "libs/elements-vue/jest.config.ts",
         "passWithNoTests": true
       }
     }

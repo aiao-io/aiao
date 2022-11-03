@@ -1,14 +1,15 @@
 {
-  "root": "apps/dev-elements-angular-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/dev-elements-angular-e2e/src",
   "projectType": "application",
   "targets": {
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/dev-elements-angular-e2e/cypress.json",
+        "cypressConfig": "apps/dev-elements-angular-e2e/cypress.config.ts",
         "tsConfig": "apps/dev-elements-angular-e2e/tsconfig.e2e.json",
-        "devServerTarget": "dev-elements-angular:serve"
+        "devServerTarget": "dev-elements-angular:serve",
+        "testingType": "e2e"
       },
       "configurations": {
         "production": {

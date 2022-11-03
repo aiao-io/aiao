@@ -1,6 +1,6 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "root": "libs/lazy-module",
   "sourceRoot": "libs/lazy-module/src",
   "prefix": "aiao",
   "targets": {
@@ -24,7 +24,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/lazy-module"],
       "options": {
-        "jestConfig": "libs/lazy-module/jest.config.js",
+        "jestConfig": "libs/lazy-module/jest.config.ts",
         "passWithNoTests": true
       }
     },

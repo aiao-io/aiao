@@ -5,8 +5,7 @@ import { AloneDialogComponent } from './alone-dialog.component';
 
 @NgModule({
   declarations: [AloneDialogComponent],
-  imports: [LazyComponentModule],
-  entryComponents: [AloneDialogComponent]
+  imports: [LazyComponentModule]
 })
 export class AloneDialogModule implements WithIvyLazyComponent {
   customElementComponents: Type<any>[] = [AloneDialogComponent];

@@ -1,5 +1,5 @@
 {
-  "root": "libs/color",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/color/src",
   "projectType": "library",
   "targets": {
@@ -25,7 +25,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/color"],
       "options": {
-        "jestConfig": "libs/color/jest.config.js",
+        "jestConfig": "libs/color/jest.config.ts",
         "passWithNoTests": true
       }
     }

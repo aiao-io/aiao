@@ -1,6 +1,6 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "root": "apps/dev-elements-angular",
   "sourceRoot": "apps/dev-elements-angular/src",
   "prefix": "app",
   "targets": {
@@ -106,7 +106,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/dev-elements-angular"],
       "options": {
-        "jestConfig": "apps/dev-elements-angular/jest.config.js",
+        "jestConfig": "apps/dev-elements-angular/jest.config.ts",
         "passWithNoTests": true
       }
     }

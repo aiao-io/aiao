@@ -20,10 +20,10 @@
     "ionc",
     "toolkit"
   ],
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "builders": "builders.json",
-  "schematics": "./collection.json",
+  "schematics": "collection.json",
   "scripts": {
     "build": " cd ../../ && yarn build stencil-toolkit"
   },

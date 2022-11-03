@@ -1,6 +1,6 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "root": "apps/dev-universal-fastify-engine",
   "sourceRoot": "apps/dev-universal-fastify-engine/src",
   "prefix": "app",
   "targets": {
@@ -84,7 +84,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/dev-universal-fastify-engine"],
       "options": {
-        "jestConfig": "apps/dev-universal-fastify-engine/jest.config.js",
+        "jestConfig": "apps/dev-universal-fastify-engine/jest.config.ts",
         "passWithNoTests": true
       }
     },

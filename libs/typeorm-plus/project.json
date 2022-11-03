@@ -1,10 +1,10 @@
 {
-  "root": "libs/typeorm-plus",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/typeorm-plus/src",
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/typeorm-plus",
@@ -25,7 +25,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/typeorm-plus"],
       "options": {
-        "jestConfig": "libs/typeorm-plus/jest.config.js",
+        "jestConfig": "libs/typeorm-plus/jest.config.ts",
         "passWithNoTests": true
       }
     }

@@ -7,8 +7,7 @@ import { HomeComponent } from './home.component';
 
 @NgModule({
   declarations: [HomeComponent, HomeDialogComponent],
-  imports: [HomeRouterModule, LazyComponentModule],
-  entryComponents: [HomeDialogComponent]
+  imports: [HomeRouterModule, LazyComponentModule]
 })
 export class HomeModule implements WithIvyLazyComponent {
   customElementComponents: Type<any>[] = [HomeDialogComponent];

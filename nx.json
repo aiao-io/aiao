@@ -25,16 +25,7 @@
       }
     }
   },
-  "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ]
-  },
   "cli": {
-    "defaultCollection": "@nrwl/angular",
     "packageManager": "yarn"
   },
   "generators": {
@@ -125,5 +116,11 @@
       }
     }
   },
-  "defaultProject": "dev-nest-angular-universal"
+  "defaultProject": "dev-nest-angular-universal",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"]
+    }
+  }
 }

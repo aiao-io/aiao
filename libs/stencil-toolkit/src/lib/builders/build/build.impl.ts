@@ -17,7 +17,7 @@ export interface StencilBuildOptions extends JsonObject {
   assets: any[];
 }
 
-export default createBuilder<StencilBuildOptions>(stencilBuild);
+export default createBuilder<StencilBuildOptions>(stencilBuild) as any;
 
 function stencilBuild(options: StencilBuildOptions, context: BuilderContext): Observable<BuilderOutput> {
   const { config: configPath, docs, outputPath, stats, assets } = options;

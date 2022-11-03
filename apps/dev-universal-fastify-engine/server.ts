@@ -1,10 +1,10 @@
 import 'zone.js/node';
 
 import fastify from 'fastify';
-import fastifyStatic from 'fastify-static';
 import { join } from 'path';
 
 import { ngFastilyEngine } from '@aiao/universal-fastify-engine';
+import fastifyStatic from '@fastify/static';
 
 import { AppServerModule } from './src/main.server';
 
@@ -18,7 +18,7 @@ export function createApp() {
   });
 
   app.register(ngFastilyEngine, {
-    distPath: distFolder,
+    outputPath: distFolder,
     bootstrap: AppServerModule
   });
 

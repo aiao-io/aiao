@@ -1,14 +1,15 @@
 {
-  "root": "apps/dev-lazy-component-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/dev-lazy-component-e2e/src",
   "projectType": "application",
   "targets": {
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/dev-lazy-component-e2e/cypress.json",
+        "cypressConfig": "apps/dev-lazy-component-e2e/cypress.config.ts",
         "tsConfig": "apps/dev-lazy-component-e2e/tsconfig.e2e.json",
-        "devServerTarget": "dev-lazy-component:serve"
+        "devServerTarget": "dev-lazy-component:serve",
+        "testingType": "e2e"
       },
       "configurations": {
         "production": {
