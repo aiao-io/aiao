@@ -3,7 +3,6 @@ import type { DataSource, DataSourceOptions } from 'typeorm';
 import { DynamicModule, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { createSequelizeRepositoryProviders } from './entity.provider';
 import { AiaoTypeormPlusModuleConfig, EntityClassOrSchema } from './interface';
 import { AiaoNestTypeormPlusCoreModule } from './nest-typeorm-plus-core.module';
 
@@ -24,15 +23,12 @@ export class AiaoTypeormPlusModule {
     dataSource?: DataSource | DataSourceOptions | string
   ): DynamicModule {
     AiaoNestTypeormPlusCoreModule.addEntities(entities, dataSource);
-    const sequelizeRepositories = createSequelizeRepositoryProviders(
-      entities,
-      dataSource
-    );
+
     return {
       module: AiaoTypeormPlusModule,
       imports: [TypeOrmModule.forFeature(entities, dataSource)],
-      providers: [...sequelizeRepositories],
-      exports: [TypeOrmModule, ...sequelizeRepositories],
+      providers: [],
+      exports: [TypeOrmModule],
     };
   }
 }

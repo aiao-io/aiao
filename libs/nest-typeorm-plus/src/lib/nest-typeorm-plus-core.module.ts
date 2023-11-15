@@ -6,7 +6,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import {
     AiaoTypeormPlusModuleConfig, EntityClassOrSchema, NEST_TYPEORM_PLUS_MODULE_CONFIG
 } from './interface';
-import { createTypeormPlusProvider } from './typeorm-plus.provider';
 import { getTypeormPlusToken } from './utils';
 
 @Global()
@@ -37,15 +36,13 @@ export class AiaoNestTypeormPlusCoreModule {
       provide: NEST_TYPEORM_PLUS_MODULE_CONFIG,
       useValue: config,
     };
-    const typeormPlusProvider = createTypeormPlusProvider(
-      config as DataSourceOptions
-    );
+
 
     return {
       module: AiaoNestTypeormPlusCoreModule,
       imports: [TypeOrmModule.forRoot(config)],
-      providers: [configProvider, typeormPlusProvider],
-      exports: [configProvider, typeormPlusProvider],
+      providers: [configProvider],
+      exports: [configProvider],
     };
   }
 }
