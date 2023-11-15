@@ -3,20 +3,19 @@
 # compiled output
 dist
 tmp
-out-tsc
+/out-tsc
 
 # dependencies
 node_modules
 
 # IDEs and editors
-.idea
+/.idea
 .project
 .classpath
 .c9/
 *.launch
 .settings/
 *.sublime-workspace
-*.log
 
 # IDE - VSCode
 .vscode/*
@@ -26,11 +25,10 @@ node_modules
 !.vscode/extensions.json
 
 # misc
-/.angular/cache
-.sass-cache
-connect.lock
-coverage
-libpeerconnection.log
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
 npm-debug.log
 yarn-error.log
 testem.log
@@ -40,14 +38,4 @@ testem.log
 .DS_Store
 Thumbs.db
 
-*.env
-
-**/proxies-list.txt
-
-!tools/hotfix/node_modules_files/**/dist/
-package-lock.json
-libs/elements-vue/src/lib/proxies.ts
-libs/elements-vue/src/lib/vue-component-lib/utils.ts
-.angulardoc.json
-
-.angular
+.nx/cache

@@ -1,2 +1,0 @@
-echo "prepush"
-npm run prepush

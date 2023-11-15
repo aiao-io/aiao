@@ -1,129 +1,22 @@
 {
-  "implicitDependencies": {
-    "angular.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     },
-    "tslint.json": "*",
-    "nx.json": "*",
-    "tsconfig.base.json": "*",
-    ".eslintrc.json": "*"
-  },
-  "affected": {
-    "defaultBase": "master"
-  },
-  "npmScope": "aiao",
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "@nrwl/nx-cloud",
-      "options": {
-        "cacheableOperations": [],
-        "runtimeCacheInputs": ["node -v", "git hash-object yarn.lock", "git hash-object package.json"],
-        "parallel": 1,
-        "accessToken": "NGQ2NjlmYjEtZjA3NC00YzA4LTgyMmMtZjgzYmZmMzhiN2VhfHJlYWQtd3JpdGU="
-      }
+    "lint": {
+      "cache": true
+    },
+    "e2e": {
+      "cache": true
     }
   },
-  "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ]
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "production": ["default"],
+    "sharedGlobals": []
   },
-  "cli": {
-    "defaultCollection": "@nrwl/angular",
-    "packageManager": "yarn"
-  },
-  "generators": {
-    "@nrwl/workspace": {
-      "library": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/cypress": {
-      "cypress-project": {
-        "linter": "eslint"
-      },
-      "convert-tslint-to-eslint": {
-        "removeTSLintIfNoMoreTSLintTargets": false
-      }
-    },
-    "@nrwl/react": {
-      "application": {
-        "style": "scss",
-        "linter": "eslint",
-        "babel": true
-      },
-      "library": {
-        "style": "scss",
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      },
-      "component": {
-        "style": "scss"
-      }
-    },
-    "@nrwl/next": {
-      "application": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/web": {
-      "application": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/node": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/nx-plugin": {
-      "plugin": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/nest": {
-      "application": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/express": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/angular:application": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress",
-      "prefix": "app",
-      "strict": true
-    },
-    "@nrwl/angular:component": {
-      "style": "scss"
-    },
-    "@nrwl/angular:library": {
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular": {
-      "convert-tslint-to-eslint": {
-        "removeTSLintIfNoMoreTSLintTargets": true
-      }
-    }
-  },
-  "defaultProject": "dev-nest-angular-universal"
+  "nxCloudAccessToken": "YWUwNGRmYzktZDMzZi00NGJiLWJjMmUtMjdjZDg4MzZlOTk4fHJlYWQtd3JpdGU="
 }

@@ -1,7 +1,0 @@
-{
-  "name": "@aiao/nx-tsup",
-  "version": "0.0.2",
-  "main": "src/index.js",
-  "generators": "./generators.json",
-  "executors": "./executors.json"
-}
