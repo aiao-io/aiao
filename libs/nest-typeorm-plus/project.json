@@ -1,0 +1,41 @@
+{
+  "name": "nest-typeorm-plus",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/nest-typeorm-plus/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/nest-typeorm-plus",
+        "tsConfig": "libs/nest-typeorm-plus/tsconfig.lib.json",
+        "packageJson": "libs/nest-typeorm-plus/package.json",
+        "main": "libs/nest-typeorm-plus/src/index.ts",
+        "assets": ["libs/nest-typeorm-plus/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs nest-typeorm-plus {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/nest-typeorm-plus/**/*.ts",
+          "libs/nest-typeorm-plus/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/nest-typeorm-plus/jest.config.ts"
+      }
+    }
+  },
+  "tags": ["nest-lib"]
+}
