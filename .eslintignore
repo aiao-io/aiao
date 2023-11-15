@@ -1,1 +1,20 @@
+# Add files here to ignore them from prettier formatting
+
+tmp
+libs/*/build
+apps/*/build
 node_modules
+/coverage
+*.log
+!*.config.js
+*.d.ts
+**/*.en.md
+
+*.e2e.ts
+*.spec.ts
+/migrations.json
+assets/
+dist/
+react-component-lib/
+vendors/
+.eslintrc.js

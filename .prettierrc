@@ -1,3 +1,23 @@
 {
-  "singleQuote": true
+  "singleQuote": true,
+  "printWidth": 120,
+  "trailingComma": "none",
+  "arrowParens": "avoid",
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "pluginSearchDirs": false,
+  "overrides": [
+    {
+      "files": ["*.html", "*.html.template"],
+      "options": {
+        "printWidth": 10000,
+        "htmlWhitespaceSensitivity": "ignore"
+      }
+    },
+    {
+      "files": "*.yaml",
+      "options": {
+        "bracketSpacing": false
+      }
+    }
+  ]
 }
