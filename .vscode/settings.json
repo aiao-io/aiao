@@ -1,6 +1,103 @@
 {
-    "cSpell.words": [
-        "Aiao",
-        "typeorm"
-    ]
+  "editor.wordWrap": "on",
+  "files.eol": "\n",
+  "files.exclude": {
+    "*.log": true,
+    "**/dist": true,
+    "**/node_modules": true,
+    "bazel-out": true,
+    "coverage": true,
+    "tmp": true,
+    ".angular": true,
+    ".husky": true,
+    ".ng-doc": true,
+    ".vscode": true
+  },
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.recentChange.enabled": false,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 120,
+  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimit",
+  "importSorter.sortConfiguration.removeUnusedDefaultImports": true,
+  "importSorter.importStringConfiguration.tabSize": 2,
+  "importSorter.generalConfiguration.exclude": [],
+  "markdownlint.ignore": ["**/CHANGELOG.md"],
+  "rust-analyzer.linkedProjects": ["apps/imerge-desktop/Cargo.toml"],
+  "scss.lint.unknownAtRules": "ignore",
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "eslint.validate": ["json"],
+  "[ejs]": {
+    "editor.defaultFormatter": "j69.ejs-beautify"
+  },
+  "cSpell.words": [
+    "Activatable",
+    "aiao",
+    "antd",
+    "bestzip",
+    "cacheable",
+    "datetime",
+    "devkit",
+    "dynamicquery",
+    "echarts",
+    "ekunde",
+    "fileviewer",
+    "formly",
+    "imerge",
+    "immer",
+    "larscom",
+    "localforage",
+    "messageformat",
+    "Modalable",
+    "muid",
+    "ngneat",
+    "ngrx",
+    "nxkit",
+    "packagr",
+    "Pageable",
+    "parsimmon",
+    "polymorpheus",
+    "popconfirm",
+    "preinstall",
+    "prepush",
+    "Ruleset",
+    "Rulesets",
+    "screenfull",
+    "sider",
+    "storagesync",
+    "swiper",
+    "sylink",
+    "tabset",
+    "tailwindcss",
+    "tauri",
+    "tinkoff",
+    "tinymce",
+    "Transloco",
+    "UCCS"
+  ],
+  "terminal.integrated.shellArgs.osx": [],
+  "typescript.locale": "zh-CN"
 }
