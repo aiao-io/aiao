@@ -96,6 +96,7 @@
     "tinkoff",
     "tinymce",
     "Transloco",
+    "typeorm",
     "UCCS"
   ],
   "terminal.integrated.shellArgs.osx": [],

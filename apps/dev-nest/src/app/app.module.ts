@@ -1,11 +1,13 @@
 import { Module } from '@nestjs/common';
-
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Photo } from './photo/photo.entity';
+import { PhotoModule } from './photo/photo.module';
+import { AiaoTypeormPlusModule } from '@aiao/nest-typeorm-plus';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    AiaoTypeormPlusModule.forRoot({ ...typeormPlusConfig, entities: [] }),
+
+  ],
 })
 export class AppModule {}

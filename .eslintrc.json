@@ -1,6 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": ["**/*"],
+  "ignorePatterns": ["!**/*"],
   "plugins": ["@nx"],
   "overrides": [
     {
@@ -15,6 +15,22 @@
               {
                 "sourceTag": "*",
                 "onlyDependOnLibsWithTags": ["*"]
+              },
+              {
+                "sourceTag": "angular-app",
+                "onlyDependOnLibsWithTags": ["angular-lib", "js-lib", "business-module", "mock", "imerge22"]
+              },
+              {
+                "sourceTag": "business-module",
+                "onlyDependOnLibsWithTags": ["angular-lib", "js-lib", "business-module", "imerge22"]
+              },
+              {
+                "sourceTag": "angular-lib",
+                "onlyDependOnLibsWithTags": ["angular-lib", "js-lib"]
+              },
+              {
+                "sourceTag": "imerge22",
+                "onlyDependOnLibsWithTags": ["angular-lib", "js-lib", "imerge22"]
               }
             ]
           }
@@ -24,7 +40,14 @@
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nx/typescript"],
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/explicit-member-accessibility": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-parameter-properties": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "complexity": ["error", 10]
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
@@ -36,6 +59,11 @@
       "env": {
         "jest": true
       },
+      "rules": {}
+    },
+    {
+      "files": "*.json",
+      "parser": "jsonc-eslint-parser",
       "rules": {}
     }
   ]
