@@ -10,7 +10,8 @@
       "files": ["*.html", "*.html.template"],
       "options": {
         "printWidth": 10000,
-        "htmlWhitespaceSensitivity": "ignore"
+        "htmlWhitespaceSensitivity": "ignore",
+        "parser": "angular"
       }
     },
     {

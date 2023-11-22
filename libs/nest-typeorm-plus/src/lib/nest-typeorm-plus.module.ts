@@ -8,13 +8,13 @@ import { AiaoNestTypeormPlusCoreModule } from './nest-typeorm-plus-core.module';
 
 @Module({
   providers: [],
-  exports: [],
+  exports: []
 })
 export class AiaoTypeormPlusModule {
   static forRoot(config: AiaoTypeormPlusModuleConfig): DynamicModule {
     return {
       module: AiaoTypeormPlusModule,
-      imports: [AiaoNestTypeormPlusCoreModule.forRoot(config)],
+      imports: [AiaoNestTypeormPlusCoreModule.forRoot(config)]
     };
   }
 
@@ -28,7 +28,7 @@ export class AiaoTypeormPlusModule {
       module: AiaoTypeormPlusModule,
       imports: [TypeOrmModule.forFeature(entities, dataSource)],
       providers: [],
-      exports: [TypeOrmModule],
+      exports: [TypeOrmModule]
     };
   }
 }

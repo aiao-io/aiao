@@ -4,6 +4,5 @@ import { Inject } from '@nestjs/common';
 
 import { getTypeormPlusToken } from './utils';
 
-export const InjectTypeormPlus = (
-  dataSource?: DataSource | DataSourceOptions | string
-) => Inject(getTypeormPlusToken(dataSource));
+export const InjectTypeormPlus = (dataSource?: DataSource | DataSourceOptions | string) =>
+  Inject(getTypeormPlusToken(dataSource));

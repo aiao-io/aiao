@@ -1,16 +1,12 @@
 {
   "name": "dev-nest-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "implicitDependencies": [
-    "dev-nest"
-  ],
+  "implicitDependencies": ["dev-nest"],
   "projectType": "application",
   "targets": {
     "e2e": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{e2eProjectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
       "options": {
         "jestConfig": "apps/dev-nest-e2e/jest.config.ts",
         "passWithNoTests": true
@@ -18,13 +14,9 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/dev-nest-e2e/**/*.{js,ts}"
-        ]
+        "lintFilePatterns": ["apps/dev-nest-e2e/**/*.{js,ts}"]
       }
     }
   }

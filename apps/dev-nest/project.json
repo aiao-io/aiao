@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
         "target": "node",
@@ -16,9 +14,7 @@
         "outputPath": "dist/apps/dev-nest",
         "main": "apps/dev-nest/src/main.ts",
         "tsConfig": "apps/dev-nest/tsconfig.app.json",
-        "assets": [
-          "apps/dev-nest/src/assets"
-        ],
+        "assets": ["apps/dev-nest/src/assets"],
         "isolatedConfig": true,
         "webpackConfig": "apps/dev-nest/webpack.config.js"
       },
@@ -44,20 +40,14 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/dev-nest/**/*.ts"
-        ]
+        "lintFilePatterns": ["apps/dev-nest/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "apps/dev-nest/jest.config.ts"
       }
